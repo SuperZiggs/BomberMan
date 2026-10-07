@@ -231,6 +231,10 @@ def train(
     checkpoint_dir: str = "checkpoints",
     resume_from: str = "",
     device: str = "cuda" if torch.cuda.is_available() else "cpu",
+    on_step=None,
+    on_episode=None,
+    stop_event=None,
+    run_report: bool = True,
 ):
     """
     Unified training loop for phases C, D, E.
@@ -240,9 +244,15 @@ def train(
     Phase D: Agent 0 = learning AC, Agent 1 = random from opponent pool
              (includes RuleBasedAgent + saved snapshots).
     Phase E: Same as D but with num_agents=3 or 4.
+
+    Optional GUI hooks: on_step(env, episode, learning_id, actions, opponents)
+    and on_episode(metrics). A set stop_event discards the partial episode,
+    saves completed updates and returns. run_report=False skips final tournaments.
     """
     phase = phase.upper()
     assert phase in ("C", "D", "E"), f"Phase must be C, D, or E, got {phase}"
+    if episodes < 1 or max_steps < 1 or log_every < 1 or snapshot_every < 1:
+        raise ValueError("episodes, max_steps, log_every and snapshot_every must be positive")
 
     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
                           max_steps=max_steps)
@@ -313,6 +323,8 @@ def train(
     walls_history = []      # walls destroyed by learning agent's bombs
 
     for ep in range(1, episodes + 1):
+        if stop_event is not None and stop_event.is_set():
+            break
         obs_list = env.reset()
         alive_mask = [True] * num_agents
 
@@ -336,6 +348,9 @@ def train(
                         np.random.randint(len(snapshot_pool))
                     ]
 
+        if on_step is not None:
+            on_step(env, ep, learning_aid, [ACTION_STOP] * num_agents, opponents)
+
         # ── Per-agent trajectory buffers (learning agent) ──
         log_probs_buf = []
         values_buf = []
@@ -346,6 +361,8 @@ def train(
         walls_this_ep = 0
 
         for t in range(max_steps):
+            if stop_event is not None and stop_event.is_set():
+                break
             # ── Select actions ──
             actions = [0] * num_agents
 
@@ -441,8 +458,14 @@ def train(
                 entropies_buf.append(entropy.squeeze())
 
             alive_mask = list(info["alive"])
+            if on_step is not None:
+                on_step(env, ep, learning_aid, actions, opponents)
             if info["episode_done"]:
                 break
+
+        # A cancelled partial episode must not update the model or its metrics.
+        if stop_event is not None and stop_event.is_set():
+            break
 
         # ── Compute loss (Monte-Carlo returns + advantage) ──
         if len(rewards_buf) > 0:
@@ -513,6 +536,12 @@ def train(
         # ── LR schedule step ──
         scheduler.step()
 
+        if on_episode is not None:
+            on_episode({"episode": ep, "reward": ep_reward, "win": won,
+                        "bombs": bombs_this_ep, "walls": walls_this_ep,
+                        "steps": info["step"], "loss": loss.item(),
+                        "lr": scheduler.get_last_lr()[0], "best_wr": best_wr})
+
         # ── Print progress ──
         if ep % log_every == 0:
             n = log_every
@@ -556,9 +585,10 @@ def train(
         print(f"\nSaved final/best model to {final_path}")
 
     # ── Final report & gate checks ──
-    _print_report(phase, episodes, board_size, num_agents,
-                  win_history, reward_history, bombs_history, walls_history,
-                  snapshot_pool, env, net, device, checkpoint_dir)
+    if run_report and win_history and not (stop_event is not None and stop_event.is_set()):
+        _print_report(phase, len(win_history), board_size, num_agents,
+                      win_history, reward_history, bombs_history, walls_history,
+                      snapshot_pool, env, net, device, checkpoint_dir)
 
     return net, reward_history, win_history
 
