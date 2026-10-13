@@ -236,3 +236,150 @@ Tài liệu này ghi lại chi tiết các vấn đề phát sinh, nguyên nhân
 - So sánh learning curves: Random Baseline vs RuleBot vs Q-learning vs Actor-Critic CNN.
 - Nghiên cứu Ablation Study: Đánh giá tác động định lượng của Reward Shaping đối với việc kiểm soát hiện tượng Bomb Shyness.
 - Báo cáo lý thuyết: Mối liên hệ toán học giữa Markov Decision Process (MDP), Markov Game (Non-stationarity), và Actor-Critic Framework.
+
+---
+
+## 7. Cập nhật hiện hành: Phase C v3 hỗ trợ Sudden Death và đánh giá công bằng (2026-10-10)
+
+> **Ghi chú trạng thái:** Phần này là mốc hiện hành cho demo đang phát triển. Các kết luận PASS Phase C/D/E ở các phần trước là lịch sử của cấu hình cũ; không được dùng để thay thế kết quả v3 dưới đây.
+
+### 7.1 Các thay đổi đã triển khai
+1. **Sudden Death nằm trong môi trường dùng chung:** Vòng bo được xử lý trực tiếp trong `BombermanFFAEnv`, agent bị bắt trong vùng đóng sẽ chết; đồng thời observation được mở rộng từ 8 lên 9 kênh để báo trước vòng bo kế tiếp.
+2. **Hành vi đặt bom an toàn:** Action mask chỉ cho phép đặt bom khi BFS xác nhận có đường thoát. Reward đặt bom thô bị loại bỏ; chỉ còn bonus nhỏ cho quả bom có mục tiêu chiến thuật (đe dọa tường gỗ hoặc đối thủ).
+3. **Giảm thiên lệch góc spawn:** Agent học ở Phase C luân phiên vị trí xuất phát theo episode; evaluator 1v1 cũng chạy hai lượt đổi bên và gộp kết quả.
+4. **Checkpoint bền vững trên Windows:** Lưu theo file tạm và `os.replace`, có retry cho lỗi khóa file `WinError 5`, 32, 33 và 1224.
+
+### 7.2 Kết quả train Phase C v3
+
+**Cấu hình:** `board_size=9`, `num_agents=2`, `episodes=4000`, checkpoint `checkpoints_v3/`. Lượt chạy này không truyền `--sudden_death`; do đó các chỉ số dưới đây chưa đo hiệu năng dưới vòng bo của demo.
+
+| Chỉ số (last 200 episodes) | Kết quả |
+|---|---:|
+| Win rate | **75.5%** |
+| Avg reward | **+3.266** |
+| Avg bombs | **0.5** |
+| Avg walls destroyed | **0.2** |
+| Best rolling WR | **77.0%** |
+
+| Gate | Kết quả | Trạng thái |
+|---|---|---|
+| WR >= 70% | 75.5% | **PASS** |
+| Reward trend | +1.947 -> +3.268 | **PASS** |
+| Bomb shyness | bombs 1.1 -> 0.4 | **FAIL** |
+
+### 7.4 Offensive reward adjustment after Phase C v10
+- Fine-tune `checkpoints_v10` reached the requested activity target: `2.3` bombs/episode, `1.8` walls/episode and `1.6` safe bomb cycles in the last 200 episodes. Self-explosion stayed low at `0.1` death/episode.
+- The same run exposed the missing objective: `0.0` kills/episode, WR `49.5%`, and deaths from opponent bombs `0.2`/episode. The previous reward therefore made safe wall farming more attractive than pressuring the opponent.
+- The environment now reports `offensive_bomb_owners` separately from generic `tactical_bomb_owners`: an offensive bomb has a living opponent in an unobstructed blast line at placement time.
+- The lifecycle keeps the offensive flag per bomb. Reward remains safety-gated: wall reward after escape is reduced from `+0.20` to `+0.10`; a safely escaped offensive bomb earns `+0.15`; and an actual opponent kill from that safely escaped bomb earns `+0.50` in addition to the environment reward. `offensive_safe_cycles` is logged with the existing combat diagnostics.
+- Keep the BFS safety shield and self-explosion penalty unchanged. The next Phase C run should fine-tune from `checkpoints_v10/best_phaseC.pt` with `--sudden_death`, then compare WR, bombs, safe cycles, offensive safe cycles, kills and death causes.
+
+### 7.5 Reward budget after Phase C v11
+- Phase C v11 over-corrected activity: last-200 averages were `6.1` bombs, `4.2` walls and `4.0` safe cycles, while WR was `49.0%` and kills remained `0.0`. The generic safe/wall reward was still easier to collect than offensive reward.
+- Generic reward is now budgeted to the first two tactical bomb cycles in an episode. Only those cycles can earn the tactical placement, safe escape and wall-destruction rewards. Later bombs may still be placed and remain visible in `safe_cycles`, but wall farming earns no shaping reward.
+- Offensive reward remains independent of that budget: a safely escaped offensive bomb earns `+0.40`; a kill from it earns `+1.00`. Generic safe escape and wall bonuses are reduced to `+0.15` and `+0.02` respectively.
+
+### 7.6 Phase C v12-v13: do dung checkpoint va phat hien incentive mot bomb (2026-10-13)
+
+- v12 dat evaluation WR `70.25%` nhung chi dat `1.285` bombs/tran va `0.0` kills tren 400 tran doi phia spawn. Reward budget da cham dut spam bomb cua v11, nhung policy chuyen sang mot bomb an toan roi uu tien song sot.
+- v13 bo sung checkpoint metadata (`episode`, rolling metrics, config), snapshot Phase C moi 200 episode, checkpoint rieng `best_phaseC_target2.pt` cho band `1.7-2.3` bombs va WR `>=70%`, dong thoi tach `final_phaseC.pt` khoi best model.
+- Rolling train cua target checkpoint tai episode 1888 la WR `70.0%`, bombs `1.72`, safe cycles `1.455`, self-death `0.025`, kills `0.0`. Tuy nhien evaluation doc lap 400 tran chi dat WR `69.75%`, bombs `1.39`, kills `0.0`.
+- Cac snapshot cho thay trade-off ro rang: episode 600/1400/1600 dat lan luot `2.04/2.085/2.10` bombs nhung WR chi `61.5%/64.5%/63.0%`; den cuoi train WR tang len `71-73%` thi bombs giam con `1.50`.
+- Nguyen nhan goc: terminal win reward la `+10`; anti-passivity cu chi tru `10` khi dat `0` bomb. Sau mot bomb, agent da duoc nhan day du win reward, trong khi safe cycle thu hai chi them `+0.25`, nen dung o mot bomb la toi uu ky vong.
+
+### 7.7 Phase C v14: cadence penalty cho non-combat win
+
+- Da thay anti-passivity nhi phan bang penalty tuyen tinh theo so generic safe cycles con thieu: `penalty = -10 * max(target_cycles - safe_cycles, 0) / target_cycles`.
+- Voi target `2`: `0` cycle -> `-10`, `1` cycle -> `-5`, `>=2` cycles -> `0`.
+- Neu agent thang bang opponent kill thi penalty bang `0`, ke ca khi chua du hai cycle; quy tac nay bao ve chien thuat tan cong ket thuc som.
+- Khong thay doi reward khac: generic budget `2`, tactical placement `+0.05`, safe escape `+0.15`, wall `+0.02`, offensive safe escape `+0.40`, kill `+1.00`, BFS safety mask va phat tu sat duoc giu nguyen.
+- v14 se fine-tune tu `checkpoints_v13/best_phaseC_target2.pt` trong thu muc moi `checkpoints_v14`; day la mot bien thay doi duy nhat de kiem dinh root cause.
+
+### 7.8 Ket qua Phase C v14: dat muc tieu ~2 bombs voi WR tren 70%
+
+- Cadence penalty da sua dung incentive mot bomb. Tren rolling train, snapshot episode 1200 dat WR `73.5%`, bombs `2.065`, safe cycles `1.735`, self-death `0.015` va sudden-death death `0.065`.
+- Evaluation doc lap 400 tran doi phia spawn xac nhan `checkpoints_v14/snapshot_phaseC_ep001200.pt` dat WR `75.25%`, bombs `2.1925`, kills `0.0025` va chi `18/400` lan chet bo. Day la checkpoint duy nhat trong nhom danh gia dong thoi dat band bombs `1.7-2.3` va WR `>=70%`.
+- So voi v13 target (`1.39` bombs, WR `69.75%`), v14 snapshot 1200 tang `+0.8025` bombs/tran va `+5.5` diem phan tram WR, dong thoi giam sudden-death deaths tu `44/400` xuong `18/400`.
+- `best_phaseC_target2.pt` cua v14 khong phai model tot nhat khi evaluation: WR `65.75%`, bombs `2.17`. Nguyen nhan la rank hien tai uu tien mot chenh lech kills rat nho truoc WR va do gan target, dan den overfit rolling noise.
+- Quyet dinh: dung `snapshot_phaseC_ep001200.pt` cho demo/evaluation hien tai. Neu tiep tuc sua pipeline, doi thu tu target rank thanh WR -> do gan 2 bombs -> self/sudden-death an toan -> kills/offensive cycles, hoac danh gia ngoai train truoc khi promote checkpoint.
+- Muc tieu bombs va WR da dat; kills van gan 0, vi vay offensive combat la muc tieu rieng chua hoan thanh va khong nen tron vao lan fine-tune cadence nay.
+
+### 7.9 Phase C v15: combat-first pressure reward va ket qua
+
+- Muc tieu moi la agent chu dong ha doi thu; tong bomb khong con la target checkpoint. `max_steps` van la `300` de giu terminal signal va Sudden Death dong nhat voi evaluation.
+- Environment tinh `pressure score` tai thoi diem dat bomb: moi vi tri hien tai/thoat lien ke cua doi thu bi vung no gia dinh che phu tinh mot diem. Bomb co pressure duong duoc xem la offensive ngay ca khi doi thu chua dung truc tiep tren blast line.
+- Lifecycle luu pressure theo tung bomb va chi tra `pressure_score * +0.15` khi chu bomb da thoat an toan. Cach nay khong thuong spam bomb nguy hiem.
+- v15 tang safely escaped opponent-kill bonus tu `+1.00` len `+4.00`. Non-combat win luon bi penalty toi thieu `-8.00`, nen khong con toi uu "dat du hai bomb roi cho doi thu tu chet".
+- Them `best_phaseC_combat.pt`: chi xet rolling WR `>=70%`, sau do uu tien kills, pressure, offensive safe cycles, WR va it self/sudden-death deaths.
+- Evaluator phan loai death theo `sudden_death`, `self_bomb`, `opponent_bomb`, `other`, dong thoi bao cao offensive bombs va pressure score sau khi doi ben spawn.
+- TDD: RED ban dau do thieu `classify_agent_death`; sau trien khai, full suite dat `29/29`. `py_compile`, CLI `--help` va PowerShell parser cho `run_train_v15.ps1` deu dat.
+- Rolling train: `best_phaseC_combat.pt` tai episode 2474 dat WR `72.0%`, bombs `3.91`, kills `0.05`, pressure `0.385`, offensive safe cycles `0.235`, self-death `0.105`. Final model suy giam con WR `64.0%`, vi vay khong duoc promote.
+- Evaluation doc lap 400 tran doi ben spawn: combat checkpoint dat WR `70.75%`, bombs `3.8475`, offensive bombs `0.2600`, pressure `0.4050`, kills `0.0275`, deaths `sd/self/opp/other = 21/27/41/28`.
+- Direct A/B voi v14 snapshot ep1200 tren cung seed: v14 dat WR `79.0%`, bombs `2.0825`, offensive `0.1175`, pressure `0.1525`, kills `0.0025`, self-deaths `1/400`. v15 tang kills `11x`, offensive bombs `2.21x`, pressure `2.66x` va bombs `1.85x`, nhung mat `8.25` diem WR va tang self-deaths len `27/400`.
+- Snapshot ep600 tan cong manh hon (`4.49` bombs, `0.43` offensive, `0.635` pressure, `0.0425` kills) nhung WR chi `64.25%`. Day la bang chung rang tang aggression them nua khong phai buoc tiep theo phu hop.
+- Quyet dinh hien tai: dung `checkpoints_v15/best_phaseC_combat.pt` neu muc tieu demo la chu dong tan cong va van yeu cau WR `>=70%`. Buoc tiep theo la outcome-gate pressure reward va cai thien thoat bomb/chain-bomb de giam self-death; khong tang raw bomb reward hoac max steps.
+
+### 7.10 Phase C v16: outcome-gate va ket qua
+
+- Root cause can sua: v15 tra offensive/pressure reward ngay lan dau agent den o an toan, truoc khi bomb no. Agent co the nhan reward roi quay lai blast zone, bi chain-bomb hoac chet sau do.
+- v16 giu generic safe escape/cadence reward tai thoi diem thoat, nhung hoan offensive bonus va pressure reward den bomb outcome. Neu chu bomb da chet hoac dang o o nguy hiem tai outcome, ca hai reward bang `0`.
+- Lifecycle tra deferred pressure khi resolve tung bomb va cung cap `has_escaped_pending()` de log `post_escape_self_deaths` khi self-bomb death xay ra sau mot safe escape da ghi nhan.
+- Checkpoint moi `best_phaseC_combat_safe.pt` chi duoc save neu rolling WR `>=70%`, kills `>=0.025`, self-deaths `<=0.05`; sau do van rank theo kills, pressure, offensive cycles, WR va safety.
+- Fine-tune 2000 episodes tu v15 combat checkpoint. Acceptance evaluation 400 tran: WR `>=70%`, kills `>=0.025`, bombs `>=3.0`, self-deaths `<10/400`.
+- Rolling train rat manh o khoang episode 864-957: WR `82-84%`, kills `0.045-0.060`, bombs `3.25-3.34`. `post_escape_self_deaths` nam trong `0.020-0.030`, cho thay chi mot phan self-death xay ra sau safe escape da ghi nhan.
+- Evaluation 400 tran: `best_phaseC.pt` dat WR `76%`, kills `0.035`, self-deaths `22`; final dat WR `72.25%`, kills `0.05`, self-deaths `22`. So voi v15 combat, ca hai deu tang kills va giam self-deaths `27 -> 22`, nhung chua dat `<10`.
+- `best_phaseC_combat_safe.pt` dat WR `80%` va self-deaths `10/400`, nhung kills chi `0.01` thay vi rolling `0.055`. Gate theo rolling window bi overfit va khong the thay the independent evaluation.
+- Quyet dinh: `best_phaseC.pt` la lua chon balanced; `final_phaseC.pt` la lua chon aggressive. Outcome-gating duoc giu lai vi cai thien trade-off so voi v15, nhung buoc tiep theo phai xu ly path planning/chain-bomb thay vi tiep tuc sua reward scalar.
+- Khong tang max steps, pressure bonus, kill bonus hoac raw bomb reward. Neu lam v17, uu tien time-aware action mask tranh di vao blast zone cua bomb co timer con dai va danh gia bang cung bo 400 seed-fixed episodes.
+
+### 7.11 Phase C v17: temporal safety mask va ket qua
+
+- Mask cu chi chan cell co danger timer `1-2` va ep BFS khi agent dang nam trong blast zone cua bomb minh. No khong danh gia duoc action di vao blast line timer dai hoac chain reaction.
+- v17 project earliest explosion time cho toan bo bomb. Neu blast cua bomb som cham bomb muon, timer cua bomb muon duoc relax ve cung thoi diem; lap den khi on dinh.
+- Temporal BFS mo phong `STOP` va bon huong theo tung tick, ton trong wall, active bomb cells, projected blast va flame duration. Action chi bi chan khi khong co trajectory song sot; vi vay aggression hop le khong bi blanket-block.
+- Phat hien va sua mot bug environment: chain-triggered bomb co timer `0` bi filter khoi danh sach truoc vong lap no tiep theo. Nay moi bomb triggered deu tao flame, victims, reward va `bomb_outcomes` dung.
+- Diagnostics moi gom so action bi temporal mask chan, so step mask can thiep, va self-death do bomb cua chinh agent bi chain-trigger.
+- v17 giu nguyen reward/max steps va fine-tune 2000 episodes tu v16 final aggressive checkpoint. Rolling best tai episode 1520 co WR `85.5%`, bombs `3.715`, nhung kills chi `0.01`; rolling combat checkpoint tai episode 460 co kills `0.075` nhung self-death `0.155`. Khong co checkpoint nao qua gate combat-safe.
+- Independent evaluation seed `20261013`, 400 tran doi ben, cho v17 best: WR `67.5%`, bombs `7.10`, kills `0.0725`, self-deaths `77`, chain-self `44`. So voi v16 final danh gia lai cung evaluator (`63.5%`, `7.0575`, `0.07`, self `94`, chain-self `57`), v17 tang WR `4.0` diem va giam self/chain deaths dang ke ma khong mat tan suat bomb/kills.
+- Acceptance chi dat bombs `>=3` va kills `>=0.04`; truot WR `>=72%` va self-deaths `<=10/400`. Chon `checkpoints_v17/best_phaseC.pt`; combat va final aggressive hon nhung generalize kem va self-death cao hon.
+- Root cause con lai: action `BOMB` van dung `_can_bomb_and_escape`, chi gia dinh bomb moi no sau full timer va khong dua bomb gia lap vao chain projection. Day phu hop voi viec `44/77` self-deaths cua checkpoint tot nhat den tu chain bomb.
+- Buoc v18: khi xet action `BOMB`, chen hypothetical bomb tai vi tri agent, tinh earliest explosion sau chain relaxation, sau do chi cho dat neu temporal BFS tim duoc trajectory song sot qua explosion va flame duration. Giu nguyen reward, `max_steps=300` va warm-start tu v17 best de tach rieng tac dong cua placement shield.
+
+### 7.12 Phase C v18: chain-safe placement shield va ket qua
+
+- Da thay `_can_bomb_and_escape` trong Actor-Critic mask bang temporal simulation cua hypothetical bomb. Projection helpers nhan danh sach bomb tuy chon de tai su dung dung chain logic ma khong mutate environment.
+- Placement action o tick hien tai duoc coi la vi tri bat dau cua temporal BFS. Vi vay bomb hien huu no ngay tick dat, bomb moi bi chain som, active bomb cells va flame duration deu duoc tinh cung mot timeline.
+- Acceptance tests bao phu boundary tren board co rigid checker: chain tai tick 2 bi chan vi chi con mot movement step; chain tai tick 4 duoc phep vi con trajectory ba movement step toi o an toan. Test tick 3 ban dau duoc xac dinh la fixture sai vi cac o cheo hai buoc la rigid wall.
+- Them metric `unsafe_bomb_placement_blocks` vao rolling checkpoint metadata va progress/final report. `mask_interventions` nay dem ca step bi movement shield hoac placement shield can thiep.
+- Launcher `run_train_v18.ps1` da fine-tune 2000 episodes tu v17 best, khong thay reward/max steps. Rolling best episode 701 co WR `86.5%`, bombs `3.645`, kills `0.06`, self-death `0.055`, chain-self `0.005` va placement blocks `2.205`/episode.
+- Independent evaluation seed `20261013`, 400 tran doi ben: v18 best dat WR `64.75%`, bombs `7.1725`, kills `0.0825`, self `43`, chain-self `8`. So voi v17 best danh gia lai cung mask v18, WR tang `4.5` diem, kills tang `32%`, self giam `70 -> 43` va chain-self giam `11 -> 8`.
+- v18 final la checkpoint aggressive: bombs `9.23`, offensive `1.075`, pressure `1.5875`, kills `0.1175`; doi lai WR chi `58.25%` va self-deaths `84`. Combat checkpoint khong tao trade-off tot hon best hoac final.
+- Acceptance dat 4/5, chi truot WR `>=72%`. Chon v18 best cho balanced deployment; chon final khi muc tieu demo la bombs/kills toi da va chap nhan rui ro.
+- Root cause tiep theo khong con la chain placement chinh: trong v18 best, opponent-bomb deaths `55/400` vuot self-deaths `43/400`, con sudden-death deaths `43/400`. Neu lam v19, uu tien opponent-aware temporal planning va sudden-death ring horizon; khong tang reward, bomb bonus hoac max steps.
+
+### 7.13 Phase C v19: opponent escape forcing va Sudden Death horizon - ket qua
+
+- v18 chi kiem tra moi action co ton tai mot trajectory song sot hay khong. Policy van co the `STOP` lap lai hoac di vong cho den khi khong con du thoi gian thoat, dac biet voi bomb doi thu.
+- v19 tim first action cua tat ca shortest temporal escape paths khi current cell nam trong projected bomb hazard, sau do restrict mask vao tap action nay. Logic thay the own-bomb BFS cu va ap dung dong nhat cho bomb cua moi owner.
+- Planner project vong Sudden Death ke tiep khi nam trong `sudden_death_warning_steps`. Closing cell bi block truoc movement tai exact closure tick va tiep tuc la wall trong phan con lai cua temporal horizon.
+- Movement va hypothetical placement deu dung closure map. Diagnostics moi `forced_escape_steps` va `sudden_death_blocks` duoc luu trong rolling checkpoint metadata va final report.
+- Regression contract v19 chu y thay doi hai hanh vi v18: incoming bomb threat luon uu tien thoat thay vi dat them bomb du chain con tre; neu co nhieu shortest escape paths thi cho phep tat ca thay vi ep mot huong BFS co dinh.
+- Launcher v19 da fine-tune 2000 episodes tu v18 best, khong thay reward/max steps. Rolling cho thay shield can thiep thuong xuyen: `17.13-20.52` forced escape steps/episode; chain-self rolling cua ba checkpoint chinh gan `0`.
+- Independent evaluation seed `20261013`, 400 tran doi ben: chi rieng mask v19 dua v18 best len WR `77.25%`, SD deaths `12`, opponent deaths `36`, chain-self `0`, trong khi self deaths giu `43`. Day la bang chung opponent forcing va ring horizon xu ly dung hai root cause v18.
+- Fine-tuning v19 tang aggression ro ret. Final dat WR `71.25%`, bombs `9.1025`, offensive `1.0025`, pressure `1.4575`, kills `0.1275`, deaths sd/self/opp `3/84/28`; dat day du nam acceptance targets.
+- Chon `checkpoints_v19/final_phaseC.pt` cho muc tieu chu dong/bombs/kills. Chon v18 best voi mask v19 neu uu tien WR va safety. v19 combat chi tang kills nhe `0.1325` nhung WR `65.75%`, nen khong co loi the tong the so voi final.
+- Nut that con lai la self-death do bomb thuong (`84/400`), khong phai chain bomb (`0`). Neu tiep tuc v20, can tach self-blast do agent re-enter blast sau khi da thoat khoi self-bomb va them owner-aware no-reentry horizon; khong tang reward/max steps.
+
+### 7.14 Phase C v20: owner-aware no-reentry shield - rejected va rollback
+
+- Gia thuyet: v19 self-death cao do agent quay lai future blast cua own bomb sau khi da thoat. Prototype chan move tu ngoai vao blast cells cua active own bomb, giu opponent blast linh hoat va them emergency override cho current bomb threat.
+- Zero-shot lan dau tren v19 final: WR `59.75%`, bombs `8.65`, kills `0.0825`, deaths sd/self/opp `4/118/39`. Probe 100 tran cho thay `172/1382` shield interventions xay ra trong luc agent dang bi bomb khac de doa.
+- Sau emergency override, zero-shot van chi dat WR `61.5%`, bombs `9.63`, kills `0.0925`, deaths `8/121/25`; khong dat WR `>=70`, kills `>=0.11`, self `<=60`.
+- Quyet dinh: khong train v20 va rollback production shield, diagnostic, tests rieng va launcher. Runtime tiep tuc dung mask v19; v19 final van la checkpoint aggressive khuyen nghi.
+- Bai hoc: self-death khong duoc giai quyet bang blanket no-reentry. Nhieu bomb tao overlapping hazards; chan mot future own blast co the day policy sang trajectory khac kem quen thuoc va tang tu sat. Buoc tiep theo can attribution theo trajectory/death replay truoc khi them constraint moi.
+- Audit benchmark phat hien environment RNG chua duoc seed: `np.random.seed` khong dieu khien `np.random.default_rng(None)` trong `BombermanFFAEnv`. Cac evaluation truoc la mau 400 tran doc lap, khong phai exact same-board A/B. Truoc experiment moi, them `--seed` vao evaluator va tao env voi seed do; sau do tai lap baseline hai lan truoc khi dung threshold promotion.
+
+### 7.3 Đánh giá và quyết định tiếp theo
+- Agent đã học sống sót và thắng ổn định, nhưng tần suất phá tường chỉ 0.2/trận và số bom cuối train 0.4-0.5/trận. Chính sách vẫn ưu tiên né tránh hơn là chủ động tạo lợi thế.
+- Không chuyển sang Phase D ở trạng thái này. Checkpoint khuyến nghị để tiếp tục là `checkpoints_v3/best_phaseC.pt` (WR 77.0%).
+- Đã triển khai reward theo chuỗi có thể kiểm chứng: đặt bom có mục tiêu -> rời ô bom tới ô an toàn -> bom phá tường. Môi trường trả kết quả theo từng quả bom để chỉ thưởng phá tường sau khi thoát an toàn. Để khắc phục tín hiệu quá trễ và hướng tới ~2 bom/trận, bonus khởi đầu là `+0.05` nhưng chỉ cho bom vừa an toàn vừa có mục tiêu; thoát an toàn `+0.30`, phá tường sau thoát `+0.20`. Khi agent hoàn tất lần thoát an toàn thứ hai trong episode, nhận ngay `+0.25`; không chờ cuối episode và không phụ thuộc Sudden Death sau đó. Log train/báo cáo cuối bổ sung `safe_cycles`, kills và deaths theo nhóm `sd/self/opp/other` để đo trực tiếp chuỗi bom và nguyên nhân thua. Safety shield mới khóa action mask vào bước BFS thoát hiểm khi agent còn nằm trong vùng nổ của chính bom mình; agent vẫn tự quyết định lúc nào và ở đâu đặt bom. Giữ phạt tự sát. Cần fine-tune từ `best_phaseC.pt` với `--sudden_death` để đo lại tác động trong đúng điều kiện demo.

@@ -425,3 +425,295 @@
 - **PyTorch:** 2.11.0+cu128
 - **GPU:** NVIDIA GeForce RTX 4060 (8GB)
 - **Venv:** `e:\Bomberman\venv`
+
+---
+
+## Cap nhat hien hanh - Phase C v3 (2026-10-10)
+
+> Ket qua nay thay the trang thai danh gia cho policy hien tai. Code demo ho tro Sudden Death va dao vi tri spawn, nhung luot train nay chua bat `--sudden_death`; cac ket qua duoi day khong phai chi so duoi vong bo. Cac ket qua Phase C/D/E phia tren duoc giu lai nhu lich su cau hinh cu.
+
+**Cau hinh:** `board_size=9, num_agents=2, 4000 episodes, checkpoint_dir=checkpoints_v3`
+
+**Cac thay doi truoc khi train:**
+- Sudden Death duoc dua vao moi truong va them kenh canh bao vong bo trong observation.
+- Agent Phase C luan phien goc spawn; danh gia 1v1 doi ben de tranh thien lech spawn.
+- Chi thuong bomb co muc tieu chien thuat; safe action mask van yeu cau duong thoat BFS.
+- Luu checkpoint atomic co retry khi Windows khoa file (`WinError 5/32/33/1224`).
+
+### Ket qua train
+
+| Metric | Gia tri |
+|---|---:|
+| Final WR (last 200) | **75.5%** |
+| Final avg reward (last 200) | **+3.266** |
+| Final avg bombs (last 200) | **0.5** |
+| Final avg walls (last 200) | **0.2** |
+| Best rolling WR | **77.0%** |
+
+### Gate Checks
+
+| Tieu chi | Ket qua | Trang thai |
+|---|---|---|
+| WR >= 70% | 75.5% | **PASS** |
+| Reward trend | +1.947 -> +3.268 | **PASS** |
+| Bomb shyness | bombs 1.1 -> 0.4 | **FAIL** |
+
+**Checkpoint tao thanh cong:** `checkpoints_v3/best_phaseC.pt` va `checkpoints_v3/final_phaseC.pt`. Dung `best_phaseC.pt` (WR 77.0%) lam diem khoi dau cho fine-tune.
+
+## Phase C v10 - activity target reached, combat target missing
+
+| Metric (last 200 episodes) | Result |
+|---|---:|
+| Win rate | **49.5%** |
+| Avg reward | **+4.683** |
+| Avg bombs | **2.3** |
+| Avg walls | **1.8** |
+| Safe bomb cycles | **1.6** |
+| Kills | **0.0** |
+| Deaths (sudden death/self/opponent) | **0.2 / 0.1 / 0.2** |
+
+## Phase C v11 - reward farming regression
+
+| Metric (last 200 episodes) | Result |
+|---|---:|
+| Win rate | **49.0%** |
+| Avg reward | **+6.249** |
+| Avg bombs | **6.1** |
+| Avg walls | **4.2** |
+| Safe bomb cycles | **4.0** |
+| Offensive safe cycles | **0.4** |
+| Kills | **0.0** |
+| Deaths (sudden death/self/opponent/other) | **0.1 / 0.1 / 0.1 / 0.1** |
+
+**Decision:** Do not continue from v11. The reward was farmed through wall destruction and generic safe escapes. The next Phase C configuration starts from `checkpoints_v10/best_phaseC.pt`, budgets generic reward to the first two tactical bomb cycles per episode, reduces generic safe/wall bonuses to `+0.15` and `+0.02`, and raises safety-gated offensive escape/kill bonuses to `+0.40` and `+1.00`.
+
+**Decision:** Keep the safety shield because self deaths are low, but change reward from safe wall farming to safe offensive pressure. A bomb with an unobstructed opponent in its blast line is recorded as offensive. Reward is still paid only after the owner escapes to safety: wall bonus becomes `+0.10`, an offensive safe escape earns `+0.15`, and an opponent kill from that safely escaped bomb earns `+0.50` in addition to the environment reward. Training logs add `offensive_safe_cycles`. Next run: fine-tune from `checkpoints_v10/best_phaseC.pt` with `--sudden_death`; do not proceed to Phase D until kills and WR improve without increasing self deaths.
+
+**Quyet dinh:** Chua chuyen Phase D. Da trien khai reward theo chuoi "bomb co muc tieu -> thoat an toan -> tac dong len tuong/doi thu". Bonus khoi dau `+0.05` chi ap dung cho bomb an toan co muc tieu; thoat an toan `+0.30`, pha tuong sau thoat `+0.20`. Hoan tat lan thoat an toan thu hai trong episode nhan ngay `+0.25`, khong cho cuoi episode; log bo sung `safe_cycles`, kills va deaths theo `sd/self/opp/other`. Safety shield ep action mask theo buoc BFS thoat khoi vung no cua chinh bom minh, nhung van giu quyen tu quyet thoi diem/vi tri dat bom. Fine-tune tiep tu `best_phaseC.pt` voi `--sudden_death` de do lai bomb shyness trong dieu kien demo.
+
+## Phase C v12-v13 - target checkpoint va danh gia doc lap (2026-10-13)
+
+> Phan nay thay the cac quyet dinh fine-tune truoc do. Evaluation duoc do tren 400 tran AC-vs-RuleBot, doi hai phia spawn, bat Sudden Death va khong ghi log ra file.
+
+### v12 - reward budget cai thien WR nhung thieu bomb
+
+| Metric evaluation | Ket qua |
+|---|---:|
+| Win rate | **70.25%** |
+| Avg bombs | **1.285** |
+| Avg kills | **0.0** |
+| Sudden-death deaths | **37 / 400** |
+| Draws | **15 / 400** |
+
+### v13 - checkpoint co metadata va muc tieu 2 bomb
+
+- Checkpoint luu `episode`, rolling metrics va cau hinh train; Phase C tao snapshot moi 200 episode.
+- `best_phaseC_target2.pt` chi duoc luu khi rolling bombs nam trong `1.7-2.3` va rolling WR dat toi thieu `70%`.
+- `final_phaseC.pt` luu dung trong so cuoi cung, khong con sao chep `best_phaseC.pt`.
+
+| Checkpoint | Episode | Rolling WR | Rolling bombs | Rolling safe cycles | Rolling kills |
+|---|---:|---:|---:|---:|---:|
+| `best_phaseC_target2.pt` | 1888 | **70.0%** | **1.72** | 1.455 | 0.0 |
+| `best_phaseC.pt` | 1987 | **73.0%** | 1.495 | 1.300 | 0.0 |
+| `final_phaseC.pt` | 2000 | **71.0%** | 1.505 | 1.305 | 0.0 |
+
+| Checkpoint evaluated (400 tran) | WR | Avg bombs | Avg kills | Sudden-death deaths |
+|---|---:|---:|---:|---:|
+| `best_phaseC_target2.pt` | **69.75%** | **1.39** | 0.0 | 44 / 400 |
+| `best_phaseC.pt` | 66.50% | 1.33 | 0.0 | 49 / 400 |
+
+**Ket luan v13:** checkpoint target vuot gate tren rolling training window, nhung khong lap lai muc tieu ~2 bombs trong evaluation doc lap. Agent hoc cach dat mot bomb an toan roi cho RuleBot tu chet hoac thua Sudden Death. Nguyen nhan la anti-passivity cu chi huy toan bo win bonus khi `0` bomb; chi can mot bomb la agent van nhan day du `+10`, trong khi chu ky an toan thu hai chi them `+0.25`.
+
+### v14 - cadence penalty da dat muc tieu bomb va WR
+
+- Chi ap dung cho tran thang khong co kill: `0` generic safe cycles bi tru `10`, `1` cycle bi tru `5`, tu `2` cycles tro len khong bi tru.
+- Tran thang co opponent kill duoc mien penalty de khong can tro bomb tan cong ket thuc som.
+- Giu nguyen BFS safety mask, self-death penalty, reward budget `2`, wall bonus `+0.02`, safe escape `+0.15`, offensive safe escape `+0.40` va kill bonus `+1.00`.
+- v14 fine-tune tu `checkpoints_v13/best_phaseC_target2.pt` trong 2000 episodes.
+
+| Checkpoint | Episode | Rolling WR | Rolling bombs | Rolling safe cycles | Rolling kills |
+|---|---:|---:|---:|---:|---:|
+| `snapshot_phaseC_ep000400.pt` | 400 | 70.5% | **2.015** | 1.540 | 0.005 |
+| `best_phaseC_target2.pt` | 719 | 72.5% | **2.260** | 1.835 | 0.010 |
+| `snapshot_phaseC_ep001200.pt` | 1200 | **73.5%** | **2.065** | 1.735 | 0.000 |
+| `best_phaseC.pt` | 1799 | **80.5%** | 2.550 | 2.190 | 0.010 |
+| `final_phaseC.pt` | 2000 | 71.5% | 2.680 | 2.275 | 0.000 |
+
+| Checkpoint evaluated (400 tran) | WR | Avg bombs | Avg kills | Sudden-death deaths |
+|---|---:|---:|---:|---:|
+| `best_phaseC_target2.pt` | 65.75% | **2.170** | 0.0025 | 38 / 400 |
+| `snapshot_phaseC_ep000400.pt` | **75.50%** | 1.645 | 0.0000 | 40 / 400 |
+| `snapshot_phaseC_ep001200.pt` | **75.25%** | **2.1925** | 0.0025 | **18 / 400** |
+| `best_phaseC.pt` | 68.75% | 2.530 | 0.0025 | 37 / 400 |
+
+**Ket luan v14:** `checkpoints_v14/snapshot_phaseC_ep001200.pt` la checkpoint khuyen nghi. No dat dong thoi muc tieu evaluation `1.7-2.3` bombs/tran va WR `>=70%`, voi `2.1925` bombs, WR `75.25%` va so lan chet bo thap nhat trong nhom (`18/400`). Muc tieu tan suat bomb va kha nang thang da dat; muc tieu combat van chua dat vi kills chi `0.0025`/tran.
+
+**Luu y checkpoint selection:** `best_phaseC_target2.pt` bi chon boi mot chenh lech kills rat nho tren rolling window, nhung evaluation WR chi `65.75%`. Lan cai tien tiep theo nen xep hang checkpoint target theo WR va do gan `2.0` bombs truoc, kills/offensive cycles chi lam tie-breaker.
+
+### v15 - combat-first reward: ket qua train va evaluation
+
+- Giu `max_steps=300`, Sudden Death bat dau tai step `200` va dong vong moi `20` step. Khong tang len 500-600 vi vong bo cua board 9x9 da thu hep toi da khoang step 240.
+- Moi bomb co `pressure score` bang so o dung/thoat lien ke cua doi thu nam trong vung no gia dinh. Pressure chi duoc thuong sau khi chu bomb roi vi tri dat va den o an toan.
+- Cau hinh v15: pressure `+0.15` moi escape option, kill bonus `+4.00`, non-combat win penalty toi thieu `-8.00`. Vi terminal win la `+10`, tran thang khong co kill chi con toi da `+2` truoc cac reward khac.
+- Generic safe/wall reward van bi gioi han trong hai cycle dau de tranh lap lai wall/bomb farming cua v11. Tong so bomb khong bi gioi han.
+- Tao checkpoint `best_phaseC_combat.pt` voi gate rolling WR `>=70%`, xep hang theo kills -> pressure -> offensive safe cycles -> WR -> self/sudden-death safety.
+- Evaluator bo sung offensive bombs, pressure score va deaths theo `sd/self/opp/other` cho ca danh gia doi ben spawn.
+- Launcher: `run_train_v15.ps1`, warm-start tu `checkpoints_v14/snapshot_phaseC_ep001200.pt`, output chi hien tren terminal va khong ghi log xuong may.
+
+| Checkpoint | Episode | Rolling WR | Bombs | Kills | Pressure | Offensive safe cycles | Self deaths |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `best_phaseC.pt` | 1911 | **77.5%** | 2.995 | 0.045 | 0.150 | 0.115 | 0.060 |
+| `best_phaseC_combat.pt` | 2474 | 72.0% | **3.910** | **0.050** | **0.385** | **0.235** | 0.105 |
+| `final_phaseC.pt` | 3000 | 64.0% | 3.800 | 0.020 | 0.295 | 0.205 | 0.110 |
+
+Danh gia doc lap 400 tran, doi ben spawn, cung seed va Sudden Death:
+
+| Checkpoint | WR | Bombs | Offensive bombs | Pressure | Kills | Deaths sd/self/opp/other |
+|---|---:|---:|---:|---:|---:|---:|
+| v15 `best_phaseC.pt` | 67.00% | 3.5675 | 0.2450 | 0.3625 | 0.0200 | 35/26/57/14 |
+| v15 `best_phaseC_combat.pt` | **70.75%** | 3.8475 | 0.2600 | 0.4050 | **0.0275** | 21/27/41/28 |
+| v15 snapshot ep600 | 64.25% | **4.4900** | **0.4300** | **0.6350** | **0.0425** | 15/29/71/28 |
+| v15 snapshot ep1000 | 61.00% | 4.6400 | 0.4425 | 0.6625 | 0.0375 | 37/47/47/25 |
+| v15 snapshot ep2000 | 66.00% | 3.7075 | 0.2525 | 0.3625 | 0.0325 | 30/36/43/27 |
+
+Direct A/B cung evaluator va seed:
+
+| Policy | WR | Bombs | Offensive bombs | Pressure | Kills | Self deaths / 400 |
+|---|---:|---:|---:|---:|---:|---:|
+| v14 snapshot ep1200 | **79.00%** | 2.0825 | 0.1175 | 0.1525 | 0.0025 | **1** |
+| v15 `best_phaseC_combat.pt` | 70.75% | **3.8475** | **0.2600** | **0.4050** | **0.0275** | 27 |
+
+**Ket luan v15:** combat checkpoint tang kills `11x`, offensive bombs `2.21x`, pressure `2.66x` va bombs `1.85x` so voi v14 trong cung phep do. No van dat WR tren 70%, nhung WR giam `8.25` diem phan tram va self-deaths tang tu `1` len `27/400`. Dung `best_phaseC_combat.pt` neu uu tien combat; khong dung final model. Cai tien tiep theo phai giam self-death ma khong lam mat pressure, khong nen tang them raw bomb/pressure reward.
+
+### v16 - outcome-gated combat safety: ket qua train va evaluation
+
+- Pressure va offensive safe bonus khong con duoc tra ngay khi agent vua roi o bomb. Reward chi duoc tra khi bomb no, lifecycle xac nhan da thoat, va chu bomb van song tren o an toan.
+- Them rolling metric `post_escape_self_deaths` de dem truong hop agent da duoc danh dau thoat an toan nhung sau do chet boi bomb cua chinh minh.
+- Them `best_phaseC_combat_safe.pt` voi gate WR `>=70%`, kills `>=0.025` va rolling self-deaths `<=0.05`.
+- Launcher `run_train_v16.ps1`: 2000 episodes, warm-start tu `checkpoints_v15/best_phaseC_combat.pt`, giu `max_steps=300` va toan bo he so combat cua v15.
+- Output chi hien tren terminal, khong ghi terminal log xuong may.
+
+| Checkpoint | Episode | Rolling WR | Bombs | Kills | Pressure | Self deaths | Post-escape self deaths |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `best_phaseC.pt` | 864 | **84.0%** | 3.250 | 0.045 | 0.200 | 0.050 | 0.025 |
+| `best_phaseC_combat.pt` | 899 | 82.0% | 3.340 | **0.060** | **0.235** | 0.060 | 0.020 |
+| `best_phaseC_combat_safe.pt` | 957 | 82.0% | 3.255 | 0.055 | 0.200 | **0.050** | 0.030 |
+| `final_phaseC.pt` | 2000 | 76.0% | 3.525 | 0.040 | 0.180 | 0.060 | 0.025 |
+
+Danh gia doc lap 400 tran, doi ben spawn, cung seed va Sudden Death:
+
+| Checkpoint | WR | Bombs | Offensive bombs | Pressure | Kills | Deaths sd/self/opp/other |
+|---|---:|---:|---:|---:|---:|---:|
+| `best_phaseC.pt` | 76.00% | 3.2450 | 0.1700 | 0.2725 | 0.0350 | 28/22/35/11 |
+| `best_phaseC_combat.pt` | 75.75% | 3.3600 | 0.2550 | 0.4350 | 0.0350 | 11/30/37/19 |
+| `best_phaseC_combat_safe.pt` | **80.00%** | 2.4525 | 0.1225 | 0.1750 | 0.0100 | 19/**10**/34/17 |
+| snapshot ep600 | 70.50% | 3.5450 | **0.2775** | **0.4600** | 0.0375 | 19/32/48/19 |
+| `final_phaseC.pt` | 72.25% | **3.5125** | 0.2275 | 0.3450 | **0.0500** | 32/22/39/18 |
+
+So voi v15 `best_phaseC_combat.pt` (WR `70.75%`, bombs `3.8475`, kills `0.0275`, self-deaths `27/400`):
+
+- v16 `best_phaseC.pt` tang WR `+5.25` diem, kills `+27%`, giam self-deaths `27 -> 22`, nhung bombs giam con `3.245`.
+- v16 final tang WR `+1.5` diem, kills `+82%`, giam self-deaths `27 -> 22`, bombs van cao `3.5125`.
+- Safety checkpoint giam self-deaths xuong `10/400` va dat WR `80%`, nhung kills tut con `0.01`; rolling safety gate khong generalize combat metric.
+
+**Ket luan v16:** outcome-gating co tac dung nhung chua dat muc tieu self-deaths `<10/400`. Dung `best_phaseC.pt` cho policy can bang; dung `final_phaseC.pt` neu uu tien chu dong tan cong va kills. Khong dung `best_phaseC_combat_safe.pt` cho muc tieu combat du no co WR cao va an toan hon.
+
+### v17 - temporal action mask va chain-bomb safety: ket qua train va evaluation
+
+- Action mask moi project thoi diem no cua moi bomb, lan truyen thoi gian no som qua chain reaction, va danh dau flame duration theo tung time step.
+- Moi action `STOP/UP/DOWN/LEFT/RIGHT` chi bi chan neu temporal BFS khong tim thay chuoi vi tri song sot den sau tat ca hazard. Di vao blast line co timer dai van duoc phep neu con du thoi gian thoat.
+- Environment sua loi chain reaction: bomb bi kich no khong con bi xoa truoc khi `_explode_bomb` xu ly. `bomb_outcomes` them `chain_reaction` de attribution.
+- Log train them `unsafe_reentry_blocks`, `mask_interventions` va `chain_bomb_self_deaths`; evaluator cung bao cao chain-bomb self deaths.
+- Giu nguyen reward v16 va `max_steps=300`. Launcher `run_train_v17.ps1` fine-tune 2000 episodes tu `checkpoints_v16/final_phaseC.pt` trong `checkpoints_v17`.
+
+Rolling metadata cua cac checkpoint chinh:
+
+| Checkpoint | Episode | WR | Bombs | Kills | Pressure | Self-death | Chain-self |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `best_phaseC.pt` | 1520 | **85.5%** | 3.715 | 0.010 | 0.210 | **0.095** | **0.025** |
+| `best_phaseC_combat.pt` | 460 | 79.5% | **4.535** | **0.075** | **0.450** | 0.155 | 0.065 |
+| `final_phaseC.pt` | 2000 | 85.0% | 3.860 | 0.060 | 0.350 | 0.115 | 0.050 |
+
+`best_phaseC_combat_safe.pt` khong duoc tao vi khong checkpoint nao dong thoi dat gate rolling combat-safety.
+
+Danh gia doc lap seed `20261013`, tong 400 tran AC-vs-RuleBot, doi hai phia spawn, Sudden Death va evaluator v17:
+
+| Checkpoint | WR | Bombs | Offensive | Pressure | Kills | Deaths sd/self/opp/other | Chain-self |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| v16 `best_phaseC.pt` | 61.25% | 6.4200 | 0.4200 | 0.6300 | 0.0450 | 60/79/16/0 | 48 |
+| v16 `final_phaseC.pt` (warm-start) | 63.50% | 7.0575 | 0.5400 | 0.8400 | 0.0700 | 41/94/11/0 | 57 |
+| v17 `best_phaseC.pt` | **67.50%** | 7.1000 | 0.5600 | 0.8800 | **0.0725** | 42/**77**/11/0 | **44** |
+| v17 `best_phaseC_combat.pt` | 60.75% | 7.4175 | 0.6325 | 0.9375 | 0.0625 | 52/92/13/0 | 64 |
+| v17 `final_phaseC.pt` | 59.00% | **7.6675** | **0.6775** | **1.0050** | 0.0550 | 36/109/19/0 | 77 |
+
+Luu y: v17 sua loi chain-triggered bomb bi xoa truoc khi no, nen cac so lieu v14-v16 da ghi bang environment cu khong the dung lam baseline truc tiep. Hai checkpoint v16 trong bang tren da duoc danh gia lai bang cung code, seed va action mask v17.
+
+**Ket luan v17:** so voi dung warm-start v16 final, v17 `best_phaseC.pt` tang WR `+4.0` diem, bombs `+0.0425`, kills `+0.0025`, giam self-deaths `94 -> 77` va chain-self `57 -> 44`. Temporal mask co tac dung, nhung van truot acceptance WR `>=72%` va self-deaths `<=10/400`; bombs va kills da dat. Dung `checkpoints_v17/best_phaseC.pt` lam checkpoint hien tai, khong dung combat/final. Buoc tiep theo la kiem tra temporal safety cho chinh action dat bomb bang cach them hypothetical bomb vao chain projection; khong tang reward hoac max steps.
+
+### v18 - chain-safe bomb placement: ket qua train va evaluation
+
+- Action `BOMB` khong con dung BFS tinh gia dinh bomb moi luon no sau full timer. Mask chen mot hypothetical bomb tai vi tri agent vao cung danh sach bomb dang hoat dong.
+- Earliest explosion cua hypothetical bomb duoc relax qua toan bo chain reaction. Action chi duoc phep neu temporal BFS tim thay trajectory song sot qua explosion va flame duration; chain qua som bi chan, chain du tre de thoat van duoc phep.
+- Training metadata them `unsafe_bomb_placement_blocks`; `mask_interventions` tinh ca placement shield va movement shield.
+- `run_train_v18.ps1` fine-tune 2000 episodes tu `checkpoints_v17/best_phaseC.pt`, giu nguyen reward va `max_steps=300`, khong ghi terminal log xuong file.
+
+Rolling metadata cua cac checkpoint chinh:
+
+| Checkpoint | Episode | WR | Bombs | Kills | Placement blocks | Self-death | Chain-self |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `best_phaseC.pt` | 701 | **86.5%** | 3.645 | 0.060 | 2.205 | **0.055** | **0.005** |
+| `best_phaseC_combat.pt` | 562 | 77.0% | 4.640 | **0.090** | 2.145 | 0.125 | 0.010 |
+| `final_phaseC.pt` | 2000 | 74.5% | **5.060** | 0.075 | 2.095 | 0.140 | 0.010 |
+
+`best_phaseC_combat_safe.pt` khong duoc tao vi khong checkpoint nao dong thoi dat rolling self-death gate `<=0.05` cung combat gate.
+
+Danh gia doc lap seed `20261013`, tong 400 tran AC-vs-RuleBot, doi hai phia spawn, Sudden Death va mask/evaluator v18:
+
+| Checkpoint | WR | Bombs | Offensive | Pressure | Kills | Deaths sd/self/opp/other | Chain-self |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| v17 `best_phaseC.pt` (baseline voi mask v18) | 60.25% | 7.2075 | 0.5475 | 0.8450 | 0.0625 | 35/70/54/0 | 11 |
+| v18 `best_phaseC.pt` | **64.75%** | 7.1725 | 0.6625 | 0.9875 | 0.0825 | 43/**43**/55/0 | **8** |
+| v18 `best_phaseC_combat.pt` | 56.50% | 8.3825 | 0.7700 | 1.1600 | 0.0725 | 45/82/**47**/0 | 13 |
+| v18 `final_phaseC.pt` | 58.25% | **9.2300** | **1.0750** | **1.5875** | **0.1175** | **35**/84/48/0 | 11 |
+
+So voi v17 best duoi cung placement shield, v18 best tang WR `+4.5` diem, kills `+32%`, offensive bombs `+21%`, pressure `+17%`, giam self-deaths `70 -> 43` va chain-self `11 -> 8`, trong khi bombs gan nhu khong doi (`7.2075 -> 7.1725`). Placement shield da giam chain-self manh so voi phep do v17 mask cu (`44 -> 11`), nhung rieng thay mask tren weights cu lam WR giam, nen fine-tuning v18 la can thiet.
+
+**Ket luan v18:** dat 4/5 acceptance: kills `>=0.06`, bombs `>=6`, self-deaths `<=60` va chain-self `<=30`; chi truot WR `>=72%`. Dung `checkpoints_v18/best_phaseC.pt` cho policy can bang. Dung `checkpoints_v18/final_phaseC.pt` neu demo uu tien aggression toi da: `9.23` bombs, `1.075` offensive bombs va `0.1175` kills/tran, chap nhan WR `58.25%` va self-deaths `84/400`.
+
+### v19 - opponent escape forcing va Sudden Death horizon: ket qua
+
+- Khi vi tri hien tai nam trong projected blast cua bat ky bomb nao, mask chi giu cac first action thuoc shortest temporal escape path. Agent khong con duoc `STOP`, dat them bomb hoac di vong khi dang bi bomb doi thu de doa.
+- Action mask project vong Sudden Death ke tiep trong warning window. O tren vong bi coi la wall vinh vien tu tick dong; planner kiem tra closure xay ra truoc movement cua tick do.
+- Sudden Death horizon ap dung cho ca movement va hypothetical bomb placement. Them checkpoint metrics `forced_escape_steps` va `sudden_death_blocks`.
+- `run_train_v19.ps1` fine-tune 2000 episodes tu `checkpoints_v18/best_phaseC.pt`, giu nguyen reward va `max_steps=300`, khong ghi terminal log xuong file.
+
+Rolling metadata cua cac checkpoint chinh:
+
+| Checkpoint | Episode | WR | Bombs | Kills | Forced escape | SD blocks | Deaths sd/self/opp | Chain-self |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| `best_phaseC.pt` | 200 | **83.5%** | 4.695 | 0.065 | 17.13 | 0.550 | 0.015/0.110/0.040 | **0.000** |
+| `best_phaseC_combat.pt` | 1747 | 78.5% | **6.075** | **0.175** | 20.52 | 0.455 | 0.010/0.170/**0.035** | **0.000** |
+| `final_phaseC.pt` | 2000 | 69.5% | 5.765 | 0.155 | 19.52 | 0.215 | **0.005**/0.240/0.060 | **0.000** |
+
+Danh gia doc lap seed `20261013`, tong 400 tran AC-vs-RuleBot, doi hai phia spawn, Sudden Death va mask/evaluator v19:
+
+| Checkpoint | WR | Bombs | Offensive | Pressure | Kills | Deaths sd/self/opp/other | Chain-self |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| v18 `best_phaseC.pt` (baseline voi mask v19) | **77.25%** | 7.1200 | 0.6225 | 0.9450 | 0.0775 | 12/**43**/36/0 | **0** |
+| v19 `best_phaseC.pt` | 64.25% | **9.7000** | **1.0425** | **1.5900** | 0.1075 | 6/106/31/0 | 1 |
+| v19 `best_phaseC_combat.pt` | 65.75% | 9.5125 | **1.0425** | 1.5200 | **0.1325** | 9/99/29/0 | 2 |
+| v19 `final_phaseC.pt` | 71.25% | 9.1025 | 1.0025 | 1.4575 | 0.1275 | **3**/84/**28**/0 | **0** |
+
+Mask v19 tu no cai thien v18 best rat manh so voi cung checkpoint duoi mask v18: WR `64.75 -> 77.25`, sudden-death deaths `43 -> 12`, opponent-bomb deaths `55 -> 36`, chain-self `8 -> 0`; self-deaths giu `43`. Fine-tuning v19 chuyen trade-off sang aggression: final tang bombs `7.12 -> 9.10` va kills `0.0775 -> 0.1275`, doi lai WR giam `6` diem va self-deaths tang `43 -> 84`.
+
+**Ket luan v19:** `checkpoints_v19/final_phaseC.pt` dat day du acceptance WR `>=70%`, bombs `>=7`, kills `>=0.08`, opponent deaths `<=40` va sudden-death deaths `<=30`. Day la checkpoint khuyen nghi cho muc tieu agent chu dong va dat nhieu bomb. Neu uu tien WR/an toan, dung `checkpoints_v18/best_phaseC.pt` voi code mask v19. Khong dung v19 best/combat vi final co WR cao hon, self-death thap hon va kills gan combat checkpoint.
+
+### v20 - owner-aware no-reentry shield: zero-shot rejected
+
+- Thu nghiem chan agent quay lai future blast cua active own bomb sau khi da ra ngoai. Shield khong ap dung cho opponent bomb va giu shortest escape v19.
+- Zero-shot lan dau tren v19 final, seed `20261013`, 400 tran: WR `59.75%`, bombs `8.65`, kills `0.0825`, deaths sd/self/opp `4/118/39`, chain-self `5`. Tat ca gate WR/kills/self deu truot.
+- Chan re-entry xay ra `1,382` step trong probe 100 tran; `172` step trong so do agent dang bi bomb khac de doa. Emergency override duoc them de khong chan shortest escape khi current cell dang bi hazard.
+- Zero-shot sau emergency override van that bai: WR `61.50%`, bombs `9.63`, kills `0.0925`, deaths sd/self/opp `8/121/25`, chain-self `3`. So voi v19 final (`71.25%`, `9.1025`, `0.1275`, self `84`), shield lam WR/kills giam va self-death tang.
+- Audit reproducibility: script so sanh da seed Python/NumPy/Torch bang `20261013`, nhung `BombermanFFAEnv` duoc tao voi `seed=None` va dung `np.random.default_rng(None)`. Vi vay cac bang v17-v20 la benchmark 400-tran doc lap, khong phai cung bo board co the tai lap bit-for-bit. Chenh lech v20 van du lon va cung chieu qua hai lan de reject, nhung moi A/B tiep theo phai sua evaluator nhan `--seed` va truyen seed vao environment.
+
+**Ket luan v20:** khong fine-tune, khong tao checkpoint v20. Code/metric/launcher no-reentry da rollback de runtime tro ve mask v19. Giu `checkpoints_v19/final_phaseC.pt` lam policy aggressive khuyen nghi. Gia thuyet "re-entry vao own blast" khong phai root cause doc lap; blanket action blocking tao distribution shift va conflict giua nhieu bomb.
