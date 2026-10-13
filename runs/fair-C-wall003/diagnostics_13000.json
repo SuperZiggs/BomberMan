@@ -1,0 +1,405 @@
+{
+  "selection": "first 3 baseline timeouts per corner, seed 13000 development set",
+  "models": {
+    "warm_start": "runs/combat-20261012/combat_bc_phaseC.pt",
+    "wall003_final": "runs/fair-C-wall003/final_phaseC.pt"
+  },
+  "games": [
+    {
+      "model": "warm_start",
+      "seed": 13000,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 65,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 249,
+        "teacher_labels": 213,
+        "direct_attack_labels": 29,
+        "other_bomb_labels": 5,
+        "navigation_labels": 179,
+        "missing_quiet_labels": 36,
+        "near_enemy_steps": 128,
+        "bombs": 65,
+        "bombs_with_enemy_inline": 29,
+        "bombs_without_enemy_or_wood": 27,
+        "attack_opportunities": 29,
+        "attack_opportunities_taken": 29
+      },
+      "mean_attack_bomb_probability": 0.9866770814205038
+    },
+    {
+      "model": "warm_start",
+      "seed": 13001,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 50,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 320,
+        "teacher_labels": 285,
+        "direct_attack_labels": 17,
+        "other_bomb_labels": 8,
+        "navigation_labels": 260,
+        "missing_quiet_labels": 35,
+        "near_enemy_steps": 170,
+        "bombs": 50,
+        "bombs_with_enemy_inline": 16,
+        "bombs_without_enemy_or_wood": 24,
+        "attack_opportunities": 17,
+        "attack_opportunities_taken": 16
+      },
+      "mean_attack_bomb_probability": 0.923787138041328
+    },
+    {
+      "model": "warm_start",
+      "seed": 13002,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 63,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 279,
+        "teacher_labels": 255,
+        "direct_attack_labels": 25,
+        "other_bomb_labels": 5,
+        "navigation_labels": 225,
+        "missing_quiet_labels": 24,
+        "near_enemy_steps": 143,
+        "bombs": 63,
+        "bombs_with_enemy_inline": 25,
+        "bombs_without_enemy_or_wood": 29,
+        "attack_opportunities": 25,
+        "attack_opportunities_taken": 25
+      },
+      "mean_attack_bomb_probability": 0.9826580595970154
+    },
+    {
+      "model": "warm_start",
+      "seed": 13000,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 60,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 286,
+        "teacher_labels": 265,
+        "direct_attack_labels": 34,
+        "other_bomb_labels": 6,
+        "navigation_labels": 225,
+        "missing_quiet_labels": 21,
+        "near_enemy_steps": 132,
+        "bombs": 60,
+        "bombs_with_enemy_inline": 33,
+        "bombs_without_enemy_or_wood": 19,
+        "attack_opportunities": 34,
+        "attack_opportunities_taken": 33
+      },
+      "mean_attack_bomb_probability": 0.9635744690895081
+    },
+    {
+      "model": "warm_start",
+      "seed": 13002,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 43,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 330,
+        "teacher_labels": 297,
+        "direct_attack_labels": 11,
+        "other_bomb_labels": 2,
+        "navigation_labels": 284,
+        "missing_quiet_labels": 33,
+        "near_enemy_steps": 151,
+        "bombs": 43,
+        "bombs_with_enemy_inline": 11,
+        "bombs_without_enemy_or_wood": 27,
+        "attack_opportunities": 11,
+        "attack_opportunities_taken": 11
+      },
+      "mean_attack_bomb_probability": 0.9184587543660944
+    },
+    {
+      "model": "warm_start",
+      "seed": 13004,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 65,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 259,
+        "teacher_labels": 242,
+        "direct_attack_labels": 34,
+        "other_bomb_labels": 3,
+        "navigation_labels": 205,
+        "missing_quiet_labels": 17,
+        "near_enemy_steps": 192,
+        "bombs": 65,
+        "bombs_with_enemy_inline": 34,
+        "bombs_without_enemy_or_wood": 24,
+        "attack_opportunities": 34,
+        "attack_opportunities_taken": 34
+      },
+      "mean_attack_bomb_probability": 0.964340560576495
+    },
+    {
+      "model": "wall003_final",
+      "seed": 13000,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 1,
+        "draw": 0,
+        "kills": 0,
+        "bombs": 40,
+        "steps": 370
+      },
+      "counts": {
+        "steps": 370,
+        "quiet_steps": 183,
+        "teacher_labels": 165,
+        "direct_attack_labels": 24,
+        "other_bomb_labels": 6,
+        "navigation_labels": 135,
+        "missing_quiet_labels": 18,
+        "near_enemy_steps": 158,
+        "bombs": 40,
+        "bombs_with_enemy_inline": 14,
+        "bombs_without_enemy_or_wood": 17,
+        "attack_opportunities": 24,
+        "attack_opportunities_taken": 14
+      },
+      "mean_attack_bomb_probability": 0.5434791818261147
+    },
+    {
+      "model": "wall003_final",
+      "seed": 13001,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 44,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 297,
+        "teacher_labels": 268,
+        "direct_attack_labels": 26,
+        "other_bomb_labels": 10,
+        "navigation_labels": 232,
+        "missing_quiet_labels": 29,
+        "near_enemy_steps": 215,
+        "bombs": 44,
+        "bombs_with_enemy_inline": 16,
+        "bombs_without_enemy_or_wood": 16,
+        "attack_opportunities": 26,
+        "attack_opportunities_taken": 16
+      },
+      "mean_attack_bomb_probability": 0.5927870479913858
+    },
+    {
+      "model": "wall003_final",
+      "seed": 13002,
+      "aid": 0,
+      "result": {
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 0,
+        "kills": 0,
+        "bombs": 22,
+        "steps": 219
+      },
+      "counts": {
+        "steps": 219,
+        "quiet_steps": 132,
+        "teacher_labels": 126,
+        "direct_attack_labels": 10,
+        "other_bomb_labels": 5,
+        "navigation_labels": 111,
+        "missing_quiet_labels": 6,
+        "near_enemy_steps": 81,
+        "bombs": 22,
+        "bombs_with_enemy_inline": 7,
+        "bombs_without_enemy_or_wood": 7,
+        "attack_opportunities": 10,
+        "attack_opportunities_taken": 7
+      },
+      "mean_attack_bomb_probability": 0.6126525714993477
+    },
+    {
+      "model": "wall003_final",
+      "seed": 13000,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 40,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 286,
+        "teacher_labels": 267,
+        "direct_attack_labels": 26,
+        "other_bomb_labels": 5,
+        "navigation_labels": 236,
+        "missing_quiet_labels": 19,
+        "near_enemy_steps": 203,
+        "bombs": 40,
+        "bombs_with_enemy_inline": 14,
+        "bombs_without_enemy_or_wood": 19,
+        "attack_opportunities": 26,
+        "attack_opportunities_taken": 14
+      },
+      "mean_attack_bomb_probability": 0.5208352901614629
+    },
+    {
+      "model": "wall003_final",
+      "seed": 13002,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 34,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 321,
+        "teacher_labels": 286,
+        "direct_attack_labels": 18,
+        "other_bomb_labels": 4,
+        "navigation_labels": 264,
+        "missing_quiet_labels": 35,
+        "near_enemy_steps": 205,
+        "bombs": 34,
+        "bombs_with_enemy_inline": 10,
+        "bombs_without_enemy_or_wood": 19,
+        "attack_opportunities": 18,
+        "attack_opportunities_taken": 10
+      },
+      "mean_attack_bomb_probability": 0.5222231911288368
+    },
+    {
+      "model": "wall003_final",
+      "seed": 13004,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 39,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "quiet_steps": 330,
+        "teacher_labels": 307,
+        "direct_attack_labels": 25,
+        "other_bomb_labels": 3,
+        "navigation_labels": 279,
+        "missing_quiet_labels": 23,
+        "near_enemy_steps": 216,
+        "bombs": 39,
+        "bombs_with_enemy_inline": 13,
+        "bombs_without_enemy_or_wood": 20,
+        "attack_opportunities": 25,
+        "attack_opportunities_taken": 13
+      },
+      "mean_attack_bomb_probability": 0.5063406699895858
+    }
+  ],
+  "summary": {
+    "warm_start": {
+      "steps": 3000,
+      "quiet_steps": 1723,
+      "teacher_labels": 1557,
+      "direct_attack_labels": 150,
+      "other_bomb_labels": 29,
+      "navigation_labels": 1378,
+      "missing_quiet_labels": 166,
+      "near_enemy_steps": 916,
+      "bombs": 346,
+      "bombs_with_enemy_inline": 148,
+      "bombs_without_enemy_or_wood": 150,
+      "attack_opportunities": 150,
+      "attack_opportunities_taken": 148
+    },
+    "wall003_final": {
+      "steps": 2589,
+      "quiet_steps": 1549,
+      "teacher_labels": 1419,
+      "direct_attack_labels": 129,
+      "other_bomb_labels": 33,
+      "navigation_labels": 1257,
+      "missing_quiet_labels": 130,
+      "near_enemy_steps": 1078,
+      "bombs": 219,
+      "bombs_with_enemy_inline": 74,
+      "bombs_without_enemy_or_wood": 98,
+      "attack_opportunities": 129,
+      "attack_opportunities_taken": 74
+    }
+  },
+  "model_sha256": {
+    "warm_start": "2f08807220b42fb59e7366628afe5f65840fa808b4d693f564dfa489590d21d7",
+    "wall003_final": "fa68a60b1e13a0c765fae2d5b152ebc1790daf4ead704e35374e14d79f5053a3"
+  }
+}

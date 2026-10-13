@@ -1,0 +1,2743 @@
+{
+  "checkpoint": "runs/20261010-125814-296523/best_phaseC.pt",
+  "episodes": 100,
+  "variant": "before",
+  "opponent": "legacy",
+  "summary": {
+    "win": 0.06,
+    "active_win": 0.0,
+    "suicide": 0.84,
+    "kills": 0.02,
+    "bombs": 3.69,
+    "items": 0.0,
+    "steps": 29.33
+  },
+  "games": [
+    {
+      "seed": 7000,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 31
+    },
+    {
+      "seed": 7001,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 18
+    },
+    {
+      "seed": 7002,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 31
+    },
+    {
+      "seed": 7003,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7004,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 5,
+      "items": 0,
+      "steps": 35
+    },
+    {
+      "seed": 7005,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 25
+    },
+    {
+      "seed": 7006,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 25
+    },
+    {
+      "seed": 7007,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 6,
+      "items": 0,
+      "steps": 52
+    },
+    {
+      "seed": 7008,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7009,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 5,
+      "items": 0,
+      "steps": 46
+    },
+    {
+      "seed": 7010,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 5,
+      "items": 0,
+      "steps": 25
+    },
+    {
+      "seed": 7011,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 22
+    },
+    {
+      "seed": 7012,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7013,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7014,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 28
+    },
+    {
+      "seed": 7015,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 9,
+      "items": 0,
+      "steps": 52
+    },
+    {
+      "seed": 7016,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 6,
+      "items": 0,
+      "steps": 37
+    },
+    {
+      "seed": 7017,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7018,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7019,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7020,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 35
+    },
+    {
+      "seed": 7021,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 29
+    },
+    {
+      "seed": 7022,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 8,
+      "items": 0,
+      "steps": 55
+    },
+    {
+      "seed": 7023,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 25
+    },
+    {
+      "seed": 7024,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 5,
+      "items": 0,
+      "steps": 31
+    },
+    {
+      "seed": 7025,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 25
+    },
+    {
+      "seed": 7026,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 21
+    },
+    {
+      "seed": 7027,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 17
+    },
+    {
+      "seed": 7028,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7029,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 7,
+      "items": 0,
+      "steps": 68
+    },
+    {
+      "seed": 7030,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7031,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 1,
+      "bombs": 4,
+      "items": 0,
+      "steps": 33
+    },
+    {
+      "seed": 7032,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7033,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 9
+    },
+    {
+      "seed": 7034,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 31
+    },
+    {
+      "seed": 7035,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 17
+    },
+    {
+      "seed": 7036,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7037,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 18
+    },
+    {
+      "seed": 7038,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 28
+    },
+    {
+      "seed": 7039,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7040,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7041,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 38
+    },
+    {
+      "seed": 7042,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7043,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 8,
+      "items": 0,
+      "steps": 56
+    },
+    {
+      "seed": 7044,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 29
+    },
+    {
+      "seed": 7045,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7046,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 6,
+      "items": 0,
+      "steps": 49
+    },
+    {
+      "seed": 7047,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 5,
+      "items": 0,
+      "steps": 42
+    },
+    {
+      "seed": 7048,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7049,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 32
+    },
+    {
+      "seed": 7050,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 32
+    },
+    {
+      "seed": 7051,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 9
+    },
+    {
+      "seed": 7052,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 1,
+      "bombs": 7,
+      "items": 0,
+      "steps": 52
+    },
+    {
+      "seed": 7053,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 20
+    },
+    {
+      "seed": 7054,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 34
+    },
+    {
+      "seed": 7055,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 36
+    },
+    {
+      "seed": 7056,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 34
+    },
+    {
+      "seed": 7057,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 9,
+      "items": 0,
+      "steps": 71
+    },
+    {
+      "seed": 7058,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 19
+    },
+    {
+      "seed": 7059,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 7,
+      "items": 0,
+      "steps": 40
+    },
+    {
+      "seed": 7060,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 8,
+      "items": 0,
+      "steps": 49
+    },
+    {
+      "seed": 7061,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7062,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7063,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 11
+    },
+    {
+      "seed": 7064,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7065,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 18
+    },
+    {
+      "seed": 7066,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7067,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 10
+    },
+    {
+      "seed": 7068,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7069,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 35
+    },
+    {
+      "seed": 7070,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 6,
+      "items": 0,
+      "steps": 41
+    },
+    {
+      "seed": 7071,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 6,
+      "items": 0,
+      "steps": 34
+    },
+    {
+      "seed": 7072,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7073,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 17
+    },
+    {
+      "seed": 7074,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7075,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 8,
+      "items": 0,
+      "steps": 46
+    },
+    {
+      "seed": 7076,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 6,
+      "items": 0,
+      "steps": 41
+    },
+    {
+      "seed": 7077,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7078,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7079,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 36
+    },
+    {
+      "seed": 7080,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 28
+    },
+    {
+      "seed": 7081,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 9
+    },
+    {
+      "seed": 7082,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 19
+    },
+    {
+      "seed": 7083,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7084,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 7,
+      "items": 0,
+      "steps": 43
+    },
+    {
+      "seed": 7085,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 9,
+      "items": 0,
+      "steps": 74
+    },
+    {
+      "seed": 7086,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 29
+    },
+    {
+      "seed": 7087,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 9
+    },
+    {
+      "seed": 7088,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 25
+    },
+    {
+      "seed": 7089,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 9
+    },
+    {
+      "seed": 7090,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 5,
+      "items": 0,
+      "steps": 45
+    },
+    {
+      "seed": 7091,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 20
+    },
+    {
+      "seed": 7092,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 36
+    },
+    {
+      "seed": 7093,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 13,
+      "items": 0,
+      "steps": 122
+    },
+    {
+      "seed": 7094,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 7,
+      "items": 0,
+      "steps": 58
+    },
+    {
+      "seed": 7095,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 34
+    },
+    {
+      "seed": 7096,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 10,
+      "items": 0,
+      "steps": 57
+    },
+    {
+      "seed": 7097,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7098,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 1,
+      "items": 0,
+      "steps": 8
+    },
+    {
+      "seed": 7099,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 22
+    }
+  ],
+  "suicide_traces": [
+    {
+      "seed": 7000,
+      "aid": 0,
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          2,
+          2,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          2,
+          1,
+          2,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          2,
+          1,
+          2,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          2,
+          2,
+          0,
+          2,
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "trace": [
+        {
+          "step": 1,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 2,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 3,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 0,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 4,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 5,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 5,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 6,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              4,
+              2
+            ],
+            [
+              1,
+              2,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 7,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              3,
+              2
+            ],
+            [
+              1,
+              2,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 8,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 9,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              1,
+              2
+            ],
+            [
+              1,
+              2,
+              0,
+              4,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 10,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 11,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 12,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 0,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 13,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 0,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 14,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 15,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 16,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 5,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              2,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 17,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              1,
+              2
+            ],
+            [
+              2,
+              1,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 18,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 19,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 20,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              4,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 21,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              3,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 22,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              2,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 23,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              1,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 24,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 25,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 26,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 5,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              1,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 27,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              5,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 28,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              4,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 29,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              3,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 30,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              4,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 31,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              1,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              3,
+              2
+            ]
+          ],
+          "danger": 3
+        }
+      ]
+    },
+    {
+      "seed": 7001,
+      "aid": 1,
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          2,
+          1,
+          2,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          2,
+          2,
+          0,
+          2,
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          2,
+          0,
+          2,
+          0,
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          2,
+          1,
+          2,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          2,
+          0,
+          2,
+          2,
+          2,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "trace": [
+        {
+          "step": 1,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 2,
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 2,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 3,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 4,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 5,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 5,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              5,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 6,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 2,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              4,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 7,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              3,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 8,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 2,
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              2,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 9,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 10,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 2,
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              2,
+              2
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 11,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 0,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 12,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 0,
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 13,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 14,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 2,
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 15,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 16,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 17,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 5,
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              2,
+              2
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 18,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 1
+        }
+      ]
+    }
+  ]
+}

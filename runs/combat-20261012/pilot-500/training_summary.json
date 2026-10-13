@@ -1,0 +1,15 @@
+{
+  "win": 0.066,
+  "active_win": 0.024,
+  "suicide": 0.032,
+  "draw": 0.902,
+  "kills": 0.042,
+  "bombs": 31.576,
+  "items": 1.982,
+  "learner_steps": 451.854,
+  "attack_opportunities": 22.404,
+  "attack_bombs": 11.004,
+  "attack_labels": 269.436,
+  "missing_attack_labels": 29.926,
+  "elapsed_seconds": 4224.468999999983
+}

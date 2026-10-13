@@ -391,9 +391,12 @@ class TrainPane(ttk.Frame):
         phase.pack(side="left", padx=6)
         ttk.Label(controls, text="Episodes").pack(side="left")
         ttk.Entry(controls, textvariable=self.episodes, width=7).pack(side="left", padx=6)
-        ttk.Label(controls, text="Tác tử (E)").pack(side="left")
-        ttk.Combobox(controls, textvariable=self.agent_count, values=(3, 4), width=3,
-                     state="readonly").pack(side="left", padx=6)
+        ttk.Label(controls, text="Tác tử").pack(side="left")
+        self.agent_box = ttk.Combobox(controls, textvariable=self.agent_count,
+                                     values=(2, 3, 4), width=3, state="readonly")
+        self.agent_box.pack(side="left", padx=6)
+        self.phase.trace_add("write", self.sync_agent_count)
+        self.sync_agent_count()
         ttk.Checkbutton(controls, text="Warm-start từ checkpoint đã chọn", variable=self.warm).pack(side="left", padx=8)
         buttons = ttk.Frame(self)
         buttons.pack(fill="x", pady=8)
@@ -422,14 +425,21 @@ class TrainPane(ttk.Frame):
         self.chart.bind("<Configure>", lambda _: self.draw_charts())
         self.after(100, self.poll)
 
+    def sync_agent_count(self, *_):
+        if self.phase.get() in ("C", "D"):
+            self.agent_count.set("2")
+            self.agent_box.configure(state="disabled")
+        else:
+            self.agent_box.configure(state="readonly")
+
     def start(self):
         if self.thread is not None and self.thread.is_alive():
             return
         try:
             episodes, phase = int(self.episodes.get()), self.phase.get()
             count = int(self.agent_count.get()) if phase == "E" else 2
-            if not 1 <= episodes <= 100000 or phase not in ("C", "D", "E") or (phase == "E" and count not in (3, 4)):
-                raise ValueError("Episodes: 1–100000; Phase C/D: 2 tác tử; Phase E: 3 hoặc 4.")
+            if not 1 <= episodes <= 100000 or phase not in ("C", "D", "E") or (phase == "E" and count not in (2, 3, 4)):
+                raise ValueError("Episodes: 1–100000; Phase C/D: 2 tác tử; Phase E: 2, 3 hoặc 4.")
             resume = self.app.model.get() if self.warm.get() else ""
             if self.warm.get() and not Path(resume).is_file():
                 raise ValueError("Chọn checkpoint cho warm-start hoặc bỏ chọn warm-start.")
@@ -437,9 +447,12 @@ class TrainPane(ttk.Frame):
             self.run_dir = ROOT / "runs" / stamp
             self.run_dir.mkdir(parents=True)
             config = dict(phase=phase, episodes=episodes, num_agents=count,
-                          board_size=11 if count == 4 else 9, max_steps=300,
+                          board_size=11 if count == 4 else 9, max_steps=500,
                           device="cpu", checkpoint_dir=str(self.run_dir), resume_from=resume,
-                          log_every=50, run_report=False)
+                          lr=1e-4 if resume else 3e-4,
+                          log_every=50, run_report=False,
+                          seed=int(time.time_ns() % (2**32)), validation_every=250,
+                          validation_episodes=48, validation_seed=6000)
             (self.run_dir / "config.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
         except (ValueError, OSError) as exc:
             messagebox.showerror("Không bắt đầu được", str(exc), parent=self.app.root)
@@ -483,7 +496,15 @@ class TrainPane(ttk.Frame):
                     log.flush()
                     self.events.put(("metric", data))
 
-                train(**config, on_step=on_step, on_episode=on_episode, stop_event=self.stop_event)
+                def on_validation(data):
+                    while not self.gate.wait(.1):
+                        if self.stop_event.is_set():
+                            return
+                    if not self.stop_event.is_set():
+                        self.events.put(("validation", data))
+
+                train(**config, on_step=on_step, on_episode=on_episode,
+                      on_validation=on_validation, stop_event=self.stop_event)
             self.events.put(("done", self.stop_event.is_set()))
         except Exception as exc:
             traceback.print_exc()
@@ -519,11 +540,27 @@ class TrainPane(ttk.Frame):
                 self.progress.configure(value=data["episode"])
                 recent = self.metrics[-50:]
                 wr = sum(m["win"] for m in recent) / len(recent) * 100
+                active_wr = sum(m["active_win"] for m in recent) / len(recent) * 100
+                kills = sum(m["kills"] for m in recent) / len(recent)
+                suicide = sum(m["suicide"] for m in recent) / len(recent) * 100
+                items = sum(m["items"] for m in recent) / len(recent)
                 reward = sum(m["reward"] for m in recent) / len(recent)
                 if self.gate.is_set() and not self.stop_event.is_set():
-                    self.status.set(f"Episode {data['episode']} · WR {wr:.1f}% · Reward {reward:+.2f}"
+                    self.status.set(f"Episode {data['episode']} · WR {wr:.1f}% · WR có hạ gục {active_wr:.1f}%"
+                                    f" · Hạ gục {kills:.2f}/ván · Reward {reward:+.2f}"
+                                    f" · Tự nổ {suicide:.1f}% · Item {items:.2f}/ván"
                                     f" · Loss {data['loss']:.3f} · LR {data['lr']:.2g}")
                 changed = True
+            elif kind == "validation":
+                if self.gate.is_set() and not self.stop_event.is_set():
+                    result = data.get("result")
+                    if result is None:
+                        self.status.set(f"Đánh giá checkpoint · Episode {data['episode']}"
+                                        f" · {data['completed']}/{data['total']} ván · Luân phiên góc")
+                    else:
+                        self.status.set(f"Đánh giá · WR có hạ gục {result['active_win_rate']:.1f}%"
+                                        f" · Tự nổ {result['suicide_rate']:.1f}%"
+                                        f" · Hòa {result['draw_rate']:.1f}% · Best ở ep {data['best_episode']}")
             else:
                 self.start_button.configure(state="normal")
                 self.pause_button.configure(state="disabled")
@@ -534,11 +571,23 @@ class TrainPane(ttk.Frame):
                     messagebox.showerror("Train lỗi", data, parent=self.app.root)
                 else:
                     # UI configuration may have changed during training.
-                    final = next(self.run_dir.glob("final_*.pt"), None)
-                    if final is not None:
-                        self.app.model.set(str(final))
-                    self.status.set(f"{'Đã dừng' if data else 'Hoàn tất'} · {len(self.metrics)} episode"
-                                    f" · Checkpoint và metrics: {self.run_dir}")
+                    model = next(self.run_dir.glob("best_*.pt"), None)
+                    if model is None:
+                        model = next(self.run_dir.glob("final_*.pt"), None)
+                    if model is not None:
+                        self.app.model.set(str(model))
+                    recent = self.metrics[-200:]
+                    count = max(len(recent), 1)
+                    active_wr = sum(m["active_win"] for m in recent) / count * 100
+                    suicide = sum(m["suicide"] for m in recent) / count * 100
+                    status = (f"{'Đã dừng' if data else 'Hoàn tất'} · {len(self.metrics)} episode"
+                              f" · Train: WR có hạ gục {active_wr:.1f}% · Tự nổ {suicide:.1f}%")
+                    selected = self.run_dir / "best_validation.json"
+                    if selected.is_file():
+                        validation = json.loads(selected.read_text(encoding="utf-8"))
+                        status += (f" · Best kiểm tra: WR có hạ gục {validation['active_win_rate']:.1f}%"
+                                   f" · Tự nổ {validation['suicide_rate']:.1f}%")
+                    self.status.set(status + f" · Checkpoint và metrics: {self.run_dir}")
         if changed:
             self.draw_charts()
         self.after(100, self.poll)

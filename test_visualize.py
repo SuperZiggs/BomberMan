@@ -6,6 +6,7 @@ import threading
 import time
 import tkinter as tk
 from types import SimpleNamespace
+from unittest.mock import patch
 
 import torch
 
@@ -38,14 +39,27 @@ def check():
 
     with tempfile.TemporaryDirectory(dir=ROOT) as directory:
         metrics, frames = [], []
+        corners = []
         cfg = dict(phase="C", episodes=2, board_size=9, num_agents=2, max_steps=8,
                    checkpoint_dir=directory, device="cpu", run_report=False,
                    resume_from=str(ROOT / "checkpoints" / "best_phaseC.pt"))
-        _, rewards, wins = train(**cfg, on_episode=metrics.append,
-                                  on_step=lambda env, ep, aid, acts, opp: frames.append((ep, env.step_count)))
+        def observe_train(env, ep, aid, acts, opp):
+            frames.append((ep, env.step_count))
+            if env.step_count == 0:
+                corners.append(aid)
+        _, rewards, wins = train(**cfg, on_episode=metrics.append, on_step=observe_train)
         assert len(metrics) == len(rewards) == len(wins) == 2
         assert frames[0] == (1, 0) and frames[-1] == (2, 8)
-        assert {"loss", "lr", "walls", "reward", "win", "bombs"} <= metrics[0].keys()
+        assert corners == [0, 1], "Phase C must rotate the learning corner"
+        assert {"loss", "lr", "walls", "reward", "win", "bombs", "kills", "active_win", "suicide",
+                "items", "learner_steps", "best_episode", "attack_opportunities", "attack_bombs",
+                "attack_labels", "missing_attack_labels", "combat_labels", "combat_bombs",
+                "followup_labels", "followup_bombs",
+                "policy_loss", "value_loss", "escape_loss", "combat_loss", "navigation_loss"} <= metrics[0].keys()
+        assert all(0 <= m['attack_bombs'] <= m['attack_opportunities'] for m in metrics)
+        assert all(0 <= m['combat_bombs'] <= m['combat_labels'] <= m['attack_labels'] + m['followup_labels'] for m in metrics)
+        assert all(0 <= m['followup_bombs'] <= m['followup_labels'] for m in metrics)
+        assert all(m["active_win"] <= m["win"] and m["kills"] >= 0 for m in metrics)
         assert (Path(directory) / "final_phaseC.pt").is_file()
         stop = threading.Event()
         cancelled = []
@@ -70,6 +84,32 @@ def check():
     try:
         root.update()
         assert len(app.tabs.tabs()) == 3
+        pane = app.training
+        assert tuple(map(str, pane.agent_box["values"])) == ("2", "3", "4")
+        for phase in ("C", "D"):
+            pane.phase.set(phase)
+            assert pane.agent_count.get() == "2" and str(pane.agent_box["state"]) == "disabled"
+        pane.phase.set("E")
+        assert str(pane.agent_box["state"]) == "readonly"
+        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+            with patch("visualize.ROOT", Path(directory)), patch("visualize.threading.Thread.start") as dispatch:
+                pane.episodes.set("1")
+                pane.warm.set(False)
+                for count in (2, 3, 4):
+                    pane.agent_box.set(str(count))
+                    pane.start()
+                    config = json.loads((pane.run_dir / "config.json").read_text())
+                    assert config["num_agents"] == count
+                    assert config["board_size"] == (11 if count == 4 else 9)
+                    assert config["lr"] == 3e-4
+                assert dispatch.call_count == 3
+                pane.phase.set("C")
+                pane.warm.set(True)
+                app.model.set(str(model))
+                pane.start()
+                config = json.loads((pane.run_dir / "config.json").read_text())
+                assert config["lr"] == 1e-4 and config["resume_from"] == str(model)
+        pane.thread = None
         app.watch.new_match()
         app.watch.step(schedule=False)
         assert app.watch.env.step_count == 1
@@ -142,7 +182,8 @@ def check():
             pane.gate.clear()
             pane.progress.configure(maximum=2)
             cfg["checkpoint_dir"] = directory
-            pane.thread = threading.Thread(target=pane.worker, args=(cfg,))
+            cfg_validation = dict(cfg, validation_every=1, validation_episodes=2)
+            pane.thread = threading.Thread(target=pane.worker, args=(cfg_validation,))
             pane.thread.start()
             time.sleep(.15)
             assert pane.thread.is_alive() and pane.events.empty(), "Pause must block training steps"
@@ -160,6 +201,13 @@ def check():
             logged = [json.loads(line) for line in (Path(directory) / "metrics.jsonl").read_text().splitlines()]
             assert len(logged) == 2 and logged[-1]["episode"] == 2
             assert "Hoàn tất" in pane.status.get()
+            assert "Best kiểm tra" in pane.status.get()
+            validations = [json.loads(s) for s in (Path(directory)/"validation_metrics.jsonl").read_text().splitlines()]
+            assert [v['episode'] for v in validations] == [0, 1, 2]
+            pane.start_button.configure(state="disabled")
+            pane.events.put(("validation", {"episode":250,"completed":1,"total":48}))
+            pane.poll()
+            assert "1/48" in pane.status.get() and str(pane.start_button['state']) == 'disabled'
     finally:
         app.watch.pause()
         app.play.pause()

@@ -5,7 +5,7 @@ Giai đoạn B — Q-learning với linear function approximation trên bàn c�
 (board_size=7, num_agents=2).
 
 Agent Q-learning train chống lại RuleBasedAgent.  Feature construction thủ công
-từ observation 8 kênh (đúng tinh thần bài 3.5 — Feature Construction for
+từ 8 kênh đầu của observation (đúng tinh thần bài 3.5 — Feature Construction for
 Linear Methods):
 
   - Khoảng cách Manhattan tới tường gỗ gần nhất
@@ -79,7 +79,7 @@ def _count_in_radius(obs_channel: np.ndarray, r: int, c: int,
 def extract_features(obs: np.ndarray, env: BombermanFFAEnv,
                      agent_id: int) -> np.ndarray:
     """
-    Trich xuat feature vector tu observation (8, H, W) cho agent.
+    Trich xuat feature vector tu 8 kenh dau cua observation cho agent.
     Tra ve np.ndarray shape (num_features,).
     """
     agent = env.agents[agent_id]

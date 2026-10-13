@@ -1,0 +1,86 @@
+{
+  "warm_start": {
+    "seed": 15000,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "num_episodes": 200,
+    "win_rate": 26.0,
+    "active_win_rate": 23.5,
+    "suicide_rate": 2.0,
+    "draw_rate": 73.5,
+    "avg_kills": 0.235,
+    "avg_bombs": 42.125,
+    "avg_items": 1.845,
+    "avg_steps": 408.195,
+    "by_corner": {
+      "0": {
+        "num_episodes": 100,
+        "win_rate": 27.0,
+        "active_win_rate": 22.0,
+        "suicide_rate": 2.0,
+        "draw_rate": 72.0,
+        "avg_kills": 0.22,
+        "avg_bombs": 41.17,
+        "avg_items": 1.78,
+        "avg_steps": 395.8
+      },
+      "1": {
+        "num_episodes": 100,
+        "win_rate": 25.0,
+        "active_win_rate": 25.0,
+        "suicide_rate": 2.0,
+        "draw_rate": 75.0,
+        "avg_kills": 0.25,
+        "avg_bombs": 43.08,
+        "avg_items": 1.91,
+        "avg_steps": 420.59
+      }
+    }
+  },
+  "final": {
+    "seed": 15000,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "num_episodes": 200,
+    "win_rate": 28.000000000000004,
+    "active_win_rate": 25.0,
+    "suicide_rate": 3.0,
+    "draw_rate": 67.5,
+    "avg_kills": 0.255,
+    "avg_bombs": 40.425,
+    "avg_items": 1.47,
+    "avg_steps": 402.305,
+    "by_corner": {
+      "0": {
+        "num_episodes": 100,
+        "win_rate": 28.000000000000004,
+        "active_win_rate": 24.0,
+        "suicide_rate": 2.0,
+        "draw_rate": 66.0,
+        "avg_kills": 0.24,
+        "avg_bombs": 40.63,
+        "avg_items": 1.52,
+        "avg_steps": 399.57
+      },
+      "1": {
+        "num_episodes": 100,
+        "win_rate": 28.000000000000004,
+        "active_win_rate": 26.0,
+        "suicide_rate": 4.0,
+        "draw_rate": 69.0,
+        "avg_kills": 0.27,
+        "avg_bombs": 40.22,
+        "avg_items": 1.42,
+        "avg_steps": 405.04
+      }
+    }
+  },
+  "model_sha256": {
+    "D:\\fpt\\subject\\BomberMan\\runs\\combat-20261012\\combat_bc_phaseC.pt": "2f08807220b42fb59e7366628afe5f65840fa808b4d693f564dfa489590d21d7",
+    "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\best_phaseC.pt": "8c171ecb485bed12ad15474da662bce53451e87916950d5f8283d10ec3a9d688",
+    "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+  },
+  "baseline_calibration_games": 8
+}

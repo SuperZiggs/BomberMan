@@ -1,0 +1,8881 @@
+{
+  "checkpoint": "runs/20261010-125814-296523/best_phaseC.pt",
+  "episodes": 100,
+  "variant": "after",
+  "opponent": "current",
+  "summary": {
+    "win": 0.16,
+    "active_win": 0.04,
+    "suicide": 0.23,
+    "kills": 0.06,
+    "bombs": 39.53,
+    "items": 1.57,
+    "steps": 286.33
+  },
+  "games": [
+    {
+      "seed": 7000,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 79,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7001,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 83,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7002,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 82,
+      "items": 3,
+      "steps": 500
+    },
+    {
+      "seed": 7003,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 12,
+      "items": 1,
+      "steps": 107
+    },
+    {
+      "seed": 7004,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 35,
+      "items": 2,
+      "steps": 264
+    },
+    {
+      "seed": 7005,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0,
+      "kills": 1,
+      "bombs": 13,
+      "items": 1,
+      "steps": 117
+    },
+    {
+      "seed": 7006,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 7,
+      "items": 0,
+      "steps": 62
+    },
+    {
+      "seed": 7007,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 49,
+      "items": 3,
+      "steps": 282
+    },
+    {
+      "seed": 7008,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 24
+    },
+    {
+      "seed": 7009,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 14,
+      "items": 1,
+      "steps": 99
+    },
+    {
+      "seed": 7010,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 53,
+      "items": 0,
+      "steps": 500
+    },
+    {
+      "seed": 7011,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 52,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7012,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 69,
+      "items": 1,
+      "steps": 500
+    },
+    {
+      "seed": 7013,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 89,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7014,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 1,
+      "steps": 25
+    },
+    {
+      "seed": 7015,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 78,
+      "items": 3,
+      "steps": 500
+    },
+    {
+      "seed": 7016,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 5,
+      "items": 2,
+      "steps": 26
+    },
+    {
+      "seed": 7017,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 15,
+      "items": 0,
+      "steps": 135
+    },
+    {
+      "seed": 7018,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 23,
+      "items": 3,
+      "steps": 122
+    },
+    {
+      "seed": 7019,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 57,
+      "items": 4,
+      "steps": 342
+    },
+    {
+      "seed": 7020,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 10,
+      "items": 1,
+      "steps": 95
+    },
+    {
+      "seed": 7021,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 88,
+      "items": 4,
+      "steps": 483
+    },
+    {
+      "seed": 7022,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 73,
+      "items": 2,
+      "steps": 401
+    },
+    {
+      "seed": 7023,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 15,
+      "items": 0,
+      "steps": 149
+    },
+    {
+      "seed": 7024,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 32,
+      "items": 1,
+      "steps": 201
+    },
+    {
+      "seed": 7025,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 52,
+      "items": 0,
+      "steps": 500
+    },
+    {
+      "seed": 7026,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0,
+      "kills": 1,
+      "bombs": 33,
+      "items": 3,
+      "steps": 198
+    },
+    {
+      "seed": 7027,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 53,
+      "items": 2,
+      "steps": 327
+    },
+    {
+      "seed": 7028,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 89,
+      "items": 1,
+      "steps": 500
+    },
+    {
+      "seed": 7029,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 17,
+      "items": 2,
+      "steps": 138
+    },
+    {
+      "seed": 7030,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 5,
+      "items": 1,
+      "steps": 42
+    },
+    {
+      "seed": 7031,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 56,
+      "items": 2,
+      "steps": 354
+    },
+    {
+      "seed": 7032,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 11,
+      "items": 0,
+      "steps": 99
+    },
+    {
+      "seed": 7033,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 35,
+      "items": 2,
+      "steps": 255
+    },
+    {
+      "seed": 7034,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0,
+      "kills": 1,
+      "bombs": 9,
+      "items": 0,
+      "steps": 82
+    },
+    {
+      "seed": 7035,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 51,
+      "items": 1,
+      "steps": 500
+    },
+    {
+      "seed": 7036,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 95,
+      "items": 4,
+      "steps": 500
+    },
+    {
+      "seed": 7037,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 5,
+      "items": 1,
+      "steps": 46
+    },
+    {
+      "seed": 7038,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 87,
+      "items": 4,
+      "steps": 481
+    },
+    {
+      "seed": 7039,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 24,
+      "items": 4,
+      "steps": 158
+    },
+    {
+      "seed": 7040,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 1,
+      "bombs": 2,
+      "items": 0,
+      "steps": 18
+    },
+    {
+      "seed": 7041,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 81,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7042,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 87,
+      "items": 4,
+      "steps": 500
+    },
+    {
+      "seed": 7043,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 73,
+      "items": 3,
+      "steps": 500
+    },
+    {
+      "seed": 7044,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 50,
+      "items": 1,
+      "steps": 500
+    },
+    {
+      "seed": 7045,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 44,
+      "items": 1,
+      "steps": 268
+    },
+    {
+      "seed": 7046,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 9,
+      "items": 0,
+      "steps": 76
+    },
+    {
+      "seed": 7047,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 45,
+      "items": 1,
+      "steps": 438
+    },
+    {
+      "seed": 7048,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 2,
+      "items": 0,
+      "steps": 26
+    },
+    {
+      "seed": 7049,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 85,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7050,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 48,
+      "items": 1,
+      "steps": 500
+    },
+    {
+      "seed": 7051,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 10,
+      "items": 2,
+      "steps": 68
+    },
+    {
+      "seed": 7052,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 5,
+      "items": 0,
+      "steps": 40
+    },
+    {
+      "seed": 7053,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 37,
+      "items": 0,
+      "steps": 354
+    },
+    {
+      "seed": 7054,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 41
+    },
+    {
+      "seed": 7055,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 54,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7056,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 52,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7057,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 9,
+      "items": 1,
+      "steps": 90
+    },
+    {
+      "seed": 7058,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 49,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7059,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 90,
+      "items": 1,
+      "steps": 500
+    },
+    {
+      "seed": 7060,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 1,
+      "bombs": 81,
+      "items": 3,
+      "steps": 482
+    },
+    {
+      "seed": 7061,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 20,
+      "items": 2,
+      "steps": 166
+    },
+    {
+      "seed": 7062,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 0,
+      "steps": 34
+    },
+    {
+      "seed": 7063,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 55,
+      "items": 0,
+      "steps": 500
+    },
+    {
+      "seed": 7064,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 12,
+      "items": 3,
+      "steps": 84
+    },
+    {
+      "seed": 7065,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 6,
+      "items": 0,
+      "steps": 66
+    },
+    {
+      "seed": 7066,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 89,
+      "items": 4,
+      "steps": 500
+    },
+    {
+      "seed": 7067,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 52,
+      "items": 1,
+      "steps": 500
+    },
+    {
+      "seed": 7068,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 10,
+      "items": 1,
+      "steps": 101
+    },
+    {
+      "seed": 7069,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 1,
+      "steps": 33
+    },
+    {
+      "seed": 7070,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 81,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7071,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 24,
+      "items": 3,
+      "steps": 135
+    },
+    {
+      "seed": 7072,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 4,
+      "items": 1,
+      "steps": 51
+    },
+    {
+      "seed": 7073,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 27,
+      "items": 4,
+      "steps": 157
+    },
+    {
+      "seed": 7074,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 7,
+      "items": 0,
+      "steps": 64
+    },
+    {
+      "seed": 7075,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 83,
+      "items": 3,
+      "steps": 500
+    },
+    {
+      "seed": 7076,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 94,
+      "items": 4,
+      "steps": 500
+    },
+    {
+      "seed": 7077,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 3,
+      "items": 1,
+      "steps": 25
+    },
+    {
+      "seed": 7078,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 19,
+      "items": 2,
+      "steps": 188
+    },
+    {
+      "seed": 7079,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 44,
+      "items": 1,
+      "steps": 411
+    },
+    {
+      "seed": 7080,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 19,
+      "items": 2,
+      "steps": 167
+    },
+    {
+      "seed": 7081,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 50,
+      "items": 2,
+      "steps": 484
+    },
+    {
+      "seed": 7082,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 19,
+      "items": 3,
+      "steps": 150
+    },
+    {
+      "seed": 7083,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 52,
+      "items": 0,
+      "steps": 500
+    },
+    {
+      "seed": 7084,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 85,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7085,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 12,
+      "items": 0,
+      "steps": 110
+    },
+    {
+      "seed": 7086,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 50,
+      "items": 0,
+      "steps": 500
+    },
+    {
+      "seed": 7087,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 46,
+      "items": 3,
+      "steps": 316
+    },
+    {
+      "seed": 7088,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 51,
+      "items": 0,
+      "steps": 500
+    },
+    {
+      "seed": 7089,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 28,
+      "items": 4,
+      "steps": 178
+    },
+    {
+      "seed": 7090,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 51,
+      "items": 0,
+      "steps": 500
+    },
+    {
+      "seed": 7091,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 53,
+      "items": 2,
+      "steps": 324
+    },
+    {
+      "seed": 7092,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1,
+      "kills": 0,
+      "bombs": 3,
+      "items": 0,
+      "steps": 30
+    },
+    {
+      "seed": 7093,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 51,
+      "items": 2,
+      "steps": 500
+    },
+    {
+      "seed": 7094,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 50,
+      "items": 1,
+      "steps": 500
+    },
+    {
+      "seed": 7095,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 39,
+      "items": 3,
+      "steps": 269
+    },
+    {
+      "seed": 7096,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 53,
+      "items": 3,
+      "steps": 336
+    },
+    {
+      "seed": 7097,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0,
+      "kills": 1,
+      "bombs": 4,
+      "items": 1,
+      "steps": 26
+    },
+    {
+      "seed": 7098,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 6,
+      "items": 0,
+      "steps": 48
+    },
+    {
+      "seed": 7099,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0,
+      "kills": 0,
+      "bombs": 16,
+      "items": 0,
+      "steps": 165
+    }
+  ],
+  "suicide_traces": [
+    {
+      "seed": 7003,
+      "aid": 1,
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          0,
+          0,
+          2,
+          0,
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "trace": [
+        {
+          "step": 1,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 2,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 5,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            5,
+            5
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 3,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              7,
+              2
+            ],
+            [
+              2,
+              7,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 4,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              6,
+              2
+            ],
+            [
+              2,
+              7,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 5,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            0,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              5,
+              2
+            ],
+            [
+              2,
+              7,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 6,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            0,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              4,
+              2
+            ],
+            [
+              2,
+              7,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 7,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            3,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              3,
+              2
+            ],
+            [
+              2,
+              7,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 8,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              7,
+              1,
+              2,
+              2
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 9,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            0,
+            0
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              1,
+              2
+            ],
+            [
+              2,
+              7,
+              1,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 10,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            5,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 11,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            3,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              7,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 12,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              6,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 13,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              5,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 14,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              4,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 15,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              3,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 16,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            0,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              2,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 17,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 18,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 5,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            5
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 19,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            5,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 20,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              6,
+              2
+            ],
+            [
+              3,
+              1,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 21,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              5,
+              2
+            ],
+            [
+              3,
+              1,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 22,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            4,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              4,
+              2
+            ],
+            [
+              3,
+              1,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 23,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              3,
+              2
+            ],
+            [
+              3,
+              1,
+              0,
+              4,
+              2
+            ]
+          ],
+          "danger": 3
+        },
+        {
+          "step": 24,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            0,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              2,
+              2
+            ],
+            [
+              3,
+              1,
+              0,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 25,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            3,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              7,
+              1,
+              1,
+              2
+            ],
+            [
+              3,
+              1,
+              0,
+              2,
+              2
+            ]
+          ],
+          "danger": 1
+        },
+        {
+          "step": 26,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            4,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              1,
+              0,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 27,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            5,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 28,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            3,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              6,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 29,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            3,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              5,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 30,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              4,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 31,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              3,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 32,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              3,
+              2
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 33,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 0,
+          "agents": [
+            [
+              3,
+              2
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            0
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              1,
+              2
+            ],
+            [
+              1,
+              3,
+              0,
+              2,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 34,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 5,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              1,
+              3,
+              0,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 35,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 0,
+          "agents": [
+            [
+              4,
+              3
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            0
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 36,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            5,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 37,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              5,
+              3
+            ],
+            [
+              3,
+              3,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 38,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 3,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            1,
+            3
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              4,
+              3
+            ],
+            [
+              3,
+              3,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 39,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            3,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              3,
+              3
+            ],
+            [
+              3,
+              3,
+              0,
+              5,
+              3
+            ]
+          ],
+          "danger": 3
+        },
+        {
+          "step": 40,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            3,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              2,
+              3
+            ],
+            [
+              3,
+              3,
+              0,
+              4,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 41,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              1,
+              3
+            ],
+            [
+              3,
+              3,
+              0,
+              3,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 42,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            3,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              3,
+              0,
+              2,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 43,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              3,
+              0,
+              1,
+              3
+            ],
+            [
+              1,
+              6,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 44,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            0,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 45,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              5,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 46,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              4,
+              3
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 47,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              4,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            5,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              3,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 48,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              4,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              2,
+              3
+            ],
+            [
+              4,
+              1,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 49,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              6,
+              1,
+              1,
+              3
+            ],
+            [
+              4,
+              1,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 50,
+          "pos": [
+            3,
+            5
+          ],
+          "action": 3,
+          "agents": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              5,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 51,
+          "pos": [
+            3,
+            4
+          ],
+          "action": 5,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "actions": [
+            2,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              4,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 52,
+          "pos": [
+            3,
+            4
+          ],
+          "action": 3,
+          "agents": [
+            [
+              4,
+              3
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              3,
+              3
+            ],
+            [
+              3,
+              4,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 53,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 1,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              2,
+              3
+            ],
+            [
+              3,
+              4,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 54,
+          "pos": [
+            2,
+            3
+          ],
+          "action": 1,
+          "agents": [
+            [
+              6,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "actions": [
+            5,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              1,
+              3
+            ],
+            [
+              3,
+              4,
+              1,
+              5,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 55,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 4,
+          "agents": [
+            [
+              6,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "actions": [
+            1,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              4,
+              1,
+              4,
+              3
+            ],
+            [
+              6,
+              3,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 56,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 3,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              4,
+              1,
+              3,
+              3
+            ],
+            [
+              6,
+              3,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 57,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 3,
+          "agents": [
+            [
+              5,
+              4
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "actions": [
+            5,
+            3
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              4,
+              1,
+              2,
+              3
+            ],
+            [
+              6,
+              3,
+              0,
+              5,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 58,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 4,
+          "agents": [
+            [
+              5,
+              4
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "actions": [
+            3,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              4,
+              1,
+              1,
+              3
+            ],
+            [
+              6,
+              3,
+              0,
+              4,
+              3
+            ],
+            [
+              5,
+              4,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 59,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 5,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "actions": [
+            1,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              6,
+              3,
+              0,
+              3,
+              3
+            ],
+            [
+              5,
+              4,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 60,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 4,
+          "agents": [
+            [
+              4,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "actions": [
+            1,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              6,
+              3,
+              0,
+              2,
+              3
+            ],
+            [
+              5,
+              4,
+              0,
+              5,
+              3
+            ],
+            [
+              1,
+              3,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 61,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "actions": [
+            3,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              6,
+              3,
+              0,
+              1,
+              3
+            ],
+            [
+              5,
+              4,
+              0,
+              4,
+              3
+            ],
+            [
+              1,
+              3,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 62,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              2
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            3,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              4,
+              0,
+              3,
+              3
+            ],
+            [
+              1,
+              3,
+              1,
+              5,
+              3
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 63,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              4,
+              0,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              1,
+              4,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 64,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              4,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              4,
+              0,
+              1,
+              3
+            ],
+            [
+              1,
+              3,
+              1,
+              3,
+              3
+            ]
+          ],
+          "danger": 3
+        },
+        {
+          "step": 65,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              5,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            5,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              3,
+              1,
+              2,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 66,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              5,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              3,
+              1,
+              1,
+              3
+            ],
+            [
+              5,
+              1,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 1
+        },
+        {
+          "step": 67,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 5,
+          "agents": [
+            [
+              4,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              5,
+              1,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 68,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            2
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              1,
+              0,
+              5,
+              3
+            ],
+            [
+              2,
+              5,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 69,
+          "pos": [
+            3,
+            5
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "actions": [
+            5,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              1,
+              0,
+              4,
+              3
+            ],
+            [
+              2,
+              5,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 70,
+          "pos": [
+            3,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "actions": [
+            4,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              1,
+              0,
+              3,
+              3
+            ],
+            [
+              2,
+              5,
+              1,
+              5,
+              3
+            ],
+            [
+              3,
+              2,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 71,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              1,
+              0,
+              2,
+              3
+            ],
+            [
+              2,
+              5,
+              1,
+              4,
+              3
+            ],
+            [
+              3,
+              2,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 72,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              1,
+              0,
+              1,
+              3
+            ],
+            [
+              2,
+              5,
+              1,
+              3,
+              3
+            ],
+            [
+              3,
+              2,
+              0,
+              5,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 73,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            0,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              2,
+              3
+            ],
+            [
+              3,
+              2,
+              0,
+              4,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 74,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              1,
+              3
+            ],
+            [
+              3,
+              2,
+              0,
+              3,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 75,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            0,
+            3
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              2,
+              0,
+              2,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 76,
+          "pos": [
+            3,
+            6
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "actions": [
+            4,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              2,
+              0,
+              1,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 77,
+          "pos": [
+            3,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              5
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "actions": [
+            4,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              6,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 78,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              1,
+              6
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              6,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 79,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            5,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              6,
+              1,
+              5,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 80,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              7
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            3,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              6,
+              1,
+              4,
+              3
+            ],
+            [
+              1,
+              7,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 81,
+          "pos": [
+            4,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              1,
+              6
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "actions": [
+            3,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              6,
+              1,
+              3,
+              3
+            ],
+            [
+              1,
+              7,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 82,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              5
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              6,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              7,
+              0,
+              5,
+              3
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 83,
+          "pos": [
+            4,
+            7
+          ],
+          "action": 0,
+          "agents": [
+            [
+              2,
+              5
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            0
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              6,
+              1,
+              1,
+              3
+            ],
+            [
+              1,
+              7,
+              0,
+              4,
+              3
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 84,
+          "pos": [
+            4,
+            7
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              5
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            0
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              7,
+              0,
+              3,
+              3
+            ]
+          ],
+          "danger": 3
+        },
+        {
+          "step": 85,
+          "pos": [
+            4,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              5
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              7,
+              0,
+              2,
+              3
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 86,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            5,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              7,
+              0,
+              1,
+              3
+            ]
+          ],
+          "danger": 1
+        },
+        {
+          "step": 87,
+          "pos": [
+            3,
+            6
+          ],
+          "action": 0,
+          "agents": [
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "actions": [
+            1,
+            0
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 88,
+          "pos": [
+            3,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "actions": [
+            1,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 89,
+          "pos": [
+            3,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              1,
+              5
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            3,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              0,
+              5,
+              3
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 90,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            5
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              0,
+              4,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 91,
+          "pos": [
+            2,
+            7
+          ],
+          "action": 1,
+          "agents": [
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            3,
+            1
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              0,
+              3,
+              3
+            ],
+            [
+              2,
+              7,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 92,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            5,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              0,
+              2,
+              3
+            ],
+            [
+              2,
+              7,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 93,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            3,
+            4
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              0,
+              1,
+              3
+            ],
+            [
+              2,
+              7,
+              1,
+              5,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 94,
+          "pos": [
+            1,
+            7
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              4,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              6,
+              3
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 95,
+          "pos": [
+            1,
+            6
+          ],
+          "action": 3,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              3,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              5,
+              3
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 96,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              4,
+              3
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 97,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              4,
+              3
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              7,
+              1,
+              1,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              3,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 98,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              2,
+              3
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 99,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              5,
+              4
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              1,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 100,
+          "pos": [
+            3,
+            5
+          ],
+          "action": 5,
+          "agents": [
+            [
+              5,
+              5
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "actions": [
+            5,
+            5
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 101,
+          "pos": [
+            3,
+            5
+          ],
+          "action": 3,
+          "agents": [
+            [
+              5,
+              5
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "actions": [
+            3,
+            3
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              5,
+              0,
+              7,
+              3
+            ],
+            [
+              3,
+              5,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 102,
+          "pos": [
+            3,
+            4
+          ],
+          "action": 3,
+          "agents": [
+            [
+              5,
+              4
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "actions": [
+            3,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              5,
+              0,
+              6,
+              3
+            ],
+            [
+              3,
+              5,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 103,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              5,
+              0,
+              5,
+              3
+            ],
+            [
+              3,
+              5,
+              1,
+              5,
+              3
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 104,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              5,
+              0,
+              4,
+              3
+            ],
+            [
+              3,
+              5,
+              1,
+              4,
+              3
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 105,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              5,
+              0,
+              3,
+              3
+            ],
+            [
+              3,
+              5,
+              1,
+              3,
+              3
+            ]
+          ],
+          "danger": 3
+        },
+        {
+          "step": 106,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              5,
+              0,
+              2,
+              3
+            ],
+            [
+              3,
+              5,
+              1,
+              2,
+              3
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 107,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              5,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              5,
+              5,
+              0,
+              1,
+              3
+            ],
+            [
+              3,
+              5,
+              1,
+              1,
+              3
+            ]
+          ],
+          "danger": 1
+        }
+      ]
+    },
+    {
+      "seed": 7006,
+      "aid": 0,
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          2,
+          2,
+          2,
+          0,
+          2,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "trace": [
+        {
+          "step": 1,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 2,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 5,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            5,
+            5
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 3,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            1,
+            4
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              7,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 4,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              6,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 5,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            3,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              5,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 6,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              4,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 7,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            3,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              3,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 8,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              2,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              2,
+              2
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 9,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            0,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              1,
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              6,
+              1,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 10,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            5,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 11,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            3,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              7,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 12,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              6,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 13,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            3
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              5,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 14,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              4,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 15,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              3,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 16,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "actions": [
+            1,
+            4
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              2,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 17,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              1,
+              2
+            ],
+            [
+              3,
+              7,
+              1,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 18,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 5,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "actions": [
+            5,
+            4
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 19,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            5
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              1,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 20,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            3
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              1,
+              0,
+              6,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 21,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              1,
+              0,
+              5,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 22,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "actions": [
+            3,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              1,
+              0,
+              4,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 23,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              1,
+              0,
+              3,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 3
+        },
+        {
+          "step": 24,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "actions": [
+            3,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              1,
+              0,
+              2,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 25,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              1,
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              5,
+              1,
+              2,
+              2
+            ]
+          ],
+          "danger": 1
+        },
+        {
+          "step": 26,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "actions": [
+            5,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              1,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 27,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "actions": [
+            3,
+            5
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 28,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              6,
+              2
+            ],
+            [
+              2,
+              3,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 29,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "actions": [
+            2,
+            4
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              5,
+              2
+            ],
+            [
+              2,
+              3,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 30,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "actions": [
+            1,
+            4
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              4,
+              2
+            ],
+            [
+              2,
+              3,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 31,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              3,
+              2
+            ],
+            [
+              2,
+              3,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 32,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            5
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              3,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 33,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            1
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              2,
+              0,
+              1,
+              2
+            ],
+            [
+              2,
+              3,
+              1,
+              2,
+              2
+            ],
+            [
+              2,
+              5,
+              1,
+              7,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 34,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            4
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              2,
+              3,
+              1,
+              1,
+              2
+            ],
+            [
+              2,
+              5,
+              1,
+              6,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 35,
+          "pos": [
+            4,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              4,
+              1
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            1,
+            4
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 36,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 37,
+          "pos": [
+            4,
+            1
+          ],
+          "action": 5,
+          "agents": [
+            [
+              4,
+              1
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            5,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 38,
+          "pos": [
+            4,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              2,
+              2
+            ],
+            [
+              4,
+              1,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 39,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            false,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              2,
+              5,
+              1,
+              1,
+              2
+            ],
+            [
+              4,
+              1,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 40,
+          "pos": [
+            3,
+            2
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 41,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "actions": [
+            1,
+            3
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 42,
+          "pos": [
+            2,
+            3
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "actions": [
+            1,
+            5
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 43,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              2,
+              2
+            ],
+            [
+              3,
+              5,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 44,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              1,
+              0,
+              1,
+              2
+            ],
+            [
+              3,
+              5,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 45,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "actions": [
+            5,
+            1
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              5,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 46,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "actions": [
+            3,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              4,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 47,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            2,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              3,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 48,
+          "pos": [
+            2,
+            3
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            3
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 49,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "actions": [
+            2,
+            4
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              1,
+              3
+            ],
+            [
+              1,
+              4,
+              0,
+              4,
+              2
+            ]
+          ],
+          "danger": 4
+        },
+        {
+          "step": 50,
+          "pos": [
+            2,
+            3
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            2
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              3,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 51,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              2,
+              2
+            ]
+          ],
+          "danger": 2
+        },
+        {
+          "step": 52,
+          "pos": [
+            2,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              4,
+              0,
+              1,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 53,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            5
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            true,
+            true,
+            true
+          ],
+          "bombs": [],
+          "danger": 0
+        },
+        {
+          "step": 54,
+          "pos": [
+            2,
+            3
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              7
+            ]
+          ],
+          "actions": [
+            1,
+            1
+          ],
+          "mask": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            true
+          ],
+          "bombs": [
+            [
+              4,
+              7,
+              1,
+              7,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 55,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "actions": [
+            5,
+            3
+          ],
+          "mask": [
+            true,
+            false,
+            true,
+            true,
+            true,
+            true
+          ],
+          "bombs": [
+            [
+              4,
+              7,
+              1,
+              6,
+              3
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 56,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "actions": [
+            2,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              7,
+              1,
+              5,
+              3
+            ],
+            [
+              1,
+              3,
+              0,
+              7,
+              2
+            ]
+          ],
+          "danger": 7
+        },
+        {
+          "step": 57,
+          "pos": [
+            2,
+            3
+          ],
+          "action": 2,
+          "agents": [
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "actions": [
+            2,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              7,
+              1,
+              4,
+              3
+            ],
+            [
+              1,
+              3,
+              0,
+              6,
+              2
+            ]
+          ],
+          "danger": 6
+        },
+        {
+          "step": 58,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 3,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              5
+            ]
+          ],
+          "actions": [
+            3,
+            2
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              7,
+              1,
+              3,
+              3
+            ],
+            [
+              1,
+              3,
+              0,
+              5,
+              2
+            ]
+          ],
+          "danger": 5
+        },
+        {
+          "step": 59,
+          "pos": [
+            3,
+            2
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              2
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            5
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              7,
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              3,
+              0,
+              4,
+              2
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 60,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 3,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "actions": [
+            3,
+            1
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              4,
+              7,
+              1,
+              1,
+              3
+            ],
+            [
+              1,
+              3,
+              0,
+              3,
+              2
+            ],
+            [
+              5,
+              5,
+              1,
+              7,
+              4
+            ]
+          ],
+          "danger": 3
+        },
+        {
+          "step": 61,
+          "pos": [
+            3,
+            2
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            1
+          ],
+          "mask": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              3,
+              0,
+              2,
+              2
+            ],
+            [
+              5,
+              5,
+              1,
+              6,
+              4
+            ]
+          ],
+          "danger": 0
+        },
+        {
+          "step": 62,
+          "pos": [
+            3,
+            3
+          ],
+          "action": 4,
+          "agents": [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "actions": [
+            4,
+            3
+          ],
+          "mask": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "bombs": [
+            [
+              1,
+              3,
+              0,
+              1,
+              2
+            ],
+            [
+              5,
+              5,
+              1,
+              5,
+              4
+            ]
+          ],
+          "danger": 1
+        }
+      ]
+    }
+  ]
+}

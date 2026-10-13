@@ -26,18 +26,24 @@ from __future__ import annotations
 import argparse
 import os
 import glob
+import json
+from copy import deepcopy
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from bomberman_env import BombermanFFAEnv, NUM_ACTIONS, ACTION_BOMB, ACTION_STOP, _MOVE_DELTA
+from bomberman_env import BombermanFFAEnv, NUM_ACTIONS, OBS_CHANNELS, ACTION_BOMB, ACTION_STOP, WOODEN_WALL, _MOVE_DELTA
 from rule_based_bot import (
     RuleBasedAgent,
     _build_danger_map,
-    _can_bomb_and_escape,
+    _safe_action_mask,
     _bfs_safe_cell,
+    _bfs_toward_opponent,
+    _bfs_toward_wood,
+    _bfs_toward_item,
+    _bomb_escape_pressure,
 )
 
 
@@ -46,10 +52,10 @@ from rule_based_bot import (
 class ActorCriticNet(nn.Module):
     """
     Small CNN shared trunk -> actor head (action logits) + critic head (state value).
-    Input: (batch, 8, H, W) observation from BombermanFFAEnv._get_obs.
+    Input: (batch, OBS_CHANNELS, H, W) from BombermanFFAEnv._get_obs.
     """
 
-    def __init__(self, in_channels: int = 8, board_size: int = 11,
+    def __init__(self, in_channels: int = OBS_CHANNELS, board_size: int = 11,
                  num_actions: int = NUM_ACTIONS):
         super().__init__()
         self.board_size = board_size
@@ -92,33 +98,69 @@ def obs_batch_to_tensor(obs_list, device) -> torch.Tensor:
 
 
 def get_action_mask(env: BombermanFFAEnv, agent_id: int) -> list[bool]:
-    """Return a boolean mask of valid actions for the given agent."""
-    mask = [True] * NUM_ACTIONS
+    """Shared timed survival filter for training, evaluation, GUI and RuleBots."""
+    return _safe_action_mask(env, agent_id)
+
+
+def get_attack_action(env: BombermanFFAEnv, agent_id: int, danger, mask):
+    """Prefer bomb positions that restrict timed escape, then upgrades or opening routes."""
     agent = env.agents[agent_id]
     r, c = agent.row, agent.col
-    danger = _build_danger_map(env)
+    if danger[r, c] > 0:
+        return ACTION_BOMB if mask[ACTION_BOMB] else None
+    close = any(a.alive and a.agent_id != agent_id and
+                abs(a.row - r) + abs(a.col - c) <= agent.blast_range + 1
+                for a in env.agents)
+    if close:
+        base = env._forecast_blasts(min_horizon=env.bomb_timer + env.flame_duration - 1)
+        here = _bomb_escape_pressure(env, agent_id, r, c, base) if mask[ACTION_BOMB] else 0.0
+        best, move = here, None
+        occupied = {(a.row, a.col) for a in env.agents if a.alive and a.agent_id != agent_id}
+        for action, (dr, dc) in _MOVE_DELTA.items():
+            pos = (r + dr, c + dc)
+            if not mask[action] or pos in occupied or danger[pos]:
+                continue
+            pressure = _bomb_escape_pressure(env, agent_id, *pos, base)
+            if pressure > best + 1e-6:
+                best, move = pressure, action
+        if move is not None:
+            return move
+        if here > 0:
+            return ACTION_BOMB
+    blast = env._blast_cells(r, c, agent.blast_range)
+    if mask[ACTION_BOMB] and any(
+        a.alive and a.agent_id != agent_id and (a.row, a.col) in blast
+        for a in env.agents
+    ):
+        return ACTION_BOMB
+    move = _bfs_toward_item(env, agent_id, danger)
+    if move is not None and mask[move]:
+        return move
+    move = _bfs_toward_opponent(env, agent_id, r, c, danger, action_mask=mask)
+    if move is not None and mask[move]:
+        return move
+    if mask[ACTION_BOMB] and any(env.grid[pos] == WOODEN_WALL for pos in blast):
+        return ACTION_BOMB
+    move = _bfs_toward_wood(env, r, c, danger)
+    return move if move is not None and mask[move] else None
 
-    # 1. Do not walk into walls or active flames or cells exploding in 1-2 ticks
-    for a, (dr, dc) in _MOVE_DELTA.items():
-        nr, nc = r + dr, c + dc
-        if not env._is_walkable(nr, nc) or (nr, nc) in env.flames:
-            mask[a] = False
-        elif danger[nr, nc] in (1, 2):
-            mask[a] = False
 
-    # 2. Do not stand still on an exploding bomb
-    if danger[r, c] in (1, 2):
-        mask[ACTION_STOP] = False
+def _supervision_losses(escape, combat, navigation):
+    """Separate means keep rare combat labels from being diluted by navigation."""
+    return tuple(torch.stack(group).mean() if group else 0.0
+                 for group in (escape, combat, navigation))
 
-    # 3. Only place bomb if ammo available, no bomb on cell, and can escape!
-    if agent.bombs_placed >= agent.ammo or any(b.row == r and b.col == c for b in env.bombs):
-        mask[ACTION_BOMB] = False
-    elif not _can_bomb_and_escape(env, agent_id, r, c, danger):
-        mask[ACTION_BOMB] = False
 
-    if not any(mask):
-        mask[ACTION_STOP] = True
-    return mask
+def _combat_reward(reward: float, agent_id: int, info, episode_kills: int):
+    """Reward owned eliminations; a token bomb cannot unlock a passive win bonus."""
+    kills = info["kills"]
+    if agent_id in info.get("self_blast_deaths", []) or (agent_id, agent_id) in kills:
+        reward -= 1.5  # -1 from env, -2.5 total for suicide.
+    if info["alive"][agent_id]:
+        reward += 3.0 * sum(k == agent_id and v != agent_id for k, v in kills)
+        if info["episode_done"] and sum(info["alive"]) == 1 and episode_kills == 0:
+            reward -= 10.0
+    return reward
 
 
 # ─────────────────── opponent wrapper (snapshot or rule-based) ────────────
@@ -157,13 +199,17 @@ class RuleBasedOpponent:
 # ─────────────────── opponent pool management ─────────────────────────────
 
 def smart_load_weights(net: ActorCriticNet, checkpoint_path: str, device):
-    """Load checkpoint weights with automatic spatial interpolation if board_size differs."""
+    """Preserve old policies: zero new input weights; interpolate different board sizes."""
     sd = torch.load(checkpoint_path, map_location=device, weights_only=True)
     curr_sd = net.state_dict()
     for k, v in sd.items():
         if k in curr_sd:
             if v.shape == curr_sd[k].shape:
                 curr_sd[k].copy_(v)
+            elif k == "conv.0.weight" and v.shape[1] < curr_sd[k].shape[1]:
+                curr_sd[k].zero_()
+                curr_sd[k][:, :v.shape[1]].copy_(v)
+                print(f"Expanded observation channels {v.shape[1]} -> {curr_sd[k].shape[1]}")
             elif k == "trunk_fc.0.weight":
                 # Spatial interpolation from (256, 64*old_s*old_s) to (256, 64*new_s*new_s)
                 old_flat = v.shape[1]
@@ -225,7 +271,7 @@ def train(
     value_coef: float = 0.5,
     entropy_coef: float = 0.015,
     wall_destroy_bonus: float = 0.15,
-    max_steps: int = 300,
+    max_steps: int = 500,
     log_every: int = 50,
     snapshot_every: int = 200,
     checkpoint_dir: str = "checkpoints",
@@ -235,15 +281,20 @@ def train(
     on_episode=None,
     stop_event=None,
     run_report: bool = True,
+    seed: int | None = None,
+    validation_every: int = 250,
+    validation_episodes: int = 48,
+    validation_seed: int = 6000,
+    on_validation=None,
 ):
     """
     Unified training loop for phases C, D, E.
 
-    Phase C: Agent 0 = learning AC, Agent 1 = RuleBasedAgent (fixed).
+    Phase C: Rotate the learning corner against RuleBasedAgent.
              Reward shaping: +wall_destroy_bonus per wall destroyed.
-    Phase D: Agent 0 = learning AC, Agent 1 = random from opponent pool
+    Phase D: Rotate the learning corner against a random opponent from the pool
              (includes RuleBasedAgent + saved snapshots).
-    Phase E: Same as D but with num_agents=3 or 4.
+    Phase E: Same as D with num_agents=2, 3 or 4 and rotating learning corners.
 
     Optional GUI hooks: on_step(env, episode, learning_id, actions, opponents)
     and on_episode(metrics). A set stop_event discards the partial episode,
@@ -253,10 +304,15 @@ def train(
     assert phase in ("C", "D", "E"), f"Phase must be C, D, or E, got {phase}"
     if episodes < 1 or max_steps < 1 or log_every < 1 or snapshot_every < 1:
         raise ValueError("episodes, max_steps, log_every and snapshot_every must be positive")
+    if validation_every < 0 or validation_episodes < num_agents or validation_episodes % num_agents:
+        raise ValueError("validation_every must be nonnegative; validation_episodes must divide evenly across corners")
+    if seed is not None:
+        np.random.seed(seed)
+        torch.manual_seed(seed)
 
     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
-                          max_steps=max_steps)
-    net = ActorCriticNet(in_channels=8, board_size=board_size,
+                          max_steps=max_steps, seed=seed)
+    net = ActorCriticNet(board_size=board_size,
                          num_actions=NUM_ACTIONS).to(device)
 
     # Resume from checkpoint if specified, or auto warm-start for Phase D/E.
@@ -314,13 +370,73 @@ def train(
 
     # ── Best-model checkpointing ──
     best_wr = 0.0
+    best_active_wr = 0.0
+    best_episode = 0
+    best_score = (-float("inf"),)
     best_state_dict = None   # will hold state_dict of the best model seen
+    last_validation = None
+    suicide_limit = None
+    validation_enabled = validation_every > 0 and episodes >= validation_every
+
+    def validate_candidate(episode):
+        nonlocal best_wr, best_active_wr, best_episode, best_score, best_state_dict, last_validation, suicide_limit
+        from evaluate import evaluate_seeded
+        training_mode = net.training
+        # Rank checkpoints with the same CPU policy execution used by the GUI.
+        policy = SnapshotOpponent(deepcopy(net).to("cpu"), "cpu")
+        print(f"[Validation] ep {episode} | {validation_episodes} games, all corners, seed {validation_seed}", flush=True)
+        def progress(done, total):
+            if on_validation is not None:
+                on_validation({"episode": episode, "completed": done, "total": total})
+        try:
+            result = evaluate_seeded(lambda e, obs, aid: policy.select_action(obs[aid], e, aid),
+                                     board_size, num_agents, validation_episodes, validation_seed,
+                                     max_steps, stop_event, progress)
+        finally:
+            net.train(training_mode)
+        if result is None or (stop_event is not None and stop_event.is_set()):
+            return
+        last_validation = {k: v for k, v in result.items() if k != "games"}
+        last_validation["device"] = "cpu"
+        score = (result["active_win_rate"], -result["suicide_rate"], -result["draw_rate"],
+                 result["avg_kills"], result["win_rate"])
+        if suicide_limit is None:
+            suicide_limit = result["suicide_rate"]
+        safe_candidate = result["suicide_rate"] <= suicide_limit
+        selected = safe_candidate and score > best_score
+        last_validation["suicide_limit"] = suicide_limit
+        os.makedirs(checkpoint_dir, exist_ok=True)
+        tag = f"phaseE_{num_agents}a" if phase == "E" else f"phase{phase}"
+        if selected:
+            best_score, best_episode = score, episode
+            best_wr, best_active_wr = result["win_rate"], result["active_win_rate"]
+            best_state_dict = {k: v.clone() for k, v in net.state_dict().items()}
+            torch.save(best_state_dict, os.path.join(checkpoint_dir, f"best_{tag}.pt"))
+            if phase == "E":
+                torch.save(best_state_dict, os.path.join(checkpoint_dir, "best_phaseE.pt"))
+            with open(os.path.join(checkpoint_dir, "best_validation.json"), "w", encoding="utf-8") as handle:
+                json.dump({"episode": episode, **last_validation}, handle, indent=2)
+        with open(os.path.join(checkpoint_dir, "validation_metrics.jsonl"), "a", encoding="utf-8") as handle:
+            handle.write(json.dumps({"episode": episode, "selected": selected, **last_validation}) + "\n")
+        print(f"[Validation] ep {episode} | ActiveWR {result['active_win_rate']:.1f}% | "
+              f"Suicide {result['suicide_rate']:.1f}% | Draw {result['draw_rate']:.1f}% | best ep {best_episode}", flush=True)
+        if not safe_candidate:
+            print(f"[Validation] kept best: suicide exceeds warm-start limit {suicide_limit:.1f}%", flush=True)
+        if on_validation is not None:
+            on_validation({"episode": episode, "result": last_validation, "best_episode": best_episode})
+
+    if validation_enabled:
+        validate_candidate(0)  # Keep the warm-start if subsequent updates fail validation.
 
     # ── Logging buffers ──
     reward_history = []
-    win_history = []        # 1 = learning agent survived, 0 = didn't
+    win_history = []        # 1 = learning agent is the sole survivor
     bombs_history = []      # bombs placed by learning agent
     walls_history = []      # walls destroyed by learning agent's bombs
+    kills_history = []
+    active_win_history = []
+    suicide_history = []
+    combat_history = []
 
     for ep in range(1, episodes + 1):
         if stop_event is not None and stop_event.is_set():
@@ -328,8 +444,7 @@ def train(
         obs_list = env.reset()
         alive_mask = [True] * num_agents
 
-        # Learning agent: in Phase E, cycle corners across episodes so all corners are trained!
-        learning_aid = (ep - 1) % num_agents if phase == "E" else 0
+        learning_aid = (ep - 1) % num_agents
 
         # ── Decide opponents for this episode ──
         opponents = {}  # agent_id -> opponent object or None (learning agent)
@@ -357,8 +472,15 @@ def train(
         rewards_buf = []
         entropies_buf = []
         aux_losses_buf = []
+        combat_losses_buf = []
+        attack_losses_buf = []
         bombs_this_ep = 0
         walls_this_ep = 0
+        suicide_this_ep = False
+        items_this_ep = 0
+        attack_opportunities = attack_bombs = attack_labels = missing_attack_labels = 0
+        combat_labels = combat_bombs = 0
+        followup_labels = followup_bombs = 0
 
         for t in range(max_steps):
             if stop_event is not None and stop_event.is_set():
@@ -378,18 +500,40 @@ def train(
                 log_prob = dist.log_prob(action_t)
                 entropy = dist.entropy()
                 actions[learning_aid] = action_t.item()
-                if actions[learning_aid] == ACTION_BOMB:
-                    bombs_this_ep += 1
-
                 # Auxiliary escape supervision when in danger
                 r_l, c_l = env.agents[learning_aid].row, env.agents[learning_aid].col
                 d_map = _build_danger_map(env)
                 if d_map[r_l, c_l] > 0:
-                    esc_act = _bfs_safe_cell(env, r_l, c_l, d_map)
-                    if esc_act is not None and mask[esc_act]:
-                        aux_losses_buf.append(
-                            F.cross_entropy(m_logits, torch.tensor([esc_act], device=device))
-                        )
+                    if mask[ACTION_BOMB]:
+                        combat_losses_buf.append(F.cross_entropy(
+                            m_logits, torch.tensor([ACTION_BOMB], device=device)))
+                        followup_labels += 1
+                        followup_bombs += int(actions[learning_aid] == ACTION_BOMB)
+                        combat_labels += 1
+                        combat_bombs += int(actions[learning_aid] == ACTION_BOMB)
+                    else:
+                        esc_act = _bfs_safe_cell(env, r_l, c_l, d_map, action_mask=mask)
+                        if esc_act is not None and mask[esc_act]:
+                            aux_losses_buf.append(
+                                F.cross_entropy(m_logits, torch.tensor([esc_act], device=device))
+                            )
+                else:
+                    attack_act = get_attack_action(env, learning_aid, d_map, mask)
+                    opportunity = mask[ACTION_BOMB] and any(
+                        a.alive and a.agent_id != learning_aid and (a.row, a.col) in
+                        env._blast_cells(r_l, c_l, env.agents[learning_aid].blast_range)
+                        for a in env.agents)
+                    attack_opportunities += int(opportunity)
+                    attack_bombs += int(opportunity and actions[learning_aid] == ACTION_BOMB)
+                    attack_labels += int(attack_act is not None)
+                    missing_attack_labels += int(attack_act is None)
+                    if attack_act is not None:
+                        target_loss = F.cross_entropy(m_logits, torch.tensor([attack_act], device=device))
+                        combat = (attack_act == ACTION_BOMB and
+                                  _bomb_escape_pressure(env, learning_aid, r_l, c_l) > 0)
+                        combat_labels += int(combat)
+                        combat_bombs += int(combat and actions[learning_aid] == ACTION_BOMB)
+                        (combat_losses_buf if combat else attack_losses_buf).append(target_loss)
             else:
                 log_prob = None
                 value = None
@@ -409,46 +553,22 @@ def train(
                     # Snapshot opponent with action masking
                     actions[opp_id] = opp.select_action(obs_list[opp_id], env, opp_id)
 
-            # Record danger before step for reward shaping
-            if alive_mask[learning_aid]:
-                r_l, c_l = env.agents[learning_aid].row, env.agents[learning_aid].col
-                d_map_before = _build_danger_map(env)
-                danger_before = d_map_before[r_l, c_l]
-            else:
-                danger_before = 0
-
             # ── Step environment ──
             obs_list, rewards, dones, info = env.step(actions)
 
             # ── Reward shaping (anti-bomb-shyness & anti-kamikaze) ──
-            shaped_reward = rewards[learning_aid]
+            shaped_reward = _combat_reward(rewards[learning_aid], learning_aid, info,
+                                           env.agents[learning_aid].kills)
+            bombs_this_ep += learning_aid in info["bombs_placed"]
+            suicide_this_ep |= learning_aid in info.get("self_blast_deaths", []) or (learning_aid, learning_aid) in info["kills"]
+            items_this_ep += len(info["items_collected"].get(learning_aid, []))
 
-            # 1. Death / Suicide penalty (-1.0 from env - 1.5 = -2.5 total)
-            if alive_mask[learning_aid] and not info["alive"][learning_aid]:
-                was_suicide = any(killer == learning_aid and victim == learning_aid for killer, victim in info.get("kills", []))
-                if was_suicide:
-                    shaped_reward -= 1.5  # Heavy penalty for self-destruction
-
-            # 2. Bomb placement bonus (Phase C only to jumpstart exploration; in Phase D/E wall destruction is enough)
-            if phase == "C" and actions[learning_aid] == ACTION_BOMB and alive_mask[learning_aid]:
-                shaped_reward += 0.15
-
-            # 3. Wall destruction bonus
+            # Wall destruction bonus
             wd = info.get("walls_destroyed", {})
             if learning_aid in wd:
-                shaped_reward += wall_destroy_bonus * wd[learning_aid]
                 walls_this_ep += wd[learning_aid]
-
-            # 4. Safe escape bonus: stepped out of blast danger into safety
-            if alive_mask[learning_aid] and info["alive"][learning_aid]:
-                r1, c1 = env.agents[learning_aid].row, env.agents[learning_aid].col
-                if danger_before > 0 and _build_danger_map(env)[r1, c1] == 0:
-                    shaped_reward += 0.20
-
-            # 5. Anti-passivity: 0 bombs = 0 win bonus!
-            if info["episode_done"] and info["alive"][learning_aid] and not any(info["alive"][j] for j in range(num_agents) if j != learning_aid):
-                if bombs_this_ep == 0:
-                    shaped_reward -= 10.0  # +10.0 -> 0.0 (camping earns 0 reward)
+            if learning_aid in wd and info["alive"][learning_aid]:
+                shaped_reward += wall_destroy_bonus * wd[learning_aid]
 
             # ── Store transition for learning agent ──
             if alive_mask[learning_aid] and log_prob is not None:
@@ -468,6 +588,8 @@ def train(
             break
 
         # ── Compute loss (Monte-Carlo returns + advantage) ──
+        escape_loss, combat_loss, navigation_loss = _supervision_losses(
+            aux_losses_buf, combat_losses_buf, attack_losses_buf)
         if len(rewards_buf) > 0:
             values_t = torch.stack(values_buf)
             log_probs_t = torch.stack(log_probs_buf)
@@ -489,8 +611,7 @@ def train(
             # Linearly anneal entropy coefficient: full at start, 20% at end
             ent_coef_now = entropy_coef * max(0.2, 1.0 - 0.8 * ep / episodes)
             loss = policy_loss + value_coef * value_loss - ent_coef_now * entropy_bonus
-            if aux_losses_buf:
-                loss = loss + 0.5 * torch.stack(aux_losses_buf).mean()
+            loss = loss + 0.5 * escape_loss + 0.5 * combat_loss + 0.2 * navigation_loss
 
             optimizer.zero_grad()
             loss.backward()
@@ -498,6 +619,7 @@ def train(
             optimizer.step()
         else:
             loss = torch.zeros(())
+            policy_loss = value_loss = loss
 
         # ── Logging ──
         ep_reward = sum(rewards_buf) if rewards_buf else 0.0
@@ -508,21 +630,15 @@ def train(
         win_history.append(won)
         bombs_history.append(bombs_this_ep)
         walls_history.append(walls_this_ep)
+        kills_this_ep = env.agents[learning_aid].kills
+        active_win = int(won and kills_this_ep > 0)
+        kills_history.append(kills_this_ep)
+        active_win_history.append(active_win)
+        suicide_history.append(int(suicide_this_ep))
+        combat_history.append((combat_bombs, combat_labels))
 
-        # ── Best-model checkpointing ──
-        if len(win_history) >= 200:
-            rolling_wr = float(np.mean(win_history[-200:])) * 100
-            rolling_bombs = float(np.mean(bombs_history[-200:]))
-            # Only consider models that also place bombs
-            if rolling_wr > best_wr and rolling_bombs >= 0.5:
-                best_wr = rolling_wr
-                best_state_dict = {k: v.clone() for k, v in net.state_dict().items()}
-                os.makedirs(checkpoint_dir, exist_ok=True)
-                tag = f"phaseE_{num_agents}a" if phase == "E" else f"phase{phase}"
-                best_path = os.path.join(checkpoint_dir, f"best_{tag}.pt")
-                torch.save(best_state_dict, best_path)
-                if phase == "E":
-                    torch.save(best_state_dict, os.path.join(checkpoint_dir, "best_phaseE.pt"))
+        if validation_enabled and (ep % validation_every == 0 or ep == episodes):
+            validate_candidate(ep)
 
         # ── Save snapshot (Phase D/E) ──
         if phase in ("D", "E") and ep % snapshot_every == 0:
@@ -539,8 +655,22 @@ def train(
         if on_episode is not None:
             on_episode({"episode": ep, "reward": ep_reward, "win": won,
                         "bombs": bombs_this_ep, "walls": walls_this_ep,
+                        "kills": kills_this_ep, "active_win": active_win,
+                        "suicide": int(suicide_this_ep),
+                        "items": items_this_ep, "learner_steps": len(rewards_buf),
+                        "learning_aid": learning_aid, "draw": int(sum(alive_final) != 1),
+                        "attack_opportunities": attack_opportunities, "attack_bombs": attack_bombs,
+                        "attack_labels": attack_labels, "missing_attack_labels": missing_attack_labels,
+                        "combat_labels": combat_labels, "combat_bombs": combat_bombs,
+                        "followup_labels": followup_labels, "followup_bombs": followup_bombs,
+                        "policy_loss": float(policy_loss.detach()), "value_loss": float(value_loss.detach()),
+                        "escape_loss": float(escape_loss.detach()) if aux_losses_buf else 0.0,
+                        "combat_loss": float(combat_loss.detach()) if combat_losses_buf else 0.0,
+                        "navigation_loss": float(navigation_loss.detach()) if attack_losses_buf else 0.0,
                         "steps": info["step"], "loss": loss.item(),
-                        "lr": scheduler.get_last_lr()[0], "best_wr": best_wr})
+                        "lr": scheduler.get_last_lr()[0], "best_wr": best_wr,
+                        "best_active_wr": best_active_wr, "best_episode": best_episode,
+                        "validation": last_validation})
 
         # ── Print progress ──
         if ep % log_every == 0:
@@ -549,14 +679,19 @@ def train(
             avg_wr = float(np.mean(win_history[-n:])) * 100
             avg_bombs = float(np.mean(bombs_history[-n:]))
             avg_walls = float(np.mean(walls_history[-n:]))
+            avg_kills = float(np.mean(kills_history[-n:]))
+            active_wr = float(np.mean(active_win_history[-n:])) * 100
             cur_lr = scheduler.get_last_lr()[0]
             # Show best WR so far
-            best_tag = f" | best: {best_wr:.0f}%" if best_wr > 0 else ""
+            best_tag = f" | best validation active: {best_active_wr:.0f}%" if best_state_dict is not None else ""
+            combat_taken, combat_total = map(sum, zip(*combat_history[-n:]))
             print(f"[{phase}] ep {ep:5d} | "
                   f"WR: {avg_wr:5.1f}% | "
+                  f"active WR: {active_wr:5.1f}% | kills: {avg_kills:.2f} | "
                   f"reward: {avg_reward:+.3f} | "
                   f"bombs: {avg_bombs:.1f} | "
                   f"walls: {avg_walls:.1f} | "
+                  f"combat bombs: {combat_taken}/{combat_total} | "
                   f"loss: {loss.item():.4f} | "
                   f"lr: {cur_lr:.1e} | "
                   f"pool: {len(snapshot_pool)}{best_tag}")
@@ -566,28 +701,21 @@ def train(
     tag = f"phaseE_{num_agents}a" if phase == "E" else f"phase{phase}"
     final_path = os.path.join(checkpoint_dir, f"final_{tag}.pt")
     best_path = os.path.join(checkpoint_dir, f"best_{tag}.pt")
+    torch.save(net.state_dict(), final_path)
+    torch.save(best_state_dict if best_state_dict is not None else net.state_dict(), best_path)
+    if phase == "E":
+        torch.save(net.state_dict(), os.path.join(checkpoint_dir, "final_phaseE.pt"))
+        torch.save(best_state_dict if best_state_dict is not None else net.state_dict(),
+                   os.path.join(checkpoint_dir, "best_phaseE.pt"))
+    print(f"\nSaved final model to {final_path}\nSaved best model to {best_path} (best episode: {best_episode})")
     if phase == "C" and best_state_dict is not None:
-        torch.save(best_state_dict, final_path)
-        net.load_state_dict(best_state_dict)  # use best for gate checks
-        print(f"\nSaved BEST model (WR={best_wr:.1f}%) to {final_path}")
-    else:
-        torch.save(net.state_dict(), final_path)
-        if best_state_dict is not None:
-            torch.save(best_state_dict, best_path)
-        else:
-            torch.save(net.state_dict(), best_path)
-        if phase == "E":
-            torch.save(net.state_dict(), os.path.join(checkpoint_dir, "final_phaseE.pt"))
-            if best_state_dict is not None:
-                torch.save(best_state_dict, os.path.join(checkpoint_dir, "best_phaseE.pt"))
-            else:
-                torch.save(net.state_dict(), os.path.join(checkpoint_dir, "best_phaseE.pt"))
-        print(f"\nSaved final/best model to {final_path}")
+        net.load_state_dict(best_state_dict)  # use best for gate checks, after saving final
 
     # ── Final report & gate checks ──
     if run_report and win_history and not (stop_event is not None and stop_event.is_set()):
         _print_report(phase, len(win_history), board_size, num_agents,
                       win_history, reward_history, bombs_history, walls_history,
+                      kills_history, active_win_history,
                       snapshot_pool, env, net, device, checkpoint_dir)
 
     return net, reward_history, win_history
@@ -595,6 +723,7 @@ def train(
 
 def _print_report(phase, episodes, board_size, num_agents,
                   win_history, reward_history, bombs_history, walls_history,
+                  kills_history, active_win_history,
                   snapshot_pool, env, net, device, checkpoint_dir):
     """Print final statistics and gate checks."""
     print(f"\n{'=' * 65}")
@@ -612,8 +741,12 @@ def _print_report(phase, episodes, board_size, num_agents,
     print(f"  Final avg reward (last {last_n}): {final_reward:.3f}")
     print(f"  Final avg bombs  (last {last_n}): {final_bombs:.1f}")
     print(f"  Final avg walls  (last {last_n}): {final_walls:.1f}")
+    print(f"  Final avg kills  (last {last_n}): {np.mean(kills_history[-last_n:]):.2f}")
+    print(f"  Active win rate  (last {last_n}): {np.mean(active_win_history[-last_n:]) * 100:.1f}%")
 
     print(f"\n--- Gate Checks (Phase {phase}) ---")
+    combat_ok = any(kills_history[-last_n:]) and any(active_win_history[-last_n:])
+    print("  Owned eliminations and active wins: " + ("[PASS]" if combat_ok else "[FAIL]"))
 
     if phase == "C":
         # Gate: win rate >= 70% in last 200 episodes
@@ -709,10 +842,8 @@ def _render_demo_match(net: ActorCriticNet, board_size: int,
             m_logits_i = logits.masked_fill(~mask_ti, -1e9)
             a = torch.distributions.Categorical(logits=m_logits_i).sample().item()
             actions.append(a)
-            if a == ACTION_BOMB:
-                bombs_placed += 1
-
         obs_list, rewards, dones, info = env.step(actions)
+        bombs_placed += len(info["bombs_placed"])
         walls_broken += sum(info.get("walls_destroyed", {}).values())
 
         # Render frames at key events or intervals
@@ -728,7 +859,9 @@ def _render_demo_match(net: ActorCriticNet, board_size: int,
             surv_str = f"Agent {survivors[0]}" if len(survivors) == 1 else "Draw/None"
             print(f"\n  Match concluded at step {t} | Winner: {surv_str} | Bombs placed: {bombs_placed} | Walls destroyed: {walls_broken}")
             break
-    print("  Emergent Behavior Gate (active bombing, escaping, navigation): [PASS]")
+    kills = sum(a.kills for a in env.agents)
+    result = "[PASS]" if bombs_placed > 0 and kills > 0 else "[INCONCLUSIVE] (no owned elimination observed)"
+    print(f"  Demo combat: {bombs_placed} bombs, {kills} owned kills {result}")
     net.train()
 
 
@@ -916,7 +1049,7 @@ if __name__ == "__main__":
     parser.add_argument("--episodes", type=int, default=3000)
     parser.add_argument("--board_size", type=int, default=9)
     parser.add_argument("--num_agents", type=int, default=2)
-    parser.add_argument("--max_steps", type=int, default=300)
+    parser.add_argument("--max_steps", type=int, default=500)
     parser.add_argument("--lr", type=float, default=3e-4)
     parser.add_argument("--wall_destroy_bonus", type=float, default=0.15,
                         help="Reward bonus per wall destroyed (anti-bomb-shyness)")
@@ -926,18 +1059,35 @@ if __name__ == "__main__":
     parser.add_argument("--resume_from", type=str, default="",
                         help="Path to checkpoint to resume from")
     parser.add_argument("--log_every", type=int, default=50)
+    parser.add_argument("--seed", type=int, default=None, help="Reproducible training seed")
+    parser.add_argument("--validation_every", type=int, default=250)
+    parser.add_argument("--validation_episodes", type=int, default=48)
+    parser.add_argument("--validation_seed", type=int, default=6000)
     args = parser.parse_args()
 
-    train(
-        phase=args.phase,
-        episodes=args.episodes,
-        board_size=args.board_size,
-        num_agents=args.num_agents,
-        max_steps=args.max_steps,
-        lr=args.lr,
-        wall_destroy_bonus=args.wall_destroy_bonus,
-        snapshot_every=args.snapshot_every,
-        checkpoint_dir=args.checkpoint_dir,
-        resume_from=args.resume_from,
-        log_every=args.log_every,
-    )
+    os.makedirs(args.checkpoint_dir, exist_ok=True)
+    with open(os.path.join(args.checkpoint_dir, "config.json"), "w", encoding="utf-8") as handle:
+        json.dump(vars(args), handle, indent=2)
+    with open(os.path.join(args.checkpoint_dir, "metrics.jsonl"), "a", encoding="utf-8") as metrics_file:
+        def write_metrics(metrics):
+            metrics_file.write(json.dumps(metrics) + "\n")
+            metrics_file.flush()
+
+        train(
+            phase=args.phase,
+            episodes=args.episodes,
+            board_size=args.board_size,
+            num_agents=args.num_agents,
+            max_steps=args.max_steps,
+            lr=args.lr,
+            wall_destroy_bonus=args.wall_destroy_bonus,
+            snapshot_every=args.snapshot_every,
+            checkpoint_dir=args.checkpoint_dir,
+            resume_from=args.resume_from,
+            log_every=args.log_every,
+            seed=args.seed,
+            validation_every=args.validation_every,
+            validation_episodes=args.validation_episodes,
+            validation_seed=args.validation_seed,
+            on_episode=write_metrics,
+        )

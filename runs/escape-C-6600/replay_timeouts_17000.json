@@ -1,0 +1,9339 @@
+{
+  "sample": "First three shared timeouts per corner, not an overall benchmark",
+  "model_sha256": {
+    "control": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+    "candidate": "88c952f6a7648886eb80cd323cd118008d98b3f3620e5c7ae54b48e773c311df"
+  },
+  "games": [
+    {
+      "model": "control",
+      "seed": 17002,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 42,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 157,
+        "quiet_steps": 343,
+        "teacher_moves": 273,
+        "teacher_moves_taken": 129,
+        "bombs": 42,
+        "bomb_pressure_zero": 2,
+        "danger_steps": 157,
+        "bomb_pressure_partial": 40,
+        "direct_bomb_opportunities": 8,
+        "direct_bombs_taken": 8
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            1,
+            6
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 18,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.06666666666666665,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 28,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.4545454545454546,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 39,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.2068965517241379,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 53,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 70,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.11764705882352944,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 81,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            6,
+            5
+          ],
+          "pressure": 0.08823529411764708,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 119,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.20588235294117652,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 130,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 152,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.3783783783783784,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 162,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.2564102564102564,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 177,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 188,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 208,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 212,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.4516129032258065,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 227,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.2894736842105263,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 232,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 241,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 256,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            7,
+            5
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 262,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 268,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.37142857142857144,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 301,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            6,
+            3
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 306,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.33333333333333337,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 315,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.10810810810810811,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 319,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.35,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 334,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            6,
+            5
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 341,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 350,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 369,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.3076923076923077,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 382,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.46153846153846156,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 386,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.4193548387096774,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 394,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 399,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.6363636363636364,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 419,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 436,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 446,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 453,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 460,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 468,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.5161290322580645,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 477,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 484,
+          "agent": [
+            1,
+            7
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 2
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "control",
+      "seed": 17003,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 38,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 203,
+        "quiet_steps": 310,
+        "teacher_moves": 241,
+        "teacher_moves_taken": 149,
+        "bombs": 38,
+        "bomb_pressure_zero": 4,
+        "danger_steps": 190,
+        "bomb_pressure_partial": 34,
+        "direct_bomb_opportunities": 12,
+        "direct_bombs_taken": 12
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            6
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 18,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 26,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 40,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            7
+          ],
+          "pressure": 0.07692307692307687,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 55,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.2857142857142857,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 66,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.5769230769230769,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 74,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            3,
+            7
+          ],
+          "pressure": 0.15384615384615385,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 83,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.3793103448275862,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 91,
+          "agent": [
+            1,
+            4
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.2692307692307693,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 99,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.9565217391304348,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 112,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.4193548387096774,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 141,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.40625,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 152,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.19444444444444442,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 165,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            7,
+            3
+          ],
+          "pressure": 0.24242424242424243,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 184,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 201,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.10810810810810811,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 211,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 222,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 248,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 256,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.10810810810810811,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 264,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.2222222222222222,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 278,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 286,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 303,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            6,
+            5
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 311,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 323,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 350,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 358,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.10810810810810811,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 390,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.29729729729729726,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 406,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.3513513513513513,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 417,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 436,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.32352941176470584,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 447,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 456,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.3513513513513513,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 469,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 480,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.36111111111111116,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 493,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "control",
+      "seed": 17008,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 53,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 199,
+        "quiet_steps": 299,
+        "teacher_moves": 219,
+        "teacher_moves_taken": 118,
+        "bombs": 53,
+        "bomb_pressure_zero": 4,
+        "danger_steps": 201,
+        "bomb_pressure_partial": 49,
+        "direct_bomb_opportunities": 21,
+        "direct_bombs_taken": 20
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 18,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 26,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 34,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.2272727272727273,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 43,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.375,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 61,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.1428571428571429,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 69,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.22580645161290325,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 78,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            6,
+            5
+          ],
+          "pressure": 0.0714285714285714,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 89,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.375,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 96,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            3,
+            7
+          ],
+          "pressure": 0.20588235294117652,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 117,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            7,
+            4
+          ],
+          "pressure": 0.0714285714285714,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 124,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.303030303030303,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 138,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 152,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 163,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 176,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.34285714285714286,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 188,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.10810810810810811,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 194,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 201,
+          "agent": [
+            7,
+            7
+          ],
+          "enemy": [
+            7,
+            5
+          ],
+          "pressure": 0.16216216216216217,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 210,
+          "agent": [
+            5,
+            6
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 213,
+          "agent": [
+            4,
+            7
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 222,
+          "agent": [
+            1,
+            7
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.2727272727272727,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 227,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.10256410256410253,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 231,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.23684210526315785,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 239,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.22580645161290325,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 248,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.21621621621621623,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 257,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.22580645161290325,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 273,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.3513513513513513,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 287,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.3513513513513513,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 292,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.4285714285714286,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 301,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 306,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.24242424242424243,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 317,
+          "agent": [
+            7,
+            5
+          ],
+          "enemy": [
+            7,
+            3
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 322,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 332,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.10810810810810811,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 339,
+          "agent": [
+            2,
+            7
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.10256410256410253,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 345,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.10810810810810811,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 351,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 366,
+          "agent": [
+            7,
+            7
+          ],
+          "enemy": [
+            4,
+            7
+          ],
+          "pressure": 0.13157894736842102,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 381,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            7,
+            5
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 386,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 395,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.13157894736842102,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 410,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            5,
+            6
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 425,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 439,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 451,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 463,
+          "agent": [
+            5,
+            4
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.125,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 466,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.125,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 475,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.10526315789473684,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 481,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 488,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            7,
+            3
+          ],
+          "pressure": 0.16216216216216217,
+          "range": 2,
+          "ammo": 3
+        },
+        {
+          "step": 493,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 3
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "control",
+      "seed": 17006,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 42,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 295,
+        "quiet_steps": 264,
+        "bomb_pressure_zero": 5,
+        "bombs": 42,
+        "danger_steps": 236,
+        "teacher_moves": 205,
+        "teacher_moves_taken": 112,
+        "direct_bomb_opportunities": 14,
+        "direct_bombs_taken": 14,
+        "bomb_pressure_partial": 37
+      },
+      "bomb_events": [
+        {
+          "step": 1,
+          "agent": [
+            1,
+            7
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 9,
+          "agent": [
+            4,
+            7
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 17,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 26,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 35,
+          "agent": [
+            4,
+            7
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 43,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.5,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 57,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.1428571428571429,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 65,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.20833333333333337,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 74,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.23529411764705888,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 82,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.2432432432432432,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 94,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.2894736842105263,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 103,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 116,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 128,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 136,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.2432432432432432,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 148,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 159,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 167,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 187,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 202,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 210,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 230,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 238,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 250,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 258,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 275,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 283,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 300,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 312,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 327,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 335,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.21621621621621623,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 347,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            4,
+            7
+          ],
+          "pressure": 0.3421052631578947,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 364,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 385,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 394,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 403,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 415,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 434,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 450,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 463,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.4285714285714286,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 478,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 492,
+          "agent": [
+            7,
+            5
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "control",
+      "seed": 17011,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 52,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 248,
+        "quiet_steps": 283,
+        "teacher_moves": 227,
+        "teacher_moves_taken": 129,
+        "bombs": 52,
+        "bomb_pressure_zero": 3,
+        "danger_steps": 217,
+        "bomb_pressure_partial": 49,
+        "direct_bomb_opportunities": 21,
+        "direct_bombs_taken": 21
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            2,
+            7
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 18,
+          "agent": [
+            2,
+            7
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 26,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.42105263157894735,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 34,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 42,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.36363636363636365,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 50,
+          "agent": [
+            2,
+            5
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.06666666666666665,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 60,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.5416666666666667,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 68,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 92,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 107,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.3055555555555556,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 121,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            6,
+            3
+          ],
+          "pressure": 0.13888888888888884,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 131,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.23684210526315785,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 142,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.30000000000000004,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 153,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.1842105263157895,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 161,
+          "agent": [
+            2,
+            5
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 176,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            6,
+            1
+          ],
+          "pressure": 0.1428571428571429,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 187,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 198,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.29032258064516125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 215,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.4871794871794872,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 232,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 245,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.30000000000000004,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 250,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 255,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 263,
+          "agent": [
+            7,
+            6
+          ],
+          "enemy": [
+            6,
+            5
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 268,
+          "agent": [
+            6,
+            7
+          ],
+          "enemy": [
+            5,
+            7
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 275,
+          "agent": [
+            7,
+            5
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 280,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 287,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 292,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.1842105263157895,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 308,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 311,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 323,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 332,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            6,
+            3
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 344,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 348,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 352,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 368,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 383,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 387,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.16666666666666663,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 399,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 403,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.2432432432432432,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 414,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 418,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 432,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 437,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1842105263157895,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 454,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 460,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.12,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 474,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            7,
+            6
+          ],
+          "pressure": 0.2857142857142857,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 479,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            7,
+            4
+          ],
+          "pressure": 0.72,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 485,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            6,
+            1
+          ],
+          "pressure": 0.16129032258064513,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 497,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "control",
+      "seed": 17014,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 63,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 271,
+        "quiet_steps": 280,
+        "teacher_moves": 211,
+        "teacher_moves_taken": 123,
+        "bombs": 63,
+        "bomb_pressure_zero": 1,
+        "danger_steps": 220,
+        "bomb_pressure_partial": 62,
+        "direct_bomb_opportunities": 38,
+        "direct_bombs_taken": 38
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.2222222222222222,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 24,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.11764705882352944,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 40,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.14814814814814814,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 49,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.33333333333333337,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 65,
+          "agent": [
+            5,
+            6
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.19354838709677424,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 86,
+          "agent": [
+            4,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.125,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 92,
+          "agent": [
+            1,
+            7
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.23529411764705888,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 123,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.3513513513513513,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 129,
+          "agent": [
+            6,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.09375,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 143,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.1842105263157895,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 152,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.33333333333333337,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 159,
+          "agent": [
+            7,
+            5
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.11764705882352944,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 166,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.4516129032258065,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 174,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.15384615384615385,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 179,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.19354838709677424,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 187,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.33333333333333337,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 191,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.2222222222222222,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 199,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.2564102564102564,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 207,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 215,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.4054054054054054,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 221,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.2142857142857143,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 228,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.15384615384615385,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 236,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.29729729729729726,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 251,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            5,
+            7
+          ],
+          "pressure": 0.4054054054054054,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 255,
+          "agent": [
+            3,
+            2
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 260,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.15384615384615385,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 266,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 273,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.4117647058823529,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 277,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.2222222222222222,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 286,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.21621621621621623,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 292,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 299,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.375,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 307,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.22580645161290325,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 313,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.41025641025641024,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 320,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.22857142857142854,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 325,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.4864864864864865,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 329,
+          "agent": [
+            6,
+            5
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 337,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 348,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.4054054054054054,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 352,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.2941176470588235,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 360,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 364,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.19444444444444442,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 370,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.3870967741935484,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 383,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.5128205128205128,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 390,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.2857142857142857,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 403,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            6,
+            1
+          ],
+          "pressure": 0.22580645161290325,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 407,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 416,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.4054054054054054,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 420,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.2941176470588235,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 428,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 432,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.19444444444444442,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 438,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.3939393939393939,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 442,
+          "agent": [
+            5,
+            6
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 448,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 452,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.23333333333333328,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 460,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.4054054054054054,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 464,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.2941176470588235,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 470,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.2564102564102564,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 482,
+          "agent": [
+            5,
+            4
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.21052631578947367,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 486,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.4358974358974359,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 490,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.2222222222222222,
+          "range": 4,
+          "ammo": 2
+        },
+        {
+          "step": 500,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 2
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "candidate",
+      "seed": 17002,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 39,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 153,
+        "quiet_steps": 328,
+        "teacher_moves": 259,
+        "teacher_moves_taken": 155,
+        "bombs": 39,
+        "bomb_pressure_zero": 2,
+        "danger_steps": 172,
+        "bomb_pressure_partial": 37,
+        "direct_bomb_opportunities": 8,
+        "direct_bombs_taken": 8
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            1,
+            6
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 18,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.06666666666666665,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 28,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.4545454545454546,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 39,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.2068965517241379,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 53,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 69,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.32352941176470584,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 81,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            3,
+            7
+          ],
+          "pressure": 0.11764705882352944,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 100,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.21621621621621623,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 118,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.29729729729729726,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 129,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 140,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 159,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            1,
+            6
+          ],
+          "pressure": 0.32352941176470584,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 173,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 179,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.5161290322580645,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 185,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.125,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 197,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 212,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            7,
+            5
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 223,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            7
+          ],
+          "pressure": 0.32258064516129037,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 228,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 243,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.4193548387096774,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 256,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.13157894736842102,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 279,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            1,
+            6
+          ],
+          "pressure": 0.22857142857142854,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 286,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.7692307692307692,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 301,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            6,
+            1
+          ],
+          "pressure": 0.22857142857142854,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 306,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.76,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 317,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.2564102564102564,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 329,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 343,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 369,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 383,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 406,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 421,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.33333333333333337,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 425,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.21621621621621623,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 437,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 442,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.13157894736842102,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 457,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 475,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.1842105263157895,
+          "range": 2,
+          "ammo": 2
+        },
+        {
+          "step": 483,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 2,
+          "ammo": 2
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "candidate",
+      "seed": 17003,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 44,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 331,
+        "quiet_steps": 284,
+        "teacher_moves": 215,
+        "teacher_moves_taken": 132,
+        "bombs": 44,
+        "bomb_pressure_zero": 4,
+        "danger_steps": 216,
+        "bomb_pressure_partial": 40,
+        "direct_bomb_opportunities": 20,
+        "direct_bombs_taken": 20
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            6
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 18,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 26,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            3,
+            6
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 40,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            7
+          ],
+          "pressure": 0.07692307692307687,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 53,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.28,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 62,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.34615384615384615,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 70,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.18518518518518523,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 78,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.31034482758620685,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 86,
+          "agent": [
+            4,
+            5
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.16129032258064513,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 96,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.25806451612903225,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 112,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.17142857142857137,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 129,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.3548387096774194,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 137,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.16216216216216217,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 149,
+          "agent": [
+            7,
+            2
+          ],
+          "enemy": [
+            7,
+            3
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 161,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 174,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.30000000000000004,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 191,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.275,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 203,
+          "agent": [
+            3,
+            2
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 213,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 222,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 233,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.41666666666666663,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 244,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 255,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.4054054054054054,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 266,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.3076923076923077,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 279,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 291,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.275,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 299,
+          "agent": [
+            4,
+            5
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.21052631578947367,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 307,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.4516129032258065,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 328,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.2564102564102564,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 343,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.4054054054054054,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 352,
+          "agent": [
+            1,
+            7
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 367,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.32499999999999996,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 378,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.2564102564102564,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 389,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 404,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.3870967741935484,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 415,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.4473684210526315,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 434,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.33333333333333337,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 446,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.15384615384615385,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 456,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.3589743589743589,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 465,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.3939393939393939,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 473,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.15384615384615385,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 481,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.29729729729729726,
+          "range": 4,
+          "ammo": 1
+        },
+        {
+          "step": 492,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.15000000000000002,
+          "range": 4,
+          "ammo": 1
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "candidate",
+      "seed": 17008,
+      "aid": 0,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 46,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 224,
+        "quiet_steps": 340,
+        "teacher_moves": 281,
+        "teacher_moves_taken": 163,
+        "bombs": 46,
+        "bomb_pressure_zero": 4,
+        "danger_steps": 160,
+        "bomb_pressure_partial": 42,
+        "direct_bomb_opportunities": 15,
+        "direct_bombs_taken": 15
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 18,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            2,
+            7
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 26,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 34,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.2272727272727273,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 43,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.375,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 61,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.1428571428571429,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 70,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            1,
+            5
+          ],
+          "pressure": 0.10344827586206895,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 86,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.2571428571428571,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 94,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.125,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 102,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.3142857142857143,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 114,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.19444444444444442,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 122,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.10256410256410253,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 131,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.11111111111111116,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 139,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 151,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.10526315789473684,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 159,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 168,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 183,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 196,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 204,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            7,
+            2
+          ],
+          "pressure": 0.1428571428571429,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 212,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            6,
+            3
+          ],
+          "pressure": 0.10256410256410253,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 226,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 235,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.17142857142857137,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 248,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.17142857142857137,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 256,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 264,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.17142857142857137,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 279,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 288,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.13157894736842102,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 302,
+          "agent": [
+            5,
+            4
+          ],
+          "enemy": [
+            5,
+            7
+          ],
+          "pressure": 0.21621621621621623,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 310,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.6666666666666667,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 326,
+          "agent": [
+            5,
+            4
+          ],
+          "enemy": [
+            5,
+            6
+          ],
+          "pressure": 0.15384615384615385,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 334,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.6666666666666667,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 347,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 355,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.24,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 366,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 375,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 391,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 404,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 424,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            7,
+            6
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 439,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 447,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.24,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 457,
+          "agent": [
+            3,
+            4
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 470,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 478,
+          "agent": [
+            1,
+            2
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.10256410256410253,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 490,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 2,
+          "ammo": 1
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "candidate",
+      "seed": 17006,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 51,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 282,
+        "quiet_steps": 288,
+        "bomb_pressure_zero": 5,
+        "bombs": 51,
+        "danger_steps": 212,
+        "teacher_moves": 231,
+        "teacher_moves_taken": 129,
+        "direct_bomb_opportunities": 20,
+        "direct_bombs_taken": 20,
+        "bomb_pressure_partial": 46
+      },
+      "bomb_events": [
+        {
+          "step": 1,
+          "agent": [
+            1,
+            7
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 9,
+          "agent": [
+            4,
+            7
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 17,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 26,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 35,
+          "agent": [
+            4,
+            7
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 43,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.5,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 57,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.1428571428571429,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 65,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.20833333333333337,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 74,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.23529411764705888,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 82,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.2432432432432432,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 93,
+          "agent": [
+            4,
+            5
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.1578947368421053,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 113,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 122,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 131,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.5128205128205128,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 143,
+          "agent": [
+            7,
+            4
+          ],
+          "enemy": [
+            6,
+            1
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 151,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 162,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 170,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 178,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.2571428571428571,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 192,
+          "agent": [
+            4,
+            5
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.21052631578947367,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 204,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.5172413793103448,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 222,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 234,
+          "agent": [
+            7,
+            5
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 246,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.2857142857142857,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 258,
+          "agent": [
+            5,
+            4
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 266,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.6818181818181819,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 278,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.3513513513513513,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 291,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 303,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 318,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 331,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.3513513513513513,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 344,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 355,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.36111111111111116,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 363,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.25,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 367,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.5483870967741935,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 375,
+          "agent": [
+            5,
+            4
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 378,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.19999999999999996,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 390,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 402,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 413,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 420,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 431,
+          "agent": [
+            3,
+            4
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.2432432432432432,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 435,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.9411764705882353,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 446,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 454,
+          "agent": [
+            1,
+            4
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.33333333333333337,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 462,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.4871794871794872,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 466,
+          "agent": [
+            1,
+            4
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.4516129032258065,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 476,
+          "agent": [
+            5,
+            5
+          ],
+          "enemy": [
+            6,
+            3
+          ],
+          "pressure": 0.28205128205128205,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 481,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.5882352941176471,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 493,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 2
+        },
+        {
+          "step": 497,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.16666666666666663,
+          "range": 3,
+          "ammo": 2
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "candidate",
+      "seed": 17011,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 44,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 248,
+        "quiet_steps": 312,
+        "teacher_moves": 252,
+        "teacher_moves_taken": 138,
+        "bombs": 44,
+        "bomb_pressure_zero": 3,
+        "danger_steps": 188,
+        "bomb_pressure_partial": 41,
+        "direct_bomb_opportunities": 12,
+        "direct_bombs_taken": 12
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            2,
+            7
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 18,
+          "agent": [
+            2,
+            7
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 26,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.42105263157894735,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 34,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 42,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.36363636363636365,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 50,
+          "agent": [
+            2,
+            5
+          ],
+          "enemy": [
+            5,
+            1
+          ],
+          "pressure": 0.06666666666666665,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 60,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.5416666666666667,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 68,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 92,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            1,
+            4
+          ],
+          "pressure": 0.25,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 107,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.3055555555555556,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 121,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            6,
+            3
+          ],
+          "pressure": 0.13888888888888884,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 131,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.23684210526315785,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 142,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.30000000000000004,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 153,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.1842105263157895,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 161,
+          "agent": [
+            4,
+            5
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.18181818181818177,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 171,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.33333333333333337,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 179,
+          "agent": [
+            6,
+            5
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 190,
+          "agent": [
+            5,
+            2
+          ],
+          "enemy": [
+            4,
+            1
+          ],
+          "pressure": 0.25,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 206,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 214,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 228,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 237,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 257,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 273,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 294,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 305,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.38235294117647056,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 318,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 333,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 347,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 358,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.35,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 371,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.2432432432432432,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 382,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.275,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 393,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 405,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 415,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.1351351351351351,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 423,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            7,
+            3
+          ],
+          "pressure": 0.3513513513513513,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 433,
+          "agent": [
+            2,
+            1
+          ],
+          "enemy": [
+            6,
+            1
+          ],
+          "pressure": 0.1428571428571429,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 441,
+          "agent": [
+            1,
+            3
+          ],
+          "enemy": [
+            4,
+            3
+          ],
+          "pressure": 0.2666666666666667,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 457,
+          "agent": [
+            1,
+            5
+          ],
+          "enemy": [
+            2,
+            5
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 465,
+          "agent": [
+            4,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.17647058823529416,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 477,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            1,
+            1
+          ],
+          "pressure": 0.32258064516129037,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 486,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.4871794871794872,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 499,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "candidate",
+      "seed": 17014,
+      "aid": 1,
+      "result": {
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0,
+        "draw": 1,
+        "kills": 0,
+        "bombs": 39,
+        "steps": 500
+      },
+      "counts": {
+        "steps": 500,
+        "close_steps": 234,
+        "quiet_steps": 311,
+        "teacher_moves": 260,
+        "teacher_moves_taken": 142,
+        "bombs": 39,
+        "bomb_pressure_zero": 1,
+        "danger_steps": 189,
+        "bomb_pressure_partial": 38,
+        "direct_bomb_opportunities": 17,
+        "direct_bombs_taken": 17
+      },
+      "bomb_events": [
+        {
+          "step": 2,
+          "agent": [
+            1,
+            6
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.0,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 10,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.2222222222222222,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 24,
+          "agent": [
+            3,
+            7
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.11764705882352944,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 39,
+          "agent": [
+            3,
+            6
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.2592592592592593,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 61,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            1,
+            3
+          ],
+          "pressure": 0.3928571428571429,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 70,
+          "agent": [
+            5,
+            7
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.06896551724137934,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 97,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.22857142857142854,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 116,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            4,
+            5
+          ],
+          "pressure": 0.5,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 139,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 148,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 156,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 167,
+          "agent": [
+            3,
+            3
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.5897435897435898,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 182,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 192,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.10810810810810811,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 206,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            5,
+            6
+          ],
+          "pressure": 0.23076923076923073,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 221,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 236,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.18918918918918914,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 244,
+          "agent": [
+            6,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 255,
+          "agent": [
+            4,
+            3
+          ],
+          "enemy": [
+            2,
+            3
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 275,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            5,
+            5
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 284,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            4
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 299,
+          "agent": [
+            3,
+            2
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.09999999999999998,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 311,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 333,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.17500000000000004,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 344,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 353,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.17142857142857137,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 366,
+          "agent": [
+            1,
+            1
+          ],
+          "enemy": [
+            1,
+            2
+          ],
+          "pressure": 0.17142857142857137,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 375,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            6,
+            3
+          ],
+          "pressure": 0.1282051282051282,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 390,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.3076923076923077,
+          "range": 2,
+          "ammo": 1
+        },
+        {
+          "step": 401,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 414,
+          "agent": [
+            5,
+            3
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.275,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 422,
+          "agent": [
+            6,
+            1
+          ],
+          "enemy": [
+            2,
+            1
+          ],
+          "pressure": 0.19354838709677424,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 434,
+          "agent": [
+            5,
+            1
+          ],
+          "enemy": [
+            3,
+            1
+          ],
+          "pressure": 0.2432432432432432,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 448,
+          "agent": [
+            7,
+            3
+          ],
+          "enemy": [
+            7,
+            5
+          ],
+          "pressure": 0.2432432432432432,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 456,
+          "agent": [
+            2,
+            3
+          ],
+          "enemy": [
+            5,
+            4
+          ],
+          "pressure": 0.15000000000000002,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 469,
+          "agent": [
+            3,
+            2
+          ],
+          "enemy": [
+            3,
+            5
+          ],
+          "pressure": 0.125,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 479,
+          "agent": [
+            3,
+            1
+          ],
+          "enemy": [
+            3,
+            3
+          ],
+          "pressure": 0.22499999999999998,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 488,
+          "agent": [
+            7,
+            1
+          ],
+          "enemy": [
+            5,
+            2
+          ],
+          "pressure": 0.17948717948717952,
+          "range": 3,
+          "ammo": 1
+        },
+        {
+          "step": 497,
+          "agent": [
+            3,
+            5
+          ],
+          "enemy": [
+            3,
+            2
+          ],
+          "pressure": 0.5128205128205128,
+          "range": 3,
+          "ammo": 1
+        }
+      ],
+      "final_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    }
+  ],
+  "totals": {
+    "control": {
+      "steps": 3000,
+      "close_steps": 1373,
+      "quiet_steps": 1779,
+      "teacher_moves": 1376,
+      "teacher_moves_taken": 760,
+      "bombs": 290,
+      "bomb_pressure_zero": 19,
+      "danger_steps": 1221,
+      "bomb_pressure_partial": 271,
+      "direct_bomb_opportunities": 114,
+      "direct_bombs_taken": 113
+    },
+    "candidate": {
+      "steps": 3000,
+      "close_steps": 1472,
+      "quiet_steps": 1863,
+      "teacher_moves": 1498,
+      "teacher_moves_taken": 859,
+      "bombs": 263,
+      "bomb_pressure_zero": 19,
+      "danger_steps": 1137,
+      "bomb_pressure_partial": 244,
+      "direct_bomb_opportunities": 92,
+      "direct_bombs_taken": 92
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "seed": 6000,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 500,
+  "num_episodes": 48,
+  "win_rate": 16.666666666666664,
+  "active_win_rate": 10.416666666666668,
+  "suicide_rate": 10.416666666666668,
+  "draw_rate": 77.08333333333334,
+  "avg_kills": 0.1875,
+  "avg_bombs": 30.791666666666668,
+  "avg_items": 1.5416666666666667,
+  "avg_steps": 384.2291666666667,
+  "by_corner": {
+    "0": {
+      "num_episodes": 24,
+      "win_rate": 16.666666666666664,
+      "active_win_rate": 12.5,
+      "suicide_rate": 20.833333333333336,
+      "draw_rate": 75.0,
+      "avg_kills": 0.2916666666666667,
+      "avg_bombs": 29.833333333333332,
+      "avg_items": 1.5,
+      "avg_steps": 365.6666666666667
+    },
+    "1": {
+      "num_episodes": 24,
+      "win_rate": 16.666666666666664,
+      "active_win_rate": 8.333333333333332,
+      "suicide_rate": 0.0,
+      "draw_rate": 79.16666666666666,
+      "avg_kills": 0.08333333333333333,
+      "avg_bombs": 31.75,
+      "avg_items": 1.5833333333333333,
+      "avg_steps": 402.7916666666667
+    }
+  },
+  "episode": 500,
+  "source": "post-training CPU validation",
+  "source_checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\escape-20261011\\pilot-500\\final_phaseC.pt",
+  "device": "cpu",
+  "candidate": "final",
+  "runtime_hashes": {
+    "bomberman_env.py": "b0fdce326404c269f386540cc1b014f7055727e49bfe3b83d4571e0ccd51cd73",
+    "rule_based_bot.py": "4af5103b259db7dd750b61ebe0143d56ae9f682619ab74bd0035ba636813d64f",
+    "train_actor_critic.py": "daa50653c094c091e2e239affae303f8c6709b4c8aa18d13cb5b9241e996a024",
+    "evaluate.py": "361aa1d5f718674cab5f74c4ee498a0a8352c58b60693011a9d0b1426029da16"
+  }
+}

@@ -1,0 +1,710 @@
+[
+  {
+    "seed": 7002,
+    "aid": 0,
+    "events": [
+      {
+        "step": 403,
+        "pos": [
+          7,
+          3
+        ],
+        "actions": [
+          1,
+          1
+        ],
+        "mask": [
+          false,
+          true,
+          false,
+          true,
+          true,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          6,
+          3
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 404,
+        "pos": [
+          6,
+          3
+        ],
+        "actions": [
+          1,
+          1
+        ],
+        "mask": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          5,
+          3
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 405,
+        "pos": [
+          5,
+          3
+        ],
+        "actions": [
+          3,
+          3
+        ],
+        "mask": [
+          false,
+          false,
+          false,
+          true,
+          true,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          5,
+          2
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 406,
+        "pos": [
+          5,
+          2
+        ],
+        "actions": [
+          3,
+          3
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          true,
+          true,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          5,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 407,
+        "pos": [
+          5,
+          1
+        ],
+        "actions": [
+          5,
+          5
+        ],
+        "mask": [
+          true,
+          true,
+          true,
+          false,
+          true,
+          true
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          5,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [
+          0,
+          1
+        ],
+        "kills": []
+      },
+      {
+        "step": 408,
+        "pos": [
+          5,
+          1
+        ],
+        "actions": [
+          1,
+          2
+        ],
+        "mask": [
+          true,
+          true,
+          true,
+          false,
+          true,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          4,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 409,
+        "pos": [
+          4,
+          1
+        ],
+        "actions": [
+          0,
+          0
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          4,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 410,
+        "pos": [
+          4,
+          1
+        ],
+        "actions": [
+          0,
+          0
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          4,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 411,
+        "pos": [
+          4,
+          1
+        ],
+        "actions": [
+          0,
+          0
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          4,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 412,
+        "pos": [
+          4,
+          1
+        ],
+        "actions": [
+          0,
+          0
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          4,
+          1
+        ],
+        "next_state_has_escape": false,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 413,
+        "pos": [
+          4,
+          1
+        ],
+        "actions": [
+          1,
+          2
+        ],
+        "mask": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": false,
+        "movement_collision": true,
+        "after_pos": [
+          4,
+          1
+        ],
+        "next_state_has_escape": false,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 414,
+        "pos": [
+          4,
+          1
+        ],
+        "actions": [
+          0,
+          0
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": false,
+        "movement_collision": false,
+        "after_pos": [
+          4,
+          1
+        ],
+        "next_state_has_escape": null,
+        "new_bomb_owners": [],
+        "kills": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "seed": 7004,
+    "aid": 0,
+    "events": [
+      {
+        "step": 148,
+        "pos": [
+          3,
+          1
+        ],
+        "actions": [
+          2,
+          5
+        ],
+        "mask": [
+          true,
+          true,
+          true,
+          false,
+          true,
+          true
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          4,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [
+          1
+        ],
+        "kills": []
+      },
+      {
+        "step": 149,
+        "pos": [
+          4,
+          1
+        ],
+        "actions": [
+          1,
+          1
+        ],
+        "mask": [
+          true,
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          3,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 150,
+        "pos": [
+          3,
+          1
+        ],
+        "actions": [
+          1,
+          1
+        ],
+        "mask": [
+          false,
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          2,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 151,
+        "pos": [
+          2,
+          1
+        ],
+        "actions": [
+          1,
+          3
+        ],
+        "mask": [
+          true,
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 152,
+        "pos": [
+          1,
+          1
+        ],
+        "actions": [
+          5,
+          5
+        ],
+        "mask": [
+          true,
+          false,
+          true,
+          false,
+          true,
+          true
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          1
+        ],
+        "next_state_has_escape": true,
+        "new_bomb_owners": [
+          0,
+          1
+        ],
+        "kills": []
+      },
+      {
+        "step": 153,
+        "pos": [
+          1,
+          1
+        ],
+        "actions": [
+          4,
+          3
+        ],
+        "mask": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          false
+        ],
+        "known_bombs_have_escape": true,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          2
+        ],
+        "next_state_has_escape": false,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 154,
+        "pos": [
+          1,
+          2
+        ],
+        "actions": [
+          0,
+          2
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": false,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          2
+        ],
+        "next_state_has_escape": false,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 155,
+        "pos": [
+          1,
+          2
+        ],
+        "actions": [
+          4,
+          0
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          true,
+          false
+        ],
+        "known_bombs_have_escape": false,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          3
+        ],
+        "next_state_has_escape": false,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 156,
+        "pos": [
+          1,
+          3
+        ],
+        "actions": [
+          3,
+          5
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": false,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          2
+        ],
+        "next_state_has_escape": false,
+        "new_bomb_owners": [
+          1
+        ],
+        "kills": []
+      },
+      {
+        "step": 157,
+        "pos": [
+          1,
+          2
+        ],
+        "actions": [
+          4,
+          2
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          true,
+          false
+        ],
+        "known_bombs_have_escape": false,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          3
+        ],
+        "next_state_has_escape": false,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 158,
+        "pos": [
+          1,
+          3
+        ],
+        "actions": [
+          3,
+          3
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": false,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          2
+        ],
+        "next_state_has_escape": false,
+        "new_bomb_owners": [],
+        "kills": []
+      },
+      {
+        "step": 159,
+        "pos": [
+          1,
+          2
+        ],
+        "actions": [
+          0,
+          4
+        ],
+        "mask": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "known_bombs_have_escape": false,
+        "movement_collision": false,
+        "after_pos": [
+          1,
+          2
+        ],
+        "next_state_has_escape": null,
+        "new_bomb_owners": [],
+        "kills": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "model": "checkpoints\\best_phaseE_4a.pt",
+  "episodes": 40,
+  "max_steps": 500,
+  "seeds": [
+    100,
+    101,
+    102,
+    103
+  ],
+  "corners": [
+    {
+      "corner": 0,
+      "win_rate": 50.0,
+      "bombs": 1.2,
+      "kills": 0.0,
+      "steps": 185.6,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0
+    },
+    {
+      "corner": 1,
+      "win_rate": 70.0,
+      "bombs": 0.9,
+      "kills": 0.0,
+      "steps": 236.3,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0
+    },
+    {
+      "corner": 2,
+      "win_rate": 50.0,
+      "bombs": 1.0,
+      "kills": 0.0,
+      "steps": 164.3,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0
+    },
+    {
+      "corner": 3,
+      "win_rate": 40.0,
+      "bombs": 1.0,
+      "kills": 0.0,
+      "steps": 176.5,
+      "active_win_rate": 0.0,
+      "suicide_rate": 10.0
+    }
+  ],
+  "mean": {
+    "win_rate": 52.5,
+    "bombs": 1.025,
+    "kills": 0.0,
+    "steps": 190.675,
+    "active_win_rate": 0.0,
+    "suicide_rate": 2.5
+  }
+}

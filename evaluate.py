@@ -62,11 +62,14 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
     """
     num_agents = env.num_agents
     wins = [0] * num_agents
+    active_wins = [0] * num_agents
     draws = 0
     total_rewards = [0.0] * num_agents
     total_steps = 0
     total_bombs = [0] * num_agents
     total_kills = [0] * num_agents
+    total_items = [0] * num_agents
+    suicides = [0] * num_agents
 
     for ep in range(num_episodes):
         obs_list = env.reset()
@@ -80,11 +83,17 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
                     actions.append(0)
                     continue
                 a = agent_fns[i](env, obs_list, i)
-                if a == ACTION_BOMB:
-                    ep_bombs[i] += 1
                 actions.append(a)
 
             obs_list, rewards, dones, info = env.step(actions)
+            for i in info["bombs_placed"]:
+                ep_bombs[i] += 1
+            own_deaths = set(info.get("self_blast_deaths", []))
+            own_deaths.update(v for k, v in info["kills"] if k == v)
+            for victim in own_deaths:
+                suicides[victim] += 1
+            for aid, items in info["items_collected"].items():
+                total_items[aid] += len(items)
             for i in range(num_agents):
                 ep_rewards[i] += rewards[i]
 
@@ -101,29 +110,39 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
         survivors = [i for i, a in enumerate(alive) if a]
         if len(survivors) == 1:
             wins[survivors[0]] += 1
+            if env.agents[survivors[0]].kills > 0:
+                active_wins[survivors[0]] += 1
         else:
             draws += 1
 
     stats = {
         "num_episodes": num_episodes,
         "wins": wins,
+        "active_wins": active_wins,
+        "passive_wins": [w - a for w, a in zip(wins, active_wins)],
         "draws": draws,
         "win_rates": [w / num_episodes * 100 for w in wins],
+        "active_win_rates": [w / num_episodes * 100 for w in active_wins],
+        "suicide_rates": [s / num_episodes * 100 for s in suicides],
         "avg_reward": [r / num_episodes for r in total_rewards],
         "avg_steps": total_steps / num_episodes,
         "avg_bombs": [b / num_episodes for b in total_bombs],
         "avg_kills": [k / num_episodes for k in total_kills],
+        "avg_items": [n / num_episodes for n in total_items],
     }
 
     if verbose:
-        print(f"\n{'─' * 50}")
+        print(f"\n{'-' * 50}")
         print(f"Match Results ({num_episodes} episodes)")
-        print(f"{'─' * 50}")
+        print(f"{'-' * 50}")
         for i in range(num_agents):
             print(f"  Agent {i}: WR={stats['win_rates'][i]:.1f}%, "
                   f"Reward={stats['avg_reward'][i]:.2f}, "
                   f"Bombs={stats['avg_bombs'][i]:.1f}, "
-                  f"Kills={stats['avg_kills'][i]:.1f}")
+                  f"Kills={stats['avg_kills'][i]:.2f}, "
+                  f"ActiveWR={stats['active_win_rates'][i]:.1f}%, "
+                  f"Suicide={stats['suicide_rates'][i]:.1f}%, "
+                  f"Items={stats['avg_items'][i]:.2f}")
         print(f"  Draws: {draws} ({draws/num_episodes*100:.1f}%)")
         print(f"  Avg episode length: {stats['avg_steps']:.1f}")
 
@@ -153,38 +172,85 @@ def make_ac_fn(model_path: str, board_size: int, device="cpu"):
     if not _torch_available:
         raise RuntimeError("PyTorch not installed, cannot load AC model.")
 
-    from train_actor_critic import ActorCriticNet, obs_to_tensor
+    from train_actor_critic import ActorCriticNet, SnapshotOpponent, smart_load_weights
 
     net = ActorCriticNet(board_size=board_size).to(device)
-    net.load_state_dict(torch.load(model_path, map_location=device,
-                                   weights_only=True))
-    net.eval()
+    smart_load_weights(net, model_path, device)
+    policy = SnapshotOpponent(net, device)
 
     @torch.no_grad()
     def fn(env, obs_list, agent_id):
-        obs_t = obs_to_tensor(obs_list[agent_id], device)
-        logits, _ = net(obs_t)
-        dist = torch.distributions.Categorical(logits=logits)
-        return dist.sample().item()
+        return policy.select_action(obs_list[agent_id], env, agent_id)
     return fn
+
+
+def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
+                    seed=7000, max_steps=500, stop_event=None, on_progress=None):
+    """Evaluate a fixed policy at every corner of each seeded board, preserving RNGs."""
+    if num_episodes < num_agents or num_episodes % num_agents:
+        raise ValueError("num_episodes must be positive and divisible by num_agents")
+    if not _torch_available:
+        raise RuntimeError("PyTorch is required for reproducible policy evaluation")
+    numpy_state = np.random.get_state()
+    devices = list(range(torch.cuda.device_count())) if torch.cuda.is_initialized() else []
+    games = []
+    try:
+        with torch.random.fork_rng(devices=devices):
+            for ep in range(num_episodes):
+                if on_progress:
+                    on_progress(ep, num_episodes)
+                if stop_event is not None and stop_event.is_set():
+                    return None
+                board_seed, aid = seed + ep // num_agents, ep % num_agents
+                np.random.seed(board_seed)
+                torch.manual_seed(board_seed)
+                env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
+                                      max_steps=max_steps, seed=board_seed)
+                fns = [make_rule_based_fn(i) for i in range(num_agents)]
+                fns[aid] = agent_fn
+                stats = run_match(env, fns, num_episodes=1)
+                games.append({"seed": board_seed, "aid": aid,
+                              "win": stats["wins"][aid], "active_win": stats["active_wins"][aid],
+                              "suicide": stats["suicide_rates"][aid] / 100,
+                              "draw": stats["draws"], "kills": stats["avg_kills"][aid],
+                              "bombs": stats["avg_bombs"][aid], "items": stats["avg_items"][aid],
+                              "steps": stats["avg_steps"]})
+            if on_progress:
+                on_progress(num_episodes, num_episodes)
+    finally:
+        np.random.set_state(numpy_state)
+
+    def summarize(rows):
+        rates = {f"{key}_rate": sum(g[key] for g in rows) / len(rows) * 100
+                 for key in ("win", "active_win", "suicide", "draw")}
+        averages = {f"avg_{key}": sum(g[key] for g in rows) / len(rows)
+                    for key in ("kills", "bombs", "items", "steps")}
+        return {"num_episodes": len(rows), **rates, **averages}
+
+    return {"seed": seed, "board_size": board_size, "num_agents": num_agents,
+            "max_steps": max_steps, **summarize(games),
+            "by_corner": {str(aid): summarize([g for g in games if g["aid"] == aid])
+                          for aid in range(num_agents)}, "games": games}
 
 
 # ────────────────────── tournament mode ───────────────────────────────────
 
 def tournament(board_size: int = 11, num_agents: int = 2,
                num_episodes: int = 100, ac_model_path: str = "",
-               device: str = "cpu"):
+               device: str = "cpu", max_steps: int = 500):
     """
     Round-robin tournament giữa Random, RuleBot, và AC (nếu có model).
     """
     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
-                          max_steps=300)
+                          max_steps=max_steps)
 
     agents = {
         "Random": make_random_fn(),
         "RuleBot": make_rule_based_fn(0),
     }
-    if ac_model_path and os.path.exists(ac_model_path):
+    if ac_model_path:
+        if not os.path.isfile(ac_model_path):
+            raise FileNotFoundError(f"Actor-Critic checkpoint not found: {ac_model_path}")
         agents["ActorCritic"] = make_ac_fn(ac_model_path, board_size, device)
 
     agent_names = list(agents.keys())
@@ -211,7 +277,12 @@ def tournament(board_size: int = 11, num_agents: int = 2,
         print(f"\n  All RuleBot FFA ({num_agents} agents):")
         fns = [make_rule_based_fn(i) for i in range(num_agents)]
         stats = run_match(env, fns, num_episodes, verbose=True)
-        return {"all_rulebots": stats}
+        results = {"all_rulebots": stats}
+        if "ActorCritic" in agents:
+            print(f"\n  ActorCritic vs {num_agents - 1} RuleBots:")
+            fns[0] = agents["ActorCritic"]
+            results["ac_vs_rulebots"] = run_match(env, fns, num_episodes, verbose=True)
+        return results
 
 
 # ────────────────────── learning curves (from saved logs) ─────────────────
@@ -342,20 +413,31 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Phase F — Evaluation & comparison")
     parser.add_argument("--mode", type=str, default="tournament",
-                        choices=["tournament", "random", "rulebots",
+                        choices=["tournament", "seeded", "random", "rulebots",
                                  "curves", "ablation"],
                         help="Evaluation mode")
     parser.add_argument("--board_size", type=int, default=11)
     parser.add_argument("--num_agents", type=int, default=2)
     parser.add_argument("--num_episodes", type=int, default=100)
+    parser.add_argument("--max_steps", type=int, default=500)
     parser.add_argument("--ac_model", type=str, default="",
                         help="Path to Actor-Critic model checkpoint")
     parser.add_argument("--device", type=str, default="cpu")
+    parser.add_argument("--seed", type=int, default=7000)
+    parser.add_argument("--output", type=str, default="", help="Save seeded evaluation as JSON")
     args = parser.parse_args()
 
     if args.mode == "tournament":
         tournament(args.board_size, args.num_agents, args.num_episodes,
-                   args.ac_model, args.device)
+                   args.ac_model, args.device, args.max_steps)
+    elif args.mode == "seeded":
+        policy = make_ac_fn(args.ac_model, args.board_size, args.device)
+        result = evaluate_seeded(policy, args.board_size, args.num_agents, args.num_episodes,
+                                 args.seed, args.max_steps)
+        if args.output:
+            with open(args.output, "w", encoding="utf-8") as handle:
+                json.dump(result, handle, indent=2)
+        print(json.dumps({k: v for k, v in result.items() if k != "games"}, indent=2))
     elif args.mode == "random":
         eval_random_baseline(args.board_size, args.num_agents,
                              args.num_episodes)

@@ -1,0 +1,27 @@
+{
+  "seed": 16000,
+  "board_size": 9,
+  "num_agents": 2,
+  "num_episodes": 200,
+  "max_steps": 500,
+  "device": "cpu",
+  "torch_threads": 1,
+  "candidate": "final",
+  "selection_seed": 15000,
+  "selection": "Final after escape fix: ActiveWR 30%, self 1%; warm after: 23%, self 0.5%.",
+  "model_sha256": {
+    "final": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+    "warm": "2f08807220b42fb59e7366628afe5f65840fa808b4d693f564dfa489590d21d7"
+  },
+  "code_sha256": {
+    "rule_based_bot.py": "28bf9bb0f448cac92544c7a445c0e9424994545cdebc4d29533a7253d8b6cf5f",
+    "train_actor_critic.py": "7dfbcbec2171dfaeb5ca575a6ddda646da555a4201adc8c8b190f7b4eb219ca5",
+    "bomberman_env.py": "5138dc3b660af9975c39a6c52d83e41862fa075704b178237bb28331ad1913c2",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a"
+  },
+  "runs": [
+    "final_before",
+    "final_after",
+    "warm_after"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "phase": "E",
+  "episodes": 300,
+  "board_size": 11,
+  "num_agents": 4,
+  "max_steps": 500,
+  "snapshot_every": 1000,
+  "log_every": 25,
+  "resume_from": "D:\\fpt\\subject\\BomberMan\\checkpoints\\best_phaseE_4a.pt",
+  "checkpoint_dir": "D:\\fpt\\subject\\BomberMan\\runs\\combat-20261010",
+  "device": "cpu",
+  "run_report": false
+}

@@ -1,0 +1,12 @@
+{
+  "phase": "C",
+  "episodes": 3000,
+  "num_agents": 2,
+  "board_size": 9,
+  "max_steps": 500,
+  "device": "cpu",
+  "checkpoint_dir": "D:\\fpt\\subject\\BomberMan\\runs\\20261010-125814-296523",
+  "resume_from": "",
+  "log_every": 50,
+  "run_report": false
+}

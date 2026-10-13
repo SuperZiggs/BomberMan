@@ -34,32 +34,63 @@
 ## 🚀 Cài đặt & Hướng dẫn sử dụng
 
 ### 1. Cài đặt môi trường
-Yêu cầu Python 3.8+ và PyTorch:
+Trên Windows, dùng Python 3.10 trở lên. Mở PowerShell tại repo rồi chạy:
 
-```bash
-# Cài đặt PyTorch và các thư viện cần thiết
-pip install torch numpy
+```powershell
+cd D:\fpt\subject\BomberMan
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install torch numpy
 ```
+
+Nếu `.venv` hiện tại đã có `torch` và `numpy`, bỏ qua bước tạo/cài môi trường. Các lệnh dưới dùng trực tiếp Python trong `.venv`, không cần activate hay đổi execution policy.
 
 ### 2. Huấn luyện mô hình
 
-- **Chạy baseline Q-learning:**
-  ```bash
-  python train_qlearning_baseline.py
-  ```
+- **Dùng GUI:** chạy `.\.venv\Scripts\python.exe visualize.py`, vào **Train trực tiếp**, chọn Phase C và khoảng 3000 episodes. Bỏ **Warm-start** nếu muốn học từ trọng số ngẫu nhiên; giữ chọn nếu muốn học tiếp checkpoint trên thanh phía trên. Bấm **Bắt đầu train**. Khi hoàn tất, model `best_*.pt` của lượt train được chọn để xem đấu; bảng trạng thái có **WR có hạ gục** và **Hạ gục/ván**.
+- **Học tiếp model FFA hiện có qua CLI:**
 
-- **Huấn luyện Actor-Critic:**
-  ```bash
-  python train_actor_critic.py
-  ```
+```powershell
+.\.venv\Scripts\python.exe train_actor_critic.py --phase E --episodes 2000 --board_size 11 --num_agents 4 --max_steps 500 --resume_from checkpoints/best_phaseE_4a.pt --checkpoint_dir runs/combat-training
+```
+
+- **Train Actor-Critic từ đầu theo curriculum:** chạy lần lượt, đợi mỗi lệnh hoàn tất trước lệnh tiếp theo. Các checkpoint mới lưu riêng trong `runs/from-scratch/`.
+
+```powershell
+# C: học từ trọng số ngẫu nhiên, đấu RuleBot 1v1
+.\.venv\Scripts\python.exe train_actor_critic.py --phase C --episodes 3000 --board_size 9 --num_agents 2 --max_steps 500 --checkpoint_dir runs/from-scratch/C
+
+# D: học self-play, bắt đầu từ kết quả C
+.\.venv\Scripts\python.exe train_actor_critic.py --phase D --episodes 3000 --board_size 9 --num_agents 2 --max_steps 500 --resume_from runs/from-scratch/C/best_phaseC.pt --checkpoint_dir runs/from-scratch/D
+
+# E1: tăng lên 3 tác tử
+.\.venv\Scripts\python.exe train_actor_critic.py --phase E --episodes 2000 --board_size 9 --num_agents 3 --max_steps 500 --resume_from runs/from-scratch/D/best_phaseD.pt --checkpoint_dir runs/from-scratch/E3
+
+# E2: tăng lên 4 tác tử, bàn 11x11
+.\.venv\Scripts\python.exe train_actor_critic.py --phase E --episodes 3000 --board_size 11 --num_agents 4 --max_steps 500 --resume_from runs/from-scratch/E3/best_phaseE_3a.pt --checkpoint_dir runs/from-scratch/E4
+```
+
+`episodes` là số ván học; `max_steps=500` là số bước tối đa **mỗi ván**. 100 episodes phù hợp thử pipeline, chưa đủ để kết luận agent đã học tấn công tốt. Lệnh CLI tự dùng CUDA khi PyTorch nhận GPU; GUI dùng CPU. CLI còn chạy báo cáo đánh giá cuối phase nên có thể tiếp tục chạy sau dòng lưu checkpoint.
+
+- **Baseline Q-learning (để so sánh):** `.\.venv\Scripts\python.exe train_qlearning_baseline.py`.
 
 ### 3. Đánh giá mô hình
 
 Đánh giá agent đã huấn luyện đối đầu với bot hoặc tự đối đầu:
 
-```bash
-python evaluate.py --model checkpoints/best_phaseE_4a.pt --episodes 100
+```powershell
+.\.venv\Scripts\python.exe evaluate.py --mode tournament --board_size 11 --num_agents 4 --num_episodes 100 --max_steps 500 --ac_model runs/from-scratch/E4/best_phaseE_4a.pt
 ```
+
+Đổi `--ac_model` thành checkpoint muốn kiểm tra, ví dụ `checkpoints/best_phaseE_4a.pt` hoặc `runs/combat-training/best_phaseE_4a.pt`. Báo cáo FFA có agent AC ở A0 đấu 3 RuleBot, với `Kills`, `ActiveWR` (thắng và có ít nhất một hạ gục bằng bom của mình) và `Suicide`. Đừng dùng WR hoặc số bom đơn lẻ để kết luận agent tấn công tốt.
+
+Đánh giá cố định, luân phiên AC ở tất cả góc trên **cùng bàn cho mỗi seed**, và xuất JSON:
+
+```powershell
+& "D:\anaconda\envs\torch\python.exe" evaluate.py --mode seeded --board_size 9 --num_agents 2 --num_episodes 100 --max_steps 500 --seed 9000 --ac_model runs/20261010-135449-587798/best_phaseC.pt --output runs/evaluation.json
+```
+
+Số trận phải chia hết cho số agents. Báo cáo có ActiveWR, tự nổ, hòa, kills và số liệu theo góc. Dùng cùng seed khi so các checkpoint; seed đánh giá cuối phải khác seed validation dùng để chọn model.
 
 ### 4. Giao diện trực quan: train, xem đấu và chơi
 
@@ -71,7 +102,7 @@ python visualize.py
 
 Giao diện desktop dùng Tkinter có sẵn trong Python, chỉ cần `torch` và `numpy` như pipeline hiện tại. Trên Linux cần có gói hệ thống `python3-tk`.
 
-- **Train trực tiếp:** Actor-Critic Phase C/D/E, chọn số episode và warm-start từ checkpoint. Phase C/D dùng 2 tác tử trên bàn 9×9; E dùng 3 tác tử trên 9×9 hoặc 4 trên 11×11. Bàn cờ hiển thị episode đang học; biểu đồ reward, win rate, số bom và loss dùng trung bình 50 episode gần nhất. Kéo thanh tốc độ để xem chậm, tạm dừng hoặc **Dừng & lưu**.
+- **Train trực tiếp:** Actor-Critic Phase C/D/E, chọn số episode và warm-start từ checkpoint. Phase C/D tự đặt ô **Tác tử** thành 2 và khóa bộ chọn, dùng bàn 9×9; Phase E cho chọn 2 hoặc 3 tác tử trên 9×9, hoặc 4 trên 11×11. Bàn cờ hiển thị episode đang học; biểu đồ reward, win rate, số bom và loss dùng trung bình 50 episode gần nhất. Kéo thanh tốc độ để xem chậm, tạm dừng hoặc **Dừng & lưu**.
 - **Agent vs Bots:** checkpoint đã train đấu 1–3 RuleBot trên bàn 11×11. Có tạm dừng, chạy từng bước, chỉnh tốc độ và bật vùng nguy hiểm.
 - **Bạn vs Agent + Bots:** bạn điều khiển A0, agent đã train là A1, cộng 1–2 RuleBot. Bấm **Ván mới → Chạy**, click bàn cờ rồi dùng **WASD / phím mũi tên** để di chuyển, **Space / E** để đặt bom; cũng có nút điều khiển trên màn hình.
 
@@ -79,14 +110,54 @@ Chế độ người chơi mặc định **12 bước/giây**; có thể chỉnh
 
 Cả ba tab dùng đồ họa pixel từ `assets/`: gạch cho tường cứng, thùng cho tường phá được, robot/bom cùng màu theo A0–A3, rương `+A` tăng sức chứa và vàng `+R` tăng tầm nổ. Hiệu ứng nổ và khói dùng các frame PNG có sẵn. Ảnh được tải một lần, scale bằng Tkinter và cache theo kích thước ô; không tải lại mỗi tick. Font Emulogic dùng cho tiêu đề trên Windows, được nạp riêng trong tiến trình. Giao diện không cần thêm thư viện đồ họa.
 
-Checkpoint mặc định là `checkpoints/best_phaseE_4a.pt`. GUI tái dùng action masking và cách lấy mẫu policy của pipeline train; checkpoint bàn khác kích thước được nội suy bằng helper có sẵn.
+Checkpoint mặc định là `checkpoints/best_phaseE_4a.pt`. Sau khi train, bấm **Làm mới**, chọn checkpoint mới rồi vào **Agent vs Bots** và bấm **Ván mới → Chạy**. GUI tái dùng action masking và cách lấy mẫu policy của pipeline train; checkpoint bàn khác kích thước được nội suy bằng helper có sẵn.
 
-Mỗi lần train từ GUI tạo `runs/<thời-gian>/` chứa `config.json`, `metrics.jsonl` và checkpoint riêng. GUI cập nhật danh sách model sau khi train; có thể chọn model mới để xem đấu hoặc chơi. Dừng giữa episode bỏ cập nhật của episode chưa hoàn tất và lưu các cập nhật trước đó. Đóng cửa sổ khi đang train cũng chờ lưu xong. Các checkpoint gốc được giữ nguyên. Learning curves chỉ hiển thị dữ liệu của lần train hiện tại; repo chưa có log từng episode của các lần train cũ.
+Sau bản sửa ngày 13/10, đóng và mở lại GUI để nạp code mới. Checkpoint `runs/pressure-C-next/final_phaseC.pt` kết hợp logic thoát sớm được đánh giá trên 200 trận độc lập seed 16000: ActiveWR **37%**, tự nổ **1.5%**, hòa **54%**. Cùng trọng số trước sửa là 30.5% / 6.5% / 61%; thay đổi này đến từ mask, chưa train thêm. Dùng checkpoint này để xem đấu tiếp; giữ `runs/combat-20261012/combat_bc_phaseC.pt` làm mốc đối chiếu. `pressure-C-next/best_phaseC.pt` vẫn là trọng số warm-start được chọn ở ep 0 với code trước sửa, không bị ghi đè hoặc đổi tên thành final. Benchmark dùng **9×9, hai tác tử, 500 bước**; tab xem đấu/chơi dùng 11×11 nên chưa có cùng mức đảm bảo. Chưa chuyển D/E vì hòa còn cao; chi tiết phiên bản/seed ở `RESULTS.md`. GUI dùng LR `1e-4` khi warm-start, `3e-4` khi train từ đầu. Checkpoint 8 kênh cũ vẫn nạp được nhưng cần học các kênh chỉ số thêm. Trên máy hiện tại đã kiểm tra được môi trường Conda:
+
+```powershell
+& "D:\anaconda\envs\torch\python.exe" visualize.py
+```
+
+Agent AC và RuleBot dùng chung mô hình thời gian nổ, tính cả dây chuyền, lửa còn sót và ô tranh chấp. AC kiểm tra thêm bom đáp trả cùng lúc, giữ đường thoát tránh cửa ngõ đối thủ có thể chiếm và chừa 2 bước khi đặt bom; khi đang thoát, ưu tiên nơi trú ít bị tia bom ở vị trí hiện tại/bước kế tiếp của đối thủ đe dọa. Nếu không còn đường có dự phòng, vẫn giữ các hành động sống được theo thời gian thật. RuleBot giữ hành vi trước lượt sửa này để làm đối thủ cố định, vẫn nhặt item và dùng range thực tế. Đây là dự báo và heuristic, vẫn có thể chết khi đối thủ đặt bom muộn hơn hoặc đổi đường ngoài dự báo.
+
+Sau đặt bom, AC tránh đi vào hành lang sẽ cháy và chỉ có một lối ra nếu bot có thể tới lối ra đó trong hai bước; những đường có lựa chọn thoát khác vẫn được giữ. Teacher tìm vị trí có tia nổ chạm đối thủ qua bước đầu được mask cho phép; không cố đi vào ô đối thủ đang đứng. Metrics thêm `attack_opportunities`, `attack_bombs`, `attack_labels`, `missing_attack_labels` để theo dõi cơ hội tấn công và nhãn trên các bước không nguy hiểm. Validation dùng bản sao model trên CPU giống GUI, độc lập thiết bị train; metadata ghi `device=cpu`.
+
+Khi lửa nhiều bom chồng nhau, kill credit ưu tiên một nguồn bom đối thủ thực sự trúng nạn nhân, thay vì cho bom A0 luôn nhận trước. Engine lưu thời gian riêng từng nguồn lửa. `self_blast_deaths` vẫn đánh dấu nạn nhân đứng trong tia bom của chính mình, kể cả có thêm bom đối thủ: phạt tự nổ và thống kê `suicide` không bị mất khi đổi kill credit. Những số liệu cũ dùng quy ước credit trước sửa phải được chấm lại trước khi so sánh.
+
+Hai item giữ xác suất rơi tổng `0.3` và chia đều loại. Ammo tăng sức chứa tối đa **3**, range tối đa **4**; mỗi nâng cấp thực sự thưởng `+0.05`, item ở trần vẫn bị nhặt nhưng không tăng chỉ số hay thưởng. Observation hiện có **12 kênh**: giữ nguyên 8 kênh cũ và thêm chỗ đặt bom còn trống, sức chứa, tầm nổ, thời gian nguy hiểm dự báo. Loader chép trọng số 8 kênh cũ và khởi tạo trọng số 4 kênh thêm bằng 0 để giữ nguyên logits trước fine-tune.
+
+Theo dõi `active_win`, `kills`, `suicide`, `draw`, `items`, `learner_steps`, `learning_aid` và `best_episode` trong metrics. **C/D/E đều luân phiên góc học.** `best` được chọn bằng policy cố định đấu RuleBot trên seed validation. Ứng viên phải có tỷ lệ tự nổ không cao hơn lần validation đầu lượt; trong các ứng viên đạt điều kiện này, ưu tiên ActiveWR, ít tự nổ, ít hòa, kills rồi WR. `suicide_limit` ghi mức giới hạn này. Đây là điều kiện trên mẫu validation, chưa đảm bảo tỷ lệ tự nổ trên mọi seed. Mặc định đánh giá 48 trận tại đầu lượt, mỗi 250 episode và cuối lượt; trả lại trạng thái RNG sau đánh giá để không đổi chuỗi ngẫu nhiên của train. Khi dùng test để quyết định chỉnh code/train tiếp, lần đánh giá cuối sau đó cần bộ seed mới. `validation_metrics.jsonl` giữ các lần đánh giá, `best_validation.json` ghi số liệu của model được chọn; `best_episode=0` có thể là warm-start nếu học tiếp chưa tốt hơn hoặc tự nổ nhiều hơn. Các lượt ngắn hơn `validation_every` hoặc đặt `--validation_every 0` không được đánh giá: `best` chỉ là fallback của final. `final` luôn giữ trọng số cuối lượt. GUI hiển thị riêng số liệu train và số liệu best đã đánh giá. Không chuyển phase chỉ vì WR tổng cao.
+
+Nhãn hướng dẫn tấn công so sánh số vị trí đối thủ có thể sống tại tick nổ với/không có bom dự kiến, có tính timer, chain reaction, tường và bom chặn đường. Khi đối thủ ở gần, agent được hướng dẫn tới một ô lân cận tạo áp lực lớn hơn hoặc đặt bom tại ô hiện tại nếu nó tốt nhất; vẫn tìm vị trí khi chỗ đặt bom đang bận. Mọi hành động phải qua safety mask. Phép dự báo này dùng vị trí đối thủ hiện tại và bom đã biết, không đảm bảo một hạ gục.
+
+Safety mask dùng trong train/evaluate/GUI nay có một ngoại lệ cho BOMB khi đang trong vùng nguy hiểm: dự báo đặt bom vẫn giữ đường sống cho agent (kể cả phản bom đồng thời), còn đối thủ có vị trí sống trước khi đặt nhưng không còn vị trí sống ở tick nổ sau khi đặt. Các bom thông thường lúc nguy hiểm vẫn bị cấm. CNN tự chọn trong các hành động hợp lệ; không có thao tác ép BOMB hoặc cộng thưởng đặt bom. Ngoại lệ này có thể cải thiện hành vi với checkpoint cũ mà không đổi trọng số. RuleBot đối chứng dùng `robust=False`, giữ nguyên luật trước sửa.
+
+AC thử thoát sớm qua ô kề đối thủ nếu chỉ còn STOP và còn hơn một tick trước nguy hiểm thực tế. Đây là cách tránh cả hai cùng chờ đến tick cuối rồi va chạm ở lối ra chung. Tường, bom, ô đối thủ đang đứng và lửa vẫn được xét; nếu có đường không tranh chấp thì giữ đường đó, nếu cần chờ lửa tắt thì vẫn chờ. Nhãn escape dùng cùng mask với policy. Heuristic này chưa đảm bảo thoát khi đối thủ tiếp tục chặn đường hoặc đặt bom mới.
+
+Loss hướng dẫn lấy trung bình riêng cho thoát hiểm, bom gây áp lực và di chuyển/mở đường, với trọng số lần lượt **0.5 / 0.5 / 0.2**. Log `combat_labels`, `combat_bombs` cho biết agent chọn bao nhiêu nhãn bom gây áp lực, gồm `followup_labels`/`followup_bombs` cho ngoại lệ lúc nguy hiểm; đây không phải số hạ gục hay xác suất thắng. `policy_loss`, `value_loss`, `escape_loss`, `combat_loss`, `navigation_loss` giúp phân biệt nguồn dao động của loss tổng.
+
+Lượt fine-tune 500 episode dưới đây đã hoàn tất ngày 13/10. Validation 6600 tăng ActiveWR 32% lên 36%, tự nổ giữ 1%, chọn best ở ep 500. Test độc lập 17000 lại có ActiveWR đối chứng **38.5%** so với candidate **36%**, tự nổ **0%** so với **0.5%**. WR tổng candidate tăng do thắng thụ động tăng 8 lên 15 trận. Tiếp tục dùng `runs/pressure-C-next/final_phaseC.pt`; giữ candidate để đối chiếu, ưu tiên chẩn đoán các timeout trước khi train thêm. Lệnh dưới đây ghi lại lượt đã chạy; thư mục output đã có checkpoint/log:
+
+```powershell
+& "D:\anaconda\envs\torch\python.exe" train_actor_critic.py --phase C --episodes 500 --board_size 9 --num_agents 2 --max_steps 500 --lr 0.0001 --wall_destroy_bonus 0.15 --seed 2026101302 --resume_from runs/pressure-C-next/final_phaseC.pt --validation_every 250 --validation_seed 6600 --validation_episodes 100 --checkpoint_dir runs/escape-C-6600
+```
+
+Hai lệnh chấm dưới đây cũng đã chạy xong, JSON được giữ lại. So ActiveWR, tự nổ và hòa; `best_episode=0` vẫn có thể là kết quả hợp lệ ở các lượt khác nếu chưa có ứng viên tốt hơn. Mỗi lượt train/test mới dùng thư mục và tên output mới để giữ log cũ. Seed 17000 hiện dùng cho chẩn đoán; nếu chỉnh tiếp, dành seed mới như 18000 cho test cuối:
+
+```powershell
+& "D:\anaconda\envs\torch\python.exe" evaluate.py --mode seeded --ac_model runs/pressure-C-next/final_phaseC.pt --board_size 9 --num_agents 2 --max_steps 500 --num_episodes 200 --seed 17000 --device cpu --output runs/escape-early/test_control_17000.json
+& "D:\anaconda\envs\torch\python.exe" evaluate.py --mode seeded --ac_model runs/escape-C-6600/best_phaseC.pt --board_size 9 --num_agents 2 --max_steps 500 --num_episodes 200 --seed 17000 --device cpu --output runs/escape-early/test_candidate_17000.json
+```
+
+Kết quả trên seed 16000 của warm-start với cùng code là ActiveWR 24%, tự nổ 0.5%, hòa 64.5%; `pressure-C-next/final` đạt 37% / 1.5% / 54%. Trên seed 17000, checkpoint đang dùng đạt 38.5% / 0% / 56%. Các số liệu thuộc từng mẫu/seed, chưa đảm bảo mức tự nổ hoặc tỷ lệ thắng trên mọi bàn. Chi tiết lượt fine-tune và replay timeout ở cuối `RESULTS.md`.
+
+Mỗi lần train từ GUI tạo `runs/<thời-gian>/` chứa `config.json`, `metrics.jsonl` và checkpoint riêng. CLI cũng ghi config và metrics từng episode; dùng thư mục mới cho mỗi lượt để không trộn log hoặc ghi đè checkpoint của lượt trước. GUI cập nhật danh sách model sau khi train; có thể chọn model mới để xem đấu hoặc chơi. Dừng giữa episode bỏ cập nhật của episode chưa hoàn tất và lưu các cập nhật trước đó. Đóng cửa sổ khi đang train cũng chờ lưu xong. Các checkpoint gốc được giữ nguyên. Learning curves chỉ hiển thị dữ liệu của lần train hiện tại; repo chưa có log từng episode của các lần train cũ.
 
 Kiểm tra nhanh (dùng checkpoint thật, train ngắn và kiểm tra ba tab):
 
 ```powershell
-python test_visualize.py
+.\.venv\Scripts\python.exe test_combat.py
+.\.venv\Scripts\python.exe test_visualize.py
 ```
 
 ---
@@ -94,3 +165,9 @@ python test_visualize.py
 ## 📊 Kết quả thực nghiệm
 
 Chi tiết các chỉ số đo lường (Win Rate, Episode Length, Bomb Usage, Survival Rate) được ghi nhận đầy đủ tại [RESULTS.md](RESULTS.md) và phân tích cải tiến tại [IMPROVEMENTS.md](IMPROVEMENTS.md).
+
+## Tải đầy đủ code, kết quả và checkpoint
+
+Nhánh `danh/bomberman-rl-results-checkpoints` lưu cả `runs/`, báo cáo Markdown, metrics, scripts và các checkpoint của project chính. Các file `.pt` dùng Git LFS; sau khi clone, chạy `git lfs pull` trong thư mục repository để lấy đủ trọng số. Python cần file trọng số thật, không phải file pointer LFS.
+
+Checkout đối chứng `_comparison/BomberMan-Loc_update` là submodule, giữ đúng commit của nhánh `Loc_update` dùng khi so sánh. Clone với `--recurse-submodules`, hoặc chạy `git submodule update --init --recursive` sau khi clone để lấy code và checkpoint đối chứng. Thư mục test tạm, cache Python và môi trường ảo được giữ ở máy cục bộ.

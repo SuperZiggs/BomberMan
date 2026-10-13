@@ -26,7 +26,7 @@ numpy array (agent-centric channel ordering) suitable as input to a CNN.
 from __future__ import annotations
 
 import numpy as np
-from dataclasses import dataclass, field
+from dataclasses import dataclass, replace
 from typing import Optional
 
 
@@ -53,6 +53,10 @@ _MOVE_DELTA = {
 
 POWERUP_AMMO = "ammo"
 POWERUP_RANGE = "range"
+MAX_AMMO = 3
+MAX_BLAST_RANGE = 4
+ITEM_UPGRADE_REWARD = 0.05
+OBS_CHANNELS = 12
 
 
 @dataclass
@@ -121,6 +125,8 @@ class BombermanFFAEnv:
         self.grid: np.ndarray = None
         self.bombs: list[Bomb] = []
         self.flames: dict[tuple[int, int], int] = {}   # (r,c) -> remaining duration
+        self._flame_owners: dict[tuple[int, int], int] = {}
+        self._flame_sources: dict[tuple[int, int], dict[int, int]] = {}
         self.powerups: dict[tuple[int, int], str] = {}  # (r,c) -> powerup type
         self.agents: list[Agent] = []
         self.step_count = 0
@@ -162,11 +168,14 @@ class BombermanFFAEnv:
 
         self.bombs = []
         self.flames = {}
+        self._flame_owners = {}
+        self._flame_sources = {}
         self.powerups = {}
         self.step_count = 0
         self._episode_done = False
 
-        return [self._get_obs(a.agent_id) for a in self.agents]
+        danger = self._danger_map()
+        return [self._get_obs(a.agent_id, danger) for a in self.agents]
 
     # --------------------------------- step ---------------------------------
 
@@ -182,6 +191,7 @@ class BombermanFFAEnv:
 
         # 1) Resolve movement / bomb placement intents.
         intended_positions = {}
+        bombs_placed = []
         for agent in self.agents:
             if not agent.alive:
                 continue
@@ -194,7 +204,8 @@ class BombermanFFAEnv:
                 else:
                     intended_positions[agent.agent_id] = (agent.row, agent.col)
             elif a == ACTION_BOMB:
-                self._try_place_bomb(agent)
+                if self._try_place_bomb(agent):
+                    bombs_placed.append(agent.agent_id)
                 intended_positions[agent.agent_id] = (agent.row, agent.col)
             else:  # ACTION_STOP
                 intended_positions[agent.agent_id] = (agent.row, agent.col)
@@ -218,28 +229,56 @@ class BombermanFFAEnv:
 
         # 3) Resolve flame damage.
         died_this_step = []
+        self_blast_deaths = []
         for agent in self.agents:
             if agent.alive and (agent.row, agent.col) in self.flames:
                 agent.alive = False
                 died_this_step.append(agent.agent_id)
+                pos = (agent.row, agent.col)
+                sources = self._flame_sources.get(pos, {})
+                owners = list(sources) or [self._flame_owners.get(pos)]
+                if agent.agent_id in owners:
+                    self_blast_deaths.append(agent.agent_id)
+                # Credit one actual opponent blast; own involvement is recorded separately.
+                owner = next((aid for aid in owners if aid is not None and aid != agent.agent_id),
+                             agent.agent_id if agent.agent_id in owners else None)
+                if owner is not None:
+                    self._last_kills.append((owner, agent.agent_id))
 
-        # 4) Pick up power-ups.
+        # 4) Reward only useful upgrades; collecting at the cap earns nothing.
+        items_collected = {}
         for agent in self.agents:
             if not agent.alive:
                 continue
             pos = (agent.row, agent.col)
             if pos in self.powerups:
                 kind = self.powerups.pop(pos)
-                if kind == POWERUP_AMMO:
+                if kind == POWERUP_AMMO and agent.ammo < MAX_AMMO:
                     agent.ammo += 1
-                elif kind == POWERUP_RANGE:
+                elif kind == POWERUP_RANGE and agent.blast_range < MAX_BLAST_RANGE:
                     agent.blast_range += 1
+                else:
+                    continue
+                items_collected.setdefault(agent.agent_id, []).append(kind)
+                rewards[agent.agent_id] += ITEM_UPGRADE_REWARD
 
         # 5) Decay flames.
         for pos in list(self.flames.keys()):
             self.flames[pos] -= 1
+            sources = self._flame_sources.get(pos)
+            if sources is not None:
+                for owner in list(sources):
+                    sources[owner] -= 1
+                    if sources[owner] <= 0:
+                        del sources[owner]
+                if sources:
+                    self._flame_owners[pos] = next(iter(sources))
+                else:
+                    self._flame_sources.pop(pos, None)
+                    self._flame_owners.pop(pos, None)
             if self.flames[pos] <= 0:
                 del self.flames[pos]
+                self._flame_owners.pop(pos, None)
 
         # 6) Reward shaping.
         alive_ids = [a.agent_id for a in self.agents if a.alive]
@@ -249,15 +288,12 @@ class BombermanFFAEnv:
             elif agent.alive:
                 rewards[agent.agent_id] += -0.001  # small time penalty -> discourages passivity
 
-        # Credit eliminations to bomb owners (approximate: whoever owned any
-        # bomb whose flame is at a dying agent's cell this step). We
-        # recompute this inside _tick_bombs_and_explode via self._last_kills.
+        # Each death has one owner, including deaths in lingering flames.
         for killer_id, victim_id in self._last_kills:
-            if killer_id != victim_id and killer_id in alive_ids:
-                rewards[killer_id] += 1.0
-                for a in self.agents:
-                    if a.agent_id == killer_id:
-                        a.kills += 1
+            if killer_id != victim_id:
+                self.agents[killer_id].kills += 1
+                if killer_id in alive_ids:
+                    rewards[killer_id] += 1.0
 
         # 7) Episode / done bookkeeping.
         num_alive = len(alive_ids)
@@ -270,13 +306,17 @@ class BombermanFFAEnv:
                 pass  # death penalty already applied above
 
         dones = [(not a.alive) or self._episode_done for a in self.agents]
-        obs_list = [self._get_obs(a.agent_id) for a in self.agents]
+        danger = self._danger_map()
+        obs_list = [self._get_obs(a.agent_id, danger) for a in self.agents]
         info = {
             "episode_done": self._episode_done,
             "alive": [a.alive for a in self.agents],
             "step": self.step_count,
             "walls_destroyed": getattr(self, '_last_walls_destroyed', {}),
             "kills": self._last_kills,
+            "self_blast_deaths": self_blast_deaths,
+            "bombs_placed": bombs_placed,
+            "items_collected": items_collected,
         }
         return obs_list, rewards, dones, info
 
@@ -284,18 +324,19 @@ class BombermanFFAEnv:
 
     def _try_place_bomb(self, agent: Agent):
         if not agent.alive:
-            return
+            return False
         if agent.bombs_placed >= agent.ammo:
-            return
+            return False
         pos = (agent.row, agent.col)
         if any(b.row == pos[0] and b.col == pos[1] for b in self.bombs):
-            return  # already a bomb here
+            return False  # already a bomb here
         self.bombs.append(Bomb(row=pos[0], col=pos[1], owner=agent.agent_id,
                                 timer=self.bomb_timer, blast_range=agent.blast_range))
         agent.bombs_placed += 1
+        return True
 
     def _tick_bombs_and_explode(self):
-        self._last_kills = []  # list of (killer_id, victim_id) approximations
+        self._last_kills = []  # list of (killer_id, victim_id), one per death
         self._last_walls_destroyed = {}  # {owner_id: count} walls destroyed this tick
         exploded_this_pass = True
         # Decrement timers once, then keep resolving chain reactions until
@@ -310,31 +351,79 @@ class BombermanFFAEnv:
                 break
             for b in ready:
                 self._explode_bomb(b)
+                self.bombs.remove(b)
                 exploded_this_pass = True
-            self.bombs = [b for b in self.bombs if b.timer > 0]
 
-    def _explode_bomb(self, bomb: Bomb):
-        owner_agent = next((a for a in self.agents if a.agent_id == bomb.owner), None)
-        if owner_agent is not None:
-            owner_agent.bombs_placed = max(0, owner_agent.bombs_placed - 1)
-
-        cells = [(bomb.row, bomb.col)]
-        walls_destroyed_count = 0
-        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-            for step in range(1, bomb.blast_range + 1):
-                r, c = bomb.row + dr * step, bomb.col + dc * step
+    def _blast_cells(self, row: int, col: int, blast_range: int, grid=None):
+        """Project a blast against the current walls without changing the board."""
+        grid = self.grid if grid is None else grid
+        cells = [(row, col)]
+        for dr, dc in _MOVE_DELTA.values():
+            for step in range(1, blast_range + 1):
+                r, c = row + dr * step, col + dc * step
                 if not (0 <= r < self.board_size and 0 <= c < self.board_size):
                     break
-                if self.grid[r, c] == RIGID_WALL:
+                if grid[r, c] == RIGID_WALL:
                     break
                 cells.append((r, c))
-                if self.grid[r, c] == WOODEN_WALL:
-                    self.grid[r, c] = EMPTY
-                    walls_destroyed_count += 1
-                    if self.rng.random() < self.powerup_prob:
-                        kind = self.rng.choice([POWERUP_AMMO, POWERUP_RANGE])
-                        self.powerups[(r, c)] = kind
+                if grid[r, c] == WOODEN_WALL:
                     break  # blast stops at the first wooden wall it destroys
+        return cells
+
+    def _forecast_blasts(self, extra_bomb=None, min_horizon=1):
+        """Future damage and movement blockers, indexed from the NEXT step.
+
+        Match step's order: move, decrement bombs, resolve chains, damage, decay.
+        Only visible bombs and optional proposed placements are forecast.
+        """
+        bombs = [replace(b) for b in self.bombs]
+        if extra_bomb is not None:
+            placements = [extra_bomb] if isinstance(extra_bomb, Bomb) else extra_bomb
+            bombs.extend(replace(b) for b in placements)
+        horizon = max([min_horizon, 1, *self.flames.values(),
+                       *(max(1, b.timer) + self.flame_duration - 1 for b in bombs)])
+        burns = np.zeros((horizon, self.board_size, self.board_size), dtype=bool)
+        blocked = np.zeros_like(burns)
+        grid = self.grid.copy()
+        for pos, duration in self.flames.items():
+            burns[:duration, pos[0], pos[1]] = True
+        for tick in range(horizon):
+            blocked[tick] = grid != EMPTY
+            for b in bombs:
+                blocked[tick, b.row, b.col] = True
+                b.timer -= 1
+            while True:
+                ready = [b for b in bombs if b.timer <= 0]
+                if not ready:
+                    break
+                for b in ready:
+                    cells = self._blast_cells(b.row, b.col, b.blast_range, grid)
+                    for r, c in cells:
+                        burns[tick:tick + self.flame_duration, r, c] = True
+                        if grid[r, c] == WOODEN_WALL:
+                            grid[r, c] = EMPTY
+                    for other in bombs:
+                        if (other.row, other.col) in cells:
+                            other.timer = 0
+                    bombs.remove(b)
+        return burns, blocked
+
+    def _danger_map(self):
+        burns, _ = self._forecast_blasts()
+        return np.where(burns.any(axis=0), burns.argmax(axis=0) + 1, 0)
+
+    def _explode_bomb(self, bomb: Bomb):
+        owner_agent = self.agents[bomb.owner]
+        owner_agent.bombs_placed = max(0, owner_agent.bombs_placed - 1)
+        cells = self._blast_cells(bomb.row, bomb.col, bomb.blast_range)
+        walls_destroyed_count = 0
+        for r, c in cells:
+            if self.grid[r, c] == WOODEN_WALL:
+                self.grid[r, c] = EMPTY
+                walls_destroyed_count += 1
+                if self.rng.random() < self.powerup_prob:
+                    kind = self.rng.choice([POWERUP_AMMO, POWERUP_RANGE])
+                    self.powerups[(r, c)] = kind
         # Track wall destructions per bomb owner (for reward shaping).
         if walls_destroyed_count > 0:
             self._last_walls_destroyed[bomb.owner] = (
@@ -342,18 +431,18 @@ class BombermanFFAEnv:
             )
 
         for pos in cells:
+            sources = self._flame_sources.setdefault(pos, {})
+            legacy_owner = self._flame_owners.get(pos)
+            if not sources and legacy_owner is not None:
+                sources[legacy_owner] = self.flames.get(pos, 0)
+            sources[bomb.owner] = max(sources.get(bomb.owner, 0), self.flame_duration)
             self.flames[pos] = max(self.flames.get(pos, 0), self.flame_duration)
+            # Keep the single-owner view for callers; damage uses all active sources.
+            self._flame_owners.setdefault(pos, bomb.owner)
             # Chain-detonate any bomb caught in the blast.
             for other in self.bombs:
                 if (other.row, other.col) == pos and other.timer > 0:
                     other.timer = 0
-
-        # Approximate kill attribution: any agent standing in `cells` right
-        # now is credited to this bomb's owner (used by step() after this
-        # call to decide rewards).
-        for agent in self.agents:
-            if agent.alive and (agent.row, agent.col) in cells:
-                self._last_kills.append((bomb.owner, agent.agent_id))
 
     def _is_walkable(self, r: int, c: int) -> bool:
         if not (0 <= r < self.board_size and 0 <= c < self.board_size):
@@ -366,7 +455,7 @@ class BombermanFFAEnv:
 
     # --------------------------------- observation ---------------------------------
 
-    def _get_obs(self, agent_id: int) -> np.ndarray:
+    def _get_obs(self, agent_id: int, danger=None) -> np.ndarray:
         """
         Multi-channel observation, agent-centric (the requesting agent's
         position is always in the "self" channel, others in "opponents").
@@ -381,9 +470,13 @@ class BombermanFFAEnv:
           5: range power-ups
           6: self position
           7: opponents' positions (combined)
+          8: available bomb slots / MAX_AMMO (constant plane)
+          9: bomb capacity / MAX_AMMO (constant plane)
+         10: current blast range / MAX_BLAST_RANGE (constant plane)
+         11: inverse time until damage, including chains and lingering flames
         """
         s = self.board_size
-        obs = np.zeros((8, s, s), dtype=np.float32)
+        obs = np.zeros((OBS_CHANNELS, s, s), dtype=np.float32)
         obs[0] = (self.grid == RIGID_WALL).astype(np.float32)
         obs[1] = (self.grid == WOODEN_WALL).astype(np.float32)
         for b in self.bombs:
@@ -395,6 +488,12 @@ class BombermanFFAEnv:
                 obs[4, r, c] = 1.0
             else:
                 obs[5, r, c] = 1.0
+        own = self.agents[agent_id]
+        obs[8].fill(max(0, own.ammo - own.bombs_placed) / MAX_AMMO)
+        obs[9].fill(own.ammo / MAX_AMMO)
+        obs[10].fill(own.blast_range / MAX_BLAST_RANGE)
+        danger = self._danger_map() if danger is None else danger
+        np.divide(1.0, danger, out=obs[11], where=danger > 0)
         for agent in self.agents:
             if not agent.alive:
                 continue

@@ -34,11 +34,9 @@ ENV/
 env.bak/
 venv.bak/
 
-# Checkpoint snapshots (retain best_*.pt and final_*.pt)
-checkpoints/snapshot_*.pt
-
-# GUI training runs (checkpoints and per-episode metrics)
-runs/
+# Experiment runs, metrics and all checkpoints are versioned.
+# Temporary test directories are local scratch space.
+_comparison/test-tmp/
 
 # IDE and Editor settings
 .vscode/

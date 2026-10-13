@@ -1,0 +1,59 @@
+{
+  "cases": {
+    "shared_old_checkpoint_current_policy": {
+      "num_episodes": 100,
+      "win_rate": 2.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 93.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 6.68,
+      "seconds": 114.97056530000555
+    },
+    "shared_old_checkpoint_Loc_update_policy": {
+      "num_episodes": 100,
+      "win_rate": 22.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 8.0,
+      "draw_rate": 64.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 2.04,
+      "seconds": 115.94920609999826
+    },
+    "current_selected_checkpoint_current_policy": {
+      "num_episodes": 100,
+      "win_rate": 45.0,
+      "active_win_rate": 41.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 54.0,
+      "avg_kills": 0.41,
+      "avg_bombs": 40.57,
+      "seconds": 95.06789520000166
+    },
+    "current_selected_checkpoint_Loc_update_mask": {
+      "num_episodes": 100,
+      "win_rate": 18.0,
+      "active_win_rate": 6.0,
+      "suicide_rate": 56.00000000000001,
+      "draw_rate": 2.0,
+      "avg_kills": 0.06,
+      "avg_bombs": 18.53,
+      "seconds": 32.337309099995764
+    }
+  },
+  "paired_changes": {
+    "shared_old_checkpoint_Loc_update_policy_vs_shared_old_checkpoint_current_policy": {
+      "active_wins_gained": 0,
+      "active_wins_lost": 0,
+      "suicides_added": 8.0,
+      "suicides_removed": 0.0
+    },
+    "current_selected_checkpoint_Loc_update_mask_vs_current_selected_checkpoint_current_policy": {
+      "active_wins_gained": 5,
+      "active_wins_lost": 40,
+      "suicides_added": 56.0,
+      "suicides_removed": 0.0
+    }
+  },
+  "source_and_checkpoints_unchanged": true
+}

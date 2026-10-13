@@ -1,0 +1,3482 @@
+{
+  "lost_active": [
+    {
+      "seed": 17000,
+      "aid": 1,
+      "control": {
+        "seed": 17000,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 29.0,
+        "items": 1.0,
+        "steps": 267.0
+      },
+      "candidate": {
+        "seed": 17000,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17002,
+      "aid": 1,
+      "control": {
+        "seed": 17002,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 24.0,
+        "items": 0.0,
+        "steps": 301.0
+      },
+      "candidate": {
+        "seed": 17002,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 38.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17005,
+      "aid": 0,
+      "control": {
+        "seed": 17005,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 14.0,
+        "items": 1.0,
+        "steps": 135.0
+      },
+      "candidate": {
+        "seed": 17005,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17008,
+      "aid": 1,
+      "control": {
+        "seed": 17008,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 12.0,
+        "items": 1.0,
+        "steps": 109.0
+      },
+      "candidate": {
+        "seed": 17008,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 57.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17009,
+      "aid": 0,
+      "control": {
+        "seed": 17009,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 25.0,
+        "items": 0.0,
+        "steps": 305.0
+      },
+      "candidate": {
+        "seed": 17009,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 40.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17009,
+      "aid": 1,
+      "control": {
+        "seed": 17009,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 24.0,
+        "items": 0.0,
+        "steps": 247.0
+      },
+      "candidate": {
+        "seed": 17009,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 46.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17010,
+      "aid": 0,
+      "control": {
+        "seed": 17010,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 37.0,
+        "items": 1.0,
+        "steps": 393.0
+      },
+      "candidate": {
+        "seed": 17010,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17017,
+      "aid": 0,
+      "control": {
+        "seed": 17017,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 36.0,
+        "items": 2.0,
+        "steps": 423.0
+      },
+      "candidate": {
+        "seed": 17017,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 62.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17020,
+      "aid": 0,
+      "control": {
+        "seed": 17020,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 26.0,
+        "items": 2.0,
+        "steps": 268.0
+      },
+      "candidate": {
+        "seed": 17020,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 39.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17021,
+      "aid": 1,
+      "control": {
+        "seed": 17021,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 71.0,
+        "items": 4.0,
+        "steps": 474.0
+      },
+      "candidate": {
+        "seed": 17021,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 66.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17023,
+      "aid": 0,
+      "control": {
+        "seed": 17023,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 8.0,
+        "items": 2.0,
+        "steps": 72.0
+      },
+      "candidate": {
+        "seed": 17023,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 62.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17029,
+      "aid": 0,
+      "control": {
+        "seed": 17029,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 41.0,
+        "items": 1.0,
+        "steps": 428.0
+      },
+      "candidate": {
+        "seed": 17029,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 2.0,
+        "steps": 440.0
+      }
+    },
+    {
+      "seed": 17032,
+      "aid": 1,
+      "control": {
+        "seed": 17032,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 40.0,
+        "items": 2.0,
+        "steps": 366.0
+      },
+      "candidate": {
+        "seed": 17032,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 65.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17033,
+      "aid": 1,
+      "control": {
+        "seed": 17033,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 24.0,
+        "items": 2.0,
+        "steps": 246.0
+      },
+      "candidate": {
+        "seed": 17033,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17042,
+      "aid": 0,
+      "control": {
+        "seed": 17042,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 21.0,
+        "items": 0.0,
+        "steps": 234.0
+      },
+      "candidate": {
+        "seed": 17042,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 40.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17044,
+      "aid": 0,
+      "control": {
+        "seed": 17044,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 7.0,
+        "items": 0.0,
+        "steps": 59.0
+      },
+      "candidate": {
+        "seed": 17044,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 48.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17050,
+      "aid": 1,
+      "control": {
+        "seed": 17050,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 14.0,
+        "items": 1.0,
+        "steps": 162.0
+      },
+      "candidate": {
+        "seed": 17050,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17052,
+      "aid": 1,
+      "control": {
+        "seed": 17052,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 42.0,
+        "items": 1.0,
+        "steps": 424.0
+      },
+      "candidate": {
+        "seed": 17052,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 53.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17055,
+      "aid": 1,
+      "control": {
+        "seed": 17055,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 40.0,
+        "items": 1.0,
+        "steps": 456.0
+      },
+      "candidate": {
+        "seed": 17055,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 66.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17056,
+      "aid": 0,
+      "control": {
+        "seed": 17056,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 28.0,
+        "items": 3.0,
+        "steps": 190.0
+      },
+      "candidate": {
+        "seed": 17056,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 14.0,
+        "items": 3.0,
+        "steps": 93.0
+      }
+    },
+    {
+      "seed": 17063,
+      "aid": 0,
+      "control": {
+        "seed": 17063,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 59.0,
+        "items": 3.0,
+        "steps": 473.0
+      },
+      "candidate": {
+        "seed": 17063,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 40.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17063,
+      "aid": 1,
+      "control": {
+        "seed": 17063,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 39.0,
+        "items": 3.0,
+        "steps": 279.0
+      },
+      "candidate": {
+        "seed": 17063,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 66.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17064,
+      "aid": 0,
+      "control": {
+        "seed": 17064,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 40.0,
+        "items": 3.0,
+        "steps": 291.0
+      },
+      "candidate": {
+        "seed": 17064,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 63.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17065,
+      "aid": 0,
+      "control": {
+        "seed": 17065,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 28.0,
+        "items": 0.0,
+        "steps": 307.0
+      },
+      "candidate": {
+        "seed": 17065,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17066,
+      "aid": 1,
+      "control": {
+        "seed": 17066,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 26.0,
+        "items": 3.0,
+        "steps": 184.0
+      },
+      "candidate": {
+        "seed": 17066,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 67.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17069,
+      "aid": 0,
+      "control": {
+        "seed": 17069,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 40.0,
+        "items": 1.0,
+        "steps": 447.0
+      },
+      "candidate": {
+        "seed": 17069,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 6.0,
+        "items": 0.0,
+        "steps": 54.0
+      }
+    },
+    {
+      "seed": 17071,
+      "aid": 1,
+      "control": {
+        "seed": 17071,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 10.0,
+        "items": 0.0,
+        "steps": 140.0
+      },
+      "candidate": {
+        "seed": 17071,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 40.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17072,
+      "aid": 1,
+      "control": {
+        "seed": 17072,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 20.0,
+        "items": 1.0,
+        "steps": 252.0
+      },
+      "candidate": {
+        "seed": 17072,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 54.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17073,
+      "aid": 0,
+      "control": {
+        "seed": 17073,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 41.0,
+        "items": 1.0,
+        "steps": 480.0
+      },
+      "candidate": {
+        "seed": 17073,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17073,
+      "aid": 1,
+      "control": {
+        "seed": 17073,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 46.0,
+        "items": 3.0,
+        "steps": 334.0
+      },
+      "candidate": {
+        "seed": 17073,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17077,
+      "aid": 0,
+      "control": {
+        "seed": 17077,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 51.0,
+        "items": 4.0,
+        "steps": 391.0
+      },
+      "candidate": {
+        "seed": 17077,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 66.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17077,
+      "aid": 1,
+      "control": {
+        "seed": 17077,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 68.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17077,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 70.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17078,
+      "aid": 1,
+      "control": {
+        "seed": 17078,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 7.0,
+        "items": 0.0,
+        "steps": 91.0
+      },
+      "candidate": {
+        "seed": 17078,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17082,
+      "aid": 1,
+      "control": {
+        "seed": 17082,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 27.0,
+        "items": 1.0,
+        "steps": 324.0
+      },
+      "candidate": {
+        "seed": 17082,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 44.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17087,
+      "aid": 1,
+      "control": {
+        "seed": 17087,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 16.0,
+        "items": 2.0,
+        "steps": 101.0
+      },
+      "candidate": {
+        "seed": 17087,
+        "aid": 1,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 24.0,
+        "items": 2.0,
+        "steps": 229.0
+      }
+    },
+    {
+      "seed": 17089,
+      "aid": 1,
+      "control": {
+        "seed": 17089,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 35.0,
+        "items": 2.0,
+        "steps": 340.0
+      },
+      "candidate": {
+        "seed": 17089,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 47.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17091,
+      "aid": 1,
+      "control": {
+        "seed": 17091,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 28.0,
+        "items": 3.0,
+        "steps": 214.0
+      },
+      "candidate": {
+        "seed": 17091,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 60.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17098,
+      "aid": 0,
+      "control": {
+        "seed": 17098,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 26.0,
+        "items": 3.0,
+        "steps": 185.0
+      },
+      "candidate": {
+        "seed": 17098,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 77.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    }
+  ],
+  "new_passive": [
+    {
+      "seed": 17013,
+      "aid": 1,
+      "control": {
+        "seed": 17013,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 46.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17013,
+        "aid": 1,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 20.0,
+        "items": 2.0,
+        "steps": 189.0
+      }
+    },
+    {
+      "seed": 17029,
+      "aid": 0,
+      "control": {
+        "seed": 17029,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 41.0,
+        "items": 1.0,
+        "steps": 428.0
+      },
+      "candidate": {
+        "seed": 17029,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 2.0,
+        "steps": 440.0
+      }
+    },
+    {
+      "seed": 17030,
+      "aid": 0,
+      "control": {
+        "seed": 17030,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 57.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17030,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 12.0,
+        "items": 1.0,
+        "steps": 100.0
+      }
+    },
+    {
+      "seed": 17043,
+      "aid": 0,
+      "control": {
+        "seed": 17043,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17043,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 50.0,
+        "items": 2.0,
+        "steps": 440.0
+      }
+    },
+    {
+      "seed": 17043,
+      "aid": 1,
+      "control": {
+        "seed": 17043,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 66.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17043,
+        "aid": 1,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 7.0,
+        "items": 3.0,
+        "steps": 57.0
+      }
+    },
+    {
+      "seed": 17045,
+      "aid": 0,
+      "control": {
+        "seed": 17045,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 41.0,
+        "items": 0.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17045,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 13.0,
+        "items": 1.0,
+        "steps": 123.0
+      }
+    },
+    {
+      "seed": 17056,
+      "aid": 0,
+      "control": {
+        "seed": 17056,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 28.0,
+        "items": 3.0,
+        "steps": 190.0
+      },
+      "candidate": {
+        "seed": 17056,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 14.0,
+        "items": 3.0,
+        "steps": 93.0
+      }
+    },
+    {
+      "seed": 17069,
+      "aid": 0,
+      "control": {
+        "seed": 17069,
+        "aid": 0,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 40.0,
+        "items": 1.0,
+        "steps": 447.0
+      },
+      "candidate": {
+        "seed": 17069,
+        "aid": 0,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 6.0,
+        "items": 0.0,
+        "steps": 54.0
+      }
+    },
+    {
+      "seed": 17087,
+      "aid": 1,
+      "control": {
+        "seed": 17087,
+        "aid": 1,
+        "win": 1,
+        "active_win": 1,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 1.0,
+        "bombs": 16.0,
+        "items": 2.0,
+        "steps": 101.0
+      },
+      "candidate": {
+        "seed": 17087,
+        "aid": 1,
+        "win": 1,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 24.0,
+        "items": 2.0,
+        "steps": 229.0
+      }
+    }
+  ],
+  "candidate_failures": [
+    {
+      "seed": 17016,
+      "aid": 0,
+      "control": {
+        "seed": 17016,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 55.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17016,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 7.0,
+        "items": 0.0,
+        "steps": 70.0
+      }
+    },
+    {
+      "seed": 17031,
+      "aid": 0,
+      "control": {
+        "seed": 17031,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 7.0,
+        "items": 0.0,
+        "steps": 68.0
+      },
+      "candidate": {
+        "seed": 17031,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 7.0,
+        "items": 0.0,
+        "steps": 68.0
+      }
+    },
+    {
+      "seed": 17061,
+      "aid": 0,
+      "control": {
+        "seed": 17061,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 75.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17061,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 1.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 5.0,
+        "items": 1.0,
+        "steps": 36.0
+      }
+    },
+    {
+      "seed": 17081,
+      "aid": 0,
+      "control": {
+        "seed": 17081,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 3.0,
+        "items": 0.0,
+        "steps": 27.0
+      },
+      "candidate": {
+        "seed": 17081,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 3.0,
+        "items": 0.0,
+        "steps": 27.0
+      }
+    },
+    {
+      "seed": 17091,
+      "aid": 0,
+      "control": {
+        "seed": 17091,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 9.0,
+        "items": 2.0,
+        "steps": 95.0
+      },
+      "candidate": {
+        "seed": 17091,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 0,
+        "kills": 0.0,
+        "bombs": 8.0,
+        "items": 2.0,
+        "steps": 83.0
+      }
+    }
+  ],
+  "common_timeouts": [
+    {
+      "seed": 17002,
+      "aid": 0,
+      "control": {
+        "seed": 17002,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17002,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 39.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17003,
+      "aid": 0,
+      "control": {
+        "seed": 17003,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 38.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17003,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 44.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17006,
+      "aid": 1,
+      "control": {
+        "seed": 17006,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17006,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17008,
+      "aid": 0,
+      "control": {
+        "seed": 17008,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 53.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17008,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 46.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17011,
+      "aid": 0,
+      "control": {
+        "seed": 17011,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 61.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17011,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 59.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17011,
+      "aid": 1,
+      "control": {
+        "seed": 17011,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 52.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17011,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 44.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17014,
+      "aid": 0,
+      "control": {
+        "seed": 17014,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 46.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17014,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 45.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17014,
+      "aid": 1,
+      "control": {
+        "seed": 17014,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 63.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17014,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 39.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17016,
+      "aid": 1,
+      "control": {
+        "seed": 17016,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 66.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17016,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 75.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17017,
+      "aid": 1,
+      "control": {
+        "seed": 17017,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17017,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17018,
+      "aid": 0,
+      "control": {
+        "seed": 17018,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 70.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17018,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 68.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17019,
+      "aid": 0,
+      "control": {
+        "seed": 17019,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 70.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17019,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 71.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17021,
+      "aid": 0,
+      "control": {
+        "seed": 17021,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 62.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17021,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 62.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17022,
+      "aid": 0,
+      "control": {
+        "seed": 17022,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17022,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 55.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17022,
+      "aid": 1,
+      "control": {
+        "seed": 17022,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 57.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17022,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 56.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17023,
+      "aid": 1,
+      "control": {
+        "seed": 17023,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 44.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17023,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 39.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17024,
+      "aid": 0,
+      "control": {
+        "seed": 17024,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 43.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17024,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17025,
+      "aid": 1,
+      "control": {
+        "seed": 17025,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 53.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17025,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17026,
+      "aid": 0,
+      "control": {
+        "seed": 17026,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 50.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17026,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 41.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17026,
+      "aid": 1,
+      "control": {
+        "seed": 17026,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 45.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17026,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17027,
+      "aid": 1,
+      "control": {
+        "seed": 17027,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 40.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17027,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17029,
+      "aid": 1,
+      "control": {
+        "seed": 17029,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 66.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17029,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 69.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17032,
+      "aid": 0,
+      "control": {
+        "seed": 17032,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 41.0,
+        "items": 0.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17032,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 67.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17034,
+      "aid": 1,
+      "control": {
+        "seed": 17034,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 45.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17034,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 47.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17035,
+      "aid": 0,
+      "control": {
+        "seed": 17035,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 75.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17035,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 72.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17035,
+      "aid": 1,
+      "control": {
+        "seed": 17035,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 57.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17035,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 69.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17038,
+      "aid": 1,
+      "control": {
+        "seed": 17038,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 67.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17038,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 70.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17039,
+      "aid": 0,
+      "control": {
+        "seed": 17039,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 46.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17039,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 48.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17040,
+      "aid": 0,
+      "control": {
+        "seed": 17040,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17040,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 54.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17040,
+      "aid": 1,
+      "control": {
+        "seed": 17040,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 52.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17040,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17041,
+      "aid": 0,
+      "control": {
+        "seed": 17041,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 62.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17041,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17042,
+      "aid": 1,
+      "control": {
+        "seed": 17042,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 50.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17042,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 50.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17046,
+      "aid": 0,
+      "control": {
+        "seed": 17046,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17046,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 64.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17046,
+      "aid": 1,
+      "control": {
+        "seed": 17046,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 45.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17046,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 48.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17048,
+      "aid": 0,
+      "control": {
+        "seed": 17048,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 38.0,
+        "items": 0.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17048,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17048,
+      "aid": 1,
+      "control": {
+        "seed": 17048,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 55.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17048,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 57.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17049,
+      "aid": 1,
+      "control": {
+        "seed": 17049,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17049,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 62.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17051,
+      "aid": 0,
+      "control": {
+        "seed": 17051,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 38.0,
+        "items": 0.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17051,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 36.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17052,
+      "aid": 0,
+      "control": {
+        "seed": 17052,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17052,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 57.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17054,
+      "aid": 0,
+      "control": {
+        "seed": 17054,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 72.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17054,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 72.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17054,
+      "aid": 1,
+      "control": {
+        "seed": 17054,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 73.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17054,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 67.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17056,
+      "aid": 1,
+      "control": {
+        "seed": 17056,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17056,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 57.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17057,
+      "aid": 1,
+      "control": {
+        "seed": 17057,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 53.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17057,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 60.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17058,
+      "aid": 1,
+      "control": {
+        "seed": 17058,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 47.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17058,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 35.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17059,
+      "aid": 1,
+      "control": {
+        "seed": 17059,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 43.0,
+        "items": 0.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17059,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 47.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17060,
+      "aid": 0,
+      "control": {
+        "seed": 17060,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 66.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17060,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 67.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17062,
+      "aid": 1,
+      "control": {
+        "seed": 17062,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 68.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17062,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 71.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17064,
+      "aid": 1,
+      "control": {
+        "seed": 17064,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 59.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17064,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 55.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17067,
+      "aid": 0,
+      "control": {
+        "seed": 17067,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17067,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17067,
+      "aid": 1,
+      "control": {
+        "seed": 17067,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 71.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17067,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 58.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17068,
+      "aid": 1,
+      "control": {
+        "seed": 17068,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 43.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17068,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17069,
+      "aid": 1,
+      "control": {
+        "seed": 17069,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 67.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17069,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 71.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17070,
+      "aid": 1,
+      "control": {
+        "seed": 17070,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 44.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17070,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 38.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17072,
+      "aid": 0,
+      "control": {
+        "seed": 17072,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 45.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17072,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 59.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17074,
+      "aid": 1,
+      "control": {
+        "seed": 17074,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 76.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17074,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 67.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17075,
+      "aid": 0,
+      "control": {
+        "seed": 17075,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 59.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17075,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 62.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17078,
+      "aid": 0,
+      "control": {
+        "seed": 17078,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 71.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17078,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 78.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17079,
+      "aid": 1,
+      "control": {
+        "seed": 17079,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 38.0,
+        "items": 0.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17079,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 45.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17080,
+      "aid": 1,
+      "control": {
+        "seed": 17080,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 45.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17080,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 40.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17082,
+      "aid": 0,
+      "control": {
+        "seed": 17082,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 47.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17082,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 79.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17083,
+      "aid": 0,
+      "control": {
+        "seed": 17083,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17083,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17083,
+      "aid": 1,
+      "control": {
+        "seed": 17083,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 49.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17083,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 48.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17088,
+      "aid": 0,
+      "control": {
+        "seed": 17088,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 51.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17088,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 41.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17089,
+      "aid": 0,
+      "control": {
+        "seed": 17089,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 76.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17089,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 71.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17090,
+      "aid": 0,
+      "control": {
+        "seed": 17090,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 42.0,
+        "items": 0.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17090,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 48.0,
+        "items": 1.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17093,
+      "aid": 1,
+      "control": {
+        "seed": 17093,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 47.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17093,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 47.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17095,
+      "aid": 1,
+      "control": {
+        "seed": 17095,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 41.0,
+        "items": 0.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17095,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 40.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17096,
+      "aid": 0,
+      "control": {
+        "seed": 17096,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 67.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17096,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 75.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17097,
+      "aid": 0,
+      "control": {
+        "seed": 17097,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 48.0,
+        "items": 1.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17097,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 44.0,
+        "items": 0.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17097,
+      "aid": 1,
+      "control": {
+        "seed": 17097,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 56.0,
+        "items": 2.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17097,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 55.0,
+        "items": 2.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17099,
+      "aid": 0,
+      "control": {
+        "seed": 17099,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 74.0,
+        "items": 4.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17099,
+        "aid": 0,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 75.0,
+        "items": 4.0,
+        "steps": 500.0
+      }
+    },
+    {
+      "seed": 17099,
+      "aid": 1,
+      "control": {
+        "seed": 17099,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 79.0,
+        "items": 3.0,
+        "steps": 500.0
+      },
+      "candidate": {
+        "seed": 17099,
+        "aid": 1,
+        "win": 0,
+        "active_win": 0,
+        "suicide": 0.0,
+        "draw": 1,
+        "kills": 0.0,
+        "bombs": 78.0,
+        "items": 3.0,
+        "steps": 500.0
+      }
+    }
+  ]
+}

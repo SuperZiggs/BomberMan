@@ -1,0 +1,17 @@
+{
+  "phase": "C",
+  "episodes": 10,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 500,
+  "lr": 0.0001,
+  "wall_destroy_bonus": 0.15,
+  "snapshot_every": 200,
+  "checkpoint_dir": "D:\\fpt\\subject\\BomberMan\\runs\\attack-pressure\\smoke-final-10",
+  "resume_from": "D:\\fpt\\subject\\BomberMan\\runs\\combat-20261012\\combat_bc_phaseC.pt",
+  "log_every": 5,
+  "seed": 2026101202,
+  "validation_every": 250,
+  "validation_episodes": 48,
+  "validation_seed": 6000
+}

@@ -1,0 +1,196 @@
+{
+  "warm_start": {
+    "wins": 52,
+    "active_wins": 47,
+    "suicides": 4.0,
+    "draws": 147,
+    "losses": 1,
+    "timeouts": 143,
+    "early_draws": 4
+  },
+  "final": {
+    "wins": 56,
+    "active_wins": 50,
+    "suicides": 6.0,
+    "draws": 135,
+    "losses": 9,
+    "timeouts": 131,
+    "early_draws": 4
+  },
+  "paired": {
+    "active_win": {
+      "increased": 32,
+      "decreased": 29
+    },
+    "suicide": {
+      "increased": 3,
+      "decreased": 1
+    },
+    "win": {
+      "increased": 33,
+      "decreased": 29
+    },
+    "draw": {
+      "increased": 28,
+      "decreased": 40
+    }
+  },
+  "final_failure_cases": [
+    {
+      "seed": 15001,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 1.0,
+      "steps": 39.0
+    },
+    {
+      "seed": 15003,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 11.0,
+      "items": 2.0,
+      "steps": 75.0
+    },
+    {
+      "seed": 15003,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 2.0,
+      "steps": 23.0
+    },
+    {
+      "seed": 15008,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 5.0,
+      "items": 1.0,
+      "steps": 52.0
+    },
+    {
+      "seed": 15017,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 14.0,
+      "items": 2.0,
+      "steps": 134.0
+    },
+    {
+      "seed": 15028,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 0.0,
+      "steps": 25.0
+    },
+    {
+      "seed": 15036,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 7.0,
+      "items": 0.0,
+      "steps": 77.0
+    },
+    {
+      "seed": 15045,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1.0,
+      "draw": 1,
+      "kills": 1.0,
+      "bombs": 36.0,
+      "items": 2.0,
+      "steps": 368.0
+    },
+    {
+      "seed": 15056,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 15.0,
+      "items": 1.0,
+      "steps": 135.0
+    },
+    {
+      "seed": 15062,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "items": 0.0,
+      "steps": 17.0
+    },
+    {
+      "seed": 15064,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 2.0,
+      "steps": 25.0
+    },
+    {
+      "seed": 15068,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 10.0,
+      "items": 0.0,
+      "steps": 97.0
+    },
+    {
+      "seed": 15077,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 0.0,
+      "steps": 27.0
+    }
+  ]
+}

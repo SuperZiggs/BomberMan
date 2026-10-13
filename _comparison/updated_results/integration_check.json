@@ -1,0 +1,5 @@
+{
+  "real_v19_payload_ignored_by_current_loader": true,
+  "source_checkpoint": "D:\\fpt\\subject\\BomberMan\\_comparison\\BomberMan-Loc_update\\checkpoints_v19\\final_phaseC.pt",
+  "strict_benchmark_loads_full_9_channel_weights": true
+}

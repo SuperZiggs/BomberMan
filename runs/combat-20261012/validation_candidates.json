@@ -1,0 +1,134 @@
+[
+  {
+    "seed": 6100,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "num_episodes": 100,
+    "win_rate": 13.0,
+    "active_win_rate": 10.0,
+    "suicide_rate": 5.0,
+    "draw_rate": 86.0,
+    "avg_kills": 0.14,
+    "avg_bombs": 35.52,
+    "avg_items": 1.82,
+    "avg_steps": 453.11,
+    "by_corner": {
+      "0": {
+        "num_episodes": 50,
+        "win_rate": 14.000000000000002,
+        "active_win_rate": 10.0,
+        "suicide_rate": 6.0,
+        "draw_rate": 86.0,
+        "avg_kills": 0.14,
+        "avg_bombs": 35.24,
+        "avg_items": 1.72,
+        "avg_steps": 461.02
+      },
+      "1": {
+        "num_episodes": 50,
+        "win_rate": 12.0,
+        "active_win_rate": 10.0,
+        "suicide_rate": 4.0,
+        "draw_rate": 86.0,
+        "avg_kills": 0.14,
+        "avg_bombs": 35.8,
+        "avg_items": 1.92,
+        "avg_steps": 445.2
+      }
+    },
+    "candidate": "original",
+    "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\20261010-135449-587798\\best_phaseC.pt",
+    "device": "cpu",
+    "credit": "opponent contributor; own-blast involvement recorded separately",
+    "model_sha256": "be1c723e730b9b4f5db7746d879c8f1db7c41d0f23e724d09dc506fcdb00d8ba"
+  },
+  {
+    "seed": 6100,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "num_episodes": 100,
+    "win_rate": 11.0,
+    "active_win_rate": 10.0,
+    "suicide_rate": 4.0,
+    "draw_rate": 85.0,
+    "avg_kills": 0.11,
+    "avg_bombs": 44.63,
+    "avg_items": 1.98,
+    "avg_steps": 442.76,
+    "by_corner": {
+      "0": {
+        "num_episodes": 50,
+        "win_rate": 8.0,
+        "active_win_rate": 8.0,
+        "suicide_rate": 8.0,
+        "draw_rate": 84.0,
+        "avg_kills": 0.1,
+        "avg_bombs": 42.26,
+        "avg_items": 1.88,
+        "avg_steps": 421.58
+      },
+      "1": {
+        "num_episodes": 50,
+        "win_rate": 14.000000000000002,
+        "active_win_rate": 12.0,
+        "suicide_rate": 0.0,
+        "draw_rate": 86.0,
+        "avg_kills": 0.12,
+        "avg_bombs": 47.0,
+        "avg_items": 2.08,
+        "avg_steps": 463.94
+      }
+    },
+    "candidate": "bc",
+    "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\combat-20261012\\combat_bc_phaseC.pt",
+    "device": "cpu",
+    "credit": "opponent contributor; own-blast involvement recorded separately",
+    "model_sha256": "2f08807220b42fb59e7366628afe5f65840fa808b4d693f564dfa489590d21d7"
+  },
+  {
+    "seed": 6100,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "num_episodes": 100,
+    "win_rate": 9.0,
+    "active_win_rate": 8.0,
+    "suicide_rate": 6.0,
+    "draw_rate": 87.0,
+    "avg_kills": 0.12,
+    "avg_bombs": 33.66,
+    "avg_items": 1.8,
+    "avg_steps": 449.79,
+    "by_corner": {
+      "0": {
+        "num_episodes": 50,
+        "win_rate": 6.0,
+        "active_win_rate": 4.0,
+        "suicide_rate": 8.0,
+        "draw_rate": 90.0,
+        "avg_kills": 0.08,
+        "avg_bombs": 33.6,
+        "avg_items": 1.66,
+        "avg_steps": 453.04
+      },
+      "1": {
+        "num_episodes": 50,
+        "win_rate": 12.0,
+        "active_win_rate": 12.0,
+        "suicide_rate": 4.0,
+        "draw_rate": 84.0,
+        "avg_kills": 0.16,
+        "avg_bombs": 33.72,
+        "avg_items": 1.94,
+        "avg_steps": 446.54
+      }
+    },
+    "candidate": "final",
+    "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\combat-20261012\\pilot-500\\final_phaseC.pt",
+    "device": "cpu",
+    "credit": "opponent contributor; own-blast involvement recorded separately",
+    "model_sha256": "003bec4140093e69681e1de644a353558742de90da48cf84d004b529dc5ff73a"
+  }
+]

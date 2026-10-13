@@ -1,0 +1,51 @@
+{
+  "seed": 6100,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 500,
+  "num_episodes": 100,
+  "win_rate": 11.0,
+  "active_win_rate": 10.0,
+  "suicide_rate": 4.0,
+  "draw_rate": 85.0,
+  "avg_kills": 0.11,
+  "avg_bombs": 44.63,
+  "avg_items": 1.98,
+  "avg_steps": 442.76,
+  "by_corner": {
+    "0": {
+      "num_episodes": 50,
+      "win_rate": 8.0,
+      "active_win_rate": 8.0,
+      "suicide_rate": 8.0,
+      "draw_rate": 84.0,
+      "avg_kills": 0.1,
+      "avg_bombs": 42.26,
+      "avg_items": 1.88,
+      "avg_steps": 421.58
+    },
+    "1": {
+      "num_episodes": 50,
+      "win_rate": 14.000000000000002,
+      "active_win_rate": 12.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 86.0,
+      "avg_kills": 0.12,
+      "avg_bombs": 47.0,
+      "avg_items": 2.08,
+      "avg_steps": 463.94
+    }
+  },
+  "candidate": "bc",
+  "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\combat-20261012\\combat_bc_phaseC.pt",
+  "device": "cpu",
+  "credit": "opponent contributor; own-blast involvement recorded separately",
+  "model_sha256": "2f08807220b42fb59e7366628afe5f65840fa808b4d693f564dfa489590d21d7",
+  "runtime_hashes": {
+    "bomberman_env.py": "488fa4759ae636800e82fb9fa93a9165bf373aca04388e691b2f63ab7f8ae605",
+    "rule_based_bot.py": "d43c0b56d754d9fbfd360a35123ec29a5f85d53b36bccec98f71df049fb316f3",
+    "train_actor_critic.py": "e143e9e6b675d1cc29755a762ccfa20fa1f017ee180db5b84e231508a6416cf6",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a"
+  },
+  "selected_before_final_test_read": true
+}

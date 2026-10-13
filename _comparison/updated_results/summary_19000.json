@@ -1,0 +1,147 @@
+{
+  "remote_commit": "afbf6f9",
+  "seed": 19000,
+  "total_games": 1300,
+  "sources_and_checkpoint_hashes_unchanged": true,
+  "cases": {
+    "current_current_mask": {
+      "seed": 19000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 200,
+      "win_rate": 40.0,
+      "active_win_rate": 34.5,
+      "suicide_rate": 0.0,
+      "draw_rate": 59.0,
+      "avg_kills": 0.345,
+      "avg_bombs": 40.67,
+      "avg_items": 1.75,
+      "avg_steps": 381.52,
+      "seconds": 213.85027670000272
+    },
+    "v18_current_mask": {
+      "seed": 19000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 200,
+      "win_rate": 6.0,
+      "active_win_rate": 1.5,
+      "suicide_rate": 0.0,
+      "draw_rate": 91.5,
+      "avg_kills": 0.015,
+      "avg_bombs": 8.885,
+      "avg_items": 0.94,
+      "avg_steps": 464.935,
+      "seconds": 246.45286340000166
+    },
+    "v18_Loc_mask": {
+      "seed": 19000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 200,
+      "win_rate": 36.0,
+      "active_win_rate": 2.0,
+      "suicide_rate": 4.5,
+      "draw_rate": 55.50000000000001,
+      "avg_kills": 0.02,
+      "avg_bombs": 4.135,
+      "avg_items": 0.7,
+      "avg_steps": 342.655,
+      "seconds": 215.4318501999951
+    },
+    "v18_native_on": {
+      "num_episodes": 100,
+      "win_rate": 93.0,
+      "active_win_rate": 8.0,
+      "suicide_rate": 7.000000000000001,
+      "draw_rate": 2.0,
+      "avg_kills": 0.08,
+      "avg_bombs": 3.33,
+      "avg_steps": 62.3,
+      "sd_death_rate": 0.0,
+      "chain_self_rate": 0.0,
+      "seconds": 18.31265970000095
+    },
+    "v19_current_mask": {
+      "seed": 19000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 200,
+      "win_rate": 12.0,
+      "active_win_rate": 5.0,
+      "suicide_rate": 0.5,
+      "draw_rate": 86.5,
+      "avg_kills": 0.05,
+      "avg_bombs": 12.46,
+      "avg_items": 0.82,
+      "avg_steps": 444.43,
+      "seconds": 238.1996042000028
+    },
+    "v19_Loc_mask": {
+      "seed": 19000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 200,
+      "win_rate": 48.0,
+      "active_win_rate": 6.0,
+      "suicide_rate": 28.999999999999996,
+      "draw_rate": 13.0,
+      "avg_kills": 0.06,
+      "avg_bombs": 12.23,
+      "avg_items": 0.73,
+      "avg_steps": 206.95,
+      "seconds": 102.48291829999653
+    },
+    "v19_native_off": {
+      "num_episodes": 100,
+      "win_rate": 77.0,
+      "active_win_rate": 16.0,
+      "suicide_rate": 19.0,
+      "draw_rate": 3.0,
+      "avg_kills": 0.16,
+      "avg_bombs": 5.9,
+      "avg_steps": 71.48,
+      "sd_death_rate": 0.0,
+      "chain_self_rate": 0.0,
+      "seconds": 17.111098200002743
+    },
+    "v19_native_on": {
+      "num_episodes": 100,
+      "win_rate": 78.0,
+      "active_win_rate": 16.0,
+      "suicide_rate": 18.0,
+      "draw_rate": 3.0,
+      "avg_kills": 0.16,
+      "avg_bombs": 5.87,
+      "avg_steps": 69.81,
+      "sd_death_rate": 0.0,
+      "chain_self_rate": 0.0,
+      "seconds": 19.05247010000312
+    }
+  },
+  "paired_changes": {
+    "v18_current_mask_vs_current_current_mask": {
+      "active_gained": 0,
+      "active_lost": 66,
+      "suicides_added": 0,
+      "suicides_removed": 0
+    },
+    "v19_current_mask_vs_current_current_mask": {
+      "active_gained": 5,
+      "active_lost": 64,
+      "suicides_added": 1,
+      "suicides_removed": 0
+    },
+    "v19_current_mask_vs_v19_Loc_mask": {
+      "active_gained": 8,
+      "active_lost": 10,
+      "suicides_added": 0,
+      "suicides_removed": 57
+    }
+  }
+}

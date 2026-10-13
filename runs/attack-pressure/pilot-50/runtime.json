@@ -1,0 +1,10 @@
+{
+  "elapsed_seconds": 350.2659999999996,
+  "source_sha256": "2f08807220b42fb59e7366628afe5f65840fa808b4d693f564dfa489590d21d7",
+  "code_sha256": {
+    "bomberman_env.py": "5138dc3b660af9975c39a6c52d83e41862fa075704b178237bb28331ad1913c2",
+    "rule_based_bot.py": "509a8dd90ff0ff7c8d46c34617a0fa3a2fe1d7d509ad82deeb9384dabe2e60e7",
+    "train_actor_critic.py": "058f1f28b2e4213b60227eb2cad1f6d626afe49c5a1ceeded7237d806c24f40d",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a"
+  }
+}

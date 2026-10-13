@@ -236,3 +236,106 @@ Tài liệu này ghi lại chi tiết các vấn đề phát sinh, nguyên nhân
 - So sánh learning curves: Random Baseline vs RuleBot vs Q-learning vs Actor-Critic CNN.
 - Nghiên cứu Ablation Study: Đánh giá tác động định lượng của Reward Shaping đối với việc kiểm soát hiện tượng Bomb Shyness.
 - Báo cáo lý thuyết: Mối liên hệ toán học giữa Markov Decision Process (MDP), Markov Game (Non-stationarity), và Actor-Critic Framework.
+
+---
+
+## 7. Tấn công bằng bom có ghi nhận hạ gục (2026-10-10)
+
+**Vấn đề:** Điều kiện cũ chỉ loại bỏ thưởng thắng `+10` nếu agent đặt **0 bom**. Agent đặt một bom bất kỳ rồi chờ đối thủ tự hủy vẫn nhận đủ thưởng thắng. Chọn checkpoint theo WR và số bom không phát hiện được hành vi này.
+
+**Thay đổi:**
+- Ghi nhận mỗi nạn nhân chết đúng một lần, theo chủ ngọn lửa đang gây sát thương; giữ chủ lửa qua các tick để tính cả hạ gục bởi lửa còn sót lại. Ô lửa chồng lấn thuộc chủ ngọn lửa có trước và còn hiệu lực. Bom dây chuyền tính cho chủ quả bom thực sự gây lửa tại ô nạn nhân.
+- Sửa bom dây chuyền bị xóa trước khi được nổ: chỉ xóa bom đã xử lý, để bom vừa bị kích hoạt nổ trong vòng tiếp theo cùng tick.
+- Trong train AC, hạ gục đối thủ khi còn sống được `+4` tổng (`+1` từ env, `+3` shaping). Tự sát vẫn phạt tổng `-2.5`. Thắng với **0 hạ gục** bị bỏ thưởng `+10`, dù đã đặt bom. Bỏ thưởng đặt bom thô của Phase C; phá tường vẫn được thưởng theo kết quả thực tế.
+- Thêm auxiliary attack loss hệ số `0.2`: khi an toàn, học đặt bom nếu đối thủ nằm trên tia nổ không bị tường chắn; ưu tiên BFS tiếp cận đối thủ, hoặc mở đường nếu chưa tới được. Nhãn BOMB phải qua action mask có đường thoát. Auxiliary escape loss `0.5` tiếp tục dạy né bom. Khi xem đấu, policy tự chọn hành động từ mạng; hướng dẫn tấn công chỉ dùng khi train.
+- Chọn `best` theo thứ tự: rolling **ActiveWR**, **kills/ván**, rồi WR; cần đã ghi nhận hạ gục. ActiveWR là tỷ lệ thắng với ít nhất một đối thủ chết bởi bom của agent, không phải tỷ lệ tự diệt toàn bộ đối thủ. Trước đủ 200 ván hoặc chưa có hạ gục, file `best` cuối lượt là fallback của model cuối.
+- Log train/GUI có `kills`, `active_win`, `suicide`; evaluation có `active_win_rates`, `passive_wins`, `suicide_rates`. Chỉ đếm bom thực sự đặt thành công. Train CLI, GUI và evaluation tournament mặc định tối đa 500 bước/ván.
+
+Kiểm tra logic bằng `python test_combat.py`; kiểm tra pipeline train, checkpoint và GUI bằng `python test_visualize.py`. Các chỉ số lịch sử phía trên dùng môi trường và tiêu chí cũ; cần đánh giá lại checkpoint cũ và mới cùng môi trường trước khi so sánh.
+
+## 8. Sửa tự nổ và học nâng cấp (2026-10-10)
+
+Lượt GUI `runs/20261010-125814-296523`: Phase C, 3000 ván, 9×9, 2 agents, 500 bước, CPU, không warm-start. Tự nổ **84.23%**, ActiveWR **3.70%**; 305 ván tự nổ trong ≤8 bước. Trên 200 ván cuối, tự nổ 85%, ActiveWR 3.5%. Có 364 ván tự nổ mà tổng reward vẫn dương. Cặp checkpoint `best`/`final` chứa trọng số giống hệt nhau do code cũ lưu `best` vào cả `final`.
+
+Giải pháp ưu tiên là sửa mô hình an toàn, rồi train lại; tăng phạt chết đơn thuần không sửa được action mask sai:
+
+- Dự báo theo đúng thứ tự môi trường: di chuyển → giảm fuse → nổ dây chuyền/phá gỗ → sát thương → giảm thời gian lửa. Dùng cùng tia nổ với môi trường, kể cả tường bị phá trước một vụ nổ sau đó.
+- Tính khả năng sống theo từng tick đến khi mọi lửa dự báo tắt. STOP và di chuyển phải giữ được đường thoát; BOMB tiêu tốn tick hiện tại và được kiểm tra cùng các bom có sẵn. Fuse giả định 8 bước không còn che mất bom bị kích nổ sớm.
+- Trong vùng nổ, giữ các bước đầu trên đường ngắn nhất tới chỗ trú còn an toàn. Tránh ô đối thủ cũng có thể bước vào ở bước kế tiếp nếu còn đường khác; không coi các ô lân cận đối thủ bị chiếm mãi. Nếu đã bị bẫy, giữ lựa chọn có thể sống ngay ở tick tiếp theo. Đây là safety filter dùng khi train, đánh giá và GUI, không phải bằng chứng CNN đã tự học xong kỹ năng thoát bom.
+- Không cho spam bom trên sàn trống: cần phá được gỗ hoặc tia nổ đe dọa vị trí hiện tại/ô đối thủ có thể bước tới. Bỏ `+0.20` mỗi lần ra khỏi vùng nguy hiểm để agent không kiếm thưởng bằng việc đi vào/ra vùng bom mình đặt. Phá gỗ vẫn được `+0.15` khi chủ bom sống ở tick đó; hạ gục `+4`, tự nổ `-2.5`, thắng không hạ gục không có `+10` như mục 7.
+
+Bốn điểm về item:
+
+1. **Thưởng hữu ích:** `+0.05` chỉ khi tăng chỉ số thành công, ghi `info['items_collected']`. Từ sức chứa 1/range 2 tới trần 3/4, mỗi agent chỉ nhận tối đa `0.20` thưởng nâng cấp trong một ván. Chết trước nhặt không nhận item; nhặt ở trần không có thưởng.
+2. **CNN thấy chỉ số:** 12 kênh; 0–7 giữ nguyên, 8 là slots còn trống/3, 9 sức chứa/3, 10 range/4, 11 nghịch đảo tick gây sát thương sớm nhất. Ba kênh chỉ số là mặt phẳng hằng. Loader chuyển checkpoint 8→12 kênh bằng cách giữ trọng số cũ, thêm trọng số 0; kiểm tra logits/value không đổi trước fine-tune. CNN mới vẫn cần train để dùng thông tin thêm. Baseline Q tiếp tục dùng 8 kênh đầu và 16 features.
+3. **RuleBot dùng item:** ưu tiên đánh đối thủ trên tia nổ thật, sau đó item hữu ích trong ≤3 bước trên đường an toàn, rồi mở gỗ/tiếp cận đối thủ. Không nhắm item đã đạt trần hoặc nằm trong vùng nổ dự báo. Teacher của AC cũng hướng dẫn nhặt gần an toàn.
+4. **Trần:** ammo 3, range 4 là cấu hình khởi đầu ưu tiên an toàn. So 100 seed với range 5 có tự nổ 17% thay vì 14%, ActiveWR 4% thay vì 3%; mẫu này chưa chứng minh trần tối ưu cho mọi phase.
+
+`best` thêm tỷ lệ tự nổ thấp làm tiêu chí phụ sau ActiveWR và kills, trước WR tổng. Log thêm `items`, `learner_steps`, `best_episode`; `final` giữ đúng trọng số cuối lượt. Checkpoint gốc được giữ nguyên. Dữ liệu và giới hạn thực nghiệm ở phần cuối `RESULTS.md`.
+
+## 9. Thoát bom khi giao tranh và chọn checkpoint trên validation (2026-10-11)
+
+Lượt C ngày 10/10 có 527/796 trận hạ bot đồng thời tự nổ. Hai replay cho thấy đường thoát bị mất khi đối thủ tiến vào hành lang hoặc cùng nhắm một ô. Mục tiêu lần này là hạ bot rồi sống, thay vì chỉ tăng số bom.
+
+- AC kiểm tra bom đáp trả mà các đối thủ còn ammo có thể đặt **cùng tick** với bom của mình. Forecast nhận nhiều placement giả định, giữ nguyên timer/grid/bom thật. Đường thoát của bom mới tránh cả các ô kề đối thủ có thể bị chiếm và chừa 2 bước dự phòng.
+- Khi đã có bom, ưu tiên đường sống với 1 bước dự phòng. Chọn nơi trú ngoài tia nổ từ vị trí hiện tại/bước kế tiếp của đối thủ trước, rồi chọn đường nhanh nhất tới đó; không cho mạng đi tùy ý trên mọi đường dài còn vừa kịp. Nếu không có đường với dự phòng, quay lại thời gian thật và giữ hành động sống ngay bước tới. Đây là heuristic, không bảo đảm sống trước mọi chuỗi di chuyển/bom tương lai.
+- RuleBot giữ mức lọc trước lượt sửa này qua `robust=False`, để làm đối thủ cố định. Các chức năng nhặt item, range thật, dự báo dây chuyền và né ô tranh chấp vẫn giữ. Kiểm tra đối chiếu bản sao trước sửa khớp **648 quyết định** trên 30 seed. Helper thời gian/geometry vẫn dùng chung; AC dùng phần dự phòng bổ sung.
+- C/D/E đều luân phiên learner: `(episode - 1) % num_agents`; log `learning_aid`, `draw`, số liệu validation mới nhất. GUI warm-start dùng LR `1e-4` và ghi seed train vào config.
+- **Thay tiêu chí rolling của mục 7/8:** best được chọn bằng policy cố định trên seed validation 6000, mặc định 48 trận ở đầu lượt, mỗi 250 episode và cuối lượt. Mỗi bàn được dùng lần lượt ở tất cả góc. Thứ tự: ActiveWR, ít tự nổ, ít hòa, kills/ván, WR. Trạng thái RNG NumPy/Torch/thiết bị CUDA đã khởi tạo được trả lại sau đánh giá, không làm lệch chuỗi train.
+- Lưu `validation_metrics.jsonl` và `best_validation.json`; best có thể giữ warm-start ở episode 0 nếu không có ứng viên tốt hơn. Final luôn giữ trọng số ở cuối lượt. Các lượt ngắn hơn chu kỳ validation hoặc tắt validation chỉ có best fallback của final, không phải model đã được xác nhận chất lượng.
+
+Hai bản thử trung gian đã bị dừng và giữ log trong `runs/escape-20261011/pilot/` và `pilot-final/`. Bản đầu cho quá nhiều hướng thoát làm tăng đi qua lại; bản thứ hai tăng mức né bom cho cả RuleBot nên làm thay đổi đối thủ. Bản dùng cho pilot hoàn chỉnh nằm ở `pilot-500/`; số liệu của các bản trung gian không được coi là kết quả của code cuối. Kết quả pilot và benchmark riêng ghi trong `RESULTS.md`.
+
+Giữ nguyên reward item 0.05, ammo tối đa 3, range tối đa 4 và reward chiến đấu; chưa đổi thuật toán RL. Kiểm tra mới gồm phản bom đồng thời, margin không cộng dồn, forecast nhiều placement không sửa state, nơi trú tránh tia đối thủ, góc C/D, cùng bàn cho mọi góc, phục hồi RNG CPU/CUDA, hủy validation và giữ final sau best. GUI kiểm tra tiến độ validation, tạm dừng/tiếp tục, metadata best và LR warm-start.
+
+Placement giả định được sắp theo owner để khớp thứ tự đặt/nổ của môi trường, kể cả tia nổ qua tường gỗ vừa bị phá. Sửa này được thêm sau khi pilot bắt đầu; đã chấm lại warm-start, best trong train và final bằng code cuối trên CPU, cùng seed validation. Final episode 500 thắng validation nên được chọn làm best; bản episode 250 vẫn giữ riêng. Pilot hoàn tất 500 ván, nhưng test mới 100 trận cho ActiveWR vẫn 8%. Code mới với checkpoint gốc giảm tự nổ 25% xuống 10%; pilot có tự nổ 16% và hòa 85%. Vì vậy chưa khuyến nghị chuyển D/E hoặc coi pilot là model tốt hơn. Số liệu, phiên bản runtime và giới hạn ghi ở mục ngày 11/10 trong `RESULTS.md`.
+
+## 10. Chẩn đoán hòa và sửa hướng thoát/nhãn tiếp cận (2026-10-12)
+
+Replay đúng checkpoint gốc và RNG của bộ test ngày 11/10: 20 trận hết 500 bước (10 mỗi góc), cùng 10 trận tự nổ. Assert kết quả, số bước, bom và hạ gục khớp từng dòng test cũ. Đây là mẫu chọn theo lỗi, không dùng làm ước lượng tỷ lệ chung.
+
+- Trong 20 trận hòa, có 427 bước được phép đặt bom với đối thủ nằm trên tia nổ; agent đặt bom ở 246 bước và bỏ qua 181. Chỉ 51/577 bước không có nguy hiểm và đối thủ nằm trên tia bị chặn bởi mức lọc mới dù mức cũ cho phép. Vì vậy chưa có bằng chứng cần nới bộ lọc hoặc tăng thưởng đặt bom.
+- Có 1.357/6.471 bước không nguy hiểm thiếu nhãn tấn công và 519 bước hướng tiếp cận ngắn nhất bị mask chặn. BFS cũ tìm tới ô đang có đối thủ rồi mới kiểm tra bước đầu; nếu bước ngắn nhất không được phép, nó bỏ nhãn dù có đường khác.
+- Cả 10 trận tự nổ đều hạ bot đồng thời tự chết: sau đặt bom, AC chọn hướng tiến gần bot trong khi có nơi trú dài bằng nhau ở phía khác. Hai bên tiến vào cùng hành lang, bị giữ lại trước ô tranh chấp rồi hết fuse. Ví dụ seed 9000: đặt ở `(5,1)`, đi lên `(4,1)` đối diện bot `(2,1)`; seed 9001 là tình huống đối xứng tại cột 3.
+
+Sửa nhỏ ở helper chung:
+
+1. Giữ tiêu chí nơi trú tránh tia bom và đường nhanh nhất. Sau đặt bom, tránh bước vào hành lang sẽ cháy và chỉ có một lối ra nếu đối thủ có thể tới lối ra ấy trong hai bước; giữ các hướng khác và fallback nếu đã bị bẫy. Không buộc agent luôn tăng khoảng cách trong mọi lần né: bản thử điều kiện rộng này giảm tự nổ nhưng làm giảm ActiveWR trên seed phát triển 11000, nên được thay bằng điều kiện hành lang cụ thể. Không thay đổi mode `robust=False` của RuleBot hoặc các kiểm tra phản bom/dây chuyền.
+2. Teacher dùng BFS qua các bước đầu đã được mask cho phép, tìm ô có tia nổ chạm đối thủ thay vì đi vào ô đối thủ. Đường tương lai vẫn phải tránh tường, bom, ô đối thủ và vùng nổ gần; tới vị trí mới, BOMB tiếp tục phải qua bộ lọc thời gian thực. Đây là hướng dẫn tiếp cận, chưa phải planner đảm bảo ép chết đối thủ.
+3. Metrics thêm `attack_opportunities` (BOMB được phép và tia hiện tại chạm đối thủ), `attack_bombs` (số cơ hội đã chọn BOMB), `attack_labels` và `missing_attack_labels` (trên các bước không nguy hiểm). Các cơ hội liên tiếp không phải những trận độc lập.
+4. Validation luôn dùng bản sao trọng số trên CPU giống GUI, kể cả train bằng GPU. Không chia sẻ hoặc sửa network learner; deepcopy không tiêu thụ RNG, evaluator vẫn khôi phục RNG sau đánh giá. Metadata ghi `device=cpu`.
+
+Mức reward chiến đấu/item, trần ammo 3/range 4 và CNN giữ nguyên. RuleBot khớp bản trước sửa ở 458 quyết định trên 20 seed. Artifact chẩn đoán tại `runs/combat-20261012/diagnostics.json`. Pilot 500 ván dùng train seed 20261012, 100 trận validation seed 6100. Seed 9000 và 11000 đã dùng để chẩn đoán/chọn điều kiện lọc nên test cuối chuyển sang seed 12000. Kết quả và phiên bản của pilot ghi riêng ở `RESULTS.md`.
+
+### Credit thật khi bom/lửa chồng nhau
+
+Tái hiện tình huống hai bên đặt bom cùng tick, AC thoát và bom AC trúng bot. Với code cũ, AC ở A0 nhận hạ gục và reward 13.999, nhưng ở A1 bị tính thắng thụ động vì bom A0 được xử lý trước dù tia bom A1 cũng trúng bot. Đây là lỗi gán tín hiệu học trong trường hợp chồng tia, không chứng minh mọi chênh lệch theo góc đều do lỗi này.
+
+Engine nay lưu từng nguồn lửa và thời gian còn lại. Khi chết, chọn một nguồn bom đối thủ còn hiệu lực nếu có; trong 1v1, kết quả không lệ thuộc A0/A1. Một nạn nhân vẫn có đúng một kill credit. Đồng thời `info['self_blast_deaths']` ghi riêng các nạn nhân có tia bom của chính họ góp phần gây chết: cả hai cùng chết vẫn bị phạt tự nổ, không được biến thành giao tranh an toàn chỉ nhờ đổi tên killer. Train/evaluate đọc cờ mới, tương thích log giả lập chỉ có tuple self-kill.
+
+Lửa mới không kéo dài quyền nhận credit của nguồn cũ đã hết thời gian. `_flame_owners` còn giữ view một nguồn để tương thích; resolve damage dùng tất cả nguồn đang cháy. Với nhiều nguồn đối thủ đồng thời, nguồn đối thủ còn hiệu lực xuất hiện trước được chọn; chưa đánh giá công bằng đầy đủ cho FFA 3–4 agents.
+
+37 unittest kiểm tra cả hướng thoát không bị ép lùi, credit đối xứng, phạt tia bom của mình khi killer là đối thủ, thống kê không lặp một cái chết và nguồn lửa hết hạn. Integration GUI kiểm tra các checkpoint, train và validation. Pilot 500 ván đã hoàn tất **trước** khi đưa sửa credit vào code chính; snapshot/metrics cũ không bị viết lại. Các ứng viên được chấm lại cùng engine/seed validation; chưa train dài lại với reward credit đã sửa.
+
+## 11. Hướng dẫn vị trí đặt bom và giữ hành vi tấn công khi train tiếp
+
+Hai lượt 500 episode với reward credit đã sửa chưa vượt warm-start rõ ràng. Giảm thưởng tường từ 0.15 xuống 0.03 giữ best ở episode 0. Replay sáu trận timeout cho thấy warm-start đặt bom ở 148/150 cơ hội đối thủ trong tia nhưng không hạ được bot; final lượt 0.03 chỉ tận dụng 74/129 cơ hội và cũng không hạ được bot. Các số này là chẩn đoán trên mẫu thất bại, không phải benchmark tổng thể.
+
+- Thêm reachability theo từng tick để đo số vị trí đối thủ sống được ở tick nổ. So sánh cùng horizon trước/sau một bom dự kiến; dùng cả chain reaction, flame và tường mở sau nổ. Không thưởng thêm chỉ vì đặt bom.
+- Nhãn tấn công ưu tiên ô hiện tại hoặc một bước di chuyển hợp lệ tạo mức giảm vị trí sống lớn nhất khi đối thủ gần. Các mục tiêu cũ vẫn mở đường/nhặt item khi chưa có đề xuất tốt hơn. Bộ lọc sống sót vẫn là điều kiện bắt buộc; RuleBot đối chứng giữ nguyên.
+- Cho phép BOMB lúc đang trong vùng nguy hiểm chỉ khi dự báo agent sống được kể cả phản bom đồng thời, và bom mới giảm số vị trí sống của một đối thủ từ lớn hơn 0 xuống 0 tại tick nổ. Margin an toàn 2 tick vẫn áp dụng khi xét đặt bom; không mở rộng các bom khác lúc nguy hiểm. CNN vẫn tự chọn hành động, dùng chung điều kiện này ở train/evaluate/GUI; RuleBot `robust=False` không đổi.
+- Loss thoát hiểm 0.5, bom gây áp lực 0.5, di chuyển/mở đường 0.2 được lấy trung bình theo từng nhóm riêng. Các nhãn di chuyển nhiều không làm giảm trực tiếp trọng số nhóm bom. Chưa đổi CNN hoặc thuật toán Actor-Critic.
+- Chọn best chỉ trong các ứng viên không tăng tỷ lệ tự nổ so với validation đầu lượt. Ví dụ ActiveWR 10%/tự nổ 3% sẽ không bị thay bởi 11%/6%. Đây là điều kiện bảo thủ trên mẫu hữu hạn; final vẫn được lưu riêng để phân tích.
+- CLI ghi config và metrics từng episode giống luồng GUI, bổ sung số nhãn/bom gây áp lực và các thành phần loss. Thông báo lưu in riêng đường dẫn best và final.
+
+Giới hạn: áp lực là heuristic trên bom đã biết và vị trí đối thủ hiện tại; không dự báo mọi hành động di chuyển/đặt bom tương lai của đối thủ. Đề xuất vị trí một bước chưa đảm bảo vị trí đó vẫn tốt khi đi tới. Nhãn và loss mới chỉ tác động khi train lại; ngoại lệ safety mask tác động cả checkpoint cũ lúc evaluation. Kết quả pilot/benchmark ghi tại cuối `RESULTS.md`.
+
+## 12. Thoát sớm khi chỉ còn đứng chờ trước lối ra chung (2026-10-13)
+
+Replay đủ 13 trận tự nổ/thua của `pressure-C-next/final_phaseC.pt` trên seed phát triển 15000. Có tình huống cả hai tác tử đứng chờ vì ô thoát kề đối thủ bị mask chặn, rồi cùng lao vào ô đó ở tick nổ cuối: va chạm làm cả hai đứng tại chỗ và chết. Các trận thua khác còn có việc đi vào hành lang cụt rồi bị đối thủ đặt bom ở cửa; sửa lần này chỉ nhắm việc chờ quá muộn.
+
+- Khi AC chỉ được STOP, không có hướng di chuyển và còn hơn một tick trước nguy hiểm thực tế, thử tìm đường sống bỏ phần cấm ô kề đối thủ. Vẫn giữ tường, bom, ô đối thủ hiện tại và dự báo lửa; chỉ dùng kết quả nếu có hướng đi. Nếu còn hướng thoát không tranh chấp thì giữ hướng đó, nếu phải chờ lửa tắt thì vẫn chờ.
+- Nhãn thoát hiểm dùng chính mask của bước train, không hướng dẫn STOP khi policy chỉ được di chuyển. Dùng lại BFS và forecast hiện có; không thêm reward, mạng hoặc thuật toán mới.
+- RuleBot `robust=False` giữ nguyên. Sửa mask có hiệu lực ngay khi đánh giá checkpoint cũ, không cần train lại để thấy thay đổi. Checkpoint và log cũ không bị ghi đè.
+
+Đã kiểm tra hai phía A0/A1, va chạm lần đầu rồi thử thoát lại, lửa chặn lối đi, đường thoát không tranh chấp và các điều kiện bom bổ sung cũ. 48 unit test và kiểm tra tích hợp GUI/train đều qua. Tám trận hiệu chuẩn seed 15000 khớp bản thử, đối chiếu 2637 quyết định learner và mask đối thủ không đổi. Đây vẫn là heuristic: đối thủ có thể tiếp tục chặn đường hoặc đặt bom muộn. Kết quả development và test độc lập được ghi ở cuối `RESULTS.md`.

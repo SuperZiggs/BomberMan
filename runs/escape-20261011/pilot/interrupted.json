@@ -1,0 +1,5 @@
+{
+  "status": "interrupted experiment",
+  "completed_episodes": 139,
+  "reason": "Superseded after behavioral evaluation; not a completed 500-episode pilot"
+}

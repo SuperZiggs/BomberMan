@@ -2,10 +2,10 @@
 rule_based_bot.py
 
 Giai đoạn A — Rule-based agent dùng heuristic đơn giản:
-  1. Nếu đang đứng trong vùng nguy hiểm (lửa, bom sắp nổ) → né (BFS tìm ô an toàn gần nhất).
-  2. Nếu đứng cạnh tường gỗ và còn ammo → đặt bom rồi né.
-  3. Nếu không → di chuyển về phía tường gỗ gần nhất.
-  4. Không làm gì → STOP.
+  1. Né tới chỗ trú theo thời gian nổ và lửa, giữ đường thoát.
+  2. Đặt bom nếu tia nổ thật trúng đối thủ và còn đường sống.
+  3. Nhặt nâng cấp hữu ích ở gần trên đường an toàn.
+  4. Phá gỗ / mở đường rồi tiếp cận đối thủ, chỉ chọn hành động qua safety mask.
 
 Dùng hàm `select_action(obs, env, agent_id)` hoặc class `RuleBasedAgent`.
 
@@ -22,8 +22,8 @@ from typing import Optional
 
 from bomberman_env import (
     BombermanFFAEnv,
+    Bomb,
     EMPTY,
-    RIGID_WALL,
     WOODEN_WALL,
     NUM_ACTIONS,
     ACTION_STOP,
@@ -33,97 +33,245 @@ from bomberman_env import (
     ACTION_RIGHT,
     ACTION_BOMB,
     _MOVE_DELTA,
+    POWERUP_AMMO,
+    POWERUP_RANGE,
+    MAX_AMMO,
+    MAX_BLAST_RANGE,
 )
 
 
 # ─────────────────────────── helper: danger map ───────────────────────────
 
 def _build_danger_map(env: BombermanFFAEnv) -> np.ndarray:
-    """
-    Return an (H, W) int array.  danger[r][c] > 0 means the cell is in
-    the blast zone of a bomb that is about to explode in `danger[r][c]`
-    ticks (lower = more urgent).  0 = safe (or flame, handled separately).
-    For flames that are *currently* burning we set danger = 1 (immediate).
-    """
-    s = env.board_size
-    danger = np.zeros((s, s), dtype=np.int32)
+    """Earliest damage tick, including shortened fuses from chain reactions."""
+    return env._danger_map()
 
-    # Mark existing flames as immediate danger.
-    for (r, c) in env.flames:
-        danger[r, c] = 1
 
-    # Project bomb blast zones.
-    for bomb in env.bombs:
-        timer = max(bomb.timer, 1)  # timer <= 0 means exploding now
-        # Center cell.
-        if danger[bomb.row, bomb.col] == 0 or timer < danger[bomb.row, bomb.col]:
-            danger[bomb.row, bomb.col] = timer
-        # Four directions.
-        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-            for step in range(1, bomb.blast_range + 1):
-                rr, cc = bomb.row + dr * step, bomb.col + dc * step
-                if not (0 <= rr < s and 0 <= cc < s):
-                    break
-                if env.grid[rr, cc] == RIGID_WALL:
-                    break
-                if danger[rr, cc] == 0 or timer < danger[rr, cc]:
-                    danger[rr, cc] = timer
-                if env.grid[rr, cc] == WOODEN_WALL:
-                    break  # blast stops here
-    return danger
+def _reachable_cells(start, burns, blocked, ticks):
+    """Opponent positions reachable after movement and damage at each tick."""
+    reachable = np.zeros_like(burns[0])
+    reachable[start] = True
+    for tick in range(ticks):
+        moves = np.zeros_like(reachable)
+        moves[1:] |= reachable[:-1]
+        moves[:-1] |= reachable[1:]
+        moves[:, 1:] |= reachable[:, :-1]
+        moves[:, :-1] |= reachable[:, 1:]
+        # Staying on an existing bomb is legal; entering a bomb tile is not.
+        reachable = (reachable | (moves & ~blocked[tick])) & ~burns[tick]
+    return reachable
+
+
+def _bomb_escape_pressure(env, agent_id, r, c, base=None):
+    """Fraction of enemy refuges removed by a proposed bomb at its detonation."""
+    agent = env.agents[agent_id]
+    if not agent.alive or not env._is_walkable(r, c):
+        return 0.0
+    burns, blocked = env._forecast_blasts(
+        Bomb(r, c, agent_id, env.bomb_timer, agent.blast_range))
+    ticks = int(np.flatnonzero(burns[:, r, c])[0]) + 1
+    if base is None:
+        base = env._forecast_blasts(min_horizon=len(burns))
+    pressure = 0.0
+    # shortcut: visible bombs and current enemy positions only; future placements need lookahead.
+    for enemy in env.agents:
+        if not enemy.alive or enemy.agent_id == agent_id:
+            continue
+        start = (enemy.row, enemy.col)
+        before = np.count_nonzero(_reachable_cells(start, *base, ticks))
+        after = np.count_nonzero(_reachable_cells(start, burns, blocked, ticks))
+        if before:
+            pressure = max(pressure, 1.0 - after / before)
+    return pressure
+
+
+def _survival_map(env, start_r, start_c, extra_bomb=None, avoid_contests=True,
+                  safety_margin=0, reserve_exits=False):
+    """Backward reachability: survive all known flames without losing the exit."""
+    burns, blocked = env._forecast_blasts(extra_bomb)
+    actual_burns = burns.copy() if safety_margin else burns
+    for shift in range(1, min(safety_margin + 1, len(burns))):
+        burns[:-shift] |= actual_burns[shift:]
+    for a in env.agents:
+        if a.alive and (a.row, a.col) != (start_r, start_c):
+            blocked[:, a.row, a.col] = True
+            if avoid_contests:
+                tick = min(1 if extra_bomb is not None else 0, len(blocked) - 1)
+                for dr, dc in _MOVE_DELTA.values():
+                    pos = (a.row + dr, a.col + dc)
+                    if pos != (start_r, start_c) and env._is_walkable(*pos):
+                        # A new bomb must not rely on the opponent leaving its doorway.
+                        if extra_bomb is not None and reserve_exits:
+                            blocked[tick:, pos[0], pos[1]] = True
+                        else:
+                            blocked[tick, pos[0], pos[1]] = True
+    safe = np.zeros_like(burns)
+    next_safe = np.ones_like(burns[0])
+    for tick in range(len(burns) - 1, -1, -1):
+        continuation = next_safe.copy()  # staying, including on one's own bomb
+        if tick + 1 < len(burns):
+            dest = next_safe & ~blocked[tick + 1]
+            continuation[1:, :] |= dest[:-1, :]
+            continuation[:-1, :] |= dest[1:, :]
+            continuation[:, 1:] |= dest[:, :-1]
+            continuation[:, :-1] |= dest[:, 1:]
+        safe[tick] = ~burns[tick] & continuation
+        next_safe = safe[tick]
+    return safe, blocked, burns
+
+
+def _safe_action_mask(env: BombermanFFAEnv, agent_id: int, avoid_contests=True,
+                      safety_margin=1, robust=True) -> list[bool]:
+    if not robust:
+        safety_margin = 0
+    agent = env.agents[agent_id]
+    mask = [False] * NUM_ACTIONS
+    if not agent.alive:
+        mask[ACTION_STOP] = True
+        return mask
+    r, c = agent.row, agent.col
+    safe, blocked, burns = _survival_map(env, r, c, avoid_contests=avoid_contests,
+                                        safety_margin=safety_margin)
+    mask[ACTION_STOP] = bool(safe[0, r, c])
+    for action, (dr, dc) in _MOVE_DELTA.items():
+        nr, nc = r + dr, c + dc
+        if 0 <= nr < env.board_size and 0 <= nc < env.board_size:
+            mask[action] = bool(not blocked[0, nr, nc] and safe[0, nr, nc])
+    if burns[:, r, c].any():
+        # Leave promptly: a merely possible last-second exit is easily blocked.
+        exits = _escape_first_actions(env, r, c, safe, blocked, burns, robust=robust)
+        if exits:
+            mask = [a in exits for a in range(NUM_ACTIONS)]
+        # A safe chain can finish a trap; ordinary bombs in danger remain forbidden.
+        if (robust and _can_bomb_and_escape(env, agent_id, r, c, None)
+                and _bomb_escape_pressure(env, agent_id, r, c) == 1.0):
+            mask[ACTION_BOMB] = True
+    else:
+        blast = env._blast_cells(r, c, agent.blast_range)
+        targets = any(env.grid[pos] == WOODEN_WALL for pos in blast)
+        for other in env.agents:
+            if other.alive and other.agent_id != agent_id:
+                reachable = {(other.row, other.col)}
+                reachable.update((other.row + dr, other.col + dc) for dr, dc in _MOVE_DELTA.values()
+                                 if env._is_walkable(other.row + dr, other.col + dc))
+                targets |= bool(reachable.intersection(blast))
+        mask[ACTION_BOMB] = targets and _can_bomb_and_escape(env, agent_id, r, c, None, robust=robust)
+    if not any(mask) and safety_margin:
+        return _safe_action_mask(env, agent_id, avoid_contests=avoid_contests, safety_margin=0, robust=robust)
+    if not any(mask) and avoid_contests:
+        return _safe_action_mask(env, agent_id, avoid_contests=False, safety_margin=0, robust=robust)
+    if not any(mask):
+        # A future opponent move may reopen a route; keep immediate survival options.
+        mask[ACTION_STOP] = bool(not burns[0, r, c])
+        for action, (dr, dc) in _MOVE_DELTA.items():
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < env.board_size and 0 <= nc < env.board_size:
+                mask[action] = bool(not blocked[0, nr, nc] and not burns[0, nr, nc])
+        if not any(mask):
+            mask[ACTION_STOP] = True
+    if (robust and avoid_contests and mask[ACTION_STOP]
+            and not any(mask[a] for a in _MOVE_DELTA) and env._danger_map()[r, c] > 1):
+        # Waiting for a shared exit until the last tick makes a collision fatal.
+        alternative = _safe_action_mask(env, agent_id, avoid_contests=False,
+                                        safety_margin=safety_margin, robust=robust)
+        if any(alternative[a] for a in _MOVE_DELTA):
+            return alternative
+    return mask
 
 
 # ─────────────────────── helper: BFS for safe cell ────────────────────────
 
-def _bfs_safe_cell(env: BombermanFFAEnv, start_r: int, start_c: int,
-                   danger: np.ndarray, max_depth: int = 12) -> Optional[int]:
-    """
-    BFS from (start_r, start_c) to find the nearest *safe* walkable cell
-    (danger == 0, no bomb on it, not a wall).  Returns the first action
-    (UP/DOWN/LEFT/RIGHT) to take on the shortest path, or None if no safe
-    cell is reachable.
-    """
-    s = env.board_size
-    bomb_positions = {(b.row, b.col) for b in env.bombs}
-    agent_positions = {(a.row, a.col) for a in env.agents if a.alive}
-
-    visited = set()
-    visited.add((start_r, start_c))
-    # Queue items: (row, col, first_action)
-    queue: deque[tuple[int, int, int]] = deque()
-    for action, (dr, dc) in _MOVE_DELTA.items():
-        nr, nc = start_r + dr, start_c + dc
-        if not (0 <= nr < s and 0 <= nc < s):
-            continue
-        if env.grid[nr, nc] != EMPTY:
-            continue
-        if (nr, nc) in bomb_positions:
-            continue
-        # Don't walk into other agents
-        if (nr, nc) in agent_positions and (nr, nc) != (start_r, start_c):
-            continue
-        visited.add((nr, nc))
-        queue.append((nr, nc, action))
-
+def _escape_first_actions(env, start_r, start_c, safe, blocked, burns, robust=True):
+    """Prefer a refuge outside nearby counter-bomb rays, then the quickest route."""
+    threatened = np.zeros_like(burns[0])
+    for other in env.agents if robust else ():
+        if other.alive and (other.row, other.col) != (start_r, start_c):
+            positions = [(other.row, other.col)]
+            positions.extend((other.row + dr, other.col + dc) for dr, dc in _MOVE_DELTA.values()
+                             if env._is_walkable(other.row + dr, other.col + dc))
+            for r, c in positions:
+                for pos in env._blast_cells(r, c, other.blast_range):
+                    threatened[pos] = True
+    queue = deque([(start_r, start_c, 0, None)])
+    visited = {(start_r, start_c, 0, None)}
+    moves = {**_MOVE_DELTA, ACTION_STOP: (0, 0)}
+    exits = []
+    best_score = (2, len(burns) + 1)
     while queue:
-        r, c, first_action = queue.popleft()
-        # Is this cell safe?
-        if danger[r, c] == 0:
-            return first_action
-        if len(visited) > max_depth * 10:
-            break  # cap search
-        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+        r, c, tick, first = queue.popleft()
+        if best_score[0] == 0 and tick > best_score[1]:
+            break
+        if first is not None and not burns[tick - 1:, r, c].any():
+            score = (int(threatened[r, c]), tick)
+            if score < best_score:
+                best_score, exits = score, [first]
+            elif score == best_score and first not in exits:
+                exits.append(first)
+            if not threatened[r, c]:
+                continue
+        if tick >= len(burns):
+            continue
+        for action, (dr, dc) in moves.items():
             nr, nc = r + dr, c + dc
-            if (nr, nc) in visited:
+            first_action = action if first is None else first
+            state = (nr, nc, tick + 1, first_action)
+            if not (0 <= nr < env.board_size and 0 <= nc < env.board_size):
                 continue
-            if not (0 <= nr < s and 0 <= nc < s):
+            if state in visited or not safe[tick, nr, nc]:
                 continue
-            if env.grid[nr, nc] != EMPTY:
+            if action != ACTION_STOP and blocked[tick, nr, nc]:
                 continue
-            if (nr, nc) in bomb_positions:
-                continue
-            visited.add((nr, nc))
-            queue.append((nr, nc, first_action))
+            visited.add(state)
+            queue.append((nr, nc, tick + 1, first_action))
+    moves_out = [a for a in exits if a != ACTION_STOP]
+    if not robust:
+        return exits
+    exits = moves_out or exits
+    opponents = [a for a in env.agents if a.alive and (a.row, a.col) != (start_r, start_c)]
+    learner = next((a.agent_id for a in env.agents if a.alive
+                    and (a.row, a.col) == (start_r, start_c)), None)
+    on_own_bomb = any(b.owner == learner and (b.row, b.col) == (start_r, start_c)
+                      for b in env.bombs)
+    if exits and opponents and on_own_bomb:
+        contested = set()
+        for other in opponents:
+            reachable = {(other.row, other.col)}
+            for _ in range(2):
+                reachable |= {(r + dr, c + dc) for r, c in reachable
+                              for dr, dc in _MOVE_DELTA.values()
+                              if env._is_walkable(r + dr, c + dc)}
+            contested.update(reachable)
+        alternatives = []
+        for action in exits:
+            nr, nc = start_r + moves[action][0], start_c + moves[action][1]
+            onward = {(nr + dr, nc + dc) for dr, dc in _MOVE_DELTA.values()
+                      if 0 <= nr + dr < env.board_size and 0 <= nc + dc < env.board_size
+                      and (nr + dr, nc + dc) != (start_r, start_c)
+                      and not blocked[:, nr + dr, nc + dc].all()}
+            # Avoid committing to a burning corridor whose only exit the bot can close.
+            if action == ACTION_STOP or not (len(onward) == 1 and onward <= contested
+                                            and burns[:, nr, nc].any()):
+                alternatives.append(action)
+        exits = alternatives or exits
+    return exits
+
+
+def _bfs_safe_cell(env: BombermanFFAEnv, start_r: int, start_c: int,
+                   danger: np.ndarray, robust=True, action_mask=None) -> Optional[int]:
+    """First move to the nearest timed refuge, including a necessary wait."""
+    if robust and action_mask is None:
+        agent = next((a for a in env.agents if a.alive and (a.row, a.col) == (start_r, start_c)), None)
+        if agent is not None:
+            action_mask = _safe_action_mask(env, agent.agent_id)
+    attempts = ((1, True), (0, True), (0, False)) if robust else ((0, True), (0, False))
+    for margin, avoid in attempts:
+        safe, blocked, burns = _survival_map(env, start_r, start_c, avoid_contests=avoid,
+                                            safety_margin=margin)
+        exits = _escape_first_actions(env, start_r, start_c, safe, blocked, burns, robust=robust)
+        if action_mask is not None:
+            exits = [action for action in exits if action_mask[action]]
+        if exits:
+            return exits[0]
     return None
 
 
@@ -194,71 +342,59 @@ def _adjacent_to_wood(env: BombermanFFAEnv, r: int, c: int) -> bool:
 # ─────────────────────── helper: adjacent to opponent? ────────────────────
 
 def _adjacent_to_opponent(env: BombermanFFAEnv, agent_id: int, r: int, c: int) -> bool:
-    for a in env.agents:
-        if a.agent_id != agent_id and a.alive:
-            if abs(a.row - r) + abs(a.col - c) <= 2:  # within blast range
-                return True
-    return False
+    blast = env._blast_cells(r, c, env.agents[agent_id].blast_range)
+    return any(a.alive and a.agent_id != agent_id and (a.row, a.col) in blast
+               for a in env.agents)
 
 
 # ─────────────────────── helper: can safely place bomb? ───────────────────
 
 def _can_bomb_and_escape(env: BombermanFFAEnv, agent_id: int,
-                         r: int, c: int, danger: np.ndarray) -> bool:
-    """
-    Simulate: if we place a bomb here, is there at least one adjacent cell
-    we can step into that is safe from this new bomb's blast?
-    """
+                         r: int, c: int, danger: np.ndarray, robust=True) -> bool:
+    """Spend this tick placing, then survive every visible blast and its flames."""
     agent = env.agents[agent_id]
-    s = env.board_size
-    bomb_positions = {(b.row, b.col) for b in env.bombs}
+    if agent.bombs_placed >= agent.ammo or any((b.row, b.col) == (r, c) for b in env.bombs):
+        return False
+    placements = [Bomb(r, c, agent_id, env.bomb_timer, agent.blast_range)]
+    occupied = {(b.row, b.col) for b in env.bombs}
+    # Check a simultaneous counter-bomb before committing to our placement.
+    for other in env.agents if robust else ():
+        if (other.alive and other.agent_id != agent_id
+                and other.bombs_placed < other.ammo
+                and (other.row, other.col) not in occupied):
+            placements.append(Bomb(other.row, other.col, other.agent_id,
+                                   env.bomb_timer, other.blast_range))
+    placements.sort(key=lambda b: b.owner)  # Match simultaneous placement order in env.step.
+    safe, _, _ = _survival_map(env, r, c, placements, safety_margin=2 if robust else 0,
+                              reserve_exits=robust)
+    return bool(safe[0, r, c])
 
-    # Simulate new bomb blast zone.
-    new_blast = {(r, c)}
-    for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-        for step in range(1, agent.blast_range + 1):
-            rr, cc = r + dr * step, c + dc * step
-            if not (0 <= rr < s and 0 <= cc < s):
-                break
-            if env.grid[rr, cc] == RIGID_WALL:
-                break
-            new_blast.add((rr, cc))
-            if env.grid[rr, cc] == WOODEN_WALL:
-                break
 
-    # BFS to find a safe cell not in new_blast and not in existing danger.
-    visited = {(r, c)}
-    queue = deque()
-    for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-        nr, nc = r + dr, c + dc
-        if not (0 <= nr < s and 0 <= nc < s):
-            continue
-        if env.grid[nr, nc] != EMPTY:
-            continue
-        if (nr, nc) in bomb_positions:
-            continue
-        visited.add((nr, nc))
-        queue.append((nr, nc, 1))
-
+def _bfs_toward_item(env, agent_id, danger, max_distance=3):
+    """Take a short safe detour for an upgrade that is still useful."""
+    agent = env.agents[agent_id]
+    targets = {pos for pos, kind in env.powerups.items()
+               if (kind == POWERUP_AMMO and agent.ammo < MAX_AMMO)
+               or (kind == POWERUP_RANGE and agent.blast_range < MAX_BLAST_RANGE)}
+    occupied = {(a.row, a.col) for a in env.agents if a.alive and a.agent_id != agent_id}
+    start = (agent.row, agent.col)
+    queue = deque([(start, ACTION_STOP, 0)])
+    visited = {start}
     while queue:
-        cr, cc, dist = queue.popleft()
-        if dist > env.bomb_timer - 1:
-            break  # too far, bomb would have exploded
-        if (cr, cc) not in new_blast and danger[cr, cc] == 0:
-            return True
-        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-            nr, nc = cr + dr, cc + dc
-            if (nr, nc) in visited:
+        pos, first, distance = queue.popleft()
+        if pos in targets and danger[pos] == 0:
+            return first
+        if distance == max_distance:
+            continue
+        for action, (dr, dc) in _MOVE_DELTA.items():
+            nxt = (pos[0] + dr, pos[1] + dc)
+            if nxt in visited or nxt in occupied or not env._is_walkable(*nxt):
                 continue
-            if not (0 <= nr < s and 0 <= nc < s):
+            if danger[nxt] > 0:
                 continue
-            if env.grid[nr, nc] != EMPTY:
-                continue
-            if (nr, nc) in bomb_positions:
-                continue
-            visited.add((nr, nc))
-            queue.append((nr, nc, dist + 1))
-    return False
+            visited.add(nxt)
+            queue.append((nxt, action if distance == 0 else first, distance + 1))
+    return None
 
 
 # ──────────────────────────── RuleBasedAgent ──────────────────────────────
@@ -269,9 +405,9 @@ class RuleBasedAgent:
 
     Decision priority:
       1. DODGE if in danger (bomb blast zone / flame).
-      2. BOMB if adjacent to wooden wall, has ammo, and can safely escape.
-      3. BOMB if close to opponent, has ammo, and can safely escape.
-      4. MOVE toward nearest wooden wall.
+      2. BOMB an opponent in the actual blast rays, if escape is possible.
+      3. Collect a useful nearby item on a safe route.
+      4. BOMB / MOVE toward nearest wooden wall.
       5. Move toward opponent.
       6. STOP.
     """
@@ -286,45 +422,34 @@ class RuleBasedAgent:
 
         r, c = agent.row, agent.col
         danger = _build_danger_map(env)
+        # Keep this opponent baseline fixed while improving the learned policy's filter.
+        mask = _safe_action_mask(env, self.agent_id, robust=False)
 
         # Priority 1: If in danger, dodge!
         if danger[r, c] > 0:
-            escape_action = _bfs_safe_cell(env, r, c, danger)
-            if escape_action is not None:
+            escape_action = _bfs_safe_cell(env, r, c, danger, robust=False)
+            if escape_action is not None and mask[escape_action]:
                 return escape_action
-            # Can't find safe cell — stay put (might survive if flame expires).
-            return ACTION_STOP
-
-        # Priority 2: Bomb if adjacent to wooden wall and can escape.
-        if _adjacent_to_wood(env, r, c):
-            if agent.bombs_placed < agent.ammo:
-                if _can_bomb_and_escape(env, self.agent_id, r, c, danger):
-                    return ACTION_BOMB
-
-        # Priority 3: Bomb if near opponent and can escape.
-        if _adjacent_to_opponent(env, self.agent_id, r, c):
-            if agent.bombs_placed < agent.ammo:
-                if _can_bomb_and_escape(env, self.agent_id, r, c, danger):
-                    return ACTION_BOMB
-
-        # Priority 4: Move toward nearest wooden wall.
-        move = _bfs_toward_wood(env, r, c, danger)
-        if move is not None:
-            return move
-
-        # Priority 5: Move toward nearest opponent.
-        move = _bfs_toward_opponent(env, self.agent_id, r, c, danger)
-        if move is not None:
-            return move
-
-        # Priority 6: Random safe move or stop.
-        return _random_safe_move(env, r, c, danger)
+        else:
+            if mask[ACTION_BOMB] and _adjacent_to_opponent(env, self.agent_id, r, c):
+                return ACTION_BOMB
+            move = _bfs_toward_item(env, self.agent_id, danger)
+            if move is not None and mask[move]:
+                return move
+            if mask[ACTION_BOMB] and _adjacent_to_wood(env, r, c):
+                return ACTION_BOMB
+            for move in (_bfs_toward_wood(env, r, c, danger),
+                         _bfs_toward_opponent(env, self.agent_id, r, c, danger)):
+                if move is not None and mask[move]:
+                    return move
+        choices = [a for a in range(ACTION_BOMB) if mask[a]]
+        return int(np.random.choice(choices)) if choices else ACTION_STOP
 
 
 def _bfs_toward_opponent(env: BombermanFFAEnv, agent_id: int,
                          start_r: int, start_c: int,
-                         danger: np.ndarray) -> Optional[int]:
-    """BFS toward the nearest alive opponent."""
+                         danger: np.ndarray, action_mask=None) -> Optional[int]:
+    """Approach the opponent, or a firing position via an allowed first move."""
     s = env.board_size
     bomb_positions = {(b.row, b.col) for b in env.bombs}
     opponent_positions = set()
@@ -338,12 +463,16 @@ def _bfs_toward_opponent(env: BombermanFFAEnv, agent_id: int,
     visited.add((start_r, start_c))
     queue: deque[tuple[int, int, int]] = deque()
     for action, (dr, dc) in _MOVE_DELTA.items():
+        if action_mask is not None and not action_mask[action]:
+            continue
         nr, nc = start_r + dr, start_c + dc
         if not (0 <= nr < s and 0 <= nc < s):
             continue
         if env.grid[nr, nc] != EMPTY:
             continue
         if (nr, nc) in bomb_positions:
+            continue
+        if action_mask is not None and (nr, nc) in opponent_positions:
             continue
         if danger[nr, nc] > 0 and danger[nr, nc] <= 3:
             continue
@@ -352,7 +481,10 @@ def _bfs_toward_opponent(env: BombermanFFAEnv, agent_id: int,
 
     while queue:
         r, c, first_action = queue.popleft()
-        if (r, c) in opponent_positions:
+        if action_mask is None and (r, c) in opponent_positions:
+            return first_action
+        if action_mask is not None and opponent_positions.intersection(
+                env._blast_cells(r, c, env.agents[agent_id].blast_range)):
             return first_action
         for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             nr, nc = r + dr, c + dc
@@ -364,32 +496,13 @@ def _bfs_toward_opponent(env: BombermanFFAEnv, agent_id: int,
                 continue
             if (nr, nc) in bomb_positions:
                 continue
+            if action_mask is not None and (nr, nc) in opponent_positions:
+                continue
             if danger[nr, nc] > 0 and danger[nr, nc] <= 3:
                 continue
             visited.add((nr, nc))
             queue.append((nr, nc, first_action))
     return None
-
-
-def _random_safe_move(env: BombermanFFAEnv, r: int, c: int,
-                      danger: np.ndarray) -> int:
-    """Pick a random walkable, safe neighbor; or STOP."""
-    s = env.board_size
-    bomb_positions = {(b.row, b.col) for b in env.bombs}
-    safe_actions = []
-    for action, (dr, dc) in _MOVE_DELTA.items():
-        nr, nc = r + dr, c + dc
-        if not (0 <= nr < s and 0 <= nc < s):
-            continue
-        if env.grid[nr, nc] != EMPTY:
-            continue
-        if (nr, nc) in bomb_positions:
-            continue
-        if danger[nr, nc] == 0:
-            safe_actions.append(action)
-    if safe_actions:
-        return int(np.random.choice(safe_actions))
-    return ACTION_STOP
 
 
 # ──────────────────────── evaluation script ───────────────────────────────

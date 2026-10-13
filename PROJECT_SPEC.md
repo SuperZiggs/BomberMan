@@ -45,7 +45,7 @@ shaping để tránh hành vi suy biến).
 
 | File | Mô tả | Trạng thái |
 |---|---|---|
-| `bomberman_env.py` | Môi trường FFA đầy đủ: grid, bomb, blast, power-up, reward, observation 8-kênh | Đã viết, đã smoke-test bằng random actions (chạy được, không lỗi) |
+| `bomberman_env.py` | Môi trường FFA đầy đủ: grid, bomb, blast, power-up, reward; observation ban đầu 8 kênh, hiện 12 kênh | Đã viết, đã smoke-test bằng random actions (chạy được, không lỗi) |
 | `train_actor_critic.py` | Actor-Critic CNN dùng chung cho 4 agent, self-play thuần (chưa có curriculum) | Đã viết, đã kiểm tra cú pháp (`py_compile`), **chưa chạy thử thật** (môi trường viết code không cài được torch) |
 
 Hai file trên là điểm khởi đầu. Các giai đoạn dưới đây sẽ **sửa/mở rộng** chúng, không viết
@@ -62,12 +62,13 @@ lại từ đầu.
 - Bomb: timer đếm ngược (`bomb_timer`), nổ hình dấu cộng theo `blast_range` của agent đặt
   bom, dừng lại khi gặp tường cứng, phá tường gỗ và dừng (kèm xác suất `powerup_prob` rơi
   power-up), **chain reaction** nếu bom khác dính trong vùng nổ.
-- Power-up: `ammo` (+1 số bom đặt được cùng lúc), `range` (+1 tầm nổ).
+- Power-up: `ammo` (+1 số bom đặt được cùng lúc, trần 3), `range` (+1 tầm nổ, trần 4). Nâng cấp thành công thưởng `+0.05`; tại trần không tăng chỉ số/thưởng.
 - Reward mỗi bước (per-agent): `-1.0` khi chết, `+1.0` khi tiêu diệt agent khác (quy cho chủ
   sở hữu quả bom gây chết), `+10.0` cho người sống sót cuối cùng khi kết thúc episode,
   `-0.001` mỗi bước còn sống (khuyến khích hành động, chống thụ động).
-- Observation: numpy array `(8, H, W)` float32 — kênh: tường cứng, tường gỗ, bom (timer chuẩn
-  hóa), lửa, power-up ammo, power-up range, vị trí bản thân, vị trí đối thủ (gộp).
+- Observation hiện tại: numpy array `(12, H, W)` float32 — 8 kênh đầu giữ nguyên: tường cứng,
+  tường gỗ, bom (timer chuẩn hóa), lửa, ammo item, range item, bản thân, đối thủ (gộp).
+  Thêm slots bom còn trống, sức chứa, tầm nổ và thời gian nguy hiểm dự báo; xem mục 8 `IMPROVEMENTS.md`.
 - API: `reset() -> list[obs]`, `step(actions: list[int]) -> (obs_list, rewards, dones, info)`,
   `info["episode_done"]` báo hiệu kết thúc toàn episode; `info["alive"]` là list bool.
 
@@ -128,6 +129,8 @@ lại từ đầu.
    trước/sau mỗi bước cho mỗi bomb owner.
 4. Log: win rate vs `RuleBasedAgent`, reward trung bình/episode, số bom đặt trung bình/episode
    (so sánh với mốc ở Giai đoạn A để phát hiện bomb shyness).
+
+Bản triển khai hiện tại luân phiên góc học ở cả C/D/E. Checkpoint best được chọn trên seed validation cố định, chỉ xét ứng viên có tự nổ không tăng so với validation đầu lượt, rồi ưu tiên ActiveWR, ít tự nổ và ít hòa; số liệu rolling train chỉ dùng quan sát. Validation dùng bản sao trọng số trên CPU giống GUI, độc lập thiết bị train. Báo cáo cuối dùng seed khác validation và có số liệu riêng theo góc. WR tổng và số bom không thay thế bằng chứng hạ gục bởi bom của agent. Nhãn hướng dẫn xét số vị trí sống của đối thủ theo timer bom; loss bom gây áp lực được lấy trung bình riêng với loss di chuyển. Safety mask cho phép một bom bổ sung lúc nguy hiểm chỉ nếu dự báo agent sống được và đối thủ mất toàn bộ vị trí sống ở tick nổ; RuleBot đối chứng giữ luật cũ. Điều kiện trên dự báo không đảm bảo thắng khi đối thủ có hành động tương lai chưa biết.
 
 **Tiêu chí đạt (gate):**
 - Số bom đặt trung bình/episode của agent đang học **không** giảm dần về gần 0 theo thời gian

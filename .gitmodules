@@ -1,0 +1,3 @@
+[submodule "comparison-loc-update"]
+	path = _comparison/BomberMan-Loc_update
+	url = https://github.com/SuperZiggs/BomberMan.git

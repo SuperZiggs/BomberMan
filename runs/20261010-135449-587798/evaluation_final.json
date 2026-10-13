@@ -1,0 +1,2770 @@
+{
+  "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\20261010-135449-587798\\final_phaseC.pt",
+  "protocol": {
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "seeds": [
+      7000,
+      7099
+    ],
+    "policy": "sampled with shared action mask",
+    "opponent": "current RuleBot",
+    "device": "cpu",
+    "threads": 1
+  },
+  "summary": {
+    "n": 100,
+    "win": 0.13,
+    "active_win": 0.04,
+    "draw": 0.61,
+    "suicide": 0.24,
+    "kills": 0.1,
+    "bombs": 29.33,
+    "items": 1.62,
+    "steps": 355.93,
+    "kills_while_dead": 6,
+    "max_ammo_games": 23,
+    "max_range_games": 25
+  },
+  "by_corner": {
+    "0": {
+      "n": 50,
+      "win": 0.14,
+      "active_win": 0.06,
+      "draw": 0.6,
+      "suicide": 0.36,
+      "kills": 0.18,
+      "bombs": 27.78,
+      "items": 1.68,
+      "steps": 328.98,
+      "kills_while_dead": 6,
+      "max_ammo_games": 14,
+      "max_range_games": 11
+    },
+    "1": {
+      "n": 50,
+      "win": 0.12,
+      "active_win": 0.02,
+      "draw": 0.62,
+      "suicide": 0.12,
+      "kills": 0.02,
+      "bombs": 30.88,
+      "items": 1.56,
+      "steps": 382.88,
+      "kills_while_dead": 0,
+      "max_ammo_games": 9,
+      "max_range_games": 14
+    }
+  },
+  "games": [
+    {
+      "seed": 7000,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "items": 0.0,
+      "steps": 17.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7001,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 2
+    },
+    {
+      "seed": 7002,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 17.0,
+      "items": 2.0,
+      "steps": 195.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7003,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 24.0,
+      "items": 3.0,
+      "steps": 253.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 3
+    },
+    {
+      "seed": 7004,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 30.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7005,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 0.0,
+      "steps": 26.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7006,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7007,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 35.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 2
+    },
+    {
+      "seed": 7008,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 41.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 3
+    },
+    {
+      "seed": 7009,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 25.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7010,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 39.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7011,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 19.0,
+      "items": 2.0,
+      "steps": 161.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7012,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 29.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7013,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 32.0,
+      "items": 1.0,
+      "steps": 424.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7014,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 1,
+      "kills": 1.0,
+      "bombs": 31.0,
+      "items": 1.0,
+      "steps": 412.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7015,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 20.0,
+      "items": 1.0,
+      "steps": 325.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7016,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 5.0,
+      "items": 2.0,
+      "steps": 26.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7017,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 27.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7018,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 59.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7019,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 48.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7020,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 30.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7021,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 29.0,
+      "items": 3.0,
+      "steps": 403.0,
+      "alive": false,
+      "ammo": 3,
+      "range": 3
+    },
+    {
+      "seed": 7022,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 34.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7023,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 0.0,
+      "steps": 320.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7024,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 42.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 3
+    },
+    {
+      "seed": 7025,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 13.0,
+      "items": 0.0,
+      "steps": 257.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7026,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 1,
+      "kills": 1.0,
+      "bombs": 14.0,
+      "items": 3.0,
+      "steps": 147.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 4
+    },
+    {
+      "seed": 7027,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 33.0,
+      "items": 1.0,
+      "steps": 402.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7028,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 16.0,
+      "items": 1.0,
+      "steps": 145.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7029,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 3.0,
+      "steps": 330.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 4
+    },
+    {
+      "seed": 7030,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 57.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7031,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 41.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7032,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 18.0,
+      "items": 1.0,
+      "steps": 226.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7033,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 8.0,
+      "items": 2.0,
+      "steps": 58.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7034,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 30.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7035,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 34.0,
+      "items": 1.0,
+      "steps": 488.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7036,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 13.0,
+      "items": 4.0,
+      "steps": 84.0,
+      "alive": false,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7037,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7038,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 15.0,
+      "items": 4.0,
+      "steps": 96.0,
+      "alive": false,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7039,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 22.0,
+      "items": 3.0,
+      "steps": 252.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 3
+    },
+    {
+      "seed": 7040,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 59.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 4
+    },
+    {
+      "seed": 7041,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 30.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7042,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 0.0,
+      "steps": 32.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7043,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 16.0,
+      "items": 1.0,
+      "steps": 190.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7044,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 32.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7045,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7046,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7047,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 30.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7048,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 0.0,
+      "steps": 26.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7049,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 34.0,
+      "items": 2.0,
+      "steps": 444.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7050,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 32.0,
+      "items": 2.0,
+      "steps": 346.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7051,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 41.0,
+      "items": 4.0,
+      "steps": 394.0,
+      "alive": false,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7052,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 43.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 2
+    },
+    {
+      "seed": 7053,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 33.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7054,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 4.0,
+      "steps": 349.0,
+      "alive": false,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7055,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 25.0,
+      "items": 1.0,
+      "steps": 275.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7056,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 1.0,
+      "bombs": 26.0,
+      "items": 0.0,
+      "steps": 405.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7057,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7058,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 1,
+      "kills": 1.0,
+      "bombs": 32.0,
+      "items": 2.0,
+      "steps": 385.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7059,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7060,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 2
+    },
+    {
+      "seed": 7061,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 2.0,
+      "steps": 334.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7062,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 1.0,
+      "bombs": 17.0,
+      "items": 2.0,
+      "steps": 143.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7063,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7064,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 32.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7065,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 18.0,
+      "items": 2.0,
+      "steps": 214.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7066,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 15.0,
+      "items": 3.0,
+      "steps": 133.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 4
+    },
+    {
+      "seed": 7067,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 52.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7068,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 2
+    },
+    {
+      "seed": 7069,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 22.0,
+      "items": 2.0,
+      "steps": 258.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7070,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 11.0,
+      "items": 2.0,
+      "steps": 110.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 2
+    },
+    {
+      "seed": 7071,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 58.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7072,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 14.0,
+      "items": 2.0,
+      "steps": 132.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7073,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 34.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7074,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7075,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 3.0,
+      "steps": 410.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 4
+    },
+    {
+      "seed": 7076,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 34.0,
+      "items": 4.0,
+      "steps": 317.0,
+      "alive": false,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7077,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 4.0,
+      "steps": 467.0,
+      "alive": false,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7078,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 1,
+      "kills": 1.0,
+      "bombs": 7.0,
+      "items": 1.0,
+      "steps": 75.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7079,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 16.0,
+      "items": 3.0,
+      "steps": 178.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 4
+    },
+    {
+      "seed": 7080,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 1.0,
+      "bombs": 32.0,
+      "items": 2.0,
+      "steps": 432.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 2
+    },
+    {
+      "seed": 7081,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 21.0,
+      "items": 2.0,
+      "steps": 230.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7082,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7083,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 39.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7084,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 1.0,
+      "steps": 438.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7085,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 30.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7086,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 1,
+      "kills": 1.0,
+      "bombs": 19.0,
+      "items": 1.0,
+      "steps": 281.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 3
+    },
+    {
+      "seed": 7087,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 30.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7088,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 1,
+      "kills": 0.0,
+      "bombs": 15.0,
+      "items": 1.0,
+      "steps": 190.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7089,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 1.0,
+      "steps": 35.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7090,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 12.0,
+      "items": 1.0,
+      "steps": 168.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 2
+    },
+    {
+      "seed": 7091,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7092,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 39.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7093,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 43.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7094,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "items": 0.0,
+      "steps": 37.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 2
+    },
+    {
+      "seed": 7095,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 15.0,
+      "items": 2.0,
+      "steps": 160.0,
+      "alive": false,
+      "ammo": 1,
+      "range": 4
+    },
+    {
+      "seed": 7096,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 1,
+      "kills": 1.0,
+      "bombs": 10.0,
+      "items": 2.0,
+      "steps": 102.0,
+      "alive": false,
+      "ammo": 2,
+      "range": 3
+    },
+    {
+      "seed": 7097,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 37.0,
+      "items": 4.0,
+      "steps": 356.0,
+      "alive": false,
+      "ammo": 3,
+      "range": 4
+    },
+    {
+      "seed": 7098,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 53.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 3,
+      "range": 2
+    },
+    {
+      "seed": 7099,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "suicide": 0,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "alive": true,
+      "ammo": 1,
+      "range": 2
+    }
+  ],
+  "suicide_traces": [
+    {
+      "seed": 7002,
+      "aid": 0,
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "trace": [
+        {
+          "step": 184,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 2,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "bombs": [],
+          "flames": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              3,
+              1
+            ],
+            [
+              1,
+              4,
+              1
+            ],
+            [
+              1,
+              5,
+              1
+            ],
+            [
+              1,
+              6,
+              1
+            ],
+            [
+              1,
+              7,
+              1
+            ]
+          ]
+        },
+        {
+          "step": 185,
+          "pos": [
+            4,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              7,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 186,
+          "pos": [
+            3,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              6,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 187,
+          "pos": [
+            2,
+            1
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              5,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 188,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              4,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 189,
+          "pos": [
+            1,
+            1
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              3,
+              4
+            ],
+            [
+              1,
+              1,
+              0,
+              7,
+              3
+            ],
+            [
+              1,
+              4,
+              1,
+              7,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 190,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              2,
+              4
+            ],
+            [
+              1,
+              1,
+              0,
+              6,
+              3
+            ],
+            [
+              1,
+              4,
+              1,
+              6,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 191,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              5,
+              1,
+              1,
+              4
+            ],
+            [
+              1,
+              1,
+              0,
+              5,
+              3
+            ],
+            [
+              1,
+              4,
+              1,
+              5,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 192,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              1,
+              0,
+              4,
+              3
+            ],
+            [
+              1,
+              4,
+              1,
+              4,
+              4
+            ]
+          ],
+          "flames": [
+            [
+              3,
+              5,
+              1
+            ],
+            [
+              2,
+              5,
+              1
+            ],
+            [
+              1,
+              5,
+              1
+            ],
+            [
+              4,
+              5,
+              1
+            ],
+            [
+              5,
+              5,
+              1
+            ],
+            [
+              6,
+              5,
+              1
+            ],
+            [
+              7,
+              5,
+              1
+            ],
+            [
+              3,
+              4,
+              1
+            ],
+            [
+              3,
+              3,
+              1
+            ],
+            [
+              3,
+              2,
+              1
+            ],
+            [
+              3,
+              1,
+              1
+            ],
+            [
+              3,
+              6,
+              1
+            ],
+            [
+              3,
+              7,
+              1
+            ]
+          ]
+        },
+        {
+          "step": 193,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 4,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              1,
+              0,
+              3,
+              3
+            ],
+            [
+              1,
+              4,
+              1,
+              3,
+              4
+            ],
+            [
+              2,
+              3,
+              1,
+              7,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 194,
+          "pos": [
+            1,
+            3
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              1,
+              0,
+              2,
+              3
+            ],
+            [
+              1,
+              4,
+              1,
+              2,
+              4
+            ],
+            [
+              2,
+              3,
+              1,
+              6,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 195,
+          "pos": [
+            1,
+            2
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              2
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              1,
+              0,
+              1,
+              3
+            ],
+            [
+              1,
+              4,
+              1,
+              1,
+              4
+            ],
+            [
+              2,
+              3,
+              1,
+              5,
+              4
+            ]
+          ],
+          "flames": []
+        }
+      ],
+      "final_pos": [
+        1,
+        2
+      ]
+    },
+    {
+      "seed": 7014,
+      "aid": 0,
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "trace": [
+        {
+          "step": 401,
+          "pos": [
+            3,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "bombs": [
+            [
+              2,
+              3,
+              0,
+              2,
+              3
+            ],
+            [
+              3,
+              2,
+              1,
+              6,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 402,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          "bombs": [
+            [
+              2,
+              3,
+              0,
+              1,
+              3
+            ],
+            [
+              3,
+              2,
+              1,
+              5,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 403,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 2,
+          "agents": [
+            [
+              1,
+              5
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              2,
+              1,
+              4,
+              4
+            ]
+          ],
+          "flames": [
+            [
+              2,
+              3,
+              1
+            ],
+            [
+              1,
+              3,
+              1
+            ],
+            [
+              3,
+              3,
+              1
+            ],
+            [
+              4,
+              3,
+              1
+            ],
+            [
+              5,
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "step": 404,
+          "pos": [
+            2,
+            5
+          ],
+          "action": 1,
+          "agents": [
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              2,
+              1,
+              3,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 405,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 5,
+          "agents": [
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              2,
+              1,
+              2,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 406,
+          "pos": [
+            1,
+            5
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "bombs": [
+            [
+              3,
+              2,
+              1,
+              1,
+              4
+            ],
+            [
+              1,
+              5,
+              0,
+              7,
+              3
+            ],
+            [
+              1,
+              1,
+              1,
+              7,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 407,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              0,
+              6,
+              3
+            ],
+            [
+              1,
+              1,
+              1,
+              6,
+              4
+            ]
+          ],
+          "flames": [
+            [
+              3,
+              2,
+              1
+            ],
+            [
+              3,
+              1,
+              1
+            ],
+            [
+              3,
+              3,
+              1
+            ],
+            [
+              3,
+              4,
+              1
+            ],
+            [
+              3,
+              5,
+              1
+            ],
+            [
+              3,
+              6,
+              1
+            ]
+          ]
+        },
+        {
+          "step": 408,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              0,
+              5,
+              3
+            ],
+            [
+              1,
+              1,
+              1,
+              5,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 409,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              0,
+              4,
+              3
+            ],
+            [
+              1,
+              1,
+              1,
+              4,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 410,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              0,
+              3,
+              3
+            ],
+            [
+              1,
+              1,
+              1,
+              3,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 411,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 3,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              0,
+              2,
+              3
+            ],
+            [
+              1,
+              1,
+              1,
+              2,
+              4
+            ]
+          ],
+          "flames": []
+        },
+        {
+          "step": 412,
+          "pos": [
+            1,
+            4
+          ],
+          "action": 0,
+          "agents": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "bombs": [
+            [
+              1,
+              5,
+              0,
+              1,
+              3
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              4
+            ]
+          ],
+          "flames": []
+        }
+      ],
+      "final_pos": [
+        1,
+        4
+      ]
+    }
+  ]
+}

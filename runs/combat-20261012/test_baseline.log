@@ -1,0 +1,6 @@
+current 0 / 100
+current 25 / 100
+current 50 / 100
+current 75 / 100
+current 100 / 100
+{"seed": 11000, "board_size": 9, "num_agents": 2, "max_steps": 500, "num_episodes": 100, "win_rate": 5.0, "active_win_rate": 2.0, "suicide_rate": 2.0, "draw_rate": 91.0, "avg_kills": 0.04, "avg_bombs": 33.93, "avg_items": 2.07, "avg_steps": 458.47, "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\20261010-135449-587798\\best_phaseC.pt", "runtime": "current", "model_sha256": "be1c723e730b9b4f5db7746d879c8f1db7c41d0f23e724d09dc506fcdb00d8ba"}

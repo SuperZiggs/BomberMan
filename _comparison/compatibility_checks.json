@@ -1,0 +1,76 @@
+{
+  "current_loader_silently_ignores_metadata_payload": true,
+  "remote_loader_keeps_random_conv_when_loading_current_12_channel_checkpoint": true,
+  "engine_probes": {
+    "current": {
+      "overlapping_blasts": {
+        "kills": [
+          [
+            0,
+            1
+          ]
+        ],
+        "counts": [
+          1,
+          0,
+          0
+        ]
+      },
+      "lingering_flame": {
+        "victim_alive": false,
+        "kills": [
+          [
+            0,
+            1
+          ]
+        ],
+        "counts": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    "Loc_update": {
+      "overlapping_blasts": {
+        "kills": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "counts": [
+          1,
+          0,
+          1
+        ]
+      },
+      "lingering_flame": {
+        "victim_alive": false,
+        "kills": [],
+        "counts": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "static_wall_forecast": {
+    "case": "early bomb clears wood at (3,3); later bomb at (3,5) explodes at tick 4",
+    "current_forecast_damage_ticks_at_3_2": [
+      1,
+      2,
+      4,
+      5
+    ],
+    "Loc_update_forecast_damage_ticks_at_3_2": [
+      1,
+      2
+    ]
+  }
+}

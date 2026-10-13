@@ -1,0 +1,169 @@
+{
+  "final_before": {
+    "seed": 16000,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "num_episodes": 200,
+    "win_rate": 34.5,
+    "active_win_rate": 30.5,
+    "suicide_rate": 6.5,
+    "draw_rate": 61.0,
+    "avg_kills": 0.34,
+    "avg_bombs": 38.975,
+    "avg_items": 1.7,
+    "avg_steps": 370.205,
+    "by_corner": {
+      "0": {
+        "num_episodes": 100,
+        "win_rate": 28.999999999999996,
+        "active_win_rate": 25.0,
+        "suicide_rate": 7.000000000000001,
+        "draw_rate": 65.0,
+        "avg_kills": 0.26,
+        "avg_bombs": 38.14,
+        "avg_items": 1.57,
+        "avg_steps": 363.0
+      },
+      "1": {
+        "num_episodes": 100,
+        "win_rate": 40.0,
+        "active_win_rate": 36.0,
+        "suicide_rate": 6.0,
+        "draw_rate": 56.99999999999999,
+        "avg_kills": 0.42,
+        "avg_bombs": 39.81,
+        "avg_items": 1.83,
+        "avg_steps": 377.41
+      }
+    }
+  },
+  "final_after": {
+    "seed": 16000,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "num_episodes": 200,
+    "win_rate": 42.0,
+    "active_win_rate": 37.0,
+    "suicide_rate": 1.5,
+    "draw_rate": 54.0,
+    "avg_kills": 0.37,
+    "avg_bombs": 38.23,
+    "avg_items": 1.715,
+    "avg_steps": 358.89,
+    "by_corner": {
+      "0": {
+        "num_episodes": 100,
+        "win_rate": 38.0,
+        "active_win_rate": 31.0,
+        "suicide_rate": 3.0,
+        "draw_rate": 56.99999999999999,
+        "avg_kills": 0.31,
+        "avg_bombs": 37.17,
+        "avg_items": 1.57,
+        "avg_steps": 351.95
+      },
+      "1": {
+        "num_episodes": 100,
+        "win_rate": 46.0,
+        "active_win_rate": 43.0,
+        "suicide_rate": 0.0,
+        "draw_rate": 51.0,
+        "avg_kills": 0.43,
+        "avg_bombs": 39.29,
+        "avg_items": 1.86,
+        "avg_steps": 365.83
+      }
+    }
+  },
+  "warm_after": {
+    "seed": 16000,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "num_episodes": 200,
+    "win_rate": 32.0,
+    "active_win_rate": 24.0,
+    "suicide_rate": 0.5,
+    "draw_rate": 64.5,
+    "avg_kills": 0.24,
+    "avg_bombs": 40.445,
+    "avg_items": 1.99,
+    "avg_steps": 386.22,
+    "by_corner": {
+      "0": {
+        "num_episodes": 100,
+        "win_rate": 33.0,
+        "active_win_rate": 22.0,
+        "suicide_rate": 1.0,
+        "draw_rate": 64.0,
+        "avg_kills": 0.22,
+        "avg_bombs": 39.94,
+        "avg_items": 1.82,
+        "avg_steps": 380.51
+      },
+      "1": {
+        "num_episodes": 100,
+        "win_rate": 31.0,
+        "active_win_rate": 26.0,
+        "suicide_rate": 0.0,
+        "draw_rate": 65.0,
+        "avg_kills": 0.26,
+        "avg_bombs": 40.95,
+        "avg_items": 2.16,
+        "avg_steps": 391.93
+      }
+    }
+  },
+  "protocol": {
+    "seed": 16000,
+    "board_size": 9,
+    "num_agents": 2,
+    "num_episodes": 200,
+    "max_steps": 500,
+    "device": "cpu",
+    "torch_threads": 1,
+    "candidate": "final",
+    "selection_seed": 15000,
+    "selection": "Final after escape fix: ActiveWR 30%, self 1%; warm after: 23%, self 0.5%.",
+    "model_sha256": {
+      "final": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "warm": "2f08807220b42fb59e7366628afe5f65840fa808b4d693f564dfa489590d21d7"
+    },
+    "code_sha256": {
+      "rule_based_bot.py": "28bf9bb0f448cac92544c7a445c0e9424994545cdebc4d29533a7253d8b6cf5f",
+      "train_actor_critic.py": "7dfbcbec2171dfaeb5ca575a6ddda646da555a4201adc8c8b190f7b4eb219ca5",
+      "bomberman_env.py": "5138dc3b660af9975c39a6c52d83e41862fa075704b178237bb28331ad1913c2",
+      "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a"
+    },
+    "runs": [
+      "final_before",
+      "final_after",
+      "warm_after"
+    ]
+  },
+  "elapsed_seconds": {
+    "final_before": 200.5539207000038,
+    "final_after": 159.01087300000654,
+    "warm_after": 168.82841740000003
+  },
+  "paired_final": {
+    "win": {
+      "gained": 23,
+      "lost": 8
+    },
+    "active_win": {
+      "gained": 19,
+      "lost": 6
+    },
+    "suicide": {
+      "gained": 0,
+      "lost": 10
+    },
+    "draw": {
+      "gained": 8,
+      "lost": 22
+    }
+  }
+}
