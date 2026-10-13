@@ -26,17 +26,25 @@ from __future__ import annotations
 import argparse
 import os
 import glob
+import time
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from bomberman_env import BombermanFFAEnv, NUM_ACTIONS, ACTION_BOMB, ACTION_STOP, _MOVE_DELTA
+from bomberman_env import (
+    ACTION_BOMB,
+    ACTION_STOP,
+    Bomb,
+    EMPTY,
+    NUM_ACTIONS,
+    BombermanFFAEnv,
+    _MOVE_DELTA,
+)
 from rule_based_bot import (
     RuleBasedAgent,
     _build_danger_map,
-    _can_bomb_and_escape,
     _bfs_safe_cell,
 )
 
@@ -46,10 +54,10 @@ from rule_based_bot import (
 class ActorCriticNet(nn.Module):
     """
     Small CNN shared trunk -> actor head (action logits) + critic head (state value).
-    Input: (batch, 8, H, W) observation from BombermanFFAEnv._get_obs.
+    Input: (batch, 9, H, W) observation from BombermanFFAEnv._get_obs.
     """
 
-    def __init__(self, in_channels: int = 8, board_size: int = 11,
+    def __init__(self, in_channels: int = 9, board_size: int = 11,
                  num_actions: int = NUM_ACTIONS):
         super().__init__()
         self.board_size = board_size
@@ -91,12 +99,484 @@ def obs_batch_to_tensor(obs_list, device) -> torch.Tensor:
     return torch.from_numpy(arr).float().to(device)
 
 
-def get_action_mask(env: BombermanFFAEnv, agent_id: int) -> list[bool]:
+def learning_agent_id(phase: str, episode: int, num_agents: int) -> int:
+    """Select the learning slot; Phase C/E must not overfit to one spawn corner."""
+    if phase.upper() in ("C", "E"):
+        return (episode - 1) % num_agents
+    return 0
+
+
+class TacticalBombLifecycle:
+    """Tracks safe escapes and offensive intent for tactical bombs."""
+
+    def __init__(self):
+        self._pending: dict[tuple[int, int], dict[str, bool | int]] = {}
+
+    def register(
+        self,
+        position: tuple[int, int],
+        offensive: bool = False,
+        generic_reward_eligible: bool = True,
+        pressure_score: int = 0,
+    ) -> None:
+        self._pending[position] = {
+            "escaped": False,
+            "offensive": offensive,
+            "generic_reward_eligible": generic_reward_eligible,
+            "pressure_score": pressure_score,
+        }
+
+    def mark_safe_escape(
+        self, agent_position: tuple[int, int], is_safe: bool
+    ) -> tuple[int, int, int, int]:
+        """Mark escaped bombs; pressure remains pending until bomb outcome."""
+        if not is_safe:
+            return 0, 0, 0, 0
+        newly_escaped = 0
+        newly_offensive_escaped = 0
+        newly_generic_escaped = 0
+        for bomb_position, state in self._pending.items():
+            if not state["escaped"] and agent_position != bomb_position:
+                state["escaped"] = True
+                newly_escaped += 1
+                newly_offensive_escaped += int(state["offensive"])
+                newly_generic_escaped += int(state["generic_reward_eligible"])
+        return (
+            newly_escaped,
+            newly_offensive_escaped,
+            newly_generic_escaped,
+            0,
+        )
+
+    def resolve_outcome(
+        self, position: tuple[int, int]
+    ) -> tuple[bool, bool, bool, int]:
+        """Return escaped state and deferred pressure for a resolved bomb."""
+        state = self._pending.pop(position, {
+            "escaped": False,
+            "offensive": False,
+            "generic_reward_eligible": False,
+            "pressure_score": 0,
+        })
+        escaped = bool(state["escaped"])
+        return (
+            escaped,
+            bool(state["offensive"]),
+            escaped and bool(state["generic_reward_eligible"]),
+            int(state["pressure_score"]) if escaped else 0,
+        )
+
+    def has_escaped_pending(self) -> bool:
+        """Return whether an unresolved bomb was previously escaped safely."""
+        return any(bool(state["escaped"]) for state in self._pending.values())
+
+
+def outcome_reward_signals(
+    *, escaped: bool, offensive: bool, pressure_score: int,
+    owner_alive: bool, owner_safe: bool, victims: list[int], owner_id: int,
+) -> tuple[int, int, int]:
+    """Return offensive cycle, opponent kills, and pressure eligible at outcome."""
+    if not escaped or not owner_alive or not owner_safe:
+        return 0, 0, 0
+    return (
+        int(offensive),
+        sum(victim != owner_id for victim in victims) if offensive else 0,
+        pressure_score if offensive else 0,
+    )
+
+
+def tactical_bomb_reward(
+    tactical_placements: int = 0,
+    safe_escapes: int = 0,
+    walls_destroyed_after_escape: int = 0,
+    offensive_safe_escapes: int = 0,
+    opponent_kills_after_escape: int = 0,
+    pressure_score: int = 0,
+    tactical_placement_bonus: float = 0.05,
+    safe_escape_bonus: float = 0.15,
+    wall_destroy_bonus: float = 0.02,
+    offensive_safe_escape_bonus: float = 0.40,
+    opponent_kill_bonus: float = 1.00,
+    pressure_bonus: float = 0.15,
+) -> float:
+    """Reward safe tactical cycles, favouring opponents over wall farming."""
+    return (
+        tactical_placements * tactical_placement_bonus
+        + safe_escapes * safe_escape_bonus
+        + walls_destroyed_after_escape * wall_destroy_bonus
+        + offensive_safe_escapes * offensive_safe_escape_bonus
+        + opponent_kills_after_escape * opponent_kill_bonus
+        + pressure_score * pressure_bonus
+    )
+
+
+def safe_bomb_cadence_bonus(
+    previous_safe_escapes: int, newly_safe_escapes: int
+) -> float:
+    """Pay once, at the moment an episode reaches two safe bomb cycles."""
+    reached_target = previous_safe_escapes < 2 <= previous_safe_escapes + newly_safe_escapes
+    return 0.25 if reached_target else 0.0
+
+
+def noncombat_win_cadence_penalty(
+    *, won: bool, kills: int, safe_cycles: int, target_cycles: int,
+    max_penalty: float = 10.0, fixed_penalty: float = 0.0,
+) -> float:
+    """Cap non-combat wins while retaining the safe-cycle cadence penalty."""
+    if not won or kills > 0:
+        return 0.0
+    missing_cycles = max(target_cycles - safe_cycles, 0)
+    cadence_penalty = (
+        max_penalty * missing_cycles / target_cycles
+        if target_cycles > 0
+        else 0.0
+    )
+    return -max(cadence_penalty, fixed_penalty)
+
+
+def classify_learning_agent_death(info: dict, agent_id: int, was_alive: bool) -> str | None:
+    """Classify a newly dead learning agent for training diagnostics."""
+    if not was_alive or info["alive"][agent_id]:
+        return None
+    if agent_id in info.get("sudden_death_kills", []):
+        return "sudden_death"
+    kills = info.get("kills", [])
+    if any(killer == agent_id and victim == agent_id for killer, victim in kills):
+        return "suicide"
+    if any(killer != agent_id and victim == agent_id for killer, victim in kills):
+        return "opponent_bomb"
+    return "other"
+
+
+def _is_retryable_checkpoint_error(error: Exception) -> bool:
+    """Return true for transient Windows file-lock errors."""
+    if isinstance(error, OSError) and (
+        error.errno in (5, 32, 33, 1224)
+        or getattr(error, "winerror", None) in (5, 32, 33, 1224)
+    ):
+        return True
+    message = str(error).lower()
+    return (
+        "error code: 1224" in message
+        or "error code: 32" in message
+        or "being used by another process" in message
+    )
+
+
+def atomic_torch_save(state_dict, path: str, retries: int = 5,
+                      retry_delay_seconds: float = 0.5) -> None:
+    """Save through a temporary file and retry transient Windows checkpoint locks."""
+    directory = os.path.dirname(path)
+    if directory:
+        os.makedirs(directory, exist_ok=True)
+
+    for attempt in range(retries):
+        temp_path = f"{path}.tmp-{os.getpid()}-{time.time_ns()}"
+        try:
+            torch.save(state_dict, temp_path)
+            os.replace(temp_path, path)
+            return
+        except (OSError, RuntimeError) as error:
+            if os.path.exists(temp_path):
+                try:
+                    os.remove(temp_path)
+                except OSError:
+                    pass
+            if not _is_retryable_checkpoint_error(error) or attempt == retries - 1:
+                raise
+            wait_seconds = retry_delay_seconds * (attempt + 1)
+            print(f"Checkpoint locked; retrying save in {wait_seconds:.1f}s "
+                  f"({attempt + 1}/{retries - 1})")
+            time.sleep(wait_seconds)
+
+
+def checkpoint_payload(state_dict, *, episode: int, phase: str,
+                       metrics: dict, config: dict) -> dict:
+    """Build a self-describing checkpoint while keeping weights separately loadable."""
+    return {
+        "model_state_dict": state_dict,
+        "episode": episode,
+        "phase": phase,
+        "metrics": dict(metrics),
+        "config": dict(config),
+    }
+
+
+def checkpoint_state_dict(checkpoint: dict) -> dict:
+    """Return model weights from either a metadata payload or a legacy state dict."""
+    return checkpoint.get("model_state_dict", checkpoint)
+
+
+def is_target_bomb_checkpoint(metrics: dict, target_bombs: float = 2.0,
+                              tolerance: float = 0.3,
+                              min_win_rate: float = 70.0) -> bool:
+    """Return whether rolling metrics satisfy the target-bomb acceptance gate."""
+    return (
+        metrics["win_rate"] >= min_win_rate
+        and abs(metrics["bombs"] - target_bombs) <= tolerance + 1e-9
+    )
+
+
+def target_checkpoint_rank(metrics: dict, target_bombs: float = 2.0) -> tuple:
+    """Rank eligible target checkpoints by combat, WR, then bomb proximity."""
+    return (
+        metrics.get("kills", 0.0),
+        metrics.get("offensive_safe_cycles", 0.0),
+        metrics["win_rate"],
+        -abs(metrics["bombs"] - target_bombs),
+    )
+
+
+def combat_checkpoint_rank(metrics: dict) -> tuple:
+    """Rank eligible combat checkpoints by kills, pressure, WR, then safety."""
+    return (
+        metrics.get("kills", 0.0),
+        metrics.get("pressure_score", 0.0),
+        metrics.get("offensive_safe_cycles", 0.0),
+        metrics.get("win_rate", 0.0),
+        -metrics.get("self_deaths", 0.0),
+        -metrics.get("sudden_death_deaths", 0.0),
+    )
+
+
+def is_combat_safe_checkpoint(
+    metrics: dict, min_win_rate: float = 70.0,
+    min_kills: float = 0.025, max_self_deaths: float = 0.05,
+) -> bool:
+    """Return whether rolling combat metrics meet the safety promotion gate."""
+    return (
+        metrics.get("win_rate", 0.0) >= min_win_rate
+        and metrics.get("kills", 0.0) >= min_kills
+        and metrics.get("self_deaths", float("inf")) <= max_self_deaths
+    )
+
+
+def _project_bomb_explosion_times(
+    env: BombermanFFAEnv, bombs: list[Bomb] | None = None
+) -> list[int]:
+    """Project earliest bomb explosion times including chain reactions."""
+    active_bombs = env.bombs if bombs is None else bombs
+    explosion_times = [max(int(bomb.timer), 1) for bomb in active_bombs]
+    blast_cells = [
+        env._bomb_blast_cells(bomb.row, bomb.col, bomb.blast_range)
+        for bomb in active_bombs
+    ]
+    changed = True
+    while changed:
+        changed = False
+        for source_index, cells in enumerate(blast_cells):
+            source_time = explosion_times[source_index]
+            for target_index, target in enumerate(active_bombs):
+                if (
+                    (target.row, target.col) in cells
+                    and source_time < explosion_times[target_index]
+                ):
+                    explosion_times[target_index] = source_time
+                    changed = True
+    return explosion_times
+
+
+def _project_bomb_hazards(
+    env: BombermanFFAEnv,
+    explosion_times: list[int] | None = None,
+    bombs: list[Bomb] | None = None,
+) -> dict[tuple[int, int], set[int]]:
+    """Return future unsafe times per cell for bombs, chains, and flames."""
+    hazards: dict[tuple[int, int], set[int]] = {}
+    active_bombs = env.bombs if bombs is None else bombs
+    if explosion_times is None:
+        explosion_times = _project_bomb_explosion_times(env, active_bombs)
+    for bomb, explosion_time in zip(active_bombs, explosion_times):
+        for cell in env._bomb_blast_cells(bomb.row, bomb.col, bomb.blast_range):
+            cell_hazards = hazards.setdefault(cell, set())
+            for time_step in range(
+                explosion_time,
+                explosion_time + max(env.flame_duration, 1),
+            ):
+                cell_hazards.add(time_step)
+    for cell, duration in env.flames.items():
+        hazards.setdefault(cell, set()).update(range(1, max(int(duration), 1) + 1))
+    return hazards
+
+
+def _project_sudden_death_closures(
+    env: BombermanFFAEnv,
+) -> dict[tuple[int, int], int]:
+    """Return cells in the next closing ring and their relative close tick."""
+    if not env.sudden_death:
+        return {}
+    next_ring = env._sudden_death_ring + 1
+    if next_ring >= env.board_size // 2:
+        return {}
+    closure_step = env.sudden_death_start + (next_ring - 1) * env.sudden_death_interval
+    relative_tick = max(closure_step - env.step_count, 1)
+    if relative_tick > env.sudden_death_warning_steps:
+        return {}
+    return {cell: relative_tick for cell in env._ring_cells(next_ring)}
+
+
+def _has_temporal_escape(
+    env: BombermanFFAEnv,
+    start: tuple[int, int],
+    hazards: dict[tuple[int, int], set[int]] | None = None,
+    explosion_times: list[int] | None = None,
+    bombs: list[Bomb] | None = None,
+    blocked_from: dict[tuple[int, int], int] | None = None,
+) -> bool:
+    """Return whether an agent can survive all projected bomb hazards."""
+    active_bombs = env.bombs if bombs is None else bombs
+    if explosion_times is None:
+        explosion_times = _project_bomb_explosion_times(env, active_bombs)
+    if hazards is None:
+        hazards = _project_bomb_hazards(env, explosion_times, active_bombs)
+    blocked_from = blocked_from or {}
+    if not hazards and not blocked_from:
+        return True
+    if 1 in hazards.get(start, set()) or blocked_from.get(start, 2) <= 1:
+        return False
+
+    bomb_deadlines = {
+        (bomb.row, bomb.col): explosion_time
+        for bomb, explosion_time in zip(active_bombs, explosion_times)
+    }
+    horizon_candidates = [
+        time_step for times in hazards.values() for time_step in times
+    ]
+    horizon_candidates.extend(blocked_from.values())
+    horizon = max(horizon_candidates)
+    positions = {start}
+    moves = [(0, 0), *_MOVE_DELTA.values()]
+    for time_step in range(2, horizon + 1):
+        next_positions = set()
+        for row, col in positions:
+            if blocked_from.get((row, col), horizon + 1) <= time_step:
+                continue
+            for dr, dc in moves:
+                next_row, next_col = row + dr, col + dc
+                if not (0 <= next_row < env.board_size and 0 <= next_col < env.board_size):
+                    continue
+                if env.grid[next_row, next_col] != EMPTY:
+                    continue
+                if blocked_from.get((next_row, next_col), horizon + 1) <= time_step:
+                    continue
+                bomb_explosion = bomb_deadlines.get((next_row, next_col))
+                if (next_row, next_col) != (row, col) and (
+                    bomb_explosion is not None and time_step <= bomb_explosion
+                ):
+                    continue
+                if time_step in hazards.get((next_row, next_col), set()):
+                    continue
+                next_positions.add((next_row, next_col))
+        if not next_positions:
+            return False
+        positions = next_positions
+    return True
+
+
+def _shortest_temporal_escape_actions(
+    env: BombermanFFAEnv,
+    start: tuple[int, int],
+    hazards: dict[tuple[int, int], set[int]],
+    explosion_times: list[int],
+    bombs: list[Bomb] | None = None,
+    blocked_from: dict[tuple[int, int], int] | None = None,
+) -> set[int]:
+    """Return first actions on the shortest path out of projected bomb danger."""
+    active_bombs = env.bombs if bombs is None else bombs
+    blocked_from = blocked_from or {}
+    bomb_deadlines = {
+        (bomb.row, bomb.col): explosion_time
+        for bomb, explosion_time in zip(active_bombs, explosion_times)
+    }
+    bomb_horizon = max(
+        (time_step for times in hazards.values() for time_step in times),
+        default=1,
+    )
+    states = {start: {None}}
+    actions = [(ACTION_STOP, (0, 0)), *_MOVE_DELTA.items()]
+    for time_step in range(1, bomb_horizon + 1):
+        next_states: dict[tuple[int, int], set[int]] = {}
+        for (row, col), first_actions in states.items():
+            if blocked_from.get((row, col), bomb_horizon + 1) <= time_step:
+                continue
+            for action, (dr, dc) in actions:
+                next_row, next_col = row + dr, col + dc
+                target = (next_row, next_col)
+                if not (0 <= next_row < env.board_size and 0 <= next_col < env.board_size):
+                    continue
+                if env.grid[next_row, next_col] != EMPTY:
+                    continue
+                if blocked_from.get(target, bomb_horizon + 1) <= time_step:
+                    continue
+                bomb_explosion = bomb_deadlines.get(target)
+                if target != (row, col) and (
+                    bomb_explosion is not None and time_step <= bomb_explosion
+                ):
+                    continue
+                if time_step in hazards.get(target, set()):
+                    continue
+                propagated_actions = {
+                    action if first_action is None else first_action
+                    for first_action in first_actions
+                }
+                next_states.setdefault(target, set()).update(propagated_actions)
+
+        shortest_actions = set()
+        for position, first_actions in next_states.items():
+            if not any(
+                hazard_tick >= time_step
+                for hazard_tick in hazards.get(position, set())
+            ):
+                shortest_actions.update(first_actions)
+        if shortest_actions:
+            return shortest_actions
+        if not next_states:
+            return set()
+        states = next_states
+    return set()
+
+
+def _can_place_temporal_bomb(
+    env: BombermanFFAEnv,
+    agent_id: int,
+    row: int,
+    col: int,
+    blocked_from: dict[tuple[int, int], int] | None = None,
+) -> bool:
+    """Return whether placing a bomb now leaves a chain-safe trajectory."""
+    agent = env.agents[agent_id]
+    hypothetical_bomb = Bomb(
+        row=row,
+        col=col,
+        owner=agent_id,
+        timer=env.bomb_timer,
+        blast_range=agent.blast_range,
+    )
+    projected_bombs = [*env.bombs, hypothetical_bomb]
+    explosion_times = _project_bomb_explosion_times(env, projected_bombs)
+    hazards = _project_bomb_hazards(env, explosion_times, projected_bombs)
+    return _has_temporal_escape(
+        env,
+        (row, col),
+        hazards=hazards,
+        explosion_times=explosion_times,
+        bombs=projected_bombs,
+        blocked_from=blocked_from,
+    )
+
+
+def get_action_mask(
+    env: BombermanFFAEnv, agent_id: int, diagnostics: dict | None = None
+) -> list[bool]:
     """Return a boolean mask of valid actions for the given agent."""
     mask = [True] * NUM_ACTIONS
     agent = env.agents[agent_id]
     r, c = agent.row, agent.col
     danger = _build_danger_map(env)
+    sudden_death_closures = _project_sudden_death_closures(env)
+    explosion_times = _project_bomb_explosion_times(env)
+    projected_hazards = _project_bomb_hazards(env, explosion_times)
+    sudden_death_blocks = 0
 
     # 1. Do not walk into walls or active flames or cells exploding in 1-2 ticks
     for a, (dr, dc) in _MOVE_DELTA.items():
@@ -111,10 +591,103 @@ def get_action_mask(env: BombermanFFAEnv, agent_id: int) -> list[bool]:
         mask[ACTION_STOP] = False
 
     # 3. Only place bomb if ammo available, no bomb on cell, and can escape!
+    placement_blocked = False
     if agent.bombs_placed >= agent.ammo or any(b.row == r and b.col == c for b in env.bombs):
         mask[ACTION_BOMB] = False
-    elif not _can_bomb_and_escape(env, agent_id, r, c, danger):
-        mask[ACTION_BOMB] = False
+    else:
+        placement_safe = _can_place_temporal_bomb(
+            env,
+            agent_id,
+            r,
+            c,
+            blocked_from=sudden_death_closures,
+        )
+        if not placement_safe:
+            mask[ACTION_BOMB] = False
+            placement_blocked = True
+            if diagnostics is not None:
+                diagnostics["unsafe_bomb_placement_blocks"] = (
+                    diagnostics.get("unsafe_bomb_placement_blocks", 0) + 1
+                )
+            if sudden_death_closures and _can_place_temporal_bomb(
+                env, agent_id, r, c
+            ):
+                sudden_death_blocks += 1
+
+    # 4. Reject movement/stop actions that cannot survive projected timers and
+    # chain reactions. Entering a future blast line remains allowed when a
+    # time-valid escape route exists.
+    temporal_blocks = 0
+    temporal_targets = {ACTION_STOP: (r, c)}
+    temporal_targets.update({
+        action: (r + dr, c + dc)
+        for action, (dr, dc) in _MOVE_DELTA.items()
+    })
+    for action, target in temporal_targets.items():
+        if not mask[action]:
+            continue
+        survives = _has_temporal_escape(
+            env,
+            target,
+            hazards=projected_hazards,
+            explosion_times=explosion_times,
+            blocked_from=sudden_death_closures,
+        )
+        if survives:
+            continue
+        mask[action] = False
+        if sudden_death_closures and _has_temporal_escape(
+            env,
+            target,
+            hazards=projected_hazards,
+            explosion_times=explosion_times,
+        ):
+            sudden_death_blocks += 1
+        else:
+            temporal_blocks += 1
+
+    # 5. When any bomb threatens the current cell, commit to a first action
+    # on the shortest temporal escape path instead of waiting until the last tick.
+    forced_escape = False
+    if any(time_step >= 1 for time_step in projected_hazards.get((r, c), set())):
+        escape_actions = _shortest_temporal_escape_actions(
+            env,
+            (r, c),
+            projected_hazards,
+            explosion_times,
+            blocked_from=sudden_death_closures,
+        )
+        allowed_escape_actions = {
+            action for action in escape_actions if mask[action]
+        }
+        if allowed_escape_actions:
+            forced_escape = any(
+                allowed and action not in allowed_escape_actions
+                for action, allowed in enumerate(mask)
+            )
+            mask = [
+                action in allowed_escape_actions for action in range(NUM_ACTIONS)
+            ]
+
+    if diagnostics is not None:
+        diagnostics["unsafe_reentry_blocks"] = (
+            diagnostics.get("unsafe_reentry_blocks", 0) + temporal_blocks
+        )
+        diagnostics["sudden_death_blocks"] = (
+            diagnostics.get("sudden_death_blocks", 0) + sudden_death_blocks
+        )
+        diagnostics["forced_escape_steps"] = (
+            diagnostics.get("forced_escape_steps", 0) + int(forced_escape)
+        )
+        diagnostics["mask_interventions"] = (
+            diagnostics.get("mask_interventions", 0)
+            + int(
+                temporal_blocks > 0
+                or placement_blocked
+                or sudden_death_blocks > 0
+                or forced_escape
+            )
+        )
 
     if not any(mask):
         mask[ACTION_STOP] = True
@@ -158,7 +731,8 @@ class RuleBasedOpponent:
 
 def smart_load_weights(net: ActorCriticNet, checkpoint_path: str, device):
     """Load checkpoint weights with automatic spatial interpolation if board_size differs."""
-    sd = torch.load(checkpoint_path, map_location=device, weights_only=True)
+    checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=True)
+    sd = checkpoint_state_dict(checkpoint)
     curr_sd = net.state_dict()
     for k, v in sd.items():
         if k in curr_sd:
@@ -175,6 +749,13 @@ def smart_load_weights(net: ActorCriticNet, checkpoint_path: str, device):
                 w_interp = w_interp * ((old_s * old_s) / (new_s * new_s))
                 curr_sd[k].copy_(w_interp.reshape(256, new_flat))
                 print(f"Interpolated {k} from board {old_s}x{old_s} to {new_s}x{new_s}")
+            elif k == "conv.0.weight" and v.ndim == 4 and curr_sd[k].ndim == 4 \
+                    and v.shape[0] == curr_sd[k].shape[0] \
+                    and v.shape[1] < curr_sd[k].shape[1] \
+                    and v.shape[2:] == curr_sd[k].shape[2:]:
+                curr_sd[k][:, :v.shape[1]].copy_(v)
+                curr_sd[k][:, v.shape[1]:].zero_()
+                print(f"Expanded {k} from {v.shape[1]} to {curr_sd[k].shape[1]} input channels")
     net.load_state_dict(curr_sd)
 
 
@@ -201,15 +782,25 @@ def load_opponent_pool(checkpoint_dir: str, board_size: int,
 
 
 def save_snapshot(net: ActorCriticNet, checkpoint_dir: str, episode: int,
-                  phase: str = "", num_agents: int = 2):
+                  phase: str = "", num_agents: int = 2,
+                  metrics: dict | None = None, config: dict | None = None):
     """Save a snapshot of the network weights."""
     os.makedirs(checkpoint_dir, exist_ok=True)
     if phase == "E":
         prefix = f"snapshot_phaseE_{num_agents}a_"
+    elif phase == "C":
+        prefix = "snapshot_phaseC_"
     else:
         prefix = "snapshot_"
     path = os.path.join(checkpoint_dir, f"{prefix}ep{episode:06d}.pt")
-    torch.save(net.state_dict(), path)
+    payload = checkpoint_payload(
+        net.state_dict(),
+        episode=episode,
+        phase=phase,
+        metrics=metrics or {},
+        config=config or {},
+    )
+    atomic_torch_save(payload, path)
     return path
 
 
@@ -224,19 +815,36 @@ def train(
     lr: float = 3e-4,
     value_coef: float = 0.5,
     entropy_coef: float = 0.015,
-    wall_destroy_bonus: float = 0.15,
+    wall_destroy_bonus: float = 0.02,
+    tactical_bomb_bonus: float = 0.05,
+    safe_escape_bonus: float = 0.15,
+    offensive_safe_escape_bonus: float = 0.40,
+    opponent_kill_bonus: float = 1.00,
+    pressure_bonus: float = 0.15,
+    noncombat_win_fixed_penalty: float = 0.0,
+    combat_min_win_rate: float = 70.0,
+    combat_safe_min_kills: float = 0.025,
+    combat_safe_max_self_deaths: float = 0.05,
+    generic_cycle_budget: int = 2,
+    target_bombs: float = 2.0,
+    target_bomb_tolerance: float = 0.3,
+    target_min_win_rate: float = 70.0,
     max_steps: int = 300,
     log_every: int = 50,
     snapshot_every: int = 200,
     checkpoint_dir: str = "checkpoints",
     resume_from: str = "",
+    sudden_death: bool = False,
+    sudden_death_start: int = 200,
+    sudden_death_interval: int = 20,
+    sudden_death_warning_steps: int = 40,
     device: str = "cuda" if torch.cuda.is_available() else "cpu",
 ):
     """
     Unified training loop for phases C, D, E.
 
     Phase C: Agent 0 = learning AC, Agent 1 = RuleBasedAgent (fixed).
-             Reward shaping: +wall_destroy_bonus per wall destroyed.
+             Reward shaping rewards outcomes of tactical bombs only after escape.
     Phase D: Agent 0 = learning AC, Agent 1 = random from opponent pool
              (includes RuleBasedAgent + saved snapshots).
     Phase E: Same as D but with num_agents=3 or 4.
@@ -244,9 +852,16 @@ def train(
     phase = phase.upper()
     assert phase in ("C", "D", "E"), f"Phase must be C, D, or E, got {phase}"
 
-    env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
-                          max_steps=max_steps)
-    net = ActorCriticNet(in_channels=8, board_size=board_size,
+    env = BombermanFFAEnv(
+        board_size=board_size,
+        num_agents=num_agents,
+        max_steps=max_steps,
+        sudden_death=sudden_death,
+        sudden_death_start=sudden_death_start,
+        sudden_death_interval=sudden_death_interval,
+        sudden_death_warning_steps=sudden_death_warning_steps,
+    )
+    net = ActorCriticNet(in_channels=9, board_size=board_size,
                          num_actions=NUM_ACTIONS).to(device)
 
     # Resume from checkpoint if specified, or auto warm-start for Phase D/E.
@@ -305,19 +920,67 @@ def train(
     # ── Best-model checkpointing ──
     best_wr = 0.0
     best_state_dict = None   # will hold state_dict of the best model seen
+    best_metrics = None
+    best_episode = 0
+    best_target_rank = None
+    best_combat_rank = None
+    best_combat_safe_rank = None
+
+    checkpoint_config = {
+        "board_size": board_size,
+        "num_agents": num_agents,
+        "max_steps": max_steps,
+        "lr": lr,
+        "wall_destroy_bonus": wall_destroy_bonus,
+        "tactical_bomb_bonus": tactical_bomb_bonus,
+        "safe_escape_bonus": safe_escape_bonus,
+        "offensive_safe_escape_bonus": offensive_safe_escape_bonus,
+        "opponent_kill_bonus": opponent_kill_bonus,
+        "pressure_bonus": pressure_bonus,
+        "generic_cycle_budget": generic_cycle_budget,
+        "noncombat_win_max_penalty": 10.0,
+        "noncombat_win_fixed_penalty": noncombat_win_fixed_penalty,
+        "combat_min_win_rate": combat_min_win_rate,
+        "combat_safe_min_kills": combat_safe_min_kills,
+        "combat_safe_max_self_deaths": combat_safe_max_self_deaths,
+        "target_bombs": target_bombs,
+        "target_bomb_tolerance": target_bomb_tolerance,
+        "target_min_win_rate": target_min_win_rate,
+        "sudden_death": sudden_death,
+        "sudden_death_start": sudden_death_start,
+        "sudden_death_interval": sudden_death_interval,
+        "sudden_death_warning_steps": sudden_death_warning_steps,
+    }
 
     # ── Logging buffers ──
     reward_history = []
     win_history = []        # 1 = learning agent survived, 0 = didn't
     bombs_history = []      # bombs placed by learning agent
     walls_history = []      # walls destroyed by learning agent's bombs
+    safe_cycles_history = []  # tactical bombs whose owner reached safety
+    offensive_safe_cycles_history = []  # safe bomb cycles aimed at an opponent
+    pressure_score_history = []  # opponent escape options covered after safe escape
+    post_escape_self_death_history = []
+    unsafe_bomb_placement_blocks_history = []
+    unsafe_reentry_blocks_history = []
+    forced_escape_steps_history = []
+    sudden_death_blocks_history = []
+    mask_interventions_history = []
+    chain_bomb_self_death_history = []
+    combat_history = {
+        "kills": [],
+        "sudden_death": [],
+        "suicide": [],
+        "opponent_bomb": [],
+        "other_death": [],
+    }
 
     for ep in range(1, episodes + 1):
         obs_list = env.reset()
         alive_mask = [True] * num_agents
 
-        # Learning agent: in Phase E, cycle corners across episodes so all corners are trained!
-        learning_aid = (ep - 1) % num_agents if phase == "E" else 0
+        # Cycle the learning slot in Phase C/E to avoid spawn-corner overfitting.
+        learning_aid = learning_agent_id(phase, ep, num_agents)
 
         # ── Decide opponents for this episode ──
         opponents = {}  # agent_id -> opponent object or None (learning agent)
@@ -344,6 +1007,28 @@ def train(
         aux_losses_buf = []
         bombs_this_ep = 0
         walls_this_ep = 0
+        safe_escapes_this_ep = 0
+        offensive_safe_escapes_this_ep = 0
+        pressure_score_this_ep = 0
+        post_escape_self_death_this_ep = 0
+        chain_bomb_self_death_this_ep = 0
+        temporal_diagnostics_this_ep = {
+            "unsafe_bomb_placement_blocks": 0,
+            "unsafe_reentry_blocks": 0,
+            "forced_escape_steps": 0,
+            "sudden_death_blocks": 0,
+            "mask_interventions": 0,
+        }
+        generic_safe_escapes_this_ep = 0
+        generic_cycle_slots_this_ep = 0
+        kills_this_ep = 0
+        death_counts_this_ep = {
+            "sudden_death": 0,
+            "suicide": 0,
+            "opponent_bomb": 0,
+            "other_death": 0,
+        }
+        tactical_bombs = TacticalBombLifecycle()
 
         for t in range(max_steps):
             # ── Select actions ──
@@ -353,7 +1038,11 @@ def train(
             if alive_mask[learning_aid]:
                 obs_t = obs_to_tensor(obs_list[learning_aid], device)
                 logits, value = net(obs_t)
-                mask = get_action_mask(env, learning_aid)
+                mask = get_action_mask(
+                    env,
+                    learning_aid,
+                    diagnostics=temporal_diagnostics_this_ep,
+                )
                 mask_t = torch.tensor(mask, dtype=torch.bool, device=device)
                 m_logits = logits.masked_fill(~mask_t, -1e9)
                 dist = torch.distributions.Categorical(logits=m_logits)
@@ -395,10 +1084,9 @@ def train(
             # Record danger before step for reward shaping
             if alive_mask[learning_aid]:
                 r_l, c_l = env.agents[learning_aid].row, env.agents[learning_aid].col
-                d_map_before = _build_danger_map(env)
-                danger_before = d_map_before[r_l, c_l]
+                position_before = (r_l, c_l)
             else:
-                danger_before = 0
+                position_before = None
 
             # ── Step environment ──
             obs_list, rewards, dones, info = env.step(actions)
@@ -407,32 +1095,150 @@ def train(
             shaped_reward = rewards[learning_aid]
 
             # 1. Death / Suicide penalty (-1.0 from env - 1.5 = -2.5 total)
-            if alive_mask[learning_aid] and not info["alive"][learning_aid]:
-                was_suicide = any(killer == learning_aid and victim == learning_aid for killer, victim in info.get("kills", []))
-                if was_suicide:
+            kills_this_ep += sum(
+                killer == learning_aid and victim != learning_aid
+                for killer, victim in info.get("kills", [])
+            )
+            death_cause = classify_learning_agent_death(
+                info, agent_id=learning_aid, was_alive=alive_mask[learning_aid]
+            )
+            if death_cause is not None:
+                death_counts_this_ep[death_cause if death_cause != "other" else "other_death"] += 1
+                if death_cause == "suicide":
+                    post_escape_self_death_this_ep += int(
+                        tactical_bombs.has_escaped_pending()
+                    )
+                    chain_bomb_self_death_this_ep += int(any(
+                        outcome.get("chain_reaction", False)
+                        and outcome.get("owner") == learning_aid
+                        and learning_aid in outcome.get("victims", [])
+                        for outcome in info.get("bomb_outcomes", [])
+                    ))
                     shaped_reward -= 1.5  # Heavy penalty for self-destruction
 
-            # 2. Bomb placement bonus (Phase C only to jumpstart exploration; in Phase D/E wall destruction is enough)
-            if phase == "C" and actions[learning_aid] == ACTION_BOMB and alive_mask[learning_aid]:
-                shaped_reward += 0.15
+            # 2. A tiny starter reward is allowed only for a bomb that is both
+            # tactical and safe (the action mask proves the escape route).
+            tactical_placements = int(
+                position_before is not None
+                and learning_aid in info.get("tactical_bomb_owners", [])
+            )
+            offensive_placements = int(
+                position_before is not None
+                and learning_aid in info.get("offensive_bomb_owners", [])
+            )
+            placement_pressure_score = sum(
+                pressure_score
+                for owner, pressure_score in info.get("bomb_pressure_scores", [])
+                if owner == learning_aid
+            )
+            if tactical_placements:
+                placement_generic_reward_eligible = generic_cycle_slots_this_ep < generic_cycle_budget
+                generic_cycle_slots_this_ep += int(placement_generic_reward_eligible)
+                tactical_bombs.register(
+                    position_before,
+                    offensive=bool(offensive_placements),
+                    generic_reward_eligible=placement_generic_reward_eligible,
+                    pressure_score=placement_pressure_score,
+                )
+            else:
+                placement_generic_reward_eligible = False
 
-            # 3. Wall destruction bonus
-            wd = info.get("walls_destroyed", {})
-            if learning_aid in wd:
-                shaped_reward += wall_destroy_bonus * wd[learning_aid]
-                walls_this_ep += wd[learning_aid]
-
-            # 4. Safe escape bonus: stepped out of blast danger into safety
+            # 3. A tactical bomb earns its escape reward only after the owner
+            # leaves the bomb cell and reaches a genuinely safe cell.
+            escaped_count = 0
             if alive_mask[learning_aid] and info["alive"][learning_aid]:
                 r1, c1 = env.agents[learning_aid].row, env.agents[learning_aid].col
-                if danger_before > 0 and _build_danger_map(env)[r1, c1] == 0:
-                    shaped_reward += 0.20
+                (
+                    escaped_count,
+                    offensive_escaped_count,
+                    generic_escaped_count,
+                    safe_pressure_score,
+                ) = tactical_bombs.mark_safe_escape(
+                    (r1, c1), is_safe=_build_danger_map(env)[r1, c1] == 0,
+                )
+                cadence_bonus = safe_bomb_cadence_bonus(
+                    previous_safe_escapes=generic_safe_escapes_this_ep,
+                    newly_safe_escapes=generic_escaped_count,
+                )
+                safe_escapes_this_ep += escaped_count
+                offensive_safe_escapes_this_ep += offensive_escaped_count
+                generic_safe_escapes_this_ep += generic_escaped_count
+            else:
+                offensive_escaped_count = 0
+                generic_escaped_count = 0
+                safe_pressure_score = 0
+                cadence_bonus = 0.0
 
-            # 5. Anti-passivity: 0 bombs = 0 win bonus!
-            if info["episode_done"] and info["alive"][learning_aid] and not any(info["alive"][j] for j in range(num_agents) if j != learning_aid):
-                if bombs_this_ep == 0:
-                    shaped_reward -= 10.0  # +10.0 -> 0.0 (camping earns 0 reward)
+            # 4. Reward offensive pressure only after bomb outcome while the
+            # escaped owner is still alive and in a safe cell.
+            walls_destroyed_after_escape = 0
+            offensive_outcomes_after_escape = 0
+            opponent_kills_after_escape = 0
+            pressure_after_escape = 0
+            owner_alive_at_outcome = bool(info["alive"][learning_aid])
+            owner_safe_at_outcome = False
+            if owner_alive_at_outcome:
+                owner = env.agents[learning_aid]
+                owner_safe_at_outcome = _build_danger_map(env)[owner.row, owner.col] == 0
+            for outcome in info.get("bomb_outcomes", []):
+                if outcome["owner"] != learning_aid:
+                    continue
+                walls_this_ep += outcome["walls_destroyed"]
+                (
+                    escaped_safely,
+                    was_offensive,
+                    outcome_generic_reward_eligible,
+                    deferred_pressure_score,
+                ) = tactical_bombs.resolve_outcome(outcome["position"])
+                if escaped_safely and outcome_generic_reward_eligible:
+                    walls_destroyed_after_escape += outcome["walls_destroyed"]
+                offensive_count, opponent_kills, rewarded_pressure = outcome_reward_signals(
+                    escaped=escaped_safely,
+                    offensive=was_offensive,
+                    pressure_score=deferred_pressure_score,
+                    owner_alive=owner_alive_at_outcome,
+                    owner_safe=owner_safe_at_outcome,
+                    victims=outcome["victims"],
+                    owner_id=learning_aid,
+                )
+                offensive_outcomes_after_escape += offensive_count
+                opponent_kills_after_escape += opponent_kills
+                pressure_after_escape += rewarded_pressure
+            pressure_score_this_ep += pressure_after_escape
+            shaped_reward += tactical_bomb_reward(
+                tactical_placements=int(tactical_placements and placement_generic_reward_eligible),
+                safe_escapes=generic_escaped_count,
+                walls_destroyed_after_escape=walls_destroyed_after_escape,
+                offensive_safe_escapes=offensive_outcomes_after_escape,
+                opponent_kills_after_escape=opponent_kills_after_escape,
+                pressure_score=pressure_after_escape,
+                tactical_placement_bonus=tactical_bomb_bonus,
+                safe_escape_bonus=safe_escape_bonus,
+                wall_destroy_bonus=wall_destroy_bonus,
+                offensive_safe_escape_bonus=offensive_safe_escape_bonus,
+                opponent_kill_bonus=opponent_kill_bonus,
+                pressure_bonus=pressure_bonus,
+            )
+            shaped_reward += cadence_bonus
 
+            # 5. A non-combat win earns the full terminal reward only after the
+            # target number of generic safe bomb cycles. Actual kills are exempt.
+            won_episode = (
+                info["episode_done"]
+                and info["alive"][learning_aid]
+                and not any(
+                    info["alive"][j]
+                    for j in range(num_agents)
+                    if j != learning_aid
+                )
+            )
+            shaped_reward += noncombat_win_cadence_penalty(
+                won=won_episode,
+                kills=kills_this_ep,
+                safe_cycles=generic_safe_escapes_this_ep,
+                target_cycles=generic_cycle_budget,
+                fixed_penalty=noncombat_win_fixed_penalty,
+            )
             # ── Store transition for learning agent ──
             if alive_mask[learning_aid] and log_prob is not None:
                 log_probs_buf.append(log_prob.squeeze())
@@ -485,30 +1291,149 @@ def train(
         win_history.append(won)
         bombs_history.append(bombs_this_ep)
         walls_history.append(walls_this_ep)
+        safe_cycles_history.append(safe_escapes_this_ep)
+        offensive_safe_cycles_history.append(offensive_safe_escapes_this_ep)
+        pressure_score_history.append(pressure_score_this_ep)
+        post_escape_self_death_history.append(post_escape_self_death_this_ep)
+        unsafe_bomb_placement_blocks_history.append(
+            temporal_diagnostics_this_ep["unsafe_bomb_placement_blocks"]
+        )
+        unsafe_reentry_blocks_history.append(
+            temporal_diagnostics_this_ep["unsafe_reentry_blocks"]
+        )
+        forced_escape_steps_history.append(
+            temporal_diagnostics_this_ep["forced_escape_steps"]
+        )
+        sudden_death_blocks_history.append(
+            temporal_diagnostics_this_ep["sudden_death_blocks"]
+        )
+        mask_interventions_history.append(
+            temporal_diagnostics_this_ep["mask_interventions"]
+        )
+        chain_bomb_self_death_history.append(chain_bomb_self_death_this_ep)
+        combat_history["kills"].append(kills_this_ep)
+        for cause in death_counts_this_ep:
+            combat_history[cause].append(death_counts_this_ep[cause])
 
         # ── Best-model checkpointing ──
+        rolling_metrics = None
         if len(win_history) >= 200:
-            rolling_wr = float(np.mean(win_history[-200:])) * 100
-            rolling_bombs = float(np.mean(bombs_history[-200:]))
+            rolling_metrics = {
+                "win_rate": float(np.mean(win_history[-200:])) * 100,
+                "reward": float(np.mean(reward_history[-200:])),
+                "bombs": float(np.mean(bombs_history[-200:])),
+                "walls": float(np.mean(walls_history[-200:])),
+                "safe_cycles": float(np.mean(safe_cycles_history[-200:])),
+                "offensive_safe_cycles": float(np.mean(offensive_safe_cycles_history[-200:])),
+                "pressure_score": float(np.mean(pressure_score_history[-200:])),
+                "post_escape_self_deaths": float(np.mean(post_escape_self_death_history[-200:])),
+                "unsafe_bomb_placement_blocks": float(np.mean(unsafe_bomb_placement_blocks_history[-200:])),
+                "unsafe_reentry_blocks": float(np.mean(unsafe_reentry_blocks_history[-200:])),
+                "forced_escape_steps": float(np.mean(forced_escape_steps_history[-200:])),
+                "sudden_death_blocks": float(np.mean(sudden_death_blocks_history[-200:])),
+                "mask_interventions": float(np.mean(mask_interventions_history[-200:])),
+                "chain_bomb_self_deaths": float(np.mean(chain_bomb_self_death_history[-200:])),
+                "kills": float(np.mean(combat_history["kills"][-200:])),
+                "sudden_death_deaths": float(np.mean(combat_history["sudden_death"][-200:])),
+                "self_deaths": float(np.mean(combat_history["suicide"][-200:])),
+                "opponent_bomb_deaths": float(np.mean(combat_history["opponent_bomb"][-200:])),
+                "other_deaths": float(np.mean(combat_history["other_death"][-200:])),
+            }
+            rolling_wr = rolling_metrics["win_rate"]
+            rolling_bombs = rolling_metrics["bombs"]
             # Only consider models that also place bombs
             if rolling_wr > best_wr and rolling_bombs >= 0.5:
                 best_wr = rolling_wr
                 best_state_dict = {k: v.clone() for k, v in net.state_dict().items()}
+                best_metrics = dict(rolling_metrics)
+                best_episode = ep
                 os.makedirs(checkpoint_dir, exist_ok=True)
                 tag = f"phaseE_{num_agents}a" if phase == "E" else f"phase{phase}"
                 best_path = os.path.join(checkpoint_dir, f"best_{tag}.pt")
-                torch.save(best_state_dict, best_path)
+                best_payload = checkpoint_payload(
+                    best_state_dict,
+                    episode=ep,
+                    phase=phase,
+                    metrics=rolling_metrics,
+                    config=checkpoint_config,
+                )
+                atomic_torch_save(best_payload, best_path)
                 if phase == "E":
-                    torch.save(best_state_dict, os.path.join(checkpoint_dir, "best_phaseE.pt"))
+                    atomic_torch_save(best_payload, os.path.join(checkpoint_dir, "best_phaseE.pt"))
 
-        # ── Save snapshot (Phase D/E) ──
-        if phase in ("D", "E") and ep % snapshot_every == 0:
-            path = save_snapshot(net, checkpoint_dir, ep, phase=phase, num_agents=num_agents)
-            # Add to live pool
-            snap_net = ActorCriticNet(board_size=board_size).to(device)
-            snap_net.load_state_dict(net.state_dict())
-            snap_net.eval()
-            snapshot_pool.append(SnapshotOpponent(snap_net, device))
+            if phase == "C" and is_target_bomb_checkpoint(
+                rolling_metrics,
+                target_bombs=target_bombs,
+                tolerance=target_bomb_tolerance,
+                min_win_rate=target_min_win_rate,
+            ):
+                candidate_rank = target_checkpoint_rank(rolling_metrics, target_bombs)
+                if best_target_rank is None or candidate_rank > best_target_rank:
+                    best_target_rank = candidate_rank
+                    target_path = os.path.join(checkpoint_dir, "best_phaseC_target2.pt")
+                    atomic_torch_save(
+                        checkpoint_payload(
+                            {k: v.clone() for k, v in net.state_dict().items()},
+                            episode=ep,
+                            phase=phase,
+                            metrics=rolling_metrics,
+                            config=checkpoint_config,
+                        ),
+                        target_path,
+                    )
+
+            if phase == "C" and rolling_wr >= combat_min_win_rate:
+                candidate_combat_rank = combat_checkpoint_rank(rolling_metrics)
+                if best_combat_rank is None or candidate_combat_rank > best_combat_rank:
+                    best_combat_rank = candidate_combat_rank
+                    atomic_torch_save(
+                        checkpoint_payload(
+                            {k: v.clone() for k, v in net.state_dict().items()},
+                            episode=ep,
+                            phase=phase,
+                            metrics=rolling_metrics,
+                            config=checkpoint_config,
+                        ),
+                        os.path.join(checkpoint_dir, "best_phaseC_combat.pt"),
+                    )
+
+            if phase == "C" and is_combat_safe_checkpoint(
+                rolling_metrics,
+                min_win_rate=combat_min_win_rate,
+                min_kills=combat_safe_min_kills,
+                max_self_deaths=combat_safe_max_self_deaths,
+            ):
+                candidate_safe_rank = combat_checkpoint_rank(rolling_metrics)
+                if best_combat_safe_rank is None or candidate_safe_rank > best_combat_safe_rank:
+                    best_combat_safe_rank = candidate_safe_rank
+                    atomic_torch_save(
+                        checkpoint_payload(
+                            {k: v.clone() for k, v in net.state_dict().items()},
+                            episode=ep,
+                            phase=phase,
+                            metrics=rolling_metrics,
+                            config=checkpoint_config,
+                        ),
+                        os.path.join(checkpoint_dir, "best_phaseC_combat_safe.pt"),
+                    )
+
+        # ── Save periodic snapshots ──
+        if ep % snapshot_every == 0:
+            path = save_snapshot(
+                net,
+                checkpoint_dir,
+                ep,
+                phase=phase,
+                num_agents=num_agents,
+                metrics=rolling_metrics or {},
+                config=checkpoint_config,
+            )
+            if phase in ("D", "E"):
+                # Add D/E snapshots to the live opponent pool.
+                snap_net = ActorCriticNet(board_size=board_size).to(device)
+                snap_net.load_state_dict(net.state_dict())
+                snap_net.eval()
+                snapshot_pool.append(SnapshotOpponent(snap_net, device))
 
         # ── LR schedule step ──
         scheduler.step()
@@ -520,6 +1445,22 @@ def train(
             avg_wr = float(np.mean(win_history[-n:])) * 100
             avg_bombs = float(np.mean(bombs_history[-n:]))
             avg_walls = float(np.mean(walls_history[-n:]))
+            avg_safe_cycles = float(np.mean(safe_cycles_history[-n:]))
+            avg_offensive_safe_cycles = float(np.mean(offensive_safe_cycles_history[-n:]))
+            avg_pressure_score = float(np.mean(pressure_score_history[-n:]))
+            avg_post_escape_self_death = float(np.mean(post_escape_self_death_history[-n:]))
+            avg_unsafe_bomb_placement_blocks = float(
+                np.mean(unsafe_bomb_placement_blocks_history[-n:])
+            )
+            avg_unsafe_reentry_blocks = float(np.mean(unsafe_reentry_blocks_history[-n:]))
+            avg_forced_escape_steps = float(np.mean(forced_escape_steps_history[-n:]))
+            avg_sudden_death_blocks = float(np.mean(sudden_death_blocks_history[-n:]))
+            avg_mask_interventions = float(np.mean(mask_interventions_history[-n:]))
+            avg_chain_bomb_self_death = float(np.mean(chain_bomb_self_death_history[-n:]))
+            avg_kills = float(np.mean(combat_history["kills"][-n:]))
+            avg_sudden_death = float(np.mean(combat_history["sudden_death"][-n:]))
+            avg_suicide = float(np.mean(combat_history["suicide"][-n:]))
+            avg_opponent_bomb = float(np.mean(combat_history["opponent_bomb"][-n:]))
             cur_lr = scheduler.get_last_lr()[0]
             # Show best WR so far
             best_tag = f" | best: {best_wr:.0f}%" if best_wr > 0 else ""
@@ -528,6 +1469,17 @@ def train(
                   f"reward: {avg_reward:+.3f} | "
                   f"bombs: {avg_bombs:.1f} | "
                   f"walls: {avg_walls:.1f} | "
+                  f"safe_cycles: {avg_safe_cycles:.1f} | "
+                  f"offensive_safe_cycles: {avg_offensive_safe_cycles:.1f} | "
+                  f"pressure: {avg_pressure_score:.1f} | "
+                  f"post_escape_self: {avg_post_escape_self_death:.2f} | "
+                  f"temporal(place/move/steps): {avg_unsafe_bomb_placement_blocks:.1f}/"
+                  f"{avg_unsafe_reentry_blocks:.1f}/{avg_mask_interventions:.1f} | "
+                  f"forced_escape: {avg_forced_escape_steps:.1f} | "
+                  f"sd_blocks: {avg_sudden_death_blocks:.1f} | "
+                  f"chain_self: {avg_chain_bomb_self_death:.2f} | "
+                  f"kills: {avg_kills:.1f} | "
+                  f"deaths(sd/self/opp): {avg_sudden_death:.1f}/{avg_suicide:.1f}/{avg_opponent_bomb:.1f} | "
                   f"loss: {loss.item():.4f} | "
                   f"lr: {cur_lr:.1e} | "
                   f"pool: {len(snapshot_pool)}{best_tag}")
@@ -537,27 +1489,58 @@ def train(
     tag = f"phaseE_{num_agents}a" if phase == "E" else f"phase{phase}"
     final_path = os.path.join(checkpoint_dir, f"final_{tag}.pt")
     best_path = os.path.join(checkpoint_dir, f"best_{tag}.pt")
-    if phase == "C" and best_state_dict is not None:
-        torch.save(best_state_dict, final_path)
-        net.load_state_dict(best_state_dict)  # use best for gate checks
-        print(f"\nSaved BEST model (WR={best_wr:.1f}%) to {final_path}")
+    final_metrics = rolling_metrics or {}
+    final_payload = checkpoint_payload(
+        net.state_dict(),
+        episode=episodes,
+        phase=phase,
+        metrics=final_metrics,
+        config=checkpoint_config,
+    )
+    atomic_torch_save(final_payload, final_path)
+    if best_state_dict is None:
+        best_state_dict = {k: v.clone() for k, v in net.state_dict().items()}
+        best_metrics = dict(final_metrics)
+        best_episode = episodes
+        atomic_torch_save(final_payload, best_path)
     else:
-        torch.save(net.state_dict(), final_path)
-        if best_state_dict is not None:
-            torch.save(best_state_dict, best_path)
-        else:
-            torch.save(net.state_dict(), best_path)
-        if phase == "E":
-            torch.save(net.state_dict(), os.path.join(checkpoint_dir, "final_phaseE.pt"))
-            if best_state_dict is not None:
-                torch.save(best_state_dict, os.path.join(checkpoint_dir, "best_phaseE.pt"))
-            else:
-                torch.save(net.state_dict(), os.path.join(checkpoint_dir, "best_phaseE.pt"))
-        print(f"\nSaved final/best model to {final_path}")
+        atomic_torch_save(
+            checkpoint_payload(
+                best_state_dict,
+                episode=best_episode,
+                phase=phase,
+                metrics=best_metrics or {},
+                config=checkpoint_config,
+            ),
+            best_path,
+        )
+    if phase == "E":
+        atomic_torch_save(final_payload, os.path.join(checkpoint_dir, "final_phaseE.pt"))
+        atomic_torch_save(
+            checkpoint_payload(
+                best_state_dict,
+                episode=best_episode,
+                phase=phase,
+                metrics=best_metrics or {},
+                config=checkpoint_config,
+            ),
+            os.path.join(checkpoint_dir, "best_phaseE.pt"),
+        )
+    print(f"\nSaved final model to {final_path}; best WR={best_wr:.1f}%")
 
     # ── Final report & gate checks ──
     _print_report(phase, episodes, board_size, num_agents,
                   win_history, reward_history, bombs_history, walls_history,
+                  safe_cycles_history, offensive_safe_cycles_history,
+                  pressure_score_history,
+                  post_escape_self_death_history,
+                  unsafe_bomb_placement_blocks_history,
+                  unsafe_reentry_blocks_history,
+                  forced_escape_steps_history,
+                  sudden_death_blocks_history,
+                  mask_interventions_history,
+                  chain_bomb_self_death_history,
+                  combat_history,
                   snapshot_pool, env, net, device, checkpoint_dir)
 
     return net, reward_history, win_history
@@ -565,6 +1548,17 @@ def train(
 
 def _print_report(phase, episodes, board_size, num_agents,
                   win_history, reward_history, bombs_history, walls_history,
+                  safe_cycles_history,
+                  offensive_safe_cycles_history,
+                  pressure_score_history,
+                  post_escape_self_death_history,
+                  unsafe_bomb_placement_blocks_history,
+                  unsafe_reentry_blocks_history,
+                  forced_escape_steps_history,
+                  sudden_death_blocks_history,
+                  mask_interventions_history,
+                  chain_bomb_self_death_history,
+                  combat_history,
                   snapshot_pool, env, net, device, checkpoint_dir):
     """Print final statistics and gate checks."""
     print(f"\n{'=' * 65}")
@@ -577,11 +1571,42 @@ def _print_report(phase, episodes, board_size, num_agents,
     final_reward = np.mean(reward_history[-last_n:])
     final_bombs = np.mean(bombs_history[-last_n:])
     final_walls = np.mean(walls_history[-last_n:])
+    final_safe_cycles = np.mean(safe_cycles_history[-last_n:])
+    final_offensive_safe_cycles = np.mean(offensive_safe_cycles_history[-last_n:])
+    final_pressure_score = np.mean(pressure_score_history[-last_n:])
+    final_post_escape_self_death = np.mean(post_escape_self_death_history[-last_n:])
+    final_unsafe_bomb_placement_blocks = np.mean(
+        unsafe_bomb_placement_blocks_history[-last_n:]
+    )
+    final_unsafe_reentry_blocks = np.mean(unsafe_reentry_blocks_history[-last_n:])
+    final_forced_escape_steps = np.mean(forced_escape_steps_history[-last_n:])
+    final_sudden_death_blocks = np.mean(sudden_death_blocks_history[-last_n:])
+    final_mask_interventions = np.mean(mask_interventions_history[-last_n:])
+    final_chain_bomb_self_death = np.mean(chain_bomb_self_death_history[-last_n:])
+    final_kills = np.mean(combat_history["kills"][-last_n:])
+    final_sudden_death = np.mean(combat_history["sudden_death"][-last_n:])
+    final_suicide = np.mean(combat_history["suicide"][-last_n:])
+    final_opponent_bomb = np.mean(combat_history["opponent_bomb"][-last_n:])
+    final_other_death = np.mean(combat_history["other_death"][-last_n:])
 
     print(f"  Final win rate (last {last_n}):  {final_wr:.1f}%")
     print(f"  Final avg reward (last {last_n}): {final_reward:.3f}")
     print(f"  Final avg bombs  (last {last_n}): {final_bombs:.1f}")
     print(f"  Final avg walls  (last {last_n}): {final_walls:.1f}")
+    print(f"  Final safe bomb cycles (last {last_n}): {final_safe_cycles:.1f}")
+    print(f"  Final offensive safe cycles (last {last_n}): {final_offensive_safe_cycles:.1f}")
+    print(f"  Final pressure score (last {last_n}): {final_pressure_score:.1f}")
+    print(f"  Final post-escape self deaths (last {last_n}): {final_post_escape_self_death:.2f}")
+    print(f"  Final temporal placement/move blocks/interventions (last {last_n}): "
+          f"{final_unsafe_bomb_placement_blocks:.1f}/"
+          f"{final_unsafe_reentry_blocks:.1f}/{final_mask_interventions:.1f}")
+    print(f"  Final forced escape steps (last {last_n}): {final_forced_escape_steps:.1f}")
+    print(f"  Final sudden-death action blocks (last {last_n}): {final_sudden_death_blocks:.1f}")
+    print(f"  Final chain-bomb self deaths (last {last_n}): {final_chain_bomb_self_death:.2f}")
+    print(f"  Final avg kills (last {last_n}): {final_kills:.1f}")
+    print(f"  Final deaths sd/self/opp/other: "
+          f"{final_sudden_death:.1f}/{final_suicide:.1f}/"
+          f"{final_opponent_bomb:.1f}/{final_other_death:.1f}")
 
     print(f"\n--- Gate Checks (Phase {phase}) ---")
 
@@ -706,27 +1731,29 @@ def _render_demo_match(net: ActorCriticNet, board_size: int,
 def _eval_vs_rulebot(net: ActorCriticNet, env: BombermanFFAEnv,
                      device, board_size: int,
                      num_episodes: int = 200) -> float:
-    """Evaluate current net vs RuleBasedAgent, return win rate %."""
+    """Evaluate against RuleBasedAgent with alternating spawn sides, return win rate %."""
     net.eval()
-    rule_bot = RuleBasedOpponent(1)
     wins = 0
-    for _ in range(num_episodes):
+    for episode in range(num_episodes):
+        learning_aid = episode % 2
+        rule_aid = 1 - learning_aid
+        rule_bot = RuleBasedOpponent(rule_aid)
         obs_list = env.reset()
         for t in range(env.max_steps):
-            # Agent 0: trained model
-            obs_t = obs_to_tensor(obs_list[0], device)
+            obs_t = obs_to_tensor(obs_list[learning_aid], device)
             logits, _ = net(obs_t)
-            mask0 = get_action_mask(env, 0)
-            mask_t0 = torch.tensor(mask0, dtype=torch.bool, device=device)
-            m_logits0 = logits.masked_fill(~mask_t0, -1e9)
-            dist = torch.distributions.Categorical(logits=m_logits0)
-            a0 = dist.sample().item()
-            # Agent 1: RuleBasedAgent
-            a1 = rule_bot.select_action_env(env)
-            obs_list, _, _, info = env.step([a0, a1])
+            learning_mask = get_action_mask(env, learning_aid)
+            mask_t = torch.tensor(learning_mask, dtype=torch.bool, device=device)
+            masked_logits = logits.masked_fill(~mask_t, -1e9)
+            learning_action = torch.distributions.Categorical(logits=masked_logits).sample().item()
+            rule_action = rule_bot.select_action_env(env)
+            actions = [0, 0]
+            actions[learning_aid] = learning_action
+            actions[rule_aid] = rule_action
+            obs_list, _, _, info = env.step(actions)
             if info["episode_done"]:
                 break
-        if info["alive"][0] and not info["alive"][1]:
+        if info["alive"][learning_aid] and not info["alive"][rule_aid]:
             wins += 1
     net.train()
     return (wins / max(num_episodes, 1)) * 100
@@ -888,13 +1915,44 @@ if __name__ == "__main__":
     parser.add_argument("--num_agents", type=int, default=2)
     parser.add_argument("--max_steps", type=int, default=300)
     parser.add_argument("--lr", type=float, default=3e-4)
-    parser.add_argument("--wall_destroy_bonus", type=float, default=0.15,
-                        help="Reward bonus per wall destroyed (anti-bomb-shyness)")
+    parser.add_argument("--wall_destroy_bonus", type=float, default=0.02,
+                        help="Reward bonus per safely escaped wall destruction")
+    parser.add_argument("--tactical_bomb_bonus", type=float, default=0.05,
+                        help="Small reward for a safe bomb with a tactical target")
+    parser.add_argument("--safe_escape_bonus", type=float, default=0.15,
+                        help="Reward for a generic safely escaped bomb within the episode budget")
+    parser.add_argument("--offensive_safe_escape_bonus", type=float, default=0.40,
+                        help="Outcome-gated reward for a safely escaped offensive bomb")
+    parser.add_argument("--opponent_kill_bonus", type=float, default=1.00,
+                        help="Extra reward when a safely escaped offensive bomb eliminates an opponent")
+    parser.add_argument("--pressure_bonus", type=float, default=0.15,
+                        help="Outcome-gated reward per covered opponent escape option")
+    parser.add_argument("--noncombat_win_fixed_penalty", type=float, default=0.0,
+                        help="Minimum penalty for winning without an agent-caused kill")
+    parser.add_argument("--combat_min_win_rate", type=float, default=70.0,
+                        help="Minimum rolling WR for best_phaseC_combat.pt")
+    parser.add_argument("--combat_safe_min_kills", type=float, default=0.025,
+                        help="Minimum rolling kills for best_phaseC_combat_safe.pt")
+    parser.add_argument("--combat_safe_max_self_deaths", type=float, default=0.05,
+                        help="Maximum rolling self deaths for best_phaseC_combat_safe.pt")
+    parser.add_argument("--generic_cycle_budget", type=int, default=2,
+                        help="Maximum generic safe bomb cycles rewarded per episode")
+    parser.add_argument("--target_bombs", type=float, default=2.0,
+                        help="Target average bombs per episode for the dedicated Phase C checkpoint")
+    parser.add_argument("--target_bomb_tolerance", type=float, default=0.3,
+                        help="Allowed deviation around --target_bombs")
+    parser.add_argument("--target_min_win_rate", type=float, default=70.0,
+                        help="Minimum rolling win rate for the target-bomb checkpoint")
     parser.add_argument("--snapshot_every", type=int, default=200,
-                        help="Save snapshot every N episodes (Phase D/E)")
+                        help="Save a metadata snapshot every N episodes")
     parser.add_argument("--checkpoint_dir", type=str, default="checkpoints")
     parser.add_argument("--resume_from", type=str, default="",
                         help="Path to checkpoint to resume from")
+    parser.add_argument("--sudden_death", action="store_true",
+                        help="Train in the same shrinking-ring mode used by the GUI demo")
+    parser.add_argument("--sudden_death_start", type=int, default=200)
+    parser.add_argument("--sudden_death_interval", type=int, default=20)
+    parser.add_argument("--sudden_death_warning_steps", type=int, default=40)
     parser.add_argument("--log_every", type=int, default=50)
     args = parser.parse_args()
 
@@ -906,8 +1964,25 @@ if __name__ == "__main__":
         max_steps=args.max_steps,
         lr=args.lr,
         wall_destroy_bonus=args.wall_destroy_bonus,
+        tactical_bomb_bonus=args.tactical_bomb_bonus,
+        safe_escape_bonus=args.safe_escape_bonus,
+        offensive_safe_escape_bonus=args.offensive_safe_escape_bonus,
+        opponent_kill_bonus=args.opponent_kill_bonus,
+        pressure_bonus=args.pressure_bonus,
+        noncombat_win_fixed_penalty=args.noncombat_win_fixed_penalty,
+        combat_min_win_rate=args.combat_min_win_rate,
+        combat_safe_min_kills=args.combat_safe_min_kills,
+        combat_safe_max_self_deaths=args.combat_safe_max_self_deaths,
+        generic_cycle_budget=args.generic_cycle_budget,
+        target_bombs=args.target_bombs,
+        target_bomb_tolerance=args.target_bomb_tolerance,
+        target_min_win_rate=args.target_min_win_rate,
         snapshot_every=args.snapshot_every,
         checkpoint_dir=args.checkpoint_dir,
         resume_from=args.resume_from,
+        sudden_death=args.sudden_death,
+        sudden_death_start=args.sudden_death_start,
+        sudden_death_interval=args.sudden_death_interval,
+        sudden_death_warning_steps=args.sudden_death_warning_steps,
         log_every=args.log_every,
     )

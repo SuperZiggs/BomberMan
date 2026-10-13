@@ -62,6 +62,7 @@ class Bomb:
     owner: int
     timer: int          # steps remaining before explosion
     blast_range: int
+    chain_triggered: bool = False
 
 
 @dataclass
@@ -100,6 +101,10 @@ class BombermanFFAEnv:
         bomb_timer: int = 8,
         flame_duration: int = 2,
         powerup_prob: float = 0.3,
+        sudden_death: bool = False,
+        sudden_death_start: int = 200,
+        sudden_death_interval: int = 20,
+        sudden_death_warning_steps: int = 40,
         seed: Optional[int] = None,
     ):
         assert board_size % 2 == 1, "board_size should be odd, like classic Pommerman (e.g. 11)"
@@ -112,6 +117,12 @@ class BombermanFFAEnv:
         self.bomb_timer = bomb_timer
         self.flame_duration = flame_duration
         self.powerup_prob = powerup_prob
+        self.sudden_death = sudden_death
+        self.sudden_death_start = sudden_death_start
+        self.sudden_death_interval = sudden_death_interval
+        self.sudden_death_warning_steps = sudden_death_warning_steps
+        if sudden_death_start < 1 or sudden_death_interval < 1 or sudden_death_warning_steps < 0:
+            raise ValueError("sudden-death timings must be non-negative, with start and interval >= 1")
         self.rng = np.random.default_rng(seed)
 
         # Corner spawn positions (row, col) for up to 4 agents.
@@ -125,6 +136,7 @@ class BombermanFFAEnv:
         self.agents: list[Agent] = []
         self.step_count = 0
         self._episode_done = False
+        self._sudden_death_ring = 0
 
     # --------------------------------- setup ---------------------------------
 
@@ -165,6 +177,7 @@ class BombermanFFAEnv:
         self.powerups = {}
         self.step_count = 0
         self._episode_done = False
+        self._sudden_death_ring = 0
 
         return [self._get_obs(a.agent_id) for a in self.agents]
 
@@ -179,6 +192,8 @@ class BombermanFFAEnv:
         self.step_count += 1
 
         rewards = [0.0 for _ in range(self.num_agents)]
+        sudden_death_kills = self._apply_sudden_death()
+        self._last_bomb_placements = []
 
         # 1) Resolve movement / bomb placement intents.
         intended_positions = {}
@@ -217,7 +232,7 @@ class BombermanFFAEnv:
         self._tick_bombs_and_explode()
 
         # 3) Resolve flame damage.
-        died_this_step = []
+        died_this_step = list(sudden_death_kills)
         for agent in self.agents:
             if agent.alive and (agent.row, agent.col) in self.flames:
                 agent.alive = False
@@ -277,10 +292,146 @@ class BombermanFFAEnv:
             "step": self.step_count,
             "walls_destroyed": getattr(self, '_last_walls_destroyed', {}),
             "kills": self._last_kills,
+            "bomb_outcomes": getattr(self, '_last_bomb_outcomes', []),
+            "tactical_bomb_owners": [
+                owner for owner, tactical, _, _ in self._last_bomb_placements if tactical
+            ],
+            "offensive_bomb_owners": [
+                owner for owner, _, offensive, _ in self._last_bomb_placements if offensive
+            ],
+            "bomb_pressure_scores": [
+                (owner, pressure_score)
+                for owner, _, _, pressure_score in self._last_bomb_placements
+            ],
+            "sudden_death_ring": self._sudden_death_ring,
+            "sudden_death_kills": sudden_death_kills,
         }
         return obs_list, rewards, dones, info
 
     # ------------------------------ bomb / blast logic ------------------------------
+
+    def _target_sudden_death_ring(self) -> int:
+        if not self.sudden_death or self.step_count < self.sudden_death_start:
+            return 0
+        return min(
+            1 + (self.step_count - self.sudden_death_start) // self.sudden_death_interval,
+            (self.board_size // 2) - 1,
+        )
+
+    def _ring_cells(self, ring: int) -> set[tuple[int, int]]:
+        s = self.board_size
+        cells = set()
+        for index in range(ring, s - ring):
+            cells.add((ring, index))
+            cells.add((s - 1 - ring, index))
+            cells.add((index, ring))
+            cells.add((index, s - 1 - ring))
+        return cells
+
+    def _apply_sudden_death(self) -> list[int]:
+        """Close newly due rings and eliminate agents caught by the closing wall."""
+        target_ring = self._target_sudden_death_ring()
+        if target_ring <= self._sudden_death_ring:
+            return []
+
+        closing_cells = set()
+        for ring in range(self._sudden_death_ring + 1, target_ring + 1):
+            closing_cells.update(self._ring_cells(ring))
+
+        killed = []
+        for agent in self.agents:
+            if agent.alive and (agent.row, agent.col) in closing_cells:
+                agent.alive = False
+                killed.append(agent.agent_id)
+
+        for bomb in list(self.bombs):
+            if (bomb.row, bomb.col) in closing_cells:
+                owner = self.agents[bomb.owner]
+                owner.bombs_placed = max(0, owner.bombs_placed - 1)
+                self.bombs.remove(bomb)
+
+        for row, col in closing_cells:
+            self.grid[row, col] = RIGID_WALL
+            self.flames.pop((row, col), None)
+            self.powerups.pop((row, col), None)
+
+        self._sudden_death_ring = target_ring
+        return killed
+
+    def _sudden_death_warning_map(self) -> np.ndarray:
+        """Return cells scheduled to close soon, giving the policy time to react."""
+        warning = np.zeros((self.board_size, self.board_size), dtype=np.float32)
+        if not self.sudden_death:
+            return warning
+
+        if self.step_count < self.sudden_death_start:
+            if self.sudden_death_start - self.step_count > self.sudden_death_warning_steps:
+                return warning
+            next_ring = 1
+        else:
+            next_ring = self._sudden_death_ring + 1
+
+        if next_ring >= self.board_size // 2:
+            return warning
+        for row, col in self._ring_cells(next_ring):
+            warning[row, col] = 1.0
+        return warning
+
+    def _bomb_blast_cells(self, row: int, col: int, blast_range: int) -> set[tuple[int, int]]:
+        """Return cells reached by a hypothetical bomb without mutating the board."""
+        cells = {(row, col)}
+        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+            for step in range(1, blast_range + 1):
+                target_row, target_col = row + dr * step, col + dc * step
+                if not (0 <= target_row < self.board_size and 0 <= target_col < self.board_size):
+                    break
+                if self.grid[target_row, target_col] == RIGID_WALL:
+                    break
+                cells.add((target_row, target_col))
+                if self.grid[target_row, target_col] == WOODEN_WALL:
+                    break
+        return cells
+
+    def _bomb_pressure_score(self, agent: Agent) -> int:
+        """Count immediate opponent escape options covered by a hypothetical bomb."""
+        blast_cells = self._bomb_blast_cells(agent.row, agent.col, agent.blast_range)
+        bomb_position = (agent.row, agent.col)
+        pressure_score = 0
+        for opponent in self.agents:
+            if not opponent.alive or opponent.agent_id == agent.agent_id:
+                continue
+            candidates = {(opponent.row, opponent.col)}
+            for dr, dc in _MOVE_DELTA.values():
+                row, col = opponent.row + dr, opponent.col + dc
+                if (row, col) != bomb_position and self._is_walkable(row, col):
+                    candidates.add((row, col))
+            pressure_score += len(candidates & blast_cells)
+        return pressure_score
+
+    def _bomb_target_flags(self, agent: Agent) -> tuple[bool, bool, int]:
+        """Return tactical, offensive, and opponent-pressure placement signals."""
+        tactical = False
+        pressure_score = self._bomb_pressure_score(agent)
+        offensive = pressure_score > 0
+        opponent_positions = {
+            (other.row, other.col)
+            for other in self.agents
+            if other.alive and other.agent_id != agent.agent_id
+        }
+        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+            for step in range(1, agent.blast_range + 1):
+                row, col = agent.row + dr * step, agent.col + dc * step
+                if not (0 <= row < self.board_size and 0 <= col < self.board_size):
+                    break
+                if self.grid[row, col] == RIGID_WALL:
+                    break
+                if (row, col) in opponent_positions:
+                    tactical = True
+                    offensive = True
+                if self.grid[row, col] == WOODEN_WALL:
+                    tactical = True
+                    break
+        return tactical or offensive, offensive, pressure_score
 
     def _try_place_bomb(self, agent: Agent):
         if not agent.alive:
@@ -290,13 +441,18 @@ class BombermanFFAEnv:
         pos = (agent.row, agent.col)
         if any(b.row == pos[0] and b.col == pos[1] for b in self.bombs):
             return  # already a bomb here
+        tactical, offensive, pressure_score = self._bomb_target_flags(agent)
         self.bombs.append(Bomb(row=pos[0], col=pos[1], owner=agent.agent_id,
                                 timer=self.bomb_timer, blast_range=agent.blast_range))
         agent.bombs_placed += 1
+        self._last_bomb_placements.append(
+            (agent.agent_id, tactical, offensive, pressure_score)
+        )
 
     def _tick_bombs_and_explode(self):
         self._last_kills = []  # list of (killer_id, victim_id) approximations
         self._last_walls_destroyed = {}  # {owner_id: count} walls destroyed this tick
+        self._last_bomb_outcomes = []
         exploded_this_pass = True
         # Decrement timers once, then keep resolving chain reactions until
         # no more bombs are ready to go off.
@@ -308,10 +464,11 @@ class BombermanFFAEnv:
             ready = [b for b in self.bombs if b.timer <= 0]
             if not ready:
                 break
+            ready_ids = {id(bomb) for bomb in ready}
             for b in ready:
                 self._explode_bomb(b)
                 exploded_this_pass = True
-            self.bombs = [b for b in self.bombs if b.timer > 0]
+            self.bombs = [b for b in self.bombs if id(b) not in ready_ids]
 
     def _explode_bomb(self, bomb: Bomb):
         owner_agent = next((a for a in self.agents if a.agent_id == bomb.owner), None)
@@ -346,14 +503,24 @@ class BombermanFFAEnv:
             # Chain-detonate any bomb caught in the blast.
             for other in self.bombs:
                 if (other.row, other.col) == pos and other.timer > 0:
+                    other.chain_triggered = True
                     other.timer = 0
 
         # Approximate kill attribution: any agent standing in `cells` right
         # now is credited to this bomb's owner (used by step() after this
         # call to decide rewards).
+        victims = []
         for agent in self.agents:
             if agent.alive and (agent.row, agent.col) in cells:
                 self._last_kills.append((bomb.owner, agent.agent_id))
+                victims.append(agent.agent_id)
+        self._last_bomb_outcomes.append({
+            "owner": bomb.owner,
+            "position": (bomb.row, bomb.col),
+            "walls_destroyed": walls_destroyed_count,
+            "victims": victims,
+            "chain_reaction": bomb.chain_triggered,
+        })
 
     def _is_walkable(self, r: int, c: int) -> bool:
         if not (0 <= r < self.board_size and 0 <= c < self.board_size):
@@ -370,7 +537,7 @@ class BombermanFFAEnv:
         """
         Multi-channel observation, agent-centric (the requesting agent's
         position is always in the "self" channel, others in "opponents").
-        Shape: (C, H, W), dtype float32 -- ready to feed a CNN.
+        Shape: (9, H, W), dtype float32 -- ready to feed a CNN.
 
         Channels:
           0: rigid walls
@@ -381,9 +548,10 @@ class BombermanFFAEnv:
           5: range power-ups
           6: self position
           7: opponents' positions (combined)
+          8: cells that sudden death will close next (when enabled)
         """
         s = self.board_size
-        obs = np.zeros((8, s, s), dtype=np.float32)
+        obs = np.zeros((9, s, s), dtype=np.float32)
         obs[0] = (self.grid == RIGID_WALL).astype(np.float32)
         obs[1] = (self.grid == WOODEN_WALL).astype(np.float32)
         for b in self.bombs:
@@ -402,6 +570,7 @@ class BombermanFFAEnv:
                 obs[6, agent.row, agent.col] = 1.0
             else:
                 obs[7, agent.row, agent.col] = 1.0
+        obs[8] = self._sudden_death_warning_map()
         return obs
 
     def render(self) -> str:

@@ -52,6 +52,20 @@ class RandomAgent:
 
 # ────────────────────── evaluation helpers ────────────────────────────────
 
+def classify_agent_death(info: dict, agent_id: int, was_alive: bool) -> str | None:
+    """Classify a newly dead agent using environment attribution."""
+    if not was_alive or info["alive"][agent_id]:
+        return None
+    if agent_id in info.get("sudden_death_kills", []):
+        return "sudden_death"
+    kills = info.get("kills", [])
+    if any(killer == agent_id and victim == agent_id for killer, victim in kills):
+        return "self_bomb"
+    if any(killer != agent_id and victim == agent_id for killer, victim in kills):
+        return "opponent_bomb"
+    return "other"
+
+
 def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
               verbose: bool = False):
     """
@@ -67,6 +81,13 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
     total_steps = 0
     total_bombs = [0] * num_agents
     total_kills = [0] * num_agents
+    total_offensive_bombs = [0] * num_agents
+    total_pressure_score = [0] * num_agents
+    sudden_death_deaths = [0] * num_agents
+    self_bomb_deaths = [0] * num_agents
+    opponent_bomb_deaths = [0] * num_agents
+    other_deaths = [0] * num_agents
+    chain_bomb_self_deaths = [0] * num_agents
 
     for ep in range(num_episodes):
         obs_list = env.reset()
@@ -74,6 +95,7 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
         ep_bombs = [0] * num_agents
 
         for t in range(env.max_steps):
+            alive_before = [agent.alive for agent in env.agents]
             actions = []
             for i in range(num_agents):
                 if not env.agents[i].alive:
@@ -87,6 +109,27 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
             obs_list, rewards, dones, info = env.step(actions)
             for i in range(num_agents):
                 ep_rewards[i] += rewards[i]
+            for owner in info.get("offensive_bomb_owners", []):
+                total_offensive_bombs[owner] += 1
+            for owner, pressure_score in info.get("bomb_pressure_scores", []):
+                total_pressure_score[owner] += pressure_score
+            for agent_id in range(num_agents):
+                death_cause = classify_agent_death(info, agent_id, alive_before[agent_id])
+                if death_cause == "sudden_death":
+                    sudden_death_deaths[agent_id] += 1
+                elif death_cause == "self_bomb":
+                    self_bomb_deaths[agent_id] += 1
+                    if any(
+                        outcome.get("chain_reaction", False)
+                        and outcome.get("owner") == agent_id
+                        and agent_id in outcome.get("victims", [])
+                        for outcome in info.get("bomb_outcomes", [])
+                    ):
+                        chain_bomb_self_deaths[agent_id] += 1
+                elif death_cause == "opponent_bomb":
+                    opponent_bomb_deaths[agent_id] += 1
+                elif death_cause == "other":
+                    other_deaths[agent_id] += 1
 
             if info["episode_done"]:
                 break
@@ -113,21 +156,91 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
         "avg_steps": total_steps / num_episodes,
         "avg_bombs": [b / num_episodes for b in total_bombs],
         "avg_kills": [k / num_episodes for k in total_kills],
+        "avg_offensive_bombs": [b / num_episodes for b in total_offensive_bombs],
+        "avg_pressure_score": [score / num_episodes for score in total_pressure_score],
+        "sudden_death_deaths": sudden_death_deaths,
+        "self_bomb_deaths": self_bomb_deaths,
+        "opponent_bomb_deaths": opponent_bomb_deaths,
+        "other_deaths": other_deaths,
+        "chain_bomb_self_deaths": chain_bomb_self_deaths,
     }
 
     if verbose:
-        print(f"\n{'─' * 50}")
+        print(f"\n{'-' * 50}")
         print(f"Match Results ({num_episodes} episodes)")
-        print(f"{'─' * 50}")
+        print(f"{'-' * 50}")
         for i in range(num_agents):
             print(f"  Agent {i}: WR={stats['win_rates'][i]:.1f}%, "
                   f"Reward={stats['avg_reward'][i]:.2f}, "
                   f"Bombs={stats['avg_bombs'][i]:.1f}, "
-                  f"Kills={stats['avg_kills'][i]:.1f}")
+                  f"Offensive={stats['avg_offensive_bombs'][i]:.1f}, "
+                  f"Pressure={stats['avg_pressure_score'][i]:.1f}, "
+                  f"Kills={stats['avg_kills'][i]:.1f}, "
+                  f"Deaths(sd/self/opp/other)="
+                  f"{stats['sudden_death_deaths'][i]}/"
+                  f"{stats['self_bomb_deaths'][i]}/"
+                  f"{stats['opponent_bomb_deaths'][i]}/"
+                  f"{stats['other_deaths'][i]}, "
+                  f"Chain-self={stats['chain_bomb_self_deaths'][i]}")
         print(f"  Draws: {draws} ({draws/num_episodes*100:.1f}%)")
         print(f"  Avg episode length: {stats['avg_steps']:.1f}")
 
     return stats
+
+
+def combine_side_swapped_stats(first_side: dict, second_side: dict) -> dict:
+    """Combine A-vs-B and B-vs-A statistics into an agent-order invariant result."""
+    first_episodes = first_side["num_episodes"]
+    second_episodes = second_side["num_episodes"]
+    total_episodes = first_episodes + second_episodes
+
+    def average(metric: str, first_index: int, second_index: int) -> float:
+        return (
+            first_side[metric][first_index] * first_episodes
+            + second_side[metric][second_index] * second_episodes
+        ) / max(total_episodes, 1)
+
+    wins = [
+        first_side["wins"][0] + second_side["wins"][1],
+        first_side["wins"][1] + second_side["wins"][0],
+    ]
+    return {
+        "num_episodes": total_episodes,
+        "wins": wins,
+        "draws": first_side["draws"] + second_side["draws"],
+        "win_rates": [win / max(total_episodes, 1) * 100 for win in wins],
+        "avg_reward": [average("avg_reward", 0, 1), average("avg_reward", 1, 0)],
+        "avg_bombs": [average("avg_bombs", 0, 1), average("avg_bombs", 1, 0)],
+        "avg_kills": [average("avg_kills", 0, 1), average("avg_kills", 1, 0)],
+        "avg_offensive_bombs": [
+            average("avg_offensive_bombs", 0, 1),
+            average("avg_offensive_bombs", 1, 0),
+        ],
+        "avg_pressure_score": [
+            average("avg_pressure_score", 0, 1),
+            average("avg_pressure_score", 1, 0),
+        ],
+        "sudden_death_deaths": [
+            first_side["sudden_death_deaths"][0] + second_side["sudden_death_deaths"][1],
+            first_side["sudden_death_deaths"][1] + second_side["sudden_death_deaths"][0],
+        ],
+        "self_bomb_deaths": [
+            first_side["self_bomb_deaths"][0] + second_side["self_bomb_deaths"][1],
+            first_side["self_bomb_deaths"][1] + second_side["self_bomb_deaths"][0],
+        ],
+        "opponent_bomb_deaths": [
+            first_side["opponent_bomb_deaths"][0] + second_side["opponent_bomb_deaths"][1],
+            first_side["opponent_bomb_deaths"][1] + second_side["opponent_bomb_deaths"][0],
+        ],
+        "other_deaths": [
+            first_side["other_deaths"][0] + second_side["other_deaths"][1],
+            first_side["other_deaths"][1] + second_side["other_deaths"][0],
+        ],
+        "chain_bomb_self_deaths": [
+            first_side["chain_bomb_self_deaths"][0] + second_side["chain_bomb_self_deaths"][1],
+            first_side["chain_bomb_self_deaths"][1] + second_side["chain_bomb_self_deaths"][0],
+        ],
+    }
 
 
 # ────────────────────── agent function factories ──────────────────────────
@@ -153,18 +266,24 @@ def make_ac_fn(model_path: str, board_size: int, device="cpu"):
     if not _torch_available:
         raise RuntimeError("PyTorch not installed, cannot load AC model.")
 
-    from train_actor_critic import ActorCriticNet, obs_to_tensor
+    from train_actor_critic import (
+        ActorCriticNet,
+        get_action_mask,
+        obs_to_tensor,
+        smart_load_weights,
+    )
 
     net = ActorCriticNet(board_size=board_size).to(device)
-    net.load_state_dict(torch.load(model_path, map_location=device,
-                                   weights_only=True))
+    smart_load_weights(net, model_path, device)
     net.eval()
 
     @torch.no_grad()
     def fn(env, obs_list, agent_id):
         obs_t = obs_to_tensor(obs_list[agent_id], device)
         logits, _ = net(obs_t)
-        dist = torch.distributions.Categorical(logits=logits)
+        mask = get_action_mask(env, agent_id)
+        mask_t = torch.tensor(mask, dtype=torch.bool, device=device)
+        dist = torch.distributions.Categorical(logits=logits.masked_fill(~mask_t, -1e9))
         return dist.sample().item()
     return fn
 
@@ -173,12 +292,16 @@ def make_ac_fn(model_path: str, board_size: int, device="cpu"):
 
 def tournament(board_size: int = 11, num_agents: int = 2,
                num_episodes: int = 100, ac_model_path: str = "",
-               device: str = "cpu"):
+               device: str = "cpu", sudden_death: bool = False,
+               sudden_death_start: int = 200,
+               sudden_death_interval: int = 20):
     """
     Round-robin tournament giữa Random, RuleBot, và AC (nếu có model).
     """
     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
-                          max_steps=300)
+                          max_steps=300, sudden_death=sudden_death,
+                          sudden_death_start=sudden_death_start,
+                          sudden_death_interval=sudden_death_interval)
 
     agents = {
         "Random": make_random_fn(),
@@ -192,26 +315,51 @@ def tournament(board_size: int = 11, num_agents: int = 2,
     print(f"Tournament: {agent_names}")
     print(f"  Board: {board_size}x{board_size}, {num_agents} agents")
     print(f"  Episodes per matchup: {num_episodes}")
+    print(f"  Sudden death: {'on' if sudden_death else 'off'}")
     print(f"{'=' * 60}")
 
     if num_agents == 2:
-        # Pairwise matchups.
+        # Pairwise matchups, with every agent evaluated from both spawn sides.
         results = {}
         for i, name_a in enumerate(agent_names):
             for j, name_b in enumerate(agent_names):
                 if i >= j:
                     continue
-                print(f"\n  {name_a} vs {name_b}:")
-                agent_fns = [agents[name_a], agents[name_b]]
-                stats = run_match(env, agent_fns, num_episodes, verbose=True)
+                print(f"\n  {name_a} vs {name_b} (sides swapped):")
+                first_side = run_match(
+                    env, [agents[name_a], agents[name_b]], num_episodes, verbose=False
+                )
+                second_side = run_match(
+                    env, [agents[name_b], agents[name_a]], num_episodes, verbose=False
+                )
+                stats = combine_side_swapped_stats(first_side, second_side)
+                for agent_index, name in enumerate((name_a, name_b)):
+                    print(f"  {name}: WR={stats['win_rates'][agent_index]:.1f}%, "
+                          f"Reward={stats['avg_reward'][agent_index]:.2f}, "
+                          f"Bombs={stats['avg_bombs'][agent_index]:.1f}, "
+                          f"Offensive={stats['avg_offensive_bombs'][agent_index]:.1f}, "
+                          f"Pressure={stats['avg_pressure_score'][agent_index]:.1f}, "
+                          f"Kills={stats['avg_kills'][agent_index]:.1f}, "
+                          f"Deaths(sd/self/opp/other)="
+                          f"{stats['sudden_death_deaths'][agent_index]}/"
+                          f"{stats['self_bomb_deaths'][agent_index]}/"
+                          f"{stats['opponent_bomb_deaths'][agent_index]}/"
+                          f"{stats['other_deaths'][agent_index]}, "
+                          f"Chain-self={stats['chain_bomb_self_deaths'][agent_index]}")
+                print(f"  Draws: {stats['draws']} ({stats['draws']/stats['num_episodes']*100:.1f}%)")
                 results[f"{name_a}_vs_{name_b}"] = stats
         return results
     else:
-        # FFA with all same type or mixed.
+        # FFA benchmark: heuristic bots, then the learned shared policy when supplied.
         print(f"\n  All RuleBot FFA ({num_agents} agents):")
         fns = [make_rule_based_fn(i) for i in range(num_agents)]
-        stats = run_match(env, fns, num_episodes, verbose=True)
-        return {"all_rulebots": stats}
+        results = {"all_rulebots": run_match(env, fns, num_episodes, verbose=True)}
+        if "ActorCritic" in agents:
+            print(f"\n  All ActorCritic FFA ({num_agents} agents):")
+            results["all_actor_critic"] = run_match(
+                env, [agents["ActorCritic"]] * num_agents, num_episodes, verbose=True
+            )
+        return results
 
 
 # ────────────────────── learning curves (from saved logs) ─────────────────
@@ -351,11 +499,15 @@ if __name__ == "__main__":
     parser.add_argument("--ac_model", type=str, default="",
                         help="Path to Actor-Critic model checkpoint")
     parser.add_argument("--device", type=str, default="cpu")
+    parser.add_argument("--sudden_death", action="store_true")
+    parser.add_argument("--sudden_death_start", type=int, default=200)
+    parser.add_argument("--sudden_death_interval", type=int, default=20)
     args = parser.parse_args()
 
     if args.mode == "tournament":
         tournament(args.board_size, args.num_agents, args.num_episodes,
-                   args.ac_model, args.device)
+                   args.ac_model, args.device, args.sudden_death,
+                   args.sudden_death_start, args.sudden_death_interval)
     elif args.mode == "random":
         eval_random_baseline(args.board_size, args.num_agents,
                              args.num_episodes)
