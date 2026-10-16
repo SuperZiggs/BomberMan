@@ -86,13 +86,23 @@ def _bomb_escape_pressure(env, agent_id, r, c, base=None):
 
 
 def _survival_map(env, start_r, start_c, extra_bomb=None, avoid_contests=True,
-                  safety_margin=0, reserve_exits=False):
+                  safety_margin=0, reserve_exits=False, ignore_agent_id=None):
     """Backward reachability: survive all known flames without losing the exit."""
     burns, blocked = env._forecast_blasts(extra_bomb)
+    next_closure = env._next_sudden_death_closure()
+    if next_closure is not None:
+        remaining, cells = next_closure
+        if 1 <= remaining <= min(env.sudden_death_warning_steps, len(blocked)):
+            close_index = remaining - 1
+            for row, col in cells:
+                blocked[close_index:, row, col] = True
+                burns[close_index:, row, col] = True
     actual_burns = burns.copy() if safety_margin else burns
     for shift in range(1, min(safety_margin + 1, len(burns))):
         burns[:-shift] |= actual_burns[shift:]
     for a in env.agents:
+        if a.agent_id == ignore_agent_id:
+            continue
         if a.alive and (a.row, a.col) != (start_r, start_c):
             blocked[:, a.row, a.col] = True
             if avoid_contests:

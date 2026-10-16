@@ -37,6 +37,7 @@ venv.bak/
 # Experiment runs, metrics and all checkpoints are versioned.
 # Temporary test directories are local scratch space.
 _comparison/test-tmp/
+.worktrees/
 
 # IDE and Editor settings
 .vscode/

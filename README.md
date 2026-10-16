@@ -54,6 +54,62 @@ Nếu `.venv` hiện tại đã có `torch` và `numpy`, bỏ qua bước tạo/
 .\.venv\Scripts\python.exe train_actor_critic.py --phase E --episodes 2000 --board_size 11 --num_agents 4 --max_steps 500 --resume_from checkpoints/best_phaseE_4a.pt --checkpoint_dir runs/combat-training
 ```
 
+- **Pilot Phase C có Sudden Death:** fine-tune từ checkpoint Phase C hiện tại, bật thu hẹp bản đồ ở 75% số ván và lưu sang thư mục mới. Script in trực tiếp ra PowerShell, không tạo transcript/log terminal.
+
+```powershell
+.\run_train_phaseC_sd.ps1
+```
+
+Pilot dùng 500 episodes, seed `2026101401`, bắt đầu thu hẹp ở bước 350, mỗi 20 bước đóng thêm một vòng và cảnh báo trước 40 bước. Checkpoint đầu vào là `runs/pressure-C-next/final_phaseC.pt`; đầu ra nằm trong `runs/phaseC-sd-pilot/`. Không thay checkpoint đang dùng chỉ vì WR tăng: `sudden_death_win` được báo riêng, không tính vào `active_win`/ActiveWR.
+
+- **Fine-tune Phase C theo Schedule E và tự đánh giá:** một lệnh train 1500 episodes, lưu checkpoint tốt nhất theo validation có Sudden Death, rồi load `best_phaseC.pt` để đánh giá 200 trận và in các gate PASS/FAIL.
+
+```powershell
+.\run_train_phaseC_sd_1500.ps1
+```
+
+Lượt này dùng xác suất Sudden Death `0.75`, lịch `475/25/40`, validation mỗi 250 episodes và ghi toàn bộ kết quả mới vào `runs/phaseC-sd-1500-e/`. Script dừng trước khi train nếu thư mục đầu ra đã tồn tại để không ghi đè lượt cũ.
+
+- **Fine-tune attack teacher hai bước:** warm-start từ best Phase C-SD, train 750 episodes với lookahead hai bước, ngưỡng pressure `0.15`, tăng supervision tấn công từ bước 400 và tự đánh giá 200 trận sau khi train.
+
+```powershell
+.\run_train_phaseC_sd_attack_750.ps1
+```
+
+Kết quả mới được lưu riêng trong `runs/phaseC-sd-attack-750/`. RuleBot và reward môi trường không đổi; launcher chỉ điều chỉnh attack teacher, hệ số supervision, learning rate và entropy.
+
+- **Fine-tune Phase C-SD theo mục tiêu cuối:** warm-start từ `runs/phaseC-sd-attack-750/best_phaseC.pt`, train 750 episodes với teacher chuỗi hai bom và supervision thoát vòng đóng, validation 200 trận tại episode 0/250/500/750, rồi đánh giá checkpoint tốt nhất trên 200 trận mới.
+
+```powershell
+.\run_train_phaseC_sd_target_750.ps1
+```
+
+Kết quả được lưu trong `runs/phaseC-sd-target-750/`. Checkpoint được xếp hạng theo số mục tiêu đạt, biên mục tiêu tệ nhất, ActiveWR, Draw, SD death và WR; checkpoint có Suicide trên `1.5%` bị loại. Các gate cuối là WR `>=70%`, ActiveWR `>=55%`, Draw `<=15%`, SD death `<=10%`, Suicide `<=1.5%`. Script không ghi đè thư mục đầu ra đã tồn tại.
+
+Đánh giá cuối lưu tiến độ sau mỗi 10 trận vào `evaluation-200.partial.json`, in tiến độ trực tiếp và chỉ tạo `evaluation-200.json` khi đủ 200 game hợp lệ. Nếu cửa sổ bị đóng sau khi train xong, giữ nguyên file partial và chạy lại riêng bước đánh giá:
+
+```powershell
+.\run_train_phaseC_sd_target_750.ps1 -EvaluateOnly
+```
+
+Chế độ này dùng `runs/phaseC-sd-target-750/best_phaseC.pt`, không train lại và chỉ resume khi checkpoint, seed và toàn bộ cấu hình khớp. Không xóa partial tương thích; launcher sẽ xóa nó sau khi final JSON được ghi atomic và xác nhận thành công.
+
+- **Fine-tune temporal trap cuối Phase C:** warm-start từ best checkpoint của lượt target, train thêm đúng 250 episodes với planner temporal hai bom và interception, validation tại episode 0/125/250, sau đó đánh giá best checkpoint trên 200 trận seed mới.
+
+```powershell
+.\run_train_phaseC_sd_temporal_250.ps1
+```
+
+Run mới ghi riêng vào `runs/phaseC-sd-temporal-250/`, dùng learning rate `1e-5`, entropy `0.005`, Sudden Death `0.75` theo lịch `475/25/40` và giữ nguyên năm gate cuối. Script không ghi đè thư mục đã tồn tại và chưa được chạy tự động khi chỉ kiểm tra code.
+
+Nếu training đã hoàn tất nhưng evaluation bị dừng, giữ `evaluation-200.partial.json` rồi chạy:
+
+```powershell
+.\run_train_phaseC_sd_temporal_250.ps1 -EvaluateOnly
+```
+
+Evaluation-only không train lại, kiểm tra đúng `best_phaseC.pt`, checkpoint identity, seed `33000`, cấu hình và thứ tự đủ 200 game trước khi in gate.
+
 - **Train Actor-Critic từ đầu theo curriculum:** chạy lần lượt, đợi mỗi lệnh hoàn tất trước lệnh tiếp theo. Các checkpoint mới lưu riêng trong `runs/from-scratch/`.
 
 ```powershell
@@ -92,6 +148,12 @@ Nếu `.venv` hiện tại đã có `torch` và `numpy`, bỏ qua bước tạo/
 
 Số trận phải chia hết cho số agents. Báo cáo có ActiveWR, tự nổ, hòa, kills và số liệu theo góc. Dùng cùng seed khi so các checkpoint; seed đánh giá cuối phải khác seed validation dùng để chọn model.
 
+Đánh giá cùng cấu hình Sudden Death và tách riêng thắng do bom, thắng do vòng thu hẹp, thắng thụ động, tự nổ, chết do vòng thu hẹp và hòa:
+
+```powershell
+.\.venv\Scripts\python.exe evaluate.py --mode seeded --board_size 9 --num_agents 2 --num_episodes 100 --max_steps 500 --seed 21000 --ac_model runs/phaseC-sd-pilot/best_phaseC.pt --sudden_death --sudden_death_start 350 --sudden_death_interval 20 --sudden_death_warning_steps 40 --output runs/phaseC-sd-pilot/evaluation-21000.json
+```
+
 ### 4. Giao diện trực quan: train, xem đấu và chơi
 
 ```powershell
@@ -124,7 +186,7 @@ Sau đặt bom, AC tránh đi vào hành lang sẽ cháy và chỉ có một l�
 
 Khi lửa nhiều bom chồng nhau, kill credit ưu tiên một nguồn bom đối thủ thực sự trúng nạn nhân, thay vì cho bom A0 luôn nhận trước. Engine lưu thời gian riêng từng nguồn lửa. `self_blast_deaths` vẫn đánh dấu nạn nhân đứng trong tia bom của chính mình, kể cả có thêm bom đối thủ: phạt tự nổ và thống kê `suicide` không bị mất khi đổi kill credit. Những số liệu cũ dùng quy ước credit trước sửa phải được chấm lại trước khi so sánh.
 
-Hai item giữ xác suất rơi tổng `0.3` và chia đều loại. Ammo tăng sức chứa tối đa **3**, range tối đa **4**; mỗi nâng cấp thực sự thưởng `+0.05`, item ở trần vẫn bị nhặt nhưng không tăng chỉ số hay thưởng. Observation hiện có **12 kênh**: giữ nguyên 8 kênh cũ và thêm chỗ đặt bom còn trống, sức chứa, tầm nổ, thời gian nguy hiểm dự báo. Loader chép trọng số 8 kênh cũ và khởi tạo trọng số 4 kênh thêm bằng 0 để giữ nguyên logits trước fine-tune.
+Hai item giữ xác suất rơi tổng `0.3` và chia đều loại. Ammo tăng sức chứa tối đa **3**, range tối đa **4**; mỗi nâng cấp thực sự thưởng `+0.05`, item ở trần vẫn bị nhặt nhưng không tăng chỉ số hay thưởng. Observation hiện có **13 kênh**: giữ nguyên 12 kênh trước đó và thêm cảnh báo vòng Sudden Death kế tiếp. Loader hỗ trợ checkpoint 8 hoặc 12 kênh, chép trọng số cũ và khởi tạo các kênh mới bằng 0 để giữ nguyên logits trước fine-tune khi cảnh báo bằng 0.
 
 Theo dõi `active_win`, `kills`, `suicide`, `draw`, `items`, `learner_steps`, `learning_aid` và `best_episode` trong metrics. **C/D/E đều luân phiên góc học.** `best` được chọn bằng policy cố định đấu RuleBot trên seed validation. Ứng viên phải có tỷ lệ tự nổ không cao hơn lần validation đầu lượt; trong các ứng viên đạt điều kiện này, ưu tiên ActiveWR, ít tự nổ, ít hòa, kills rồi WR. `suicide_limit` ghi mức giới hạn này. Đây là điều kiện trên mẫu validation, chưa đảm bảo tỷ lệ tự nổ trên mọi seed. Mặc định đánh giá 48 trận tại đầu lượt, mỗi 250 episode và cuối lượt; trả lại trạng thái RNG sau đánh giá để không đổi chuỗi ngẫu nhiên của train. Khi dùng test để quyết định chỉnh code/train tiếp, lần đánh giá cuối sau đó cần bộ seed mới. `validation_metrics.jsonl` giữ các lần đánh giá, `best_validation.json` ghi số liệu của model được chọn; `best_episode=0` có thể là warm-start nếu học tiếp chưa tốt hơn hoặc tự nổ nhiều hơn. Các lượt ngắn hơn `validation_every` hoặc đặt `--validation_every 0` không được đánh giá: `best` chỉ là fallback của final. `final` luôn giữ trọng số cuối lượt. GUI hiển thị riêng số liệu train và số liệu best đã đánh giá. Không chuyển phase chỉ vì WR tổng cao.
 

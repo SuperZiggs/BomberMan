@@ -1,0 +1,50 @@
+# Phase C-SD Target 750 Acceptance-Test Matrix
+
+## Scope and Independence
+
+- Frozen source: the nine approved requirements supplied on 2026-10-15.
+- Production evidence inspected: current `train_actor_critic.py`, `bomberman_env.py`, `rule_based_bot.py`, `evaluate.py`, existing root-level `unittest` suites, and prior Phase C/SD launcher matrices.
+- Permitted changes: this matrix and one new executable acceptance-test module only.
+- Prohibited changes: production code, launcher scripts, existing tests, existing run outputs, commits, and pushes.
+- Long-run constraint: tests must not execute real 750-episode training or real 200-game evaluation. Trainer probes use one-step episodes with deterministic evaluator doubles. Launcher process behavior runs in a temporary staged repository with fake train/evaluate entry points.
+- Temporal-fixture constraint: the current environment forecast can model visible or simultaneously proposed bombs, but it cannot deterministically model a later placement after movement, detonation, ammo restoration, and opponent responses. A real high-level two-bomb episode fixture would therefore encode an unspecified temporal model rather than the frozen contract. The closest practical substitute exercises the public attack-teacher seam with the existing refuge-pressure oracle controlled deterministically, while retaining real action masks/danger inputs. It verifies depth gating, cumulative threshold inclusion, unique follow-up pressure, and rejection of unsafe first/follow-up placements. Residual risk: it does not independently validate the future temporal simulator's fidelity to live multi-step opponent behavior.
+- Quality limitation: no bounded acceptance test can prove that training reaches the requested win-rate gates. The suite proves supervision, ranking, configuration, orchestration, artifact, and reporting contracts only.
+
+## Matrix
+
+| Req | Level | Scenario | Observable outcome | Acceptance test / command |
+|---|---|---|---|---|
+| 1, 4 | Regression unit/integration | Exercise representative RuleBasedAgent direct-attack and warning-ring decisions plus environment owned-kill and self-kill transitions | RuleBasedAgent still bombs the direct target and takes the frozen warning-ring move; environment reward values and kill/self-kill accounting remain unchanged | `FrozenBehaviorAcceptance.test_rulebot_and_environment_rewards_remain_frozen` |
+| 1, 5, 7 | Public API/CLI contract | Inspect `train(...)`, `get_attack_action(...)`, and CLI help | Existing arguments remain callable; approved defaults are exposed for sequence depth/gain, ring coefficient, late-game/loss settings, LR, entropy, episodes, and wall bonus; target options default to disabled legacy selection | `TrainingConfigurationAcceptance.test_train_and_teacher_expose_approved_defaults`; `TrainingConfigurationAcceptance.test_cli_exposes_new_configuration` |
+| 2, 3, 7 | Teacher behavior boundary | First bomb removes `20%` of refuges and one distinct safe follow-up removes `15%`; compare sequence depth `1` and `2`, and threshold `0.35` versus just above | Depth `2` chooses the safe first bomb at the inclusive cumulative threshold; depth `1` and a threshold above `0.35` use fallback guidance | `SequenceTeacherAcceptance.test_two_bomb_cumulative_pressure_requires_depth_two` |
+| 3 | Teacher negative/safety | Disable the first bomb, threaten the only follow-up cell, or offer only repeated pressure at the first placement | Teacher never labels the unsafe first placement, unsafe follow-up, or duplicated raw bomb pressure as sequence combat | `SequenceTeacherAcceptance.test_sequence_teacher_rejects_unsafe_placements_and_raw_spam` |
+| 4 | Trainer integration | Put the learner on the next closing ring during the warning window with one safe inward route; record the supervised target and gradient | First safe inward move is labeled and its loss is scaled by `ring_safety_coef=0.6` | `RingSafetySupervisionAcceptance.test_warning_ring_supervises_first_safe_inward_move` |
+| 4 | Trainer negative/regression | Repeat with SD disabled, outside the warning window, and already inside the threatened ring | No ring-safety label is emitted; RuleBot and environment reward assertions remain unchanged | `RingSafetySupervisionAcceptance.test_ring_supervision_is_inactive_without_warning_threat`; frozen regression test |
+| 6 | Trainer validation integration | Feed controlled candidate pairs/sequence under the four target thresholds and hard suicide limit | Eligible candidates rank by achieved-target count, worst normalized margin, ActiveWR, lower draw, lower SD death, then total WR; suicide above `1.5` is ineligible | `TargetAwareCheckpointAcceptance.test_target_count_precedes_worst_margin`; `test_worst_margin_precedes_metric_tiebreaks`; `test_metric_tiebreak_order`; `test_total_win_rate_is_final_tiebreak`; `test_suicide_gate_rejects_otherwise_better_candidate` |
+| 6 | Trainer validation regression | Warm-start episode `0` is better than episode `1`; no target options are supplied in a separate legacy-mode pair | Episode `0` can remain best in target mode; disabled target defaults retain the prior ActiveWR-first selection behavior | `TargetAwareCheckpointAcceptance.test_warm_start_episode_zero_remains_eligible`; `test_disabled_targets_preserve_legacy_selection` |
+| 2, 4, 5, 6, 7 | CLI-to-launcher contract | Run the staged launcher with fake train/evaluate programs | Training receives the exact approved 750-episode fine-tune values, sequence/ring options, target thresholds, Schedule E, `0.75` SD probability, validation `250/200`, fresh seed, and warm-start `runs\phaseC-sd-attack-750\best_phaseC.pt`; output is `runs\phaseC-sd-target-750` | `PhaseCSDTarget750LauncherAcceptance.test_launcher_training_contract_is_exact` |
+| 8 | Launcher process integration | Fake training creates `best_phaseC.pt`, then fake evaluation records arguments and writes JSON | Generated best checkpoint is evaluated exactly once for 200 fresh seeded CPU games with Schedule E and writes `evaluation-200.json` | `PhaseCSDTarget750LauncherAcceptance.test_success_path_evaluates_generated_best_exactly_once` |
+| 8 | Launcher negative integration | Pre-existing output, missing warm-start, failed training, missing generated best, or failed evaluation | Launcher fails before unsafe overwrite or later-stage execution | `PhaseCSDTarget750LauncherAcceptance.test_fail_fast_and_no_overwrite_contract` |
+| 8 | Gate boundary integration | Fake evaluation emits metrics exactly at and just beyond all five thresholds | Boundaries report PASS; violations report FAIL; gate failure does not make the process fail | `PhaseCSDTarget750LauncherAcceptance.test_gate_boundaries_report_without_process_failure` |
+| 9 | Test safety | Run the targeted suite | Only one-step trainer probes and staged fake launcher programs execute; no real long training/evaluation or existing run-output mutation occurs | All tests in `test_phase_c_sd_target_750.py` |
+
+## Planned Commands
+
+- Targeted acceptance suite: `venv\Scripts\python.exe -m unittest -v test_phase_c_sd_target_750.py`
+- Focused preserved regressions: `venv\Scripts\python.exe -m unittest -v test_phase_c_attack_750.PhaseCAttackTeacherAcceptance.test_frozen_rulebot_and_environment_reward_contract test_sudden_death.SuddenDeathTrainingAcceptance.test_validation_candidates_use_enabled_schedule_e_from_episode_zero`
+- RED is valid only when failures identify missing sequence/ring/target behavior or the missing `run_train_phaseC_sd_target_750.ps1`. Import, syntax, setup, dependency, real-training, or real-evaluation failures are invalid and must be corrected before handoff.
+
+## RED Baseline Record
+
+- Exact command: `venv\Scripts\python.exe -m unittest -v test_phase_c_sd_target_750.py`
+- Result: valid RED; `18` test methods ran with `30` assertion failures, `0` errors, and `1` passing frozen-regression method in `2.124s`.
+- Missing train/API defaults (`1` failure): `train is missing required options: ['max_suicide_rate', 'ring_safety_coef', 'sequence_pressure_gain', 'target_active_win_rate', 'target_draw_rate', 'target_sudden_death_death_rate', 'target_win_rate', 'trap_sequence_depth']`.
+- Missing CLI exposure (`8` subtest failures): `--trap_sequence_depth`, `--sequence_pressure_gain`, `--ring_safety_coef`, `--target_win_rate`, `--target_active_win_rate`, `--target_draw_rate`, `--target_sudden_death_death_rate`, and `--max_suicide_rate` are absent from `train_actor_critic.py --help`.
+- Missing sequence teacher (`2` failures): `get_attack_action is missing required options: ['sequence_pressure_gain', 'trap_sequence_depth']`.
+- Missing ring supervision (`4` failures, including three negative-condition subtests): `train is missing required options: ['ring_safety_coef']`.
+- Missing target-aware checkpoint selection (`7` failures): `train is missing required options: ['max_suicide_rate', 'target_active_win_rate', 'target_draw_rate', 'target_sudden_death_death_rate', 'target_win_rate']`.
+- Missing launcher (`8` failures, including fail-fast subtests): `Missing required launcher: E:\Bomberman\run_train_phaseC_sd_target_750.ps1`.
+- Passing preservation check: `FrozenBehaviorAcceptance.test_rulebot_and_environment_rewards_remain_frozen` confirms the current RuleBasedAgent direct attack and warning-ring move, owned-kill/self-kill accounting, environment rewards, and trainer combat shaping before implementation.
+- Safety confirmation: no real training or evaluation ran. Missing API checks stop every trainer probe before execution; the missing launcher stops all staged process tests before dispatch; the only subprocess executed was `train_actor_critic.py --help`.
+- Focused preserved-regression command: `venv\Scripts\python.exe -m unittest -v test_phase_c_attack_750.PhaseCAttackTeacherAcceptance.test_frozen_rulebot_and_environment_reward_contract test_sudden_death.SuddenDeathTrainingAcceptance.test_validation_candidates_use_enabled_schedule_e_from_episode_zero`.
+- Focused preserved-regression result: `2` tests passed with `0` failures and `0` errors in `1.107s`.

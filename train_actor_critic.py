@@ -27,6 +27,7 @@ import argparse
 import os
 import glob
 import json
+from collections import deque
 from copy import deepcopy
 import numpy as np
 import torch
@@ -44,6 +45,14 @@ from rule_based_bot import (
     _bfs_toward_wood,
     _bfs_toward_item,
     _bomb_escape_pressure,
+    _can_bomb_and_escape,
+    _survival_map,
+)
+from temporal_trap_planner import (
+    TemporalTrapConfig,
+    TemporalTrapPlan,
+    find_interception_action,
+    find_temporal_trap_plan,
 )
 
 
@@ -102,31 +111,335 @@ def get_action_mask(env: BombermanFFAEnv, agent_id: int) -> list[bool]:
     return _safe_action_mask(env, agent_id)
 
 
-def get_attack_action(env: BombermanFFAEnv, agent_id: int, danger, mask):
+def _pressure_attack_action(env: BombermanFFAEnv, agent_id: int, danger, mask,
+                            attack_lookahead: int, min_pressure_gain: float):
+    agent = env.agents[agent_id]
+    start = (agent.row, agent.col)
+    base = env._forecast_blasts(min_horizon=env.bomb_timer + env.flame_duration - 1)
+    best_pressure = min_pressure_gain
+    best_action = None
+
+    if mask[ACTION_BOMB]:
+        pressure = _bomb_escape_pressure(env, agent_id, *start, base)
+        if pressure >= best_pressure:
+            best_pressure = pressure
+            best_action = ACTION_BOMB
+
+    occupied = {(a.row, a.col) for a in env.agents if a.alive and a.agent_id != agent_id}
+    bomb_positions = {(bomb.row, bomb.col) for bomb in env.bombs}
+    visited = {start}
+    queue = deque()
+    for action, (dr, dc) in _MOVE_DELTA.items():
+        position = (start[0] + dr, start[1] + dc)
+        if not mask[action] or position in occupied or danger[position]:
+            continue
+        visited.add(position)
+        queue.append((position, 1, action))
+
+    while queue:
+        (row, col), depth, first_action = queue.popleft()
+        pressure = _bomb_escape_pressure(env, agent_id, row, col, base)
+        if pressure >= min_pressure_gain and pressure > best_pressure + 1e-6:
+            best_pressure = pressure
+            best_action = first_action
+        elif pressure >= min_pressure_gain and best_action is None:
+            best_pressure = pressure
+            best_action = first_action
+        if depth >= attack_lookahead:
+            continue
+        for dr, dc in _MOVE_DELTA.values():
+            position = (row + dr, col + dc)
+            if position in visited or position in occupied or position in bomb_positions:
+                continue
+            if not env._is_walkable(*position) or danger[position]:
+                continue
+            visited.add(position)
+            queue.append((position, depth + 1, first_action))
+    return best_action
+
+
+def _sequence_attack_action(env: BombermanFFAEnv, agent_id: int, danger, mask,
+                            attack_lookahead: int, trap_sequence_depth: int,
+                            sequence_pressure_gain: float):
+    """Label a safe opening bomb when a distinct follow-up completes the trap."""
+    agent = env.agents[agent_id]
+    if (trap_sequence_depth < 2 or not mask[ACTION_BOMB]
+            or agent.ammo - agent.bombs_placed < 2):
+        return None
+
+    start = (agent.row, agent.col)
+    base = env._forecast_blasts(min_horizon=env.bomb_timer + env.flame_duration - 1)
+    first_pressure = _bomb_escape_pressure(env, agent_id, *start, base)
+    if first_pressure <= 0.0:
+        return None
+
+    occupied = {(a.row, a.col) for a in env.agents
+                if a.alive and a.agent_id != agent_id}
+    bomb_positions = {(bomb.row, bomb.col) for bomb in env.bombs}
+    visited = {start}
+    queue = deque()
+    for action, (dr, dc) in _MOVE_DELTA.items():
+        position = (start[0] + dr, start[1] + dc)
+        if (not mask[action] or position in occupied or position in bomb_positions
+                or danger[position] or not env._is_walkable(*position)):
+            continue
+        visited.add(position)
+        queue.append((position, 1))
+
+    while queue:
+        (row, col), depth = queue.popleft()
+        followup_pressure = _bomb_escape_pressure(env, agent_id, row, col, base)
+        if (followup_pressure > 0.0
+                and first_pressure + followup_pressure + 1e-9 >= sequence_pressure_gain
+                and _can_bomb_and_escape(env, agent_id, row, col, danger)):
+            return ACTION_BOMB
+        if depth >= attack_lookahead:
+            continue
+        for dr, dc in _MOVE_DELTA.values():
+            position = (row + dr, col + dc)
+            if (position in visited or position in occupied or position in bomb_positions
+                    or danger[position] or not env._is_walkable(*position)):
+                continue
+            visited.add(position)
+            queue.append((position, depth + 1))
+    return None
+
+
+class TemporalPlanFollower:
+    """Pending trainer labels; policy samples remain in control of the agent."""
+
+    def __init__(self, plan: TemporalTrapPlan, position: tuple[int, int],
+                 diagnostics: dict):
+        self.plan = plan
+        self.next_index = 0
+        self.expected_position = position
+        self.observed_bombs = 0
+        self.abort_reason = None
+        self.diagnostics = diagnostics
+
+    @property
+    def complete(self) -> bool:
+        return self.next_index == len(self.plan.action_sequence)
+
+    def expected_action(self) -> int:
+        return self.plan.action_sequence[self.next_index]
+
+    def advance(self, sampled_action: int) -> bool:
+        if self.abort_reason is not None or self.complete:
+            return False
+        if sampled_action != self.expected_action():
+            self.abort("mismatch")
+            return False
+        if sampled_action in _MOVE_DELTA:
+            dr, dc = _MOVE_DELTA[sampled_action]
+            self.expected_position = (self.expected_position[0] + dr,
+                                      self.expected_position[1] + dc)
+        self.next_index += 1
+        return True
+
+    def abort(self, reason: str) -> None:
+        if self.abort_reason is None and not self.complete:
+            self.abort_reason = reason
+            key = "temporal_plan_aborts_" + reason
+            self.diagnostics[key] = self.diagnostics.get(key, 0) + 1
+
+
+def _select_temporal_label(env, agent_id, danger, mask, follower, config,
+                           diagnostics) -> tuple[int | None, TemporalPlanFollower | None]:
+    """Retain only a legal, safe route at its observed expected position."""
+    agent = env.agents[agent_id]
+    position = (agent.row, agent.col)
+    reason = None
+    if not agent.alive:
+        reason = "inactive"
+    elif position in env.flames or danger[position] == 1:
+        reason = "danger"
+    elif _ring_safety_action(env, agent_id, danger, mask) is not None:
+        reason = "ring"
+    if reason is not None:
+        if follower is not None:
+            follower.abort(reason)
+        return None, None
+
+    if follower is not None:
+        if follower.abort_reason is not None or follower.complete:
+            return None, None
+        if position != follower.expected_position:
+            follower.abort("stale_position")
+            return None, None
+    else:
+        # Preserve the existing non-urgent bomb/escape teacher without a route.
+        if danger[position] > 0:
+            return None, None
+        plan = find_temporal_trap_plan(
+            env, agent_id, danger, mask, config, diagnostics=diagnostics,
+        )
+        if plan is None:
+            return None, None
+        follower = TemporalPlanFollower(plan, position, diagnostics)
+        diagnostics["temporal_trap_plans"] = diagnostics.get("temporal_trap_plans", 0) + 1
+        key = "temporal_pair_plans_started"
+        diagnostics[key] = diagnostics.get(key, 0) + int(len(plan.bomb_positions) == 2)
+
+    action = follower.expected_action()
+    if not 0 <= action < len(mask) or not mask[action]:
+        follower.abort("mask")
+        return None, None
+    dr, dc = _MOVE_DELTA.get(action, (0, 0))
+    destination = (position[0] + dr, position[1] + dc)
+    if destination in env.flames or danger[destination] == 1:
+        follower.abort("danger")
+        return None, None
+    # The shared mask may fall back to immediate survival in a doomed state.
+    # A temporal teacher needs an actual continuation through the live forecast.
+    if action == ACTION_BOMB:
+        safe_step = _can_bomb_and_escape(env, agent_id, *position, danger)
+    else:
+        safe, blocked, _ = _survival_map(env, *position, safety_margin=0)
+        safe_step = bool(safe[0, destination[0], destination[1]])
+        if action in _MOVE_DELTA:
+            safe_step &= not blocked[0, destination[0], destination[1]]
+    if not safe_step:
+        follower.abort("unsafe")
+        return None, None
+    diagnostics["source"] = "temporal"
+    diagnostics["temporal_trap_labels"] = diagnostics.get("temporal_trap_labels", 0) + 1
+    return action, follower
+
+
+def _observe_temporal_transition(env, agent_id, sampled_action, info, follower):
+    """Count placements only after a matching sample and actual transition."""
+    if follower is None:
+        return None
+    expected = follower.expected_action()
+    if sampled_action != expected:
+        follower.abort("mismatch")
+        return None
+    diagnostics = follower.diagnostics
+    key = "temporal_policy_action_matches"
+    diagnostics[key] = diagnostics.get(key, 0) + 1
+    if expected == ACTION_BOMB and agent_id not in info["bombs_placed"]:
+        follower.abort("placement")
+        return None
+    dr, dc = _MOVE_DELTA.get(expected, (0, 0))
+    position = (follower.expected_position[0] + dr, follower.expected_position[1] + dc)
+    agent = env.agents[agent_id]
+    if (agent.row, agent.col) != position:
+        follower.abort("stale_position")
+        return None
+    if not follower.advance(sampled_action):
+        return None
+    if expected == ACTION_BOMB:
+        follower.observed_bombs += 1
+        diagnostics = follower.diagnostics
+        diagnostics["temporal_trap_bombs"] = diagnostics.get("temporal_trap_bombs", 0) + 1
+    if follower.complete:
+        if len(follower.plan.bomb_positions) == 2 and follower.observed_bombs == 2:
+            diagnostics = follower.diagnostics
+            key = "temporal_trap_pair_completions"
+            diagnostics[key] = diagnostics.get(key, 0) + 1
+        return None
+    return follower
+
+
+def _temporal_metrics(diagnostics: dict) -> dict:
+    """Publish episode or summed counters with rates derived from their totals."""
+    metrics = {key: value for key, value in diagnostics.items() if key != "source"}
+    aliases = {
+        "temporal_plans_started": "temporal_trap_plans",
+        "temporal_steps_supervised": "temporal_trap_labels",
+        "temporal_bomb_actions_executed": "temporal_trap_bombs",
+        "temporal_pair_completions": "temporal_trap_pair_completions",
+    }
+    for canonical, alias in aliases.items():
+        metrics[canonical] = diagnostics.get(alias, 0)
+    for key in ("temporal_pair_plans_started", "temporal_policy_action_matches"):
+        metrics[key] = diagnostics.get(key, 0)
+    steps = metrics["temporal_steps_supervised"]
+    metrics["temporal_policy_agreement_rate"] = (
+        metrics["temporal_policy_action_matches"] / steps if steps else 0.0
+    )
+    groups = {
+        "safety": ("danger", "ring", "unsafe"),
+        "stale": ("stale_position", "placement", "inactive"),
+        "masked": ("mask",),
+        "mismatch": ("mismatch",),
+    }
+    total_aborts = 0
+    for group, reasons in groups.items():
+        count = sum(diagnostics.get("temporal_plan_aborts_" + reason, 0)
+                    for reason in reasons)
+        metrics["temporal_plan_aborts_" + group] = count
+        total_aborts += count
+    metrics["temporal_plan_aborts"] = total_aborts
+    plans = metrics["temporal_plans_started"]
+    for key in ("predicted_refuge_reduction", "predicted_trap_completion_ticks"):
+        metrics[key] = diagnostics.get(key, 0.0) / plans if plans else 0.0
+    return metrics
+
+
+def get_attack_action(env: BombermanFFAEnv, agent_id: int, danger, mask,
+                      attack_lookahead: int = 2, min_pressure_gain: float = 0.15,
+                      trap_sequence_depth: int = 2,
+                      sequence_pressure_gain: float = 0.35,
+                      temporal_trap_horizon: int = 8,
+                      temporal_trap_max_bombs: int = 2,
+                      interception_horizon: int = 4,
+                      diagnostics: dict | None = None,
+                      use_temporal_planner: bool = True):
     """Prefer bomb positions that restrict timed escape, then upgrades or opening routes."""
     agent = env.agents[agent_id]
     r, c = agent.row, agent.col
-    if danger[r, c] > 0:
-        return ACTION_BOMB if mask[ACTION_BOMB] else None
+    if (r, c) in env.flames:
+        return None
+    if danger[r, c] == 1:
+        escape = _bfs_safe_cell(env, r, c, danger, action_mask=mask)
+        return escape if escape is not None and mask[escape] else None
+    ring_action = _ring_safety_action(env, agent_id, danger, mask)
+    if ring_action is not None:
+        return ring_action
+    temporal_plan = find_temporal_trap_plan(
+        env,
+        agent_id,
+        danger,
+        mask,
+        TemporalTrapConfig(
+            horizon=temporal_trap_horizon,
+            max_bombs=temporal_trap_max_bombs,
+            min_pressure_gain=sequence_pressure_gain,
+        ),
+        diagnostics=diagnostics,
+    ) if use_temporal_planner else None
+    if temporal_plan is not None:
+        if diagnostics is not None:
+            diagnostics["source"] = "temporal"
+            diagnostics["temporal_trap_labels"] = diagnostics.get(
+                "temporal_trap_labels", 0
+            ) + 1
+        return temporal_plan.first_action
+    interception = find_interception_action(
+        env, agent_id, danger, mask, horizon=interception_horizon
+    )
+    if interception is not None:
+        if diagnostics is not None:
+            diagnostics["source"] = "interception"
+            diagnostics["interception_labels"] = diagnostics.get(
+                "interception_labels", 0
+            ) + 1
+        return interception
     close = any(a.alive and a.agent_id != agent_id and
                 abs(a.row - r) + abs(a.col - c) <= agent.blast_range + 1
                 for a in env.agents)
     if close:
-        base = env._forecast_blasts(min_horizon=env.bomb_timer + env.flame_duration - 1)
-        here = _bomb_escape_pressure(env, agent_id, r, c, base) if mask[ACTION_BOMB] else 0.0
-        best, move = here, None
-        occupied = {(a.row, a.col) for a in env.agents if a.alive and a.agent_id != agent_id}
-        for action, (dr, dc) in _MOVE_DELTA.items():
-            pos = (r + dr, c + dc)
-            if not mask[action] or pos in occupied or danger[pos]:
-                continue
-            pressure = _bomb_escape_pressure(env, agent_id, *pos, base)
-            if pressure > best + 1e-6:
-                best, move = pressure, action
-        if move is not None:
-            return move
-        if here > 0:
-            return ACTION_BOMB
+        sequence_action = _sequence_attack_action(
+            env, agent_id, danger, mask, attack_lookahead,
+            trap_sequence_depth, sequence_pressure_gain)
+        if sequence_action is not None:
+            return sequence_action
+        pressure_action = _pressure_attack_action(
+            env, agent_id, danger, mask, attack_lookahead, min_pressure_gain)
+        if pressure_action is not None:
+            return pressure_action
     blast = env._blast_cells(r, c, agent.blast_range)
     if mask[ACTION_BOMB] and any(
         a.alive and a.agent_id != agent_id and (a.row, a.col) in blast
@@ -145,6 +458,45 @@ def get_attack_action(env: BombermanFFAEnv, agent_id: int, danger, mask):
     return move if move is not None and mask[move] else None
 
 
+def _ring_safety_action(env: BombermanFFAEnv, agent_id: int, danger, mask):
+    """Move off the next closing ring during its warning window."""
+    next_closure = env._next_sudden_death_closure()
+    if next_closure is None:
+        return None
+    remaining, closing_cells = next_closure
+    agent = env.agents[agent_id]
+    if (remaining < 1 or remaining > env.sudden_death_warning_steps
+            or (agent.row, agent.col) not in closing_cells):
+        return None
+
+    occupied = {(a.row, a.col) for a in env.agents
+                if a.alive and a.agent_id != agent_id}
+    visited = {(agent.row, agent.col)}
+    queue = deque()
+    for action, (dr, dc) in _MOVE_DELTA.items():
+        position = (agent.row + dr, agent.col + dc)
+        if (not mask[action] or position in occupied or danger[position]
+                or not env._is_walkable(*position)):
+            continue
+        visited.add(position)
+        queue.append((position, 1, action))
+
+    while queue:
+        position, depth, first_action = queue.popleft()
+        if position not in closing_cells:
+            return first_action
+        if depth >= remaining:
+            continue
+        for dr, dc in _MOVE_DELTA.values():
+            next_position = (position[0] + dr, position[1] + dc)
+            if (next_position in visited or next_position in occupied
+                    or danger[next_position] or not env._is_walkable(*next_position)):
+                continue
+            visited.add(next_position)
+            queue.append((next_position, depth + 1, first_action))
+    return None
+
+
 def _supervision_losses(escape, combat, navigation):
     """Separate means keep rare combat labels from being diluted by navigation."""
     return tuple(torch.stack(group).mean() if group else 0.0
@@ -158,7 +510,8 @@ def _combat_reward(reward: float, agent_id: int, info, episode_kills: int):
         reward -= 1.5  # -1 from env, -2.5 total for suicide.
     if info["alive"][agent_id]:
         reward += 3.0 * sum(k == agent_id and v != agent_id for k, v in kills)
-        if info["episode_done"] and sum(info["alive"]) == 1 and episode_kills == 0:
+        if (info["episode_done"] and sum(info["alive"]) == 1 and episode_kills == 0
+                and not info.get("sudden_death_deaths")):
             reward -= 10.0
     return reward
 
@@ -201,26 +554,39 @@ class RuleBasedOpponent:
 def smart_load_weights(net: ActorCriticNet, checkpoint_path: str, device):
     """Preserve old policies: zero new input weights; interpolate different board sizes."""
     sd = torch.load(checkpoint_path, map_location=device, weights_only=True)
+    if not isinstance(sd, dict) or not all(isinstance(k, str) and torch.is_tensor(v)
+                                          for k, v in sd.items()):
+        raise ValueError(f"Unsupported checkpoint format: {checkpoint_path}")
     curr_sd = net.state_dict()
+    missing = set(curr_sd) - set(sd)
+    extra = set(sd) - set(curr_sd)
+    if missing or extra:
+        raise ValueError(f"Checkpoint keys do not match model (missing={sorted(missing)}, extra={sorted(extra)})")
     for k, v in sd.items():
-        if k in curr_sd:
-            if v.shape == curr_sd[k].shape:
-                curr_sd[k].copy_(v)
-            elif k == "conv.0.weight" and v.shape[1] < curr_sd[k].shape[1]:
-                curr_sd[k].zero_()
-                curr_sd[k][:, :v.shape[1]].copy_(v)
-                print(f"Expanded observation channels {v.shape[1]} -> {curr_sd[k].shape[1]}")
-            elif k == "trunk_fc.0.weight":
-                # Spatial interpolation from (256, 64*old_s*old_s) to (256, 64*new_s*new_s)
-                old_flat = v.shape[1]
-                new_flat = curr_sd[k].shape[1]
-                old_s = int(np.round(np.sqrt(old_flat / 64)))
-                new_s = int(np.round(np.sqrt(new_flat / 64)))
-                w_4d = v.view(256, 64, old_s, old_s)
-                w_interp = F.interpolate(w_4d, size=(new_s, new_s), mode="bilinear", align_corners=False)
-                w_interp = w_interp * ((old_s * old_s) / (new_s * new_s))
-                curr_sd[k].copy_(w_interp.reshape(256, new_flat))
-                print(f"Interpolated {k} from board {old_s}x{old_s} to {new_s}x{new_s}")
+        if v.shape == curr_sd[k].shape:
+            curr_sd[k].copy_(v)
+        elif (k == "conv.0.weight" and v.ndim == curr_sd[k].ndim == 4
+              and v.shape[0] == curr_sd[k].shape[0]
+              and v.shape[2:] == curr_sd[k].shape[2:]
+              and v.shape[1] in (8, 12)
+              and v.shape[1] < curr_sd[k].shape[1]):
+            curr_sd[k].zero_()
+            curr_sd[k][:, :v.shape[1]].copy_(v)
+            print(f"Expanded observation channels {v.shape[1]} -> {curr_sd[k].shape[1]}")
+        elif k == "trunk_fc.0.weight" and v.ndim == curr_sd[k].ndim == 2:
+            old_flat = v.shape[1]
+            new_flat = curr_sd[k].shape[1]
+            old_s = int(np.round(np.sqrt(old_flat / 64)))
+            new_s = int(np.round(np.sqrt(new_flat / 64)))
+            if v.shape[0] != curr_sd[k].shape[0] or old_s * old_s * 64 != old_flat:
+                raise ValueError(f"Unsupported shape for {k}: {tuple(v.shape)} -> {tuple(curr_sd[k].shape)}")
+            w_4d = v.view(256, 64, old_s, old_s)
+            w_interp = F.interpolate(w_4d, size=(new_s, new_s), mode="bilinear", align_corners=False)
+            w_interp = w_interp * ((old_s * old_s) / (new_s * new_s))
+            curr_sd[k].copy_(w_interp.reshape(256, new_flat))
+            print(f"Interpolated {k} from board {old_s}x{old_s} to {new_s}x{new_s}")
+        else:
+            raise ValueError(f"Unsupported shape for {k}: {tuple(v.shape)} -> {tuple(curr_sd[k].shape)}")
     net.load_state_dict(curr_sd)
 
 
@@ -263,13 +629,13 @@ def save_snapshot(net: ActorCriticNet, checkpoint_dir: str, episode: int,
 
 def train(
     phase: str = "C",
-    episodes: int = 3000,
+    episodes: int = 750,
     board_size: int = 9,
     num_agents: int = 2,
     gamma: float = 0.99,
-    lr: float = 3e-4,
+    lr: float = 0.000025,
     value_coef: float = 0.5,
-    entropy_coef: float = 0.015,
+    entropy_coef: float = 0.0075,
     wall_destroy_bonus: float = 0.15,
     max_steps: int = 500,
     log_every: int = 50,
@@ -286,6 +652,28 @@ def train(
     validation_episodes: int = 48,
     validation_seed: int = 6000,
     on_validation=None,
+    sudden_death_probability: float = 0.0,
+    sudden_death_start: int = 350,
+    sudden_death_interval: int = 20,
+    sudden_death_warning_steps: int = 40,
+    attack_lookahead: int = 2,
+    min_pressure_gain: float = 0.15,
+    trap_sequence_depth: int = 2,
+    sequence_pressure_gain: float = 0.35,
+    temporal_trap_horizon: int = 8,
+    temporal_trap_max_bombs: int = 2,
+    interception_horizon: int = 4,
+    ring_safety_coef: float = 0.6,
+    late_game_start: int = 350,
+    late_game_attack_multiplier: float = 1.75,
+    escape_loss_coef: float = 0.5,
+    combat_loss_coef: float = 0.9,
+    navigation_loss_coef: float = 0.4,
+    target_win_rate: float | None = None,
+    target_active_win_rate: float | None = None,
+    target_draw_rate: float | None = None,
+    target_sudden_death_death_rate: float | None = None,
+    max_suicide_rate: float | None = None,
 ):
     """
     Unified training loop for phases C, D, E.
@@ -306,12 +694,46 @@ def train(
         raise ValueError("episodes, max_steps, log_every and snapshot_every must be positive")
     if validation_every < 0 or validation_episodes < num_agents or validation_episodes % num_agents:
         raise ValueError("validation_every must be nonnegative; validation_episodes must divide evenly across corners")
+    if not 0.0 <= sudden_death_probability <= 1.0:
+        raise ValueError("sudden_death_probability must be between 0 and 1")
+    if attack_lookahead < 1:
+        raise ValueError("attack_lookahead must be at least 1")
+    if not 0.0 <= min_pressure_gain <= 1.0:
+        raise ValueError("min_pressure_gain must be between 0 and 1")
+    if trap_sequence_depth < 1:
+        raise ValueError("trap_sequence_depth must be at least 1")
+    if sequence_pressure_gain < 0.0:
+        raise ValueError("sequence_pressure_gain must be non-negative")
+    if temporal_trap_horizon < 1:
+        raise ValueError("temporal trap horizon must be positive")
+    if temporal_trap_max_bombs != 2:
+        raise ValueError("temporal trap max bombs must equal 2")
+    if interception_horizon < 1:
+        raise ValueError("interception horizon must be positive")
+    if late_game_start < 0 or late_game_attack_multiplier <= 0:
+        raise ValueError("late-game configuration must be nonnegative with a positive multiplier")
+    if min(escape_loss_coef, combat_loss_coef, navigation_loss_coef, ring_safety_coef) < 0:
+        raise ValueError("supervision loss coefficients must be nonnegative")
+    target_values = (
+        target_win_rate,
+        target_active_win_rate,
+        target_draw_rate,
+        target_sudden_death_death_rate,
+        max_suicide_rate,
+    )
+    if any(value is not None and not 0.0 <= value <= 100.0 for value in target_values):
+        raise ValueError("validation rates must be between 0 and 100")
     if seed is not None:
         np.random.seed(seed)
         torch.manual_seed(seed)
+    curriculum_rng = np.random.default_rng(seed)
 
     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
-                          max_steps=max_steps, seed=seed)
+                          max_steps=max_steps, seed=seed,
+                          sudden_death=False,
+                          sudden_death_start=sudden_death_start,
+                          sudden_death_interval=sudden_death_interval,
+                          sudden_death_warning_steps=sudden_death_warning_steps)
     net = ActorCriticNet(board_size=board_size,
                          num_actions=NUM_ACTIONS).to(device)
 
@@ -375,8 +797,14 @@ def train(
     best_score = (-float("inf"),)
     best_state_dict = None   # will hold state_dict of the best model seen
     last_validation = None
-    suicide_limit = None
+    suicide_limit = max_suicide_rate
     validation_enabled = validation_every > 0 and episodes >= validation_every
+    target_mode = any(value is not None for value in (
+        target_win_rate,
+        target_active_win_rate,
+        target_draw_rate,
+        target_sudden_death_death_rate,
+    ))
 
     def validate_candidate(episode):
         nonlocal best_wr, best_active_wr, best_episode, best_score, best_state_dict, last_validation, suicide_limit
@@ -391,18 +819,41 @@ def train(
         try:
             result = evaluate_seeded(lambda e, obs, aid: policy.select_action(obs[aid], e, aid),
                                      board_size, num_agents, validation_episodes, validation_seed,
-                                     max_steps, stop_event, progress)
+                                     max_steps, stop_event, progress,
+                                     sudden_death=sudden_death_probability > 0.0,
+                                     sudden_death_start=sudden_death_start,
+                                     sudden_death_interval=sudden_death_interval,
+                                     sudden_death_warning_steps=sudden_death_warning_steps)
         finally:
             net.train(training_mode)
         if result is None or (stop_event is not None and stop_event.is_set()):
             return
         last_validation = {k: v for k, v in result.items() if k != "games"}
         last_validation["device"] = "cpu"
-        score = (result["active_win_rate"], -result["suicide_rate"], -result["draw_rate"],
-                 result["avg_kills"], result["win_rate"])
-        if suicide_limit is None:
-            suicide_limit = result["suicide_rate"]
-        safe_candidate = result["suicide_rate"] <= suicide_limit
+        if target_mode:
+            targets = (
+                ("win_rate", target_win_rate, 1.0),
+                ("active_win_rate", target_active_win_rate, 1.0),
+                ("draw_rate", target_draw_rate, -1.0),
+                ("sudden_death_death_rate", target_sudden_death_death_rate, -1.0),
+            )
+            margins = []
+            achieved = 0
+            for metric, target, direction in targets:
+                if target is None:
+                    continue
+                margin = direction * (result[metric] - target) / max(abs(target), 1.0)
+                margins.append(margin)
+                achieved += int(margin >= 0.0)
+            score = (achieved, min(margins), result["active_win_rate"],
+                     -result["draw_rate"], -result["sudden_death_death_rate"],
+                     result["win_rate"])
+        else:
+            score = (result["active_win_rate"], -result["suicide_rate"],
+                     -result["draw_rate"], result["avg_kills"], result["win_rate"])
+            if suicide_limit is None:
+                suicide_limit = result["suicide_rate"]
+        safe_candidate = suicide_limit is None or result["suicide_rate"] <= suicide_limit
         selected = safe_candidate and score > best_score
         last_validation["suicide_limit"] = suicide_limit
         os.makedirs(checkpoint_dir, exist_ok=True)
@@ -420,7 +871,7 @@ def train(
             handle.write(json.dumps({"episode": episode, "selected": selected, **last_validation}) + "\n")
         print(f"[Validation] ep {episode} | ActiveWR {result['active_win_rate']:.1f}% | "
               f"Suicide {result['suicide_rate']:.1f}% | Draw {result['draw_rate']:.1f}% | best ep {best_episode}", flush=True)
-        if not safe_candidate:
+        if not safe_candidate and suicide_limit is not None:
             print(f"[Validation] kept best: suicide exceeds warm-start limit {suicide_limit:.1f}%", flush=True)
         if on_validation is not None:
             on_validation({"episode": episode, "result": last_validation, "best_episode": best_episode})
@@ -437,10 +888,18 @@ def train(
     active_win_history = []
     suicide_history = []
     combat_history = []
+    temporal_history = deque(maxlen=log_every)
 
     for ep in range(1, episodes + 1):
         if stop_event is not None and stop_event.is_set():
             break
+        if sudden_death_probability == 0.0:
+            env.sudden_death = False
+        elif sudden_death_probability == 1.0:
+            env.sudden_death = True
+        else:
+            env.sudden_death = bool(curriculum_rng.random() < sudden_death_probability)
+        sudden_death_enabled = env.sudden_death
         obs_list = env.reset()
         alive_mask = [True] * num_agents
 
@@ -474,6 +933,7 @@ def train(
         aux_losses_buf = []
         combat_losses_buf = []
         attack_losses_buf = []
+        ring_losses_buf = []
         bombs_this_ep = 0
         walls_this_ep = 0
         suicide_this_ep = False
@@ -481,6 +941,35 @@ def train(
         attack_opportunities = attack_bombs = attack_labels = missing_attack_labels = 0
         combat_labels = combat_bombs = 0
         followup_labels = followup_bombs = 0
+        temporal_diagnostics = {
+            "temporal_trap_labels": 0,
+            "temporal_trap_plans": 0,
+            "temporal_trap_bombs": 0,
+            "temporal_trap_pair_completions": 0,
+            "temporal_pair_plans_started": 0,
+            "temporal_policy_action_matches": 0,
+            "temporal_plan_aborts_mismatch": 0,
+            "temporal_plan_aborts_mask": 0,
+            "temporal_plan_aborts_danger": 0,
+            "temporal_plan_aborts_ring": 0,
+            "temporal_plan_aborts_stale_position": 0,
+            "temporal_plan_aborts_placement": 0,
+            "temporal_plan_aborts_inactive": 0,
+            "temporal_plan_aborts_unsafe": 0,
+            "temporal_trap_rejected_unsafe": 0,
+            "temporal_trap_rejected_duplicate": 0,
+            "interception_labels": 0,
+            "predicted_refuge_reduction": 0.0,
+            "predicted_trap_completion_ticks": 0.0,
+        }
+        temporal_follower = None
+        temporal_config = TemporalTrapConfig(
+            horizon=temporal_trap_horizon,
+            max_bombs=temporal_trap_max_bombs,
+            min_pressure_gain=sequence_pressure_gain,
+        )
+        sudden_death_deaths_this_ep = 0
+        learner_sudden_death = False
 
         for t in range(max_steps):
             if stop_event is not None and stop_event.is_set():
@@ -503,7 +992,24 @@ def train(
                 # Auxiliary escape supervision when in danger
                 r_l, c_l = env.agents[learning_aid].row, env.agents[learning_aid].col
                 d_map = _build_danger_map(env)
-                if d_map[r_l, c_l] > 0:
+                temporal_diagnostics.pop("source", None)
+                temporal_label, temporal_follower = _select_temporal_label(
+                    env, learning_aid, d_map, mask, temporal_follower,
+                    temporal_config, temporal_diagnostics,
+                )
+                urgent_escape = (d_map[r_l, c_l] == 1
+                                 or (r_l, c_l) in env.flames)
+                ring_action = (None if urgent_escape else
+                               _ring_safety_action(env, learning_aid, d_map, mask))
+                if urgent_escape:
+                    esc_act = _bfs_safe_cell(env, r_l, c_l, d_map, action_mask=mask)
+                    if esc_act is not None and mask[esc_act]:
+                        aux_losses_buf.append(F.cross_entropy(
+                            m_logits, torch.tensor([esc_act], device=device)))
+                elif ring_action is not None:
+                    ring_losses_buf.append(F.cross_entropy(
+                        m_logits, torch.tensor([ring_action], device=device)))
+                elif d_map[r_l, c_l] > 0 and temporal_label is None:
                     if mask[ACTION_BOMB]:
                         combat_losses_buf.append(F.cross_entropy(
                             m_logits, torch.tensor([ACTION_BOMB], device=device)))
@@ -518,7 +1024,19 @@ def train(
                                 F.cross_entropy(m_logits, torch.tensor([esc_act], device=device))
                             )
                 else:
-                    attack_act = get_attack_action(env, learning_aid, d_map, mask)
+                    attack_act = temporal_label
+                    if attack_act is None:
+                        attack_act = get_attack_action(
+                            env, learning_aid, d_map, mask,
+                            attack_lookahead=attack_lookahead,
+                            min_pressure_gain=min_pressure_gain,
+                            trap_sequence_depth=trap_sequence_depth,
+                            sequence_pressure_gain=sequence_pressure_gain,
+                            temporal_trap_horizon=temporal_trap_horizon,
+                            temporal_trap_max_bombs=temporal_trap_max_bombs,
+                            interception_horizon=interception_horizon,
+                            diagnostics=temporal_diagnostics,
+                            use_temporal_planner=False)
                     opportunity = mask[ACTION_BOMB] and any(
                         a.alive and a.agent_id != learning_aid and (a.row, a.col) in
                         env._blast_cells(r_l, c_l, env.agents[learning_aid].blast_range)
@@ -528,9 +1046,22 @@ def train(
                     attack_labels += int(attack_act is not None)
                     missing_attack_labels += int(attack_act is None)
                     if attack_act is not None:
-                        target_loss = F.cross_entropy(m_logits, torch.tensor([attack_act], device=device))
-                        combat = (attack_act == ACTION_BOMB and
-                                  _bomb_escape_pressure(env, learning_aid, r_l, c_l) > 0)
+                        target_loss = F.cross_entropy(
+                            m_logits, torch.tensor([attack_act], device=device))
+                        sequence_action = _sequence_attack_action(
+                            env, learning_aid, d_map, mask, attack_lookahead,
+                            trap_sequence_depth, sequence_pressure_gain)
+                        pressure_action = _pressure_attack_action(
+                            env, learning_aid, d_map, mask,
+                            attack_lookahead, min_pressure_gain)
+                        source = temporal_diagnostics.get("source")
+                        combat = source == "temporal"
+                        if source != "interception":
+                            combat |= attack_act in (sequence_action, pressure_action) and any(
+                                action is not None
+                                for action in (sequence_action, pressure_action))
+                        if t >= late_game_start:
+                            target_loss = target_loss * late_game_attack_multiplier
                         combat_labels += int(combat)
                         combat_bombs += int(combat and actions[learning_aid] == ACTION_BOMB)
                         (combat_losses_buf if combat else attack_losses_buf).append(target_loss)
@@ -555,6 +1086,9 @@ def train(
 
             # ── Step environment ──
             obs_list, rewards, dones, info = env.step(actions)
+            temporal_follower = _observe_temporal_transition(
+                env, learning_aid, actions[learning_aid], info, temporal_follower,
+            )
 
             # ── Reward shaping (anti-bomb-shyness & anti-kamikaze) ──
             shaped_reward = _combat_reward(rewards[learning_aid], learning_aid, info,
@@ -562,6 +1096,9 @@ def train(
             bombs_this_ep += learning_aid in info["bombs_placed"]
             suicide_this_ep |= learning_aid in info.get("self_blast_deaths", []) or (learning_aid, learning_aid) in info["kills"]
             items_this_ep += len(info["items_collected"].get(learning_aid, []))
+            sudden_death_deaths = info.get("sudden_death_deaths", [])
+            sudden_death_deaths_this_ep += len(sudden_death_deaths)
+            learner_sudden_death |= learning_aid in sudden_death_deaths
 
             # Wall destruction bonus
             wd = info.get("walls_destroyed", {})
@@ -590,6 +1127,8 @@ def train(
         # ── Compute loss (Monte-Carlo returns + advantage) ──
         escape_loss, combat_loss, navigation_loss = _supervision_losses(
             aux_losses_buf, combat_losses_buf, attack_losses_buf)
+        ring_safety_loss = (torch.stack(ring_losses_buf).mean()
+                            if ring_losses_buf else 0.0)
         if len(rewards_buf) > 0:
             values_t = torch.stack(values_buf)
             log_probs_t = torch.stack(log_probs_buf)
@@ -611,7 +1150,10 @@ def train(
             # Linearly anneal entropy coefficient: full at start, 20% at end
             ent_coef_now = entropy_coef * max(0.2, 1.0 - 0.8 * ep / episodes)
             loss = policy_loss + value_coef * value_loss - ent_coef_now * entropy_bonus
-            loss = loss + 0.5 * escape_loss + 0.5 * combat_loss + 0.2 * navigation_loss
+            loss = (loss + escape_loss_coef * escape_loss
+                    + combat_loss_coef * combat_loss
+                    + navigation_loss_coef * navigation_loss
+                    + ring_safety_coef * ring_safety_loss)
 
             optimizer.zero_grad()
             loss.backward()
@@ -632,10 +1174,15 @@ def train(
         walls_history.append(walls_this_ep)
         kills_this_ep = env.agents[learning_aid].kills
         active_win = int(won and kills_this_ep > 0)
+        sudden_death_win = int(won and not active_win and sudden_death_deaths_this_ep > 0)
+        passive_win = int(won and not active_win and not sudden_death_win)
+        draw = int(sum(alive_final) != 1)
         kills_history.append(kills_this_ep)
         active_win_history.append(active_win)
         suicide_history.append(int(suicide_this_ep))
         combat_history.append((combat_bombs, combat_labels))
+        temporal_history.append({key: value for key, value in temporal_diagnostics.items()
+                                 if key != "source"})
 
         if validation_enabled and (ep % validation_every == 0 or ep == episodes):
             validate_candidate(ep)
@@ -653,20 +1200,31 @@ def train(
         scheduler.step()
 
         if on_episode is not None:
+            temporal_metrics = _temporal_metrics(temporal_diagnostics)
             on_episode({"episode": ep, "reward": ep_reward, "win": won,
                         "bombs": bombs_this_ep, "walls": walls_this_ep,
-                        "kills": kills_this_ep, "active_win": active_win,
-                        "suicide": int(suicide_this_ep),
-                        "items": items_this_ep, "learner_steps": len(rewards_buf),
-                        "learning_aid": learning_aid, "draw": int(sum(alive_final) != 1),
+                         "kills": kills_this_ep, "active_win": active_win,
+                         "suicide": int(suicide_this_ep),
+                         "items": items_this_ep, "learner_steps": len(rewards_buf),
+                         "learning_aid": learning_aid, "draw": draw,
+                         "sudden_death_enabled": sudden_death_enabled,
+                         "sudden_death_death": int(learner_sudden_death),
+                         "sudden_death_win": sudden_death_win,
+                         "passive_win": passive_win,
+                         "sudden_death_deaths": sudden_death_deaths_this_ep,
+                         "sudden_death_wins": sudden_death_win,
+                         "active_wins": active_win, "passive_wins": passive_win,
+                         "draws": draw,
                         "attack_opportunities": attack_opportunities, "attack_bombs": attack_bombs,
                         "attack_labels": attack_labels, "missing_attack_labels": missing_attack_labels,
                         "combat_labels": combat_labels, "combat_bombs": combat_bombs,
                         "followup_labels": followup_labels, "followup_bombs": followup_bombs,
+                        **temporal_metrics,
                         "policy_loss": float(policy_loss.detach()), "value_loss": float(value_loss.detach()),
                         "escape_loss": float(escape_loss.detach()) if aux_losses_buf else 0.0,
                         "combat_loss": float(combat_loss.detach()) if combat_losses_buf else 0.0,
                         "navigation_loss": float(navigation_loss.detach()) if attack_losses_buf else 0.0,
+                        "ring_safety_loss": float(ring_safety_loss.detach()) if ring_losses_buf else 0.0,
                         "steps": info["step"], "loss": loss.item(),
                         "lr": scheduler.get_last_lr()[0], "best_wr": best_wr,
                         "best_active_wr": best_active_wr, "best_episode": best_episode,
@@ -695,6 +1253,23 @@ def train(
                   f"loss: {loss.item():.4f} | "
                   f"lr: {cur_lr:.1e} | "
                   f"pool: {len(snapshot_pool)}{best_tag}")
+            temporal_totals = {
+                key: sum(episode[key] for episode in temporal_history)
+                for key in temporal_history[0]
+            }
+            temporal = _temporal_metrics(temporal_totals)
+            print(f"[Temporal] ep {ep} | plans: {temporal['temporal_plans_started']} "
+                  f"(pairs: {temporal['temporal_pair_plans_started']}) | "
+                  f"steps: {temporal['temporal_steps_supervised']} | "
+                  f"matches: {temporal['temporal_policy_action_matches']} "
+                  f"({temporal['temporal_policy_agreement_rate']:.1%}) | "
+                  f"bombs: {temporal['temporal_bomb_actions_executed']} | "
+                  f"pair completions: {temporal['temporal_pair_completions']} | "
+                  f"aborts: {temporal['temporal_plan_aborts']} "
+                  f"(safety: {temporal['temporal_plan_aborts_safety']}, "
+                  f"stale: {temporal['temporal_plan_aborts_stale']}, "
+                  f"masked: {temporal['temporal_plan_aborts_masked']}, "
+                  f"mismatch: {temporal['temporal_plan_aborts_mismatch']})")
 
     # ── Save final model ──
     os.makedirs(checkpoint_dir, exist_ok=True)
@@ -1046,13 +1621,32 @@ if __name__ == "__main__":
                         choices=["C", "D", "E"],
                         help="Training phase: C (1v1 vs rule-bot), "
                              "D (self-play pool), E (multi-agent)")
-    parser.add_argument("--episodes", type=int, default=3000)
+    parser.add_argument("--episodes", type=int, default=750)
     parser.add_argument("--board_size", type=int, default=9)
     parser.add_argument("--num_agents", type=int, default=2)
     parser.add_argument("--max_steps", type=int, default=500)
-    parser.add_argument("--lr", type=float, default=3e-4)
+    parser.add_argument("--lr", type=float, default=0.000025)
+    parser.add_argument("--entropy_coef", type=float, default=0.0075)
     parser.add_argument("--wall_destroy_bonus", type=float, default=0.15,
                         help="Reward bonus per wall destroyed (anti-bomb-shyness)")
+    parser.add_argument("--attack_lookahead", type=int, default=2)
+    parser.add_argument("--min_pressure_gain", type=float, default=0.15)
+    parser.add_argument("--trap_sequence_depth", type=int, default=2)
+    parser.add_argument("--sequence_pressure_gain", type=float, default=0.35)
+    parser.add_argument("--temporal_trap_horizon", type=int, default=8)
+    parser.add_argument("--temporal_trap_max_bombs", type=int, default=2)
+    parser.add_argument("--interception_horizon", type=int, default=4)
+    parser.add_argument("--ring_safety_coef", type=float, default=0.6)
+    parser.add_argument("--late_game_start", type=int, default=350)
+    parser.add_argument("--late_game_attack_multiplier", type=float, default=1.75)
+    parser.add_argument("--escape_loss_coef", type=float, default=0.5)
+    parser.add_argument("--combat_loss_coef", type=float, default=0.9)
+    parser.add_argument("--navigation_loss_coef", type=float, default=0.4)
+    parser.add_argument("--target_win_rate", type=float, default=None)
+    parser.add_argument("--target_active_win_rate", type=float, default=None)
+    parser.add_argument("--target_draw_rate", type=float, default=None)
+    parser.add_argument("--target_sudden_death_death_rate", type=float, default=None)
+    parser.add_argument("--max_suicide_rate", type=float, default=None)
     parser.add_argument("--snapshot_every", type=int, default=200,
                         help="Save snapshot every N episodes (Phase D/E)")
     parser.add_argument("--checkpoint_dir", type=str, default="checkpoints")
@@ -1063,6 +1657,10 @@ if __name__ == "__main__":
     parser.add_argument("--validation_every", type=int, default=250)
     parser.add_argument("--validation_episodes", type=int, default=48)
     parser.add_argument("--validation_seed", type=int, default=6000)
+    parser.add_argument("--sudden_death_probability", type=float, default=0.0)
+    parser.add_argument("--sudden_death_start", type=int, default=350)
+    parser.add_argument("--sudden_death_interval", type=int, default=20)
+    parser.add_argument("--sudden_death_warning_steps", type=int, default=40)
     args = parser.parse_args()
 
     os.makedirs(args.checkpoint_dir, exist_ok=True)
@@ -1080,6 +1678,7 @@ if __name__ == "__main__":
             num_agents=args.num_agents,
             max_steps=args.max_steps,
             lr=args.lr,
+            entropy_coef=args.entropy_coef,
             wall_destroy_bonus=args.wall_destroy_bonus,
             snapshot_every=args.snapshot_every,
             checkpoint_dir=args.checkpoint_dir,
@@ -1089,5 +1688,27 @@ if __name__ == "__main__":
             validation_every=args.validation_every,
             validation_episodes=args.validation_episodes,
             validation_seed=args.validation_seed,
+            sudden_death_probability=args.sudden_death_probability,
+            sudden_death_start=args.sudden_death_start,
+            sudden_death_interval=args.sudden_death_interval,
+            sudden_death_warning_steps=args.sudden_death_warning_steps,
+            attack_lookahead=args.attack_lookahead,
+            min_pressure_gain=args.min_pressure_gain,
+            trap_sequence_depth=args.trap_sequence_depth,
+            sequence_pressure_gain=args.sequence_pressure_gain,
+            temporal_trap_horizon=args.temporal_trap_horizon,
+            temporal_trap_max_bombs=args.temporal_trap_max_bombs,
+            interception_horizon=args.interception_horizon,
+            ring_safety_coef=args.ring_safety_coef,
+            late_game_start=args.late_game_start,
+            late_game_attack_multiplier=args.late_game_attack_multiplier,
+            escape_loss_coef=args.escape_loss_coef,
+            combat_loss_coef=args.combat_loss_coef,
+            navigation_loss_coef=args.navigation_loss_coef,
+            target_win_rate=args.target_win_rate,
+            target_active_win_rate=args.target_active_win_rate,
+            target_draw_rate=args.target_draw_rate,
+            target_sudden_death_death_rate=args.target_sudden_death_death_rate,
+            max_suicide_rate=args.max_suicide_rate,
             on_episode=write_metrics,
         )
