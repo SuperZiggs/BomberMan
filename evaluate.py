@@ -28,7 +28,6 @@ from __future__ import annotations
 import argparse
 import os
 import json
-from copy import deepcopy
 import numpy as np
 
 from bomberman_env import BombermanFFAEnv, NUM_ACTIONS, ACTION_BOMB
@@ -52,104 +51,6 @@ class RandomAgent:
 
 
 # ────────────────────── evaluation helpers ────────────────────────────────
-
-EVALUATION_SCHEMA_VERSION = 1
-
-
-def _checkpoint_identity(path: str) -> dict:
-    resolved = os.path.normcase(os.path.abspath(os.path.realpath(path)))
-    stat = os.stat(resolved)
-    return {
-        "path": resolved,
-        "size": stat.st_size,
-        "mtime_ns": stat.st_mtime_ns,
-    }
-
-
-def _atomic_write_json(path: str, payload: dict) -> None:
-    serialized = json.dumps(payload, indent=2)
-    target = os.path.abspath(path)
-    temporary = f"{target}.tmp"
-    parent = os.path.dirname(target)
-    if parent:
-        os.makedirs(parent, exist_ok=True)
-    try:
-        with open(temporary, "w", encoding="utf-8") as handle:
-            handle.write(serialized)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(temporary, target)
-    except BaseException:
-        if os.path.exists(temporary):
-            os.remove(temporary)
-        raise
-
-
-def _validate_ordered_games(games: list[dict], config: dict) -> None:
-    requested = config["num_episodes"]
-    if len(games) > requested:
-        raise ValueError("completed game count exceeds requested count")
-
-    required_fields = {
-        "seed", "aid", "win", "active_win", "sudden_death_win",
-        "passive_win", "suicide", "sudden_death_death", "draw",
-        "kills", "bombs", "items", "steps",
-    }
-    seen = set()
-    for index, game in enumerate(games):
-        if not isinstance(game, dict):
-            raise ValueError(f"game record at index {index} must be an object")
-        missing = required_fields.difference(game)
-        if missing:
-            raise ValueError(f"game record at index {index} is missing fields: {sorted(missing)}")
-        identity = (game.get("seed"), game.get("aid"))
-        if identity in seen:
-            raise ValueError("game records must be unique; duplicate record found")
-        seen.add(identity)
-        expected = (
-            config["seed"] + index // config["num_agents"],
-            index % config["num_agents"],
-        )
-        if identity != expected:
-            raise ValueError(
-                f"game records are out of order at index {index}: "
-                f"expected seed/aid {expected}, got {identity}"
-            )
-
-
-def _load_partial_games(path: str, expected: dict) -> list[dict]:
-    with open(path, encoding="utf-8") as handle:
-        payload = json.load(handle)
-
-    if payload.get("schema_version") != expected["schema_version"]:
-        raise ValueError("partial schema version mismatch")
-    if payload.get("checkpoint") != expected["checkpoint"]:
-        raise ValueError("partial checkpoint identity mismatch")
-    if payload.get("config") != expected["config"]:
-        raise ValueError("partial evaluation config mismatch")
-    if payload.get("requested_count") != expected["requested_count"]:
-        raise ValueError("partial requested count mismatch")
-
-    games = payload.get("games")
-    if not isinstance(games, list):
-        raise ValueError("partial games must be a list")
-    if payload.get("completed_count") != len(games):
-        raise ValueError("partial completed count mismatch")
-    _validate_ordered_games(games, expected["config"])
-    return deepcopy(games)
-
-
-def _partial_path_for(output_path: str) -> str:
-    root, extension = os.path.splitext(output_path)
-    return f"{root}.partial{extension or '.json'}"
-
-
-def _partial_payload(expected: dict, games: list[dict]) -> dict:
-    return {
-        **expected,
-        "games": deepcopy(games),
-        "completed_count": len(games),
-    }
 
 def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
               verbose: bool = False):
@@ -302,31 +203,18 @@ def make_ac_fn(model_path: str, board_size: int, device="cpu"):
 def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                     seed=7000, max_steps=500, stop_event=None, on_progress=None,
                     sudden_death=False, sudden_death_start=350,
-                    sudden_death_interval=20, sudden_death_warning_steps=40,
-                    initial_games=None, on_checkpoint=None):
+                    sudden_death_interval=20, sudden_death_warning_steps=40):
     """Evaluate a fixed policy at every corner of each seeded board, preserving RNGs."""
     if num_episodes < num_agents or num_episodes % num_agents:
         raise ValueError("num_episodes must be positive and divisible by num_agents")
     if not _torch_available:
         raise RuntimeError("PyTorch is required for reproducible policy evaluation")
-    config = {
-        "board_size": board_size,
-        "num_agents": num_agents,
-        "num_episodes": num_episodes,
-        "seed": seed,
-        "max_steps": max_steps,
-        "sudden_death": sudden_death,
-        "sudden_death_start": sudden_death_start,
-        "sudden_death_interval": sudden_death_interval,
-        "sudden_death_warning_steps": sudden_death_warning_steps,
-    }
-    games = deepcopy(initial_games or [])
-    _validate_ordered_games(games, config)
+    games = []
     numpy_state = np.random.get_state()
     devices = list(range(torch.cuda.device_count())) if torch.cuda.is_initialized() else []
     try:
         with torch.random.fork_rng(devices=devices):
-            for ep in range(len(games), num_episodes):
+            for ep in range(num_episodes):
                 if on_progress:
                     on_progress(ep, num_episodes)
                 if stop_event is not None and stop_event.is_set():
@@ -360,8 +248,6 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                               "draw": stats["draws"], "kills": stats["avg_kills"][aid],
                               "bombs": stats["avg_bombs"][aid], "items": stats["avg_items"][aid],
                               "steps": stats["avg_steps"]})
-                if on_checkpoint:
-                    on_checkpoint(deepcopy(games))
             if on_progress:
                 on_progress(num_episodes, num_episodes)
     finally:
@@ -383,91 +269,6 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
             **summarize(games),
             "by_corner": {str(aid): summarize([g for g in games if g["aid"] == aid])
                           for aid in range(num_agents)}, "games": games}
-
-
-def run_seeded_evaluation_to_file(
-        agent_fn, checkpoint_path: str, output_path: str, board_size=9,
-        num_agents=2, num_episodes=100, seed=7000, max_steps=500,
-        sudden_death=False, sudden_death_start=350, sudden_death_interval=20,
-        sudden_death_warning_steps=40, partial_every=10,
-        resume_partial=False, device=None):
-    if partial_every <= 0:
-        raise ValueError("partial_every must be positive")
-
-    evaluation_config = {
-        "board_size": board_size,
-        "num_agents": num_agents,
-        "num_episodes": num_episodes,
-        "seed": seed,
-        "max_steps": max_steps,
-        "sudden_death": sudden_death,
-        "sudden_death_start": sudden_death_start,
-        "sudden_death_interval": sudden_death_interval,
-        "sudden_death_warning_steps": sudden_death_warning_steps,
-    }
-    artifact_config = dict(evaluation_config)
-    if device is not None:
-        artifact_config["device"] = device
-
-    expected = {
-        "schema_version": EVALUATION_SCHEMA_VERSION,
-        "checkpoint": _checkpoint_identity(checkpoint_path),
-        "config": artifact_config,
-        "requested_count": num_episodes,
-    }
-    partial_path = _partial_path_for(output_path)
-    initial_games = []
-    if os.path.exists(partial_path):
-        if not resume_partial:
-            raise ValueError(
-                f"partial evaluation exists; use resume_partial: {partial_path}"
-            )
-        initial_games = _load_partial_games(partial_path, expected)
-
-    latest_games = deepcopy(initial_games)
-    last_persisted_count = len(initial_games)
-
-    def persist(games):
-        nonlocal latest_games, last_persisted_count
-        latest_games = deepcopy(games)
-        completed = len(latest_games)
-        if completed == num_episodes or completed % partial_every == 0:
-            _atomic_write_json(partial_path, _partial_payload(expected, latest_games))
-            last_persisted_count = completed
-            print(f"Evaluation progress: {completed}/{num_episodes}", flush=True)
-
-    try:
-        result = evaluate_seeded(
-            agent_fn,
-            **evaluation_config,
-            initial_games=initial_games,
-            on_checkpoint=persist,
-        )
-    except BaseException:
-        if latest_games and len(latest_games) != last_persisted_count:
-            _atomic_write_json(partial_path, _partial_payload(expected, latest_games))
-        raise
-
-    if not isinstance(result, dict):
-        raise ValueError("evaluation did not return a complete result")
-    games = result.get("games")
-    if not isinstance(games, list):
-        raise ValueError("evaluation result games must be a list")
-    _validate_ordered_games(games, evaluation_config)
-    if len(games) != num_episodes or result.get("num_episodes") != num_episodes:
-        raise ValueError("evaluation result is incomplete for requested count")
-    for key, value in evaluation_config.items():
-        if key == "num_episodes":
-            continue
-        if result.get(key) != value:
-            raise ValueError(f"evaluation result config mismatch: {key}")
-
-    _atomic_write_json(output_path, result)
-    if os.path.exists(partial_path):
-        os.remove(partial_path)
-    print(f"Saved evaluation to {os.path.abspath(output_path)}", flush=True)
-    return result
-
 
 # ────────────────────── tournament mode ───────────────────────────────────
 
@@ -671,10 +472,6 @@ if __name__ == "__main__":
     parser.add_argument("--sudden_death_interval", type=int, default=20)
     parser.add_argument("--sudden_death_warning_steps", type=int, default=40)
     parser.add_argument("--output", type=str, default="", help="Save seeded evaluation as JSON")
-    parser.add_argument("--resume_partial", action="store_true",
-                        help="Resume a compatible partial seeded evaluation")
-    parser.add_argument("--partial_every", type=int, default=10,
-                        help="Persist and print seeded progress every N games")
     args = parser.parse_args()
 
     if args.mode == "tournament":
@@ -684,37 +481,15 @@ if __name__ == "__main__":
                    args.sudden_death_warning_steps)
     elif args.mode == "seeded":
         policy = make_ac_fn(args.ac_model, args.board_size, args.device)
+        result = evaluate_seeded(policy, args.board_size, args.num_agents, args.num_episodes,
+                                 args.seed, args.max_steps,
+                                 sudden_death=args.sudden_death,
+                                 sudden_death_start=args.sudden_death_start,
+                                 sudden_death_interval=args.sudden_death_interval,
+                                 sudden_death_warning_steps=args.sudden_death_warning_steps)
         if args.output:
-            result = run_seeded_evaluation_to_file(
-                policy,
-                checkpoint_path=args.ac_model,
-                output_path=args.output,
-                board_size=args.board_size,
-                num_agents=args.num_agents,
-                num_episodes=args.num_episodes,
-                seed=args.seed,
-                max_steps=args.max_steps,
-                sudden_death=args.sudden_death,
-                sudden_death_start=args.sudden_death_start,
-                sudden_death_interval=args.sudden_death_interval,
-                sudden_death_warning_steps=args.sudden_death_warning_steps,
-                partial_every=args.partial_every,
-                resume_partial=args.resume_partial,
-                device=args.device,
-            )
-        else:
-            result = evaluate_seeded(
-                policy,
-                args.board_size,
-                args.num_agents,
-                args.num_episodes,
-                args.seed,
-                args.max_steps,
-                sudden_death=args.sudden_death,
-                sudden_death_start=args.sudden_death_start,
-                sudden_death_interval=args.sudden_death_interval,
-                sudden_death_warning_steps=args.sudden_death_warning_steps,
-            )
+            with open(args.output, "w", encoding="utf-8") as handle:
+                json.dump(result, handle, indent=2)
         print(json.dumps({k: v for k, v in result.items() if k != "games"}, indent=2))
     elif args.mode == "random":
         eval_random_baseline(args.board_size, args.num_agents,

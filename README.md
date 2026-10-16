@@ -86,30 +86,6 @@ Kết quả mới được lưu riêng trong `runs/phaseC-sd-attack-750/`. RuleB
 
 Kết quả được lưu trong `runs/phaseC-sd-target-750/`. Checkpoint được xếp hạng theo số mục tiêu đạt, biên mục tiêu tệ nhất, ActiveWR, Draw, SD death và WR; checkpoint có Suicide trên `1.5%` bị loại. Các gate cuối là WR `>=70%`, ActiveWR `>=55%`, Draw `<=15%`, SD death `<=10%`, Suicide `<=1.5%`. Script không ghi đè thư mục đầu ra đã tồn tại.
 
-Đánh giá cuối lưu tiến độ sau mỗi 10 trận vào `evaluation-200.partial.json`, in tiến độ trực tiếp và chỉ tạo `evaluation-200.json` khi đủ 200 game hợp lệ. Nếu cửa sổ bị đóng sau khi train xong, giữ nguyên file partial và chạy lại riêng bước đánh giá:
-
-```powershell
-.\run_train_phaseC_sd_target_750.ps1 -EvaluateOnly
-```
-
-Chế độ này dùng `runs/phaseC-sd-target-750/best_phaseC.pt`, không train lại và chỉ resume khi checkpoint, seed và toàn bộ cấu hình khớp. Không xóa partial tương thích; launcher sẽ xóa nó sau khi final JSON được ghi atomic và xác nhận thành công.
-
-- **Fine-tune temporal trap cuối Phase C:** warm-start từ best checkpoint của lượt target, train thêm đúng 250 episodes với planner temporal hai bom và interception, validation tại episode 0/125/250, sau đó đánh giá best checkpoint trên 200 trận seed mới.
-
-```powershell
-.\run_train_phaseC_sd_temporal_250.ps1
-```
-
-Run mới ghi riêng vào `runs/phaseC-sd-temporal-250/`, dùng learning rate `1e-5`, entropy `0.005`, Sudden Death `0.75` theo lịch `475/25/40` và giữ nguyên năm gate cuối. Script không ghi đè thư mục đã tồn tại và chưa được chạy tự động khi chỉ kiểm tra code.
-
-Nếu training đã hoàn tất nhưng evaluation bị dừng, giữ `evaluation-200.partial.json` rồi chạy:
-
-```powershell
-.\run_train_phaseC_sd_temporal_250.ps1 -EvaluateOnly
-```
-
-Evaluation-only không train lại, kiểm tra đúng `best_phaseC.pt`, checkpoint identity, seed `33000`, cấu hình và thứ tự đủ 200 game trước khi in gate.
-
 - **Train Actor-Critic từ đầu theo curriculum:** chạy lần lượt, đợi mỗi lệnh hoàn tất trước lệnh tiếp theo. Các checkpoint mới lưu riêng trong `runs/from-scratch/`.
 
 ```powershell

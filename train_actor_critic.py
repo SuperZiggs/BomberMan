@@ -46,13 +46,6 @@ from rule_based_bot import (
     _bfs_toward_item,
     _bomb_escape_pressure,
     _can_bomb_and_escape,
-    _survival_map,
-)
-from temporal_trap_planner import (
-    TemporalTrapConfig,
-    TemporalTrapPlan,
-    find_interception_action,
-    find_temporal_trap_plan,
 )
 
 
@@ -205,228 +198,19 @@ def _sequence_attack_action(env: BombermanFFAEnv, agent_id: int, danger, mask,
     return None
 
 
-class TemporalPlanFollower:
-    """Pending trainer labels; policy samples remain in control of the agent."""
-
-    def __init__(self, plan: TemporalTrapPlan, position: tuple[int, int],
-                 diagnostics: dict):
-        self.plan = plan
-        self.next_index = 0
-        self.expected_position = position
-        self.observed_bombs = 0
-        self.abort_reason = None
-        self.diagnostics = diagnostics
-
-    @property
-    def complete(self) -> bool:
-        return self.next_index == len(self.plan.action_sequence)
-
-    def expected_action(self) -> int:
-        return self.plan.action_sequence[self.next_index]
-
-    def advance(self, sampled_action: int) -> bool:
-        if self.abort_reason is not None or self.complete:
-            return False
-        if sampled_action != self.expected_action():
-            self.abort("mismatch")
-            return False
-        if sampled_action in _MOVE_DELTA:
-            dr, dc = _MOVE_DELTA[sampled_action]
-            self.expected_position = (self.expected_position[0] + dr,
-                                      self.expected_position[1] + dc)
-        self.next_index += 1
-        return True
-
-    def abort(self, reason: str) -> None:
-        if self.abort_reason is None and not self.complete:
-            self.abort_reason = reason
-            key = "temporal_plan_aborts_" + reason
-            self.diagnostics[key] = self.diagnostics.get(key, 0) + 1
-
-
-def _select_temporal_label(env, agent_id, danger, mask, follower, config,
-                           diagnostics) -> tuple[int | None, TemporalPlanFollower | None]:
-    """Retain only a legal, safe route at its observed expected position."""
-    agent = env.agents[agent_id]
-    position = (agent.row, agent.col)
-    reason = None
-    if not agent.alive:
-        reason = "inactive"
-    elif position in env.flames or danger[position] == 1:
-        reason = "danger"
-    elif _ring_safety_action(env, agent_id, danger, mask) is not None:
-        reason = "ring"
-    if reason is not None:
-        if follower is not None:
-            follower.abort(reason)
-        return None, None
-
-    if follower is not None:
-        if follower.abort_reason is not None or follower.complete:
-            return None, None
-        if position != follower.expected_position:
-            follower.abort("stale_position")
-            return None, None
-    else:
-        # Preserve the existing non-urgent bomb/escape teacher without a route.
-        if danger[position] > 0:
-            return None, None
-        plan = find_temporal_trap_plan(
-            env, agent_id, danger, mask, config, diagnostics=diagnostics,
-        )
-        if plan is None:
-            return None, None
-        follower = TemporalPlanFollower(plan, position, diagnostics)
-        diagnostics["temporal_trap_plans"] = diagnostics.get("temporal_trap_plans", 0) + 1
-        key = "temporal_pair_plans_started"
-        diagnostics[key] = diagnostics.get(key, 0) + int(len(plan.bomb_positions) == 2)
-
-    action = follower.expected_action()
-    if not 0 <= action < len(mask) or not mask[action]:
-        follower.abort("mask")
-        return None, None
-    dr, dc = _MOVE_DELTA.get(action, (0, 0))
-    destination = (position[0] + dr, position[1] + dc)
-    if destination in env.flames or danger[destination] == 1:
-        follower.abort("danger")
-        return None, None
-    # The shared mask may fall back to immediate survival in a doomed state.
-    # A temporal teacher needs an actual continuation through the live forecast.
-    if action == ACTION_BOMB:
-        safe_step = _can_bomb_and_escape(env, agent_id, *position, danger)
-    else:
-        safe, blocked, _ = _survival_map(env, *position, safety_margin=0)
-        safe_step = bool(safe[0, destination[0], destination[1]])
-        if action in _MOVE_DELTA:
-            safe_step &= not blocked[0, destination[0], destination[1]]
-    if not safe_step:
-        follower.abort("unsafe")
-        return None, None
-    diagnostics["source"] = "temporal"
-    diagnostics["temporal_trap_labels"] = diagnostics.get("temporal_trap_labels", 0) + 1
-    return action, follower
-
-
-def _observe_temporal_transition(env, agent_id, sampled_action, info, follower):
-    """Count placements only after a matching sample and actual transition."""
-    if follower is None:
-        return None
-    expected = follower.expected_action()
-    if sampled_action != expected:
-        follower.abort("mismatch")
-        return None
-    diagnostics = follower.diagnostics
-    key = "temporal_policy_action_matches"
-    diagnostics[key] = diagnostics.get(key, 0) + 1
-    if expected == ACTION_BOMB and agent_id not in info["bombs_placed"]:
-        follower.abort("placement")
-        return None
-    dr, dc = _MOVE_DELTA.get(expected, (0, 0))
-    position = (follower.expected_position[0] + dr, follower.expected_position[1] + dc)
-    agent = env.agents[agent_id]
-    if (agent.row, agent.col) != position:
-        follower.abort("stale_position")
-        return None
-    if not follower.advance(sampled_action):
-        return None
-    if expected == ACTION_BOMB:
-        follower.observed_bombs += 1
-        diagnostics = follower.diagnostics
-        diagnostics["temporal_trap_bombs"] = diagnostics.get("temporal_trap_bombs", 0) + 1
-    if follower.complete:
-        if len(follower.plan.bomb_positions) == 2 and follower.observed_bombs == 2:
-            diagnostics = follower.diagnostics
-            key = "temporal_trap_pair_completions"
-            diagnostics[key] = diagnostics.get(key, 0) + 1
-        return None
-    return follower
-
-
-def _temporal_metrics(diagnostics: dict) -> dict:
-    """Publish episode or summed counters with rates derived from their totals."""
-    metrics = {key: value for key, value in diagnostics.items() if key != "source"}
-    aliases = {
-        "temporal_plans_started": "temporal_trap_plans",
-        "temporal_steps_supervised": "temporal_trap_labels",
-        "temporal_bomb_actions_executed": "temporal_trap_bombs",
-        "temporal_pair_completions": "temporal_trap_pair_completions",
-    }
-    for canonical, alias in aliases.items():
-        metrics[canonical] = diagnostics.get(alias, 0)
-    for key in ("temporal_pair_plans_started", "temporal_policy_action_matches"):
-        metrics[key] = diagnostics.get(key, 0)
-    steps = metrics["temporal_steps_supervised"]
-    metrics["temporal_policy_agreement_rate"] = (
-        metrics["temporal_policy_action_matches"] / steps if steps else 0.0
-    )
-    groups = {
-        "safety": ("danger", "ring", "unsafe"),
-        "stale": ("stale_position", "placement", "inactive"),
-        "masked": ("mask",),
-        "mismatch": ("mismatch",),
-    }
-    total_aborts = 0
-    for group, reasons in groups.items():
-        count = sum(diagnostics.get("temporal_plan_aborts_" + reason, 0)
-                    for reason in reasons)
-        metrics["temporal_plan_aborts_" + group] = count
-        total_aborts += count
-    metrics["temporal_plan_aborts"] = total_aborts
-    plans = metrics["temporal_plans_started"]
-    for key in ("predicted_refuge_reduction", "predicted_trap_completion_ticks"):
-        metrics[key] = diagnostics.get(key, 0.0) / plans if plans else 0.0
-    return metrics
-
-
 def get_attack_action(env: BombermanFFAEnv, agent_id: int, danger, mask,
                       attack_lookahead: int = 2, min_pressure_gain: float = 0.15,
                       trap_sequence_depth: int = 2,
-                      sequence_pressure_gain: float = 0.35,
-                      temporal_trap_horizon: int = 8,
-                      temporal_trap_max_bombs: int = 2,
-                      interception_horizon: int = 4,
-                      diagnostics: dict | None = None,
-                      use_temporal_planner: bool = True):
+                      sequence_pressure_gain: float = 0.35):
     """Prefer bomb positions that restrict timed escape, then upgrades or opening routes."""
     agent = env.agents[agent_id]
     r, c = agent.row, agent.col
-    if (r, c) in env.flames:
-        return None
-    if danger[r, c] == 1:
+    if danger[r, c] > 0:
         escape = _bfs_safe_cell(env, r, c, danger, action_mask=mask)
         return escape if escape is not None and mask[escape] else None
     ring_action = _ring_safety_action(env, agent_id, danger, mask)
     if ring_action is not None:
         return ring_action
-    temporal_plan = find_temporal_trap_plan(
-        env,
-        agent_id,
-        danger,
-        mask,
-        TemporalTrapConfig(
-            horizon=temporal_trap_horizon,
-            max_bombs=temporal_trap_max_bombs,
-            min_pressure_gain=sequence_pressure_gain,
-        ),
-        diagnostics=diagnostics,
-    ) if use_temporal_planner else None
-    if temporal_plan is not None:
-        if diagnostics is not None:
-            diagnostics["source"] = "temporal"
-            diagnostics["temporal_trap_labels"] = diagnostics.get(
-                "temporal_trap_labels", 0
-            ) + 1
-        return temporal_plan.first_action
-    interception = find_interception_action(
-        env, agent_id, danger, mask, horizon=interception_horizon
-    )
-    if interception is not None:
-        if diagnostics is not None:
-            diagnostics["source"] = "interception"
-            diagnostics["interception_labels"] = diagnostics.get(
-                "interception_labels", 0
-            ) + 1
-        return interception
     close = any(a.alive and a.agent_id != agent_id and
                 abs(a.row - r) + abs(a.col - c) <= agent.blast_range + 1
                 for a in env.agents)
@@ -660,9 +444,6 @@ def train(
     min_pressure_gain: float = 0.15,
     trap_sequence_depth: int = 2,
     sequence_pressure_gain: float = 0.35,
-    temporal_trap_horizon: int = 8,
-    temporal_trap_max_bombs: int = 2,
-    interception_horizon: int = 4,
     ring_safety_coef: float = 0.6,
     late_game_start: int = 350,
     late_game_attack_multiplier: float = 1.75,
@@ -702,14 +483,8 @@ def train(
         raise ValueError("min_pressure_gain must be between 0 and 1")
     if trap_sequence_depth < 1:
         raise ValueError("trap_sequence_depth must be at least 1")
-    if sequence_pressure_gain < 0.0:
-        raise ValueError("sequence_pressure_gain must be non-negative")
-    if temporal_trap_horizon < 1:
-        raise ValueError("temporal trap horizon must be positive")
-    if temporal_trap_max_bombs != 2:
-        raise ValueError("temporal trap max bombs must equal 2")
-    if interception_horizon < 1:
-        raise ValueError("interception horizon must be positive")
+    if not 0.0 <= sequence_pressure_gain <= 1.0:
+        raise ValueError("sequence_pressure_gain must be between 0 and 1")
     if late_game_start < 0 or late_game_attack_multiplier <= 0:
         raise ValueError("late-game configuration must be nonnegative with a positive multiplier")
     if min(escape_loss_coef, combat_loss_coef, navigation_loss_coef, ring_safety_coef) < 0:
@@ -888,7 +663,6 @@ def train(
     active_win_history = []
     suicide_history = []
     combat_history = []
-    temporal_history = deque(maxlen=log_every)
 
     for ep in range(1, episodes + 1):
         if stop_event is not None and stop_event.is_set():
@@ -941,33 +715,6 @@ def train(
         attack_opportunities = attack_bombs = attack_labels = missing_attack_labels = 0
         combat_labels = combat_bombs = 0
         followup_labels = followup_bombs = 0
-        temporal_diagnostics = {
-            "temporal_trap_labels": 0,
-            "temporal_trap_plans": 0,
-            "temporal_trap_bombs": 0,
-            "temporal_trap_pair_completions": 0,
-            "temporal_pair_plans_started": 0,
-            "temporal_policy_action_matches": 0,
-            "temporal_plan_aborts_mismatch": 0,
-            "temporal_plan_aborts_mask": 0,
-            "temporal_plan_aborts_danger": 0,
-            "temporal_plan_aborts_ring": 0,
-            "temporal_plan_aborts_stale_position": 0,
-            "temporal_plan_aborts_placement": 0,
-            "temporal_plan_aborts_inactive": 0,
-            "temporal_plan_aborts_unsafe": 0,
-            "temporal_trap_rejected_unsafe": 0,
-            "temporal_trap_rejected_duplicate": 0,
-            "interception_labels": 0,
-            "predicted_refuge_reduction": 0.0,
-            "predicted_trap_completion_ticks": 0.0,
-        }
-        temporal_follower = None
-        temporal_config = TemporalTrapConfig(
-            horizon=temporal_trap_horizon,
-            max_bombs=temporal_trap_max_bombs,
-            min_pressure_gain=sequence_pressure_gain,
-        )
         sudden_death_deaths_this_ep = 0
         learner_sudden_death = False
 
@@ -992,24 +739,7 @@ def train(
                 # Auxiliary escape supervision when in danger
                 r_l, c_l = env.agents[learning_aid].row, env.agents[learning_aid].col
                 d_map = _build_danger_map(env)
-                temporal_diagnostics.pop("source", None)
-                temporal_label, temporal_follower = _select_temporal_label(
-                    env, learning_aid, d_map, mask, temporal_follower,
-                    temporal_config, temporal_diagnostics,
-                )
-                urgent_escape = (d_map[r_l, c_l] == 1
-                                 or (r_l, c_l) in env.flames)
-                ring_action = (None if urgent_escape else
-                               _ring_safety_action(env, learning_aid, d_map, mask))
-                if urgent_escape:
-                    esc_act = _bfs_safe_cell(env, r_l, c_l, d_map, action_mask=mask)
-                    if esc_act is not None and mask[esc_act]:
-                        aux_losses_buf.append(F.cross_entropy(
-                            m_logits, torch.tensor([esc_act], device=device)))
-                elif ring_action is not None:
-                    ring_losses_buf.append(F.cross_entropy(
-                        m_logits, torch.tensor([ring_action], device=device)))
-                elif d_map[r_l, c_l] > 0 and temporal_label is None:
+                if d_map[r_l, c_l] > 0:
                     if mask[ACTION_BOMB]:
                         combat_losses_buf.append(F.cross_entropy(
                             m_logits, torch.tensor([ACTION_BOMB], device=device)))
@@ -1024,47 +754,41 @@ def train(
                                 F.cross_entropy(m_logits, torch.tensor([esc_act], device=device))
                             )
                 else:
-                    attack_act = temporal_label
-                    if attack_act is None:
+                    ring_action = _ring_safety_action(env, learning_aid, d_map, mask)
+                    if ring_action is not None:
+                        ring_losses_buf.append(F.cross_entropy(
+                            m_logits, torch.tensor([ring_action], device=device)))
+                    else:
                         attack_act = get_attack_action(
                             env, learning_aid, d_map, mask,
                             attack_lookahead=attack_lookahead,
                             min_pressure_gain=min_pressure_gain,
                             trap_sequence_depth=trap_sequence_depth,
-                            sequence_pressure_gain=sequence_pressure_gain,
-                            temporal_trap_horizon=temporal_trap_horizon,
-                            temporal_trap_max_bombs=temporal_trap_max_bombs,
-                            interception_horizon=interception_horizon,
-                            diagnostics=temporal_diagnostics,
-                            use_temporal_planner=False)
-                    opportunity = mask[ACTION_BOMB] and any(
-                        a.alive and a.agent_id != learning_aid and (a.row, a.col) in
-                        env._blast_cells(r_l, c_l, env.agents[learning_aid].blast_range)
-                        for a in env.agents)
-                    attack_opportunities += int(opportunity)
-                    attack_bombs += int(opportunity and actions[learning_aid] == ACTION_BOMB)
-                    attack_labels += int(attack_act is not None)
-                    missing_attack_labels += int(attack_act is None)
-                    if attack_act is not None:
-                        target_loss = F.cross_entropy(
-                            m_logits, torch.tensor([attack_act], device=device))
-                        sequence_action = _sequence_attack_action(
-                            env, learning_aid, d_map, mask, attack_lookahead,
-                            trap_sequence_depth, sequence_pressure_gain)
-                        pressure_action = _pressure_attack_action(
-                            env, learning_aid, d_map, mask,
-                            attack_lookahead, min_pressure_gain)
-                        source = temporal_diagnostics.get("source")
-                        combat = source == "temporal"
-                        if source != "interception":
-                            combat |= attack_act in (sequence_action, pressure_action) and any(
-                                action is not None
-                                for action in (sequence_action, pressure_action))
-                        if t >= late_game_start:
-                            target_loss = target_loss * late_game_attack_multiplier
-                        combat_labels += int(combat)
-                        combat_bombs += int(combat and actions[learning_aid] == ACTION_BOMB)
-                        (combat_losses_buf if combat else attack_losses_buf).append(target_loss)
+                            sequence_pressure_gain=sequence_pressure_gain)
+                        opportunity = mask[ACTION_BOMB] and any(
+                            a.alive and a.agent_id != learning_aid and (a.row, a.col) in
+                            env._blast_cells(r_l, c_l, env.agents[learning_aid].blast_range)
+                            for a in env.agents)
+                        attack_opportunities += int(opportunity)
+                        attack_bombs += int(opportunity and actions[learning_aid] == ACTION_BOMB)
+                        attack_labels += int(attack_act is not None)
+                        missing_attack_labels += int(attack_act is None)
+                        if attack_act is not None:
+                            target_loss = F.cross_entropy(
+                                m_logits, torch.tensor([attack_act], device=device))
+                            sequence_action = _sequence_attack_action(
+                                env, learning_aid, d_map, mask, attack_lookahead,
+                                trap_sequence_depth, sequence_pressure_gain)
+                            pressure_action = _pressure_attack_action(
+                                env, learning_aid, d_map, mask,
+                                attack_lookahead, min_pressure_gain)
+                            combat = attack_act in (sequence_action, pressure_action) and any(
+                                action is not None for action in (sequence_action, pressure_action))
+                            if t >= late_game_start:
+                                target_loss = target_loss * late_game_attack_multiplier
+                            combat_labels += int(combat)
+                            combat_bombs += int(combat and actions[learning_aid] == ACTION_BOMB)
+                            (combat_losses_buf if combat else attack_losses_buf).append(target_loss)
             else:
                 log_prob = None
                 value = None
@@ -1086,9 +810,6 @@ def train(
 
             # ── Step environment ──
             obs_list, rewards, dones, info = env.step(actions)
-            temporal_follower = _observe_temporal_transition(
-                env, learning_aid, actions[learning_aid], info, temporal_follower,
-            )
 
             # ── Reward shaping (anti-bomb-shyness & anti-kamikaze) ──
             shaped_reward = _combat_reward(rewards[learning_aid], learning_aid, info,
@@ -1181,8 +902,6 @@ def train(
         active_win_history.append(active_win)
         suicide_history.append(int(suicide_this_ep))
         combat_history.append((combat_bombs, combat_labels))
-        temporal_history.append({key: value for key, value in temporal_diagnostics.items()
-                                 if key != "source"})
 
         if validation_enabled and (ep % validation_every == 0 or ep == episodes):
             validate_candidate(ep)
@@ -1200,7 +919,6 @@ def train(
         scheduler.step()
 
         if on_episode is not None:
-            temporal_metrics = _temporal_metrics(temporal_diagnostics)
             on_episode({"episode": ep, "reward": ep_reward, "win": won,
                         "bombs": bombs_this_ep, "walls": walls_this_ep,
                          "kills": kills_this_ep, "active_win": active_win,
@@ -1219,7 +937,6 @@ def train(
                         "attack_labels": attack_labels, "missing_attack_labels": missing_attack_labels,
                         "combat_labels": combat_labels, "combat_bombs": combat_bombs,
                         "followup_labels": followup_labels, "followup_bombs": followup_bombs,
-                        **temporal_metrics,
                         "policy_loss": float(policy_loss.detach()), "value_loss": float(value_loss.detach()),
                         "escape_loss": float(escape_loss.detach()) if aux_losses_buf else 0.0,
                         "combat_loss": float(combat_loss.detach()) if combat_losses_buf else 0.0,
@@ -1253,23 +970,6 @@ def train(
                   f"loss: {loss.item():.4f} | "
                   f"lr: {cur_lr:.1e} | "
                   f"pool: {len(snapshot_pool)}{best_tag}")
-            temporal_totals = {
-                key: sum(episode[key] for episode in temporal_history)
-                for key in temporal_history[0]
-            }
-            temporal = _temporal_metrics(temporal_totals)
-            print(f"[Temporal] ep {ep} | plans: {temporal['temporal_plans_started']} "
-                  f"(pairs: {temporal['temporal_pair_plans_started']}) | "
-                  f"steps: {temporal['temporal_steps_supervised']} | "
-                  f"matches: {temporal['temporal_policy_action_matches']} "
-                  f"({temporal['temporal_policy_agreement_rate']:.1%}) | "
-                  f"bombs: {temporal['temporal_bomb_actions_executed']} | "
-                  f"pair completions: {temporal['temporal_pair_completions']} | "
-                  f"aborts: {temporal['temporal_plan_aborts']} "
-                  f"(safety: {temporal['temporal_plan_aborts_safety']}, "
-                  f"stale: {temporal['temporal_plan_aborts_stale']}, "
-                  f"masked: {temporal['temporal_plan_aborts_masked']}, "
-                  f"mismatch: {temporal['temporal_plan_aborts_mismatch']})")
 
     # ── Save final model ──
     os.makedirs(checkpoint_dir, exist_ok=True)
@@ -1633,9 +1333,6 @@ if __name__ == "__main__":
     parser.add_argument("--min_pressure_gain", type=float, default=0.15)
     parser.add_argument("--trap_sequence_depth", type=int, default=2)
     parser.add_argument("--sequence_pressure_gain", type=float, default=0.35)
-    parser.add_argument("--temporal_trap_horizon", type=int, default=8)
-    parser.add_argument("--temporal_trap_max_bombs", type=int, default=2)
-    parser.add_argument("--interception_horizon", type=int, default=4)
     parser.add_argument("--ring_safety_coef", type=float, default=0.6)
     parser.add_argument("--late_game_start", type=int, default=350)
     parser.add_argument("--late_game_attack_multiplier", type=float, default=1.75)
@@ -1696,9 +1393,6 @@ if __name__ == "__main__":
             min_pressure_gain=args.min_pressure_gain,
             trap_sequence_depth=args.trap_sequence_depth,
             sequence_pressure_gain=args.sequence_pressure_gain,
-            temporal_trap_horizon=args.temporal_trap_horizon,
-            temporal_trap_max_bombs=args.temporal_trap_max_bombs,
-            interception_horizon=args.interception_horizon,
             ring_safety_coef=args.ring_safety_coef,
             late_game_start=args.late_game_start,
             late_game_attack_multiplier=args.late_game_attack_multiplier,

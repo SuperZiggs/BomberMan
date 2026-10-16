@@ -66,7 +66,6 @@ class Bomb:
     owner: int
     timer: int          # steps remaining before explosion
     blast_range: int
-    placement_tick: int = 0  # forecast-only: zero-based future action tick
 
 
 @dataclass
@@ -470,29 +469,17 @@ class BombermanFFAEnv:
         Only visible bombs and optional proposed placements are forecast.
         """
         bombs = [replace(b) for b in self.bombs]
-        pending = []
         if extra_bomb is not None:
             placements = [extra_bomb] if isinstance(extra_bomb, Bomb) else extra_bomb
-            for placement in placements:
-                proposed = replace(placement)
-                if proposed.placement_tick <= 0:
-                    bombs.append(proposed)
-                else:
-                    pending.append(proposed)
+            bombs.extend(replace(b) for b in placements)
         horizon = max([min_horizon, 1, *self.flames.values(),
-                       *(max(1, b.timer) + self.flame_duration - 1 for b in bombs),
-                       *(b.placement_tick + max(1, b.timer) + self.flame_duration - 1
-                         for b in pending)])
+                       *(max(1, b.timer) + self.flame_duration - 1 for b in bombs)])
         burns = np.zeros((horizon, self.board_size, self.board_size), dtype=bool)
         blocked = np.zeros_like(burns)
         grid = self.grid.copy()
         for pos, duration in self.flames.items():
             burns[:duration, pos[0], pos[1]] = True
         for tick in range(horizon):
-            arriving = [b for b in pending if b.placement_tick == tick]
-            bombs.extend(arriving)
-            for b in arriving:
-                pending.remove(b)
             blocked[tick] = grid != EMPTY
             for b in bombs:
                 blocked[tick, b.row, b.col] = True

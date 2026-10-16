@@ -794,10 +794,6 @@ class PhaseCSDTarget750LauncherAcceptance(unittest.TestCase):
             f"Expected {status} for {label}: {matching}",
         )
 
-    def assert_recovery_options(self, arguments):
-        self.assertEqual(arguments.count("--resume_partial"), 1, arguments)
-        self.assert_option(arguments, "--partial_every", 10)
-
     def test_launcher_training_contract_is_exact(self):
         result = self.run_launcher()
         self.assertEqual(result["completed"].returncode, 0, result["output"])
@@ -848,13 +844,6 @@ class PhaseCSDTarget750LauncherAcceptance(unittest.TestCase):
         self.assert_option(arguments, "--checkpoint_dir", result["output_directory"])
         int(self.option_value(arguments, "--validation_seed"))
 
-    def test_launcher_declares_evaluate_only_switch(self):
-        source = self.launcher_source().read_text(encoding="utf-8-sig")
-        self.assertRegex(
-            source,
-            r"(?is)\bparam\s*\(\s*\[switch\]\s*\$EvaluateOnly\s*\)",
-        )
-
     def test_success_path_evaluates_generated_best_exactly_once(self):
         result = self.run_launcher()
         self.assertEqual(result["completed"].returncode, 0, result["output"])
@@ -882,69 +871,10 @@ class PhaseCSDTarget750LauncherAcceptance(unittest.TestCase):
             with self.subTest(option=option):
                 self.assert_option(arguments, option, value)
         self.assertEqual(arguments.count("--sudden_death"), 1)
-        self.assert_recovery_options(arguments)
         validation_seed = int(self.option_value(train_arguments, "--validation_seed"))
         evaluation_seed = int(self.option_value(arguments, "--seed"))
         self.assertNotEqual(validation_seed, evaluation_seed)
         self.assertTrue(result["evaluation_exists"])
-
-    def test_evaluate_only_skips_training_and_uses_existing_best(self):
-        result = self.run_launcher(
-            checkpoint=False,
-            existing_output=True,
-            output_best=True,
-            evaluate_only=True,
-        )
-        self.assertEqual(result["completed"].returncode, 0, result["output"])
-        self.assertEqual([call["kind"] for call in result["calls"]], ["evaluate"])
-        arguments = result["calls"][0]["argv"]
-        self.assert_option(
-            arguments,
-            "--ac_model",
-            result["output_directory"] / "best_phaseC.pt",
-        )
-        self.assert_recovery_options(arguments)
-        self.assertTrue(result["evaluation_exists"])
-
-    def test_evaluate_only_preflight_requires_output_directory_and_best(self):
-        cases = (
-            ({"evaluate_only": True}, r"output|directory|phaseC-sd-target-750"),
-            (
-                {"evaluate_only": True, "existing_output": True},
-                r"best_phaseC\.pt|best checkpoint",
-            ),
-        )
-        for options, pattern in cases:
-            with self.subTest(options=options):
-                result = self.run_launcher(**options)
-                self.assertNotEqual(result["completed"].returncode, 0, result["output"])
-                self.assertEqual(result["calls"], [])
-                self.assertRegex(result["output"], pattern)
-
-    def test_evaluation_stage_and_window_warning_precede_subprocess(self):
-        result = self.run_launcher()
-        self.assertEqual(result["completed"].returncode, 0, result["output"])
-        marker = "FAKE_SUBPROCESS_START:evaluate"
-        marker_index = result["output"].find(marker)
-        self.assertGreaterEqual(marker_index, 0, result["output"])
-        preceding = result["output"][:marker_index]
-        lines = [line.strip().lower() for line in preceding.splitlines() if line.strip()]
-        self.assertTrue(
-            any(
-                ("stage" in line or "giai doan" in line or "giai đoạn" in line)
-                and ("evaluat" in line or "danh gia" in line or "đánh giá" in line)
-                for line in lines
-            ),
-            f"Missing evaluation stage before subprocess:\n{result['output']}",
-        )
-        self.assertTrue(
-            any(
-                ("do not close" in line or "khong dong" in line or "không đóng" in line)
-                and "evaluation-200.json" in line
-                for line in lines
-            ),
-            f"Missing window warning before subprocess:\n{result['output']}",
-        )
 
     def test_fail_fast_and_no_overwrite_contract(self):
         for options in ({"checkpoint": False}, {"existing_output": True}):
@@ -970,96 +900,6 @@ class PhaseCSDTarget750LauncherAcceptance(unittest.TestCase):
             [call["kind"] for call in result["calls"]],
             ["train_actor_critic", "evaluate"],
         )
-
-    def test_final_metadata_mismatches_are_operational_failures(self):
-        mismatches = {
-            "seed": 31001,
-            "board_size": 11,
-            "num_agents": 4,
-            "max_steps": 499,
-            "sudden_death": False,
-            "sudden_death_start": 474,
-            "sudden_death_interval": 24,
-            "sudden_death_warning_steps": 39,
-            "num_episodes": 199,
-        }
-        for field, value in mismatches.items():
-            with self.subTest(field=field):
-                payload = self.valid_evaluation_payload(**{field: value})
-                result = self.run_launcher(evaluation_payload=payload)
-                self.assertNotEqual(result["completed"].returncode, 0, result["output"])
-                self.assertEqual(
-                    [call["kind"] for call in result["calls"]],
-                    ["train_actor_critic", "evaluate"],
-                )
-
-    def test_incomplete_out_of_order_or_missing_final_is_operational_failure(self):
-        incomplete = self.valid_evaluation_payload()
-        incomplete["games"] = incomplete["games"][:-1]
-        out_of_order = self.valid_evaluation_payload()
-        out_of_order["games"][0], out_of_order["games"][1] = (
-            out_of_order["games"][1],
-            out_of_order["games"][0],
-        )
-        cases = (
-            {"evaluation_payload": incomplete},
-            {"evaluation_payload": out_of_order},
-            {"evaluation_artifact": "missing"},
-        )
-        for options in cases:
-            with self.subTest(options=tuple(options)):
-                result = self.run_launcher(**options)
-                self.assertNotEqual(result["completed"].returncode, 0, result["output"])
-
-    def test_missing_metric_gate_fields_are_operational_failures(self):
-        fields = (
-            "win_rate",
-            "active_win_rate",
-            "draw_rate",
-            "sudden_death_death_rate",
-            "suicide_rate",
-        )
-        for field in fields:
-            with self.subTest(field=field):
-                payload = self.valid_evaluation_payload()
-                del payload[field]
-                result = self.run_launcher(evaluation_payload=payload)
-                self.assertNotEqual(result["completed"].returncode, 0, result["output"])
-
-    def test_every_game_requires_the_seeded_outcome_schema(self):
-        seed_and_aid_only = self.valid_evaluation_payload()
-        seed_and_aid_only["games"] = [
-            {"seed": game["seed"], "aid": game["aid"]}
-            for game in seed_and_aid_only["games"]
-        ]
-        cases = [("seed_and_aid_only", seed_and_aid_only)]
-        for field in self.outcome_fields:
-            payload = self.valid_evaluation_payload()
-            del payload["games"][0][field]
-            cases.append((f"missing_{field}", payload))
-
-        invalid_binary = self.valid_evaluation_payload()
-        invalid_binary["games"][0]["win"] = 2
-        cases.append(("invalid_binary_win", invalid_binary))
-
-        for scenario, payload in cases:
-            with self.subTest(scenario=scenario):
-                result = self.run_launcher(evaluation_payload=payload)
-                self.assertNotEqual(result["completed"].returncode, 0, result["output"])
-
-    def test_top_level_gate_metrics_must_match_recomputed_game_outcomes(self):
-        for field in (
-            "win_rate",
-            "active_win_rate",
-            "draw_rate",
-            "sudden_death_death_rate",
-            "suicide_rate",
-        ):
-            with self.subTest(field=field):
-                payload = self.valid_evaluation_payload()
-                payload[field] = 99.0
-                result = self.run_launcher(evaluation_payload=payload)
-                self.assertNotEqual(result["completed"].returncode, 0, result["output"])
 
     def test_gate_boundaries_report_without_process_failure(self):
         passing = self.run_launcher()
