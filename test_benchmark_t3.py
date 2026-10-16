@@ -111,7 +111,7 @@ class ScenarioChecks(unittest.TestCase):
     def test_play_uses_only_policy_mask_and_distinguishes_truncation_from_draw(self):
         c = next(c for c in scenarios(smoke=True) if c['group'] == 'escape')
         def safe(e, obs, aid):
-            self.assertEqual(obs[aid].shape, (12, 9, 9))
+            self.assertEqual(obs[aid].shape, (13, 9, 9))
             return next(a for a, allowed in enumerate(get_action_mask(e, aid)) if allowed)
         with patch('benchmark_t3.collect_candidates', side_effect=AssertionError('Teacher invoked during CNN test')):
             game = play_case(c, safe, 'test', 'static', 123, 10)

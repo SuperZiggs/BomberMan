@@ -1459,3 +1459,20 @@ Kết luận:
 - **Dưới lịch E, WR gần như không đổi (+1.8, CI chứa 0) và hòa còn nhích lên:** F đổi thắng thụ động/thắng do vòng thành thắng chủ động và chết vì vòng ít hơn (10.75–11.5 so 16.75–19.5). Khi tắt SD, F tăng WR (+7.25) và giảm hòa (−7.25); ActiveWR +6.25 (CI chạm 0).
 - So với hướng của mình: về **kỹ năng** (ActiveWR), công thức train của họ (~3000 ep, teacher tấn công lookahead 2/chuỗi bẫy, combat 0.9, ×1.75 giai đoạn cuối) là cải thiện duy nhất đến nay có CI dưới > 0 trên seed mới. Về **mục tiêu SD ban đầu** (WR cao, hòa thấp), SD2 + k=15 của mình mạnh hơn (WR 70.75, hòa 10.25 trên 41000), nhưng nhờ thắng thụ động.
 - Giới hạn: một train seed của họ; 31000 do họ chọn; seed mới duy nhất là 60000. Seed 31000 nay đã có kết quả của B dưới lịch E, không còn "khóa sạch" cho T3.
+
+## MERGE — hợp nhất nhánh `codex/phasec-sd-best-fallback` vào `danh/sd5-friend-merge`, 17/10/2026
+
+**DONE (chỉ kiểm tra tương đương, không phải thí nghiệm mới).** Người dùng chọn hướng (a): lấy F làm điểm xuất phát. Snapshot code trước merge: commit `860753f` (nhánh `danh/sd5-friend-merge`, tách từ `danh/bomberman-rl-results-checkpoints`).
+
+Kiểm tra tương đương trước/sau merge (cùng máy, torch 2.5.1):
+
+| Kiểm tra | Kết quả |
+|---|---|
+| B không SD, validation 21000, 6 trận | giống hệt từng trận (thắng, kill, bom, số bước) |
+| B dưới SD2 + biên k=15 (`evaluate_case both_aware`), 6 trận | giống hệt |
+| SD3 `sd_13ch` (kênh vòng của mình), 6 trận | giống hệt |
+| F dưới lịch E, seed 31000, 4 trận: code merge vs worktree a6650a0 | giống hệt |
+| Train 4 episode từ F (công thức của bạn, SD 75%, GPU): code merge vs a6650a0 | reward, số bước, kill, nhãn teacher, các loss giống hệt; trọng số lệch tối đa 1.9e-9 (nhiễu float GPU) |
+| Toàn bộ test | 347 test OK, 16 bỏ qua (15 test launcher cần `venv` của bạn, 1 preflight R0 ghim hash engine cũ) |
+
+Quan sát thêm từ `runs/phaseC-sd-best-fallback/metrics.jsonl` (lượt 750 ep cuối của bạn): ActiveWR khi train phẳng 44.8 / 46.4 / 45.2% theo từng đoạn 250 ep; validation (seed 30000, 200 trận) 39.5 → 50.5 → 45.5 → 43.0 ở ep 0/250/500/750. Công thức hiện tại gần như bão hòa; ep250 được chọn nhiều phần do nhiễu validation 200 trận (SE ~3.5pp).

@@ -85,7 +85,7 @@ class CurriculumChecks(unittest.TestCase):
         obs = c.reset(env)
         self.assertEqual(c.setup['stage'], 'C4_transfer')
         self.assertEqual((c.setup['layout'], c.setup['opponent'], c.setup['wood_density']), ('random', 'rule', 0.7))
-        self.assertEqual(obs[0].shape, (12, 9, 9))
+        self.assertEqual(obs[0].shape, (13, 9, 9))
 
     def test_scenario_reset_returns_current_observation_not_old_random_board(self):
         c = self.controller()
@@ -181,7 +181,7 @@ class CurriculumChecks(unittest.TestCase):
         def probe(net, stage, *args):
             probes.append((stage, runner.model_digest(net), int(next(iter(optimizers[0].state.values()))['step'])))
             return probe_result(stage)
-        def evaluate(policy, board, agents, count, seed, steps, *args):
+        def evaluate(policy, board, agents, count, seed, steps, *args, **kwargs):
             self.assertEqual((board, agents, count, seed, steps), (9, 2, 2, 21000, 8))
             return {'seed': seed, 'num_episodes': count, 'win_rate': 0, 'active_win_rate': 0,
                     'suicide_rate': 0, 'draw_rate': 100, 'avg_kills': 0, 'games': []}

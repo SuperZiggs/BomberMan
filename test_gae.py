@@ -13,6 +13,7 @@ import torch.nn.functional as F
 import train_actor_critic as trainer
 from test_combat import arena, put_bomb
 from benchmark_t3 import observations
+from legacy_test_support import legacy_train, strip_sd
 
 ROOT = Path(__file__).resolve().parent
 B = ROOT / 'runs/pressure-C-next/final_phaseC.pt'
@@ -223,14 +224,14 @@ class GAETrainingChecks(unittest.TestCase):
         old = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(old)
         outputs = []
-        for fn in (old.train, trainer.train):
+        for fn in (old.train, legacy_train):
             rows, actions = [], []
             with patch('torch.save'), patch('os.makedirs'), patch('builtins.print'):
                 net, rewards, wins = fn(episodes=2, board_size=9, max_steps=20, lr=1e-4, device='cpu',
                     seed=2026101503, resume_from=str(B), validation_every=0, run_report=False,
                     advantage_diagnostics=True, on_episode=rows.append,
                     on_step=lambda env, ep, aid, a, opp: actions.append((ep, aid, list(a))))
-            outputs.append((deepcopy(net.state_dict()), rewards, wins, rows, actions))
+            outputs.append((deepcopy(net.state_dict()), rewards, wins, strip_sd(rows), actions))
         self.assertEqual(outputs[0][1:], outputs[1][1:])
         self.assertTrue(all(torch.equal(v, outputs[1][0][k]) for k, v in outputs[0][0].items()))
 

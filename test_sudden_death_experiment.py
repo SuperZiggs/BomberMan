@@ -98,7 +98,7 @@ class SuddenDeathTests(unittest.TestCase):
         env.reset()
         self.assertEqual(env._sudden_death_ring, 0)
         self.assertEqual(env.grid[1, 3], 0)
-        self.assertEqual(env._get_obs(0).shape, (12, 9, 9))
+        self.assertEqual(env._get_obs(0).shape, (13, 9, 9))
 
     def test_max_ring_stops_shrinking_and_keeps_inner_ring_alive(self):
         env = arena(sudden_death=True, sudden_death_start=1, sudden_death_interval=1,
@@ -140,10 +140,11 @@ class SuddenDeathTests(unittest.TestCase):
         plain = SuddenDeathEnv(board_size=9, num_agents=2, seed=18, sudden_death=True)
         ringed = SuddenDeathEnv(board_size=9, num_agents=2, seed=18, sudden_death=True, ring_channel=True)
         probe = SuddenDeathEnv(board_size=9, num_agents=2, seed=18, ring_channel=True)
-        self.assertEqual(plain.obs_channels, 12)
+        self.assertEqual(plain.obs_channels, 13)
         for a, b, c in zip(plain.reset(), ringed.reset(), probe.reset()):
-            np.testing.assert_array_equal(a, b[:12])
-            np.testing.assert_array_equal(a, c[:12])
+            self.assertFalse(a[12].any())  # engine ring warning stays off inside SuddenDeathEnv
+            np.testing.assert_array_equal(a[:12], b[:12])
+            np.testing.assert_array_equal(a[:12], c[:12])
             self.assertFalse(np.any(c[12]))
         rng = np.random.default_rng(3)
         for _ in range(60):
@@ -151,7 +152,7 @@ class SuddenDeathTests(unittest.TestCase):
             a, b = plain.step(move), ringed.step(move)
             self.assertEqual(a[1:], b[1:])
             for x, y in zip(a[0], b[0]):
-                np.testing.assert_array_equal(x, y[:12])
+                np.testing.assert_array_equal(x[:12], y[:12])
             self.assertEqual(plain.rng.bit_generator.state, ringed.rng.bit_generator.state)
             if a[3]['episode_done']:
                 break

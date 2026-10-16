@@ -15,7 +15,7 @@ from audit_t2 import digest, dump
 from benchmark_t3 import make_env, observations, scenarios
 from bomberman_env import ACTION_BOMB, _MOVE_DELTA
 from rule_based_bot import _bfs_safe_cell, _build_danger_map, _bomb_escape_pressure
-from train_actor_critic import (ActorCriticNet, get_action_mask, get_attack_action,
+from train_actor_critic import (ActorCriticNet, get_action_mask, get_attack_action_v1 as get_attack_action,
                                 obs_to_tensor, smart_load_weights)
 
 ROOT = Path(__file__).resolve().parent

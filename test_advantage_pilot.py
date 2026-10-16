@@ -15,6 +15,7 @@ import run_advantage_pilot as runner
 import run_combat_move_pilot as shared
 import train_actor_critic as trainer
 from test_combat_move_pilot import ready_arm, result
+from legacy_test_support import legacy_train, strip_sd
 
 
 class AdvantageChecks(unittest.TestCase):
@@ -73,8 +74,8 @@ class AdvantageChecks(unittest.TestCase):
         old = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(old)
         observed = []
-        for fn, kwargs in ((old.train, {}), (trainer.train, {}),
-                           (trainer.train, {'advantage_diagnostics': True})):
+        for fn, kwargs in ((old.train, {}), (legacy_train, {}),
+                           (legacy_train, {'advantage_diagnostics': True})):
             rows, actions = [], []
             with patch('torch.save'), patch('os.makedirs'), patch('builtins.print'):
                 net, rewards, wins = fn(episodes=2, board_size=9, num_agents=2, max_steps=12,
@@ -86,7 +87,7 @@ class AdvantageChecks(unittest.TestCase):
             self.assertEqual(observed[0][1:3], current[1:3])
             self.assertEqual(observed[0][4], current[4])
             self.assertTrue(all(torch.equal(v, current[0][k]) for k, v in observed[0][0].items()))
-            self.assertEqual(observed[0][3], [{k: v for k, v in r.items() if k != 'advantage'} for r in current[3]])
+            self.assertEqual(strip_sd(observed[0][3]), strip_sd([{k: v for k, v in r.items() if k != 'advantage'} for r in current[3]]))
 
     def test_one_update_changes_only_policy_loss_before_shared_gradient_cpu_cuda(self):
         for device in ('cpu', 'cuda') if torch.cuda.is_available() else ('cpu',):

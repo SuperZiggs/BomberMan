@@ -15,6 +15,7 @@ from tactical_teacher import get_two_bomb_plan
 from test_combat import arena, put_bomb
 from test_tactical_teacher import combo_arena
 from train_actor_critic import get_action_mask, SnapshotOpponent
+from legacy_test_support import legacy_train, strip_sd
 
 
 class AuditChecks(unittest.TestCase):
@@ -166,7 +167,7 @@ class AuditChecks(unittest.TestCase):
         evaluated = evaluate_seeded(lambda e, o, a: policy.select_action(o[a], e, a),
                                     num_episodes=2, seed=28000, max_steps=50)
         for g in evaluated['games']:
-            self.assertEqual(g, replay_game(self.net, g['seed'], g['aid'], 50, traced=False)[0])
+            self.assertEqual(strip_sd(g), replay_game(self.net, g['seed'], g['aid'], 50, traced=False)[0])
 
     def test_empty_metrics_are_unknown_instead_of_zero_success(self):
         summary = summarize([], [], [], [])

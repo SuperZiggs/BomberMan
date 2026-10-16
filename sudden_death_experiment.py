@@ -1,6 +1,8 @@
 """Opt-in experiment using Loc_update afbf6f9 ring rules on the current engine.
 
-Keep the production engine, 12-channel observation and trained weights unchanged.
+Keep the production engine and trained weights unchanged. The engine's own sudden death
+(friend branch, schedule E) stays off here; this class owns the ring rules. Its opt-in ring
+plane reuses the engine's last channel (ring warning), which is zero otherwise.
 The adapted mask adds timed ring survival to the existing bomb-safety mask.
 """
 from dataclasses import replace
@@ -13,6 +15,14 @@ from bomberman_env import (
 )
 
 
+BASE_SD_KEYS = ('sudden_death', 'sudden_death_start', 'sudden_death_interval', 'sudden_death_warning_steps')
+
+
+def base_kwargs(kwargs):
+    """Drop the engine's sudden-death arguments (callers such as evaluate_seeded always pass them)."""
+    return {k: v for k, v in kwargs.items() if k not in BASE_SD_KEYS}
+
+
 class SuddenDeathEnv(BombermanFFAEnv):
     def __init__(self, *args, sudden_death=False, sudden_death_start=200,
                  sudden_death_interval=20, sudden_death_warning_steps=40,
@@ -20,15 +30,15 @@ class SuddenDeathEnv(BombermanFFAEnv):
         timings = (sudden_death_start, sudden_death_interval, sudden_death_warning_steps)
         if any(type(x) is not int for x in timings) or min(timings[:2]) < 1 or timings[2] < 0:
             raise ValueError('Invalid sudden-death timings')
+        super().__init__(*args, **kwargs)  # engine rules off; the attributes below are ours
         self.sudden_death = sudden_death
         self.sudden_death_start = sudden_death_start
         self.sudden_death_interval = sudden_death_interval
         self.sudden_death_warning_steps = sudden_death_warning_steps
         self._sudden_death_ring = 0
-        # Opt-in extra plane appended after the 12 production channels.
+        # Opt-in ring plane written into the engine's last (ring warning) channel.
         self.ring_channel = bool(ring_channel)
-        self.obs_channels = OBS_CHANNELS + int(self.ring_channel)
-        super().__init__(*args, **kwargs)
+        self.obs_channels = OBS_CHANNELS
         # Last ring that closes; None closes all (on 9x9 that leaves no walkable tile).
         full = self.board_size // 2 - 1
         if sudden_death_max_ring is None:
@@ -82,6 +92,12 @@ class SuddenDeathEnv(BombermanFFAEnv):
         info.update(sudden_death_ring=target, sudden_death_kills=killed)
         return obs, rewards, dones, info
 
+    def _apply_sudden_death(self):
+        return []  # step() closes this class's rings; the engine schedule must not run too
+
+    def _next_sudden_death_closure(self):
+        return None  # keeps RuleBot and the engine teacher blind; awareness comes from sudden_death_mask
+
     def _closure_ticks(self, margin=0):
         if not self.sudden_death:
             return {}
@@ -94,11 +110,11 @@ class SuddenDeathEnv(BombermanFFAEnv):
         obs = super()._get_obs(agent_id, danger)
         if not self.ring_channel:
             return obs
-        plane = np.zeros((1, self.board_size, self.board_size), dtype=np.float32)
+        obs[-1] = 0.0
         for ring, delay in self._closure_ticks().items():
             for r, c in self._ring_cells(ring):
-                plane[0, r, c] = 1.0 / delay
-        return np.concatenate([obs, plane])
+                obs[-1, r, c] = 1.0 / delay
+        return obs
 
     def forecast_closures(self, extra_bomb=None, min_horizon=1, margin=0):
         """Known bombs plus closing walls; closing tiles stay lethal/blocked.

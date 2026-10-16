@@ -18,7 +18,7 @@ from rule_based_bot import (
     _bomb_escape_pressure, _reachable_cells, _bfs_toward_opponent,
 )
 from train_actor_critic import (
-    ActorCriticNet, SnapshotOpponent, smart_load_weights, train, _combat_reward, get_action_mask, get_attack_action,
+    ActorCriticNet, SnapshotOpponent, smart_load_weights, train, _combat_reward, get_action_mask, get_attack_action, get_attack_action_v1,
     _supervision_losses,
 )
 
@@ -53,7 +53,8 @@ class CombatChecks(unittest.TestCase):
                 self.assertEqual(_bomb_escape_pressure(env, learner, 3, 3), 1)
                 mask = get_action_mask(env, learner)
                 self.assertTrue(mask[ACTION_BOMB])
-                self.assertEqual(get_attack_action(env, learner, danger, mask), ACTION_BOMB)
+                # v1 (pre-merge) follow-up rule; v2 escapes instead (test_phase_c_attack_750).
+                self.assertEqual(get_attack_action_v1(env, learner, danger, mask), ACTION_BOMB)
                 from rule_based_bot import _safe_action_mask
                 self.assertFalse(_safe_action_mask(env, learner, robust=False)[ACTION_BOMB],
                                  'The opponent baseline must retain its original filter')
@@ -756,7 +757,7 @@ class CombatChecks(unittest.TestCase):
     def test_danger_targets_escape_instead_of_attack(self):
         env = arena()
         env.flames[(1, 1)] = 1
-        self.assertIsNone(get_attack_action(env, 0, _build_danger_map(env), get_action_mask(env, 0)))
+        self.assertIsNone(get_attack_action_v1(env, 0, _build_danger_map(env), get_action_mask(env, 0)))
 
     def test_evaluation_separates_owned_kills_and_passive_wins(self):
         for owner in (0, 1):

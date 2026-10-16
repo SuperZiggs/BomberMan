@@ -3,7 +3,7 @@
 Same boards, RNG and B actions until `switch` (default step 360 = start of the ring-1 warning);
 afterwards the learner seat is driven by another controller, all under SD2 + learner margin 15:
   b          B unchanged (control)
-  local      local attack teacher (`get_attack_action`) when not in danger, else B
+  local      local attack teacher (`get_attack_action_v1`) when not in danger, else B
   two_bomb   two-bomb plan, else local teacher, when not in danger, else B
   rulebot    RuleBot (its own ring-aware mask, no margin)
   search     B's action unless `kill_search` finds a strictly better line (SD4.6)
@@ -43,7 +43,7 @@ def controller(arm, policy):
                 plan, _ = get_two_bomb_plan(env, aid, mask)
                 action = min(plan['first_actions']) if plan else None
             if action is None:
-                action = trainer.get_attack_action(env, aid, danger, mask)
+                action = trainer.get_attack_action_v1(env, aid, danger, mask)  # SD4.2a ran the pre-merge teacher
             if action is not None and mask[action]:
                 return action
         return policy(env, obs, aid)

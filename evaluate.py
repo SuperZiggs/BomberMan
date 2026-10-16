@@ -70,6 +70,9 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
     total_kills = [0] * num_agents
     total_items = [0] * num_agents
     suicides = [0] * num_agents
+    sudden_death_wins = [0] * num_agents
+    sudden_death_deaths = [0] * num_agents
+    passive_wins = [0] * num_agents
 
     for ep in range(num_episodes):
         obs_list = env.reset()
@@ -77,6 +80,7 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
             on_step(env, None)
         ep_rewards = [0.0] * num_agents
         ep_bombs = [0] * num_agents
+        ep_sudden_death_deaths = set()
 
         for t in range(env.max_steps):
             actions = []
@@ -96,6 +100,7 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
             own_deaths.update(v for k, v in info["kills"] if k == v)
             for victim in own_deaths:
                 suicides[victim] += 1
+            ep_sudden_death_deaths.update(info.get("sudden_death_deaths", []))
             for aid, items in info["items_collected"].items():
                 total_items[aid] += len(items)
             for i in range(num_agents):
@@ -109,6 +114,8 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
             total_rewards[i] += ep_rewards[i]
             total_bombs[i] += ep_bombs[i]
             total_kills[i] += env.agents[i].kills
+        for victim in ep_sudden_death_deaths:
+            sudden_death_deaths[victim] += 1
 
         alive = info["alive"]
         survivors = [i for i, a in enumerate(alive) if a]
@@ -116,6 +123,10 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
             wins[survivors[0]] += 1
             if env.agents[survivors[0]].kills > 0:
                 active_wins[survivors[0]] += 1
+            elif any(victim != survivors[0] for victim in ep_sudden_death_deaths):
+                sudden_death_wins[survivors[0]] += 1
+            else:
+                passive_wins[survivors[0]] += 1
         else:
             draws += 1
 
@@ -123,11 +134,16 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
         "num_episodes": num_episodes,
         "wins": wins,
         "active_wins": active_wins,
-        "passive_wins": [w - a for w, a in zip(wins, active_wins)],
+        "sudden_death_wins": sudden_death_wins,
+        "passive_wins": passive_wins,
+        "sudden_death_deaths": sudden_death_deaths,
         "draws": draws,
         "win_rates": [w / num_episodes * 100 for w in wins],
         "active_win_rates": [w / num_episodes * 100 for w in active_wins],
+        "sudden_death_win_rates": [w / num_episodes * 100 for w in sudden_death_wins],
+        "passive_win_rates": [w / num_episodes * 100 for w in passive_wins],
         "suicide_rates": [s / num_episodes * 100 for s in suicides],
+        "sudden_death_death_rates": [d / num_episodes * 100 for d in sudden_death_deaths],
         "avg_reward": [r / num_episodes for r in total_rewards],
         "avg_steps": total_steps / num_episodes,
         "avg_bombs": [b / num_episodes for b in total_bombs],
@@ -220,15 +236,17 @@ def summarize_contact(rows):
 
 def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                     seed=7000, max_steps=500, stop_event=None, on_progress=None,
+                    sudden_death=False, sudden_death_start=350,
+                    sudden_death_interval=20, sudden_death_warning_steps=40,
                     contact_diagnostics=False):
     """Evaluate a fixed policy at every corner of each seeded board, preserving RNGs."""
     if num_episodes < num_agents or num_episodes % num_agents:
         raise ValueError("num_episodes must be positive and divisible by num_agents")
     if not _torch_available:
         raise RuntimeError("PyTorch is required for reproducible policy evaluation")
+    games = []
     numpy_state = np.random.get_state()
     devices = list(range(torch.cuda.device_count())) if torch.cuda.is_initialized() else []
-    games = []
     try:
         with torch.random.fork_rng(devices=devices):
             for ep in range(num_episodes):
@@ -240,7 +258,11 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                 np.random.seed(board_seed)
                 torch.manual_seed(board_seed)
                 env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
-                                      max_steps=max_steps, seed=board_seed)
+                                      max_steps=max_steps, seed=board_seed,
+                                      sudden_death=sudden_death,
+                                      sudden_death_start=sudden_death_start,
+                                      sudden_death_interval=sudden_death_interval,
+                                      sudden_death_warning_steps=sudden_death_warning_steps)
                 fns = [make_rule_based_fn(i) for i in range(num_agents)]
                 fns[aid] = agent_fn
                 contact, walls = {}, {'walls': 0, 'walls_rewarded': 0}
@@ -252,9 +274,20 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                         walls['walls_rewarded'] += count if info['alive'][aid] else 0
                 stats = (run_match(env, fns, num_episodes=1, on_step=observed) if contact_diagnostics
                          else run_match(env, fns, num_episodes=1))
+                sudden_death_win = stats.get("sudden_death_wins", [0] * num_agents)[aid]
+                passive_win = stats.get(
+                    "passive_wins",
+                    [win - active - sd for win, active, sd in zip(
+                        stats["wins"], stats["active_wins"],
+                        stats.get("sudden_death_wins", [0] * num_agents))],
+                )[aid]
                 games.append({"seed": board_seed, "aid": aid,
                               "win": stats["wins"][aid], "active_win": stats["active_wins"][aid],
+                              "sudden_death_win": sudden_death_win,
+                              "passive_win": passive_win,
                               "suicide": stats["suicide_rates"][aid] / 100,
+                              "sudden_death_death": stats.get(
+                                  "sudden_death_death_rates", [0] * num_agents)[aid] / 100,
                               "draw": stats["draws"], "kills": stats["avg_kills"][aid],
                               "bombs": stats["avg_bombs"][aid], "items": stats["avg_items"][aid],
                               "steps": stats["avg_steps"],
@@ -266,7 +299,8 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
 
     def summarize(rows):
         rates = {f"{key}_rate": sum(g[key] for g in rows) / len(rows) * 100
-                 for key in ("win", "active_win", "suicide", "draw")}
+                 for key in ("win", "active_win", "sudden_death_win", "passive_win",
+                             "suicide", "sudden_death_death", "draw")}
         averages = {f"avg_{key}": sum(g[key] for g in rows) / len(rows)
                     for key in ("kills", "bombs", "items", "steps")}
         return {"num_episodes": len(rows), **rates, **averages,
@@ -276,21 +310,30 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                    if contact_diagnostics else {})}
 
     return {"seed": seed, "board_size": board_size, "num_agents": num_agents,
-            "max_steps": max_steps, **summarize(games),
+            "max_steps": max_steps, "sudden_death": sudden_death,
+            "sudden_death_start": sudden_death_start,
+            "sudden_death_interval": sudden_death_interval,
+            "sudden_death_warning_steps": sudden_death_warning_steps,
+            **summarize(games),
             "by_corner": {str(aid): summarize([g for g in games if g["aid"] == aid])
                           for aid in range(num_agents)}, "games": games}
-
 
 # ────────────────────── tournament mode ───────────────────────────────────
 
 def tournament(board_size: int = 11, num_agents: int = 2,
                num_episodes: int = 100, ac_model_path: str = "",
-               device: str = "cpu", max_steps: int = 500):
+               device: str = "cpu", max_steps: int = 500,
+               sudden_death: bool = False, sudden_death_start: int = 350,
+               sudden_death_interval: int = 20,
+               sudden_death_warning_steps: int = 40):
     """
     Round-robin tournament giữa Random, RuleBot, và AC (nếu có model).
     """
     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
-                          max_steps=max_steps)
+                          max_steps=max_steps, sudden_death=sudden_death,
+                          sudden_death_start=sudden_death_start,
+                          sudden_death_interval=sudden_death_interval,
+                          sudden_death_warning_steps=sudden_death_warning_steps)
 
     agents = {
         "Random": make_random_fn(),
@@ -472,16 +515,26 @@ if __name__ == "__main__":
                         help="Path to Actor-Critic model checkpoint")
     parser.add_argument("--device", type=str, default="cpu")
     parser.add_argument("--seed", type=int, default=7000)
+    parser.add_argument("--sudden_death", action="store_true")
+    parser.add_argument("--sudden_death_start", type=int, default=350)
+    parser.add_argument("--sudden_death_interval", type=int, default=20)
+    parser.add_argument("--sudden_death_warning_steps", type=int, default=40)
     parser.add_argument("--output", type=str, default="", help="Save seeded evaluation as JSON")
     args = parser.parse_args()
 
     if args.mode == "tournament":
         tournament(args.board_size, args.num_agents, args.num_episodes,
-                   args.ac_model, args.device, args.max_steps)
+                   args.ac_model, args.device, args.max_steps, args.sudden_death,
+                   args.sudden_death_start, args.sudden_death_interval,
+                   args.sudden_death_warning_steps)
     elif args.mode == "seeded":
         policy = make_ac_fn(args.ac_model, args.board_size, args.device)
         result = evaluate_seeded(policy, args.board_size, args.num_agents, args.num_episodes,
-                                 args.seed, args.max_steps)
+                                 args.seed, args.max_steps,
+                                 sudden_death=args.sudden_death,
+                                 sudden_death_start=args.sudden_death_start,
+                                 sudden_death_interval=args.sudden_death_interval,
+                                 sudden_death_warning_steps=args.sudden_death_warning_steps)
         if args.output:
             with open(args.output, "w", encoding="utf-8") as handle:
                 json.dump(result, handle, indent=2)

@@ -18,6 +18,7 @@ import train_actor_critic as trainer
 from benchmark_t3 import observations
 from test_combat import arena, put_bomb
 from training_state import load_training_state
+from legacy_test_support import legacy_train, strip_sd
 
 ROOT = Path(__file__).resolve().parent
 B = ROOT / 'runs/pressure-C-next/final_phaseC.pt'
@@ -247,9 +248,9 @@ class D0TrainingChecks(unittest.TestCase):
         spec = importlib.util.spec_from_file_location('before_d0_trainer', path)
         before = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(before)
-        old, new = self.observe(fn=before.train), self.observe()
+        old, new = self.observe(fn=before.train), self.observe(fn=legacy_train)
         for key in ('actions', 'rows', 'rewards', 'wins'):
-            self.assertEqual(old[key], new[key])
+            self.assertEqual(strip_sd(old[key]), strip_sd(new[key]))
         for key in old['state']:
             self.assertTrue(torch.equal(old['state'][key], new['state'][key]))
 

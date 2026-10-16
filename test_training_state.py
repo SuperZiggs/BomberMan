@@ -20,6 +20,7 @@ import train_actor_critic as trainer
 import run_combat_move_pilot as shared
 import run_reward_pilot as runner
 import training_state as persistence
+from legacy_test_support import legacy_train, strip_sd
 
 ROOT = Path(__file__).resolve().parent
 
@@ -65,7 +66,7 @@ class StateChecks(unittest.TestCase):
                 vals.append(deepcopy(row))
             if mid_validation and row['episode'] == stop_after and row.get('completed') == 1:
                 stop.set()
-        kwargs = {} if fn is not trainer.train else {'save_training_state': save, 'resume_training_state': str(resume)}
+        kwargs = {} if fn not in (trainer.train, legacy_train) else {'save_training_state': save, 'resume_training_state': str(resume)}
         with patch('builtins.print'):
             _, rewards, wins = fn(phase='C', episodes=6, board_size=9, num_agents=2, max_steps=20,
                 lr=1e-4, seed=123, device=device, checkpoint_dir=str(folder), resume_from=str(shared.WARM_START),
@@ -124,10 +125,10 @@ class StateChecks(unittest.TestCase):
         spec.loader.exec_module(old)
         with tempfile.TemporaryDirectory(dir=ROOT / 'runs', prefix='resume-test-') as name:
             results = []
-            for index, (fn, save) in enumerate(((old.train, False), (trainer.train, False), (trainer.train, True))):
+            for index, (fn, save) in enumerate(((old.train, False), (legacy_train, False), (legacy_train, True))):
                 random.seed(17)
                 folder = Path(name) / str(index)
-                results.append((self.execute(folder, fn=fn, save=save),
+                results.append((strip_sd(self.execute(folder, fn=fn, save=save)),
                     torch.load(folder / 'final_phaseC.pt', map_location='cpu', weights_only=True)))
             self.same(results[0], results[1])
             self.same(results[0], results[2])

@@ -34,7 +34,7 @@ Trạng thái dùng trong tài liệu: **READY** = có thể làm; **TODO** = ch
 | T2 | Kiểm tra chất lượng nhãn và việc thực hiện combo | T2/L2.0 hoàn tất; giữ B; L2.1/2 deferred sau benchmark | T1 đã đóng | `T2_decision.md`, `L2_decision.md`, analysis JSON và replay |
 | T3 | Curriculum giao tranh và opponent pool | Guidance MOVE full DONE/REVIEWED15/10; gateFAIL,giữB; runtime guard/C2/C3 tách riêng | Candidatepoint40,25% vsB35/control35,5;haiCI chứa0 | `decision_report.md`, `analysis_results.json`; không train/test thêm trongpilot này |
 | T4 | Advantage, GAE, PPO và reward | D1 gate FAIL; giữ checkpoint B; B0/D0 PASS | D1 đủ200ep/arm,400test/model; full-state verified | `runs/ppo-full-20261015-220313/decision_report.md`, `PPO_PILOT_GUIDE.md` |
-| SD | Sudden death (SD1–SD5, XC) | SD1–SD4 DONE (SD4.1 PASS: WR +10.75; SD4.6 search cả trận +5.75 ActiveWR); XC: nhánh bạn hơn B +7.5 ActiveWR; SD5 WAIT người dùng chọn | Tracker riêng | `PLAN_SUDDEN_DEATH.md` |
+| SD | Sudden death (SD1–SD5, XC) | SD1–SD4 DONE (SD4.1 PASS: WR +10.75; SD4.6 search cả trận +5.75 ActiveWR); XC: nhánh bạn hơn B +7.5 ActiveWR; SD5 (hướng a): merge DONE, thiết kế chờ duyệt | Tracker riêng | `PLAN_SUDDEN_DEATH.md` |
 
 Mỗi task con có checkbox; chỉ đánh dấu khi có bằng chứng và ledger. T4-A1 đã chạy/review đầy đủ theo yêu cầu; các nhánh chưa đánh dấu chưa được khởi động. Người chạy train có thể là bạn hoặc Codex khi được yêu cầu.
 

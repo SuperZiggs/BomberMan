@@ -20,7 +20,7 @@ import evaluate as evaluation
 import rule_based_bot as bot_module
 import train_actor_critic as trainer
 from pilot_two_bomb import paired_active_bootstrap
-from sudden_death_experiment import SuddenDeathEnv, sudden_death_mask
+from sudden_death_experiment import SuddenDeathEnv, base_kwargs, sudden_death_mask
 
 ROOT = Path(__file__).resolve().parent
 CHECKPOINT = ROOT / 'runs/pressure-C-next/final_phaseC.pt'
@@ -65,7 +65,7 @@ def evaluate_case(case, *, games, seed, max_steps, timings, trace_path=None, pro
 
     class ObservedEnv(SuddenDeathEnv):
         def __init__(self, **kwargs):
-            super().__init__(**kwargs, sudden_death=enabled, ring_channel=ring_channel, **timings)
+            super().__init__(**base_kwargs(kwargs), sudden_death=enabled, ring_channel=ring_channel, **timings)
 
         def reset(self):
             self.actions = []
@@ -158,12 +158,12 @@ def sudden_death_runtime(timings, ring_channel=False):
 
     class TrainEnv(SuddenDeathEnv):
         def __init__(self, **kwargs):
-            super().__init__(**kwargs, sudden_death=True, ring_channel=ring_channel, **timings)
+            super().__init__(**base_kwargs(kwargs), sudden_death=True, ring_channel=ring_channel, **timings)
 
     class ProbeEnv(SuddenDeathEnv):
         # Skill-probe fixtures keep their rules; only the observation width follows the arm.
         def __init__(self, **kwargs):
-            super().__init__(**kwargs, ring_channel=ring_channel)
+            super().__init__(**base_kwargs(kwargs), ring_channel=ring_channel)
 
     def aware(base):
         def mask(env, aid, *args, **kwargs):

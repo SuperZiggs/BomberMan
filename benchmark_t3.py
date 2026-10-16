@@ -15,12 +15,12 @@ import torch
 
 from audit_l2_candidates import collect_candidates
 from audit_t2 import check_plan, digest, dump, escape_suffix, reachable_comparison, serial_plan
-from bomberman_env import (BombermanFFAEnv, Bomb, RIGID_WALL, WOODEN_WALL,
+from bomberman_env import (BombermanFFAEnv, Bomb, OBS_CHANNELS, RIGID_WALL, WOODEN_WALL,
                            ACTION_STOP, ACTION_BOMB, _MOVE_DELTA)
 from evaluate import make_ac_fn
 from rule_based_bot import RuleBasedAgent
 from audit_t2 import opponent_action
-from train_actor_critic import get_action_mask, get_attack_action
+from train_actor_critic import get_action_mask, get_attack_action_v1 as get_attack_action  # closed T3 benchmark: pre-merge teacher
 
 ROOT = Path(__file__).resolve().parent
 CHECKPOINTS = {'original': ROOT / 'runs/pressure-C-next/final_phaseC.pt'}
@@ -132,7 +132,7 @@ def validate_env(env):
         raise ValueError('Invalid existing bomb')
     if any(env.grid[pos] != 0 or duration < 1 for pos, duration in env.flames.items()):
         raise ValueError('Invalid fire')
-    if any(obs.shape != (getattr(env, 'obs_channels', 12), 9, 9) for obs in observations(env)):
+    if any(obs.shape != (getattr(env, 'obs_channels', OBS_CHANNELS), 9, 9) for obs in observations(env)):
         raise ValueError('Unexpected observation channels')
 
 

@@ -6,7 +6,7 @@ from unittest.mock import patch
 import torch
 
 import train_actor_critic as trainer
-from sudden_death_experiment import SuddenDeathEnv
+from sudden_death_experiment import SuddenDeathEnv, base_kwargs
 
 
 class TrainerChannelTests(unittest.TestCase):
@@ -28,7 +28,7 @@ class TrainerChannelTests(unittest.TestCase):
 
         class RingEnv(SuddenDeathEnv):
             def __init__(self, **kwargs):
-                super().__init__(**kwargs, sudden_death=True, ring_channel=True)
+                super().__init__(**base_kwargs(kwargs), sudden_death=True, ring_channel=True)
 
         with patch.object(trainer, 'BombermanFFAEnv', RingEnv), \
              patch.object(trainer, 'ActorCriticNet', side_effect=net):
@@ -86,11 +86,11 @@ class LoaderTests(unittest.TestCase):
             path = Path(folder) / 'ring.pt'
             torch.save(wide.state_dict(), path)
             with self.assertRaises(ValueError):
-                trainer.smart_load_weights(trainer.ActorCriticNet(board_size=9), str(path), 'cpu')
+                trainer.smart_load_weights(trainer.ActorCriticNet(in_channels=12, board_size=9), str(path), 'cpu')
 
     def test_b_logits_unchanged_in_thirteen_channel_net(self):
         from run_sudden_death_experiment import CHECKPOINT
-        net12 = trainer.ActorCriticNet(board_size=9)
+        net12 = trainer.ActorCriticNet(in_channels=12, board_size=9)
         net13 = trainer.ActorCriticNet(in_channels=13, board_size=9)
         trainer.smart_load_weights(net12, str(CHECKPOINT), 'cpu')
         trainer.smart_load_weights(net13, str(CHECKPOINT), 'cpu')

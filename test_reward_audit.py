@@ -21,6 +21,7 @@ from bomberman_env import (ACTION_BOMB, ACTION_STOP, POWERUP_AMMO, POWERUP_RANGE
     MAX_AMMO, MAX_BLAST_RANGE, WOODEN_WALL)
 from evaluate import evaluate_seeded
 from test_combat import arena, put_bomb
+from legacy_test_support import legacy_train, strip_sd
 
 
 class RewardChecks(unittest.TestCase):
@@ -142,7 +143,7 @@ class RewardChecks(unittest.TestCase):
         old = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(old)
         outputs = []
-        for fn, flag in ((old.train, None), (trainer.train, False), (trainer.train, True)):
+        for fn, flag in ((old.train, None), (legacy_train, False), (legacy_train, True)):
             rows, actions = [], []
             with patch('torch.save'), patch('os.makedirs'), patch('builtins.print'):
                 kwargs = {} if flag is None else {'reward_diagnostics': flag}
@@ -153,7 +154,7 @@ class RewardChecks(unittest.TestCase):
                 for row in rows:
                     self.assertAlmostEqual(sum(row.pop('reward_components').values()), row['reward'], places=12)
                     self.assertLessEqual(row.pop('reward_component_max_error'), 1e-10)
-            outputs.append((deepcopy(net.state_dict()), rewards, wins, rows, actions))
+            outputs.append((deepcopy(net.state_dict()), rewards, wins, strip_sd(rows), actions))
         for result in outputs[1:]:
             self.assertEqual(outputs[0][1:], result[1:])
             self.assertTrue(all(torch.equal(v, result[0][key]) for key, v in outputs[0][0].items()))
@@ -220,7 +221,7 @@ class AuditChecks(unittest.TestCase):
             9, 2, 2, 21000, 20)
         for aid in (0, 1):
             result = audit.play_game(net, 21000, aid, 20, stop)[0]
-            self.assertEqual({k: result[k] for k in audit.GAME_FIELDS}, reference['games'][aid])
+            self.assertEqual({k: result[k] for k in audit.GAME_FIELDS}, strip_sd(reference['games'][aid]))
         self.assertTrue(all(torch.equal(v, net.state_dict()[key]) for key, v in weights.items()))
         env = arena(2)
         before = pickle.dumps(env.__dict__)

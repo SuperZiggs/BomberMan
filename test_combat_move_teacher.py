@@ -13,6 +13,7 @@ from benchmark_t3 import make_env, observations, scenarios
 from bomberman_env import Bomb, _MOVE_DELTA
 from combat_move_teacher import certify_combat_move
 from train_actor_critic import get_action_mask, get_attack_action, train
+from legacy_test_support import legacy_train, strip_sd
 
 
 class CombatMoveChecks(unittest.TestCase):
@@ -97,12 +98,12 @@ class CombatMoveChecks(unittest.TestCase):
                 if env.step_count:
                     sampled.append(actions[aid])
             with patch('train_actor_critic.get_action_mask', return_value=[True] * 6), \
-                 patch('train_actor_critic.get_attack_action', return_value=4), \
+                 patch('train_actor_critic.get_attack_action_v1', return_value=4), \
                  patch('train_actor_critic.certify_combat_move', return_value=certificate) as certifier, \
                  patch('torch.distributions.Categorical.sample', return_value=torch.tensor([0])), \
                  patch('train_actor_critic.torch.save'), patch('train_actor_critic.os.makedirs'), patch('builtins.print'):
                 train(episodes=1, board_size=7, max_steps=1, device='cpu', run_report=False,
-                      validation_every=0, attack_teacher=mode, on_step=on_step, on_episode=rows.append)
+                      validation_every=0, attack_teacher=mode, teacher_version='v1', on_step=on_step, on_episode=rows.append)
             promoted = mode == 'local_combat_move' and accepted
             self.assertEqual(sampled, [0])
             self.assertEqual(rows[0]['navigation_loss'] == 0, promoted)
@@ -122,7 +123,7 @@ class CombatMoveChecks(unittest.TestCase):
             seed=2026101501, resume_from=str(root / 'runs/pressure-C-next/final_phaseC.pt'),
             device='cpu', validation_every=0, run_report=False)
         observed = []
-        for fn in (old.train, train):
+        for fn in (old.train, legacy_train):
             rows, actions = [], []
             with patch('torch.save'), patch('os.makedirs'), patch('builtins.print'):
                 net, rewards, wins = fn(**kwargs, on_episode=rows.append,
@@ -132,7 +133,7 @@ class CombatMoveChecks(unittest.TestCase):
         self.assertEqual(observed[0][4], observed[1][4])
         self.assertTrue(all(torch.equal(observed[0][0][k], v) for k, v in observed[1][0].items()))
         for previous, current in zip(observed[0][3], observed[1][3]):
-            self.assertEqual(previous, {k: v for k, v in current.items() if k != 'move_guidance'})
+            self.assertEqual(strip_sd(previous), strip_sd({k: v for k, v in current.items() if k != 'move_guidance'}))
 
     def test_real_qualification_trains_with_both_loss_groups_cpu_and_cuda(self):
         for device in ('cpu', 'cuda') if torch.cuda.is_available() else ('cpu',):

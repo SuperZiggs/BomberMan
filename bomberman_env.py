@@ -56,7 +56,7 @@ POWERUP_RANGE = "range"
 MAX_AMMO = 3
 MAX_BLAST_RANGE = 4
 ITEM_UPGRADE_REWARD = 0.05
-OBS_CHANNELS = 12
+OBS_CHANNELS = 13
 
 
 @dataclass
@@ -104,6 +104,10 @@ class BombermanFFAEnv:
         bomb_timer: int = 8,
         flame_duration: int = 2,
         powerup_prob: float = 0.3,
+        sudden_death: bool = False,
+        sudden_death_start: int = 350,
+        sudden_death_interval: int = 20,
+        sudden_death_warning_steps: int = 40,
         seed: Optional[int] = None,
     ):
         assert board_size % 2 == 1, "board_size should be odd, like classic Pommerman (e.g. 11)"
@@ -116,6 +120,12 @@ class BombermanFFAEnv:
         self.bomb_timer = bomb_timer
         self.flame_duration = flame_duration
         self.powerup_prob = powerup_prob
+        self.sudden_death = sudden_death
+        self.sudden_death_start = sudden_death_start
+        self.sudden_death_interval = sudden_death_interval
+        self.sudden_death_warning_steps = sudden_death_warning_steps
+        if sudden_death_start < 1 or sudden_death_interval < 1 or sudden_death_warning_steps < 0:
+            raise ValueError("sudden-death start/interval must be positive and warning steps non-negative")
         self.rng = np.random.default_rng(seed)
 
         # Corner spawn positions (row, col) for up to 4 agents.
@@ -131,6 +141,7 @@ class BombermanFFAEnv:
         self.agents: list[Agent] = []
         self.step_count = 0
         self._episode_done = False
+        self._sudden_death_ring = 0
 
     # --------------------------------- setup ---------------------------------
 
@@ -173,6 +184,7 @@ class BombermanFFAEnv:
         self.powerups = {}
         self.step_count = 0
         self._episode_done = False
+        self._sudden_death_ring = 0
 
         danger = self._danger_map()
         return [self._get_obs(a.agent_id, danger) for a in self.agents]
@@ -188,6 +200,7 @@ class BombermanFFAEnv:
         self.step_count += 1
 
         rewards = [0.0 for _ in range(self.num_agents)]
+        sudden_death_deaths = self._apply_sudden_death()
 
         # 1) Resolve movement / bomb placement intents.
         intended_positions = {}
@@ -228,7 +241,7 @@ class BombermanFFAEnv:
         self._tick_bombs_and_explode()
 
         # 3) Resolve flame damage.
-        died_this_step = []
+        died_this_step = list(sudden_death_deaths)
         self_blast_deaths = []
         for agent in self.agents:
             if agent.alive and (agent.row, agent.col) in self.flames:
@@ -300,7 +313,7 @@ class BombermanFFAEnv:
         self._episode_done = (num_alive <= 1) or (self.step_count >= self.max_steps)
         if self._episode_done:
             for agent in self.agents:
-                if agent.alive and num_alive == 1:
+                if agent.alive and num_alive == 1 and not sudden_death_deaths:
                     rewards[agent.agent_id] += 10.0   # sole survivor bonus
             for aid in died_this_step:
                 pass  # death penalty already applied above
@@ -318,9 +331,88 @@ class BombermanFFAEnv:
             "bombs_placed": bombs_placed,
             "items_collected": items_collected,
         }
+        if self.sudden_death:
+            info["sudden_death_deaths"] = sudden_death_deaths
         return obs_list, rewards, dones, info
 
     # ------------------------------ bomb / blast logic ------------------------------
+
+    def _ring_cells(self, ring: int) -> set[tuple[int, int]]:
+        low = ring
+        high = self.board_size - 1 - ring
+        cells = set()
+        for index in range(low, high + 1):
+            cells.add((low, index))
+            cells.add((high, index))
+            cells.add((index, low))
+            cells.add((index, high))
+        return cells
+
+    def _target_sudden_death_ring(self) -> int:
+        if not self.sudden_death or self.step_count < self.sudden_death_start:
+            return 0
+        return min(
+            1 + (self.step_count - self.sudden_death_start) // self.sudden_death_interval,
+            (self.board_size // 2) - 1,
+        )
+
+    def _next_sudden_death_closure(self) -> tuple[int, set[tuple[int, int]]] | None:
+        if not self.sudden_death:
+            return None
+        next_ring = self._sudden_death_ring + 1
+        if next_ring >= self.board_size // 2:
+            return None
+        closure_step = self.sudden_death_start + (next_ring - 1) * self.sudden_death_interval
+        return max(closure_step - self.step_count, 0), self._ring_cells(next_ring)
+
+    def _apply_sudden_death(self) -> list[int]:
+        target_ring = self._target_sudden_death_ring()
+        if target_ring <= self._sudden_death_ring:
+            return []
+
+        closing_cells = set()
+        for ring in range(self._sudden_death_ring + 1, target_ring + 1):
+            closing_cells.update(self._ring_cells(ring))
+
+        deaths = []
+        for agent in self.agents:
+            if agent.alive and (agent.row, agent.col) in closing_cells:
+                agent.alive = False
+                deaths.append(agent.agent_id)
+
+        remaining_bombs = []
+        for bomb in self.bombs:
+            if (bomb.row, bomb.col) in closing_cells:
+                owner = self.agents[bomb.owner]
+                owner.bombs_placed = max(0, owner.bombs_placed - 1)
+            else:
+                remaining_bombs.append(bomb)
+        self.bombs = remaining_bombs
+
+        for pos in closing_cells:
+            self.grid[pos] = RIGID_WALL
+            self.flames.pop(pos, None)
+            self._flame_owners.pop(pos, None)
+            self._flame_sources.pop(pos, None)
+            self.powerups.pop(pos, None)
+
+        self._sudden_death_ring = target_ring
+        return deaths
+
+    def _sudden_death_warning_map(self) -> np.ndarray:
+        warning = np.zeros((self.board_size, self.board_size), dtype=np.float32)
+        if self.sudden_death_warning_steps == 0:
+            return warning
+        next_closure = self._next_sudden_death_closure()
+        if next_closure is None:
+            return warning
+        remaining, cells = next_closure
+        if remaining < 1 or remaining > self.sudden_death_warning_steps:
+            return warning
+        value = (self.sudden_death_warning_steps - remaining + 1) / self.sudden_death_warning_steps
+        for row, col in cells:
+            warning[row, col] = value
+        return warning
 
     def _try_place_bomb(self, agent: Agent):
         if not agent.alive:
@@ -502,6 +594,7 @@ class BombermanFFAEnv:
           9: bomb capacity / MAX_AMMO (constant plane)
          10: current blast range / MAX_BLAST_RANGE (constant plane)
          11: inverse time until damage, including chains and lingering flames
+         12: warning strength for the next Sudden Death ring closure
         """
         s = self.board_size
         obs = np.zeros((OBS_CHANNELS, s, s), dtype=np.float32)
@@ -522,6 +615,7 @@ class BombermanFFAEnv:
         obs[10].fill(own.blast_range / MAX_BLAST_RANGE)
         danger = self._danger_map() if danger is None else danger
         np.divide(1.0, danger, out=obs[11], where=danger > 0)
+        obs[12] = self._sudden_death_warning_map()
         for agent in self.agents:
             if not agent.alive:
                 continue
