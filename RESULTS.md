@@ -940,3 +940,522 @@ Có 72 cặp seed/góc mà cả hai model đều timeout. Replay sáu cặp đ�
 Trong mẫu này agent vẫn đặt nhiều bom và tận dụng gần hết cơ hội trúng tia; bom thường giảm một phần vị trí sống dự báo nhưng chưa ép đối thủ hết đường. Teacher hiện đánh giá vị trí hiện tại/một bước và bom đã biết. Hướng cải thiện tiếp là kiểm tra việc chọn vị trí và phối hợp bom nối tiếp để chặn lối thoát, giữ các điều kiện sống sót; tăng số episode hoặc thưởng đặt bom đơn thuần chưa có bằng chứng giải quyết nút thắt này. Nhãn/cơ hội ở các bước liên tiếp không phải các trận độc lập. Nếu dùng seed 17000 để chỉnh tiếp, test cuối cần seed mới như 18000.
 
 Artifacts: `runs/escape-C-6600/comparison_17000.json`, `diagnostic_cases_17000.json`, `replay_timeouts_17000.py`, `replay_timeouts_17000.json`; hai JSON test gốc giữ nguyên tại `runs/escape-early/`. Best candidate có SHA256 `88c952f6a7648886eb80cd323cd118008d98b3f3620e5c7ae54b48e773c311df`, đối chứng giữ `93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60`. Chưa triển khai planner mới, đánh giá seed bổ sung hoặc test 11×11/FFA 3–4 tác tử trong lượt này.
+
+## Pilot giáo viên hai bom — 2026-10-14
+
+Đã triển khai forecast bom đặt trễ và teacher tối đa hai bom, mặc định vẫn `local`. 58 test pass; kiểm tra fixture từng single còn refuge nhưng combo đóng hết đường sống và learner vẫn thoát. CNN tự lấy mẫu qua mask, không dùng planner khi test. Model, reward, observation 12 kênh và optimizer giữ nguyên.
+
+Pilot warm-start `runs/pressure-C-next/final_phaseC.pt`, Phase C/9×9/2 agents/max_steps 500/lr 1e-4, train seed 2026101303. Validation 100 trận seed 21000 tại 0/100/200. Trong ngân sách train chung **65 phút**, local hoàn tất **200/200**, two_bomb **146/200**. Local chọn best episode 200 (validation ActiveWR 34%, tự nổ 0%); two_bomb tại episode 100 đạt 18%/1% nên guard giữ best episode 0. Final 146 episode được lưu riêng, chưa qua validation 200.
+
+Test cuối hoàn tất 400 trận mỗi model, seed bàn 25000–25199, cả A0/A1, CPU qua mask hiện tại:
+
+| Model | Best episode | ActiveWR | Tự nổ | Hòa | Kills/trận | Thắng thụ động |
+|---|---:|---:|---:|---:|---:|---:|
+| Gốc | gốc | 33.00% | 0.00% | 61.00% | 0.330 | 4.50% |
+| Local | 200 | 33.00% | 0.25% | 60.75% | 0.330 | 4.50% |
+| Two_bomb | 0 | 33.00% | 0.00% | 61.00% | 0.330 | 4.50% |
+
+Best two_bomb có trọng số giống gốc, cả 400 kết quả khớp nhau. Bootstrap 10.000 lần theo 200 seed bàn (giữ hai góc cùng nhau), seed bootstrap 20261014: chênh ActiveWR two_bomb−gốc **0 điểm, CI 95% [0,0]**; two_bomb−local **0 điểm, CI [-6.00,5.75]**. Không tăng ít nhất 5 điểm và các cận dưới không dương.
+
+**Giữ model gốc; pilot chưa đủ để kết luận phương pháp** vì lượt cải tiến chưa đủ 200 episode. Đã chấm đủ 1.200 trận; tổng thời gian chạy ghi nhận 86.67 phút. Preflight 147 trạng thái timeout trung bình 33.31 ms/query, p95 62.83 ms. Trong 146 episode hoàn tất, planner tạo 56.036 nhãn (43.321 nhãn hai bom), trung bình 27.96 ms/query; số nhãn không chứng minh CNN thực hiện combo tốt. Không thử GAE/PPO, FFA hoặc seed train khác.
+
+Chi tiết từng góc, validation, CI, hashes, source và đường dẫn best/final tại [báo cáo pilot](runs/two-bomb-pilot-20261014/report.md). Metrics và tất cả checkpoint cũ giữ nguyên; SHA256 model gốc không đổi. Nếu chỉnh teacher tiếp, dùng seed test mới thay vì tiếp tục chọn model trên seed 25000 đã xem.
+
+## Giáo viên hai bom đủ 200 episode — test26000 (2026-10-14)
+
+Người dùng đã hoàn tất `run_two_bomb_complete.py`: two_bomb train200 episode từ model gốc, dùng lại local200 cùng source/config, validation100 trận seed21000 ở0/100/200. Đã audit đủ1.200 trận cuối (400/model; 200 board seeds26000–26199, cảA0/A1, CPU/mask chung), source/checkpoint hashes và toàn bộ rates/averages theo từng game/corner. Không còn thiếu episode như pilot trước.
+
+| Model | Best episode | ActiveWR | Tự nổ | Hòa | Kills/trận | PassiveWR |
+|---|---:|---:|---:|---:|---:|---:|
+| Gốc | gốc | 36,50% | 0,50% | 54,75% | 0,365 | 6,50% |
+| Local | 200 | 38,00% | 0,25% | 54,50% | 0,380 | 6,00% |
+| Two_bomb | 0 | 36,50% | 0,50% | 54,75% | 0,365 | 6,50% |
+
+Best two_bomb bằng gốc ở mọi tensor và400 game records; final200 khác gốc ở cả12 tensor nhưng chưa chấm held-out riêng. Validation của model học: ActiveWR29%→18%→15%, hòa62%→77%→81%; ep100 bị loại vì tự nổ1%, ep200 tự nổ0% nhưng vẫn kém mốc nên best0 giữ lại. Điểm36,5% best không phải chất lượng của final200.
+
+Bootstrap10.000 lần theo seed bàn: two_bomb−gốc0 điểm, CI95%[0;0]; two_bomb−local−1,5 điểm, CI[-7,25;4,50]. Local−gốc+1,5 điểm, CI[-4,50;7,25], chưa đạt +5 điểm/cận dưới>0. Local cải thiện A0 +6 điểm nhưng A1 giảm3 điểm. Giữ model gốc; T1 thực thi hoàn tất và gate cải tiến FAIL. Một train seed chưa kết luận toàn bộ phương pháp luôn thất bại.
+
+Teacher có81.718 query, 77.355 nhãn nhận (94,66%), 59.064 nhãn hai bom; không có trace đo agreement/completion/full-trap. Ưu tiên T2 trước khi tăng train hoặc trộn PPO/reward. [Báo cáo và audit đầy đủ](/D:/fpt/subject/BomberMan/runs/two-bomb-complete-20261014-031626/T1_report.md). Đầu vào/checkpoint giữ nguyên; test26000 đã đọc nên sửa tiếp dùng test mới.
+
+## T2 audit và review nhãn/combo — 14/10/2026
+
+Lượt `t2-full-20261014-060320`:400 trận tổng,200/model,100 seed bàn28000–28099 với cảA0/A1. B và final two_bomb200 chơi bằng CNN/mask, teacher chỉ log; best two_bomb aliasB. Test74 OK; CRC/SHA ZIP và snapshot/checkpoints khớp; toàn bộ summary/từng góc được tính lại từ158.293 frames/10.695 windows/88.872 branches. Đã dựng lại12 replay/5.608 frames (10 có sẵn, hai controls).
+
+| Model | ActiveWR | Hòa | Tự nổ | Kills/trận | Bom đặt/trận | Đúng bom hai khi bom đầu đúng |
+|---|---:|---:|---:|---:|---:|---:|
+| B |33,00% (66/200)|57,00%|1,00%|0,33|40,17|23/905=2,54%|
+| Final two_bomb200 |16,00% (32/200)|75,50%|1,00%|0,16|26,68|5/427=1,17%|
+
+Final−B **−17 điểm**, paired bootstrap95%CI **[-25,5;−8,5]**, 100 board pairs/10.000 resamples. A0 giảm32→15%, A1 giảm34→17%. Đây là regression của final trên audit set, không dùng để chọn checkpoint mới hay kết luận mọi train seed two_bomb đều thất bại.
+
+Teacher chỉ kiểm tra mask ở hành động đầu: final/RuleBot có7.086 physical prefixes complete nhưng6.454 bị future mask chặn (91,08%); static90,48%, evader90,74%. Gap thường ở BOMB, gồm cả bom đầu sau di chuyển và bom hai. Các nhãn hai bom dự báo trap chỉ3/63.973 frames; combo trap mà hai bom riêng vẫn có refuge chỉ1/6.390 sampled plans. Case này cũng bị mask chặn ở bom hai. Agreement52,98% gần uniform K/M52,65% trên cùng state, chưa đủ làm bằng chứng học combo.
+
+**T2 chẩn đoán hoàn tất; giữ B, ưu tiên L2.0 candidates offline trước train tiếp.** Chỉ lọc best hiện tại có thể giữ gần hết nhãn một bom và rất ít combo: final static mask-pass599 nhưng chỉ4 two-bomb. Cần kiểm tra alternatives trong64 schedules trước khi implement guarded teacher; nếu valid combos quá hiếm thì mở T3.1 benchmark/curriculum riêng. Chưa đổi mask, reward, optimizer hay train thêm. [Quyết định đầy đủ](/D:/fpt/subject/BomberMan/runs/t2-full-20261014-060320/T2_decision.md), [audit có thể tái lập](/D:/fpt/subject/BomberMan/runs/t2-full-20261014-060320/analyze_t2_results.py).
+
+## L2.0 — candidate alternatives qua future mask, 14/10/2026
+
+`l2-full-20261014-120348` hoàn tất40/40 saved game tapes từ10 seed bàn28000–28009, hai model/cảA0/A1;149 states,6.666 scored paths. Test log82 OK. ZIP/source/input/checkpoint hashes khớp. Đã tính lại mọi summary field, dựng lại18.286 frames và tạo lại mọi candidate/6.666 static guards +170 stress branches; action tapes/suffix/masks khớp kết quả gửi. 149 thay vì160 do game gốc kết thúc sớm/không đủ tick có nhãn, không phải lượt dở.
+
+| Metric states | Gốc B (69) | Final200 (80) | Tổng (149) |
+|---|---:|---:|---:|
+| Old representative viable | 5 | 5 | 10 (6,71%) |
+| Any candidate viable | 42 | 43 | 85 (57,05%) |
+| Any two-bomb viable | 8 | 6 | 14 (9,40%) |
+| Selected best two-bomb | 5 | 5 | 10 (6,71%) |
+| Genuine combo trap | 0 | 0 | 0 |
+
+75/139 states có best cũ không khả thi được cứu bởi alternatives;40/75 vẫn giữ nguyên first-action labels. Trong6.666 scored paths không có trap, kể cả trước guard;27 lịch hai bom khả thi cũng còn refuge khi so combo/từng bom riêng trên cùng horizon. Top1/4/8 chỉ đạt best-score và first-actions recall10/24/43 trên85 states có best hợp lệ; top8 guard mean14,89ms, full mean70,40ms/p95155,03ms. Đây là clone-audit timing, chưa phải chi phí trainer.
+
+85 selected best qua static guard: evader62/85 prefix complete và sống; RuleBot56/85 prefix complete,51/56 sống. Riêng10 selectedtwo: evader3/10, RuleBot1/10 complete và sống; còn lại bị mask chặn, không được gộp vào suicide. Các branch dùng prescribed plan/forecast suffix, không phải CNN win rate; suffix chưa ép mask mọi bước.
+
+**Giữ B; ưu tiên T3.1 benchmark có certificate, chưa train L2/curriculum.** Alternatives giúp tính khả thi nhưng chưa đủ bằng chứng guard giải quyết mục tiêu combo. Cần phân biệt task có combo qua mask, teacher có tìm ra, CNN có thực hiện. Đây là10 seeds audit đã xem, states/candidates phụ thuộc nhau; không đo cải thiện ActiveWR hay suy phương pháp không thể học combo. [Quyết định và bước tiếp theo](/D:/fpt/subject/BomberMan/runs/l2-full-20261014-120348/L2_decision.md), [analysis tái lập](/D:/fpt/subject/BomberMan/runs/l2-full-20261014-120348/analyze_l2_results.py).
+
+## T3.1 — benchmark có lời giải, 14/10/2026
+
+Đã triển khai benchmark/tests/review và chạy `t3-full-20261014-implementation`:240 train/validation cases × B ×3 opponents ×2 repeats =1.440 games,498,18s. Registry336 cases gồm4 related layout families,8 orientations/cảA0/A1; test familywood_branch chưa chạy CNN. Đã kiểm traZIP/source/checkpoint hashes, tái tạo240 teacher states/208 legal certificates và mọi1.440 action tapes/62.110 frames; recompute mọi outcome/placement/pair/summary.89 tests pass ở snapshot full,90 ở code hiện tại với thêm edge case prefix death. Core/checkpoint không đổi.
+
+96/96 genuine combo references có từng single còn refuge, combo hết refuge, prefix và escape qua mask tới hết nguy hiểm; old teacher tìm được96/96. Reference stress evader/RuleBot48/96 full tape pass mỗi loại; đây là sampled future, không phải guarantee.
+
+| B trên bài combo (192 games/opponent) | Static | Evader | RuleBot |
+|---|---:|---:|---:|
+| Owned kill và sống |168 (87,50%)|92 (47,92%)|74 (38,54%)|
+| Đặt ít nhất hai bom |120|192|178|
+| Có genuine played pair theo known-bomb forecast |80|86|70|
+| Reference prefix exact |76|76|70|
+| Skill horizon80 bị truncate |24|100|94|
+
+Không ghi nhận tự nổ trong1.440 games. Combo validation static114/128,evader60/128,Rule52/128. A0/A1 mỗi720 games giống nhau:353 owned successes/18 passive wins/0 suicide/310 skill truncations/118 genuine pair games. Không coi những repeats/roles/orientations là độc lập. Owned kill trước target đứng yên không tự chứng minh combo; played-pair metric và actual outcomes lưu riêng. Skill horizon80 tách khỏi actual draw500-step.
+
+**T3.1 DONE; giữ B; chọn T3.2 curriculum né/phản bom, chưa train.** Planner có thể tạo trap và CNN gốc có thể thực hiện combo trên positive layouts; sự hiếm combo trongT2/L2 vẫn là quan sát trên phân phối state thật khác. Không sửa search để giải các positive controls đã pass, không đổi GAE/PPO/reward trong cùng bước. Cần pilot có đối chứng và random-map500-step test để kiểm chứng transfer. [Báo cáo/giới hạn/quyết định](/D:/fpt/subject/BomberMan/runs/t3-full-20261014-implementation/T3_decision.md), [hướng dẫn/lệnh](/D:/fpt/subject/BomberMan/T3_GUIDE.md).
+
+## T3.2 — runner có đối chứng, test implementation 14/10/2026
+
+Đã triển khai [run_t3_curriculum.py](/D:/fpt/subject/BomberMan/run_t3_curriculum.py) và [protocol/lệnh đầy đủ](/D:/fpt/subject/BomberMan/T3_CURRICULUM_GUIDE.md). Đăng ký control600 PhaseC RuleBot và curriculum600 C1static→C2evader→C3RuleMix→PhaseC consolidation; cùng B/seed2026101303/LR1e-4/teacherlocal/reward/optimizer schedule. Chỉ dùng train fork positive cases; chứng nhận lại preflight. Stage probes tuổi100/150/200, hai pass success≥60%/suicide≤B guard, cap200. Skill probes không reset RNG/weights hoặc chọn best; PhaseC100game validation21000 ở0/mỗi100 chọn best và giữ suicide guard hiện tại.
+
+110 tests qua (`runs/t3-curriculum-tests-current.log`), gồm trainer thật với một Adam/scheduler qua ba stage, steps2→4→6/LR giảm liên tục; gates/pass-streak/cap/cancel, reset trả observation đúng, control map/RNG khớp normal PhaseC, CPU/CUDA probe purity, output bảo vệ và final/partial routing. Full orchestration/paired seeds/gate và matched-budget routing được test với mock outcomes, không phải kết quả RL thật.
+
+Smoke CPU `runs/t3-curriculum-smoke-implementation` hoàn tất6ep/arm trong6,64s; CUDA/RTX3050 `runs/t3-curriculum-smoke-cuda-implementation` hoàn tất6ep/arm trong7,44s, mỗi nhánh một Adam/6 updates và48 learner steps. Stages cưỡng bức ởep2/4/6, max8 nên full_protocol=false/retain_original; cả best chọnep0. Không dùng win rates của smoke để kết luận học tốt hơn. Test deadline1s `runs/t3-curriculum-deadline-implementation` trả incomplete và ZIP, không mở test. Source/warm-start giữ nguyên hash trong mọi smoke; core T1/T2/L2 không sửa.
+
+Nếu full curriculum fail stage, runner chấm final/control checkpoint cùng episode trên validation21000 và vẫn incomplete. Chỉ cặp600 đủ gates/validation mở random-map400/model test31000–31199/cảA0/A1 và wood_branch576games/model. Gate cuối +5pp so cả B/control, bootstrap95% lower>0, suicide không cao hơn chỉ cho phép replication; không tự thay model.
+
+**T3.2 implementation/tests/smoke DONE; full600 WAIT RUN.** Chưa mở test31000/wood_branch, chưa có bằng chứng curriculum cải thiện ActiveWR; giữ B. Nguồn smoke/ZIP/console được lưu trong các thư mục nêu trên.
+
+## T3.2 pilot — dừng C1 đúng gate, 14/10/2026
+
+Người dùng chạy `t3-curriculum-full-20261014-154703`,CUDA/RTX3050, cùng B/local/LR1e-4/seed2026101303/schedule600. Control đủ600ep/226.640learner steps/600updates; curriculum đủ200ep/41.086steps/200updates, chưa qua C1, không vàoC2/C3. Tổng2.625,49s≈43,76phút. Đã auditZIP49 files/hashsource/checkpoint,800 metrics/ten validations, tái tạo192skillgames/6.870frames với mọi mask/outcome/placement/pair; recompute200 diagnostic game rows/rates/corners. Script/results/logs và [báo cáo](/D:/fpt/subject/BomberMan/runs/t3-curriculum-full-20261014-154703/T3.2_decision.md) được thêm sau ZIP raw; original/source/model chưa thay.
+
+| C1 checkpoint | Escape/32 | Approach/32 | Success tổng/64 | Suicide | Gate |
+|---|---:|---:|---:|---:|---|
+| B |32|28|60 (93,75%)|0|Baseline |
+| Ep100 |32|12|44 (68,75%)|0|Pass1 |
+| Ep150 |32|4|36 (56,25%)|0|Fail/reset |
+| Ep200 |32|12|44 (68,75%)|0|Pass1, cap200 nên dừng |
+
+Ep200 có20 approach failures hết80bước, không tới reference bomb cell;16 không đặt bom, STOP0% (di chuyển không tới vị trí tấn công hữu hiệu). B64 C1 records từT3.1 đúng cases/seeds và khớp preflight T3.2. Dữ liệu phù hợp với giảm kỹ năng approach/RuleBot retention khi trainC1static; chưa xác định nguyên nhân riêng hoặc hiệu quảC2/C3.
+
+Diagnostic **cùng200episodes/updates** trên validation21000: control ActiveWR38%,WR46%,draw52%,suicide0%,avgkills0,38,passive8%; curriculum18%,25%,74%,0%,0,18,7%. ActiveWR A0/A1: control30/46%;curriculum20/16%. Delta−20pp, bootstrap95%50boardpairs[-32;-8]pp; đây là validation đã xem, không phải test độc lập400/model. Số transitions khác: control200 đầu78.168 vs curriculum41.086. Curriculum best0 giống mọi12tensors B; final200 khác12. Controltrain600 có2self-blasts, curriculum200 có0; không đồng nhất với0suicide trên validation.
+
+Control best400 đạt42% ActiveWR/draw50%/suicide0% trên validation21000, B29%; cần chấm riêng độc lập vì checkpoint đã chọn trên validation. Đã đăng ký **B vs controlbest400,400/model seeds32000–32199/cảA0-A1,CPU1thread/RuleBot/max500**, gate≥5pp/CI lower>0/suicide≤B. Bài xác nhận checkpoint này **chưa chạy**, không biến curriculum dừng thành thành công; [protocol](/D:/fpt/subject/BomberMan/runs/t3-curriculum-full-20261014-154703/control_confirmation_protocol.json), [lệnh đầy đủ](/D:/fpt/subject/BomberMan/CONTROL_CONFIRMATION_GUIDE.md).
+
+**Pilot REVIEWED; full pair600 incomplete/stage_gate_failed; giữ B.** Test31000/wood_branch vẫn chưa mở. Không train nối hoặc nới gate. Curriculum tiếp theo là backlog: bỏC1bắt buộc khiBđã tốt, thử combo/evader trộnPhaseC/RuleBot để giữ kỹ năng, audit approach teacher và báo từng skill group; chưa implement/train. Báo cáo đã ghi nguồn skill scientific-critical-thinking/quy trình và giới hạn một train seed.
+
+## Control best400 — test32000 hoàn tất, 14/10/2026
+
+Người dùng hoàn tất `control-confirmation-20261014-201557`: frozen B/controlbest400,400/model,200 seeds32000–32199/cảA0-A1,9×9/2/max500,CPU1thread/RuleBot/mask. Protocol đăng ký trước test; auditZIP7files/CRC/hashes/protocol vàsource/checkpoints,800 game rows/mọi rates/averages/corners; bootstrap200boardpairs/10.000resamples seed20261014 trùng summary. [Báo cáo và scripts/results](/D:/fpt/subject/BomberMan/runs/control-confirmation-20261014-201557/confirmation_report.md).
+
+| Metric | B | Control best400 |
+|---|---:|---:|
+| ActiveWR |32,75% (131/400)|35% (140/400)|
+| Win rate |38% (152)|40,25% (161)|
+| Hòa |60,5% (242)|58,25% (233)|
+| Suicide |0,5% (2)|0,5% (2)|
+| Avg kills |0,3275|0,35|
+| Passive wins |5,25% (21)|5,25% (21)|
+| ActiveWR A0/A1 |34,5% /31%|35% /35%|
+
+Delta+2,25pp/CI95%[-3,25625;8]. Gate gain≥5pp FAIL,CI lower>0 FAIL,observed suicide≤B PASS. Candidate có80 new active wins nhưng mất71 củaB,net9. CI chứa0 và cải thiện≥5pp nên chưa xác nhận superiority hoặc equality; không suy model chắc chắn ngang nhau. Validation+13pp trước đó chưa được xác nhận trên test mới.
+
+Replay hai shared suicides32080/32133A0 × hai models,188frames: mọi learner action qua mask, actiontapes hai models giống nhau, tất cả game stats khớp. Enemy đi từ bomb cũ(2,3) tới cửa(1,2) và đặt bomb trễ sau ownbomb(3,1); known-safe moves hết ởtick47/41,deathstep49/45. `_can_bomb_and_escape` hiện chỉ xét immediate counterbomb tại enemy current cell khi đặt được; delayed movement/placement/returned capacity chưa được bao phủ đầy đủ. Diagnostic phù hợp giới hạn đó; chưa có mask fix hoặc bằng chứng guard mới không tăng hòa.
+
+**Confirmation DONE/gate FAIL, giữ B.** Test32000 đã đọc và dùng diagnostic; model/code mới phải test mới. Không train mới/thay model hoặc chấm thêm seed chưa xem trong review; test31000/wood_branch còn khóa. Bước tiếp trong tracker: offline approach teacher-vs-CNN audit và fixture counter-bomb trễ, rồi protocol riêng nếu sửa mask hoặc curriculumC2/rehearsal. Không chọn checkpoint khác hoặc tăng test tùy ý để tìm gate pass. Report đã ghi nguồn quy trình scientific-critical-thinking và giới hạn một train seed.
+
+## T3 — offline approach/counter-bomb audit hoàn tất, 15/10/2026
+
+[Báo cáo](/D:/fpt/subject/BomberMan/runs/t3-approach-audit-20261015-final/T3_approach_decision.md), [summary](/D:/fpt/subject/BomberMan/runs/t3-approach-audit-20261015-final/summary.json), [analysis/script](/D:/fpt/subject/BomberMan/runs/t3-approach-audit-20261015-final/analysis_results.json). Thêm audit runner, counter-bomb fixtures và9 tests; **119 tests PASS**. Production source/checkpoints/tapes vẫn khớp hashes đóng băng. Không train hoặc mở test31000/wood_branch;32000 chỉ dùng hai states đã xem.
+
+Tái tạo256 C1 games/8.224frames, đúng masks/actions/positions/placements/kills/alive; mọi local label nằm trong mask và teacher không sửa env/NumPy/Torch CPU RNG. Teacher closed loop +fallback STOP khi đã ở refuge giải32/32 approach và32/32 escape. Mỗi tape có4 bước thiếu nhãn sau placement, không phải thiếu hướng dẫn ban đầu.
+
+| Cohort | Approach owned kill/32 | Còn1 bước tới ô bắn: move tiến /frames |
+|---|---:|---:|
+| B |28|32/70 (45,71%)|
+| C1 ep100 |12|12/170 (7,06%)|
+| C1 ep150 |4|4/162 (2,47%)|
+| C1 ep200 |12|12/124 (9,68%)|
+
+Mọi clean navigation label đều giảm khoảng cách hình học; near-goal chỉ có một move qua mask làm giảm khoảng cách. So masked probabilities trên cùng16 teacher-path cases: move đầu B56,22%/final20079,74%, nhưng move còn2 ô B37,46%/final2009,78%; BOMB tại mục tiêu B94,69%/final gần100%. Rot0/m0 tại3,2, final200 gần100%BOMB mặc dù range2 chưa chạm enemy3,5; teacher cho RIGHT tới3,3. Kỹ năng tiến đoạn giữa/đặt đúng chỗ là bottleneck quan sát, chưa chứng minh loss weight hoặc optimizer là nguyên nhân. Frame ratios/rotations/roles/repeated seeds phụ thuộc nhau, không dùng như independent win-rate evidence.
+
+96 counter fixture checks:16/variant ammo1 returned capacity(delay5), ammo2 occupied tile(delay3), no-counter, alternate-exit, unavailable-capacity và unreachable-door.32 unsafe tái tạo failure của mask hiện tại;64 controls còn đường sống qua mask. Forecast vàstep khớp blockers/free slots/damage/flame decay/wood/placements tới hết nguy hiểm. Hai real states32080/32133 khớp conditional no-path;32080 còn relaxed path khi bỏ occupancy enemy, nên chỉ thêm future bomb chưa đủ guard.
+
+**Offline audit DONE; giữ B, chưa có model tốt hơn.** Ưu tiên ablation riêng nhãn move tăng pressure có placement/escape certificate sang combat0,5, giữ local control và target/reward/mask/optimizer; đây mới là đề xuất chưa implement/train. Runtime counter-bomb guard và C2+rehearsal giữ các protocol riêng. Người dùng không cần chạy thêm để đóng audit này; các file và tests đã chạy tại workspace.
+
+## Guidance MOVE — implementation và pilot đang chạy, 15/10/2026
+
+**Cập nhật cuối:** pilot đã hoàn tất/review,gateFAIL,giữB. Xem bảng test và [decision_report.md](/D:/fpt/subject/BomberMan/runs/combat-move-full-20261015-013315/decision_report.md) bên dưới; các đoạnRUNNING ghi trạng thái lúcđăng ký/khởi chạy.
+
+Đã triển khai [certifier](/D:/fpt/subject/BomberMan/combat_move_teacher.py), trainer/CLI mode`local_combat_move`, [runner đối chứng](/D:/fpt/subject/BomberMan/run_combat_move_pilot.py), [protocol/lệnh và file kết quả](/D:/fpt/subject/BomberMan/COMBAT_MOVE_GUIDE.md). Target action local không đổi; chỉ MOVE có tăng positive pressure và next BOMB/escape certificate trên clone sang combat mean0,5; nhãn không đạt giữ navigation0,2. Escape greedy qua mask tới hết bom/lửa, bounded32ticks/other agents STOP; không phải guard trước future counter-bombs. Env/mask/reward/CNN/12channels/optimizer giữ nguyên, defaultlocal vẫn local.
+
+**136tests PASS** (`runs/combat-move-implementation-20261015/all-tests.log`), gồm local-before bit parity ở mọi tensor/reward/action, actual qualified update CPU/CUDA, pressure/slot/collision/greedy/purity, loss routing không override actionCNN, budgets/incomplete/source changes/paired bootstrap/gates/fresh-test guards. Source cũ lưu trongbefore snapshot; test archived control đối chiếu source snapshot và vẫn kiểm tra current trainer không được reuse control cũ.
+
+CPU/CUDA smoke4ep/arm,max8 đủ hai nhánh, mộtAdam/4updates/32learner steps mỗiarm;47,48/47,52s,full_protocol=false,best0,retainB. Trong smoke online không có move được nhận nên hai arms khớp theo từng thiết bị; actual promoted loss branch được test riêng trênpositive envCPU/CUDA. Preflight smoke6/32accepted,p95≈13–15ms dưới tải test. Deadline0,001phút trả incomplete/ZIP/retainB và không mở test.
+
+**Full pilot RUNNING:** `runs/combat-move-full-20261015-013315`, CUDA/RTX3050, cảhai200ep từB, trainseed2026101501,LR1e-4/PhaseC RuleBot/max500; config đăng ký trước test. Preflight120unique C1 navigation states đã xem,28 nhận, mean1,49ms/p955,22ms/max9,45ms. Validation100seed21000 ở0/100/200 chọnbest vớisuicideguardB; skill64escape/approach ởcùngmốc chỉdiagnostic. Test cuối400/modelB/controlbest/combat_movebest seeds33000–33199/cảA0-A1/CPU1thread; bootstrap200boardpairs/gate+5ppsoBvàcontrol,CI lower>0/suicide≤cảhai. Chưa đọc33000 hoặc chọnmodel mới tại cập nhật này;31000/wood vẫn khóa. Cần chờsummary cuối, không dùngsmoke/trainingWR để kết luận cải thiện.
+
+## Guidance MOVE — pilot đầy đủ và quyết định, 15/10/2026
+
+**DONE/REVIEWED;giữB,gateFAIL.** Đủ200ep/200Adamupdates/arm và1.200trận test,3.502,54s≈58,38phút. Control72.409/candidate73.739learner steps; cùngepisodes/updates,trajectories khácnhau. Bestcảhaiep100,validationActiveWRcontrol30%/candidate40%;candidatefinal20031%. Skillapproachbest28/32control,30/32candidate,B28/32;escape32/32 mọi mốc. Không dùngfinal để chọnlại sau test.
+
+| Test400/model | B | Controlbest100 | CombatMOVEbest100 |
+|---|---:|---:|---:|
+| ActiveWR |35% (140)|35,5% (142)|40,25% (161)|
+| WR |40,25% (161)|42% (168)|45,5% (182)|
+| Draw |57,5% (230)|56% (224)|53% (212)|
+| Suicide |1% (4)|0,75% (3)|0,25% (1)|
+| Avgkills |0,35|0,355|0,4025|
+| Passivewins |5,25% (21)|6,5% (26)|5,25% (21)|
+| AvgBombs |39,6875|39,375|35,6375|
+| ActiveWR A0/A1 |33,5/36,5%|36,5/34,5%|42,5/38%|
+
+Candidate−B **+5,25pp,CI95%[-1,5;12]**;candidate−control **+4,75pp,CI[-1,5;11]**. Gain≥5soBpass/soControlfail;CI lower>0failcảhai;observed suicide≤cảhaipass. Pointestimates tíchcực nhưngchưa xácnhận superiority;không chứngminh equality hoặcgiảm nguycơ từ4/3/1deaths. Mộttrainseed, models chọnbằngvalidation trướctest;không nớigate vìthiếu0,25pp hoặcchạy thêm33000 đểtìm thắng.
+
+Candidate nhận7.667/33.371movequeries (22,98%),agreement3.952/7.667 (51,55%),meanpressuregain0,2365;meanquery2,34ms/tổng78,09s. Reject24.963next_bomb_masked/739no_pressure_increase/2escape_not_certified. All-MOVEagreement/probability/entropy so trêntrajectory khácnhau chỉdiagnostic. Train0suicidecảhai không đồngnghĩatest0suicide. Không cóteacherởinference,khôngmở31000/wood_branch.
+
+ReviewZIP43files/CRC/byte equality/source+B+best/final hashes;400metrics/6validations;384storedskillgames/8.884frames (baselinecacheghihaichỗ,320rollouts thực),masks/outcomes/labels/purity;1.200gamerows/rates/corners/pairedbootstrap khớp. [Báo cáo vàgiới hạn](/D:/fpt/subject/BomberMan/runs/combat-move-full-20261015-013315/decision_report.md), [analysis](/D:/fpt/subject/BomberMan/runs/combat-move-full-20261015-013315/analysis_results.json), [ZIPraw](/D:/fpt/subject/BomberMan/runs/combat-move-full-20261015-013315-send.zip). Source/root/checkpointB không đổi tronglượt. Không cầnngười dùngchạy thêm;optimizerT4-A1 vàcounter-bombguard làprotocol riêng chưa triểnkhai/train.33000đãdùng,chọntestmới nếu nghiêncứutiếp.
+
+
+## T4-A1 — Chuẩn hóa advantage của actor, 15/10/2026
+
+Đã thêm `normalize_advantage=False` và CLI `--normalize_advantage` trong trainer. Chuẩn hóa theo toàn learner trajectory bằng population std; ít hơn hai mẫu hoặc std<1e-8 giữ raw, log skip. Actor advantage detach; MC returns/value loss/reward/mask/12channels/local teacher/aux coefficients/Adam và schedule giữ nguyên. Diagnostics là opt-in (normalize tự bật): raw/policy/returns/value scale, explained variance, entropy theo mask size, grad norm trước clipping; NaN/Inf dừng trước optimizer update. Mặc định và diagnostics-only đã kiểm tra bit parity với source trước sửa trên CPU; isolation ở một update đã kiểm tra CPU/CUDA.
+
+150 tests PASS (`runs/advantage-implementation-20261015/final-tests.log`). CPU/CUDA smoke20ep/arm/max20 có một Adam/20updates/400learner steps mỗiarm, tổng46,60/55,36s, normalized đủ20 lần, không NaN/Inf. Smoke ngắn chỉ kiểm tra kỹ thuật, best0 và không đủ đánh giá chất lượng. Deadline0,001phút dừng incomplete sau0,124s/noarms/notest. Marker test_opened và source/checkpoint/fresh-seed guards qua tests; guard marker được thêm sau smoke, không thay code số học/training đã smoke.
+
+**FULL DONE/REVIEWED; gate FAIL, giữ B.** `runs/advantage-full-20261015-030430`: CUDA/RTX3050, raw/normalized đủ200episode và200Adamupdates mỗi nhánh từB/local/RuleBot/seed2026101502, validation100seed21000 tại0/100/200, skill64 chỉdiagnostic. Đủ400testgames/model trên34000–34199/cảA0-A1/CPU1thread, không teacher. Runner5.816,06s=96,93phút; triển khai/test/smoke/review và báo cáo hoàn tất trong hạn150phút tính từ19:53:44UTC. [Protocol/hướng dẫn](/D:/fpt/subject/BomberMan/ADVANTAGE_GUIDE.md).
+
+| Test400/model | B gốc | Control best100 | Normalized best100 |
+|---|---:|---:|---:|
+| ActiveWR | 33,25% (133) | 36,5% (146) | 33,5% (134) |
+| WR | 38,75% (155) | 42,5% (170) | 39,75% (159) |
+| Hòa | 58% (232) | 54,5% (218) | 57% (228) |
+| Tự nổ | 0,25% (1) | 0,25% (1) | 0,25% (1) |
+| Kills trung bình | 0,3325 | 0,365 | 0,335 |
+| Thắng thụ động | 5,5% (22) | 6% (24) | 6,25% (25) |
+| ActiveWR A0/A1 | 32% / 34,5% | 35% / 38% | 33% / 34% |
+
+Normalized−B **+0,25 điểm, CI95%[-5,5;6]**; normalized−control **−3 điểm, CI[-9,25;3,25]**. Bootstrap200cặp seed bàn gồm hai góc,10.000resamples/seed20261014. Gain≥5 và CI lower>0 fail; observed self-blast≤hai đối chứng pass. Chưa chứng minh normalization cải thiện, tương đương hay luôn kém. Control chỉ +3,25điểm soB, cũng chưa đạt ngưỡng thay model.
+
+Control75.646/normalized75.957learner steps,3training self-blasts mỗi nhánh. Clipping95/200→79/200; norm tổng mean34,339→32,282 nhưng p95129,576→131,898. EV mean theoepisode0,452→0,479, entropy0,283→0,288; trajectories khác nhau, không suy nguyên nhân từdiagnostic hoặc dùngloss policykhácscale đểxếp hạng. Bestcảhaiep100 vớivalidation35/36%;final20030/32%;guard0mọimốc. Approach B28/32, controlbest/final30/32, normalizedbest/final28/32;escape32/32mọimốc. Không chọnfinal sau test.
+
+Review ZIP45files/CRC/byte equality/source18+B+best/final hashes;400training rows,6validations/6skillprobes;384storedskillgames/8.864replayframes (320rollouts thực vìbaselinecacheđượcghihaichỗ);1.200testrows/rates/averages/corners/CI khớp. [Báo cáo quyết định](/D:/fpt/subject/BomberMan/runs/advantage-full-20261015-030430/decision_report.md), [analysis](/D:/fpt/subject/BomberMan/runs/advantage-full-20261015-030430/analysis_results.json), [ZIP raw](/D:/fpt/subject/BomberMan/runs/advantage-full-20261015-030430-send.zip). GAE/PPO/reward/counter-bomb guard chưa thử trongA1;T4-B0 làtask riêng tiếp theo. 34000 đãdùng; không chạy lại A1 hoặc thêm testđểcứugate. Mộttrainseed chưa chứng minh độổnđịnh.
+
+
+## T4-B0 — GAE implementation/parity, 15/10/2026
+
+**DONE/PASS về tính đúng; giữ B và mặc định MC.** Trainer/CLI thêm actor advantage estimator `mc|gae` và `gae_lambda`; critic luôn MC returns. Tách bootstrap/continuation để terminal không bootstrap và cut không nối sang reset. Learner chết kết thúc buffer dù FFA vẫn chạy. Collector vẫn toàn episode; chưa triển khai rollout update giữa trận/PPO. Teacher/reward/mask/CNN/loss phụ không đổi.
+
+167testsPASS (`runs/gae-b0-implementation-20261015/all-tests-final.log`), gồm lambda0/0,5 tính tay,lambda1MCparity1/3/500bướcCPU-CUDA,latekill/death/timeout500/reset/cut,detach/criticgradient/purity/cancel/badinputs/runnerguards. DefaultMC actions/rewards/metrics/weights bit-identical source-before trênCPU2ep20steps. FrozenGAE1firstupdate soMC có maxdelta policy loss4,47e-8CPU/3,73e-9CUDA; gradient1,49e-7/2,79e-8; postAdamweights4,78e-6/1,17e-7. Dùngtoleranceđãghi,khônggọiGAE1bit-parity. Đãsửalỗibooleanmasklàmgammaroundfloat32trongrecurrencefloat64.
+
+SmokeMC/GAE1/GAE0,95:20ep/20updates/mode/device,normalizationoff,LR1e-4/seed2026101503/B/local/max20; khôngvalidation/evaluation/promotion. CPU15,06s/394learnersteps mỗi mode,GAE18timeouts+2matchends;CUDA14,83s/400steps/mode,20timeouts. Weightsfinite,source+Bunchanged,mỗiZIP22files/CRC/bytes/checkpoints/metricskhớp qua review. Không mởseedtestmới,34000đãdùngtừA1;31000/wood_branch vẫn không mở trongB0.
+
+[Báo cáo B0](/D:/fpt/subject/BomberMan/runs/gae-b0-implementation-20261015/B0_report.md), [guide](/D:/fpt/subject/BomberMan/GAE_B0_GUIDE.md), [review JSON](/D:/fpt/subject/BomberMan/runs/gae-b0-implementation-20261015/smoke_review.json). B1READY nhưng chưa runner đối chứng200ep/arm hoặc400test/model; chưa có bằng chứng GAE tăngActiveWR. Không dùng checkpoint smoke để thay B.
+
+## T4-B1 — lượt đầu thiếu thời gian, 15/10/2026
+
+**INCONCLUSIVE, giữ B.** `runs/gae-full-20261015-112853` chạy85,11 phút rồi dừng vì trần train chung85 phút: control200/200, GAE184/200. Không có test cuối400/model hoặc CI;35000–35199 chưa mở. Mỗi nhánh một Adam;control73.101 bước,GAE71.429;normalizationoff/criticMC/teacherlocal/cùngB vàseed2026101504.
+
+| Nhánh | Val ActiveWR ep0 | ep100 | ep200 | Best |
+|---|---:|---:|---:|---:|
+| MC control |29%|28%|25%|0|
+| GAE0,95 |29%|29%|Chưa chạy|0|
+
+Tự nổ validation0% tại cả5 bài chấm;trainself3/0 không đủ kết luận an toàn hơn vì số episode khác nhau và chưa có heldouttest. ApproachMC28/32→30/32→28/32,GAE28/32→28/32;escape32/32 cả5 probe. Best0 vẫn weightsB. Review source19/B/checkpoint/ZIP41files/384training rows/320storedskillgames/7.140replayframes qua;256rollouts kỹ năng thực vìbaselinecache64game ghi hai lần.
+
+174regression tests và smoke CPU57,49s/CUDA73,66s qua trước full. Sau khi lưu/review dữ liệu gốc, đã sửa riêng trần train thành100 phút trong tổng150;49 tests liên quan qua, testdeadline xác nhận evaluation bị chặn theo thời gian còn lại. **Chưa chạy lại full bản sửa.** Không sửa config cũ và không chạy thêm16episode từfinal184 vì thiếu Adam/LR/RNG state.
+
+[Báo cáo quyết định](/D:/fpt/subject/BomberMan/runs/gae-full-20261015-112853/decision_report.md), [analysis](/D:/fpt/subject/BomberMan/runs/gae-full-20261015-112853/analysis_results.json), [raw ZIP](/D:/fpt/subject/BomberMan/runs/gae-full-20261015-112853-send.zip), [protocol/lệnh](/D:/fpt/subject/BomberMan/GAE_PILOT_GUIDE.md). Chưa có cơ sở mở B2/PPO/reward hoặc thay checkpoint từ lượt thiếu này.
+
+## T4-B1 — chạy lại đầy đủ, gate cải thiện FAIL, 15/10/2026
+
+**Đủ protocol và review, giữ B.** Sau sửa trần train100/tổng150 phút, đã train lại cảhai từ B tại `runs/gae-full-20261015-125942`,200ep/200updates/nhánh. Lượt đầy đủ54,87 phút; không đổi hyperparameter,seed2026101504/teacherlocal/criticMC/normalizationoff. Cùngseed với lượt thiếu, không tính là replication độc lập.
+
+| Model được chọn | ActiveWR | Hòa | Tự nổ | Kills/trận | Thắng thụ động |
+|---|---:|---:|---:|---:|---:|
+| B |31,75%|61,5%|0,75%|0,3175|4,75%|
+| Best MC |31,75%|61,5%|0,75%|0,3175|4,75%|
+| Best GAE |31,75%|61,5%|0,75%|0,3175|4,75%|
+
+Đã chấm400/model trên35000–35199,cảA0/A1. DeltaGAE soB/control0điểm,CI95%[0;0];không đạt gain≥5 hoặcCI lower>0. **Best cảhai vẫn episode0,weightsB**, nên kết quả giốngB; đây không phải bằng chứng mọi checkpoint đã trainGAE tương đươngB. Không dùngtest để đổi sangfinal200. A0/A1 ActiveWR30/33,5%,tựnổ1,5/0%;win tổng36,5% và19passivewins/400.
+
+ValidationMC29→28→25%,GAE29→29→29%,tựnổ0 cả6bài chấm. ApproachMC28→30→28/32,GAE28→28→30/32;escape32/32 cả6probe. Trainself3/0,clip81/73,trungbìnhrawstd1,0573/0,8667,EV0,4779/0,4992 không đủ kết luận policy tốt hơn. GAEmẫu77.005steps soMC73.101;không coi thứ tự chạy/tải máy hoặc thời gian nhánh là benchmark tốc độ thuật toán.
+
+Review ZIP46files/source19/B/best/final hashes,400trainrows/6validations/6skills,384storedskillgames/8.512frames (320rollouts thực dobaselinecache),1.200testrows/corners/CI đều khớp.174tests trước pilot/smokeCPU-CUDA và49tests liên quan sau sửa deadline qua. [Report](/D:/fpt/subject/BomberMan/runs/gae-full-20261015-125942/decision_report.md), [analysis](/D:/fpt/subject/BomberMan/runs/gae-full-20261015-125942/analysis_results.json), [ZIP raw](/D:/fpt/subject/BomberMan/runs/gae-full-20261015-125942-send.zip).
+
+B1 DONE về thực thi, chưa chứng minh tăng chất lượng;giữMC/raw/B,không mởB2/C/PPO từpilot này. Tiếp theo ưu tiênR0 audit contribution reward và timeout, chưa sửa reward/train mới.35000 đã mở;31000/wood_branch không dùng. Mộttrainseed không đủ kết luận ổn định.
+
+## T4-R0 — audit reward hoàn tất, 15/10/2026
+
+**DONE/REVIEWED, giữ B và mọi hệ số reward hiện tại.** `r0-full-20261015-153908` audit 100 trận/model với B, MC final200 và GAE final200 trên validation21000–21049, cảA0/A1; không mở test hoặc cập nhật model. Runtime16,25 phút, parity các thống kê validation B1 qua cả ba checkpoint.
+
+| Checkpoint | Timeout | Reward timeout mean | Wall mean | Item mean | Timeout reward dương |
+|---|---:|---:|---:|---:|---:|
+| B |62|+0,9169|+1,3355|+0,0815|62/62|
+| MC final200 |67|+0,9657|+1,3679|+0,0978|67/67|
+| GAE final200 |62|+1,0065|+1,4105|+0,0960|62/62|
+
+Time penalty timeout là−0,5. Mọi timeout tới khoảng cách≤3 và≈94%bom cópressure>0. Trong100bước cuối timeout, wall reward bằng0 và tất cả bom đặt cópressure dương; các số liệu này không ủng hộ diễn giải agent chỉ farm gỗ cuối trận. Pressure chỉ là proxy hiện tại, không chứng minh trap/kill.
+
+G0 timeout mean (gamma0,99) là0,8465/0,8688/0,8923; G0 thắng chủ động cao hơn trung bình. Trong88cặp thắng/timeout cùngseed/góc giữa checkpoint, có2ví dụ G0timeout>G0win; giảm nửa wall xóa1ví dụ, giảm nửa item không xóa. Không coi các cặp là độc lập hoặc suy ra causal effect. Fixed-action R1 đưa mean timeout B về0,2492 nhưng57/62vẫn dương,1≈0,4âm; R3 chỉ đưa về0,8762. Chưa train hoặc áp dụng các thay đổi này.
+
+R0 tách9component, thêm `reward_diagnostics=False` mặc định và dùng chung shaped-reward helper; thứ tự tính reward học giữ nguyên. Review118.226transition khớp công thức cũ bit-exact, sum error tối đa1,78e−15;12timeout/6.012frames replay qua. Mean/median/p95/min/max/sum/gross-net absolute shares, raw step tapes, CSV vàscatter300điểm được lưu. ZIP raw37files/source11/checkpoint/parent hashes qua. Regression188PASS/1CUDA SKIP; CPU logging parity actions/rewards/metrics/weights qua. Mỗi model chỉ có1death case, không cóself-blast trong cohort; không đủ dữ liệu chỉnh death penalty.
+
+**Bước kế tiếp: R1 ở mức ablation một biến**, wall0,15 so0,075, giữ các phần khác; chưa có runner mới/chưa train. R0 phát hiện reward hòa dương và vài misranking, không chứng minh farm gỗ là nguyên nhân chính hoặc giảm thưởng sẽ tăngActiveWR. [Báo cáo](/D:/fpt/subject/BomberMan/runs/r0-full-20261015-153908/R0_report.md), [review](/D:/fpt/subject/BomberMan/runs/r0-full-20261015-153908/review_results.json), [hướng dẫn](/D:/fpt/subject/BomberMan/R0_GUIDE.md).
+
+## T4-R1 — lượt full chưa hoàn tất
+
+R1 IMPLEMENTED/TESTED, full INCOMPLETE do tiến trình bị ngắt: `reward-full-20261015-163227`. Control đủ200episode; half-wall199episode đã lưu, validation200/final200 còn thiếu. Best validation control33%/half-wall30%, chưa có test hoặcCI; giữB. 200regression testsPASS, smokeCPU/CUDA qua; audit320skill replays/6.966frames. [Báo cáo](/D:/fpt/subject/BomberMan/runs/reward-full-20261015-163227/decision_report.md).
+
+## T4-R1 resumable — đánh giá đủ protocol
+
+R1 DONE/REVIEWED: `reward-full-resumable-20261015-194314`. Đủ 200 episode và 200 Adam update mỗi nhánh từ B; 400 trận test/model trên seed 36000–36199, cả A0/A1. Best control/half-wall đều ở episode 200. ActiveWR B/control/half-wall = 34,50%/36,25%/35,00%. Gate FAIL; giữ B và wall bonus 0,15. Thời gian chạy 49,54 phút. [Báo cáo](/D:/fpt/subject/BomberMan/runs/reward-full-resumable-20261015-194314/decision_report.md).
+
+Phase C có `training_state.pt` gồm model/Adam/scheduler/global episode/best guard/history, RNG Python/NumPy/env/Torch CPU/CUDA và context log. Atomic temp+fsync+replace, OS writer lock, `run_reward_pilot.py --resume` khôi phục episode đã xác nhận; không reset schedule hoặc chọn lại model test. 212test riêng biệt PASS; có CPU/CUDA exact resume trong tiến trình mới, interrupted episode/validation và torn-log recovery. `best/final_phaseC.pt` giữ dạng weights để chơi; loader từ chối nhầm full-state file. Resume yêu cầu cùng source/config/runtime/thiết bị; hiện chỉ hỗ trợ Phase C, deadline R1 gốc vẫn giữ.
+
+## T4-D0 — kiểm chứng update ratio
+
+T4-D0 DONE/PASS về tính đúng: 226/226 tests, gồm 14 D0; CPU/CUDA smoke đều đủ 20 episode/20 Adam updates mỗi chế độ AC và ratio chưa clip. Buffer lưu mask/old policy/teacher targets; MC raw, critic/reward/teacher/inference và mặc định AC giữ nguyên. Full states và source/ZIP/B hashes đã review. D0 không chứng minh tăng ActiveWR; giữ B. D1 clipping với cùng 4 epochs READY/design, chưa triển khai/pilot. [Báo cáo](/D:/fpt/subject/BomberMan/runs/ppo-d0-implementation-20261015/D0_report.md), [hướng dẫn](/D:/fpt/subject/BomberMan/PPO_D0_GUIDE.md).
+
+## T4-D1 — paired clipping pilot
+
+D1 DONE/REVIEWED: `ppo-full-20261015-220313`. Đủ 200 episode/nhánh từ B, Adam updates U4/P4=800/800; best episode U4/P4=200/200. Test400/model, seed37000–37199/cảA0-A1: ActiveWR B/U4/P4=37.50%/37.00%/32.00%. Gate FAIL; giữ checkpoint B. Runtime 106.89 phút. [Báo cáo](/D:/fpt/subject/BomberMan/runs/ppo-full-20261015-220313/decision_report.md).
+
+D1 giữ MC raw/critic MC/local teacher/reward cũ. U4/P4 cùng tối đa4 epochs và post-update KL guard target0,02/threshold0,03; chỉ khác clipping epsilon0,20. 241 regression và25 focused metadata/compat tests PASS; CPU/CUDA smoke20episode/80updates mỗi nhánh đã review. Có 500-step/4-epoch memory fixture, hủy giữa epoch khôi phục Adam, exact PPO resume qua tiến trình mới CPU/CUDA, full-state/source/ZIP/locked-model guards. CNN inference và Actor-Critic mặc định giữ nguyên.
+
+## SD1/SD2 — Sudden death: kiểm chứng và tối ưu, 16/10/2026
+
+**SD1 (cấu hình gốc Loc_update: start200/interval20/đóng kín 3 vòng)**, B đóng băng, 400 trận/case, seed 38000–38199, cả A0/A1. `runs/sudden-death-full-20261016-135407`, status complete, hashes không đổi.
+
+| Case | WR | ActiveWR | Hòa | Tự nổ |
+|---|---:|---:|---:|---:|
+| off | 38,75% | 32,75% | 58,75% | 0,75% |
+| rings_only | 36,00% | 16,25% | 26,25% | 2,75% |
+| learner_aware | 57,50% | 17,00% | 19,00% | 0,75% |
+| both_aware | 43,00% | 17,50% | 21,50% | 1,00% |
+
+both_aware−off: WR +4,25 CI[-1,25;9,5], ActiveWR −15,25 CI[-19;-11,5], hòa −37,25 CI[-42,75;-31,5]. Hai nguyên nhân: SD từ bước 200 cắt các thắng chủ động muộn của B (median bước 271, 87% trước bước 400); trên 9×9 ô tâm (4,4) là tường cứng nên vòng 3 đóng kín mọi ô → 84/400 trận cả hai cùng chết = hòa.
+
+**SD2 tối ưu.** Thêm `sudden_death_max_ring` (mặc định = đóng kín, giữ hành vi cũ). Quét `tune_sudden_death.py` trên validation 21000–21099 (200 trận/cấu hình, 30 + 48 cấu hình SD qua hai lượt, mỗi lượt kèm một lần off). Luật chọn chốt trước khi đọc: case both_aware, WR cao nhất với ActiveWR ≥ off−3 và tự nổ ≤ off+1, hòa ít hơn khi bằng WR. Chọn **start400/interval40/warning40/max_ring2**. Xác nhận một lần `confirm_sudden_death.py` trên seed mới 39000–39199, 400 trận/case. `runs/sd-confirm-39000`.
+
+| Case (cấu hình SD2) | WR | ActiveWR | Hòa | Tự nổ |
+|---|---:|---:|---:|---:|
+| off | 39,50% | 35,50% | 59,25% | 0,00% |
+| both_aware | 59,25% | 31,50% | 9,75% | 0,75% |
+| learner_aware | 69,50% | 30,25% | 13,00% | 0,25% |
+
+both_aware−off: **WR +19,75 CI[14,5;25]**, **hòa −49,5 CI[-54,25;-44,5]**, ActiveWR −4 CI[-7,25;-0,75], tự nổ +0,75 CI[0;1,75]. Phần WR tăng là thắng thụ động (27,75%): RuleBot tự nổ 203/400 trong vòng 8 ô còn lại, chết vì vòng 35; learner chết vì vòng 131/400 dù có mask. learner_aware cao hơn chủ yếu vì RuleBot không biết vòng (103 trận RuleBot chết vì vòng), không dùng làm thước đo công bằng.
+
+Kết luận: SD2 đạt mục tiêu tăng WR và giảm hòa trên test mới; đổi lại mất khoảng 4 điểm ActiveWR (có ý nghĩa thống kê). Đây là thay đổi luật chơi trên cùng trọng số B, không phải model tốt hơn; B chưa được train với SD và không có kênh quan sát vòng. Seed 39000 đã dùng.
+
+Ghi chú thực thi SD1/SD2: test `test_sd_win_is_passive_and_simultaneous_sd_is_draw` hỏng từ lúc viết (đường đi kịch bản đụng tường gỗ của seed 39888, log `runs/sudden-death-implementation-20261016/all-tests.log`); đã sửa fixture bằng cách xóa tường gỗ trong kịch bản, assertion giữ nguyên, 15 test SD PASS. Lượt quét v1 `runs/sd-tune-v1-closure` (31 cấu hình, đóng kín) đủ. Lượt quét v2 `runs/sd-tune-v2-maxring` lần đầu bị dừng vì máy thiếu RAM (14 tiến trình) sau 14/49 cấu hình; người dùng chạy lại với `--resume`/6 tiến trình, đủ 49/49 (`resume: 14 done, 35 left`). Off validation 21000: WR 38/ActiveWR 31/hòa 60,5/tự nổ 0. Cấu hình chọn 400/40/40/r2 có validation WR 62, ActiveWR 30,5, hòa 14; bằng điểm với r3 và chọn r2 theo thứ tự. ActiveWR trên test giảm 4 điểm dù validation chỉ giảm 0,5.
+
+## SD3 — train B dưới sudden death + kênh vòng: thiết kế, 16/10/2026
+
+**IMPLEMENTED/TESTED/SMOKE DONE; full đã chạy, gate FAIL (xem mục "SD3 — kết quả full" bên dưới).** Plan: `docs/superpowers/plans/2026-10-16-sd-training-ring-channel.md`. Spec: `docs/superpowers/specs/2026-10-16-sd-training-ring-channel-design.md`. Hai nhánh từ B: `sd_12ch` (train dưới SD2 both_aware) và `sd_13ch` (thêm kênh 12 = 1/delay tới khi ô bị vòng đóng, chỉ trong `SuddenDeathEnv`). 200 episode/nhánh, validation 21000, test một lần seed 40000–40199, 400 trận/model (B, best sd_12ch, best sd_13ch) dưới SD2 both_aware, gate ActiveWR ≥ +5pp so B, CI95 lower > 0, tự nổ không cao hơn B. Chưa có kết quả test.
+
+Runner `run_sd_training_pilot.py`, train seed 2026101601, warm-start B, Phase C vs RuleBot biết vòng, validation 21000 dưới SD2. Kiểm thử: 269 test PASS (unittest discover), gồm parity B trong env 13 kênh (hành động, logits atol=0, `evaluate_case` cùng trận), `ring_channel=False` bit-identical cả RNG, patch được khôi phục khi lỗi. Smoke (timing ngắn start8/interval4/max_ring2, 20 episode/nhánh, 20 bước) complete: CPU `runs/sd3-smoke-cpu-20261016-165451` 31 giây, CUDA `runs/sd3-smoke-cuda-20261016-165558` 32 giây, rerun CPU sau fix review `runs/sd3-smoke-cpu-20261016-171018`; `--resume` trên run đã xong dùng lại nhánh/đánh giá, không train/chấm lại. Nhánh 13 kênh: best ep0 có trọng số kênh vòng = 0 (đúng B), final học được trọng số khác 0. Với timing smoke, mọi trận đều cả hai chết vì vòng; smoke chỉ kiểm tra đường ống, không phải chất lượng. Lượt smoke lỗi đầu tiên `runs/sd3-smoke-cpu-20261016-165344` dừng vì `benchmark_t3.validate_env` cứng 12 kênh (đã sửa), không có đánh giá. Seed 40000 chưa mở.
+
+## SD3 — kết quả full: train dưới sudden death ± kênh vòng, 16/10/2026
+
+**COMPLETE, gate FAIL cả hai nhánh; giữ B.** Output `runs/sd3-full` (ZIP `runs/sd3-full-send.zip`, log `runs/sd3-full-console.log`), một lượt không resume, 2595 giây (train ~800/833 giây mỗi nhánh trên CUDA), `hashes_unchanged=true`. Warm-start B `93bdf278…4f60`, train seed 2026101601, 200 episode/nhánh, Phase C vs RuleBot biết vòng, SD2 (start400/interval40/warning40/max_ring2). Validation 21000 (100 trận) chọn best = episode 200 ở cả hai nhánh (sd_12ch ActiveWR val 31 so với 28 ở ep0; sd_13ch 35 so với 28). Test một lần seed 40000–40199, 400 trận/model, SD2 both_aware, env có kênh vòng (B và sd_12ch chỉ đọc 12 kênh đầu).
+
+| Model | WR | ActiveWR | Thắng thụ động | Hòa | Tự nổ | Learner chết vì vòng | Đối thủ tự nổ |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| B (gốc) | 59.5 | 31.5 | 28.0 | 13.75 | 1.25 | 121 | 201 |
+| sd_12ch best | 62.5 | 29.25 | 33.25 | 9.25 | 1.0 | 110 | 224 |
+| sd_13ch best | 63.5 | 29.25 | 34.25 | 10.25 | 1.0 | 119 | 214 |
+
+Paired bootstrap theo 200 cặp seed bàn (10000 resample):
+
+| So sánh | ΔWR | ΔActiveWR (gate) | ΔHòa | ΔTự nổ |
+|---|---|---|---|---|
+| sd_12ch − B | +3.0 [−2.75, 8.75] | **−2.25 [−8.0, 3.5]** | −4.5 [−8.75, −0.25] | −0.25 [−1.0, 0.5] |
+| sd_13ch − B | +4.0 [−2.0, 10.0] | **−2.25 [−7.5, 3.25]** | −3.5 [−8.0, 1.0] | −0.25 [−1.5, 1.0] |
+| sd_13ch − sd_12ch | +1.0 [−4.75, 6.5] | 0.0 [−4.75, 4.75] | +1.0 [−2.75, 4.75] | 0.0 [−1.25, 1.25] |
+
+Gate (ActiveWR ≥ +5pp, CI95 lower > 0, tự nổ không cao hơn B): FAIL cả hai, ActiveWR giảm nhẹ (không có ý nghĩa thống kê). `decision=retain_original`, `eligible_for_replication=false`.
+
+Nhận xét:
+- WR tăng 3–4pp và hòa giảm đến từ thắng thụ động tăng (28 → 33–34), đúng loại lợi ích mà quy ước không tính là agent giỏi hơn.
+- Kênh vòng không giúp gì: sd_13ch − sd_12ch ActiveWR 0.0, và learner vẫn chết vì vòng 119/400 (B 121, sd_12ch 110). Ở cả ba model, số lần learner chết vì vòng trùng với `unavoidable_pre_move_closure` của mask (lúc mask hỏi thì ô đã sắp đóng, không còn đường thoát), và mask learner có 442–473 lần giao rỗng (rơi về mask gốc). Giả thuyết, chưa kiểm chứng: learner bị kẹt trước khi mask cảnh báo kịp giúp, và 200 episode chưa đủ để policy học rời vòng sớm.
+- Phụ: B trên seed mới 40000 dưới SD2 both_aware cho WR 59.5 / ActiveWR 31.5, khớp lượt xác nhận SD2 trên 39000 (59.25 / 31.5), tức kết quả SD2 lặp lại trên seed khác.
+- Validation chọn sd_13ch ep200 với ActiveWR val 35 (+7 so với ep0), nhưng trên test chỉ 29.25: 100 trận validation không đủ phân biệt.
+
+Giới hạn: một train seed, 200 episode, lr 1e-4, chỉ đối thủ RuleBot 1v1 9×9; không suy ra rằng train dưới SD hay kênh vòng vô ích ở quy mô lớn hơn. Seed 40000 đã dùng; không chạy thêm test để cứu gate.
+
+## SD3 — chẩn đoán chết vì vòng (từ dữ liệu test 40000 có sẵn), 16/10/2026
+
+Không chạy thêm trận; chỉ đọc lại `runs/sd3-full/evaluation_*_40000.json`.
+
+| Model | Learner chết vì vòng | Vòng 1 (bước 400) | Vòng 2 (bước 440) | Đối thủ còn sống trong các trận đó | Mask learner giao rỗng / trận chết vòng |
+|---|---:|---:|---:|---:|---:|
+| B | 121 | 90 | 31 | 94 | 397 / 121 ≈ 3.3 |
+| sd_12ch | 110 | 83 | 27 | 96 | 311 / 110 ≈ 2.8 |
+| sd_13ch | 119 | 82 | 37 | 90 | 335 / 119 ≈ 2.8 |
+
+- 100% trận chết vì vòng có ít nhất một lần mask giao rỗng, nhưng trung bình chỉ ~3 lần/trận: mask còn tìm được đường thoát gần hết cửa sổ cảnh báo 40 bước, rồi mất đường trong vài bước cuối. Giả thuyết (chưa kiểm chứng từng bước): mask chỉ đòi "còn khả thi", nên learner nán lại vòng ngoài sát hạn chót; diễn biến mask không dự báo (đối thủ di chuyển/đặt bom mới chặn lối vào) làm hết đường.
+- 3/4 ca chết ở vòng 1 (vòng ngoài, chứa cả góc xuất phát). Đối thủ RuleBot biết vòng chỉ chết vì vòng 47/400 so với learner 121/400.
+- Ở ~78% các trận này đối thủ còn sống, nên chết vì vòng chủ yếu biến thành thua, không phải hòa.
+
+## SD-tracker — tạo file theo dõi hướng sudden death, 16/10/2026
+
+Không chạy thí nghiệm, không có số liệu mới. Tạo `PLAN_SUDDEN_DEATH.md` (checkbox SD1–SD4; SD1–SD3 đã đánh dấu xong, SD4.0 READY). Kết quả vẫn ghi ở file này.
+
+## SD4.0 — chẩn đoán chết vì vòng bằng replay trên validation, 16/10/2026
+
+**DONE; giả thuyết đúng một phần.** Output `runs/sd4-diag-21000` (`summary.json`, `events.jsonl.gz`, log `runs/sd4-diag-21000-console.log`). Script `diagnose_sd_ring_deaths.py`: B, SD2 both_aware, validation seed 21000, 400 trận (cùng trận với `evaluate_case`, chỉ bọc mask để ghi lại; test parity). Không đụng seed test. B trên 21000: WR 63.25, ActiveWR 33.5, hòa 12.0, tự nổ 0.5; learner chết vì vòng 112/400 (vòng 1: 84, vòng 2: 28), đối thủ 44/400.
+
+"Còn đường" = có hành động đứng/đi giữ được tiếp diễn an toàn với vòng + bom đã biết (không xét mask bom gốc). Nguyên nhân = loại vật cản mà chỉ cần bỏ riêng nó là có lại đường (một trận có thể có nhiều loại).
+
+| Nhóm (sự kiện vòng) | Số | Còn ở ô vòng lúc còn 10 bước* | Còn ở ô vòng lúc còn 5 bước* | Mất hết đường trước bước cuối | Mất đường lúc còn 2–4 bước | Nguyên nhân: bom của mình / thân đối thủ / bom đối thủ / nhiều loại |
+|---|---:|---:|---:|---:|---:|---|
+| Learner chết | 112 | 68/112 (61%) | 80/112 (71%) | 87 | 70 | 48 / 41 / 5 / 15 |
+| Learner sống | 300 | 134/246 (54%) | 141/242 (58%) | 10 | 0 | 4 / 7 / 2 / 2 |
+| Đối thủ chết | 44 | 16/44 | 22/44 | 30 | 22 | 15 / 14 / 3 / 6 |
+| Đối thủ sống | 368 | 142/314 (45%) | 145/310 (47%) | 77 | 3 | 68 / 69 / 4 / 2 |
+
+*Bỏ các sự kiện mà trận đã kết thúc trước mốc đó.
+
+Kết luận:
+- Nán lại vòng tới sát hạn chót là phổ biến (kể cả learner sống: 162/300 chỉ rời vòng khi còn 2–4 bước), nên bản thân nó chưa phân biệt sống/chết; nó là phơi nhiễm. Learner nán lâu hơn RuleBot (54% so với 45% còn trong vòng lúc còn 10 bước).
+- Yếu tố kích hoạt: 78% (87/112) ca chết mất hết đường thoát trước bước cuối, phần lớn lúc còn 2–4 bước (70). Đường bị cắt chủ yếu bởi **bom của chính learner** (48) và **thân đối thủ** đứng chặn (41); bom đối thủ ít (5). Không ca nào bị gỗ nhốt (BFS qua sàn luôn có lối vào ở mốc còn 10 bước, khoảng cách trung vị 1 ô).
+- Mask chỉ dự báo đối thủ đứng yên một bước, nên kế hoạch "ra sát giờ" dễ vỡ khi đối thủ di chuyển hoặc bom vừa đặt chặn lối. Biên an toàn k (SD4.1) đúng hướng vì buộc ra sớm, còn dư thời gian để đi đường khác. Vẫn giữ k ∈ {0, 5, 10, 15, 20} và luật đã chốt; ý "cấm đặt bom trong ô vòng gần hạn chót" ghi lại làm nhánh sau, không thêm vào SD4.1.
+- Giới hạn: một seed validation; phân loại nguyên nhân chỉ thử bỏ từng loại vật cản, 15 ca "nhiều loại" không quy về một nguyên nhân.
+
+## SD4.1 — biên an toàn k cho mask vòng của learner, 16/10/2026
+
+**COMPLETE, gate PASS (gate của SD4.1: giảm chết vì vòng mà không hại ActiveWR). ActiveWR không tăng; giữ checkpoint B, dùng thêm biên k=15 cho mask learner ở chế độ SD.** Runner `run_sd_margin.py`. Luật chọn và gate chốt với người dùng trước khi chạy (PLAN_SUDDEN_DEATH.md). B, SD2 both_aware, 400 trận/k, đối thủ RuleBot không đổi; biên chỉ áp cho learner (ô vòng coi như đóng sớm k bước; nếu không kịp thì quay về mask SD2).
+
+Quét validation 21000 (`runs/sd4-margin-sweep-21000`, log `runs/sd4-margin-sweep-21000-console.log`); k=0 khớp đúng SD4.0 (112 chết vòng, ActiveWR 33.5):
+
+| k | WR | ActiveWR | Hòa | Tự nổ | Learner chết vì vòng |
+|---:|---:|---:|---:|---:|---:|
+| 0 | 63.25 | 33.5 | 12.0 | 0.5 | 112 |
+| 5 | 65.75 | 33.5 | 15.25 | 1.0 | 89 |
+| 10 | 65.0 | 33.0 | 13.5 | 1.0 | 99 |
+| **15** | 67.0 | **34.75** | 16.75 | 0.75 | 84 |
+| 20 | 65.0 | 32.5 | 16.5 | 0.5 | 94 |
+
+Theo luật chọn: k=15 (giảm chết vòng so với k=0, ActiveWR cao nhất). Đường cong không đơn điệu theo k (k=10 tệ hơn k=5), nên thứ hạng giữa các k>0 chủ yếu là nhiễu của một seed.
+
+Test một lần seed 41000–41199 (`runs/sd4-margin-test-41000`, log `runs/sd4-margin-test-41000-console.log`), paired bootstrap 200 cặp seed bàn:
+
+| Mask learner | WR | ActiveWR | Thắng thụ động | Hòa | Tự nổ | Learner chết vì vòng | Đối thủ chết vì vòng |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| SD2 (k=0) | 60.0 | 28.75 | 31.25 | 13.75 | 1.25 | 116 | 40 |
+| SD2 + biên k=15 | 70.75 | 29.5 | 41.25 | 10.25 | 1.25 | 76 | 69 |
+| Δ (CI95) | **+10.75 [6.25, 15.5]** | +0.75 [−1.25, 2.75] | | −3.5 [−7.5, 0.5] | 0.0 [−1.5, 1.5] | **−10.0pp [−14.25, −5.75]** | |
+
+Gate: chết vì vòng CI95 upper −5.75 < 0 ✓; ActiveWR CI95 lower −1.25 ≥ −3 ✓; tự nổ +0.0 ≤ +1 ✓ → **PASS**.
+
+Kết luận:
+- Biên k=15 giảm learner chết vì vòng 116 → 76/400 và tăng WR +10.75pp (CI không chứa 0), mức tăng WR lớn nhất của hướng SD.
+- Toàn bộ phần WR tăng là thắng thụ động (31.25 → 41.25): learner sống qua vòng thì RuleBot hay chết vì vòng hơn (40 → 69). ActiveWR không đổi; theo quy ước, đây không phải agent đánh giỏi hơn, mà là mask an toàn tốt hơn.
+- Ghi chú: ActiveWR của B dưới SD2 ở seed 41000 (28.75) thấp hơn seed 39000/40000 (31.5): khác biệt giữa các bộ seed.
+- Giới hạn: một seed validation để chọn k, một seed test; chỉ RuleBot 1v1 9×9; không có train. Seed 41000 đã dùng.
+
+## SD4.2a — probe cuối trận: teacher có biến giai đoạn vòng co thành thắng chủ động không, 16/10/2026
+
+**COMPLETE (chỉ validation), luật quyết định: KHÔNG ĐẠT → không mở SD4.2b; dừng nhánh SD hướng ActiveWR.** Output `runs/sd4-endgame-probe-21000` (log `runs/sd4-endgame-probe-21000-console.log`), script `probe_sd_endgame.py`. Validation 21000, 400 trận/nhánh, SD2 + biên learner k=15; cùng trận, RNG và hành động B tới bước 360 (đầu cửa sổ cảnh báo vòng 1), sau đó ghế learner do bộ điều khiển khác. Luật chốt trước khi chạy: một nhánh teacher phải tăng ActiveWR ≥ +5pp so với B.
+
+Insight dẫn tới probe (validation 21000, k=15, từ `runs/sd4-margin-sweep-21000`): 150/400 trận kết thúc trước bước 400 và 120 trong số đó là thắng chủ động (80%); 250 trận kéo tới bước 400 chỉ có 19 thắng chủ động (8%) dù learner đặt trung bình ~45 bom/trận ở nhóm này. ActiveWR gần như do giai đoạn trước 400 quyết định.
+
+| Bộ điều khiển learner từ bước 360 | WR | ActiveWR | Thắng thụ động | Hòa | Tự nổ | Thắng chủ động sau bước 360 (/262 trận) | ΔActiveWR so B (CI95) |
+|---|---:|---:|---:|---:|---:|---:|---|
+| B (đối chứng) | 67.0 | 34.75 | 32.25 | 16.75 | 0.75 | 31 | — |
+| Teacher local | 73.5 | 30.5 | 43.0 | 9.75 | 3.25 | 14 | −4.25 [−7.25, −1.25] |
+| two_bomb → local | 75.0 | 31.25 | 43.75 | 8.0 | 2.0 | 17 | −3.5 [−6.5, −0.5] |
+| RuleBot | 49.5 | 32.5 | 17.0 | 36.75 | 25.25 | 22 | −2.25 [−5.5, 1.0] |
+
+Nhánh B khớp đúng k=15 của lượt quét (WR 67.0, ActiveWR 34.75).
+
+Kết luận:
+- Không bộ điều khiển nào hạ RuleBot ở giai đoạn cuối tốt hơn B; teacher local/two_bomb còn kém hơn có ý nghĩa (CI không chứa 0). Hai teacher tăng WR (+6.5/+8pp) chỉ bằng thắng thụ động (đối thủ tự nổ/chết vì vòng), RuleBot làm learner thì tự nổ 25%.
+- Vì B đã là bộ "giết" tốt nhất có sẵn ở giai đoạn cuối, chưng cất các teacher này (SD4.2b) không có cơ sở. Theo luật chốt trước: dừng nhánh SD hướng ActiveWR, quay về kỹ năng tấn công trước bước 400.
+- Với mục tiêu ban đầu của sudden death (tăng WR, giảm hòa), cấu hình tốt nhất đã kiểm chứng là SD2 + biên learner k=15 (seed test 41000: WR 70.75, hòa 10.25, ActiveWR 29.5); so với không có SD (seed 39000: WR 39.5, hòa 59.25, ActiveWR 35.5) WR tăng mạnh và hòa giảm mạnh, nhưng phần tăng là thắng thụ động.
+- Giới hạn: một seed validation; chỉ các teacher có sẵn trong repo (không có search/MCTS có mô hình đối thủ); kết luận "giai đoạn cuối khó khai thác" chỉ đúng với các bộ điều khiển đã thử.
+
+## SD4.6 — probe kill-search: lượt đầu bị ngắt, 16/10/2026
+
+**INCOMPLETE, chưa có số liệu.** Lượt `probe_sd_endgame.py --arms b search search --switches 360 360 0 --shards 1 2 2` (5 tiến trình, validation 21000) bị Claude Code dừng vì máy thiếu RAM trước khi ghi kết quả; thư mục output rỗng đã xóa. Chỉ có số đo thử 8 trận (không dùng để kết luận): search từ bước 0 ActiveWR 37.5 so với B 25.0, ~9 giây/trận so với ~1.3 giây/trận của B. Giao người dùng chạy lại trong cmd.
+
+## XC — đối chiếu nhánh `codex/phasec-sd-best-fallback` (a6650a0) của bạn cùng nhóm, 17/10/2026
+
+**Phân tích tĩnh DONE; đánh giá chéo WAIT (máy đang chạy SD4.6, còn 0.4 GB RAM).** Kết quả họ báo: `runs/phaseC-sd-best-fallback/evaluation-200.json`, checkpoint `best_phaseC.pt` SHA `0315a56f…1483` (khớp tài liệu), seed 31000, 200 trận: WR 67.5, ActiveWR 51.0, thắng do vòng 9.0, thụ động 7.5, hòa 21.5, tự nổ 0.5, chết vì vòng 13.0.
+
+Những gì đã kiểm (đọc code/artefact, chưa chạy):
+- Cùng điểm xuất phát: warm-start là đúng B của mình (`runs/pressure-C-next/final_phaseC.pt`, SHA `93bdf278…4f60`); engine gốc giống (phần mình sửa trong `bomberman_env.py` chỉ là `scheduled_bombs` opt-in); RuleBot của họ chỉ thêm 9 dòng cho vòng (mask biết vòng, tương đương `both_aware`).
+- Cùng định nghĩa ActiveWR (`còn sống và kills > 0`); lúc đánh giá chỉ có CNN + mask chung `_safe_action_mask`, không có teacher chen vào.
+- Không dùng lại seed: mỗi lượt có validation/test riêng (26000/27000, 28000/29000, 30000/31000). Validation chọn best ep250 ActiveWR 50.5 (seed 30000) → test 31000 51.0: nhất quán, không có dấu hiệu chọn theo test. Nhỏ: họ chọn "strongest" giữa các lượt sau khi xem test của từng lượt, nên hơi lạc quan.
+- Khác biệt so với các pilot của mình:
+  1. Train dài hơn ~15 lần: B → 1500 ep → 750 ep → 750 ep (~3000 ep) so với 200 ep/nhánh ở SD3/các pilot.
+  2. Teacher tấn công khác: pressure lookahead 2, trap sequence depth 2 (gain 0.35), hệ số loss combat 0.9 / navigation 0.4 (mình 0.5 / 0.2), nhân ×1.75 cho supervision tấn công từ bước 350, loss an toàn vòng 0.6; lr giảm dần 1e-4 → 5e-5 → 2.5e-5; chọn checkpoint theo nhiều mục tiêu với 200 trận validation.
+  3. Luật vòng khác: lịch E = start 475 / interval 25 (vòng 1 đóng ở bước 475, vòng 2 ở bước 500 = hết trận), SD bật ở 75% episode khi train. Vòng chỉ tác động 25 bước cuối nên thắng thụ động thấp (7.5%) — khác SD2 của mình (start 400, nơi RuleBot tự nổ nhiều làm thắng thụ động ~30%).
+  4. Kênh quan sát 13 khác nghĩa: độ mạnh cảnh báo tăng dần `(W − còn lại + 1)/W` cho vòng kế tiếp (mình: `1/delay`).
+- Chưa biết: B đạt bao nhiêu dưới đúng protocol của họ (lịch E, seed 31000). Đây là đối chứng quyết định xem +ActiveWR đến từ model hay từ luật/seed.
+
+Đánh giá chéo đã chuẩn bị (`crosscheck_friend_branch.py`, chạy `evaluate.py` của chính nhánh họ trong worktree riêng): E1 tái lập 31000; E2 B trên cùng 31000; E3 friend vs B lịch E seed 60000 (400 trận/model); E4 friend vs B không SD seed 60000. Seed 60000 dùng riêng cho đối chiếu này.
+
+## SD4.6 — probe kill-search (lượt đầy đủ), 17/10/2026
+
+**COMPLETE (chỉ validation), luật quyết định: search@0 ĐẠT (+5.75pp), search@360 KHÔNG ĐẠT.** Output `runs/sd4-search-probe-21000` (log `runs/sd4-search-probe-21000-console.log`), người dùng chạy trong cmd với `--shards 1 1 1`. Validation 21000, 400 trận/nhánh, SD2 + biên learner k=15. Luật chốt trước (PLAN_SUDDEN_DEATH.md): nhánh search tăng ActiveWR ≥ +5pp so B.
+
+| Nhánh | WR | ActiveWR | Thụ động | Hòa | Tự nổ | Learner chết vì vòng | Thắng chủ động sau switch | ΔActiveWR so B (CI95) |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| B (đối chứng, switch 360) | 67.0 | 34.75 | 32.25 | 16.75 | 0.75 | 84 | 31/262 | — |
+| search từ bước 360 | 78.75 | 34.5 | 44.25 | 16.75 | 0.0 | 17 | 30/262 | −0.25 [−2.0, 1.5] |
+| search từ bước 0 | 81.75 | **40.5** | 41.25 | 16.0 | 0.0 | 14 | 162/400 | **+5.75 [2.75, 8.75]** |
+
+Nhánh B khớp đúng SD4.1/SD4.2a (67.0 / 34.75), nên lượt chạy nhất quán.
+
+Kết luận:
+- Lookahead 12 bước có mô hình RuleBot **không** thêm kill ở giai đoạn cuối (search@360 ≈ B): xác nhận lần nữa ActiveWR do giai đoạn trước bước 400 quyết định.
+- Bật search cả trận tăng ActiveWR +5.75pp (CI dưới > 0): có những đòn hạ đối thủ ở đầu/giữa trận mà CNN của B bỏ lỡ và lookahead ngắn tìm được. Theo luật chốt trước: mở hướng chưng cất search vào CNN cho cả trận (ngoài phạm vi SD thuần).
+- Phụ: search (tránh nước dẫn tới chết trong 12 bước) cắt learner chết vì vòng 84→14–17 và tự nổ về 0, WR +11.75/+14.75, nhưng phần tăng WR này là thắng thụ động.
+- Giới hạn: search dùng mô hình đối thủ hoàn hảo (chính code RuleBot làm đối thủ đánh giá), chậm ~7 lần; đây là cận trên cho một teacher, chưa phải agent học được. Một seed validation.
+
+## XC — kết quả đánh giá chéo nhánh `codex/phasec-sd-best-fallback` (a6650a0), 17/10/2026
+
+**COMPLETE.** Output `runs/crosscheck-friend-a6650a0` (`summary.json`, log `runs/crosscheck-friend-console.log`), người dùng chạy `crosscheck_friend_branch.py`; mọi lượt dùng `evaluate.py` của chính nhánh họ (worktree a6650a0). F = checkpoint của họ `best_phaseC.pt` (SHA `0315a56f…1483`), B = `runs/pressure-C-next/final_phaseC.pt`. Lịch E = SD start 475 / interval 25 / warning 40.
+
+| Mã | Model | Luật | Seed, số trận | WR | ActiveWR | Thụ động | Thắng do vòng | Hòa | Tự nổ | Chết vì vòng |
+|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|
+| (họ báo) | F | E | 31000, 200 | 67.5 | 51.0 | 7.5 | 9.0 | 21.5 | 0.5 | 13.0 |
+| E1 | F | E | 31000, 200 | 58.5 | 38.5 | 7.0 | 13.0 | 29.0 | 1.0 | 11.5 |
+| E2 | B | E | 31000, 200 | 60.0 | 33.0 | 13.0 | 14.0 | 22.0 | 0.5 | 19.5 |
+| E3 | F | E | 60000, 400 | 67.5 | 48.5 | 10.5 | 8.5 | 25.5 | 0.5 | 10.75 |
+| E3 | B | E | 60000, 400 | 64.0 | 40.0 | 12.5 | 11.5 | 22.5 | 0.5 | 16.75 |
+| E4 | F | tắt SD | 60000, 400 | 52.0 | 45.25 | 6.75 | 0 | 46.25 | 0.5 | 0 |
+| E4 | B | tắt SD | 60000, 400 | 44.75 | 39.0 | 5.75 | 0 | 53.5 | 0.5 | 0 |
+
+Delta F − B (paired bootstrap theo seed bàn, CI95):
+
+| So sánh | ΔWR | ΔActiveWR | ΔHòa | ΔTự nổ |
+|---|---|---|---|---|
+| E1 vs E2 (lịch E, 31000) | −1.5 [−10.0, 7.0] | +5.5 [−4.0, 15.0] | +7.0 [−0.5, 14.5] | +0.5 [−1.0, 2.0] |
+| E3 (lịch E, 60000) | +3.5 [−3.5, 10.5] | **+8.5 [1.5, 15.75]** | +3.0 [−3.0, 9.0] | 0 [−0.75, 0.75] |
+| E4 (tắt SD, 60000) | **+7.25 [0.25, 14.5]** | +6.25 [−1.0, 13.5] | **−7.25 [−14.25, −0.25]** | 0 [−0.75, 0.75] |
+| Gộp E1+E3 vs E2+E3 (lịch E, 600 trận/model) | +1.83 [−3.5, 7.33] | **+7.5 [1.83, 13.17]** | +4.33 [−0.33, 9.0] | — |
+
+Kết luận:
+- **Không tái lập được đúng 67.5/51.0** dù cùng code, cùng checkpoint (SHA khớp), cùng seed: các trận khác nhau ngay từ trận đầu (họ: 391 bước, thắng thụ động; mình: 55 bước, thắng chủ động). Đã kiểm thêm: `evaluate.py` ở commit trước (0d3b474) cho đúng các trận như a6650a0; `final_phaseC.pt` cũng không khớp. Nguyên nhân khả dĩ nhất (suy luận, chưa kiểm được): policy **lấy mẫu** hành động (`Categorical.sample`, seed theo bàn), nên chuỗi mẫu phụ thuộc phiên bản torch/máy (mình torch 2.5.1, numpy 2.0.1; máy họ không rõ). Vì vậy 51.0 là một lần rút mẫu trên máy họ, không phải số tái lập được bit-to-bit; không thấy dấu hiệu lỗi protocol.
+- **F hơn B thật, nhưng ít hơn con số báo:** gộp 600 trận dưới lịch E, ActiveWR F 45.2 so B 37.7 (+7.5pp, CI dưới > 0). Con số 51.0 lạc quan do may mắn khi rút mẫu và do chọn lượt "mạnh nhất" sau khi xem test. Đối chứng B dưới luật của họ là ~38–40, không phải ~35.
+- **Dưới lịch E, WR gần như không đổi (+1.8, CI chứa 0) và hòa còn nhích lên:** F đổi thắng thụ động/thắng do vòng thành thắng chủ động và chết vì vòng ít hơn (10.75–11.5 so 16.75–19.5). Khi tắt SD, F tăng WR (+7.25) và giảm hòa (−7.25); ActiveWR +6.25 (CI chạm 0).
+- So với hướng của mình: về **kỹ năng** (ActiveWR), công thức train của họ (~3000 ep, teacher tấn công lookahead 2/chuỗi bẫy, combat 0.9, ×1.75 giai đoạn cuối) là cải thiện duy nhất đến nay có CI dưới > 0 trên seed mới. Về **mục tiêu SD ban đầu** (WR cao, hòa thấp), SD2 + k=15 của mình mạnh hơn (WR 70.75, hòa 10.25 trên 41000), nhưng nhờ thắng thụ động.
+- Giới hạn: một train seed của họ; 31000 do họ chọn; seed mới duy nhất là 60000. Seed 31000 nay đã có kết quả của B dưới lịch E, không còn "khóa sạch" cho T3.

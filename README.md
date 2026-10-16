@@ -171,3 +171,50 @@ Chi tiết các chỉ số đo lường (Win Rate, Episode Length, Bomb Usage, S
 Nhánh `danh/bomberman-rl-results-checkpoints` lưu cả `runs/`, báo cáo Markdown, metrics, scripts và các checkpoint của project chính. Các file `.pt` dùng Git LFS; sau khi clone, chạy `git lfs pull` trong thư mục repository để lấy đủ trọng số. Python cần file trọng số thật, không phải file pointer LFS.
 
 Checkout đối chứng `_comparison/BomberMan-Loc_update` là submodule, giữ đúng commit của nhánh `Loc_update` dùng khi so sánh. Clone với `--recurse-submodules`, hoặc chạy `git submodule update --init --recursive` sau khi clone để lấy code và checkpoint đối chứng. Thư mục test tạm, cache Python và môi trường ảo được giữ ở máy cục bộ.
+
+## Pilot giáo viên hai bom
+
+Trainer/CLI nhận `--attack_teacher local|two_bomb|local_combat_move`, mặc định `local`. `two_bomb` tìm vị trí bom đầu trong hai bước di chuyển và bom sau trong ba bước; được chờ sức chứa trả lại. Mỗi query xét tối đa 64 kế hoạch, kiểm tra đường sống của learner và số vị trí đối thủ sống được qua toàn bộ lửa dự báo. Nhãn các hành động đầu tốt ngang nhau có trọng số đồng đều; di chuyển phục vụ combo dùng loss combat 0.5. CNN vẫn tự chọn hành động qua mask; evaluation và GUI không gọi planner.
+
+```powershell
+python -m unittest test_combat test_visualize test_tactical_teacher -q
+python pilot_two_bomb.py --output runs/two-bomb-pilot-new
+```
+
+Dùng thư mục output mới: runner không ghi đè lượt cũ. Pilot warm-start từ `runs/pressure-C-next/final_phaseC.pt`, chạy 200 episode mỗi teacher với seed 2026101303, validation 100 trận seed 21000 ở episode 0/100/200. Test cuối gồm 400 trận mỗi model (gốc, best local, best two_bomb), seed bàn 25000–25199, cả A0/A1, bootstrap 10.000 lần theo **cặp góc của cùng seed bàn**.
+
+Runner giới hạn 15 phút preflight, 65 phút train và 40 phút evaluation, lưu config, bản chụp source, SHA256, metrics và trạng thái trong output. Metrics `teacher` chứa số query/kế hoạch/nhãn, nhãn hai bom, tổng pressure, lý do loại và tổng milliseconds; chia pressure cho accepted để lấy mức giảm trung bình. Thiếu lượt train hoặc test thì trạng thái `inconclusive` và giữ checkpoint gốc. Chỉ đủ điều kiện đề xuất model khi ActiveWR tăng ít nhất 5 điểm phần trăm so với cả hai đối chứng, tự nổ không tăng và hai CI 95% đều có cận dưới >0; vẫn cần lặp lại với nhiều seed train.
+
+Pilot đầu tiên hoàn tất local 200 episode, two_bomb 146 episode trước giới hạn train; test cuối vẫn đủ 1.200 trận. Chưa đủ điều kiện thay model. Xem [báo cáo và giới hạn phép so sánh](runs/two-bomb-pilot-20261014/report.md); lần chạy tiếp dùng output và seed test mới.
+
+## Pilot nhãn MOVE chiến đấu
+
+`local_combat_move` giữ target của local teacher, chuyển riêng MOVE tăng pressure và có chứng nhận MOVE→BOMB→escape qua mask trên clone vào combat mean0.5; các MOVE không được chứng nhận giữ navigation0.2. Certificate dự báo bom đã biết, other agents STOP, dùng greedy escape có giới hạn; không bảo đảm trước future counter-bombs. Không đổi reward/CNN/optimizer/mask và không thay action CNN.
+
+[run_combat_move_pilot.py](/D:/fpt/subject/BomberMan/run_combat_move_pilot.py) train lại cảlocal/control vàcandidate200ep từB, validation/guard chung, lưu skill tapes và test400/model trên seed mới đã đăng ký. [COMBAT_MOVE_GUIDE.md](/D:/fpt/subject/BomberMan/COMBAT_MOVE_GUIDE.md) ghi protocol, lệnh, trạng thái và files đánh giá.136 tests và smokeCPU/CUDA đã qua; xem `RESULTS.md` trước khi chạy lại hoặc chọn checkpoint. Chưa chọn mode mới làm mặc định.
+
+T4-A1 thêm `--normalize_advantage` (mặc định tắt), chỉ chuẩn hóa advantage của actor theo learner trajectory; critic vẫn MC. [run_advantage_pilot.py](/D:/fpt/subject/BomberMan/run_advantage_pilot.py) chạy đối chứng raw/normalized với teacher local; xem [ADVANTAGE_GUIDE.md](/D:/fpt/subject/BomberMan/ADVANTAGE_GUIDE.md) cho protocol, trạng thái và kết quả.
+
+T4-B0 thêm `--advantage_estimator gae --gae_lambda 1`; mặc định MC, critic target không đổi. [GAE_B0_GUIDE.md](/D:/fpt/subject/BomberMan/GAE_B0_GUIDE.md) ghi boundary và kiểm tra số học. Runner B1 qua174tests/smokeCPU-CUDA; sau sửa deadline qua49tests liên quan. **Full B1 hoàn tất:**200ep/nhánh,400test/model,54,87phút;bestMC/GAE đềuepisode0(weightsB),ActiveWR cảba31,75%,gateFAIL,giữB. Lượt đầu thiếu thời gian được lưu riêng. [Protocol/kết quả](/D:/fpt/subject/BomberMan/GAE_PILOT_GUIDE.md).
+
+T4-R0 đã audit đủ300 trận validation với B/MC final200/GAE final200, review118.226 bước reward và12replay timeout. Thêm `--reward_diagnostics` (mặc định tắt), giữ reward vàweights cũ. Mọi timeout nhận reward dương chủ yếu từwall bonus, nhưng 100bước cuối không cònwall reward vàagent vẫn đặt bom gây sức ép. R0 không chứng minh farm gỗ là nguyên nhân chính.188tests PASS/1CUDA SKIP;giữB,đề xuất R1 ở mức thiết kế đối chứng. [Hướng dẫn](/D:/fpt/subject/BomberMan/R0_GUIDE.md), [báo cáo](/D:/fpt/subject/BomberMan/runs/r0-full-20261015-153908/R0_report.md).
+
+## R1: pilot giảm thưởng phá tường
+
+R1 IMPLEMENTED/TESTED, full INCOMPLETE do tiến trình bị ngắt: `reward-full-20261015-163227`. Control đủ200episode; half-wall199episode đã lưu, validation200/final200 còn thiếu. Best validation control33%/half-wall30%, chưa có test hoặcCI; giữB. 200regression testsPASS, smokeCPU/CUDA qua; audit320skill replays/6.966frames. [Báo cáo](/D:/fpt/subject/BomberMan/runs/reward-full-20261015-163227/decision_report.md).
+
+## Phase C full-state resume và R1 hoàn tất
+
+R1 DONE/REVIEWED: `reward-full-resumable-20261015-194314`. Đủ 200 episode và 200 Adam update mỗi nhánh từ B; 400 trận test/model trên seed 36000–36199, cả A0/A1. Best control/half-wall đều ở episode 200. ActiveWR B/control/half-wall = 34,50%/36,25%/35,00%. Gate FAIL; giữ B và wall bonus 0,15. Thời gian chạy 49,54 phút. [Báo cáo](/D:/fpt/subject/BomberMan/runs/reward-full-resumable-20261015-194314/decision_report.md).
+
+Phase C có `training_state.pt` gồm model/Adam/scheduler/global episode/best guard/history, RNG Python/NumPy/env/Torch CPU/CUDA và context log. Atomic temp+fsync+replace, OS writer lock, `run_reward_pilot.py --resume` khôi phục episode đã xác nhận; không reset schedule hoặc chọn lại model test. 212test riêng biệt PASS; có CPU/CUDA exact resume trong tiến trình mới, interrupted episode/validation và torn-log recovery. `best/final_phaseC.pt` giữ dạng weights để chơi; loader từ chối nhầm full-state file. Resume yêu cầu cùng source/config/runtime/thiết bị; hiện chỉ hỗ trợ Phase C, deadline R1 gốc vẫn giữ.
+
+## T4-D0 — rollout và gradient parity
+
+T4-D0 DONE/PASS về tính đúng: 226/226 tests, gồm 14 D0; CPU/CUDA smoke đều đủ 20 episode/20 Adam updates mỗi chế độ AC và ratio chưa clip. Buffer lưu mask/old policy/teacher targets; MC raw, critic/reward/teacher/inference và mặc định AC giữ nguyên. Full states và source/ZIP/B hashes đã review. D0 không chứng minh tăng ActiveWR; giữ B. D1 clipping với cùng 4 epochs READY/design, chưa triển khai/pilot. [Báo cáo](/D:/fpt/subject/BomberMan/runs/ppo-d0-implementation-20261015/D0_report.md), [hướng dẫn](/D:/fpt/subject/BomberMan/PPO_D0_GUIDE.md).
+
+## T4-D1 — U4/P4 hoàn tất
+
+D1 DONE/REVIEWED: `ppo-full-20261015-220313`. Đủ 200 episode/nhánh từ B, Adam updates U4/P4=800/800; best episode U4/P4=200/200. Test400/model, seed37000–37199/cảA0-A1: ActiveWR B/U4/P4=37.50%/37.00%/32.00%. Gate FAIL; giữ checkpoint B. Runtime 106.89 phút. [Báo cáo](/D:/fpt/subject/BomberMan/runs/ppo-full-20261015-220313/decision_report.md).
+
+D1 giữ MC raw/critic MC/local teacher/reward cũ. U4/P4 cùng tối đa4 epochs và post-update KL guard target0,02/threshold0,03; chỉ khác clipping epsilon0,20. 241 regression và25 focused metadata/compat tests PASS; CPU/CUDA smoke20episode/80updates mỗi nhánh đã review. Có 500-step/4-epoch memory fixture, hủy giữa epoch khôi phục Adam, exact PPO resume qua tiến trình mới CPU/CUDA, full-state/source/ZIP/locked-model guards. CNN inference và Actor-Critic mặc định giữ nguyên.

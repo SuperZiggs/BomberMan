@@ -49,17 +49,24 @@ def _build_danger_map(env: BombermanFFAEnv) -> np.ndarray:
 
 def _reachable_cells(start, burns, blocked, ticks):
     """Opponent positions reachable after movement and damage at each tick."""
-    reachable = np.zeros_like(burns[0])
-    reachable[start] = True
+    rows, cols = burns.shape[1:]
+    # Bit sets avoid allocating several small NumPy grids for every search tick.
+    area = rows * cols
+    board = (1 << area) - 1
+    left_edge = sum(1 << (r * cols) for r in range(rows))
+    right_edge = left_edge << (cols - 1)
+    reachable = 1 << (start[0] * cols + start[1])
+    hazards = np.packbits(burns[:ticks].reshape(ticks, area), axis=1, bitorder="little")
+    obstacles = np.packbits(blocked[:ticks].reshape(ticks, area), axis=1, bitorder="little")
     for tick in range(ticks):
-        moves = np.zeros_like(reachable)
-        moves[1:] |= reachable[:-1]
-        moves[:-1] |= reachable[1:]
-        moves[:, 1:] |= reachable[:, :-1]
-        moves[:, :-1] |= reachable[:, 1:]
+        moves = ((reachable << cols) | (reachable >> cols)
+                 | ((reachable & ~left_edge) >> 1) | ((reachable & ~right_edge) << 1))
         # Staying on an existing bomb is legal; entering a bomb tile is not.
-        reachable = (reachable | (moves & ~blocked[tick])) & ~burns[tick]
-    return reachable
+        walls = int.from_bytes(obstacles[tick].tobytes(), "little")
+        fire = int.from_bytes(hazards[tick].tobytes(), "little")
+        reachable = (reachable | (moves & ~walls)) & ~fire & board
+    packed = np.frombuffer(reachable.to_bytes((area + 7) // 8, "little"), dtype=np.uint8)
+    return np.unpackbits(packed, bitorder="little")[:area].reshape(rows, cols).astype(bool)
 
 
 def _bomb_escape_pressure(env, agent_id, r, c, base=None):

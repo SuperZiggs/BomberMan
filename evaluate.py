@@ -53,7 +53,7 @@ class RandomAgent:
 # ────────────────────── evaluation helpers ────────────────────────────────
 
 def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
-              verbose: bool = False):
+              verbose: bool = False, on_step=None):
     """
     Chạy num_episodes, mỗi episode gọi agent_fns[i](env, obs_list, agent_id)
     để lấy action.
@@ -73,6 +73,8 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
 
     for ep in range(num_episodes):
         obs_list = env.reset()
+        if on_step is not None:
+            on_step(env, None)
         ep_rewards = [0.0] * num_agents
         ep_bombs = [0] * num_agents
 
@@ -86,6 +88,8 @@ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
                 actions.append(a)
 
             obs_list, rewards, dones, info = env.step(actions)
+            if on_step is not None:
+                on_step(env, info)
             for i in info["bombs_placed"]:
                 ep_bombs[i] += 1
             own_deaths = set(info.get("self_blast_deaths", []))
@@ -173,19 +177,50 @@ def make_ac_fn(model_path: str, board_size: int, device="cpu"):
         raise RuntimeError("PyTorch not installed, cannot load AC model.")
 
     from train_actor_critic import ActorCriticNet, SnapshotOpponent, smart_load_weights
+    from bomberman_env import OBS_CHANNELS
 
-    net = ActorCriticNet(board_size=board_size).to(device)
+    weights = torch.load(model_path, map_location=device, weights_only=True)
+    stored = weights['conv.0.weight'].shape[1] if 'conv.0.weight' in weights else OBS_CHANNELS
+    channels = max(stored, OBS_CHANNELS)
+    net = ActorCriticNet(in_channels=channels, board_size=board_size).to(device)
     smart_load_weights(net, model_path, device)
     policy = SnapshotOpponent(net, device)
 
     @torch.no_grad()
     def fn(env, obs_list, agent_id):
-        return policy.select_action(obs_list[agent_id], env, agent_id)
+        # Extra trailing channels (e.g. the sudden-death ring) are invisible to narrower nets.
+        return policy.select_action(obs_list[agent_id][:channels], env, agent_id)
     return fn
 
 
+def observe_contact(env, aid, state):
+    """Read-only Manhattan proximity; it does not certify a traversable or safe path."""
+    agent = env.agents[aid]
+    position = (agent.row, agent.col)
+    if not state:
+        state.update(initial_position=position, left_spawn=False, first_close_step=None, min_distance=None)
+    if not agent.alive:
+        return
+    state['left_spawn'] |= position != state['initial_position']
+    distances = [abs(agent.row - other.row) + abs(agent.col - other.col)
+                 for other in env.agents if other.agent_id != aid and other.alive]
+    if distances:
+        distance = min(distances)
+        state['min_distance'] = distance if state['min_distance'] is None else min(distance, state['min_distance'])
+        if distance <= 3 and state['first_close_step'] is None:
+            state['first_close_step'] = env.step_count
+
+
+def summarize_contact(rows):
+    reached = [r['contact']['first_close_step'] for r in rows if r['contact']['first_close_step'] is not None]
+    return {'reached_close_rate': len(reached) / len(rows) * 100,
+            'avg_first_close_step_conditional': float(np.mean(reached)) if reached else None,
+            'left_spawn_rate': sum(r['contact']['left_spawn'] for r in rows) / len(rows) * 100}
+
+
 def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
-                    seed=7000, max_steps=500, stop_event=None, on_progress=None):
+                    seed=7000, max_steps=500, stop_event=None, on_progress=None,
+                    contact_diagnostics=False):
     """Evaluate a fixed policy at every corner of each seeded board, preserving RNGs."""
     if num_episodes < num_agents or num_episodes % num_agents:
         raise ValueError("num_episodes must be positive and divisible by num_agents")
@@ -208,13 +243,22 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                                       max_steps=max_steps, seed=board_seed)
                 fns = [make_rule_based_fn(i) for i in range(num_agents)]
                 fns[aid] = agent_fn
-                stats = run_match(env, fns, num_episodes=1)
+                contact, walls = {}, {'walls': 0, 'walls_rewarded': 0}
+                def observed(current, info):
+                    observe_contact(current, aid, contact)
+                    if info is not None:
+                        count = info['walls_destroyed'].get(aid, 0)
+                        walls['walls'] += count
+                        walls['walls_rewarded'] += count if info['alive'][aid] else 0
+                stats = (run_match(env, fns, num_episodes=1, on_step=observed) if contact_diagnostics
+                         else run_match(env, fns, num_episodes=1))
                 games.append({"seed": board_seed, "aid": aid,
                               "win": stats["wins"][aid], "active_win": stats["active_wins"][aid],
                               "suicide": stats["suicide_rates"][aid] / 100,
                               "draw": stats["draws"], "kills": stats["avg_kills"][aid],
                               "bombs": stats["avg_bombs"][aid], "items": stats["avg_items"][aid],
-                              "steps": stats["avg_steps"]})
+                              "steps": stats["avg_steps"],
+                              **({'contact': contact, **walls} if contact_diagnostics else {})})
             if on_progress:
                 on_progress(num_episodes, num_episodes)
     finally:
@@ -225,7 +269,11 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                  for key in ("win", "active_win", "suicide", "draw")}
         averages = {f"avg_{key}": sum(g[key] for g in rows) / len(rows)
                     for key in ("kills", "bombs", "items", "steps")}
-        return {"num_episodes": len(rows), **rates, **averages}
+        return {"num_episodes": len(rows), **rates, **averages,
+                **({'contact': summarize_contact(rows),
+                    'avg_walls': sum(g['walls'] for g in rows) / len(rows),
+                    'avg_walls_rewarded': sum(g['walls_rewarded'] for g in rows) / len(rows)}
+                   if contact_diagnostics else {})}
 
     return {"seed": seed, "board_size": board_size, "num_agents": num_agents,
             "max_steps": max_steps, **summarize(games),

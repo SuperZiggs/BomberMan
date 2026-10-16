@@ -339,3 +339,140 @@ Replay đủ 13 trận tự nổ/thua của `pressure-C-next/final_phaseC.pt` tr
 - RuleBot `robust=False` giữ nguyên. Sửa mask có hiệu lực ngay khi đánh giá checkpoint cũ, không cần train lại để thấy thay đổi. Checkpoint và log cũ không bị ghi đè.
 
 Đã kiểm tra hai phía A0/A1, va chạm lần đầu rồi thử thoát lại, lửa chặn lối đi, đường thoát không tranh chấp và các điều kiện bom bổ sung cũ. 48 unit test và kiểm tra tích hợp GUI/train đều qua. Tám trận hiệu chuẩn seed 15000 khớp bản thử, đối chiếu 2637 quyết định learner và mask đối thủ không đổi. Đây vẫn là heuristic: đối thủ có thể tiếp tục chặn đường hoặc đặt bom muộn. Kết quả development và test độc lập được ghi ở cuối `RESULTS.md`.
+
+## 13. Giáo viên chiến thuật tối đa hai bom (2026-10-14)
+
+`tactical_teacher.py` tạo nhãn trên trạng thái thực của learner, không thay hành động CNN. Forecast nhận `(delay, Bomb)` với delay 0 là bước kế tiếp: trước placement bom chưa có mặt; ngay tick placement bom chặn ô, timer giảm một lần, rồi xử lý dây chuyền/lửa giống `step`. Theo dõi sức chứa trước nổ, nên một slot vừa nổ chỉ dùng lại ở bước sau; ammo một không có hai bom đồng thời. API reset/step và forecast cũ vẫn hoạt động như trước.
+
+Tìm các đường đặt sớm nhất theo ô và hành động đầu: tối đa hai bước trước bom đầu, ba bước sau đó. Chờ được khi phải né lửa hoặc đợi slot. Chọn tối đa tám vị trí đầu gần đối thủ nhất; mỗi vị trí có một kế hoạch single và tối đa bảy vị trí tiếp theo, tổng <=64. Phép cắt này có thể bỏ sót combo ngoài tập xét. Dự báo tường gỗ mở, bom dây chuyền và lửa tới khi hết nguy hiểm; nếu combo rút ngắn fuse thì không đếm thêm các tick trống từ fuse cũ để làm sai áp lực.
+
+So số ô đối thủ còn có thể sống ở cùng horizon trước/sau; loại đối thủ vốn đã chết theo forecast gốc. Ưu tiên trap, pressure, ít bom, ít bước di chuyển rồi ít tick chờ. Learner phải sống qua cả lịch bom, tránh ô đối thủ hiện tại và ô tranh chấp ở bước đầu; hành động đầu bắt buộc nằm trong mask thật. Đường qua range item đã biết bị bỏ để không dùng blast range sai. Nhãn ngang điểm phân phối đều, tất cả nhãn mới vào nhóm combat 0.5 và thay nhãn cũ ở bước đó; nếu không có áp lực dương thì fallback local. Observation 12 kênh, reward, mask, optimizer và các nhóm loss khác không đổi.
+
+Reachability dùng bit set để giảm chi phí tính trên lưới nhỏ; kết quả được đối chiếu với phép tính NumPy cũ trên nhiều kích thước/horizon và với các test engine. Bộ test mới kiểm tra forecast bằng `env.step`, capacity một/hai, trả slot sớm do chain, gỗ mở tia, lửa còn sót, va chạm, combo mà mỗi single vẫn có refuge, tính bất biến state/RNG, soft target và bootstrap theo seed bàn.
+
+Giới hạn: chỉ forecast bom đã biết và bom learner dự kiến; không dự báo mọi phản bom hay mọi va chạm tương lai. Phần giữ ô đối thủ hiện tại cho đường thoát là điều kiện bảo thủ, không chứng minh an toàn trước đối thủ đổi đường. GAE, PPO, opponent pool/curriculum mới và sửa thưởng chưa đưa vào pilot này để giữ phép đối chứng riêng tác động của teacher.
+
+Pilot `runs/two-bomb-pilot-20261014` hết ngân sách train chung 65 phút ở local 200/200, two_bomb 146/200. Validation two_bomb tại episode 100 đạt ActiveWR 18%, tự nổ 1%, hòa 77%; guard từ chối và giữ best ở episode 0. Đã chấm đủ 400 trận mỗi checkpoint: cả ba best/gốc ActiveWR 33%; best two_bomb có trọng số giống gốc. Không đổi model; kết quả chưa đủ để kết luận phương pháp. 58 test pass. Số liệu từng góc, CI và source đúng lúc chạy tại [báo cáo pilot](runs/two-bomb-pilot-20261014/report.md).
+
+## 14. Certified MOVE vào combat guidance (2026-10-15)
+
+Audit C1 đã biết cho thấy teacher giải32/32approach, còn CNN sauC1 yếu ở các bước sát vị trí bắn. Thêm `combat_move_teacher.py` và mode`local_combat_move`: target local không đổi, chỉ MOVE tăng positive pressure, next BOMB qua mask và escape certificate trên clone tới hết lửa được chuyển từ navigation mean0.2 sang combat mean0.5. Vì hai nhóm tính mean riêng, thay đổi bao gồm denominator, không chỉ nhân loss của MOVE. Mỗi bước chỉ có một nhãn và CNN tiếp tục tự sampleaction.
+
+Clone mô phỏng một MOVE/mộtBOMB rồi greedy escape qua mask, tối đa32tick nguy hiểm, other agents STOP; không chứng nhận được thì fallback nhóm cũ. Không sửa env/mask/reward/12channels/CNN/optimizer hoặc thuật toán MC; không thêm delayed counter-bomb guard. Source/checkpoint cũ giữ nguyên trong artifacts, source trainer mới khiến guard reusecontrol cũ từ chối, nên runner luôn train cả hai nhánh.
+
+136testsPASS, gồm chứng nhận/purity/pressure/slots/collision/greedy failure, loss routing và không overrideCNN, actual promoted update CPU/CUDA, defaultlocal khớp before snapshot weights/actions/rewards, orchestration/seed/CI/gates/incomplete/source guards. Smoke4ep/arm CPU/CUDA và deadline đã chạy; smokeonline chưa gặp qualifying MOVE, nên chỉ xác nhận wiring. Branch thật đã test riêng trênpositive env.
+
+[Runner/protocol](/D:/fpt/subject/BomberMan/COMBAT_MOVE_GUIDE.md): full200ep/arm từB/seed2026101501/RuleBot,validation21000 và64skillgames/mốc; test400/modelB/control/candidate33000–33199,cảA0/A1,CPU1thread,pairedbootstrap. Chỉ gate+5pp/CI lower>0/suicide≤cảhai cho phép replication. Kết quảfull/giới hạn/quyết định sẽ ghi ở`RESULTS.md`; không dùng smoke hoặc lời giải teacher làm bằng chứng tăng ActiveWR.
+
+
+## 15. T4-A1 — Advantage normalization độc lập
+
+Trainer thêm tùy chọn chuẩn hóa advantage của actor theo learner trajectory, mặc định tắt; giữ MC critic targets và local teacher. `run_advantage_pilot.py` tận dụng train/skill/evaluation/gate helpers của pilot trước, chạy lại control cùng candidate200ep, khóa best trước test400/model trên seed34000–34199. 150 tests và smoke20ep/arm CPU/CUDA đã qua. **Full hoàn tất/review:96,93phút; ActiveWR B33,25/control36,5/normalized33,5%; gateFAIL, giữB và mặc định raw.** Clipping95→79/200 không xác nhận cải thiện chất lượng; một trainseed và hai CI chứa0. Không ghép GAE/PPO/reward/curriculum/MOVE guidance. Xem [ADVANTAGE_GUIDE.md](/D:/fpt/subject/BomberMan/ADVANTAGE_GUIDE.md), `RESULTS.md` và báo cáo quyết định.
+
+
+## 16. T4-B0 — GAE có kiểm tra boundary/parity
+
+`advantage_estimator=mc|gae`, `gae_lambda` chỉ đổi actor advantage, critic vẫnMC;defaultMC giữ nguyên. Helper tách bootstrap/continuation; terminal/death/timeout đúng luật hiện tại, cut/reset có tests nhưng collector vẫn whole-episode.167tests và smoke20ep/modeMC/GAE1/GAE0,95CPU-CUDA đã qua. Sửa precision bool-mask trongrecurrencefloat64; GAE1numericparity,defaultMCbit-parity. B0PASSimplementation,giữB;chưa cópilotB1haybằngchứngtăngActiveWR. [Giao diện/kết quả/giới hạn](/D:/fpt/subject/BomberMan/GAE_B0_GUIDE.md).
+
+## 17. T4-B1 — đối chứng MC/GAE, lượt đầu thiếu thời gian
+
+`run_gae_pilot.py` dùng lại train/validation/skill/evaluation/gate helpers, chỉ truyền thêm estimator và lambda vào trainer B0. Cả hai nhánh normalization tắt, critic MC, teacher local, cùng B/seed2026101504. Đã qua174 tests và smoke20ep/nhánh CPU/CUDA.
+
+Lượt đầu `gae-full-20261015-112853` thiếu thời gian ởcontrol200/GAE184. Sau sửa trần train100 phút/tổng150,49tests liên quan qua; đã train lại cảhai từB và hoàn tất full `gae-full-20261015-125942` trong54,87phút. BestMC/GAE đềuepisode0,ActiveWR cảba31,75%,delta0/CI[0;0],gateFAIL,giữB. Không dùng test để đổi sangfinal200 hoặc gọi hai lượt cùngtrainseed làreplication. [Protocol và trạng thái](/D:/fpt/subject/BomberMan/GAE_PILOT_GUIDE.md).
+
+## 18. T4-R0 — reward accounting và audit hành vi
+
+`_shaped_reward` dùng lại combat shaping cũ và wall bonus cùng thứ tự. `reward_diagnostics=False` mặc định; bật logging thêm breakdown theoepisode. Decomposer kiểm tra raw env reward và shaped reward, không dùng residual. Test CPU trước/sau và bật/tắt logger giữ nguyên actions/rewards/metrics cũ/weights; regression188PASS/1CUDA SKIP.
+
+`audit_r0.py` chạy B/MCfinal200/GAEfinal200 trên100validation games/model,21000–21049/cảA0-A1. Full16,25phút,0updates,khôngtestmới;118.226steps khớp reward cũ và12timeout/6.012frames replay qua. Thêm bảng mean/median/p95, raw tapes, scatter/CSV vàderived G0/late100/fixed-action comparisons. Giữ B vàcoefficients; dữ liệu hỗ trợ R1 như ablation, chưa chứng minh giảm wall bonus nâng ActiveWR. [Guide](/D:/fpt/subject/BomberMan/R0_GUIDE.md), [report](/D:/fpt/subject/BomberMan/runs/r0-full-20261015-153908/R0_report.md).
+
+## 19. T4-R1 — implementation và lượt chạy bị ngắt
+
+R1 IMPLEMENTED/TESTED, full INCOMPLETE do tiến trình bị ngắt: `reward-full-20261015-163227`. Control đủ200episode; half-wall199episode đã lưu, validation200/final200 còn thiếu. Best validation control33%/half-wall30%, chưa có test hoặcCI; giữB. 200regression testsPASS, smokeCPU/CUDA qua; audit320skill replays/6.966frames. [Báo cáo](/D:/fpt/subject/BomberMan/runs/reward-full-20261015-163227/decision_report.md).
+
+## 20. Phase C resume đầy đủ và R1 rerun
+
+R1 DONE/REVIEWED: `reward-full-resumable-20261015-194314`. Đủ 200 episode và 200 Adam update mỗi nhánh từ B; 400 trận test/model trên seed 36000–36199, cả A0/A1. Best control/half-wall đều ở episode 200. ActiveWR B/control/half-wall = 34,50%/36,25%/35,00%. Gate FAIL; giữ B và wall bonus 0,15. Thời gian chạy 49,54 phút. [Báo cáo](/D:/fpt/subject/BomberMan/runs/reward-full-resumable-20261015-194314/decision_report.md).
+
+Phase C có `training_state.pt` gồm model/Adam/scheduler/global episode/best guard/history, RNG Python/NumPy/env/Torch CPU/CUDA và context log. Atomic temp+fsync+replace, OS writer lock, `run_reward_pilot.py --resume` khôi phục episode đã xác nhận; không reset schedule hoặc chọn lại model test. 212test riêng biệt PASS; có CPU/CUDA exact resume trong tiến trình mới, interrupted episode/validation và torn-log recovery. `best/final_phaseC.pt` giữ dạng weights để chơi; loader từ chối nhầm full-state file. Resume yêu cầu cùng source/config/runtime/thiết bị; hiện chỉ hỗ trợ Phase C, deadline R1 gốc vẫn giữ.
+
+## 21. D0 rollout buffer và một update ratio
+
+T4-D0 DONE/PASS về tính đúng: 226/226 tests, gồm 14 D0; CPU/CUDA smoke đều đủ 20 episode/20 Adam updates mỗi chế độ AC và ratio chưa clip. Buffer lưu mask/old policy/teacher targets; MC raw, critic/reward/teacher/inference và mặc định AC giữ nguyên. Full states và source/ZIP/B hashes đã review. D0 không chứng minh tăng ActiveWR; giữ B. D1 clipping với cùng 4 epochs READY/design, chưa triển khai/pilot. [Báo cáo](/D:/fpt/subject/BomberMan/runs/ppo-d0-implementation-20261015/D0_report.md), [hướng dẫn](/D:/fpt/subject/BomberMan/PPO_D0_GUIDE.md).
+
+## 22. D1 PPO clipping và resume theo episode
+
+D1 DONE/REVIEWED: `ppo-full-20261015-220313`. Đủ 200 episode/nhánh từ B, Adam updates U4/P4=800/800; best episode U4/P4=200/200. Test400/model, seed37000–37199/cảA0-A1: ActiveWR B/U4/P4=37.50%/37.00%/32.00%. Gate FAIL; giữ checkpoint B. Runtime 106.89 phút. [Báo cáo](/D:/fpt/subject/BomberMan/runs/ppo-full-20261015-220313/decision_report.md).
+
+D1 giữ MC raw/critic MC/local teacher/reward cũ. U4/P4 cùng tối đa4 epochs và post-update KL guard target0,02/threshold0,03; chỉ khác clipping epsilon0,20. 241 regression và25 focused metadata/compat tests PASS; CPU/CUDA smoke20episode/80updates mỗi nhánh đã review. Có 500-step/4-epoch memory fixture, hủy giữa epoch khôi phục Adam, exact PPO resume qua tiến trình mới CPU/CUDA, full-state/source/ZIP/locked-model guards. CNN inference và Actor-Critic mặc định giữ nguyên.
+
+## 23. Sudden death: kiểm chứng, `max_ring` và chọn timing (2026-10-16)
+
+`sudden_death_experiment.py` (port luật vòng Loc_update afbf6f9 lên engine hiện tại, opt-in, không đổi env production/12 kênh) đã có từ trước nhưng chưa chạy full. SD1 trên B với cấu hình gốc start200/interval20 cho thấy hai lỗi thiết kế: SD sớm cắt các thắng chủ động muộn của B (median bước 271), và trên 9×9 ô tâm (4,4) là tường cứng nên vòng cuối đóng kín mọi ô, mọi agent còn sống chết cùng lúc thành hòa.
+
+Thêm `sudden_death_max_ring` (mặc định = đóng kín, giữ hành vi cũ và parity với Loc_update; validate 1..board//2−1; `_target_sudden_death_ring` và `_closure_ticks` dừng ở vòng này) cùng test `test_max_ring_stops_shrinking_and_keeps_inner_ring_alive`. Sửa fixture test runner hỏng từ đầu. Thêm `tune_sudden_death.py` (quét start/interval/warning/max_ring trên validation, từ chối seed ≥38000, `--resume` bỏ qua cấu hình đã xong, mặc định 6 tiến trình vì RAM) và `confirm_sudden_death.py` (luật chọn chốt trước: both_aware, WR cao nhất với ActiveWR ≥ off−3 và tự nổ ≤ off+1; chấm một lần off/both_aware/learner_aware trên seed mới, paired bootstrap).
+
+Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên test 39000 both_aware WR 39,5→59,25%, hòa 59,25→9,75%, ActiveWR 35,5→31,5%. Đây là thay đổi luật chơi trên cùng trọng số B: phần lớn WR tăng là thắng thụ động (RuleBot tự nổ trong vòng 8 ô), learner vẫn chết vì vòng 131/400. Chưa đặt làm mặc định của `SuddenDeathEnv`. Bước tiếp theo là SD3 (train dưới SD + kênh quan sát vòng), đang ở giai đoạn thiết kế; xem `RESULTS.md`.
+
+## 24. SD3 — kênh quan sát vòng và train dưới sudden death (2026-10-16)
+
+- `SuddenDeathEnv(ring_channel=True)` thêm kênh thứ 13 sau 12 kênh production: `1/delay` tới lần đóng trên ô của mọi vòng chưa đóng `<= max_ring`, còn lại 0; có `obs_channels`. SD tắt mà bật kênh thì kênh toàn 0 (dùng cho skill probe). `ring_channel=False` giữ nguyên observation, reward, RNG.
+- `train()` tạo mạng theo `env.obs_channels` (mặc định 12 như cũ). `evaluate.make_ac_fn` lấy số kênh từ `conv.0.weight` của checkpoint và chỉ đưa vào mạng đúng số kênh đầu; kênh vòng nằm cuối nên B 12 kênh chơi trong env 13 kênh y như khi không có kênh (test hành động/logits/trận).
+- `smart_load_weights` nay từ chối nạp checkpoint nhiều kênh hơn mạng (trước đây bỏ qua lặng lẽ, để conv đầu ngẫu nhiên). Model `sd_13ch` vì vậy không mở được trong GUI/opponent pool 12 kênh; GUI chưa hỗ trợ SD/kênh vòng.
+- `run_sudden_death_experiment.sudden_death_runtime(timings, ring_channel)` patch env của trainer/evaluator thành SD, env skill probe giữ luật nhưng đúng số kênh, mask learner và RuleBot thêm `sudden_death_mask`; `evaluate_case` nhận `checkpoint`, `ring_channel`. `benchmark_t3.validate_env` chấp nhận `env.obs_channels`.
+- `run_sd_training_pilot.py`: hai nhánh `sd_12ch`/`sd_13ch` từ B dưới SD2, baseline skill riêng mỗi nhánh, khóa model trước test, chấm một lần seed 40000 (B và hai best) bằng `evaluate_case` both_aware, gate so với B, so sánh phụ 13ch−12ch, resume theo training state, deadline 150 phút tính từ lúc đăng ký.
+- Review cuối (subagent): không có lỗi nghiêm trọng; các điểm nhỏ còn hoãn: kiểm tra seed test chỉ lúc khởi động, khóa cache đánh giá chưa gồm max_steps/timings, provenance training state chưa ghi timing SD, chưa có unit test cho đường resume, đếm diagnostics mask đối thủ bị lẫn truy vấn fallback của learner (có từ trước).
+
+## 25. SD3 full — kết quả và quyết định (2026-10-16)
+
+- Không đổi code; chỉ chạy `run_sd_training_pilot.py --device cuda --output-dir runs\sd3-full` (người dùng chạy, một lượt, complete).
+- Gate FAIL cả hai nhánh: ActiveWR so B −2.25pp (sd_12ch CI [−8.0, 3.5], sd_13ch CI [−7.5, 3.25]); WR +3/+4pp và hòa giảm chỉ do thắng thụ động tăng. Kênh vòng so với 12 kênh: ActiveWR 0.0 [−4.75, 4.75]; learner vẫn chết vì vòng ~30% trận. Giữ B, không thay model. Chi tiết trong RESULTS.md mục "SD3 — kết quả full".
+- Trạng thái: hướng "train ngắn dưới SD + kênh vòng" không đạt ở 200 episode/1 seed. Nếu tiếp tục, nên chẩn đoán vì sao learner bị kẹt trong vòng (số chết vì vòng trùng `unavoidable_pre_move_closure`, mask giao rỗng 442–473 lần) trước khi train dài hơn; cần seed test mới (≥ 41000).
+
+## 26. Đề xuất SD4 sau SD3 (2026-10-16, chưa cài)
+
+- Chẩn đoán SD3 (RESULTS.md, "SD3 — chẩn đoán chết vì vòng"): mask learner chỉ giữ đường thoát khả thi, mất đường trong vài bước cuối trước khi vòng đóng.
+- Đề xuất theo thứ tự chi phí: (1) mask/shield có biên an toàn: learner phải rời ô vòng sớm hơn k bước, chỉ đổi phía learner, đo trên validation 21000 rồi test một lần seed 41000; (2) teacher thoát vòng từ RuleBot biết vòng (distillation chỉ trong cửa sổ cảnh báo, dùng hạ tầng teacher có sẵn); (3) curriculum timing SD (vòng đến sớm khi train để có nhiều tín hiệu hơn) + GAE; (4) reward shaping dạng potential theo khoảng cách tới vùng an toàn. Chưa cài, chưa chạy.
+
+## 27. Tracker riêng cho hướng sudden death (2026-10-16)
+
+- Thêm `PLAN_SUDDEN_DEATH.md`: bảng trạng thái và checkbox SD1–SD4, kèm điều kiện mở từng nhánh SD4 và bản nháp luật chọn/gate SD4.1 (cần chốt với người dùng trước khi chạy). Thêm dòng SD vào tracker tổng `PLAN_BOMBERMAN.md`.
+- CLAUDE.md: thêm quy tắc đánh dấu tracker trong cùng lượt, mô tả SD3/kênh vòng, cấu hình SD2 và hiện trạng hướng SD.
+
+## 28. SD4.0 — script chẩn đoán chết vì vòng (2026-10-16)
+
+- Thêm `diagnose_sd_ring_deaths.py`: bọc `sudden_death_mask` trong `evaluate_case` (không đổi trận/RNG), ghi theo bước trong cửa sổ cảnh báo vị trí so với vòng sắp đóng, còn đường thoát hay không, khoảng cách BFS vào trong; lúc mất đường lần đầu, thử bỏ từng loại vật cản (thân đối thủ, bom đối thủ, bom mình, lửa, gỗ) để gọi tên nguyên nhân. Từ chối seed 31000–49999.
+- Test `test_diagnose_sd_ring_deaths.py`: parity trận với `evaluate_case`, khớp chỉ số trận, từ chối seed test.
+- Sửa `test_sd_training_pilot.test_test_seed_is_fresh_and_distinct_from_smoke`: seed 40000 đã dùng ở SD3, nên test nay đòi guard từ chối seed đó (trước đây đòi seed còn mới, thành lỗi sau khi chạy full). Suite 271 test (270 PASS ở lượt đầy đủ + test sửa PASS riêng).
+- Kết quả và kết luận: RESULTS.md "SD4.0".
+
+## 29. SD4.1 — biên an toàn cho mask vòng của learner (2026-10-16)
+
+- `sudden_death_experiment`: `_closure_ticks(margin)`, `forecast_closures(..., margin)`, `_ring_survival(..., margin)` coi mỗi vòng đóng sớm `margin` bước (không sớm hơn bước kế). Tách `_ring_mask`; `sudden_death_mask(..., margin=k)` thử mask có biên trước, nếu không còn hành động an toàn thì quay về mask SD2 (đếm `margin_fallbacks`). k=0 giữ nguyên hành vi và bộ đếm (parity với bản nguồn SD3 trong `runs/sd3-full/source`, trận và bộ đếm giống hệt).
+- `evaluate_case(..., learner_margin=k)`: chỉ mask learner nhận biên; RuleBot giữ mask SD2.
+- `run_sd_margin.py` (`sweep` trên validation 21000, `confirm` một lần trên 41000 với luật chọn/gate chốt trước) + `test_sd_margin.py`; test mới trong `test_sudden_death_experiment.py` (biên buộc rời vòng sớm, quay về khi quá muộn) và `test_sudden_death_runner.py` (biên chỉ tới mask learner). `diagnose_sd_ring_deaths.py` chuyển tiếp tham số mask.
+- Kết quả: gate PASS (chết vì vòng −10pp, WR +10.75pp, ActiveWR +0.75 không ý nghĩa). Dùng k=15 làm cấu hình mask learner khi chạy SD; checkpoint B không đổi. Chi tiết RESULTS.md "SD4.1". GUI chưa có SD nên chưa dùng biên này.
+
+## 30. SD4.2a — probe bộ điều khiển giai đoạn cuối (2026-10-16)
+
+- Thêm `probe_sd_endgame.py`: bọc `evaluate.make_ac_fn` để từ bước `switch` (360) ghế learner do teacher local, two_bomb → local, hoặc RuleBot điều khiển (teacher dùng mask SD + biên đã patch, khi nguy hiểm thì trả về B); trước `switch` trận và RNG giống hệt B. Từ chối seed ≥ 31000. Test `test_probe_sd_endgame.py`: switch sau khi trận kết thúc giữ nguyên trận của B; mọi nhánh chạy được.
+- Luật quyết định chốt trong PLAN_SUDDEN_DEATH.md trước khi chạy. Kết quả: không nhánh nào tăng ActiveWR (local −4.25, two_bomb −3.5, RuleBot −2.25); không mở SD4.2b. Nhánh SD dừng ở cấu hình SD2 + biên k=15 cho mục tiêu WR/hòa; hướng ActiveWR quay về kỹ năng tấn công đầu trận.
+
+## 31. SD4.6 — kill-search có mô hình RuleBot (2026-10-16, chưa có kết quả)
+
+- Thêm `kill_search.py` (`search_action`): với mỗi hành động mask cho phép, mô phỏng 12 bước trên bản sao env, đối thủ chạy chính code RuleBot, learner sau bước đầu chỉ né; +1 nếu bom learner hạ đối thủ khi learner còn sống, −1 nếu learner chết; giữ hành động B trừ khi có hành động điểm cao hơn hẳn; chỉ chạy khi đối thủ trong Manhattan ≤ 6; giữ nguyên `np.random` của trận thật. Test `test_kill_search.py` (tìm được bom nhốt đối thủ ở ngõ cụt, không đổi state/RNG; giữ mặc định khi đối thủ ở xa).
+- `probe_sd_endgame.py`: thêm nhánh `search`, tham số `--arms/--switches/--shards`; chia shard theo seed bàn và `merge` (đã kiểm: 2 shard × 4 trận giống hệt 1 lượt 8 trận, cả trận lẫn tỉ lệ).
+- Luật quyết định chốt trong PLAN_SUDDEN_DEATH.md trước khi chạy. Lượt đầu bị dừng do thiếu RAM (RESULTS.md "SD4.6"); chờ người dùng chạy.
+
+## 32. Công cụ đối chiếu nhánh khác (2026-10-17)
+
+- Thêm `crosscheck_friend_branch.py`: chạy `evaluate.py` của nhánh cần đối chiếu (trong git worktree riêng, không đụng working tree) cho checkpoint của nhánh và cho B, dùng lại file đã chạy khi chạy lại, rồi ghép cặp trận bằng `paired_active_bootstrap`. Mới `py_compile`, chưa chạy (thiếu RAM khi SD4.6 đang chạy).
+- Worktree `a6650a0` tạo trong scratchpad của phiên, có file LFS checkpoint; gỡ bằng `git worktree remove <path>` khi xong.
+
+
+## 33. Kết quả SD4.6 và đánh giá chéo nhánh bạn (2026-10-17)
+
+- Không đổi code thuật toán. `probe_sd_endgame.py` + `kill_search.py` (§31) và `crosscheck_friend_branch.py` (§32) đã chạy đủ lượt (người dùng chạy trong cmd); số liệu ở RESULTS.md "SD4.6 — probe kill-search (lượt đầy đủ)" và "XC — kết quả đánh giá chéo".
+- SD4.6: search cả trận +5.75pp ActiveWR trên validation (đạt luật chốt trước); search chỉ giai đoạn cuối +0. Theo luật, hướng tiếp theo là chưng cất search vào CNN cho cả trận (cần thiết kế, chưa làm).
+- Đánh giá chéo: checkpoint của nhánh `codex/phasec-sd-best-fallback` hơn B +7.5pp ActiveWR (gộp 600 trận, lịch E, CI dưới > 0). Không tái lập được bit-to-bit con số họ báo vì policy lấy mẫu hành động bằng RNG torch (khả năng cao do khác phiên bản torch); đã kiểm cả commit 0d3b474 (worktree tạm, đã gỡ), cho cùng kết quả như a6650a0.
+- Seed: 60000 đã dùng cho đối chiếu; 31000 đã có kết quả của B dưới lịch E. Giữ worktree a6650a0 trong scratchpad để dùng nếu chọn công thức của họ.

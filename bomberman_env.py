@@ -370,24 +370,51 @@ class BombermanFFAEnv:
                     break  # blast stops at the first wooden wall it destroys
         return cells
 
-    def _forecast_blasts(self, extra_bomb=None, min_horizon=1):
+    def _forecast_blasts(self, extra_bomb=None, min_horizon=1,
+                         scheduled_bombs=None, return_slots=False):
         """Future damage and movement blockers, indexed from the NEXT step.
 
         Match step's order: move, decrement bombs, resolve chains, damage, decay.
-        Only visible bombs and optional proposed placements are forecast.
+        scheduled_bombs contains (zero-based placement tick, Bomb) pairs.
+        A delayed bomb starts its timer and blocks movement only on placement.
+        return_slots also returns free capacity after placements, before damage.
         """
         bombs = [replace(b) for b in self.bombs]
         if extra_bomb is not None:
             placements = [extra_bomb] if isinstance(extra_bomb, Bomb) else extra_bomb
             bombs.extend(replace(b) for b in placements)
+        scheduled = sorted(scheduled_bombs or (), key=lambda entry: (entry[0], entry[1].owner))
+        for delay, bomb in scheduled:
+            if (not isinstance(delay, int) or delay < 0 or bomb.timer < 1
+                    or not 0 <= bomb.owner < self.num_agents
+                    or not 0 <= bomb.row < self.board_size
+                    or not 0 <= bomb.col < self.board_size):
+                raise ValueError("Invalid scheduled bomb")
+        active = [a.bombs_placed for a in self.agents]
+        for bomb in bombs[len(self.bombs):]:
+            active[bomb.owner] += 1
         horizon = max([min_horizon, 1, *self.flames.values(),
-                       *(max(1, b.timer) + self.flame_duration - 1 for b in bombs)])
+                       *(max(1, b.timer) + self.flame_duration - 1 for b in bombs),
+                       *(delay + b.timer + self.flame_duration - 1 for delay, b in scheduled)])
         burns = np.zeros((horizon, self.board_size, self.board_size), dtype=bool)
         blocked = np.zeros_like(burns)
+        slots = np.zeros((horizon, self.num_agents), dtype=np.int16) if return_slots else None
         grid = self.grid.copy()
         for pos, duration in self.flames.items():
             burns[:duration, pos[0], pos[1]] = True
         for tick in range(horizon):
+            for delay, bomb in scheduled:
+                if delay != tick:
+                    continue
+                if (not self.agents[bomb.owner].alive
+                        or active[bomb.owner] >= self.agents[bomb.owner].ammo
+                        or grid[bomb.row, bomb.col] != EMPTY
+                        or any((b.row, b.col) == (bomb.row, bomb.col) for b in bombs)):
+                    raise ValueError("Scheduled bomb has no capacity or free tile")
+                bombs.append(replace(bomb))
+                active[bomb.owner] += 1
+            if return_slots:
+                slots[tick] = [a.ammo - active[a.agent_id] for a in self.agents]
             blocked[tick] = grid != EMPTY
             for b in bombs:
                 blocked[tick, b.row, b.col] = True
@@ -406,7 +433,8 @@ class BombermanFFAEnv:
                         if (other.row, other.col) in cells:
                             other.timer = 0
                     bombs.remove(b)
-        return burns, blocked
+                    active[b.owner] = max(0, active[b.owner] - 1)
+        return (burns, blocked, slots) if return_slots else (burns, blocked)
 
     def _danger_map(self):
         burns, _ = self._forecast_blasts()

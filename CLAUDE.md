@@ -1,0 +1,44 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Bắt buộc: mọi task phải cập nhật RESULTS.md và IMPROVEMENTS.md
+
+**Mọi task, mọi thay đổi code, mọi thí nghiệm (kể cả smoke, lượt bị ngắt, gate FAIL hay chỉ sửa test) đều phải được ghi vào CẢ HAI file trước khi báo xong:**
+
+- `D:\fpt\subject\BomberMan\RESULTS.md`: nhật ký kết quả. Thêm một mục `## <mã task> — <tên>, <dd/mm/yyyy>` ở cuối file, gồm: thư mục `runs/...`, checkpoint/seed/số trận, bảng số liệu (WR, ActiveWR, hòa, tự nổ, …), delta và CI95, trạng thái gate, quyết định (giữ B hay không) và giới hạn của kết luận.
+- `D:\fpt\subject\BomberMan\IMPROVEMENTS.md`: nhật ký cải tiến. Thêm mục đánh số tiếp theo (`## <n>. ...`) mô tả đã đổi gì trong code/thiết kế, vì sao, đã kiểm thử ra sao và trạng thái.
+
+- Tracker công việc: mỗi hướng có file plan với checkbox (hướng sudden death: `PLAN_SUDDEN_DEATH.md`; tổng: `PLAN_BOMBERMAN.md`). Đánh `[x]` cho việc đã xong (có bằng chứng) và cập nhật cột trạng thái trong cùng lượt. Plan chỉ để theo dõi; số liệu ở RESULTS.md, phương pháp/code ở IMPROVEMENTS.md.
+
+Viết bằng tiếng Việt, cùng văn phong các mục trước. Ghi đúng sự thật: gate FAIL, incomplete, chưa chạy full đều phải ghi rõ, không làm tròn thành "cải thiện".
+
+## Môi trường và lệnh
+
+- Python có torch: `D:\anaconda\envs\torch\python.exe` (Python hệ thống không có torch; README nhắc `.venv` nhưng repo hiện không có `.venv`). Người dùng hay chạy trong **cmd**, nên khi đưa lệnh cho họ, dùng cú pháp cmd (`> log 2>&1`), không dùng `*>` của PowerShell.
+- Test dùng `unittest` (không có pytest). Mỗi file `test_*.py` ở thư mục gốc:
+  - Một file: `D:\anaconda\envs\torch\python.exe -m unittest test_sudden_death_experiment -q`
+  - Một test: `D:\anaconda\envs\torch\python.exe -m unittest test_sudden_death_runner.RunnerTests.test_off_matches_existing_evaluator_and_preserves_rng`
+  - Toàn bộ: `D:\anaconda\envs\torch\python.exe -m unittest discover -p "test_*.py" -q`
+- Đánh giá cố định: `python evaluate.py --mode seeded --board_size 9 --num_agents 2 --num_episodes 400 --max_steps 500 --seed <seed> --device cpu --ac_model <ckpt> --output <json>`.
+- Train CLI: `python train_actor_critic.py --phase C ...` (xem README). GUI: `python visualize.py`.
+- Máy người dùng ít RAM: mỗi tiến trình nạp torch riêng; không chạy quá ~6 tiến trình song song. Tiến trình nền dài có thể bị Claude Code dừng khi thiếu RAM, nên các lượt full (train/test dài) thường giao người dùng tự chạy, rồi Claude đọc output trong `runs/` để review.
+
+## Kiến trúc
+
+- `bomberman_env.py`: `BombermanFFAEnv` (NumPy), bàn 9×9 hoặc 11×11, 2–4 agent ở góc, cột cứng ở ô (chẵn, chẵn). Observation **12 kênh** (`OBS_CHANNELS`, mô tả trong `_get_obs`); kênh 11 là nghịch đảo thời gian tới khi bị sát thương, từ `_forecast_blasts` (dự báo bom/dây chuyền/lửa). Dự báo này là nền cho mọi mask và teacher.
+- `rule_based_bot.py`: RuleBot đối thủ và `_safe_action_mask` (mask an toàn dùng chung). `train_actor_critic.get_action_mask` gọi mask này cho learner. RuleBot được giữ cố định làm đối thủ chuẩn; đừng đổi hành vi của nó trong một thí nghiệm khác.
+- `train_actor_critic.py`: `ActorCriticNet` (CNN), `train()` cho Phase C (vs RuleBot), D (self-play pool), E (FFA 3–4 agent); teacher phụ (`attack_teacher` local/two_bomb/local_combat_move), MC/GAE, PPO tùy chọn, validation định kỳ chọn `best`. `smart_load_weights` mở rộng kênh input mới với trọng số 0 (giữ nguyên logits) và nội suy khi đổi kích thước bàn.
+- `training_state.py`: lưu/khôi phục đầy đủ trạng thái Phase C để resume chính xác.
+- `evaluate.py`: `evaluate_seeded` luân phiên learner ở mọi góc trên cùng seed bàn; metric chính là **ActiveWR** (thắng và có hạ gục bằng bom của mình), kèm WR, hòa, tự nổ, kills, theo góc.
+- Các runner thí nghiệm `run_*_pilot.py`, `run_*.py` (và `*_GUIDE.md` tương ứng) theo một protocol chung, tái dùng helper trong `run_combat_move_pilot.py` (`train_arm`, `evaluate_models`, `comparison_gate`, `fresh_test_check`) và `pilot_two_bomb.py` (`paired_active_bootstrap`, `stage_timer`): đăng ký config + SHA256 source/checkpoint trước, chép source vào output, từ chối ghi đè thư mục output, train 2 nhánh từ B, chọn best bằng validation seed 21000, rồi test **một lần** trên seed mới 400 trận/model, paired bootstrap theo cặp seed bàn, gate (thường ActiveWR ≥ +5pp so với đối chứng, CI95 lower > 0, tự nổ không tăng), ZIP `-send.zip`.
+- Sudden death (thí nghiệm, không thuộc env production): `sudden_death_experiment.py` (`SuddenDeathEnv` co vòng, `sudden_death_max_ring`, `sudden_death_mask`), `run_sudden_death_experiment.py` (`evaluate_case` patch env/mask bằng `unittest.mock.patch`), `tune_sudden_death.py` (quét timing trên validation), `confirm_sudden_death.py` (chọn theo luật chốt trước và xác nhận trên seed test), `run_sd_training_pilot.py` (SD3: train B dưới SD, `ring_channel=True` thêm kênh 13 = 1/delay tới khi ô vòng đóng; `make_ac_fn` đọc số kênh từ `conv.0.weight`, `smart_load_weights` từ chối checkpoint nhiều kênh hơn mạng). Cấu hình SD đang dùng: SD2 = start400/interval40/warning40/max_ring2, đánh giá case `both_aware`, cộng biên an toàn cho mask learner `learner_margin=15` (`sudden_death_mask(..., margin=k)`; RuleBot không có biên). Hiện trạng: SD2 và biên k=15 tăng WR (biên: +10.75pp, chết vì vòng 116→76/400) nhưng đều bằng thắng thụ động, ActiveWR không đổi; SD3 (train dưới SD) gate FAIL; probe SD4.2a: teacher local/two_bomb/RuleBot đều hạ đối thủ ở giai đoạn cuối kém B, nên nhánh SD hướng ActiveWR đã dừng (ActiveWR do giai đoạn trước bước 400 quyết định). SD4.6: `kill_search.py` (lookahead 12 bước, đối thủ = RuleBot) bật cả trận tăng ActiveWR +5.75pp trên validation, chỉ giai đoạn cuối thì +0. Nhánh bạn `codex/phasec-sd-best-fallback` (checkpoint F, ~3000 ep, teacher tấn công mạnh hơn, lịch vòng E = 475/25/40) hơn B +7.5pp ActiveWR khi đánh giá chéo (`crosscheck_friend_branch.py`); policy lấy mẫu hành động nên số liệu không tái lập bit-to-bit giữa các phiên bản torch. Chẩn đoán chết vì vòng: `diagnose_sd_ring_deaths.py`. Xem `PLAN_SUDDEN_DEATH.md`.
+- `_comparison/BomberMan-Loc_update`: submodule nhánh Loc_update chỉ để đối chiếu; không sửa và không coi là code chính.
+
+## Quy ước thí nghiệm (quan trọng)
+
+- **Checkpoint B** = `runs/pressure-C-next/final_phaseC.pt` (SHA256 `93bdf278…4f60`) là model đang dùng; mọi pilot đều warm-start và so với B. Không ghi đè/đổi tên checkpoint gốc; mỗi lượt dùng thư mục `runs/<tên>-<thời gian>` mới.
+- **Seed test chỉ dùng một lần.** Đã dùng: 16000, 17000, 25000, 26000, 32000, 33000, 34000, 35000, 36000, 37000, 38000, 39000, 40000, 41000, 60000 (đối chiếu nhánh bạn). 31000: nhánh bạn đã dùng làm test và B đã được đánh giá trên đó dưới lịch E (XC), nên không còn sạch cho T3; wood_branch còn khóa. Validation dùng 21000 (và 6600, 15000 cho chẩn đoán). Seed mới tiếp theo: 42000 (40000: SD3, 41000: SD4.1). Không chạy thêm test để "cứu" gate, không chọn checkpoint sau khi xem test.
+- Luật chọn model/cấu hình phải chốt trước khi đọc kết quả. WR tăng do thắng thụ động không được coi là agent giỏi hơn; luôn báo ActiveWR.
+- Một train seed không chứng minh độ ổn định; ghi rõ giới hạn này.
+- Kế hoạch và tracker tổng: `PLAN_BOMBERMAN.md`; tracker sudden death: `PLAN_SUDDEN_DEATH.md`; đặc tả: `PROJECT_SPEC.md`; spec thiết kế mới: `docs/superpowers/specs/`.
