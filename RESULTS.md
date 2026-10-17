@@ -1521,3 +1521,56 @@ Lỗi phát hiện khi viết test (đã sửa trước khi chạy full): resume
 ## PUSH — đưa code và artefact lên GitHub, 17/10/2026
 
 **DONE.** Nhánh `danh/sd5-friend-merge` push lên `origin` (https://github.com/SuperZiggs/BomberMan, tạo nhánh mới; `main` và `danh/bomberman-rl-results-checkpoints` không đổi). Gồm commit `860753f` (snapshot trước merge), `af83eca` (merge nhánh bạn), `61d2f9e` (SD5 code), `8c95375` (`runs/` tới SD5.0 + `graphify-out/`, ~2826 file; checkpoint `.pt` qua Git LFS). Không gồm lượt SD5.1 đang chạy (`runs/sd5-20261017*`), sẽ đưa lên sau khi xong. GitHub cảnh báo 8 file zip/json 50–75 MB (dưới giới hạn cứng 100 MB).
+
+## SD5.1 — train F ± nhãn kill-search 3000 ep/nhánh và test seed 42000 (kết quả), 18/10/2026
+
+**COMPLETE, gate FAIL → giữ F.** Output `runs/sd5-20261017` (log `runs/sd5-20261017-{control,search,test}-console.log`, gửi `runs/sd5-20261017-send.zip`), người dùng chạy. Từ F (SHA `0315a56f…1483`), train seed 2026101701, 3000 ep/nhánh, công thức của bạn, SD lịch E ở 75% episode; best theo validation 21000 (400 trận, mỗi 500 ep). Test một lần seed 42000, 400 trận/model, cả ba model đánh giá trên máy người dùng (torch 2.5.1, CPU). Seed 42000 đã dùng.
+
+Model test: control best ep 2500 (SHA `c3b4e37c…`), search best ep 3000 (SHA `5ddf505d…`).
+
+Lịch E (luật gate):
+
+| Model | WR | ActiveWR | Hòa | Tự nổ | Chết vì vòng | Kill TB |
+|---|---:|---:|---:|---:|---:|---:|
+| F | 67.25 | **48.5** | 22.75 | 1.25 | 12.25 | 0.485 |
+| control | 65.75 | 42.0 | 25.75 | 0.5 | 11.5 | 0.42 |
+| search | 66.25 | 45.75 | 25.0 | 0.5 | 12.0 | 0.4575 |
+
+Không SD (báo cáo): F 51.75 / 45.75 ActiveWR / hòa 45.75; control 49.0 / 40.75 / 48.75; search 51.0 / 43.0 / 47.25.
+
+Delta paired bootstrap theo seed bàn (CI95), ActiveWR:
+
+| So sánh | Lịch E | Không SD |
+|---|---|---|
+| search − F | −2.75 [−9.75, 4.0] | −2.75 [−9.75, 4.0] |
+| control − F | −6.5 [−12.75, 0.0] | −5.0 [−11.5, 1.5] |
+| search − control | +3.75 [−2.75, 10.25] | +2.25 [−4.0, 8.5] |
+
+Lịch E, search − F: WR −1.0 [−7.25, 5.25], hòa +2.25 [−3.25, 7.75], tự nổ −0.75 [−1.75, 0.0].
+
+Gate (lịch E): ActiveWR ≥ +5pp so F ✗ (−2.75); CI dưới > 0 ✗; không kém control ✓ (+3.75); tự nổ ≤ +1pp ✓ (−0.75). **FAIL.**
+
+Diễn biến train và validation (seed 21000, lịch E):
+
+| Episode | control ActiveWR | search ActiveWR |
+|---|---:|---:|
+| 0 (= F) | 47.0 | 43.75 |
+| 500 | 48.75 | 39.75 |
+| 1000 | 46.25 | 45.75 |
+| 1500 | 42.75 | 45.5 |
+| 2000 | 48.0 | 46.25 |
+| 2500 | **51.0** | 44.25 |
+| 3000 | 48.5 | **47.75** |
+
+ActiveWR khi train theo khối 1000 ep: control 45.8 / 47.6 / 48.9; search 42.6 / 44.9 / 43.1. Search: 914 403 lần gọi, 2675 nhãn (707 là bom), 0.89 nhãn/ep; search đồng ý với hành động CNN ở ~99.7% lần gọi.
+
+Điều kiện chạy (phát hiện khi review, ghi để minh bạch):
+- Nhánh search được train trên máy khác (`E:\Bombermanv2`, RTX 4060, torch 2.14.1+cu130, numpy 2.4.6); control trên máy này (RTX 3050, torch 2.5.1). Source của hai nhánh giống hệt khi bỏ khác biệt CRLF/LF (7 file khác SHA chỉ vì xuống dòng), config chỉ khác `search_teacher`, `checkpoint_dir` và đường dẫn `resume_from` (cùng F, runner kiểm SHA trước khi train). Lượt search dở trên máy này (dừng ở ep ~669) không được dùng; log `runs/sd5-20261017-search-console.log` là của lượt dở đó, không phải lượt đã test.
+- Hệ quả: validation ep 0 (cùng model F, cùng seed) cho 47.0 trên torch 2.5.1 và 43.75 trên torch 2.14.1, vì policy lấy mẫu hành động. Nên số validation giữa hai nhánh không so trực tiếp được; test thì công bằng vì cả ba model chạy cùng máy, cùng phiên bản.
+- Control: best validation 51.0 (ep 2500) nhưng test 42.0. Chọn best trong 7 điểm validation nhiễu (~±3pp/điểm, cộng nhiễu phiên bản) thiên lạc quan, nên kiểu chọn này không phân biệt được các model chênh nhau vài pp.
+
+Kết luận:
+- Train tiếp 3000 ep từ F bằng công thức của bạn không cải thiện F; nhánh control còn thấp hơn F 6.5pp (CI chạm 0). Đúng với chẩn đoán XC: lượt train của bạn đã bão hòa (ActiveWR train ~45%).
+- Chưng cất kill-search kiểu này không giữ được lợi thế +22.5pp mà search có khi chạy lúc chơi (SD5.0): search − F −2.75, chỉ nhỉnh hơn control +3.75 nhưng không có ý nghĩa thống kê. Nhãn quá thưa (0.89/ep): search hầu như chỉ khác CNN ở vài thời điểm quyết định mỗi trận.
+- Giữ F. Không chạy thêm test để cứu gate.
+- Giới hạn: một train seed mỗi nhánh; hai nhánh train trên hai máy và phiên bản torch khác nhau (không ảnh hưởng tính hợp lệ của test, nhưng ảnh hưởng việc chọn best và so validation).

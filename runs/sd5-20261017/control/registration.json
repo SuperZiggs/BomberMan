@@ -1,0 +1,17 @@
+{
+  "F_sha256": "0315a56f09079333d936db5f55587093f1b6415ed6355d2ef6ae2ab63f8b1483",
+  "sources": {
+    "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+    "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+    "train_actor_critic.py": "2427d90f8f4f7207ab59a8f1f83253af93be2fd0cf3c21b9af96004c69e06eb8",
+    "evaluate.py": "e86814a771d3d4c660a089b085a66b9cb3f960e895e085095275700bc7f93de2",
+    "training_state.py": "91f1a0fdbc04ebac994ba117e7c57bcb705dfb26aee595baa3c7f84e92158244",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "combat_move_teacher.py": "e266982d70e78f7c3a8ce01469a75dbf74a14aa935385e7fc729cd53e2d0226d",
+    "kill_search.py": "f461e1ed194e74a8849d9a012c8a9c905ffe6d7faf71b05134e295aa13d8b279",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "run_sd5_pilot.py": "4a183467a06b7be6ad6b081ff248c051b1564dd3a2a26838762acb1c8cba66a7"
+  },
+  "test_seed": 42000,
+  "gate": "(PLAN_SUDDEN_DEATH.md SD5.1, fixed before training): search - F ActiveWR >= +5pp with\nCI95 lower > 0, search - control >= 0, suicide no more than +1pp over F (all under schedule E)."
+}

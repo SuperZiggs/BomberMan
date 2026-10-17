@@ -1,0 +1,34 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\phaseC-sd-best-fallback\best_phaseC.pt
+[Validation] ep 0 | 400 games, all corners, seed 21000
+[Validation] ep 0 | ActiveWR 47.0% | Suicide 1.0% | Draw 19.8% | best ep 0
+[C] ep    50 | WR:  62.0% | active WR:  44.0% | kills: 0.44 | reward: +7.104 | bombs: 32.8 | walls: 9.2 | combat bombs: 933/7529 | loss: 7.5039 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   100 | WR:  52.0% | active WR:  32.0% | kills: 0.32 | reward: +5.380 | bombs: 30.4 | walls: 8.5 | combat bombs: 785/7760 | loss: 12.4621 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   150 | WR:  58.0% | active WR:  42.0% | kills: 0.42 | reward: +6.914 | bombs: 31.6 | walls: 9.6 | combat bombs: 922/7570 | loss: 12.9120 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   200 | WR:  54.0% | active WR:  42.0% | kills: 0.42 | reward: +6.836 | bombs: 34.5 | walls: 9.3 | combat bombs: 948/8079 | loss: 0.9800 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   250 | WR:  74.0% | active WR:  56.0% | kills: 0.56 | reward: +8.884 | bombs: 28.1 | walls: 9.2 | combat bombs: 763/6749 | loss: 1.1920 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   300 | WR:  58.0% | active WR:  42.0% | kills: 0.42 | reward: +6.915 | bombs: 32.0 | walls: 9.4 | combat bombs: 818/7308 | loss: 42.2636 | lr: 2.4e-05 | pool: 0 | best validation active: 47%
+[C] ep   350 | WR:  60.0% | active WR:  42.0% | kills: 0.42 | reward: +6.840 | bombs: 31.7 | walls: 9.3 | combat bombs: 854/6895 | loss: 26.4392 | lr: 2.4e-05 | pool: 0 | best validation active: 47%
+[C] ep   400 | WR:  62.0% | active WR:  44.0% | kills: 0.44 | reward: +7.119 | bombs: 31.6 | walls: 9.0 | combat bombs: 864/6989 | loss: 26.6703 | lr: 2.4e-05 | pool: 0 | best validation active: 47%
+[C] ep   450 | WR:  56.0% | active WR:  42.0% | kills: 0.42 | reward: +6.878 | bombs: 29.2 | walls: 8.6 | combat bombs: 745/6632 | loss: 17.2596 | lr: 2.4e-05 | pool: 0 | best validation active: 47%
+[Validation] ep 500 | 400 games, all corners, seed 21000
+[Validation] ep 500 | ActiveWR 39.8% | Suicide 1.5% | Draw 26.8% | best ep 0
+[Validation] kept best: suicide exceeds warm-start limit 1.0%
+[C] ep   500 | WR:  64.0% | active WR:  44.0% | kills: 0.44 | reward: +7.231 | bombs: 35.1 | walls: 9.2 | combat bombs: 1041/7216 | loss: 1.3895 | lr: 2.3e-05 | pool: 0 | best validation active: 47%
+[C] ep   550 | WR:  72.0% | active WR:  54.0% | kills: 0.54 | reward: +8.496 | bombs: 28.2 | walls: 8.4 | combat bombs: 738/6361 | loss: 3.1066 | lr: 2.3e-05 | pool: 0 | best validation active: 47%
+[C] ep   600 | WR:  72.0% | active WR:  62.0% | kills: 0.62 | reward: +9.679 | bombs: 28.8 | walls: 9.1 | combat bombs: 781/5535 | loss: 12.5594 | lr: 2.3e-05 | pool: 0 | best validation active: 47%
+[C] ep   650 | WR:  56.0% | active WR:  42.0% | kills: 0.42 | reward: +6.803 | bombs: 35.5 | walls: 9.2 | combat bombs: 982/7158 | loss: 1.9137 | lr: 2.2e-05 | pool: 0 | best validation active: 47%
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\run_sd5_pilot.py", line 162, in <module>
+    train_arm(a.output, a.arm, a.device, a.smoke, a.resume)
+  File "D:\fpt\subject\BomberMan\run_sd5_pilot.py", line 90, in train_arm
+    trainer.train(**config, on_episode=write, on_validation=validation)
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1118, in train
+    log_prob = dist.log_prob(action_t)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\distributions\categorical.py", line 139, in log_prob
+    self._validate_sample(value)
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\distributions\distribution.py", line 315, in _validate_sample
+    if not valid.all():
+           ^^^^^^^^^^^
+KeyboardInterrupt
+^C

@@ -512,3 +512,10 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
 ## 38. Đưa repo lên GitHub (2026-10-17)
 
 - Không đổi code. Commit `runs/` (trừ lượt SD5.1 đang chạy) và `graphify-out/`, push nhánh `danh/sd5-friend-merge`; `.pt` đi qua LFS theo `.gitattributes` sẵn có. Các zip/json 50–75 MB vẫn là file git thường (GitHub chỉ cảnh báo); nếu repo phình to có thể chuyển `*.zip` sang LFS sau.
+
+## 39. SD5.1 — kết quả, kiểm tra nguồn gốc nhánh train (2026-10-18)
+
+- Không đổi code. Đọc `runs/sd5-20261017/summary.json`; gate FAIL (RESULTS mục SD5.1 kết quả), giữ F; seed 42000 đánh dấu đã dùng trong CLAUDE.md.
+- Kiểm nguồn gốc trước khi ghi kết luận: `config.json`, `source/` và `training_state.pt` (provenance runtime) của từng nhánh. Phát hiện nhánh search được train trên máy khác (torch 2.14.1, đường dẫn `E:\Bombermanv2`); so source bằng `diff --strip-trailing-cr` xác nhận code giống hệt (khác SHA chỉ do CRLF). Test vẫn hợp lệ vì `test_opened.json` ghi SHA đúng ba model và cả ba chạy cùng máy.
+- Bài học cho các lượt sau: (1) SHA source nên tính trên nội dung đã chuẩn hóa xuống dòng, hoặc ghi rõ máy chạy, để `registration.json` của các nhánh so được với nhau; (2) chọn best theo nhiều điểm validation 400 trận thiên lạc quan cỡ vài pp; với các khác biệt nhỏ cần validation lớn hơn hoặc giữ final; (3) khi hai nhánh train trên hai máy, validation không so trực tiếp được (cùng F cho 47.0 và 43.75 trên hai phiên bản torch).
+- Trạng thái: SD5.1 DONE (FAIL). Hướng chưng cất nhãn search thưa đã thử; xem đề xuất tiếp trong `PLAN_SUDDEN_DEATH.md`.
