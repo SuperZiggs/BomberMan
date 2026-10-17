@@ -13,7 +13,7 @@ Cập nhật: 17/10/2026. Model đang giữ: B `runs/pressure-C-next/final_phase
 | SD3 | Train B dưới SD2 ± kênh vòng | DONE, gate FAIL | ActiveWR −2,25 cả hai nhánh; kênh vòng +0; giữ B |
 | SD4 | Giảm learner chết vì vòng, rồi biến thời gian sống thêm thành thắng chủ động | SD4.0/4.1/4.2a/4.6 DONE. SD4.1 PASS (WR +10.75, ActiveWR +0.75); SD4.2a không đạt; SD4.6: search cả trận +5.75 ActiveWR (đạt), search cuối trận +0. Cấu hình chốt: SD2 + k=15 | — |
 | XC | Đối chiếu nhánh bạn `codex/phasec-sd-best-fallback` | DONE | F hơn B +7.5 ActiveWR (gộp, lịch E, CI dưới > 0); số 51.0 họ báo không tái lập được (lấy mẫu torch) |
-| SD5 | Từ F: công thức của bạn + chưng cất kill-search, 3000 ep/lượt | Merge DONE; thiết kế chờ duyệt | — |
+| SD5 | Từ F: công thức của bạn + chưng cất kill-search, 3000 ep/lượt | Merge DONE; SD5.0 ĐẠT (search +22.5 ActiveWR trên F); SD5.1 cài xong, WAIT người dùng chạy full | — |
 
 ## SD1 — kiểm chứng SD gốc
 
@@ -106,7 +106,10 @@ Insight (validation 21000, k=15): 250/400 trận kéo tới bước 400; chỉ 1
 Quy ước SD5: điểm xuất phát và đối chứng là F (`runs/phaseC-sd-best-fallback/best_phaseC.pt`); mỗi lượt train 3000 episode; luật chính lịch E (SD engine 475/25/40, bật 75% episode khi train); báo thêm không SD. Validation 21000, test một lần seed 42000.
 
 - [x] Merge nhánh bạn vào `danh/sd5-friend-merge`, giữ tương đương (RESULTS.md "MERGE", IMPROVEMENTS.md §34).
-- [ ] Duyệt thiết kế SD5 với người dùng (đề xuất bên dưới, chưa chốt).
-- [ ] SD5.0 — probe validation (không train): F vs F + kill-search cả trận dưới lịch E, 400 trận; kèm chẩn đoán trận hòa của F (chạm mặt, bước gặp đầu). Luật đề xuất: mở SD5.1 nhánh chưng cất nếu search tăng ActiveWR ≥ +3pp với CI dưới > 0; nếu không, chỉ chạy nhánh đối chứng và chuyển sang đòn bẩy trận hòa (SD5.2).
-- [ ] SD5.1 — train 2 nhánh × 3000 ep từ F, cùng train seed: `control` (công thức của bạn) và `search` (thêm nhãn kill-search ở nhóm combat khi search tìm được nước tốt hơn hẳn). Validation mỗi 500 ep, 400 trận. Gate đề xuất (nhánh search): ActiveWR ≥ +5pp so F, CI dưới > 0, không kém control, tự nổ không tăng quá 1pp.
+- [x] Duyệt thiết kế SD5 với người dùng (người dùng duyệt 17/10/2026, gồm ngưỡng SD5.0 và gate SD5.1).
+- [x] SD5.0a — `probe_sd5_search.py` + `test_probe_sd5_search.py` (3 test), smoke 8 trận/nhánh: F 1.1 s/trận, search 6.6 s/trận.
+- [x] SD5.0 — probe validation (không train, người dùng chạy `runs/sd5-search-probe-21000`): F vs F + kill-search cả trận dưới lịch E, 400 trận; kèm chẩn đoán trận hòa của F (chạm mặt, bước gặp đầu). Luật (chốt): mở SD5.1 nhánh chưng cất nếu search tăng ActiveWR ≥ +3pp với CI dưới > 0; nếu không, chỉ chạy nhánh đối chứng và chuyển sang đòn bẩy trận hòa (SD5.2).
+  → ĐẠT: ActiveWR 47.0 → 69.5 (+22.5 [18.25, 26.75]); hòa −5.75; mọi trận đều chạm mặt (hòa do không kết liễu được, không do né).
+- [x] SD5.1a — cài `search_teacher` (nhóm loss riêng, IMPROVEMENTS §36), sửa resume SD, runner `run_sd5_pilot.py` + test; smoke CLI chạy được; đo 2.8 s/ep (control), ~8–9.5 s/ep (search). Có thanh progress (`progress.py`, IMPROVEMENTS §37).
+- [ ] SD5.1 — (WAIT người dùng chạy full) train 2 nhánh × 3000 ep từ F, cùng train seed: `control` (công thức của bạn) và `search` (thêm nhãn kill-search ở nhóm combat khi search tìm được nước tốt hơn hẳn). Validation mỗi 500 ep, 400 trận. Gate đề xuất (nhánh search): ActiveWR ≥ +5pp so F, CI dưới > 0, không kém control, tự nổ không tăng quá 1pp.
 - [ ] SD5.2 — (COND) đòn bẩy trận hòa: ưu tiên lại bàn F hay hòa/thua khi train (kiểu PLR), chỉ mở sau SD5.0/SD5.1.

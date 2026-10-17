@@ -1476,3 +1476,44 @@ Kiểm tra tương đương trước/sau merge (cùng máy, torch 2.5.1):
 | Toàn bộ test | 347 test OK, 16 bỏ qua (15 test launcher cần `venv` của bạn, 1 preflight R0 ghim hash engine cũ) |
 
 Quan sát thêm từ `runs/phaseC-sd-best-fallback/metrics.jsonl` (lượt 750 ep cuối của bạn): ActiveWR khi train phẳng 44.8 / 46.4 / 45.2% theo từng đoạn 250 ep; validation (seed 30000, 200 trận) 39.5 → 50.5 → 45.5 → 43.0 ở ep 0/250/500/750. Công thức hiện tại gần như bão hòa; ep250 được chọn nhiều phần do nhiễu validation 200 trận (SE ~3.5pp).
+
+## SD5.0 — probe kill-search trên F (chuẩn bị), 17/10/2026
+
+**WAIT người dùng chạy; chưa có số liệu.** Thiết kế SD5 đã được người dùng duyệt. Script `probe_sd5_search.py`: F (`runs/phaseC-sd-best-fallback/best_phaseC.pt`) vs F + kill-search từ bước 0, lịch E (SD engine 475/25/40), validation 21000, 400 trận/nhánh, kèm chẩn đoán trận hòa (hòa do hết giờ / cả hai chết, hết giờ mà chưa từng tới gần). Luật chốt trước: mở nhánh `search` của SD5.1 nếu ΔActiveWR (search − F) ≥ +3pp với CI95 dưới > 0. Smoke 8 trận/nhánh (không dùng để kết luận): F 1.1 s/trận, search 6.6 s/trận; hai nhánh chỉ khác ở trận search can thiệp.
+
+## SD5.0 — probe kill-search trên F (kết quả), 17/10/2026
+
+**COMPLETE (chỉ validation), luật quyết định: ĐẠT → mở nhánh `search` của SD5.1.** Output `runs/sd5-search-probe-21000` (log `runs/sd5-search-probe-21000-console.log`), người dùng chạy. F = `runs/phaseC-sd-best-fallback/best_phaseC.pt`, lịch E (SD engine 475/25/40), validation 21000, 400 trận/nhánh, search từ bước 0.
+
+| Nhánh | WR | ActiveWR | Thắng do vòng | Thụ động | Hòa | Tự nổ | Chết vì vòng | Kill TB | Số bước TB |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| F | 67.5 | 47.0 | 11.0 | 9.5 | 19.75 | 1.0 | 12.75 | 0.47 | 338 |
+| F + search | 85.25 | **69.5** | 7.75 | 8.0 | 14.0 | 0.0 | 0.75 | 0.69 | 280 |
+
+Delta search − F (paired bootstrap theo seed bàn, CI95): ActiveWR **+22.5 [18.25, 26.75]**, WR +17.75 [13.75, 21.75], hòa −5.75 [−9.5, −2.0].
+
+Phân loại hòa: F 79 trận hòa = 64 hết giờ + 15 cả hai chết; search 56 = 56 hết giờ + 0 cả hai chết. Cả hai nhánh tới gần đối thủ (Manhattan ≤ 3) ở 100% trận, trung bình từ bước ~18.6; không có trận hòa nào do không chạm mặt.
+
+Kết luận:
+- Trên F dưới lịch E, lookahead 12 bước với mô hình RuleBot thêm rất nhiều kill (+22.5pp, lớn hơn nhiều so với +5.75 trên B dưới SD2 + k=15). Theo luật chốt trước: mở nhánh `search` của SD5.1 (chưng cất search vào CNN).
+- Hòa của F không phải do né tránh mà do không kết liễu được khi đã chạm mặt; search còn loại hết trận hòa kiểu cả hai chết và gần hết chết vì vòng.
+- Giới hạn: search dùng mô hình đối thủ hoàn hảo (chính code RuleBot), đây là cận trên cho teacher; CNN học được bao nhiêu phải đo bằng SD5.1. Một seed validation.
+
+## SD5.1 — chuẩn bị train F ± nhãn kill-search (3000 ep/nhánh), 17/10/2026
+
+**WAIT người dùng chạy full; chưa có kết quả.** Runner `run_sd5_pilot.py`, output dự kiến `runs/sd5-20261017`. Hai nhánh từ F, train seed 2026101701, công thức của bạn (lr 2.5e-5, entropy 0.0075, combat 0.9, navigation 0.4, ×1.75 từ bước 350, SD lịch E ở 75% episode), validation 21000 mỗi 500 ep với 400 trận (lịch E), chọn best theo ActiveWR với giới hạn tự nổ của warm-start; `search` thêm nhãn kill-search (nhóm loss riêng, hệ số 0.9). Test một lần seed 42000, 400 trận/model, F / control / search dưới lịch E (gate) và không SD (báo cáo). Gate chốt trước: search − F ActiveWR ≥ +5pp, CI95 dưới > 0, search − control ≥ 0, tự nổ không tăng quá 1pp.
+
+Số đo chuẩn bị (không dùng để kết luận):
+
+| Đo | control | search |
+|---|---:|---:|
+| Thời gian train, GPU, episode đầy đủ | 2.8 s/ep (6 ep) | 7.9–9.5 s/ep (6–8 ep) |
+| Ước tính 3000 ep + 7 lần validation 400 trận | ~3.2 giờ | ~8–9 giờ |
+| Nhãn search | — | 9 nhãn / 8 ep (~0.5% số lần search chạy); CE của nhãn ~2–3 |
+| Nhãn combat heuristic | ~46–207 / ep | ~46–207 / ep |
+
+Lỗi phát hiện khi viết test (đã sửa trước khi chạy full): resume training state sau merge không khôi phục RNG chọn bật/tắt SD mỗi episode, nên chuỗi episode có SD sau resume khác lượt chạy liền (test `test_resume_replays_sudden_death_curriculum` thấy lệch ở episode 4); provenance resume chưa có các tham số mới (SD, hệ số loss, teacher_version), nên đổi các tham số này sẽ không bị phát hiện khi resume.
+
+## TOOL — thanh progress cho các lượt chạy dài, 17/10/2026
+
+**DONE (công cụ, không có số liệu thí nghiệm).** Người dùng yêu cầu từ nay mọi lượt train/đánh giá có thanh progress. Đã gắn vào `run_sd5_pilot.py` (train: episode, ActiveWR 100 episode gần nhất, best episode, số nhãn search, tiến độ validation; test: tổng số trận qua các tiến trình). Smoke CLI train 2 nhánh + test chạy được; thanh ghi ra console nên log không đổi. Toàn bộ suite 361 OK (16 bỏ qua). Lệnh SD5.1 đã đưa người dùng không đổi.

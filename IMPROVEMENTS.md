@@ -488,3 +488,23 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
   - PPO/ratio: từ chối `sudden_death_probability > 0` (ring supervision chỉ có ở AC); hệ số giai đoạn cuối không áp dụng khi replay (ghi chú `shortcut:` trong code).
   - Bộ đếm chẩn đoán `combat_bombs` giữ định nghĩa của mình (chỉ đếm khi nhãn là BOMB), khác log của bạn; không ảnh hưởng loss.
 - Test: thêm `legacy_test_support.py` (`legacy_train` = công thức trước merge, `strip_sd` bỏ khóa metric SD mới) cho 8 file test so bit-exact với source cũ; sửa kỳ vọng 12 → 13 kênh; 2 test `test_combat` mô tả hành vi v1 trỏ sang `get_attack_action_v1`; test launcher của bạn tự bỏ qua khi không có `venv\Scripts\python.exe`; preflight R0 bỏ qua (ghim hash engine cũ). Kết quả kiểm tra tương đương ở RESULTS.md "MERGE".
+- Sau merge đã gỡ worktree a6650a0 trong scratchpad (F và code của bạn nay nằm trong repo).
+
+## 35. SD5.0 — probe kill-search trên F dưới lịch E (2026-10-17)
+
+- Thêm `probe_sd5_search.py`: nhánh `f` (F nguyên bản) và `search` (hành động F lấy mẫu, `kill_search.search_action` thay khi có nước tốt hơn hẳn), dùng `evaluate.evaluate_seeded(sudden_death=True, contact_diagnostics=True)` với lịch E; hai nhánh dùng chung chuỗi RNG torch nên chỉ lệch ở trận search can thiệp. Chia shard theo seed bàn (`--shards F SEARCH`, mặc định 1 4, tối đa 5 tiến trình), `merge` tính lại tỉ lệ từ từng trận, `draw_breakdown` tách hòa hết giờ / cả hai chết / hết giờ chưa từng tới gần, `decide` áp luật +3pp & CI dưới > 0. Từ chối seed ≥ 31000.
+- Test `test_probe_sd5_search.py` (viết trước, thấy lỗi rồi mới viết script): shard ghép lại giống hệt một lượt chạy, nhánh search chạy được và từ chối seed test, luật quyết định và phân loại hòa. Toàn bộ suite: 350 OK, 16 bỏ qua.
+
+## 36. SD5.1 — nhãn kill-search trong trainer và runner 3000 episode (2026-10-17)
+
+- `train(search_teacher=True, search_loss_coef=0.9)`: ở mỗi bước của learner, `kill_search.search_action` so hành động CNN vừa lấy mẫu với các hành động mask cho phép; nếu có nước tốt hơn hẳn thì thêm nhãn cross-entropy vào **nhóm loss riêng** `search_loss` (trung bình riêng như escape/combat/navigation) và bỏ nhãn heuristic ở bước đó. CNN vẫn tự chọn hành động (nhãn không thay hành động). Metric `search` (queries/labels/bomb_labels) và `search_loss` trong `metrics.jsonl`. PPO/ratio từ chối search_teacher.
+  - Ruling: thiết kế duyệt ghi "nhãn ở nhóm combat"; đổi sang nhóm riêng cùng hệ số 0.9 vì đo được ~1 nhãn search/episode so với ~50–260 nhãn combat heuristic, gộp chung thì nhãn search chỉ còn ~1/260 trọng số. Nếu sai: nhãn search có trọng số mạnh hơn ý định ban đầu; nhánh control không bị ảnh hưởng.
+- Sửa resume (do merge để lại): lưu/khôi phục `curriculum_rng` (chọn episode có SD) trong training state; thêm các tham số mới (SD, teacher pressure/sequence, hệ số loss, target selection, `teacher_version`, `search_teacher`, `search_loss_coef`) vào provenance; `kill_search.py` vào `source_hashes`.
+- `run_sd5_pilot.py`: `train --arm control|search [--resume]` (đăng ký config, chép source + SHA vào thư mục nhánh, từ chối ghi đè, kiểm SHA của F, cắt các dòng metrics sau state cuối khi resume) và `test` (mở seed 42000 một lần bằng `test_opened.json`, 3 model × {lịch E, tắt SD}, paired bootstrap, gate, ZIP `-send.zip`). Hai nhánh chỉ khác `search_teacher`.
+- Test: `test_search_teacher.py` (5: nhãn khi search tốt hơn, không nhãn khi đồng ý, tắt thì không gọi search, resume giữ chuỗi SD, provenance có tham số mới, PPO từ chối) và `test_run_sd5_pilot.py` (4: config hai nhánh, gate, smoke train/từ chối ghi đè/resume, test một lần). Đều viết trước và thấy lỗi trước khi cài. Toàn bộ suite 359 OK (16 bỏ qua). Smoke CLI đầu-cuối (train 2 nhánh, resume, test) chạy được.
+
+## 37. Thanh progress dùng chung (2026-10-17)
+
+- Thêm `progress.py`: `bar(total, desc, initial=0)` (tqdm 4.67.3 có sẵn trong env torch) ghi ra thiết bị console (`CON` trên Windows, `/dev/tty` nơi khác, không có thì stderr), nên vẫn thấy khi người dùng chạy `> log 2>&1` và không làm bẩn log; `parallel_map(fn, jobs, total, desc, workers)` chạy job trong ProcessPool, worker gọi `ticks.put(n)` qua hàng đợi Manager để cập nhật một thanh chung, giữ thứ tự kết quả theo job.
+- `run_sd5_pilot.py`: thanh train bắt đầu từ episode đã lưu khi `--resume`, postfix ActiveWR(100)/best ep/nhãn search, hiện tiến độ validation qua `on_validation`; stage test dùng `parallel_map` với `evaluate_seeded(on_progress=...)` (thay ProcessPoolExecutor trực tiếp).
+- Test `test_progress.py` (2: thứ tự kết quả và đếm đủ tick qua nhiều tiến trình; bar resume từ vị trí cũ), viết trước và thấy lỗi trước khi cài. Quy ước ghi vào CLAUDE.md và memory.

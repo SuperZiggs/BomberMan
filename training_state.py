@@ -68,7 +68,7 @@ def source_hashes():
     root = Path(__file__).resolve().parent
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in (
         'training_state.py', 'train_actor_critic.py', 'bomberman_env.py', 'rule_based_bot.py',
-        'tactical_teacher.py', 'combat_move_teacher.py', 'evaluate.py')}
+        'tactical_teacher.py', 'combat_move_teacher.py', 'evaluate.py', 'kill_search.py')}
 
 
 def runtime_state():

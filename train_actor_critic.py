@@ -745,6 +745,8 @@ def train(
     target_sudden_death_death_rate: float | None = None,
     max_suicide_rate: float | None = None,
     teacher_version: str = "v2",
+    search_teacher: bool = False,
+    search_loss_coef: float = 0.9,
 ):
     """
     Unified training loop for phases C, D, E.
@@ -768,7 +770,13 @@ def train(
         'wall_destroy_bonus', 'max_steps', 'log_every', 'snapshot_every', 'resume_from', 'device', 'seed',
         'validation_every', 'validation_episodes', 'validation_seed', 'attack_teacher',
         'normalize_advantage', 'advantage_diagnostics', 'advantage_estimator', 'gae_lambda', 'reward_diagnostics',
-        'policy_objective', 'update_epochs', 'clip_epsilon', 'target_kl')}
+        'policy_objective', 'update_epochs', 'clip_epsilon', 'target_kl',
+        'sudden_death_probability', 'sudden_death_start', 'sudden_death_interval', 'sudden_death_warning_steps',
+        'attack_lookahead', 'min_pressure_gain', 'trap_sequence_depth', 'sequence_pressure_gain',
+        'ring_safety_coef', 'late_game_start', 'late_game_attack_multiplier', 'escape_loss_coef',
+        'combat_loss_coef', 'navigation_loss_coef', 'target_win_rate', 'target_active_win_rate',
+        'target_draw_rate', 'target_sudden_death_death_rate', 'max_suicide_rate', 'teacher_version',
+        'search_teacher', 'search_loss_coef')}
     restored = load_training_state(resume_training_state) if resume_training_state else None
     provenance = {'config': resume_config, 'sources': source_hashes(), 'runtime': runtime_state()} if save_training_state else None
     if restored is not None and restored['provenance'] != provenance:
@@ -821,8 +829,8 @@ def train(
         torch.manual_seed(seed)
     advantage_diagnostics = (advantage_diagnostics or normalize_advantage
                              or advantage_estimator == "gae" or policy_objective != 'ac')
-    if policy_objective != 'ac' and sudden_death_probability > 0.0:
-        raise ValueError("ring-safety supervision supports policy_objective='ac' only")
+    if policy_objective != 'ac' and (sudden_death_probability > 0.0 or search_teacher):
+        raise ValueError("ring-safety and search supervision support policy_objective='ac' only")
     curriculum_rng = np.random.default_rng(seed)
 
     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
@@ -1000,6 +1008,7 @@ def train(
         if best_state_dict is not None:
             best_state_dict = {key: value.to(device) for key, value in best_state_dict.items()}
         restore_rng(state['rng'], env)
+        curriculum_rng.bit_generator.state = state['curriculum_rng']
 
     def save_state(episode):
         if save_training_state:
@@ -1009,7 +1018,7 @@ def train(
                 'histories': histories, 'selection': (best_wr, best_active_wr, best_episode, best_score,
                     best_state_dict, last_validation, suicide_limit),
                 'context': json.loads(json.dumps(checkpoint_context())) if checkpoint_context is not None else None,
-                'rng': capture_rng(env)}, state_path)
+                'rng': capture_rng(env), 'curriculum_rng': curriculum_rng.bit_generator.state}, state_path)
 
     start_episode = restored['episode'] if restored is not None else 0
     if restored is not None:
@@ -1070,6 +1079,7 @@ def train(
         attack_losses_buf = []
         rollout = [] if policy_objective != 'ac' else None
         ring_losses_buf = []
+        search_losses_buf = []
         bombs_this_ep = 0
         walls_this_ep = 0
         suicide_this_ep = False
@@ -1085,6 +1095,7 @@ def train(
                                 queries=0, accepted=0, accepted_agreements=0,
                                 pressure_gain_sum=0.0, certificate_steps=0, milliseconds=0.0)
         move_rejected = Counter()
+        search_stats = Counter(queries=0, labels=0, bomb_labels=0)
         sudden_death_deaths_this_ep = 0
         learner_sudden_death = False
 
@@ -1120,13 +1131,24 @@ def train(
                         for a in env.agents)
                     attack_opportunities += int(opportunity)
                     attack_bombs += int(opportunity and actions[learning_aid] == ACTION_BOMB)
-                plan = None
-                if attack_teacher == "two_bomb":
+                plan = search_label = None
+                if search_teacher:
+                    from kill_search import search_action
+                    search_label, search_info = search_action(env, learning_aid, mask, actions[learning_aid])
+                    search_stats['queries'] += int(not search_info['skipped'])
+                    search_label = search_label if search_label != actions[learning_aid] else None
+                if search_label is None and attack_teacher == "two_bomb":
                     plan, diagnostics = get_two_bomb_plan(env, learning_aid, mask)
                     teacher_stats["queries"] += 1
                     teacher_rejected.update(diagnostics.pop("rejected"))
                     teacher_stats.update(diagnostics)
-                if plan is not None:
+                if search_label is not None:
+                    # Kill-search found a strictly better line than the sampled action (SD5.1).
+                    # Own mean (like escape/combat/navigation): ~1 label per episode vs ~260 combat labels.
+                    search_losses_buf.append(F.cross_entropy(m_logits, torch.tensor([search_label], device=device)))
+                    search_stats['labels'] += 1
+                    search_stats['bomb_labels'] += int(search_label == ACTION_BOMB)
+                elif plan is not None:
                     # Uniform soft target for equally good first actions, combat weight 0.5.
                     combat_losses_buf.append(-F.log_softmax(m_logits, dim=-1)[0, plan["first_actions"]].mean())
                     teacher_group, teacher_actions = 'combat', tuple(plan['first_actions'])
@@ -1277,6 +1299,7 @@ def train(
             aux_losses_buf, combat_losses_buf, attack_losses_buf)
         advantage_metrics = {}
         ratio_metrics = {}
+        search_loss = torch.stack(search_losses_buf).mean() if search_losses_buf else 0.0
         ring_safety_loss = (torch.stack(ring_losses_buf).mean()
                             if ring_losses_buf else 0.0)
         if len(rewards_buf) > 0:
@@ -1330,7 +1353,8 @@ def train(
             loss = (loss + escape_loss_coef * escape_loss
                     + combat_loss_coef * combat_loss
                     + navigation_loss_coef * navigation_loss
-                    + ring_safety_coef * ring_safety_loss)
+                    + ring_safety_coef * ring_safety_loss
+                    + search_loss_coef * search_loss)
             if advantage_diagnostics and not torch.isfinite(loss).item():
                 raise FloatingPointError("Non-finite training loss")
 
@@ -1431,6 +1455,8 @@ def train(
                         "combat_loss": float(combat_loss.detach()) if combat_losses_buf else 0.0,
                         "navigation_loss": float(navigation_loss.detach()) if attack_losses_buf else 0.0,
                         "ring_safety_loss": float(ring_safety_loss.detach()) if ring_losses_buf else 0.0,
+                        **({"search_loss": float(search_loss.detach()) if search_losses_buf else 0.0}
+                           if search_teacher else {}),
                         "steps": info["step"], "loss": loss.item(),
                         "lr": scheduler.get_last_lr()[0], "best_wr": best_wr,
                         "best_active_wr": best_active_wr, "best_episode": best_episode,
@@ -1438,6 +1464,7 @@ def train(
                         "attack_teacher": attack_teacher,
                         "teacher": {**teacher_stats, "rejected": dict(teacher_rejected)},
                         "move_guidance": {**move_guidance, "rejected": dict(move_rejected)},
+                        **({"search": dict(search_stats)} if search_teacher else {}),
                         **({"reward_components": dict(reward_totals),
                             "reward_component_max_error": reward_max_error} if reward_diagnostics else {}),
                         **({'ratio_update': ratio_metrics} if rollout is not None else {}),
