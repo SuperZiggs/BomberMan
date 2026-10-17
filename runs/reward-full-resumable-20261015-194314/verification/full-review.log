@@ -1,0 +1,168 @@
+{
+  "archive_files": 53,
+  "archive_sha256": "5aad2f680941d55aab0c6703991b6ae518916540163d261f7021997f34cf7846",
+  "source_and_checkpoint_hashes_pass": true,
+  "skills_replayed_games": 384,
+  "skills_replayed_frames": 8308,
+  "model_state_sha256": {
+    "original": "9cbd4a3dae13ff2a29da003a7b09b005ef2c22565ac7f36ff6b6c7dbec9b1e52",
+    "control": "f601afe74233eaaabff9fcd393635fc7433cf719b3851e8e5fd3364118e5db53",
+    "half_wall": "db1ac952f032cc303aada318bd34153a0cdc7cd7a6ff7f7da3a66be21f426226"
+  },
+  "training_state_checks": {
+    "control": {
+      "episode": 200,
+      "adam_steps": 200,
+      "scheduler_last_epoch": 200,
+      "histories_and_log_context_match": true,
+      "inference_weights_match": true,
+      "python_numpy_env_torch_cpu_cuda_rng_present": true
+    },
+    "half_wall": {
+      "episode": 200,
+      "adam_steps": 200,
+      "scheduler_last_epoch": 200,
+      "histories_and_log_context_match": true,
+      "inference_weights_match": true,
+      "python_numpy_env_torch_cpu_cuda_rng_present": true
+    }
+  },
+  "comparisons": {
+    "original": {
+      "difference_pp": 0.5,
+      "ci95_pp": [
+        -5.5,
+        6.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "control": {
+      "difference_pp": -1.25,
+      "ci95_pp": [
+        -7.249999999999999,
+        5.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "gates": {
+    "gain": false,
+    "ci": false,
+    "suicide": false
+  },
+  "decision": "retain_original",
+  "elapsed_seconds": 2972.3186704,
+  "arms": {
+    "control": {
+      "best_episode": 200,
+      "reward_component_means": {
+        "passive_win_cancellation": -0.3,
+        "passive_win_env": 0.3,
+        "time": -0.37613500000000033,
+        "owned_kill": 1.4,
+        "active_win": 3.5,
+        "wall": 1.3837499999999998,
+        "death": -0.035,
+        "self_blast": -0.0075,
+        "item": 0.09350000000000001
+      },
+      "walls_mean": 9.235,
+      "eligible_walls_mean": 9.225,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 20.595,
+        "left_spawn_rate": 100.0
+      },
+      "learner_steps": 75234,
+      "training_suicides": 1,
+      "training_active_wins": 70,
+      "clipped_updates": 108,
+      "normalization_skipped": 0,
+      "grad_norm_mean": 36.953565196990965,
+      "grad_norm_p95": 135.98420944213862,
+      "explained_variance_mean": 0.44396630245341384,
+      "advantage_raw_std_mean": 1.1498510295990854,
+      "advantage_policy_std_mean": 1.1498510295990854,
+      "gae_last_boundaries": null,
+      "td_delta_std_mean": null,
+      "mc_raw_std_mean": 1.1498510295990854,
+      "entropy_mean_per_episode": 0.28327990125864744,
+      "seconds": 963.1989420999998
+    },
+    "half_wall": {
+      "best_episode": 200,
+      "reward_component_means": {
+        "passive_win_cancellation": -0.6,
+        "passive_win_env": 0.6,
+        "time": -0.3671550000000002,
+        "owned_kill": 1.4,
+        "active_win": 3.5,
+        "wall": 0.6547499999999999,
+        "death": -0.025,
+        "self_blast": -0.0075,
+        "item": 0.08175
+      },
+      "walls_mean": 8.735,
+      "eligible_walls_mean": 8.73,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 19.405,
+        "left_spawn_rate": 100.0
+      },
+      "learner_steps": 73436,
+      "training_suicides": 1,
+      "training_active_wins": 70,
+      "clipped_updates": 80,
+      "normalization_skipped": 0,
+      "grad_norm_mean": 33.44258771523833,
+      "grad_norm_p95": 127.68541717529295,
+      "explained_variance_mean": 0.339506161744753,
+      "advantage_raw_std_mean": 1.1083836205117406,
+      "advantage_policy_std_mean": 1.1083836205117406,
+      "gae_last_boundaries": null,
+      "td_delta_std_mean": null,
+      "mc_raw_std_mean": 1.1083836205117406,
+      "entropy_mean_per_episode": 0.2899761874973774,
+      "seconds": 981.2240046999941
+    }
+  },
+  "models": {
+    "original": {
+      "active_win_rate": 34.5,
+      "suicide_rate": 0.25,
+      "draw_rate": 57.99999999999999,
+      "counts": {
+        "win": 161,
+        "active_win": 138,
+        "suicide": 1.0,
+        "draw": 232
+      }
+    },
+    "control": {
+      "active_win_rate": 36.25,
+      "suicide_rate": 0.25,
+      "draw_rate": 55.75,
+      "counts": {
+        "win": 170,
+        "active_win": 145,
+        "suicide": 1.0,
+        "draw": 223
+      }
+    },
+    "half_wall": {
+      "active_win_rate": 35.0,
+      "suicide_rate": 0.5,
+      "draw_rate": 56.25,
+      "counts": {
+        "win": 167,
+        "active_win": 140,
+        "suicide": 2.0,
+        "draw": 225
+      }
+    }
+  }
+}

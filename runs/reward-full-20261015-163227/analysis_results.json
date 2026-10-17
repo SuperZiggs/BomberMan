@@ -1,0 +1,772 @@
+{
+  "status": "reviewed_incomplete",
+  "decision": "retain_original",
+  "reason": "process_terminated_during_half_wall_validation_200",
+  "source_checkpoint_and_r0_input_hashes_pass": true,
+  "heldout_test_opened": false,
+  "skills_replayed_games": 320,
+  "skills_replayed_frames": 6966,
+  "arms": {
+    "control": {
+      "learner_steps_logged": 75334,
+      "validations": [
+        {
+          "episode": 0,
+          "selected": true,
+          "seed": 21000,
+          "board_size": 9,
+          "num_agents": 2,
+          "max_steps": 500,
+          "num_episodes": 100,
+          "win_rate": 37.0,
+          "active_win_rate": 28.999999999999996,
+          "suicide_rate": 0.0,
+          "draw_rate": 62.0,
+          "avg_kills": 0.29,
+          "avg_bombs": 40.89,
+          "avg_items": 1.57,
+          "avg_steps": 393.38,
+          "by_corner": {
+            "0": {
+              "num_episodes": 50,
+              "win_rate": 30.0,
+              "active_win_rate": 24.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 70.0,
+              "avg_kills": 0.24,
+              "avg_bombs": 41.6,
+              "avg_items": 1.5,
+              "avg_steps": 417.66
+            },
+            "1": {
+              "num_episodes": 50,
+              "win_rate": 44.0,
+              "active_win_rate": 34.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 54.0,
+              "avg_kills": 0.34,
+              "avg_bombs": 40.18,
+              "avg_items": 1.64,
+              "avg_steps": 369.1
+            }
+          },
+          "device": "cpu",
+          "suicide_limit": 0.0
+        },
+        {
+          "episode": 100,
+          "selected": false,
+          "seed": 21000,
+          "board_size": 9,
+          "num_agents": 2,
+          "max_steps": 500,
+          "num_episodes": 100,
+          "win_rate": 30.0,
+          "active_win_rate": 22.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 68.0,
+          "avg_kills": 0.22,
+          "avg_bombs": 43.38,
+          "avg_items": 1.71,
+          "avg_steps": 404.16,
+          "by_corner": {
+            "0": {
+              "num_episodes": 50,
+              "win_rate": 34.0,
+              "active_win_rate": 24.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 64.0,
+              "avg_kills": 0.24,
+              "avg_bombs": 42.42,
+              "avg_items": 1.68,
+              "avg_steps": 389.58
+            },
+            "1": {
+              "num_episodes": 50,
+              "win_rate": 26.0,
+              "active_win_rate": 20.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 72.0,
+              "avg_kills": 0.2,
+              "avg_bombs": 44.34,
+              "avg_items": 1.74,
+              "avg_steps": 418.74
+            }
+          },
+          "device": "cpu",
+          "suicide_limit": 0.0
+        },
+        {
+          "episode": 200,
+          "selected": true,
+          "seed": 21000,
+          "board_size": 9,
+          "num_agents": 2,
+          "max_steps": 500,
+          "num_episodes": 100,
+          "win_rate": 39.0,
+          "active_win_rate": 33.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 59.0,
+          "avg_kills": 0.33,
+          "avg_bombs": 41.47,
+          "avg_items": 1.62,
+          "avg_steps": 388.8,
+          "by_corner": {
+            "0": {
+              "num_episodes": 50,
+              "win_rate": 30.0,
+              "active_win_rate": 24.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 68.0,
+              "avg_kills": 0.24,
+              "avg_bombs": 42.66,
+              "avg_items": 1.58,
+              "avg_steps": 402.86
+            },
+            "1": {
+              "num_episodes": 50,
+              "win_rate": 48.0,
+              "active_win_rate": 42.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 50.0,
+              "avg_kills": 0.42,
+              "avg_bombs": 40.28,
+              "avg_items": 1.66,
+              "avg_steps": 374.74
+            }
+          },
+          "device": "cpu",
+          "suicide_limit": 0.0
+        }
+      ],
+      "skills": [
+        {
+          "episode": 0,
+          "stage": "C1_static",
+          "opponent": "static",
+          "model_state_sha256": "9cbd4a3dae13ff2a29da003a7b09b005ef2c22565ac7f36ff6b6c7dbec9b1e52",
+          "games": 64,
+          "owned_kill_success": {
+            "count": 60,
+            "percent": 93.75
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 16,
+            "percent": 25.0
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 4,
+            "percent": 6.25
+          },
+          "mean_steps": 21.15625,
+          "mean_kills": 0.9375,
+          "groups": {
+            "escape": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 32,
+                "percent": 100.0
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 4,
+                "percent": 12.5
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "mean_steps": 11.6875,
+              "mean_kills": 1.0
+            },
+            "approach": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 28,
+                "percent": 87.5
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 12,
+                "percent": 37.5
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 4,
+                "percent": 12.5
+              },
+              "mean_steps": 30.625,
+              "mean_kills": 0.875
+            }
+          }
+        },
+        {
+          "episode": 100,
+          "stage": "C1_static",
+          "opponent": "static",
+          "model_state_sha256": "7ab8d4b5ebe5f7eb27915b11fe40a43e50c1424ef011ab5d208d8f396419cb0f",
+          "games": 64,
+          "owned_kill_success": {
+            "count": 64,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 20,
+            "percent": 31.25
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 21.21875,
+          "mean_kills": 1.0,
+          "groups": {
+            "escape": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 32,
+                "percent": 100.0
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 4,
+                "percent": 12.5
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "mean_steps": 11.6875,
+              "mean_kills": 1.0
+            },
+            "approach": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 32,
+                "percent": 100.0
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 16,
+                "percent": 50.0
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "mean_steps": 30.75,
+              "mean_kills": 1.0
+            }
+          }
+        },
+        {
+          "episode": 200,
+          "stage": "C1_static",
+          "opponent": "static",
+          "model_state_sha256": "aff7bcb153058cd5b6c553414f000258795aa7242d17b5f6f29989912abbaa72",
+          "games": 64,
+          "owned_kill_success": {
+            "count": 62,
+            "percent": 96.875
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 18,
+            "percent": 28.125
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 2,
+            "percent": 3.125
+          },
+          "mean_steps": 22.3125,
+          "mean_kills": 0.96875,
+          "groups": {
+            "escape": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 32,
+                "percent": 100.0
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 4,
+                "percent": 12.5
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "mean_steps": 11.6875,
+              "mean_kills": 1.0
+            },
+            "approach": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 30,
+                "percent": 93.75
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 14,
+                "percent": 43.75
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 2,
+                "percent": 6.25
+              },
+              "mean_steps": 32.9375,
+              "mean_kills": 0.9375
+            }
+          }
+        }
+      ],
+      "skill_gzip_complete": true,
+      "recovered_skill_games": 192,
+      "reward_component_error_max": 1.7763568394002505e-15
+    },
+    "half_wall": {
+      "learner_steps_logged": 73087,
+      "validations": [
+        {
+          "episode": 0,
+          "selected": true,
+          "seed": 21000,
+          "board_size": 9,
+          "num_agents": 2,
+          "max_steps": 500,
+          "num_episodes": 100,
+          "win_rate": 37.0,
+          "active_win_rate": 28.999999999999996,
+          "suicide_rate": 0.0,
+          "draw_rate": 62.0,
+          "avg_kills": 0.29,
+          "avg_bombs": 40.89,
+          "avg_items": 1.57,
+          "avg_steps": 393.38,
+          "by_corner": {
+            "0": {
+              "num_episodes": 50,
+              "win_rate": 30.0,
+              "active_win_rate": 24.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 70.0,
+              "avg_kills": 0.24,
+              "avg_bombs": 41.6,
+              "avg_items": 1.5,
+              "avg_steps": 417.66
+            },
+            "1": {
+              "num_episodes": 50,
+              "win_rate": 44.0,
+              "active_win_rate": 34.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 54.0,
+              "avg_kills": 0.34,
+              "avg_bombs": 40.18,
+              "avg_items": 1.64,
+              "avg_steps": 369.1
+            }
+          },
+          "device": "cpu",
+          "suicide_limit": 0.0
+        },
+        {
+          "episode": 100,
+          "selected": true,
+          "seed": 21000,
+          "board_size": 9,
+          "num_agents": 2,
+          "max_steps": 500,
+          "num_episodes": 100,
+          "win_rate": 37.0,
+          "active_win_rate": 30.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 63.0,
+          "avg_kills": 0.3,
+          "avg_bombs": 42.08,
+          "avg_items": 1.69,
+          "avg_steps": 396.85,
+          "by_corner": {
+            "0": {
+              "num_episodes": 50,
+              "win_rate": 36.0,
+              "active_win_rate": 28.000000000000004,
+              "suicide_rate": 0.0,
+              "draw_rate": 64.0,
+              "avg_kills": 0.28,
+              "avg_bombs": 43.18,
+              "avg_items": 1.62,
+              "avg_steps": 409.16
+            },
+            "1": {
+              "num_episodes": 50,
+              "win_rate": 38.0,
+              "active_win_rate": 32.0,
+              "suicide_rate": 0.0,
+              "draw_rate": 62.0,
+              "avg_kills": 0.32,
+              "avg_bombs": 40.98,
+              "avg_items": 1.76,
+              "avg_steps": 384.54
+            }
+          },
+          "device": "cpu",
+          "suicide_limit": 0.0
+        }
+      ],
+      "skills": [
+        {
+          "episode": 0,
+          "stage": "C1_static",
+          "opponent": "static",
+          "model_state_sha256": "9cbd4a3dae13ff2a29da003a7b09b005ef2c22565ac7f36ff6b6c7dbec9b1e52",
+          "games": 64,
+          "owned_kill_success": {
+            "count": 60,
+            "percent": 93.75
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 16,
+            "percent": 25.0
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 4,
+            "percent": 6.25
+          },
+          "mean_steps": 21.15625,
+          "mean_kills": 0.9375,
+          "groups": {
+            "escape": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 32,
+                "percent": 100.0
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 4,
+                "percent": 12.5
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "mean_steps": 11.6875,
+              "mean_kills": 1.0
+            },
+            "approach": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 28,
+                "percent": 87.5
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 12,
+                "percent": 37.5
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 4,
+                "percent": 12.5
+              },
+              "mean_steps": 30.625,
+              "mean_kills": 0.875
+            }
+          }
+        },
+        {
+          "episode": 100,
+          "stage": "C1_static",
+          "opponent": "static",
+          "model_state_sha256": "7968f46182652d27cf1bfac165278eceeba512468fb6f218874f0b293df7a63a",
+          "games": 64,
+          "owned_kill_success": {
+            "count": 62,
+            "percent": 96.875
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 20,
+            "percent": 31.25
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 2,
+            "percent": 3.125
+          },
+          "mean_steps": 23.0,
+          "mean_kills": 0.96875,
+          "groups": {
+            "escape": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 32,
+                "percent": 100.0
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 4,
+                "percent": 12.5
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "mean_steps": 11.6875,
+              "mean_kills": 1.0
+            },
+            "approach": {
+              "games": 32,
+              "owned_kill_success": {
+                "count": 30,
+                "percent": 93.75
+              },
+              "suicide": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "two_or_more_placements": {
+                "count": 16,
+                "percent": 50.0
+              },
+              "has_genuine_combo_pair": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "passive_win": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "actual_draw": {
+                "count": 0,
+                "percent": 0.0
+              },
+              "skill_horizon_truncated": {
+                "count": 2,
+                "percent": 6.25
+              },
+              "mean_steps": 34.3125,
+              "mean_kills": 0.9375
+            }
+          }
+        }
+      ],
+      "skill_gzip_complete": false,
+      "recovered_skill_games": 128,
+      "reward_component_error_max": 7.077671781985373e-16
+    }
+  },
+  "limit": "Only completed JSON records recovered; truncated skill gzip footer is reported, original bytes unchanged."
+}

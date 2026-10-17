@@ -1,0 +1,1 @@
+{"seed": 41000, "num_episodes": 400, "num_agents": 2, "margin": 15, "sweep": "runs\\sd4-margin-sweep-21000"}

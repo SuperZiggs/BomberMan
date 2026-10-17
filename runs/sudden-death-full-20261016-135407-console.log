@@ -1,0 +1,251 @@
+﻿[off] 0/400
+[off] 25/400
+[off] 50/400
+[off] 75/400
+[off] 100/400
+[off] 125/400
+[off] 150/400
+[off] 175/400
+[off] 200/400
+[off] 225/400
+[off] 250/400
+[off] 275/400
+[off] 300/400
+[off] 325/400
+[off] 350/400
+[off] 375/400
+[off] 400/400
+[off] WR=38.75 ActiveWR=32.75 Draw=58.75 Self=0.75
+[rings_only] 0/400
+[rings_only] 25/400
+[rings_only] 50/400
+[rings_only] 75/400
+[rings_only] 100/400
+[rings_only] 125/400
+[rings_only] 150/400
+[rings_only] 175/400
+[rings_only] 200/400
+[rings_only] 225/400
+[rings_only] 250/400
+[rings_only] 275/400
+[rings_only] 300/400
+[rings_only] 325/400
+[rings_only] 350/400
+[rings_only] 375/400
+[rings_only] 400/400
+[rings_only] WR=36.00 ActiveWR=16.25 Draw=26.25 Self=2.75
+[learner_aware] 0/400
+[learner_aware] 25/400
+[learner_aware] 50/400
+[learner_aware] 75/400
+[learner_aware] 100/400
+[learner_aware] 125/400
+[learner_aware] 150/400
+[learner_aware] 175/400
+[learner_aware] 200/400
+[learner_aware] 225/400
+[learner_aware] 250/400
+[learner_aware] 275/400
+[learner_aware] 300/400
+[learner_aware] 325/400
+[learner_aware] 350/400
+[learner_aware] 375/400
+[learner_aware] 400/400
+[learner_aware] WR=57.50 ActiveWR=17.00 Draw=19.00 Self=0.75
+[both_aware] 0/400
+[both_aware] 25/400
+[both_aware] 50/400
+[both_aware] 75/400
+[both_aware] 100/400
+[both_aware] 125/400
+[both_aware] 150/400
+[both_aware] 175/400
+[both_aware] 200/400
+[both_aware] 225/400
+[both_aware] 250/400
+[both_aware] 275/400
+[both_aware] 300/400
+[both_aware] 325/400
+[both_aware] 350/400
+[both_aware] 375/400
+[both_aware] 400/400
+[both_aware] WR=43.00 ActiveWR=17.50 Draw=21.50 Self=1.00
+{
+  "status": "complete",
+  "full_protocol": true,
+  "hashes_unchanged": true,
+  "optimizer_steps": 0,
+  "error": null,
+  "elapsed_seconds": 1045.8766717000035,
+  "comparisons": {
+    "rings_vs_off": {
+      "win": {
+        "difference_pp": -2.75,
+        "ci95_pp": [
+          -7.75,
+          2.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "active_win": {
+        "difference_pp": -16.5,
+        "ci95_pp": [
+          -20.25,
+          -12.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -32.5,
+        "ci95_pp": [
+          -38.5,
+          -26.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 2.0,
+        "ci95_pp": [
+          0.75,
+          3.5000000000000004
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "learner_mask_vs_rings": {
+      "win": {
+        "difference_pp": 21.5,
+        "ci95_pp": [
+          17.5,
+          25.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "active_win": {
+        "difference_pp": 0.75,
+        "ci95_pp": [
+          0.0,
+          1.7500000000000002
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -7.249999999999999,
+        "ci95_pp": [
+          -11.75,
+          -2.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -2.0,
+        "ci95_pp": [
+          -3.5000000000000004,
+          -0.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "opponent_mask_vs_learner": {
+      "win": {
+        "difference_pp": -14.499999999999998,
+        "ci95_pp": [
+          -18.0,
+          -11.0
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "active_win": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -0.5,
+          1.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 2.5,
+        "ci95_pp": [
+          -1.5,
+          6.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          0.0,
+          0.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "both_aware_vs_off": {
+      "win": {
+        "difference_pp": 4.25,
+        "ci95_pp": [
+          -1.25,
+          9.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "active_win": {
+        "difference_pp": -15.25,
+        "ci95_pp": [
+          -19.006249999999994,
+          -11.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -37.25,
+        "ci95_pp": [
+          -42.75,
+          -31.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          0.0,
+          0.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "decision": "retain_checkpoint_B; evaluate_rule_variant_only"
+}

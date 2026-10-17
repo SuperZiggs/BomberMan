@@ -1,0 +1,18 @@
+{
+  "arm": "control",
+  "completed_episodes": 600,
+  "expected_episodes": 600,
+  "training_complete": true,
+  "validation_complete": true,
+  "curriculum_stages_complete": true,
+  "stage_failure": null,
+  "stage_events": [],
+  "stage_episode_counts": {
+    "control_rule": 600
+  },
+  "learner_steps": 226640,
+  "optimizer_instances": 1,
+  "optimizer_steps": 600,
+  "peak_cuda_bytes": 87902208,
+  "elapsed_seconds": 1968.0832022
+}

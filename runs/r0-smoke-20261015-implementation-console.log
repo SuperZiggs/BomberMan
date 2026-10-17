@@ -1,0 +1,15 @@
+[original] 2/2 games; timeout replays 2
+[mc_final] 2/2 games; timeout replays 2
+[gae_final] 2/2 games; timeout replays 2
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "games_completed": 6,
+  "timeout_cases": 6,
+  "validation_parity": false,
+  "hashes_unchanged": true,
+  "training_updates": 0,
+  "decision": "retain_original",
+  "elapsed_seconds": 9.638187199998356
+}

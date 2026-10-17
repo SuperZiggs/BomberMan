@@ -1,0 +1,55 @@
+{
+  "started_utc": "2026-10-14T06:07:02.971193+00:00",
+  "splits": [
+    "train",
+    "validation"
+  ],
+  "family_splits": {
+    "fork": "train",
+    "long_retreat": "validation",
+    "long_fork": "validation",
+    "wood_branch": "test"
+  },
+  "test_split_run": false,
+  "smoke": false,
+  "repeats": 2,
+  "skill_horizon": 80,
+  "env_max_steps": 500,
+  "board_size": 9,
+  "num_agents": 2,
+  "rollout_seeds": [
+    2026101401,
+    2026101402
+  ],
+  "opponents": [
+    "static",
+    "evader",
+    "rule"
+  ],
+  "scenarios": 240,
+  "expected_games": 1440,
+  "seconds": 1800,
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "ec1e86fc77f0b90ca1905d63c377828158ac174900092fd45ec6af757ddfa6ca",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a",
+    "visualize.py": "fb6701a07ffe68345c1c83383530313956077a05ac361e7fa59ce97b837ef07c",
+    "audit_t2.py": "a3b6afcb3b36f59e46c95b9d26381f6a52271172f2ae099a0c44c5e3010bf055",
+    "audit_l2_candidates.py": "f87cf3d2456aaaf6a3d9b706d0cde0875e4bed0c6905da229d61ef5bcc4282ce",
+    "benchmark_t3.py": "448632c81f90487417cc34decc89888791535d29d766d5e33728caa600c2ea27",
+    "test_benchmark_t3.py": "5e5e0587a79244a5773aea35a8dba17f153de5cb9269be6dfdbb8ef8e27a01c9"
+  },
+  "checkpoint_sha256": {
+    "original": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+  },
+  "checkpoints": {
+    "original": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt"
+  },
+  "policy": "existing make_ac_fn / SnapshotOpponent: categorical sampling through production mask",
+  "teacher_selects_cnn_action": false,
+  "certificate_opponent": "static STOP",
+  "escape_search_bound": 2048,
+  "promotion_allowed": false
+}

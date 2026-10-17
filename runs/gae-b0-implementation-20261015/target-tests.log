@@ -1,0 +1,32 @@
+======================================================================
+FAIL: test_lambda_one_matches_mc_one_step_and_500_step_trajectories (test_gae.GAEMathChecks.test_lambda_one_matches_mc_one_step_and_500_step_trajectories)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_gae.py", line 62, in test_lambda_one_matches_mc_one_step_and_500_step_trajectories
+    torch.testing.assert_close(advantage, expected, rtol=1e-10, atol=1e-10)
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\testing\_comparison.py", line 1530, in assert_close
+    raise error_metas[0].to_error(msg)
+AssertionError: Tensor-likes are not close!
+
+Mismatched elements: 2 / 3 (66.7%)
+Greatest absolute difference: 2.726710697231738e-07 at index (0,) (up to 1e-10 allowed)
+Greatest relative difference: 2.0543406366693918e-08 at index (0,) (up to 1e-10 allowed)
+
+======================================================================
+FAIL: test_frozen_first_update_lambda_one_matches_mc_losses_gradients_adam_cpu_cuda (test_gae.GAETrainingChecks.test_frozen_first_update_lambda_one_matches_mc_losses_gradients_adam_cpu_cuda)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_gae.py", line 192, in test_frozen_first_update_lambda_one_matches_mc_losses_gradients_adam_cpu_cuda
+    torch.testing.assert_close(value, gae['state'][key], rtol=1e-4, atol=2e-6)
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\testing\_comparison.py", line 1530, in assert_close
+    raise error_metas[0].to_error(msg)
+AssertionError: Tensor-likes are not close!
+
+Mismatched elements: 1 / 18432 (0.0%)
+Greatest absolute difference: 4.782225005328655e-06 at index (40, 20, 1, 2) (up to 2e-06 allowed)
+Greatest relative difference: 0.004300723318010569 at index (40, 20, 1, 2) (up to 0.0001 allowed)
+
+----------------------------------------------------------------------
+Ran 15 tests in 8.194s
+
+FAILED (failures=2)

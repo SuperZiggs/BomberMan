@@ -1,0 +1,45 @@
+{
+  "started_utc": "2026-10-13T17:31:14.960690+00:00",
+  "training": {
+    "phase": "C",
+    "episodes": 200,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "lr": 0.0001,
+    "seed": 2026101303,
+    "resume_from": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+    "validation_every": 100,
+    "validation_episodes": 100,
+    "validation_seed": 21000,
+    "device": "cuda",
+    "run_report": false,
+    "log_every": 10
+  },
+  "evaluation": {
+    "episodes": 400,
+    "seed": 25000,
+    "last_seed": 25199,
+    "device": "cpu"
+  },
+  "budget_minutes": {
+    "preflight": 15,
+    "training": 65,
+    "evaluation": 40
+  },
+  "warm_start_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "ec1e86fc77f0b90ca1905d63c377828158ac174900092fd45ec6af757ddfa6ca",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a",
+    "pilot_two_bomb.py": "295e0da7e088226825c33ce6077e128c7bae656cd48053f3c62179ca97dbc7be",
+    "test_tactical_teacher.py": "cf62c834ad82bbc04f046264fae53aca1140672b66a38f50d5c358ea022b1b84",
+    "test_combat.py": "9a60fb60502467891bd0a8ac9e267a75351ab2451f9e4ec71576724dc824768d",
+    "test_visualize.py": "5f7a94fed1a9350429df3df2dbd9802a4abd3cd24c089ebc7d2e022572648e67"
+  },
+  "torch": "2.5.1",
+  "hardware": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "evaluation_runner_sha256": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30"
+}

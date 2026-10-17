@@ -1,0 +1,22 @@
+Replayed 64 C1 games from games.jsonl.gz; labels/state/RNG/masks verified
+Replayed 192 C1 games from skill_validation_games.jsonl.gz; labels/state/RNG/masks verified
+{
+  "status": "complete",
+  "saved_games": 256,
+  "replayed_frames": 8224,
+  "teacher_closed_loop": {
+    "escape": {
+      "games": 32,
+      "successes": 32,
+      "missing_labels": 128
+    },
+    "approach": {
+      "games": 32,
+      "successes": 32,
+      "missing_labels": 128
+    }
+  },
+  "counterbomb_fixtures": 96,
+  "seen_counterbombs": 2,
+  "seconds": 35.84805979999874
+}

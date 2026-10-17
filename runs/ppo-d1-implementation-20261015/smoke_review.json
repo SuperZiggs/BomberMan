@@ -1,0 +1,40 @@
+{
+  "cuda": {
+    "status": "reviewed",
+    "raw_files": 53,
+    "modes": {
+      "control": {
+        "episodes": 20,
+        "adam_steps": 80,
+        "early_stop_episodes": 0,
+        "source_state_context_rng_weights_pass": true
+      },
+      "ppo": {
+        "episodes": 20,
+        "adam_steps": 80,
+        "early_stop_episodes": 0,
+        "source_state_context_rng_weights_pass": true
+      }
+    },
+    "seconds": 87.841997
+  },
+  "cpu": {
+    "status": "reviewed",
+    "raw_files": 53,
+    "modes": {
+      "control": {
+        "episodes": 20,
+        "adam_steps": 80,
+        "early_stop_episodes": 0,
+        "source_state_context_rng_weights_pass": true
+      },
+      "ppo": {
+        "episodes": 20,
+        "adam_steps": 80,
+        "early_stop_episodes": 0,
+        "source_state_context_rng_weights_pass": true
+      }
+    },
+    "seconds": 80.408708
+  }
+}

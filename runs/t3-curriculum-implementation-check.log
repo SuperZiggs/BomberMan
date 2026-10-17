@@ -1,0 +1,4 @@
+t3-curriculum-smoke-implementation complete ZIP/hash/metrics/checkpoint audit PASS
+t3-curriculum-smoke-cuda-implementation complete ZIP/hash/metrics/checkpoint audit PASS
+t3-curriculum-deadline-implementation incomplete ZIP/hash/metrics/checkpoint audit PASS
+B unchanged; full test seeds and wood_branch remain unopened

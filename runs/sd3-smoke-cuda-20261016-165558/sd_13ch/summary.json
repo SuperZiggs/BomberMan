@@ -1,0 +1,42 @@
+{
+  "completed_episodes": 20,
+  "expected_episodes": 20,
+  "training_complete": true,
+  "validation_complete": true,
+  "skill_probes_complete": true,
+  "optimizer_instances": 1,
+  "optimizer_steps": 20,
+  "learner_steps": 160,
+  "guidance": {
+    "labels": 26,
+    "agreements": 16,
+    "bomb_instead_of_move": 1,
+    "target_probability_sum": 16.444790824316442,
+    "entropy_sum": 14.088368880562484,
+    "queries": 0,
+    "accepted": 0,
+    "accepted_agreements": 0,
+    "pressure_gain_sum": 0.0,
+    "certificate_steps": 0,
+    "milliseconds": 0.0,
+    "rejected": {}
+  },
+  "best_episode": 0,
+  "elapsed_seconds": 11.581443999999465,
+  "peak_cuda_bytes": 105996800,
+  "checkpoints": {
+    "best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_13ch\\best_phaseC.pt",
+      "sha256": "4192c9aa933c1603b96cba79bd5548f1592df4f3d96d86d1b1cd0d2e78a6eea9"
+    },
+    "final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_13ch\\final_phaseC.pt",
+      "sha256": "3cbbf9718bba16aad44ad1f96acd00b1c8361247e64edf68849d38726b5de1a6"
+    }
+  },
+  "training_state": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_13ch\\training_state.pt",
+    "sha256": "40e8ead3251eef06c2c6fcaa5b1558a8c3b561afa9d67cabd2f86b4b857d77d2",
+    "episode": 20
+  }
+}

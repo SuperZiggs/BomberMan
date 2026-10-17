@@ -1,0 +1,18 @@
+{
+  "phase": "C",
+  "episodes": 200,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 500,
+  "lr": 0.0001,
+  "seed": 2026101303,
+  "resume_from": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+  "validation_every": 100,
+  "validation_episodes": 100,
+  "validation_seed": 21000,
+  "device": "cuda",
+  "run_report": false,
+  "log_every": 10,
+  "attack_teacher": "two_bomb",
+  "checkpoint_dir": "D:\\fpt\\subject\\BomberMan\\runs\\two-bomb-complete-20261014-031626\\two_bomb"
+}

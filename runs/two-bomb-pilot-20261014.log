@@ -1,0 +1,70 @@
+[Preflight] seed 19000 A0: 31 combat states, 500 replay steps
+[Preflight] seed 19003 A0: 40 combat states, 500 replay steps
+[Preflight] seed 19000 A1: 36 combat states, 500 replay steps
+[Preflight] seed 19002 A1: 40 combat states, 500 replay steps
+[Preflight] 147 queries: mean 33.3 ms, p95 62.8 ms
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 100 games, all corners, seed 21000
+[Validation] ep 0 | ActiveWR 29.0% | Suicide 0.0% | Draw 62.0% | best ep 0
+[C] ep    10 | WR:  60.0% | active WR:  60.0% | kills: 0.60 | reward: +9.546 | bombs: 27.1 | walls: 9.5 | combat bombs: 175/181 | loss: 19.6712 | lr: 9.9e-05 | pool: 0 | best validation active: 29%
+[C] ep    20 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.232 | bombs: 42.2 | walls: 8.9 | combat bombs: 289/293 | loss: 0.1630 | lr: 9.8e-05 | pool: 0 | best validation active: 29%
+[C] ep    30 | WR:  50.0% | active WR:  50.0% | kills: 0.50 | reward: +7.495 | bombs: 32.6 | walls: 7.6 | combat bombs: 211/217 | loss: 1.4066 | lr: 9.5e-05 | pool: 0 | best validation active: 29%
+[C] ep    40 | WR:  50.0% | active WR:  40.0% | kills: 0.40 | reward: +6.513 | bombs: 31.8 | walls: 7.6 | combat bombs: 208/214 | loss: 23.6558 | lr: 9.1e-05 | pool: 0 | best validation active: 29%
+[C] ep    50 | WR:  20.0% | active WR:  10.0% | kills: 0.10 | reward: +2.211 | bombs: 45.4 | walls: 7.8 | combat bombs: 300/309 | loss: 0.1928 | lr: 8.6e-05 | pool: 0 | best validation active: 29%
+[C] ep    60 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +5.291 | bombs: 39.6 | walls: 9.5 | combat bombs: 268/277 | loss: 0.0143 | lr: 8.0e-05 | pool: 0 | best validation active: 29%
+[C] ep    70 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.939 | bombs: 45.2 | walls: 10.6 | combat bombs: 298/302 | loss: 10.8362 | lr: 7.4e-05 | pool: 0 | best validation active: 29%
+[C] ep    80 | WR:  50.0% | active WR:  40.0% | kills: 0.40 | reward: +6.641 | bombs: 36.8 | walls: 9.1 | combat bombs: 237/244 | loss: 0.1792 | lr: 6.7e-05 | pool: 0 | best validation active: 29%
+[C] ep    90 | WR:  70.0% | active WR:  50.0% | kills: 0.50 | reward: +8.246 | bombs: 30.9 | walls: 9.3 | combat bombs: 191/195 | loss: 50.7078 | lr: 6.0e-05 | pool: 0 | best validation active: 29%
+[Validation] ep 100 | 100 games, all corners, seed 21000
+[Validation] ep 100 | ActiveWR 33.0% | Suicide 0.0% | Draw 60.0% | best ep 100
+[C] ep   100 | WR:  50.0% | active WR:  50.0% | kills: 0.50 | reward: +8.093 | bombs: 38.4 | walls: 8.8 | combat bombs: 260/264 | loss: 0.1688 | lr: 5.3e-05 | pool: 0 | best validation active: 33%
+[C] ep   110 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +5.184 | bombs: 40.8 | walls: 8.5 | combat bombs: 272/278 | loss: 0.2587 | lr: 4.5e-05 | pool: 0 | best validation active: 33%
+[C] ep   120 | WR:  60.0% | active WR:  50.0% | kills: 0.50 | reward: +8.040 | bombs: 40.6 | walls: 9.1 | combat bombs: 270/279 | loss: 0.1859 | lr: 3.8e-05 | pool: 0 | best validation active: 33%
+[C] ep   130 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.359 | bombs: 38.8 | walls: 9.8 | combat bombs: 267/274 | loss: 20.5041 | lr: 3.1e-05 | pool: 0 | best validation active: 33%
+[C] ep   140 | WR:  50.0% | active WR:  40.0% | kills: 0.40 | reward: +6.750 | bombs: 39.8 | walls: 9.7 | combat bombs: 269/273 | loss: 18.3322 | lr: 2.5e-05 | pool: 0 | best validation active: 33%
+[C] ep   150 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +5.246 | bombs: 38.4 | walls: 8.8 | combat bombs: 263/269 | loss: 0.1667 | lr: 1.9e-05 | pool: 0 | best validation active: 33%
+[C] ep   160 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.826 | bombs: 45.3 | walls: 9.7 | combat bombs: 332/342 | loss: 10.4400 | lr: 1.4e-05 | pool: 0 | best validation active: 33%
+[C] ep   170 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +4.901 | bombs: 38.1 | walls: 8.8 | combat bombs: 245/251 | loss: 0.1844 | lr: 1.0e-05 | pool: 0 | best validation active: 33%
+[C] ep   180 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.120 | bombs: 38.7 | walls: 8.2 | combat bombs: 265/275 | loss: 0.1602 | lr: 7.3e-06 | pool: 0 | best validation active: 33%
+[C] ep   190 | WR:  50.0% | active WR:  40.0% | kills: 0.40 | reward: +6.457 | bombs: 32.0 | walls: 7.9 | combat bombs: 206/212 | loss: 0.3724 | lr: 5.6e-06 | pool: 0 | best validation active: 33%
+[Validation] ep 200 | 100 games, all corners, seed 21000
+[Validation] ep 200 | ActiveWR 34.0% | Suicide 0.0% | Draw 56.0% | best ep 200
+[C] ep   200 | WR:  30.0% | active WR:  20.0% | kills: 0.20 | reward: +3.979 | bombs: 41.6 | walls: 9.9 | combat bombs: 269/273 | loss: 0.1670 | lr: 5.0e-06 | pool: 0 | best validation active: 34%
+
+Saved final model to runs\two-bomb-pilot-20261014\local\final_phaseC.pt
+Saved best model to runs\two-bomb-pilot-20261014\local\best_phaseC.pt (best episode: 200)
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 100 games, all corners, seed 21000
+[Validation] ep 0 | ActiveWR 29.0% | Suicide 0.0% | Draw 62.0% | best ep 0
+[C] ep    10 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.725 | bombs: 29.7 | walls: 8.9 | combat bombs: 105/2720 | loss: 1.5976 | lr: 9.9e-05 | pool: 0 | best validation active: 29%
+[C] ep    20 | WR:  30.0% | active WR:  20.0% | kills: 0.20 | reward: +4.120 | bombs: 42.2 | walls: 10.6 | combat bombs: 176/3575 | loss: 1.1666 | lr: 9.8e-05 | pool: 0 | best validation active: 29%
+[C] ep    30 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +2.597 | bombs: 45.3 | walls: 10.3 | combat bombs: 167/4369 | loss: 0.6409 | lr: 9.5e-05 | pool: 0 | best validation active: 29%
+[C] ep    40 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.765 | bombs: 32.8 | walls: 9.3 | combat bombs: 114/3862 | loss: 0.5133 | lr: 9.1e-05 | pool: 0 | best validation active: 29%
+[C] ep    50 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +2.255 | bombs: 34.6 | walls: 8.3 | combat bombs: 122/4616 | loss: 0.4884 | lr: 8.6e-05 | pool: 0 | best validation active: 29%
+[C] ep    60 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.126 | bombs: 27.6 | walls: 8.3 | combat bombs: 83/3740 | loss: 0.5880 | lr: 8.0e-05 | pool: 0 | best validation active: 29%
+[C] ep    70 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.855 | bombs: 33.1 | walls: 9.6 | combat bombs: 110/4576 | loss: 0.4821 | lr: 7.4e-05 | pool: 0 | best validation active: 29%
+[C] ep    80 | WR:  30.0% | active WR:  10.0% | kills: 0.10 | reward: +2.160 | bombs: 28.1 | walls: 7.3 | combat bombs: 73/3780 | loss: 0.4368 | lr: 6.7e-05 | pool: 0 | best validation active: 29%
+[C] ep    90 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +4.063 | bombs: 31.3 | walls: 10.6 | combat bombs: 98/4402 | loss: 0.4058 | lr: 6.0e-05 | pool: 0 | best validation active: 29%
+[Validation] ep 100 | 100 games, all corners, seed 21000
+[Validation] ep 100 | ActiveWR 18.0% | Suicide 1.0% | Draw 77.0% | best ep 0
+[Validation] kept best: suicide exceeds warm-start limit 0.0%
+[C] ep   100 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.616 | bombs: 27.1 | walls: 8.0 | combat bombs: 93/3673 | loss: 0.3659 | lr: 5.3e-05 | pool: 0 | best validation active: 29%
+[C] ep   110 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.625 | bombs: 25.8 | walls: 8.3 | combat bombs: 75/3776 | loss: 0.5388 | lr: 4.5e-05 | pool: 0 | best validation active: 29%
+[C] ep   120 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.635 | bombs: 24.9 | walls: 9.3 | combat bombs: 77/3598 | loss: 0.3041 | lr: 3.8e-05 | pool: 0 | best validation active: 29%
+[C] ep   130 | WR:  40.0% | active WR:  20.0% | kills: 0.20 | reward: +3.593 | bombs: 20.6 | walls: 7.6 | combat bombs: 64/3182 | loss: 0.5301 | lr: 3.1e-05 | pool: 0 | best validation active: 29%
+[C] ep   140 | WR:  10.0% | active WR:   0.0% | kills: 0.00 | reward: +1.013 | bombs: 27.4 | walls: 9.2 | combat bombs: 89/4380 | loss: 0.3557 | lr: 2.5e-05 | pool: 0 | best validation active: 29%
+
+Saved final model to runs\two-bomb-pilot-20261014\two_bomb\final_phaseC.pt
+Saved best model to runs\two-bomb-pilot-20261014\two_bomb\best_phaseC.pt (best episode: 0)
+{
+  "state": "inconclusive",
+  "promote": false,
+  "retain": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+  "completed_episodes": {
+    "local": 200,
+    "two_bomb": 146
+  },
+  "training_seconds": 3900.063000000002,
+  "reason": "Both 200-episode runs did not finish within 65 minutes",
+  "elapsed_seconds": 3918.1410000000033
+}

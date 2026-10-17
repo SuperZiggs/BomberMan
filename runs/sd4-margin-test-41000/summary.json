@@ -1,0 +1,156 @@
+{
+  "seed": 41000,
+  "games": 400,
+  "margin": 15,
+  "models": [
+    {
+      "margin": 0,
+      "win_rate": 60.0,
+      "active_win_rate": 28.749999999999996,
+      "passive_win_rate": 31.250000000000004,
+      "draw_rate": 13.750000000000002,
+      "suicide_rate": 1.25,
+      "avg_kills": 0.2875,
+      "learner_sd_deaths": 116,
+      "sudden_death": {
+        "learner_deaths": {
+          "alive": 273,
+          "sudden_death": 116,
+          "self_bomb": 5,
+          "opponent_bomb": 6
+        },
+        "opponent_deaths": {
+          "self_bomb": 197,
+          "opponent_bomb": 25,
+          "alive": 138,
+          "sudden_death": 40
+        },
+        "endings": {
+          "sole_survivor": 345,
+          "timeout": 33,
+          "all_dead": 22
+        },
+        "wins_opponent_sd": 18,
+        "both_sd_draws": 22,
+        "reached_sd": 269,
+        "mask": {
+          "learner": {
+            "queries": 16252,
+            "blocked_actions": 1297,
+            "empty_intersections": 419,
+            "unavoidable_pre_move_closure": 116
+          },
+          "opponent": {
+            "queries": 17491,
+            "blocked_actions": 1889,
+            "empty_intersections": 796,
+            "unavoidable_pre_move_closure": 54
+          }
+        },
+        "games": 400
+      }
+    },
+    {
+      "margin": 15,
+      "win_rate": 70.75,
+      "active_win_rate": 29.5,
+      "passive_win_rate": 41.25,
+      "draw_rate": 10.25,
+      "suicide_rate": 1.25,
+      "avg_kills": 0.295,
+      "learner_sd_deaths": 76,
+      "sudden_death": {
+        "learner_deaths": {
+          "alive": 314,
+          "sudden_death": 76,
+          "opponent_bomb": 5,
+          "self_bomb": 5
+        },
+        "opponent_deaths": {
+          "self_bomb": 199,
+          "alive": 107,
+          "opponent_bomb": 25,
+          "sudden_death": 69
+        },
+        "endings": {
+          "sole_survivor": 359,
+          "timeout": 31,
+          "all_dead": 10
+        },
+        "wins_opponent_sd": 59,
+        "both_sd_draws": 10,
+        "reached_sd": 267,
+        "mask": {
+          "learner": {
+            "queries": 16056,
+            "blocked_actions": 3018,
+            "margin_fallbacks": 2560,
+            "empty_intersections": 309,
+            "unavoidable_pre_move_closure": 76
+          },
+          "opponent": {
+            "queries": 17190,
+            "blocked_actions": 2073,
+            "empty_intersections": 855,
+            "unavoidable_pre_move_closure": 77
+          }
+        },
+        "games": 400
+      }
+    }
+  ],
+  "gate": {
+    "ring_death": {
+      "difference_pp": -10.0,
+      "ci95_pp": [
+        -14.249999999999998,
+        -5.75
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "active_win": {
+      "difference_pp": 0.75,
+      "ci95_pp": [
+        -1.25,
+        2.75
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "win": {
+      "difference_pp": 10.75,
+      "ci95_pp": [
+        6.25,
+        15.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "draw": {
+      "difference_pp": -3.5000000000000004,
+      "ci95_pp": [
+        -7.5,
+        0.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "suicide": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        -1.5,
+        1.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "suicide_rate_diff_pp": 0.0,
+    "passed": true
+  }
+}

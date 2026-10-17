@@ -1,0 +1,16 @@
+{
+  "cpu": {
+    "status": "reviewed",
+    "elapsed_seconds": 60.358037799996964,
+    "episodes_per_arm": 20,
+    "optimizer_steps_per_arm": 20,
+    "peak_cuda_bytes": null
+  },
+  "cuda": {
+    "status": "reviewed",
+    "elapsed_seconds": 60.36256929999945,
+    "episodes_per_arm": 20,
+    "optimizer_steps_per_arm": 20,
+    "peak_cuda_bytes": 78912512
+  }
+}

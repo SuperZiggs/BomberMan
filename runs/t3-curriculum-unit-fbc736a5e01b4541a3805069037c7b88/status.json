@@ -1,0 +1,43 @@
+{
+  "status": "complete",
+  "arm": "curriculum",
+  "completed_episodes": 6,
+  "expected_episodes": 6,
+  "training_complete": true,
+  "validation_complete": true,
+  "curriculum_stages_complete": true,
+  "stage_failure": null,
+  "stage_events": [
+    {
+      "episode_completed": 2,
+      "next_episode": 3,
+      "from": "C1_static",
+      "to": "C2_evader",
+      "age": 2
+    },
+    {
+      "episode_completed": 4,
+      "next_episode": 5,
+      "from": "C2_evader",
+      "to": "C3_rule_mix",
+      "age": 2
+    },
+    {
+      "episode_completed": 6,
+      "next_episode": 7,
+      "from": "C3_rule_mix",
+      "to": "C4_transfer",
+      "age": 2
+    }
+  ],
+  "stage_episode_counts": {
+    "C1_static": 2,
+    "C2_evader": 2,
+    "C3_rule_mix": 2
+  },
+  "learner_steps": 48,
+  "optimizer_instances": 1,
+  "optimizer_steps": 6,
+  "peak_cuda_bytes": null,
+  "elapsed_seconds": 1.043062299999292
+}

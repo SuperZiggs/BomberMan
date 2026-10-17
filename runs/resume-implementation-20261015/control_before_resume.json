@@ -1,0 +1,12 @@
+{
+  "control\\best_phaseC.pt": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1",
+  "control\\best_validation.json": "e2c78a5f7559b9276faf783d812b339cebd82da9a2ec114f6f460d7725d83f39",
+  "control\\config.json": "a354ca395afe9a4249a7bf0dba5c28f95565287a6f1d4c4b568658791527f810",
+  "control\\final_phaseC.pt": "b69622865204b234e8907afd7fdfcad9889e480eb51e0f1c8e725d0f403a0f92",
+  "control\\metrics.jsonl": "38fb3459d0e16a9cc7cdc2756a5340a0e2e11591a732f94400a857847c6830d8",
+  "control\\skill_games.jsonl.gz": "44a713afa24c138e174cbe15b051ee28f634d08d18a925936db3d7dfcfea482a",
+  "control\\skill_metrics.jsonl": "00e3a1f2e8835059f261bf0bbf89729c38cf9a2bbfd3ed1f81a541d0b7815208",
+  "control\\summary.json": "1f70a62c47bbd713b93b4f250777c3376a97f3b4aa8961d08d7a453cb1fe1ca8",
+  "control\\training_state.pt": "3aed9498668a663e3f79f9826aa415a30d421bc047f7f74b1ed11fece58d5234",
+  "control\\validation_metrics.jsonl": "3c134d0dd43f933f7f4a6565d01077d5e84a104913b0231e69b5e5ebfa12fa0c"
+}

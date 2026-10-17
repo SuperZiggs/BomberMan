@@ -1,0 +1,110 @@
+{
+  "cuda": {
+    "status": "reviewed",
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-d0-smoke-cuda-20261015-212624",
+    "raw_archive_files": 23,
+    "modes": {
+      "ac": {
+        "episodes": 20,
+        "adam_steps": 20,
+        "learner_steps": 400,
+        "rng_scheduler_history_and_weights_verified": true
+      },
+      "ratio": {
+        "episodes": 20,
+        "adam_steps": 20,
+        "learner_steps": 400,
+        "rng_scheduler_history_and_weights_verified": true
+      }
+    },
+    "first_update": {
+      "actions_and_rewards_identical": true,
+      "auxiliary_and_value_loss_abs_delta": {
+        "value_loss": 2.9802322387695312e-08,
+        "escape_loss": 0.0,
+        "combat_loss": 0.0,
+        "navigation_loss": 0.0
+      },
+      "gradient_max_abs_delta": 2.384185791015625e-07,
+      "parameter_max_abs_delta": 7.060356438159943e-06,
+      "ratio": {
+        "objective": "ratio",
+        "samples": 20,
+        "epochs": 1,
+        "clipped": false,
+        "ratio_mean": 1.0,
+        "ratio_min": 0.9999998807907104,
+        "ratio_max": 1.0000001192092896,
+        "ratio_max_abs_error_from_one": 1.1920928955078125e-07,
+        "exact_kl_before_update": -2.2030939295092367e-09,
+        "label_counts": {
+          "escape": 11,
+          "combat": 0,
+          "navigation": 5
+        },
+        "terminal_transitions": 1,
+        "last_boundary": "time_limit"
+      },
+      "note": "Policy loss scalars differ; compare gradients. Float32/Adam parity uses registered tolerances."
+    },
+    "seconds": 24.797535500001686,
+    "peak_cuda_bytes": {
+      "ac": 101209088,
+      "ratio": 107812864
+    }
+  },
+  "cpu": {
+    "status": "reviewed",
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-d0-smoke-cpu-20261015-212624",
+    "raw_archive_files": 23,
+    "modes": {
+      "ac": {
+        "episodes": 20,
+        "adam_steps": 20,
+        "learner_steps": 400,
+        "rng_scheduler_history_and_weights_verified": true
+      },
+      "ratio": {
+        "episodes": 20,
+        "adam_steps": 20,
+        "learner_steps": 400,
+        "rng_scheduler_history_and_weights_verified": true
+      }
+    },
+    "first_update": {
+      "actions_and_rewards_identical": true,
+      "auxiliary_and_value_loss_abs_delta": {
+        "value_loss": 5.960464477539063e-08,
+        "escape_loss": 0.0,
+        "combat_loss": 0.0,
+        "navigation_loss": 7.450580596923828e-09
+      },
+      "gradient_max_abs_delta": 7.152557373046875e-07,
+      "parameter_max_abs_delta": 2.1420419216156006e-08,
+      "ratio": {
+        "objective": "ratio",
+        "samples": 20,
+        "epochs": 1,
+        "clipped": false,
+        "ratio_mean": 1.0,
+        "ratio_min": 0.9999997615814209,
+        "ratio_max": 1.0,
+        "ratio_max_abs_error_from_one": 2.384185791015625e-07,
+        "exact_kl_before_update": -1.511265423914665e-08,
+        "label_counts": {
+          "escape": 11,
+          "combat": 0,
+          "navigation": 5
+        },
+        "terminal_transitions": 1,
+        "last_boundary": "time_limit"
+      },
+      "note": "Policy loss scalars differ; compare gradients. Float32/Adam parity uses registered tolerances."
+    },
+    "seconds": 15.162457999998878,
+    "peak_cuda_bytes": {
+      "ac": 0,
+      "ratio": 0
+    }
+  }
+}

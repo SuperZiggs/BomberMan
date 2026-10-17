@@ -1,0 +1,103 @@
+{
+  "archive_files": 45,
+  "archive_sha256": "2bb4343618a2a377af3cd7169cd8f967b9984361d86baf05ed7d219d626b7c0e",
+  "source_and_checkpoint_hashes_pass": true,
+  "skills_replayed_games": 384,
+  "skills_replayed_frames": 8864,
+  "comparisons": {
+    "original": {
+      "difference_pp": 0.25,
+      "ci95_pp": [
+        -5.5,
+        6.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "control": {
+      "difference_pp": -3.0,
+      "ci95_pp": [
+        -9.25,
+        3.25
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "gates": {
+    "gain": false,
+    "ci": false,
+    "suicide": true
+  },
+  "decision": "retain_original",
+  "elapsed_seconds": 5816.060942200005,
+  "arms": {
+    "control": {
+      "best_episode": 100,
+      "learner_steps": 75646,
+      "training_suicides": 3,
+      "training_active_wins": 72,
+      "clipped_updates": 95,
+      "normalization_skipped": 0,
+      "grad_norm_mean": 34.339181336462495,
+      "grad_norm_p95": 129.5762718200683,
+      "explained_variance_mean": 0.4520196240791307,
+      "advantage_raw_std_mean": 1.196409550961107,
+      "advantage_policy_std_mean": 1.196409550961107,
+      "entropy_mean_per_episode": 0.28287847578525543,
+      "seconds": 1770.8027547999955
+    },
+    "normalized": {
+      "best_episode": 100,
+      "learner_steps": 75957,
+      "training_suicides": 3,
+      "training_active_wins": 67,
+      "clipped_updates": 79,
+      "normalization_skipped": 0,
+      "grad_norm_mean": 32.28175124406815,
+      "grad_norm_p95": 131.8975746154785,
+      "explained_variance_mean": 0.4789084917376264,
+      "advantage_raw_std_mean": 1.1063645448535682,
+      "advantage_policy_std_mean": 0.9999999827146531,
+      "entropy_mean_per_episode": 0.2884395775385201,
+      "seconds": 1759.8316678999981
+    }
+  },
+  "models": {
+    "original": {
+      "active_win_rate": 33.25,
+      "suicide_rate": 0.25,
+      "draw_rate": 57.99999999999999,
+      "counts": {
+        "win": 155,
+        "active_win": 133,
+        "suicide": 1.0,
+        "draw": 232
+      }
+    },
+    "control": {
+      "active_win_rate": 36.5,
+      "suicide_rate": 0.25,
+      "draw_rate": 54.50000000000001,
+      "counts": {
+        "win": 170,
+        "active_win": 146,
+        "suicide": 1.0,
+        "draw": 218
+      }
+    },
+    "normalized": {
+      "active_win_rate": 33.5,
+      "suicide_rate": 0.25,
+      "draw_rate": 56.99999999999999,
+      "counts": {
+        "win": 159,
+        "active_win": 134,
+        "suicide": 1.0,
+        "draw": 228
+      }
+    }
+  }
+}

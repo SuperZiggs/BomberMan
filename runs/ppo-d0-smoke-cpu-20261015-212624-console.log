@@ -1,0 +1,49 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[C] ep    10 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.330 | bombs: 3.0 | walls: 2.2 | combat bombs: 2/2 | loss: 0.0605 | lr: 5.3e-05 | pool: 0
+[C] ep    20 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.1 | combat bombs: 5/5 | loss: 0.0763 | lr: 5.0e-06 | pool: 0
+
+Saved final model to D:\fpt\subject\BomberMan\runs\ppo-d0-smoke-cpu-20261015-212624\ac\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\ppo-d0-smoke-cpu-20261015-212624\ac\best_phaseC.pt (best episode: 0)
+[D0 ac] 20 episodes / 20 Adam updates complete
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[C] ep    10 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.330 | bombs: 3.0 | walls: 2.2 | combat bombs: 2/2 | loss: 0.4053 | lr: 5.3e-05 | pool: 0
+[C] ep    20 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.1 | combat bombs: 5/5 | loss: 0.1334 | lr: 5.0e-06 | pool: 0
+
+Saved final model to D:\fpt\subject\BomberMan\runs\ppo-d0-smoke-cpu-20261015-212624\ratio\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\ppo-d0-smoke-cpu-20261015-212624\ratio\best_phaseC.pt (best episode: 0)
+[D0 ratio] 20 episodes / 20 Adam updates complete
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "hashes_unchanged": true,
+  "modes": {
+    "ac": {
+      "episodes": 20,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "finite_weights": true,
+      "peak_cuda_bytes": 0,
+      "training_state_sha256": "cc5a627d7e5d1d18d2febb1dfb730341f768e7a8dd6325ca2b53c1dbee036de1",
+      "checkpoints": {
+        "best": "7c4ce5a789d9812c525c05f33e004d8372267d035ac07adf0f94264ca71c25b9",
+        "final": "33c8bff8e4c164c8bfc76ec250252b9f43e4c2a30ea3c489f514d5a1dfdc9463"
+      }
+    },
+    "ratio": {
+      "episodes": 20,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "finite_weights": true,
+      "peak_cuda_bytes": 0,
+      "training_state_sha256": "d8dbdeef911d4532716245cd7d5f20ce4c251211f894e18334d8d230871dc9cd",
+      "checkpoints": {
+        "best": "5fe291a45f928ae40e38bd6b222c763a05abb7a544289d419bdd19a430fccf43",
+        "final": "caf9f482a772275f49ee32cddc81e0ead1519fac3ecee3780188eec17b227d53"
+      }
+    }
+  },
+  "decision": "retain_original",
+  "elapsed_seconds": 15.162457999998878,
+  "limits": "D0 technical smoke only; no PPO clipping, repeated epochs, held-out games or win-rate claim."
+}

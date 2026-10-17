@@ -1,0 +1,7 @@
+model,seed,aid,outcome,kills,active_win,shaped_reward
+original,21000,0,timeout,0,0,0.42999999999999994
+original,21000,1,timeout,0,0,0.27999999999999997
+mc_final,21000,0,timeout,0,0,0.42999999999999994
+mc_final,21000,1,timeout,0,0,0.27999999999999997
+gae_final,21000,0,timeout,0,0,0.42999999999999994
+gae_final,21000,1,timeout,0,0,0.27999999999999997

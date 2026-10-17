@@ -1,0 +1,56 @@
+{
+  "status": "incomplete",
+  "full_protocol": false,
+  "reason": "ValueError: Unexpected observation channels",
+  "arms": {
+    "sd_12ch": {
+      "completed_episodes": 20,
+      "expected_episodes": 20,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 160,
+      "guidance": {
+        "labels": 26,
+        "agreements": 17,
+        "bomb_instead_of_move": 1,
+        "target_probability_sum": 16.874823042191565,
+        "entropy_sum": 13.950161362532526,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 13.16137660000004,
+      "peak_cuda_bytes": null,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cpu-20261016-165344\\sd_12ch\\best_phaseC.pt",
+          "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cpu-20261016-165344\\sd_12ch\\final_phaseC.pt",
+          "sha256": "6b862d6823ce048d40016917088cda3f9d42d6a6036b6f0d6ebf481a708b92a4"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cpu-20261016-165344\\sd_12ch\\training_state.pt",
+        "sha256": "5e992c929c0dd6d6252061b5cab6523a0067dbec5ae85f99e42a6bb709709081",
+        "episode": 20
+      }
+    }
+  },
+  "hashes_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds_this_process": 16.701265699999567,
+  "resumed": false,
+  "models": {}
+}

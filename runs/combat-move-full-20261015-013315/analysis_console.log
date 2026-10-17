@@ -1,0 +1,98 @@
+{
+  "arms": {
+    "control": {
+      "best_episode": 100,
+      "learner_steps": 72409,
+      "training_suicides": 0,
+      "training_active_wins": 74,
+      "move_agreement_percent": 56.32078456184752,
+      "bomb_instead_of_move_percent": 6.023410313192028,
+      "mean_target_probability": 0.5632174571385988,
+      "mean_entropy": 0.5625604600519896,
+      "coverage_percent": 0.0,
+      "accepted_agreement_percent": null,
+      "mean_pressure_gain": null,
+      "mean_query_ms": null,
+      "seconds": 911.1111919000032
+    },
+    "combat_move": {
+      "best_episode": 100,
+      "learner_steps": 73739,
+      "training_suicides": 0,
+      "training_active_wins": 73,
+      "move_agreement_percent": 55.817925743909385,
+      "bomb_instead_of_move_percent": 6.274909352431752,
+      "mean_target_probability": 0.5569049575130144,
+      "mean_entropy": 0.6128685139845909,
+      "coverage_percent": 22.975038206826287,
+      "accepted_agreement_percent": 51.545584974566324,
+      "mean_pressure_gain": 0.23646871417417642,
+      "mean_query_ms": 2.3401915645536895,
+      "seconds": 1147.8236182000037
+    }
+  },
+  "models": {
+    "original": {
+      "active_win_rate": 35.0,
+      "suicide_rate": 1.0,
+      "draw_rate": 57.49999999999999,
+      "counts": {
+        "win": 161,
+        "active_win": 140,
+        "suicide": 4.0,
+        "draw": 230
+      }
+    },
+    "control": {
+      "active_win_rate": 35.5,
+      "suicide_rate": 0.75,
+      "draw_rate": 56.00000000000001,
+      "counts": {
+        "win": 168,
+        "active_win": 142,
+        "suicide": 3.0,
+        "draw": 224
+      }
+    },
+    "combat_move": {
+      "active_win_rate": 40.25,
+      "suicide_rate": 0.25,
+      "draw_rate": 53.0,
+      "counts": {
+        "win": 182,
+        "active_win": 161,
+        "suicide": 1.0,
+        "draw": 212
+      }
+    }
+  },
+  "comparisons": {
+    "original": {
+      "difference_pp": 5.25,
+      "ci95_pp": [
+        -1.5,
+        12.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "control": {
+      "difference_pp": 4.75,
+      "ci95_pp": [
+        -1.5,
+        11.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "gates": {
+    "gain": false,
+    "ci": false,
+    "suicide": true
+  },
+  "decision": "retain_original",
+  "skills_replayed_frames": 8884
+}

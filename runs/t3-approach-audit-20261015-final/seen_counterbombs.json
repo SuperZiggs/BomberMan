@@ -1,0 +1,115 @@
+[
+  {
+    "seed": 32080,
+    "aid": 0,
+    "placement_tick": 41,
+    "counter_delay": 5,
+    "initial_mask": [
+      true,
+      true,
+      true,
+      false,
+      false,
+      true
+    ],
+    "known_only_path": [
+      5,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      4,
+      0
+    ],
+    "relaxed_counter_path_ignoring_enemy": [
+      5,
+      0,
+      1,
+      1,
+      4,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0
+    ],
+    "with_counter_path": null,
+    "scheduled_bombs": [
+      [
+        0,
+        {
+          "row": 3,
+          "col": 1,
+          "owner": 0,
+          "timer": 8,
+          "blast_range": 3
+        }
+      ],
+      [
+        5,
+        {
+          "row": 1,
+          "col": 2,
+          "owner": 1,
+          "timer": 8,
+          "blast_range": 2
+        }
+      ]
+    ]
+  },
+  {
+    "seed": 32133,
+    "aid": 0,
+    "placement_tick": 37,
+    "counter_delay": 3,
+    "initial_mask": [
+      true,
+      true,
+      true,
+      false,
+      false,
+      true
+    ],
+    "known_only_path": [
+      5,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      4,
+      0
+    ],
+    "relaxed_counter_path_ignoring_enemy": null,
+    "with_counter_path": null,
+    "scheduled_bombs": [
+      [
+        0,
+        {
+          "row": 3,
+          "col": 1,
+          "owner": 0,
+          "timer": 8,
+          "blast_range": 2
+        }
+      ],
+      [
+        3,
+        {
+          "row": 1,
+          "col": 2,
+          "owner": 1,
+          "timer": 8,
+          "blast_range": 3
+        }
+      ]
+    ]
+  }
+]

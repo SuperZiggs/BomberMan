@@ -1,0 +1,2303 @@
+{
+  "status": "complete",
+  "decision": "review_pending_keep_original",
+  "models": {
+    "original": {
+      "overall": {
+        "games": 6,
+        "outcomes": {
+          "win": {
+            "numerator": 0,
+            "denominator": 6,
+            "percent": 0.0
+          },
+          "active_win": {
+            "numerator": 0,
+            "denominator": 6,
+            "percent": 0.0
+          },
+          "draw": {
+            "numerator": 6,
+            "denominator": 6,
+            "percent": 100.0
+          },
+          "suicide": {
+            "numerator": 0,
+            "denominator": 6,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "numerator": 0,
+            "denominator": 6,
+            "percent": 0.0
+          },
+          "avg_kills": 0.0,
+          "avg_bombs": 10.166666666666666,
+          "avg_items": 1.0,
+          "avg_steps": 80.0
+        },
+        "queries": 480,
+        "coverage": {
+          "numerator": 400,
+          "denominator": 480,
+          "percent": 83.33333333333333
+        },
+        "agreement": {
+          "numerator": 217,
+          "denominator": 400,
+          "percent": 54.25
+        },
+        "target_probability_mass": {
+          "count": 400,
+          "mean": 0.5445284296507619,
+          "median": 0.6347428855688122,
+          "p95": 1.0,
+          "max": 1.0000000660129444
+        },
+        "uniform_random_agreement": {
+          "count": 400,
+          "mean": 0.6104583333333333,
+          "median": 0.5,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "label_support": {
+          "1": 347,
+          "2": 48,
+          "3": 5
+        },
+        "mask_support": {
+          "1": 121,
+          "3": 121,
+          "4": 47,
+          "2": 96,
+          "5": 11,
+          "6": 4
+        },
+        "label_action_participation": {
+          "LEFT": 70,
+          "DOWN": 72,
+          "STOP": 152,
+          "UP": 77,
+          "RIGHT": 73,
+          "BOMB": 14
+        },
+        "two_bomb_labels": {
+          "numerator": 240,
+          "denominator": 400,
+          "percent": 60.0
+        },
+        "trap_labels": {
+          "numerator": 0,
+          "denominator": 400,
+          "percent": 0.0
+        },
+        "trap_one_bomb": {
+          "numerator": 0,
+          "denominator": 160,
+          "percent": 0.0
+        },
+        "trap_two_bomb": {
+          "numerator": 0,
+          "denominator": 240,
+          "percent": 0.0
+        },
+        "pressure": {
+          "count": 400,
+          "mean": 0.4018114220462065,
+          "median": 0.3571428571428571,
+          "p95": 0.6475183823529407,
+          "max": 0.9583333333333334
+        },
+        "pressure_below_0_5": {
+          "numerator": 296,
+          "denominator": 400,
+          "percent": 74.0
+        },
+        "plans_evaluated": 12814,
+        "rejected_candidates": {
+          "no_reduction": 635,
+          "learner_dies": 371,
+          "no_safe_route": 27,
+          "search_limit": 2916
+        },
+        "instrumented_teacher_ms": {
+          "count": 480,
+          "mean": 10.945556041770033,
+          "median": 9.798750001209555,
+          "p95": 23.217065004428143,
+          "max": 28.541899999254383
+        },
+        "plan_starts": 26,
+        "two_bomb_starts": 19,
+        "first_bomb": {
+          "numerator": 6,
+          "denominator": 26,
+          "percent": 23.076923076923077
+        },
+        "second_bomb_given_first": {
+          "numerator": 0,
+          "denominator": 3,
+          "percent": 0.0
+        },
+        "two_bomb_complete_placements": {
+          "numerator": 0,
+          "denominator": 19,
+          "percent": 0.0
+        },
+        "strict_two_bomb_completion": {
+          "numerator": 0,
+          "denominator": 19,
+          "percent": 0.0
+        },
+        "plan_status": {
+          "failure": 23,
+          "success": 3
+        },
+        "windows_ended_before_horizon": 4,
+        "learner_death_windows": {
+          "numerator": 0,
+          "denominator": 26,
+          "percent": 0.0
+        },
+        "plan_failure_reasons": {
+          "scheduled_placement_not_completed": 23
+        },
+        "owned_kill_windows": {
+          "numerator": 0,
+          "denominator": 26,
+          "percent": 0.0
+        },
+        "churn": {
+          "numerator": 199,
+          "denominator": 220,
+          "percent": 90.45454545454545
+        },
+        "churn_event_associations": {
+          "learner_prefix_deviation+enemy_moved": 74,
+          "learner_prefix_deviation+enemy_moved+item_collected": 12,
+          "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed": 20,
+          "learner_prefix_deviation+known_hazard_changed+enemy_bomb": 5,
+          "learner_prefix_deviation+known_hazard_changed+enemy_moved": 26,
+          "enemy_moved": 25,
+          "known_hazard_changed+enemy_bomb+wood_changed": 1,
+          "known_hazard_changed+wood_changed": 3,
+          "learner_prefix_deviation+known_hazard_changed": 1,
+          "learner_prefix_deviation+enemy_bomb": 9,
+          "known_hazard_changed+enemy_moved+wood_changed": 6,
+          "known_hazard_changed+enemy_moved": 5,
+          "learner_prefix_deviation": 3,
+          "enemy_bomb": 4,
+          "learner_prefix_deviation+known_hazard_changed+enemy_bomb+wood_changed+item_collected": 1,
+          "learner_prefix_deviation+known_hazard_changed+enemy_bomb+wood_changed": 1,
+          "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed+item_collected": 1,
+          "known_hazard_changed+enemy_bomb": 1,
+          "enemy_moved+item_collected": 1
+        },
+        "clone_checks": {
+          "static_physical": {
+            "checks": 12,
+            "prefix_status": {
+              "complete": 5,
+              "terminal_before_prefix": 7
+            },
+            "prefix_pass": {
+              "numerator": 5,
+              "denominator": 12,
+              "percent": 41.666666666666664
+            },
+            "survival_observed": {
+              "numerator": 5,
+              "denominator": 5,
+              "percent": 100.0
+            },
+            "survival_unknown": 7,
+            "post_terminal_physics": 2,
+            "new_enemy_bombs": 0,
+            "mask_blocked_actions": {},
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 1.720841666610795,
+              "median": 1.3235000005806796,
+              "p95": 2.882870004759752,
+              "max": 3.0526000045938417
+            }
+          },
+          "static_masked": {
+            "checks": 12,
+            "prefix_status": {
+              "mask_blocked": 7,
+              "terminal_before_prefix": 3,
+              "complete": 2
+            },
+            "prefix_pass": {
+              "numerator": 2,
+              "denominator": 12,
+              "percent": 16.666666666666668
+            },
+            "survival_observed": {
+              "numerator": 2,
+              "denominator": 2,
+              "percent": 100.0
+            },
+            "survival_unknown": 10,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 0,
+            "mask_blocked_actions": {
+              "BOMB": 3,
+              "RIGHT": 1,
+              "STOP": 3
+            },
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 1.8297249989700504,
+              "median": 1.9333499985805247,
+              "p95": 2.736115001607686,
+              "max": 3.0390000029001385
+            }
+          },
+          "evader_physical": {
+            "checks": 12,
+            "prefix_status": {
+              "complete": 12
+            },
+            "prefix_pass": {
+              "numerator": 12,
+              "denominator": 12,
+              "percent": 100.0
+            },
+            "survival_observed": {
+              "numerator": 12,
+              "denominator": 12,
+              "percent": 100.0
+            },
+            "survival_unknown": 0,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 0,
+            "mask_blocked_actions": {},
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 8.28193333290983,
+              "median": 7.328549996600486,
+              "p95": 12.156925002273056,
+              "max": 12.44320000114385
+            }
+          },
+          "evader_masked": {
+            "checks": 12,
+            "prefix_status": {
+              "mask_blocked": 9,
+              "complete": 3
+            },
+            "prefix_pass": {
+              "numerator": 3,
+              "denominator": 12,
+              "percent": 25.0
+            },
+            "survival_observed": {
+              "numerator": 3,
+              "denominator": 3,
+              "percent": 100.0
+            },
+            "survival_unknown": 9,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 0,
+            "mask_blocked_actions": {
+              "RIGHT": 1,
+              "BOMB": 4,
+              "STOP": 4
+            },
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 4.139499999534261,
+              "median": 3.917149999324465,
+              "p95": 7.345550001264199,
+              "max": 8.621000000857748
+            }
+          },
+          "rule_physical": {
+            "checks": 12,
+            "prefix_status": {
+              "complete": 12
+            },
+            "prefix_pass": {
+              "numerator": 12,
+              "denominator": 12,
+              "percent": 100.0
+            },
+            "survival_observed": {
+              "numerator": 9,
+              "denominator": 12,
+              "percent": 75.0
+            },
+            "survival_unknown": 0,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 11,
+            "mask_blocked_actions": {},
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 11.505308334259704,
+              "median": 9.508899998763809,
+              "p95": 19.683059999806574,
+              "max": 20.462300002691336
+            }
+          },
+          "rule_masked": {
+            "checks": 12,
+            "prefix_status": {
+              "mask_blocked": 9,
+              "complete": 3
+            },
+            "prefix_pass": {
+              "numerator": 3,
+              "denominator": 12,
+              "percent": 25.0
+            },
+            "survival_observed": {
+              "numerator": 1,
+              "denominator": 3,
+              "percent": 33.333333333333336
+            },
+            "survival_unknown": 9,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 4,
+            "mask_blocked_actions": {
+              "BOMB": 5,
+              "STOP": 4
+            },
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 4.820458332081519,
+              "median": 4.504399999859743,
+              "p95": 10.048539998024353,
+              "max": 10.449599998537451
+            }
+          }
+        },
+        "physical_pass_but_mask_blocked": 21,
+        "sampled_two_bomb_quality": 6,
+        "two_bomb_trap_both_singles_leave_refuges": {
+          "numerator": 0,
+          "denominator": 6,
+          "percent": 0.0
+        },
+        "single_bomb_counterfactual_invalid": 0
+      },
+      "by_corner": {
+        "0": {
+          "games": 3,
+          "outcomes": {
+            "win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "active_win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "draw": {
+              "numerator": 3,
+              "denominator": 3,
+              "percent": 100.0
+            },
+            "suicide": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "passive_win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "avg_kills": 0.0,
+            "avg_bombs": 10.333333333333334,
+            "avg_items": 1.3333333333333333,
+            "avg_steps": 80.0
+          },
+          "queries": 240,
+          "coverage": {
+            "numerator": 199,
+            "denominator": 240,
+            "percent": 82.91666666666667
+          },
+          "agreement": {
+            "numerator": 104,
+            "denominator": 199,
+            "percent": 52.26130653266332
+          },
+          "target_probability_mass": {
+            "count": 199,
+            "mean": 0.5416425259851589,
+            "median": 0.6313574910163879,
+            "p95": 1.0,
+            "max": 1.0000000313302735
+          },
+          "uniform_random_agreement": {
+            "count": 199,
+            "mean": 0.6209380234505864,
+            "median": 0.5,
+            "p95": 1.0,
+            "max": 1.0
+          },
+          "label_support": {
+            "1": 174,
+            "2": 24,
+            "3": 1
+          },
+          "mask_support": {
+            "1": 64,
+            "3": 56,
+            "4": 21,
+            "2": 50,
+            "5": 6,
+            "6": 2
+          },
+          "label_action_participation": {
+            "LEFT": 15,
+            "DOWN": 36,
+            "STOP": 73,
+            "UP": 46,
+            "RIGHT": 46,
+            "BOMB": 9
+          },
+          "two_bomb_labels": {
+            "numerator": 126,
+            "denominator": 199,
+            "percent": 63.31658291457286
+          },
+          "trap_labels": {
+            "numerator": 0,
+            "denominator": 199,
+            "percent": 0.0
+          },
+          "trap_one_bomb": {
+            "numerator": 0,
+            "denominator": 73,
+            "percent": 0.0
+          },
+          "trap_two_bomb": {
+            "numerator": 0,
+            "denominator": 126,
+            "percent": 0.0
+          },
+          "pressure": {
+            "count": 199,
+            "mean": 0.4173087755847363,
+            "median": 0.37037037037037035,
+            "p95": 0.6666666666666667,
+            "max": 0.9583333333333334
+          },
+          "pressure_below_0_5": {
+            "numerator": 142,
+            "denominator": 199,
+            "percent": 71.35678391959799
+          },
+          "plans_evaluated": 6083,
+          "rejected_candidates": {
+            "no_reduction": 333,
+            "learner_dies": 216,
+            "no_safe_route": 16,
+            "search_limit": 1564
+          },
+          "instrumented_teacher_ms": {
+            "count": 240,
+            "mean": 10.276899166698664,
+            "median": 9.01634999900125,
+            "p95": 22.644399999262532,
+            "max": 27.563800002099015
+          },
+          "plan_starts": 12,
+          "two_bomb_starts": 10,
+          "first_bomb": {
+            "numerator": 3,
+            "denominator": 12,
+            "percent": 25.0
+          },
+          "second_bomb_given_first": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "two_bomb_complete_placements": {
+            "numerator": 0,
+            "denominator": 10,
+            "percent": 0.0
+          },
+          "strict_two_bomb_completion": {
+            "numerator": 0,
+            "denominator": 10,
+            "percent": 0.0
+          },
+          "plan_status": {
+            "failure": 11,
+            "success": 1
+          },
+          "windows_ended_before_horizon": 1,
+          "learner_death_windows": {
+            "numerator": 0,
+            "denominator": 12,
+            "percent": 0.0
+          },
+          "plan_failure_reasons": {
+            "scheduled_placement_not_completed": 11
+          },
+          "owned_kill_windows": {
+            "numerator": 0,
+            "denominator": 12,
+            "percent": 0.0
+          },
+          "churn": {
+            "numerator": 107,
+            "denominator": 111,
+            "percent": 96.3963963963964
+          },
+          "churn_event_associations": {
+            "learner_prefix_deviation+enemy_moved": 43,
+            "learner_prefix_deviation+enemy_moved+item_collected": 7,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed": 11,
+            "learner_prefix_deviation+known_hazard_changed+enemy_bomb": 2,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved": 11,
+            "enemy_moved": 12,
+            "known_hazard_changed+enemy_bomb+wood_changed": 1,
+            "known_hazard_changed+wood_changed": 2,
+            "learner_prefix_deviation+known_hazard_changed": 1,
+            "enemy_bomb": 1,
+            "known_hazard_changed+enemy_moved": 3,
+            "learner_prefix_deviation+enemy_bomb": 5,
+            "learner_prefix_deviation+known_hazard_changed+enemy_bomb+wood_changed+item_collected": 1,
+            "learner_prefix_deviation+known_hazard_changed+enemy_bomb+wood_changed": 1,
+            "learner_prefix_deviation": 1,
+            "known_hazard_changed+enemy_bomb": 1,
+            "enemy_moved+item_collected": 1,
+            "known_hazard_changed+enemy_moved+wood_changed": 3
+          },
+          "clone_checks": {
+            "static_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 3,
+                "terminal_before_prefix": 3
+              },
+              "prefix_pass": {
+                "numerator": 3,
+                "denominator": 6,
+                "percent": 50.0
+              },
+              "survival_observed": {
+                "numerator": 3,
+                "denominator": 3,
+                "percent": 100.0
+              },
+              "survival_unknown": 3,
+              "post_terminal_physics": 2,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 1.863566668665347,
+                "median": 1.6588500038778875,
+                "p95": 2.859175003322889,
+                "max": 3.0526000045938417
+              }
+            },
+            "static_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 4,
+                "terminal_before_prefix": 1,
+                "complete": 1
+              },
+              "prefix_pass": {
+                "numerator": 1,
+                "denominator": 6,
+                "percent": 16.666666666666668
+              },
+              "survival_observed": {
+                "numerator": 1,
+                "denominator": 1,
+                "percent": 100.0
+              },
+              "survival_unknown": 5,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {
+                "BOMB": 2,
+                "RIGHT": 1,
+                "STOP": 1
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 1.8949166648477938,
+                "median": 2.0287999977881555,
+                "p95": 2.257724996525212,
+                "max": 2.2621999960392714
+              }
+            },
+            "evader_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 6
+              },
+              "prefix_pass": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_observed": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_unknown": 0,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 7.903366666141665,
+                "median": 6.921649997821078,
+                "p95": 11.5638500010391,
+                "max": 12.44320000114385
+              }
+            },
+            "evader_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 4,
+                "complete": 2
+              },
+              "prefix_pass": {
+                "numerator": 2,
+                "denominator": 6,
+                "percent": 33.333333333333336
+              },
+              "survival_observed": {
+                "numerator": 2,
+                "denominator": 2,
+                "percent": 100.0
+              },
+              "survival_unknown": 4,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {
+                "RIGHT": 1,
+                "BOMB": 2,
+                "STOP": 1
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 4.324116667703493,
+                "median": 3.3271500033151824,
+                "p95": 8.0412500010425,
+                "max": 8.621000000857748
+              }
+            },
+            "rule_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 6
+              },
+              "prefix_pass": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_observed": {
+                "numerator": 4,
+                "denominator": 6,
+                "percent": 66.66666666666667
+              },
+              "survival_unknown": 0,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 5,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 10.546216667232025,
+                "median": 9.248700000171084,
+                "p95": 17.740500001309556,
+                "max": 20.462300002691336
+              }
+            },
+            "rule_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 4,
+                "complete": 2
+              },
+              "prefix_pass": {
+                "numerator": 2,
+                "denominator": 6,
+                "percent": 33.333333333333336
+              },
+              "survival_observed": {
+                "numerator": 1,
+                "denominator": 2,
+                "percent": 50.0
+              },
+              "survival_unknown": 4,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 2,
+              "mask_blocked_actions": {
+                "BOMB": 3,
+                "STOP": 1
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 4.95779999861649,
+                "median": 2.9053999969619326,
+                "p95": 10.267299998304225,
+                "max": 10.449599998537451
+              }
+            }
+          },
+          "physical_pass_but_mask_blocked": 10,
+          "sampled_two_bomb_quality": 4,
+          "two_bomb_trap_both_singles_leave_refuges": {
+            "numerator": 0,
+            "denominator": 4,
+            "percent": 0.0
+          },
+          "single_bomb_counterfactual_invalid": 0
+        },
+        "1": {
+          "games": 3,
+          "outcomes": {
+            "win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "active_win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "draw": {
+              "numerator": 3,
+              "denominator": 3,
+              "percent": 100.0
+            },
+            "suicide": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "passive_win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "avg_kills": 0.0,
+            "avg_bombs": 10.0,
+            "avg_items": 0.6666666666666666,
+            "avg_steps": 80.0
+          },
+          "queries": 240,
+          "coverage": {
+            "numerator": 201,
+            "denominator": 240,
+            "percent": 83.75
+          },
+          "agreement": {
+            "numerator": 113,
+            "denominator": 201,
+            "percent": 56.21890547263681
+          },
+          "target_probability_mass": {
+            "count": 201,
+            "mean": 0.5473856178570057,
+            "median": 0.6576089810951089,
+            "p95": 1.0,
+            "max": 1.0000000660129444
+          },
+          "uniform_random_agreement": {
+            "count": 201,
+            "mean": 0.6000829187396352,
+            "median": 0.5,
+            "p95": 1.0,
+            "max": 1.0
+          },
+          "label_support": {
+            "1": 173,
+            "2": 24,
+            "3": 4
+          },
+          "mask_support": {
+            "1": 57,
+            "3": 65,
+            "2": 46,
+            "4": 26,
+            "5": 5,
+            "6": 2
+          },
+          "label_action_participation": {
+            "UP": 31,
+            "LEFT": 55,
+            "STOP": 79,
+            "RIGHT": 27,
+            "DOWN": 36,
+            "BOMB": 5
+          },
+          "two_bomb_labels": {
+            "numerator": 114,
+            "denominator": 201,
+            "percent": 56.71641791044776
+          },
+          "trap_labels": {
+            "numerator": 0,
+            "denominator": 201,
+            "percent": 0.0
+          },
+          "trap_one_bomb": {
+            "numerator": 0,
+            "denominator": 87,
+            "percent": 0.0
+          },
+          "trap_two_bomb": {
+            "numerator": 0,
+            "denominator": 114,
+            "percent": 0.0
+          },
+          "pressure": {
+            "count": 201,
+            "mean": 0.3864682710304482,
+            "median": 0.33333333333333337,
+            "p95": 0.6190476190476191,
+            "max": 0.7222222222222222
+          },
+          "pressure_below_0_5": {
+            "numerator": 154,
+            "denominator": 201,
+            "percent": 76.61691542288557
+          },
+          "plans_evaluated": 6731,
+          "rejected_candidates": {
+            "no_reduction": 302,
+            "learner_dies": 155,
+            "search_limit": 1352,
+            "no_safe_route": 11
+          },
+          "instrumented_teacher_ms": {
+            "count": 240,
+            "mean": 11.614212916841401,
+            "median": 10.819049999554409,
+            "p95": 23.565315002997515,
+            "max": 28.541899999254383
+          },
+          "plan_starts": 14,
+          "two_bomb_starts": 9,
+          "first_bomb": {
+            "numerator": 3,
+            "denominator": 14,
+            "percent": 21.428571428571427
+          },
+          "second_bomb_given_first": {
+            "numerator": 0,
+            "denominator": 1,
+            "percent": 0.0
+          },
+          "two_bomb_complete_placements": {
+            "numerator": 0,
+            "denominator": 9,
+            "percent": 0.0
+          },
+          "strict_two_bomb_completion": {
+            "numerator": 0,
+            "denominator": 9,
+            "percent": 0.0
+          },
+          "plan_status": {
+            "failure": 12,
+            "success": 2
+          },
+          "windows_ended_before_horizon": 3,
+          "learner_death_windows": {
+            "numerator": 0,
+            "denominator": 14,
+            "percent": 0.0
+          },
+          "plan_failure_reasons": {
+            "scheduled_placement_not_completed": 12
+          },
+          "owned_kill_windows": {
+            "numerator": 0,
+            "denominator": 14,
+            "percent": 0.0
+          },
+          "churn": {
+            "numerator": 92,
+            "denominator": 109,
+            "percent": 84.40366972477064
+          },
+          "churn_event_associations": {
+            "enemy_moved": 13,
+            "learner_prefix_deviation+enemy_moved": 31,
+            "learner_prefix_deviation+enemy_moved+item_collected": 5,
+            "learner_prefix_deviation+enemy_bomb": 4,
+            "known_hazard_changed+enemy_moved+wood_changed": 3,
+            "known_hazard_changed+enemy_moved": 2,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed": 9,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved": 15,
+            "learner_prefix_deviation": 2,
+            "learner_prefix_deviation+known_hazard_changed+enemy_bomb": 3,
+            "enemy_bomb": 3,
+            "known_hazard_changed+wood_changed": 1,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed+item_collected": 1
+          },
+          "clone_checks": {
+            "static_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "terminal_before_prefix": 4,
+                "complete": 2
+              },
+              "prefix_pass": {
+                "numerator": 2,
+                "denominator": 6,
+                "percent": 33.333333333333336
+              },
+              "survival_observed": {
+                "numerator": 2,
+                "denominator": 2,
+                "percent": 100.0
+              },
+              "survival_unknown": 4,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 1.5781166645562432,
+                "median": 1.3138499998603947,
+                "p95": 2.598850001959363,
+                "max": 2.744000004895497
+              }
+            },
+            "static_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 3,
+                "terminal_before_prefix": 2,
+                "complete": 1
+              },
+              "prefix_pass": {
+                "numerator": 1,
+                "denominator": 6,
+                "percent": 16.666666666666668
+              },
+              "survival_observed": {
+                "numerator": 1,
+                "denominator": 1,
+                "percent": 100.0
+              },
+              "survival_unknown": 5,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {
+                "STOP": 2,
+                "BOMB": 1
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 1.764533333092307,
+                "median": 1.4932499980204739,
+                "p95": 2.90132500231266,
+                "max": 3.0390000029001385
+              }
+            },
+            "evader_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 6
+              },
+              "prefix_pass": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_observed": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_unknown": 0,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 8.660499999677995,
+                "median": 8.515849996911129,
+                "p95": 11.643200003163656,
+                "max": 11.922700003196951
+              }
+            },
+            "evader_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 5,
+                "complete": 1
+              },
+              "prefix_pass": {
+                "numerator": 1,
+                "denominator": 6,
+                "percent": 16.666666666666668
+              },
+              "survival_observed": {
+                "numerator": 1,
+                "denominator": 1,
+                "percent": 100.0
+              },
+              "survival_unknown": 5,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {
+                "STOP": 3,
+                "BOMB": 2
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 3.95488333136503,
+                "median": 4.4965999986743554,
+                "p95": 5.827749999298248,
+                "max": 5.8535999996820465
+              }
+            },
+            "rule_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 6
+              },
+              "prefix_pass": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_observed": {
+                "numerator": 5,
+                "denominator": 6,
+                "percent": 83.33333333333333
+              },
+              "survival_unknown": 0,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 6,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 12.464400001287382,
+                "median": 12.295050004468067,
+                "p95": 18.07004999864148,
+                "max": 19.045499997446314
+              }
+            },
+            "rule_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 5,
+                "complete": 1
+              },
+              "prefix_pass": {
+                "numerator": 1,
+                "denominator": 6,
+                "percent": 16.666666666666668
+              },
+              "survival_observed": {
+                "numerator": 0,
+                "denominator": 1,
+                "percent": 0.0
+              },
+              "survival_unknown": 5,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 2,
+              "mask_blocked_actions": {
+                "STOP": 3,
+                "BOMB": 2
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 4.6831166655465495,
+                "median": 5.681499998900108,
+                "p95": 6.848324999737088,
+                "max": 7.052900000417139
+              }
+            }
+          },
+          "physical_pass_but_mask_blocked": 11,
+          "sampled_two_bomb_quality": 2,
+          "two_bomb_trap_both_singles_leave_refuges": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "single_bomb_counterfactual_invalid": 0
+        }
+      }
+    },
+    "two_bomb_final": {
+      "overall": {
+        "games": 6,
+        "outcomes": {
+          "win": {
+            "numerator": 0,
+            "denominator": 6,
+            "percent": 0.0
+          },
+          "active_win": {
+            "numerator": 0,
+            "denominator": 6,
+            "percent": 0.0
+          },
+          "draw": {
+            "numerator": 6,
+            "denominator": 6,
+            "percent": 100.0
+          },
+          "suicide": {
+            "numerator": 0,
+            "denominator": 6,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "numerator": 0,
+            "denominator": 6,
+            "percent": 0.0
+          },
+          "avg_kills": 0.0,
+          "avg_bombs": 6.833333333333333,
+          "avg_items": 0.8333333333333334,
+          "avg_steps": 80.0
+        },
+        "queries": 480,
+        "coverage": {
+          "numerator": 405,
+          "denominator": 480,
+          "percent": 84.375
+        },
+        "agreement": {
+          "numerator": 228,
+          "denominator": 405,
+          "percent": 56.2962962962963
+        },
+        "target_probability_mass": {
+          "count": 405,
+          "mean": 0.5295184030576988,
+          "median": 0.4141855835914612,
+          "p95": 1.0,
+          "max": 1.0000000596046448
+        },
+        "uniform_random_agreement": {
+          "count": 405,
+          "mean": 0.5618106995884774,
+          "median": 0.5,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "label_support": {
+          "1": 338,
+          "2": 65,
+          "3": 2
+        },
+        "mask_support": {
+          "1": 99,
+          "3": 149,
+          "4": 67,
+          "2": 71,
+          "5": 17,
+          "6": 2
+        },
+        "label_action_participation": {
+          "LEFT": 79,
+          "DOWN": 85,
+          "STOP": 135,
+          "UP": 80,
+          "BOMB": 18,
+          "RIGHT": 77
+        },
+        "two_bomb_labels": {
+          "numerator": 247,
+          "denominator": 405,
+          "percent": 60.98765432098765
+        },
+        "trap_labels": {
+          "numerator": 1,
+          "denominator": 405,
+          "percent": 0.24691358024691357
+        },
+        "trap_one_bomb": {
+          "numerator": 1,
+          "denominator": 158,
+          "percent": 0.6329113924050633
+        },
+        "trap_two_bomb": {
+          "numerator": 0,
+          "denominator": 247,
+          "percent": 0.0
+        },
+        "pressure": {
+          "count": 405,
+          "mean": 0.39368792033271743,
+          "median": 0.36363636363636365,
+          "p95": 0.6538461538461539,
+          "max": 1.0
+        },
+        "pressure_below_0_5": {
+          "numerator": 317,
+          "denominator": 405,
+          "percent": 78.27160493827161
+        },
+        "plans_evaluated": 14746,
+        "rejected_candidates": {
+          "no_reduction": 628,
+          "learner_dies": 488,
+          "no_safe_route": 22,
+          "search_limit": 2731
+        },
+        "instrumented_teacher_ms": {
+          "count": 480,
+          "mean": 12.104926874796243,
+          "median": 11.614799997914815,
+          "p95": 23.623930005123825,
+          "max": 59.118999997735955
+        },
+        "plan_starts": 26,
+        "two_bomb_starts": 20,
+        "first_bomb": {
+          "numerator": 2,
+          "denominator": 26,
+          "percent": 7.6923076923076925
+        },
+        "second_bomb_given_first": {
+          "numerator": 0,
+          "denominator": 2,
+          "percent": 0.0
+        },
+        "two_bomb_complete_placements": {
+          "numerator": 0,
+          "denominator": 20,
+          "percent": 0.0
+        },
+        "strict_two_bomb_completion": {
+          "numerator": 0,
+          "denominator": 20,
+          "percent": 0.0
+        },
+        "plan_status": {
+          "failure": 26
+        },
+        "windows_ended_before_horizon": 6,
+        "learner_death_windows": {
+          "numerator": 0,
+          "denominator": 26,
+          "percent": 0.0
+        },
+        "plan_failure_reasons": {
+          "scheduled_placement_not_completed": 26
+        },
+        "owned_kill_windows": {
+          "numerator": 0,
+          "denominator": 26,
+          "percent": 0.0
+        },
+        "churn": {
+          "numerator": 201,
+          "denominator": 220,
+          "percent": 91.36363636363636
+        },
+        "churn_event_associations": {
+          "learner_prefix_deviation+enemy_moved": 84,
+          "learner_prefix_deviation+enemy_moved+item_collected": 12,
+          "known_hazard_changed+enemy_moved+wood_changed": 5,
+          "learner_prefix_deviation+known_hazard_changed+enemy_bomb": 3,
+          "enemy_moved": 19,
+          "learner_prefix_deviation+known_hazard_changed+enemy_moved": 19,
+          "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed": 15,
+          "enemy_bomb": 9,
+          "learner_prefix_deviation+enemy_bomb": 8,
+          "known_hazard_changed+enemy_moved": 10,
+          "learner_prefix_deviation+known_hazard_changed+enemy_bomb+wood_changed": 1,
+          "learner_prefix_deviation+known_hazard_changed+enemy_moved+item_collected": 2,
+          "learner_prefix_deviation+known_hazard_changed+wood_changed": 3,
+          "known_hazard_changed+enemy_bomb": 3,
+          "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed+item_collected": 2,
+          "known_hazard_changed+enemy_bomb+wood_changed": 1,
+          "learner_prefix_deviation+known_hazard_changed": 1,
+          "learner_prefix_deviation": 2,
+          "known_hazard_changed+wood_changed": 1,
+          "known_hazard_changed": 1
+        },
+        "clone_checks": {
+          "static_physical": {
+            "checks": 12,
+            "prefix_status": {
+              "terminal_before_prefix": 6,
+              "complete": 6
+            },
+            "prefix_pass": {
+              "numerator": 6,
+              "denominator": 12,
+              "percent": 50.0
+            },
+            "survival_observed": {
+              "numerator": 6,
+              "denominator": 6,
+              "percent": 100.0
+            },
+            "survival_unknown": 6,
+            "post_terminal_physics": 2,
+            "new_enemy_bombs": 0,
+            "mask_blocked_actions": {},
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 1.915724998373965,
+              "median": 1.7988999970839359,
+              "p95": 3.1134950004343405,
+              "max": 3.478200000245124
+            }
+          },
+          "static_masked": {
+            "checks": 12,
+            "prefix_status": {
+              "mask_blocked": 8,
+              "terminal_before_prefix": 2,
+              "complete": 2
+            },
+            "prefix_pass": {
+              "numerator": 2,
+              "denominator": 12,
+              "percent": 16.666666666666668
+            },
+            "survival_observed": {
+              "numerator": 2,
+              "denominator": 2,
+              "percent": 100.0
+            },
+            "survival_unknown": 10,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 0,
+            "mask_blocked_actions": {
+              "STOP": 4,
+              "BOMB": 4
+            },
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 2.1332499994362784,
+              "median": 2.0173500015516765,
+              "p95": 3.312674998232978,
+              "max": 3.6545000039041042
+            }
+          },
+          "evader_physical": {
+            "checks": 12,
+            "prefix_status": {
+              "complete": 12
+            },
+            "prefix_pass": {
+              "numerator": 12,
+              "denominator": 12,
+              "percent": 100.0
+            },
+            "survival_observed": {
+              "numerator": 12,
+              "denominator": 12,
+              "percent": 100.0
+            },
+            "survival_unknown": 0,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 0,
+            "mask_blocked_actions": {},
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 8.101466667843246,
+              "median": 7.619750002049841,
+              "p95": 11.469554999712273,
+              "max": 12.050299999827985
+            }
+          },
+          "evader_masked": {
+            "checks": 12,
+            "prefix_status": {
+              "mask_blocked": 9,
+              "complete": 3
+            },
+            "prefix_pass": {
+              "numerator": 3,
+              "denominator": 12,
+              "percent": 25.0
+            },
+            "survival_observed": {
+              "numerator": 3,
+              "denominator": 3,
+              "percent": 100.0
+            },
+            "survival_unknown": 9,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 0,
+            "mask_blocked_actions": {
+              "STOP": 4,
+              "BOMB": 5
+            },
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 4.048441665872815,
+              "median": 4.072299998369999,
+              "p95": 6.819394999183713,
+              "max": 8.377600002859253
+            }
+          },
+          "rule_physical": {
+            "checks": 12,
+            "prefix_status": {
+              "complete": 10,
+              "learner_died": 2
+            },
+            "prefix_pass": {
+              "numerator": 10,
+              "denominator": 12,
+              "percent": 83.33333333333333
+            },
+            "survival_observed": {
+              "numerator": 7,
+              "denominator": 12,
+              "percent": 58.333333333333336
+            },
+            "survival_unknown": 0,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 11,
+            "mask_blocked_actions": {},
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 8.9233250006752,
+              "median": 8.409349997236859,
+              "p95": 14.768260001437731,
+              "max": 19.927700006519444
+            }
+          },
+          "rule_masked": {
+            "checks": 12,
+            "prefix_status": {
+              "mask_blocked": 9,
+              "complete": 3
+            },
+            "prefix_pass": {
+              "numerator": 3,
+              "denominator": 12,
+              "percent": 25.0
+            },
+            "survival_observed": {
+              "numerator": 1,
+              "denominator": 3,
+              "percent": 33.333333333333336
+            },
+            "survival_unknown": 9,
+            "post_terminal_physics": 0,
+            "new_enemy_bombs": 5,
+            "mask_blocked_actions": {
+              "STOP": 4,
+              "BOMB": 4,
+              "LEFT": 1
+            },
+            "elapsed_ms": {
+              "count": 12,
+              "mean": 4.6669250010988135,
+              "median": 4.780500003107591,
+              "p95": 8.242225000867618,
+              "max": 9.83309999719495
+            }
+          }
+        },
+        "physical_pass_but_mask_blocked": 20,
+        "sampled_two_bomb_quality": 7,
+        "two_bomb_trap_both_singles_leave_refuges": {
+          "numerator": 0,
+          "denominator": 7,
+          "percent": 0.0
+        },
+        "single_bomb_counterfactual_invalid": 0
+      },
+      "by_corner": {
+        "0": {
+          "games": 3,
+          "outcomes": {
+            "win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "active_win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "draw": {
+              "numerator": 3,
+              "denominator": 3,
+              "percent": 100.0
+            },
+            "suicide": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "passive_win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "avg_kills": 0.0,
+            "avg_bombs": 6.666666666666667,
+            "avg_items": 0.6666666666666666,
+            "avg_steps": 80.0
+          },
+          "queries": 240,
+          "coverage": {
+            "numerator": 201,
+            "denominator": 240,
+            "percent": 83.75
+          },
+          "agreement": {
+            "numerator": 114,
+            "denominator": 201,
+            "percent": 56.71641791044776
+          },
+          "target_probability_mass": {
+            "count": 201,
+            "mean": 0.5533087895858791,
+            "median": 0.4240279197692871,
+            "p95": 1.0,
+            "max": 1.0
+          },
+          "uniform_random_agreement": {
+            "count": 201,
+            "mean": 0.586318407960199,
+            "median": 0.5,
+            "p95": 1.0,
+            "max": 1.0
+          },
+          "label_support": {
+            "1": 168,
+            "2": 33
+          },
+          "mask_support": {
+            "1": 57,
+            "3": 69,
+            "4": 33,
+            "2": 34,
+            "5": 7,
+            "6": 1
+          },
+          "label_action_participation": {
+            "LEFT": 16,
+            "DOWN": 48,
+            "STOP": 67,
+            "UP": 44,
+            "BOMB": 9,
+            "RIGHT": 50
+          },
+          "two_bomb_labels": {
+            "numerator": 115,
+            "denominator": 201,
+            "percent": 57.21393034825871
+          },
+          "trap_labels": {
+            "numerator": 1,
+            "denominator": 201,
+            "percent": 0.4975124378109453
+          },
+          "trap_one_bomb": {
+            "numerator": 1,
+            "denominator": 86,
+            "percent": 1.1627906976744187
+          },
+          "trap_two_bomb": {
+            "numerator": 0,
+            "denominator": 115,
+            "percent": 0.0
+          },
+          "pressure": {
+            "count": 201,
+            "mean": 0.37213607774297397,
+            "median": 0.3571428571428571,
+            "p95": 0.6,
+            "max": 1.0
+          },
+          "pressure_below_0_5": {
+            "numerator": 171,
+            "denominator": 201,
+            "percent": 85.07462686567165
+          },
+          "plans_evaluated": 7084,
+          "rejected_candidates": {
+            "no_reduction": 325,
+            "learner_dies": 217,
+            "no_safe_route": 14,
+            "search_limit": 1420
+          },
+          "instrumented_teacher_ms": {
+            "count": 240,
+            "mean": 11.868889582789658,
+            "median": 9.87659999736934,
+            "p95": 23.288640001919703,
+            "max": 59.118999997735955
+          },
+          "plan_starts": 14,
+          "two_bomb_starts": 10,
+          "first_bomb": {
+            "numerator": 1,
+            "denominator": 14,
+            "percent": 7.142857142857143
+          },
+          "second_bomb_given_first": {
+            "numerator": 0,
+            "denominator": 1,
+            "percent": 0.0
+          },
+          "two_bomb_complete_placements": {
+            "numerator": 0,
+            "denominator": 10,
+            "percent": 0.0
+          },
+          "strict_two_bomb_completion": {
+            "numerator": 0,
+            "denominator": 10,
+            "percent": 0.0
+          },
+          "plan_status": {
+            "failure": 14
+          },
+          "windows_ended_before_horizon": 3,
+          "learner_death_windows": {
+            "numerator": 0,
+            "denominator": 14,
+            "percent": 0.0
+          },
+          "plan_failure_reasons": {
+            "scheduled_placement_not_completed": 14
+          },
+          "owned_kill_windows": {
+            "numerator": 0,
+            "denominator": 14,
+            "percent": 0.0
+          },
+          "churn": {
+            "numerator": 101,
+            "denominator": 109,
+            "percent": 92.66055045871559
+          },
+          "churn_event_associations": {
+            "learner_prefix_deviation+enemy_moved": 39,
+            "learner_prefix_deviation+enemy_moved+item_collected": 6,
+            "known_hazard_changed+enemy_moved+wood_changed": 5,
+            "learner_prefix_deviation+known_hazard_changed+enemy_bomb": 1,
+            "enemy_moved": 10,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved": 12,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed": 5,
+            "enemy_bomb": 4,
+            "learner_prefix_deviation+enemy_bomb": 3,
+            "known_hazard_changed+enemy_moved": 3,
+            "learner_prefix_deviation+known_hazard_changed+enemy_bomb+wood_changed": 1,
+            "learner_prefix_deviation+known_hazard_changed+wood_changed": 2,
+            "known_hazard_changed+enemy_bomb": 3,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed+item_collected": 2,
+            "known_hazard_changed+enemy_bomb+wood_changed": 1,
+            "learner_prefix_deviation+known_hazard_changed": 1,
+            "learner_prefix_deviation": 1,
+            "known_hazard_changed+wood_changed": 1,
+            "known_hazard_changed": 1
+          },
+          "clone_checks": {
+            "static_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "terminal_before_prefix": 4,
+                "complete": 2
+              },
+              "prefix_pass": {
+                "numerator": 2,
+                "denominator": 6,
+                "percent": 33.333333333333336
+              },
+              "survival_observed": {
+                "numerator": 2,
+                "denominator": 2,
+                "percent": 100.0
+              },
+              "survival_unknown": 4,
+              "post_terminal_physics": 1,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 1.5791666652755036,
+                "median": 1.4401000007637776,
+                "p95": 2.088599998387508,
+                "max": 2.1458999981405213
+              }
+            },
+            "static_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 4,
+                "terminal_before_prefix": 1,
+                "complete": 1
+              },
+              "prefix_pass": {
+                "numerator": 1,
+                "denominator": 6,
+                "percent": 16.666666666666668
+              },
+              "survival_observed": {
+                "numerator": 1,
+                "denominator": 1,
+                "percent": 100.0
+              },
+              "survival_unknown": 5,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {
+                "STOP": 3,
+                "BOMB": 1
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 2.085783333313884,
+                "median": 1.9625499990070239,
+                "p95": 3.2454750034958124,
+                "max": 3.6545000039041042
+              }
+            },
+            "evader_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 6
+              },
+              "prefix_pass": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_observed": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_unknown": 0,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 7.664266668143682,
+                "median": 7.294000002730172,
+                "p95": 10.61775000016496,
+                "max": 10.994399999617599
+              }
+            },
+            "evader_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 4,
+                "complete": 2
+              },
+              "prefix_pass": {
+                "numerator": 2,
+                "denominator": 6,
+                "percent": 33.333333333333336
+              },
+              "survival_observed": {
+                "numerator": 2,
+                "denominator": 2,
+                "percent": 100.0
+              },
+              "survival_unknown": 4,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {
+                "STOP": 3,
+                "BOMB": 1
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 4.161649999635604,
+                "median": 3.727650000655558,
+                "p95": 7.550850001280196,
+                "max": 8.377600002859253
+              }
+            },
+            "rule_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 6
+              },
+              "prefix_pass": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_observed": {
+                "numerator": 4,
+                "denominator": 6,
+                "percent": 66.66666666666667
+              },
+              "survival_unknown": 0,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 5,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 8.45603333315618,
+                "median": 9.02009999845177,
+                "p95": 10.499624997464707,
+                "max": 10.54689999727998
+              }
+            },
+            "rule_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 4,
+                "complete": 2
+              },
+              "prefix_pass": {
+                "numerator": 2,
+                "denominator": 6,
+                "percent": 33.333333333333336
+              },
+              "survival_observed": {
+                "numerator": 1,
+                "denominator": 2,
+                "percent": 50.0
+              },
+              "survival_unknown": 4,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 2,
+              "mask_blocked_actions": {
+                "STOP": 3,
+                "BOMB": 1
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 4.7274333325428115,
+                "median": 4.149249998590676,
+                "p95": 8.985424998172675,
+                "max": 9.83309999719495
+              }
+            }
+          },
+          "physical_pass_but_mask_blocked": 9,
+          "sampled_two_bomb_quality": 4,
+          "two_bomb_trap_both_singles_leave_refuges": {
+            "numerator": 0,
+            "denominator": 4,
+            "percent": 0.0
+          },
+          "single_bomb_counterfactual_invalid": 0
+        },
+        "1": {
+          "games": 3,
+          "outcomes": {
+            "win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "active_win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "draw": {
+              "numerator": 3,
+              "denominator": 3,
+              "percent": 100.0
+            },
+            "suicide": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "passive_win": {
+              "numerator": 0,
+              "denominator": 3,
+              "percent": 0.0
+            },
+            "avg_kills": 0.0,
+            "avg_bombs": 7.0,
+            "avg_items": 1.0,
+            "avg_steps": 80.0
+          },
+          "queries": 240,
+          "coverage": {
+            "numerator": 204,
+            "denominator": 240,
+            "percent": 85.0
+          },
+          "agreement": {
+            "numerator": 114,
+            "denominator": 204,
+            "percent": 55.88235294117647
+          },
+          "target_probability_mass": {
+            "count": 204,
+            "mean": 0.506077875154933,
+            "median": 0.3977311700582504,
+            "p95": 1.0,
+            "max": 1.0000000596046448
+          },
+          "uniform_random_agreement": {
+            "count": 204,
+            "mean": 0.5376633986928104,
+            "median": 0.5,
+            "p95": 1.0,
+            "max": 1.0
+          },
+          "label_support": {
+            "1": 170,
+            "2": 32,
+            "3": 2
+          },
+          "mask_support": {
+            "1": 42,
+            "3": 80,
+            "2": 37,
+            "4": 34,
+            "5": 10,
+            "6": 1
+          },
+          "label_action_participation": {
+            "UP": 36,
+            "LEFT": 63,
+            "STOP": 68,
+            "RIGHT": 27,
+            "DOWN": 37,
+            "BOMB": 9
+          },
+          "two_bomb_labels": {
+            "numerator": 132,
+            "denominator": 204,
+            "percent": 64.70588235294117
+          },
+          "trap_labels": {
+            "numerator": 0,
+            "denominator": 204,
+            "percent": 0.0
+          },
+          "trap_one_bomb": {
+            "numerator": 0,
+            "denominator": 72,
+            "percent": 0.0
+          },
+          "trap_two_bomb": {
+            "numerator": 0,
+            "denominator": 132,
+            "percent": 0.0
+          },
+          "pressure": {
+            "count": 204,
+            "mean": 0.41492282406084713,
+            "median": 0.3732142857142857,
+            "p95": 0.6838516746411484,
+            "max": 0.8076923076923077
+          },
+          "pressure_below_0_5": {
+            "numerator": 146,
+            "denominator": 204,
+            "percent": 71.56862745098039
+          },
+          "plans_evaluated": 7662,
+          "rejected_candidates": {
+            "no_reduction": 303,
+            "learner_dies": 271,
+            "search_limit": 1311,
+            "no_safe_route": 8
+          },
+          "instrumented_teacher_ms": {
+            "count": 240,
+            "mean": 12.340964166802829,
+            "median": 12.13225000174134,
+            "p95": 24.01679499380407,
+            "max": 33.10040000360459
+          },
+          "plan_starts": 12,
+          "two_bomb_starts": 10,
+          "first_bomb": {
+            "numerator": 1,
+            "denominator": 12,
+            "percent": 8.333333333333334
+          },
+          "second_bomb_given_first": {
+            "numerator": 0,
+            "denominator": 1,
+            "percent": 0.0
+          },
+          "two_bomb_complete_placements": {
+            "numerator": 0,
+            "denominator": 10,
+            "percent": 0.0
+          },
+          "strict_two_bomb_completion": {
+            "numerator": 0,
+            "denominator": 10,
+            "percent": 0.0
+          },
+          "plan_status": {
+            "failure": 12
+          },
+          "windows_ended_before_horizon": 3,
+          "learner_death_windows": {
+            "numerator": 0,
+            "denominator": 12,
+            "percent": 0.0
+          },
+          "plan_failure_reasons": {
+            "scheduled_placement_not_completed": 12
+          },
+          "owned_kill_windows": {
+            "numerator": 0,
+            "denominator": 12,
+            "percent": 0.0
+          },
+          "churn": {
+            "numerator": 100,
+            "denominator": 111,
+            "percent": 90.09009009009009
+          },
+          "churn_event_associations": {
+            "enemy_moved": 9,
+            "learner_prefix_deviation+enemy_moved": 45,
+            "learner_prefix_deviation+enemy_moved+item_collected": 6,
+            "learner_prefix_deviation+enemy_bomb": 5,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved+wood_changed": 10,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved": 7,
+            "enemy_bomb": 5,
+            "learner_prefix_deviation+known_hazard_changed+enemy_bomb": 2,
+            "known_hazard_changed+enemy_moved": 7,
+            "learner_prefix_deviation+known_hazard_changed+enemy_moved+item_collected": 2,
+            "learner_prefix_deviation": 1,
+            "learner_prefix_deviation+known_hazard_changed+wood_changed": 1
+          },
+          "clone_checks": {
+            "static_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "terminal_before_prefix": 2,
+                "complete": 4
+              },
+              "prefix_pass": {
+                "numerator": 4,
+                "denominator": 6,
+                "percent": 66.66666666666667
+              },
+              "survival_observed": {
+                "numerator": 4,
+                "denominator": 4,
+                "percent": 100.0
+              },
+              "survival_unknown": 2,
+              "post_terminal_physics": 1,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 2.2522833314724267,
+                "median": 2.1197999958531,
+                "p95": 3.3124250003311317,
+                "max": 3.478200000245124
+              }
+            },
+            "static_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 4,
+                "terminal_before_prefix": 1,
+                "complete": 1
+              },
+              "prefix_pass": {
+                "numerator": 1,
+                "denominator": 6,
+                "percent": 16.666666666666668
+              },
+              "survival_observed": {
+                "numerator": 1,
+                "denominator": 1,
+                "percent": 100.0
+              },
+              "survival_unknown": 5,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {
+                "STOP": 1,
+                "BOMB": 3
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 2.180716665558672,
+                "median": 2.181750001909677,
+                "p95": 2.950149995740503,
+                "max": 3.0329999935929663
+              }
+            },
+            "evader_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 6
+              },
+              "prefix_pass": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_observed": {
+                "numerator": 6,
+                "denominator": 6,
+                "percent": 100.0
+              },
+              "survival_unknown": 0,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 8.538666667542808,
+                "median": 8.574350002163555,
+                "p95": 11.683200000334182,
+                "max": 12.050299999827985
+              }
+            },
+            "evader_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 5,
+                "complete": 1
+              },
+              "prefix_pass": {
+                "numerator": 1,
+                "denominator": 6,
+                "percent": 16.666666666666668
+              },
+              "survival_observed": {
+                "numerator": 1,
+                "denominator": 1,
+                "percent": 100.0
+              },
+              "survival_unknown": 5,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 0,
+              "mask_blocked_actions": {
+                "STOP": 1,
+                "BOMB": 4
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 3.9352333321100255,
+                "median": 4.072299998369999,
+                "p95": 5.492924996360671,
+                "max": 5.544499996176455
+              }
+            },
+            "rule_physical": {
+              "checks": 6,
+              "prefix_status": {
+                "complete": 4,
+                "learner_died": 2
+              },
+              "prefix_pass": {
+                "numerator": 4,
+                "denominator": 6,
+                "percent": 66.66666666666667
+              },
+              "survival_observed": {
+                "numerator": 3,
+                "denominator": 6,
+                "percent": 50.0
+              },
+              "survival_unknown": 0,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 6,
+              "mask_blocked_actions": {},
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 9.390616668194221,
+                "median": 7.614349997311365,
+                "p95": 17.23070000662119,
+                "max": 19.927700006519444
+              }
+            },
+            "rule_masked": {
+              "checks": 6,
+              "prefix_status": {
+                "mask_blocked": 5,
+                "complete": 1
+              },
+              "prefix_pass": {
+                "numerator": 1,
+                "denominator": 6,
+                "percent": 16.666666666666668
+              },
+              "survival_observed": {
+                "numerator": 0,
+                "denominator": 1,
+                "percent": 0.0
+              },
+              "survival_unknown": 5,
+              "post_terminal_physics": 0,
+              "new_enemy_bombs": 3,
+              "mask_blocked_actions": {
+                "STOP": 1,
+                "LEFT": 1,
+                "BOMB": 3
+              },
+              "elapsed_ms": {
+                "count": 6,
+                "mean": 4.606416669654815,
+                "median": 4.780500003107591,
+                "p95": 6.875600003695581,
+                "max": 6.940600003872532
+              }
+            }
+          },
+          "physical_pass_but_mask_blocked": 11,
+          "sampled_two_bomb_quality": 3,
+          "two_bomb_trap_both_singles_leave_refuges": {
+            "numerator": 0,
+            "denominator": 3,
+            "percent": 0.0
+          },
+          "single_bomb_counterfactual_invalid": 0
+        }
+      }
+    }
+  },
+  "best_alias": "original",
+  "games_completed": 12,
+  "replay_cases": 10,
+  "parity_passed": true,
+  "hashes_unchanged": true,
+  "full_protocol": false,
+  "final_minus_original_activewr": {
+    "difference_pp": 0.0,
+    "ci95_pp": [
+      0.0,
+      0.0
+    ],
+    "board_pairs": 3,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+  },
+  "elapsed_seconds": 17.325835700001335,
+  "trace_write_seconds": 0.3899249000023701,
+  "limitations": [
+    "Fixed-policy audit: không tái tạo các state/policy thay đổi trong train 200 episode.",
+    "Chỉ clone các state sampled theo config; đối thủ clone là fixed policy phản ứng, không fixed position/tape (trừ static).",
+    "Masked check chỉ kiểm tra prefix tới bom cuối. Suffix là timed BFS vật lý dựa trên bom đã biết, không CNN hay safety mask.",
+    "Suffix chưa dự báo các bom đối thủ đặt thêm; full-horizon alive chỉ là kết quả của branch đã chạy.",
+    "Post-terminal physics tách riêng, không dùng làm ActiveWR/owned kill thật của trận CNN.",
+    "Churn event association là proxy; unknown chưa đủ chứng minh đổi kế hoạch không do state mới.",
+    "Tied first actions đều được giữ; completion theo một path tương ứng, strict path khác có thể vẫn hợp lý.",
+    "Timing teacher đã gồm observer; không so trực tiếp với timing train T1. Kill trong plan window chưa có causal attribution.",
+    "Best two_bomb bằng original ở từng tensor nên alias, không chạy lại trận giống hệt.",
+    "Audit set là exploratory; không dùng để chọn/promote checkpoint hoặc tune rồi báo như test độc lập."
+  ]
+}

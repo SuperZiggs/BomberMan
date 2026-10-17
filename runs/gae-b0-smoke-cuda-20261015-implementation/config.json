@@ -1,0 +1,28 @@
+{
+  "registered_utc": "2026-10-15T04:14:56.792907+00:00",
+  "stage": "T4-B0",
+  "full_protocol": false,
+  "device": "cuda",
+  "torch": "2.5.1",
+  "hardware": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "warm_start": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+  "warm_start_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "a75f0a8ea1b1abcbe2479e7aac618e5a9830cfa6a670781b047b062a2e36f136",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "combat_move_teacher.py": "e266982d70e78f7c3a8ce01469a75dbf74a14aa935385e7fc729cd53e2d0226d",
+    "audit_t2.py": "a3b6afcb3b36f59e46c95b9d26381f6a52271172f2ae099a0c44c5e3010bf055",
+    "run_gae_b0.py": "eb05dea0f727005aad99f97e68105185fecff95e965d047dec038a6142368179",
+    "test_gae.py": "92b427118286ccc33df1be6a4946af625004b489fe167d76ad3ec40ff49d4a9c"
+  },
+  "episodes_per_mode": 20,
+  "max_steps": 20,
+  "train_seed": 2026101503,
+  "normalization": false,
+  "critic_target": "MC",
+  "teacher": "local",
+  "evaluation": null,
+  "decision": "retain_original"
+}

@@ -1,0 +1,37 @@
+{
+  "completed_episodes": 20,
+  "expected_episodes": 20,
+  "training_complete": true,
+  "validation_complete": true,
+  "skill_probes_complete": true,
+  "optimizer_instances": 1,
+  "optimizer_steps": 20,
+  "learner_steps": 397,
+  "guidance": {
+    "labels": 113,
+    "agreements": 84,
+    "bomb_instead_of_move": 0,
+    "target_probability_sum": 82.29303759336472,
+    "entropy_sum": 53.32557396199991,
+    "queries": 0,
+    "accepted": 0,
+    "accepted_agreements": 0,
+    "pressure_gain_sum": 0.0,
+    "certificate_steps": 0,
+    "milliseconds": 0.0,
+    "rejected": {}
+  },
+  "best_episode": 0,
+  "elapsed_seconds": 29.521580800000265,
+  "peak_cuda_bytes": null,
+  "checkpoints": {
+    "best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-b1-smoke-cpu-20261015-implementation\\control\\best_phaseC.pt",
+      "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+    },
+    "final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-b1-smoke-cpu-20261015-implementation\\control\\final_phaseC.pt",
+      "sha256": "8fff3c4d232496e8f78ffcef09f89876d910b6479c2c3004b59c240a5b8faae8"
+    }
+  }
+}

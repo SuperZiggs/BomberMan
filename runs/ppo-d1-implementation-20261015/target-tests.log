@@ -1,0 +1,28 @@
+======================================================================
+ERROR: test_four_epoch_training_resume_and_mid_epoch_cancel_cpu_cuda (test_ppo_d1.D1TrainingChecks.test_four_epoch_training_resume_and_mid_epoch_cancel_cpu_cuda)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_ppo_d1.py", line 195, in test_four_epoch_training_resume_and_mid_epoch_cancel_cpu_cuda
+    full,rows=self.execute(base/'full',objective,device)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\test_ppo_d1.py", line 183, in execute
+    trainer.train(episodes=3,board_size=9,max_steps=8,seed=33,device=device,lr=1e-4,
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 628, in train
+    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=episodes,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\optim\lr_scheduler.py", line 1083, in __init__
+    super().__init__(optimizer, last_epoch, verbose)
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\optim\lr_scheduler.py", line 144, in __init__
+    patch_track_step_called(self.optimizer)
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\optim\lr_scheduler.py", line 142, in patch_track_step_called
+    opt.step = wrap_step(opt.step)  # type: ignore[method-assign]
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\optim\lr_scheduler.py", line 131, in wrap_step
+    func = step_fn.__func__
+           ^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute '__func__'
+
+----------------------------------------------------------------------
+Ran 10 tests in 8.495s
+
+FAILED (errors=1)

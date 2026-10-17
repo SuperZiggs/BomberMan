@@ -1,0 +1,35 @@
+======================================================================
+ERROR: test_runner_restores_committed_logs_and_gzip_from_state_after_torn_writes (test_training_state.StateChecks.test_runner_restores_committed_logs_and_gzip_from_state_after_torn_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_training_state.py", line 181, in test_runner_restores_committed_logs_and_gzip_from_state_after_torn_writes
+    shared.train_arm(base, 'control', 'cpu', True, stop, baseline, **args)
+  File "D:\fpt\subject\BomberMan\run_combat_move_pilot.py", line 233, in train_arm
+    _, rewards, _ = trainer.train(**config, stop_event=stop, on_episode=on_episode,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\torch\Lib\unittest\mock.py", line 1124, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\torch\Lib\unittest\mock.py", line 1128, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\torch\Lib\unittest\mock.py", line 1189, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\test_training_state.py", line 178, in cut_train
+    return real_train(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 591, in train
+    validate_candidate(0)  # Keep the warm-start if subsequent updates fail validation.
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 545, in validate_candidate
+    on_validation({"episode": episode, "result": last_validation, "best_episode": best_episode})
+  File "D:\fpt\subject\BomberMan\run_combat_move_pilot.py", line 218, in on_validation
+    print(f'[{arm} skill] ep{row["episode"]}: approach '
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to NoneType.__format__
+
+----------------------------------------------------------------------
+Ran 19 tests in 65.524s
+
+FAILED (errors=1)

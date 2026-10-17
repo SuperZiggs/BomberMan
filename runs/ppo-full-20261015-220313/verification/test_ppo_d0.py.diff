@@ -1,0 +1,11 @@
+--- before/test_ppo_d0.py
++++ test_ppo_d0.py
+@@ -293,7 +293,7 @@
+ 
+     def test_bad_objective_rejected_before_env(self):
+         with patch.object(trainer, 'BombermanFFAEnv') as env, self.assertRaises(ValueError):
+-            trainer.train(policy_objective='ppo')
++            trainer.train(policy_objective='invalid-objective')
+         env.assert_not_called()
+ 
+     def test_ratio_full_state_resume_matches_continuous_cpu_cuda(self):

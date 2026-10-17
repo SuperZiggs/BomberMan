@@ -1,0 +1,2813 @@
+{
+  "zip_and_hashes_verified": true,
+  "all_game_outcomes_and_pairs_recomputed": true,
+  "reference_certificates_recomputed": 208,
+  "teacher_states_recomputed": 240,
+  "games_rebuilt": 1440,
+  "frames_rebuilt": 62110,
+  "sample_mask_games": 15,
+  "sample_mask_frames": 618,
+  "teacher_first_actions": {
+    "fork-escape-a1-r2-single_trap-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-escape-a1-r2-single_trap-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 26,
+      "scored_paths": 26
+    },
+    "fork-approach-a1-r2-static_kill-rot0-m0-A0": {
+      "first_actions": [
+        2,
+        4
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot0-m0-A1": {
+      "first_actions": [
+        2,
+        4
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot0-m1-A0": {
+      "first_actions": [
+        2,
+        3
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot0-m1-A1": {
+      "first_actions": [
+        2,
+        3
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot1-m0-A0": {
+      "first_actions": [
+        2,
+        3
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot1-m0-A1": {
+      "first_actions": [
+        2,
+        3
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot1-m1-A0": {
+      "first_actions": [
+        1,
+        3
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot1-m1-A1": {
+      "first_actions": [
+        1,
+        3
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot2-m0-A0": {
+      "first_actions": [
+        1,
+        3
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot2-m0-A1": {
+      "first_actions": [
+        1,
+        3
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot2-m1-A0": {
+      "first_actions": [
+        1,
+        4
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot2-m1-A1": {
+      "first_actions": [
+        1,
+        4
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot3-m0-A0": {
+      "first_actions": [
+        1,
+        4
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot3-m0-A1": {
+      "first_actions": [
+        1,
+        4
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot3-m1-A0": {
+      "first_actions": [
+        2,
+        4
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-approach-a1-r2-static_kill-rot3-m1-A1": {
+      "first_actions": [
+        2,
+        4
+      ],
+      "plans": 22,
+      "scored_paths": 22
+    },
+    "fork-evader-a1-r2-pressure-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-evader-a1-r2-pressure-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-combo-a2-r2-combo-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r2-combo-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-combo-a2-r3-combo-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-illegal_capacity-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 41,
+      "scored_paths": 41
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "fork-ammo_control-a1-r2-delayed_capacity-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 52,
+      "scored_paths": 60
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-escape-a1-r2-single_trap-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 29,
+      "scored_paths": 29
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0": {
+      "first_actions": [
+        2
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1": {
+      "first_actions": [
+        2
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0": {
+      "first_actions": [
+        2
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1": {
+      "first_actions": [
+        2
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0": {
+      "first_actions": [
+        3
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1": {
+      "first_actions": [
+        3
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0": {
+      "first_actions": [
+        3
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1": {
+      "first_actions": [
+        3
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0": {
+      "first_actions": [
+        1
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1": {
+      "first_actions": [
+        1
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0": {
+      "first_actions": [
+        1
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1": {
+      "first_actions": [
+        1
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0": {
+      "first_actions": [
+        4
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1": {
+      "first_actions": [
+        4
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0": {
+      "first_actions": [
+        4
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1": {
+      "first_actions": [
+        4
+      ],
+      "plans": 24,
+      "scored_paths": 24
+    },
+    "long_retreat-evader-a1-r2-pressure-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-evader-a1-r2-pressure-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-combo-a2-r2-combo-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r2-combo-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-combo-a2-r3-combo-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 48,
+      "scored_paths": 47
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_retreat-ammo_control-a1-r2-illegal_capacity-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 43,
+      "scored_paths": 43
+    },
+    "long_fork-combo-a2-r3-combo-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r3-combo-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot0-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot0-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot0-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot0-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot1-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot1-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot1-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot1-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot2-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot2-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot2-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot2-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot3-m0-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot3-m0-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot3-m1-A0": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    },
+    "long_fork-combo-a2-r4-combo-rot3-m1-A1": {
+      "first_actions": [
+        5
+      ],
+      "plans": 64,
+      "scored_paths": 80
+    }
+  },
+  "combo_by_split_opponent": {
+    "train": {
+      "static": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 54,
+          "percent": 84.375
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 36,
+          "percent": 56.25
+        },
+        "has_genuine_combo_pair": {
+          "count": 26,
+          "percent": 40.625
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 10,
+          "percent": 15.625
+        },
+        "mean_steps": 19.28125,
+        "mean_kills": 0.84375,
+        "reference_prefix_exact": 26,
+        "teacher_initial_first_action_agreement": 52
+      },
+      "evader": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 32,
+          "percent": 50.0
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 64,
+          "percent": 100.0
+        },
+        "has_genuine_combo_pair": {
+          "count": 32,
+          "percent": 50.0
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 32,
+          "percent": 50.0
+        },
+        "mean_steps": 45.875,
+        "mean_kills": 0.5,
+        "reference_prefix_exact": 26,
+        "teacher_initial_first_action_agreement": 52
+      },
+      "rule": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 22,
+          "percent": 34.375
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 64,
+          "percent": 100.0
+        },
+        "has_genuine_combo_pair": {
+          "count": 22,
+          "percent": 34.375
+        },
+        "passive_win": {
+          "count": 2,
+          "percent": 3.125
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 40,
+          "percent": 62.5
+        },
+        "mean_steps": 54.25,
+        "mean_kills": 0.34375,
+        "reference_prefix_exact": 22,
+        "teacher_initial_first_action_agreement": 52
+      }
+    },
+    "validation": {
+      "static": {
+        "games": 128,
+        "owned_kill_success": {
+          "count": 114,
+          "percent": 89.0625
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 84,
+          "percent": 65.625
+        },
+        "has_genuine_combo_pair": {
+          "count": 54,
+          "percent": 42.1875
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 14,
+          "percent": 10.9375
+        },
+        "mean_steps": 15.90625,
+        "mean_kills": 0.890625,
+        "reference_prefix_exact": 50,
+        "teacher_initial_first_action_agreement": 110
+      },
+      "evader": {
+        "games": 128,
+        "owned_kill_success": {
+          "count": 60,
+          "percent": 46.875
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 128,
+          "percent": 100.0
+        },
+        "has_genuine_combo_pair": {
+          "count": 54,
+          "percent": 42.1875
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 68,
+          "percent": 53.125
+        },
+        "mean_steps": 46.9375,
+        "mean_kills": 0.46875,
+        "reference_prefix_exact": 50,
+        "teacher_initial_first_action_agreement": 110
+      },
+      "rule": {
+        "games": 128,
+        "owned_kill_success": {
+          "count": 52,
+          "percent": 40.625
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 114,
+          "percent": 89.0625
+        },
+        "has_genuine_combo_pair": {
+          "count": 48,
+          "percent": 37.5
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 54,
+          "percent": 42.1875
+        },
+        "mean_steps": 44.28125,
+        "mean_kills": 0.40625,
+        "reference_prefix_exact": 48,
+        "teacher_initial_first_action_agreement": 110
+      }
+    }
+  },
+  "combo_by_family_opponent": {
+    "fork": {
+      "static": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 54,
+          "percent": 84.375
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 36,
+          "percent": 56.25
+        },
+        "has_genuine_combo_pair": {
+          "count": 26,
+          "percent": 40.625
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 10,
+          "percent": 15.625
+        },
+        "mean_steps": 19.28125,
+        "mean_kills": 0.84375
+      },
+      "evader": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 32,
+          "percent": 50.0
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 64,
+          "percent": 100.0
+        },
+        "has_genuine_combo_pair": {
+          "count": 32,
+          "percent": 50.0
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 32,
+          "percent": 50.0
+        },
+        "mean_steps": 45.875,
+        "mean_kills": 0.5
+      },
+      "rule": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 22,
+          "percent": 34.375
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 64,
+          "percent": 100.0
+        },
+        "has_genuine_combo_pair": {
+          "count": 22,
+          "percent": 34.375
+        },
+        "passive_win": {
+          "count": 2,
+          "percent": 3.125
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 40,
+          "percent": 62.5
+        },
+        "mean_steps": 54.25,
+        "mean_kills": 0.34375
+      }
+    },
+    "long_retreat": {
+      "static": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 56,
+          "percent": 87.5
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 34,
+          "percent": 53.125
+        },
+        "has_genuine_combo_pair": {
+          "count": 26,
+          "percent": 40.625
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 8,
+          "percent": 12.5
+        },
+        "mean_steps": 17.0,
+        "mean_kills": 0.875
+      },
+      "evader": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 30,
+          "percent": 46.875
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 64,
+          "percent": 100.0
+        },
+        "has_genuine_combo_pair": {
+          "count": 30,
+          "percent": 46.875
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 34,
+          "percent": 53.125
+        },
+        "mean_steps": 46.375,
+        "mean_kills": 0.46875
+      },
+      "rule": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 24,
+          "percent": 37.5
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 50,
+          "percent": 78.125
+        },
+        "has_genuine_combo_pair": {
+          "count": 24,
+          "percent": 37.5
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 18,
+          "percent": 28.125
+        },
+        "mean_steps": 40.0,
+        "mean_kills": 0.375
+      }
+    },
+    "long_fork": {
+      "static": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 58,
+          "percent": 90.625
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 50,
+          "percent": 78.125
+        },
+        "has_genuine_combo_pair": {
+          "count": 28,
+          "percent": 43.75
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 6,
+          "percent": 9.375
+        },
+        "mean_steps": 14.8125,
+        "mean_kills": 0.90625
+      },
+      "evader": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 30,
+          "percent": 46.875
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 64,
+          "percent": 100.0
+        },
+        "has_genuine_combo_pair": {
+          "count": 24,
+          "percent": 37.5
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 34,
+          "percent": 53.125
+        },
+        "mean_steps": 47.5,
+        "mean_kills": 0.46875
+      },
+      "rule": {
+        "games": 64,
+        "owned_kill_success": {
+          "count": 28,
+          "percent": 43.75
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 64,
+          "percent": 100.0
+        },
+        "has_genuine_combo_pair": {
+          "count": 24,
+          "percent": 37.5
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 36,
+          "percent": 56.25
+        },
+        "mean_steps": 48.5625,
+        "mean_kills": 0.4375
+      }
+    }
+  },
+  "by_model": {
+    "original": {
+      "ammo_control": {
+        "static": {
+          "games": 96,
+          "owned_kill_success": {
+            "count": 72,
+            "percent": 75.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 44,
+            "percent": 45.833333333333336
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 24,
+            "percent": 25.0
+          },
+          "mean_steps": 35.9375,
+          "mean_kills": 0.75
+        },
+        "evader": {
+          "games": 96,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 96,
+            "percent": 100.0
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 96,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 96,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 88,
+            "percent": 91.66666666666667
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 2,
+            "percent": 2.0833333333333335
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 74,
+            "percent": 77.08333333333333
+          },
+          "mean_steps": 70.875,
+          "mean_kills": 0.0
+        }
+      },
+      "approach": {
+        "static": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 60,
+            "percent": 93.75
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 28,
+            "percent": 43.75
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 4,
+            "percent": 6.25
+          },
+          "mean_steps": 29.21875,
+          "mean_kills": 0.9375
+        },
+        "evader": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 4,
+            "percent": 6.25
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 64,
+            "percent": 100.0
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 60,
+            "percent": 93.75
+          },
+          "mean_steps": 78.46875,
+          "mean_kills": 0.0625
+        },
+        "rule": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 4,
+            "percent": 6.25
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 32,
+            "percent": 50.0
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 28,
+            "percent": 43.75
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 18,
+            "percent": 28.125
+          },
+          "mean_steps": 42.21875,
+          "mean_kills": 0.0625
+        }
+      },
+      "combo": {
+        "static": {
+          "games": 192,
+          "owned_kill_success": {
+            "count": 168,
+            "percent": 87.5
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 120,
+            "percent": 62.5
+          },
+          "has_genuine_combo_pair": {
+            "count": 80,
+            "percent": 41.666666666666664
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 24,
+            "percent": 12.5
+          },
+          "mean_steps": 17.03125,
+          "mean_kills": 0.875
+        },
+        "evader": {
+          "games": 192,
+          "owned_kill_success": {
+            "count": 92,
+            "percent": 47.916666666666664
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 192,
+            "percent": 100.0
+          },
+          "has_genuine_combo_pair": {
+            "count": 86,
+            "percent": 44.791666666666664
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 100,
+            "percent": 52.083333333333336
+          },
+          "mean_steps": 46.583333333333336,
+          "mean_kills": 0.4791666666666667
+        },
+        "rule": {
+          "games": 192,
+          "owned_kill_success": {
+            "count": 74,
+            "percent": 38.541666666666664
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 178,
+            "percent": 92.70833333333333
+          },
+          "has_genuine_combo_pair": {
+            "count": 70,
+            "percent": 36.458333333333336
+          },
+          "passive_win": {
+            "count": 2,
+            "percent": 1.0416666666666667
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 94,
+            "percent": 48.958333333333336
+          },
+          "mean_steps": 47.604166666666664,
+          "mean_kills": 0.3854166666666667
+        }
+      },
+      "escape": {
+        "static": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 64,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 8,
+            "percent": 12.5
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 10.71875,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 60,
+            "percent": 93.75
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 8,
+            "percent": 12.5
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 4,
+            "percent": 6.25
+          },
+          "mean_steps": 13.4375,
+          "mean_kills": 0.9375
+        },
+        "rule": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 60,
+            "percent": 93.75
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 6,
+            "percent": 9.375
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 2,
+            "percent": 3.125
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 10.21875,
+          "mean_kills": 0.9375
+        }
+      },
+      "evader": {
+        "static": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 48,
+            "percent": 75.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 16,
+            "percent": 25.0
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 16,
+            "percent": 25.0
+          },
+          "mean_steps": 26.0,
+          "mean_kills": 0.75
+        },
+        "evader": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 64,
+            "percent": 100.0
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 64,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 64,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 56,
+            "percent": 87.5
+          },
+          "has_genuine_combo_pair": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 2,
+            "percent": 3.125
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 42,
+            "percent": 65.625
+          },
+          "mean_steps": 66.3125,
+          "mean_kills": 0.0
+        }
+      }
+    }
+  },
+  "by_corner": {
+    "original": {
+      "0": {
+        "games": 720,
+        "owned_kill_success": {
+          "count": 353,
+          "percent": 49.02777777777778
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 500,
+          "percent": 69.44444444444444
+        },
+        "has_genuine_combo_pair": {
+          "count": 118,
+          "percent": 16.38888888888889
+        },
+        "passive_win": {
+          "count": 18,
+          "percent": 2.5
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 310,
+          "percent": 43.05555555555556
+        },
+        "mean_steps": 43.13194444444444,
+        "mean_kills": 0.49027777777777776
+      },
+      "1": {
+        "games": 720,
+        "owned_kill_success": {
+          "count": 353,
+          "percent": 49.02777777777778
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 500,
+          "percent": 69.44444444444444
+        },
+        "has_genuine_combo_pair": {
+          "count": 118,
+          "percent": 16.38888888888889
+        },
+        "passive_win": {
+          "count": 18,
+          "percent": 2.5
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 310,
+          "percent": 43.05555555555556
+        },
+        "mean_steps": 43.13194444444444,
+        "mean_kills": 0.49027777777777776
+      }
+    }
+  },
+  "reference_outcomes": {
+    "complete": 208,
+    "illegal_capacity": 32
+  },
+  "decision": "review_required_keep_original"
+}

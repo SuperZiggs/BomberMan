@@ -1,0 +1,4 @@
+{"model": "original", "game_id": "original-28000-A0", "seed": 28000, "aid": 0, "win": 0, "active_win": 0, "suicide": 0, "draw": 1, "kills": 0, "steps": 40, "bombs": 6, "items": 2}
+{"model": "original", "game_id": "original-28000-A1", "seed": 28000, "aid": 1, "win": 0, "active_win": 0, "suicide": 0, "draw": 1, "kills": 0, "steps": 40, "bombs": 5, "items": 0}
+{"model": "two_bomb_final", "game_id": "two_bomb_final-28000-A0", "seed": 28000, "aid": 0, "win": 0, "active_win": 0, "suicide": 0, "draw": 1, "kills": 0, "steps": 40, "bombs": 6, "items": 1}
+{"model": "two_bomb_final", "game_id": "two_bomb_final-28000-A1", "seed": 28000, "aid": 1, "win": 0, "active_win": 0, "suicide": 0, "draw": 1, "kills": 0, "steps": 40, "bombs": 5, "items": 0}

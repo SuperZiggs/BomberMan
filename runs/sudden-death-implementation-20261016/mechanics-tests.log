@@ -1,0 +1,23 @@
+test_closure_happens_before_move_and_has_no_bomb_credit (test_sudden_death_experiment.SuddenDeathTests.test_closure_happens_before_move_and_has_no_bomb_credit) ... ok
+test_disabled_and_distant_closure_do_not_change_masks (test_sudden_death_experiment.SuddenDeathTests.test_disabled_and_distant_closure_do_not_change_masks) ... ok
+test_final_ring_leaves_central_arena_and_reset_reopens (test_sudden_death_experiment.SuddenDeathTests.test_final_ring_leaves_central_arena_and_reset_reopens) ... FAIL
+test_forecast_matches_step_with_chain_wood_lingering_flame_and_ring (test_sudden_death_experiment.SuddenDeathTests.test_forecast_matches_step_with_chain_wood_lingering_flame_and_ring) ... ok
+test_joint_mask_leaves_ring_one_tick_before_closure (test_sudden_death_experiment.SuddenDeathTests.test_joint_mask_leaves_ring_one_tick_before_closure) ... ok
+test_off_is_exact_current_engine (test_sudden_death_experiment.SuddenDeathTests.test_off_is_exact_current_engine) ... ok
+test_removed_bomb_returns_capacity_and_all_flame_sources_are_cleared (test_sudden_death_experiment.SuddenDeathTests.test_removed_bomb_returns_capacity_and_all_flame_sources_are_cleared) ... ok
+test_ring_schedule_matches_loc_update (test_sudden_death_experiment.SuddenDeathTests.test_ring_schedule_matches_loc_update) ... ok
+test_timing_validation (test_sudden_death_experiment.SuddenDeathTests.test_timing_validation) ... ok
+test_unavoidable_source_closure_is_logged_and_no_empty_mask (test_sudden_death_experiment.SuddenDeathTests.test_unavoidable_source_closure_is_logged_and_no_empty_mask) ... ok
+
+======================================================================
+FAIL: test_final_ring_leaves_central_arena_and_reset_reopens (test_sudden_death_experiment.SuddenDeathTests.test_final_ring_leaves_central_arena_and_reset_reopens)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_sudden_death_experiment.py", line 94, in test_final_ring_leaves_central_arena_and_reset_reopens
+    self.assertEqual(env.grid[3, 4], 0)
+AssertionError: np.int8(1) != 0
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.109s
+
+FAILED (failures=1)

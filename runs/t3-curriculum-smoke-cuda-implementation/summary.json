@@ -1,0 +1,209 @@
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": "smoke_complete",
+  "arms": {
+    "control": {
+      "arm": "control",
+      "completed_episodes": 6,
+      "expected_episodes": 6,
+      "training_complete": true,
+      "validation_complete": true,
+      "curriculum_stages_complete": true,
+      "stage_failure": null,
+      "stage_events": [],
+      "stage_episode_counts": {
+        "control_rule": 6
+      },
+      "learner_steps": 48,
+      "optimizer_instances": 1,
+      "optimizer_steps": 6,
+      "peak_cuda_bytes": 55913984,
+      "elapsed_seconds": 4.152122300001793
+    },
+    "curriculum": {
+      "arm": "curriculum",
+      "completed_episodes": 6,
+      "expected_episodes": 6,
+      "training_complete": true,
+      "validation_complete": true,
+      "curriculum_stages_complete": true,
+      "stage_failure": null,
+      "stage_events": [
+        {
+          "episode_completed": 2,
+          "next_episode": 3,
+          "from": "C1_static",
+          "to": "C2_evader",
+          "age": 2
+        },
+        {
+          "episode_completed": 4,
+          "next_episode": 5,
+          "from": "C2_evader",
+          "to": "C3_rule_mix",
+          "age": 2
+        },
+        {
+          "episode_completed": 6,
+          "next_episode": 7,
+          "from": "C3_rule_mix",
+          "to": "C4_transfer",
+          "age": 2
+        }
+      ],
+      "stage_episode_counts": {
+        "C1_static": 2,
+        "C2_evader": 2,
+        "C3_rule_mix": 2
+      },
+      "learner_steps": 48,
+      "optimizer_instances": 1,
+      "optimizer_steps": 6,
+      "peak_cuda_bytes": 78132736,
+      "elapsed_seconds": 1.211632999998983
+    }
+  },
+  "random_map_evaluation_complete": true,
+  "heldout_skills_complete": false,
+  "comparisons": {},
+  "matched_budget_diagnostic_complete": false,
+  "eligible_for_replication": false,
+  "hashes_unchanged": true,
+  "decision": "retain_original",
+  "elapsed_seconds": 7.438729999994393,
+  "models": {
+    "original": {
+      "seed": 29800,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "passive_win_rate": 0.0
+    },
+    "control": {
+      "seed": 29800,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\t3-curriculum-smoke-cuda-implementation\\control\\best_phaseC.pt",
+      "checkpoint_sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28",
+      "passive_win_rate": 0.0
+    },
+    "curriculum": {
+      "seed": 29800,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\t3-curriculum-smoke-cuda-implementation\\curriculum\\best_phaseC.pt",
+      "checkpoint_sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28",
+      "passive_win_rate": 0.0
+    }
+  }
+}

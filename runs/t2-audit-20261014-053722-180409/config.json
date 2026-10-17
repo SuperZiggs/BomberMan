@@ -1,0 +1,54 @@
+{
+  "started_utc": "2026-10-13T22:37:22.180409+00:00",
+  "output": "D:\\fpt\\subject\\BomberMan\\runs\\t2-audit-20261014-053722-180409",
+  "boards_per_model": 1,
+  "seed": 28000,
+  "last_seed": 28000,
+  "corners": [
+    0,
+    1
+  ],
+  "max_steps": 40,
+  "board_size": 9,
+  "num_agents": 2,
+  "device": "cpu",
+  "torch_threads": 1,
+  "torch": "2.5.1",
+  "numpy": "2.0.1",
+  "check_every": 10,
+  "max_sampled_states_per_game": 1,
+  "opponents": [
+    "static",
+    "evader",
+    "rule"
+  ],
+  "sampling": "plan exists AND tick modulo check_every is zero",
+  "checkpoints": {
+    "original": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+    "two_bomb_final": "D:\\fpt\\subject\\BomberMan\\runs\\two-bomb-complete-20261014-031626\\two_bomb\\final_phaseC.pt",
+    "two_bomb_best": "D:\\fpt\\subject\\BomberMan\\runs\\two-bomb-complete-20261014-031626\\two_bomb\\best_phaseC.pt"
+  },
+  "sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "ec1e86fc77f0b90ca1905d63c377828158ac174900092fd45ec6af757ddfa6ca",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a",
+    "visualize.py": "fb6701a07ffe68345c1c83383530313956077a05ac361e7fa59ce97b837ef07c",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "audit_t2.py": "cc1956c35c555199932e82247162dc36c5367ebdc2e49352a89ebc0b0381b19f",
+    "test_audit_t2.py": "528c2de67e8eaf4d5d999620bd5e48cac2765a2aa52224840f07a9a988e0ae08",
+    "original": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+    "two_bomb_final": "7512cfd47f3ce13d3e64cc16e6b55d4e3bccc3d7dcb9cda7cd3993fe31e70500",
+    "two_bomb_best": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+  },
+  "aliases": {
+    "two_bomb_best": "original"
+  },
+  "best_equals_original_tensors": true,
+  "plan_choice": "first tied path matching sampled first action; canonical order, no extra sampling",
+  "tracker": "one active window; exact placement ticks/positions; early terminals kept in denominators",
+  "replay_selection": "first each model/corner, first registered category examples, then earliest distinct games",
+  "audit_set": "fixed policies after training, not historical training trajectories",
+  "full_protocol": false
+}

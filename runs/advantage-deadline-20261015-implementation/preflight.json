@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "cases": 3,
+  "normalization_scope": "one learner trajectory",
+  "critic_target": "unchanged MC returns",
+  "minimum_std": 1e-08
+}

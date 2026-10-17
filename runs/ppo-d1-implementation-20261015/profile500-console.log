@@ -1,0 +1,28 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+
+Saved final model to D:\fpt\subject\BomberMan\runs\ppo-d1-implementation-20261015\profile500\ratio\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\ppo-d1-implementation-20261015\profile500\ratio\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+
+Saved final model to D:\fpt\subject\BomberMan\runs\ppo-d1-implementation-20261015\profile500\ppo\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\ppo-d1-implementation-20261015\profile500\ppo\best_phaseC.pt (best episode: 0)
+{
+  "ratio": {
+    "device": "cuda",
+    "steps": 500,
+    "epochs": 4,
+    "adam_steps": 4,
+    "seconds": 25.067376400002104,
+    "peak_cuda_bytes": 181558272,
+    "finite_weights": true
+  },
+  "ppo": {
+    "device": "cuda",
+    "steps": 500,
+    "epochs": 4,
+    "adam_steps": 4,
+    "seconds": 14.10636599999998,
+    "peak_cuda_bytes": 181558272,
+    "finite_weights": true
+  }
+}

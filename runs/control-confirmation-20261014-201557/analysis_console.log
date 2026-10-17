@@ -1,0 +1,132 @@
+ZIP 7 files, frozen protocol/source/checkpoints: PASS
+800 games/rates/averages/corners, paired bootstrap200 boards, registered gates: PASS
+{
+  "zip_files_verified": 7,
+  "source_and_checkpoint_hashes_verified": true,
+  "protocol_matches_registration": true,
+  "game_rates_averages_and_corners_recomputed": true,
+  "games_recomputed": 800,
+  "independent_resampling_unit": "200 board seeds with both A0/A1",
+  "comparison": {
+    "difference_pp": 2.25,
+    "ci95_pp": [
+      -3.2562499999999943,
+      8.0
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+  },
+  "gate_checks": {
+    "minimum_gain": false,
+    "positive_ci_lower": false,
+    "observed_suicide_not_higher": true
+  },
+  "gate_passed": false,
+  "counts": {
+    "original": {
+      "overall": {
+        "games": 400,
+        "win": 152,
+        "active_win": 131,
+        "suicide": 2.0,
+        "draw": 242,
+        "kills": 131.0,
+        "passive_wins": 21
+      },
+      "0": {
+        "games": 200,
+        "win": 84,
+        "active_win": 69,
+        "suicide": 2.0,
+        "draw": 112,
+        "kills": 69.0,
+        "passive_wins": 15
+      },
+      "1": {
+        "games": 200,
+        "win": 68,
+        "active_win": 62,
+        "suicide": 0.0,
+        "draw": 130,
+        "kills": 62.0,
+        "passive_wins": 6
+      }
+    },
+    "control_best": {
+      "overall": {
+        "games": 400,
+        "win": 161,
+        "active_win": 140,
+        "suicide": 2.0,
+        "draw": 233,
+        "kills": 140.0,
+        "passive_wins": 21
+      },
+      "0": {
+        "games": 200,
+        "win": 81,
+        "active_win": 70,
+        "suicide": 2.0,
+        "draw": 114,
+        "kills": 70.0,
+        "passive_wins": 11
+      },
+      "1": {
+        "games": 200,
+        "win": 80,
+        "active_win": 70,
+        "suicide": 0.0,
+        "draw": 119,
+        "kills": 70.0,
+        "passive_wins": 10
+      }
+    }
+  },
+  "active_win_transitions_B_to_control": {
+    "0->0": 189,
+    "0->1": 80,
+    "1->0": 71,
+    "1->1": 60
+  },
+  "diagnostics": {
+    "original": {
+      "suicide_cases": [
+        {
+          "seed": 32080,
+          "aid": 0,
+          "steps": 49.0
+        },
+        {
+          "seed": 32133,
+          "aid": 0,
+          "steps": 45.0
+        }
+      ],
+      "activeWR_by_corner": {
+        "0": 34.5,
+        "1": 31.0
+      }
+    },
+    "control_best": {
+      "suicide_cases": [
+        {
+          "seed": 32080,
+          "aid": 0,
+          "steps": 49.0
+        },
+        {
+          "seed": 32133,
+          "aid": 0,
+          "steps": 45.0
+        }
+      ],
+      "activeWR_by_corner": {
+        "0": 35.0,
+        "1": 35.0
+      }
+    }
+  },
+  "decision": "retain_original",
+  "no_new_model_or_board_evaluation": true
+}

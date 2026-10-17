@@ -1,0 +1,14 @@
+{
+  "original": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+    "sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+  },
+  "control": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\control\\best_phaseC.pt",
+    "sha256": "fed6cf1d4c9f27f7ab36ae5a908afd80c8304d2c769a2331801374800011a309"
+  },
+  "ppo": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\ppo\\best_phaseC.pt",
+    "sha256": "a4f689f2b9361457f395058f55bf11c71d2cd560d0dcf925da26cd37bee477d2"
+  }
+}

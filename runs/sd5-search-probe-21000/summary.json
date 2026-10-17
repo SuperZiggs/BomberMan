@@ -1,0 +1,91 @@
+{
+  "seed": 21000,
+  "games": 400,
+  "schedule": {
+    "sudden_death_start": 475,
+    "sudden_death_interval": 25,
+    "sudden_death_warning_steps": 40
+  },
+  "checkpoint": "runs/phaseC-sd-best-fallback/best_phaseC.pt",
+  "rows": {
+    "f": {
+      "arm": "f",
+      "win_rate": 67.5,
+      "active_win_rate": 47.0,
+      "sudden_death_win_rate": 11.0,
+      "passive_win_rate": 9.5,
+      "draw_rate": 19.75,
+      "suicide_rate": 1.0,
+      "sudden_death_death_rate": 12.75,
+      "avg_kills": 0.47,
+      "avg_steps": 337.9675,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 18.575,
+        "left_spawn_rate": 100.0
+      },
+      "draw_breakdown": {
+        "draws": 79,
+        "timeout": 64,
+        "both_died": 15,
+        "timeout_never_close": 0
+      }
+    },
+    "search": {
+      "arm": "search",
+      "win_rate": 85.25,
+      "active_win_rate": 69.5,
+      "sudden_death_win_rate": 7.75,
+      "passive_win_rate": 8.0,
+      "draw_rate": 14.0,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.75,
+      "avg_kills": 0.695,
+      "avg_steps": 280.07,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 18.5775,
+        "left_spawn_rate": 100.0
+      },
+      "draw_breakdown": {
+        "draws": 56,
+        "timeout": 56,
+        "both_died": 0,
+        "timeout_never_close": 0
+      }
+    }
+  },
+  "search_vs_f": {
+    "active_win": {
+      "difference_pp": 22.5,
+      "ci95_pp": [
+        18.25,
+        26.75
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "win": {
+      "difference_pp": 17.75,
+      "ci95_pp": [
+        13.750000000000002,
+        21.75
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "draw": {
+      "difference_pp": -5.75,
+      "ci95_pp": [
+        -9.5,
+        -2.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "open_sd5_1_search_arm": true
+}

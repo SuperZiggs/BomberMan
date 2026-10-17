@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "cases": 3,
+  "gae_lambda": 0.95,
+  "normalization": false,
+  "critic_target": "unchanged MC returns",
+  "timeout": "terminal value zero"
+}

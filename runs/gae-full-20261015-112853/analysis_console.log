@@ -1,0 +1,36 @@
+{
+  "status": "inconclusive",
+  "reason": "training_validation_or_skill_incomplete",
+  "sources_and_B_unchanged_during_run": true,
+  "archived_sources_verified": true,
+  "post_run_timing_fix_only_files": [
+    "run_gae_pilot.py",
+    "test_gae_pilot.py"
+  ],
+  "test_unopened": true,
+  "archive_files": 41,
+  "skills_replayed_games": 320,
+  "skills_replayed_frames": 7140,
+  "elapsed_seconds": 5106.6859005,
+  "decision": "retain_original",
+  "arms": {
+    "control": {
+      "episodes": 200,
+      "learner_steps": 73101,
+      "best_episode": 0,
+      "seconds": 2506.8492133,
+      "clipped_updates": 81,
+      "training_suicides": 3,
+      "advantage_std_mean": 1.057312921937555
+    },
+    "gae": {
+      "episodes": 184,
+      "learner_steps": 71429,
+      "best_episode": 0,
+      "seconds": 2593.3247073000002,
+      "clipped_updates": 66,
+      "training_suicides": 0,
+      "advantage_std_mean": 0.8609407521055444
+    }
+  }
+}

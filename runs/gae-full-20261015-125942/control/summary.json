@@ -1,0 +1,37 @@
+{
+  "completed_episodes": 200,
+  "expected_episodes": 200,
+  "training_complete": true,
+  "validation_complete": true,
+  "skill_probes_complete": true,
+  "optimizer_instances": 1,
+  "optimizer_steps": 200,
+  "learner_steps": 73101,
+  "guidance": {
+    "labels": 31569,
+    "agreements": 17868,
+    "bomb_instead_of_move": 2007,
+    "target_probability_sum": 17796.22999294562,
+    "entropy_sum": 17331.40075709384,
+    "queries": 0,
+    "accepted": 0,
+    "accepted_agreements": 0,
+    "pressure_gain_sum": 0.0,
+    "certificate_steps": 0,
+    "milliseconds": 0.0,
+    "rejected": {}
+  },
+  "best_episode": 0,
+  "elapsed_seconds": 1491.5936169999995,
+  "peak_cuda_bytes": 87901184,
+  "checkpoints": {
+    "best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\control\\best_phaseC.pt",
+      "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+    },
+    "final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\control\\final_phaseC.pt",
+      "sha256": "b050f6c840a65aa166ab307df116feea2f5436861f593da8309539315078ed7e"
+    }
+  }
+}

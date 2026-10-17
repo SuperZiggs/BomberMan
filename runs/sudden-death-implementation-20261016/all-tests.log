@@ -1,0 +1,13 @@
+======================================================================
+FAIL: test_sd_win_is_passive_and_simultaneous_sd_is_draw (test_sudden_death_runner.RunnerTests.test_sd_win_is_passive_and_simultaneous_sd_is_draw)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_sudden_death_runner.py", line 44, in test_sd_win_is_passive_and_simultaneous_sd_is_draw
+    self.assertEqual(result['win_rate'], 100)
+AssertionError: 0.0 != 100
+
+----------------------------------------------------------------------
+Ran 72 tests in 6.652s
+
+FAILED (failures=1)
+Expanded observation channels 8 -> 12

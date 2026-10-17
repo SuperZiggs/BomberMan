@@ -1,0 +1,110 @@
+{
+  "1": {
+    "stage": "C1_static",
+    "opponent": "static",
+    "model_state_sha256": "9cbd4a3dae13ff2a29da003a7b09b005ef2c22565ac7f36ff6b6c7dbec9b1e52",
+    "games": 64,
+    "owned_kill_success": {
+      "count": 60,
+      "percent": 93.75
+    },
+    "suicide": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "two_or_more_placements": {
+      "count": 16,
+      "percent": 25.0
+    },
+    "has_genuine_combo_pair": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "passive_win": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "actual_draw": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "skill_horizon_truncated": {
+      "count": 4,
+      "percent": 6.25
+    },
+    "mean_steps": 21.15625,
+    "mean_kills": 0.9375
+  },
+  "2": {
+    "stage": "C2_evader",
+    "opponent": "evader",
+    "model_state_sha256": "9cbd4a3dae13ff2a29da003a7b09b005ef2c22565ac7f36ff6b6c7dbec9b1e52",
+    "games": 128,
+    "owned_kill_success": {
+      "count": 60,
+      "percent": 46.875
+    },
+    "suicide": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "two_or_more_placements": {
+      "count": 128,
+      "percent": 100.0
+    },
+    "has_genuine_combo_pair": {
+      "count": 54,
+      "percent": 42.1875
+    },
+    "passive_win": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "actual_draw": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "skill_horizon_truncated": {
+      "count": 68,
+      "percent": 53.125
+    },
+    "mean_steps": 46.9375,
+    "mean_kills": 0.46875
+  },
+  "3": {
+    "stage": "C3_rule_mix",
+    "opponent": "rule",
+    "model_state_sha256": "9cbd4a3dae13ff2a29da003a7b09b005ef2c22565ac7f36ff6b6c7dbec9b1e52",
+    "games": 128,
+    "owned_kill_success": {
+      "count": 52,
+      "percent": 40.625
+    },
+    "suicide": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "two_or_more_placements": {
+      "count": 114,
+      "percent": 89.0625
+    },
+    "has_genuine_combo_pair": {
+      "count": 48,
+      "percent": 37.5
+    },
+    "passive_win": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "actual_draw": {
+      "count": 0,
+      "percent": 0.0
+    },
+    "skill_horizon_truncated": {
+      "count": 54,
+      "percent": 42.1875
+    },
+    "mean_steps": 44.28125,
+    "mean_kills": 0.40625
+  }
+}

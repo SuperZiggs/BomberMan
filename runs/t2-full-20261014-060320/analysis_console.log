@@ -1,0 +1,183 @@
+Archive, snapshot and checkpoint hashes: PASS
+Trace: 158293 frames; games, windows, masks and six paired branches: PASS
+All summary fields, paired CI and 12 replay tapes: PASS
+{
+  "difference": {
+    "difference_pp": -17.0,
+    "ci95_pp": [
+      -25.5,
+      -8.5
+    ],
+    "board_pairs": 100,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+  },
+  "agreement_signal": {
+    "original": {
+      "all": {
+        "numerator": 42726,
+        "denominator": 69774,
+        "percent": 61.23484392467108,
+        "mean_mass": 0.6119409245016153,
+        "mean_uniform_K_over_M": 0.6122715242545194
+      },
+      "mask_more_than_one": {
+        "numerator": 20319,
+        "denominator": 47367,
+        "percent": 42.896953575273926,
+        "mean_mass": 0.42836924580776103,
+        "mean_uniform_K_over_M": 0.42885623605746964
+      },
+      "informative_K_lt_M": {
+        "numerator": 18025,
+        "denominator": 45073,
+        "percent": 39.99068178288554,
+        "mean_mass": 0.3992759760128689,
+        "mean_uniform_K_over_M": 0.3997877517213216
+      }
+    },
+    "two_bomb_final": {
+      "all": {
+        "numerator": 41931,
+        "denominator": 79147,
+        "percent": 52.978634692407795,
+        "mean_mass": 0.5299567325139194,
+        "mean_uniform_K_over_M": 0.5265400667955664
+      },
+      "mask_more_than_one": {
+        "numerator": 26392,
+        "denominator": 63608,
+        "percent": 41.49163627216702,
+        "mean_mass": 0.4151283723474905,
+        "mean_uniform_K_over_M": 0.4108770385276061
+      },
+      "informative_K_lt_M": {
+        "numerator": 24279,
+        "denominator": 61495,
+        "percent": 39.48125863891373,
+        "mean_mass": 0.3950318807976272,
+        "mean_uniform_K_over_M": 0.3906344689269847
+      }
+    }
+  },
+  "future_mask_gaps": {
+    "original": {
+      "static": {
+        "sampled_states": 6939,
+        "physical_prefix_complete": 5002,
+        "masked_prefix_complete": 578,
+        "mask_blocked": 4424,
+        "blocked_BOMB": 3236,
+        "blocked_second_BOMB": 381,
+        "blocked_first_BOMB": 2855,
+        "blocked_STOP": 472,
+        "physical_full_horizon_alive": 4418,
+        "masked_two_bomb_complete": 3,
+        "masked_pressure_at_least_0_5": 76,
+        "masked_trap": 4,
+        "blocked_given_physical_complete": {
+          "numerator": 4424,
+          "denominator": 5002,
+          "percent": 88.44462215113954
+        }
+      },
+      "evader": {
+        "sampled_states": 6939,
+        "physical_prefix_complete": 6846,
+        "masked_prefix_complete": 680,
+        "mask_blocked": 6166,
+        "blocked_BOMB": 4398,
+        "blocked_second_BOMB": 481,
+        "blocked_first_BOMB": 3917,
+        "blocked_STOP": 930,
+        "physical_full_horizon_alive": 6062,
+        "masked_two_bomb_complete": 9,
+        "masked_pressure_at_least_0_5": 89,
+        "masked_trap": 4,
+        "blocked_given_physical_complete": {
+          "numerator": 6166,
+          "denominator": 6846,
+          "percent": 90.06719252118025
+        }
+      },
+      "rule": {
+        "sampled_states": 6939,
+        "physical_prefix_complete": 6139,
+        "masked_prefix_complete": 559,
+        "mask_blocked": 5580,
+        "blocked_BOMB": 3918,
+        "blocked_second_BOMB": 376,
+        "blocked_first_BOMB": 3542,
+        "blocked_STOP": 837,
+        "physical_full_horizon_alive": 5031,
+        "masked_two_bomb_complete": 5,
+        "masked_pressure_at_least_0_5": 88,
+        "masked_trap": 4,
+        "blocked_given_physical_complete": {
+          "numerator": 5580,
+          "denominator": 6139,
+          "percent": 90.89428245642613
+        }
+      }
+    },
+    "two_bomb_final": {
+      "static": {
+        "sampled_states": 7873,
+        "physical_prefix_complete": 6289,
+        "masked_prefix_complete": 599,
+        "mask_blocked": 5690,
+        "blocked_BOMB": 4273,
+        "blocked_second_BOMB": 628,
+        "blocked_first_BOMB": 3645,
+        "blocked_STOP": 415,
+        "physical_full_horizon_alive": 5685,
+        "masked_two_bomb_complete": 4,
+        "masked_pressure_at_least_0_5": 60,
+        "masked_trap": 8,
+        "blocked_given_physical_complete": {
+          "numerator": 5690,
+          "denominator": 6289,
+          "percent": 90.47543329623151
+        }
+      },
+      "evader": {
+        "sampled_states": 7873,
+        "physical_prefix_complete": 7787,
+        "masked_prefix_complete": 721,
+        "mask_blocked": 7066,
+        "blocked_BOMB": 5222,
+        "blocked_second_BOMB": 755,
+        "blocked_first_BOMB": 4467,
+        "blocked_STOP": 716,
+        "physical_full_horizon_alive": 6968,
+        "masked_two_bomb_complete": 9,
+        "masked_pressure_at_least_0_5": 97,
+        "masked_trap": 8,
+        "blocked_given_physical_complete": {
+          "numerator": 7066,
+          "denominator": 7787,
+          "percent": 90.74097855400025
+        }
+      },
+      "rule": {
+        "sampled_states": 7873,
+        "physical_prefix_complete": 7086,
+        "masked_prefix_complete": 632,
+        "mask_blocked": 6454,
+        "blocked_BOMB": 4794,
+        "blocked_second_BOMB": 714,
+        "blocked_first_BOMB": 4080,
+        "blocked_STOP": 665,
+        "physical_full_horizon_alive": 5834,
+        "masked_two_bomb_complete": 8,
+        "masked_pressure_at_least_0_5": 91,
+        "masked_trap": 8,
+        "blocked_given_physical_complete": {
+          "numerator": 6454,
+          "denominator": 7086,
+          "percent": 91.08100479819362
+        }
+      }
+    }
+  }
+}

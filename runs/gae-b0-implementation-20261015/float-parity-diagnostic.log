@@ -1,0 +1,2 @@
+{"device": "cpu", "gradient_max_abs": 1.4901161193847656e-07, "weight_max_abs": 4.782225005328655e-06, "largest_weight_diff": "conv.2.weight", "policy_loss_abs": 4.470348358154297e-08, "actions_equal": true}
+{"device": "cuda", "gradient_max_abs": 2.7939677238464355e-08, "weight_max_abs": 1.1734664440155029e-07, "largest_weight_diff": "trunk_fc.0.weight", "policy_loss_abs": 3.725290298461914e-09, "actions_equal": true}

@@ -1,0 +1,35 @@
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "hashes_unchanged": true,
+  "modes": {
+    "ac": {
+      "episodes": 20,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "finite_weights": true,
+      "peak_cuda_bytes": 101209088,
+      "training_state_sha256": "6a0ddd30d0276c783ed4fbda1a927de949cf99ad5fcfa3a2f9643ce1d67f63b3",
+      "checkpoints": {
+        "best": "f263205b382a1e313013e450538f6fdc77bde0035d6ae58c8f971290bd1cdf39",
+        "final": "ff10e6d280c6e167c272e3f63e9f5f978bb9ce94a538c91f6b7d4241697ba69b"
+      }
+    },
+    "ratio": {
+      "episodes": 20,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "finite_weights": true,
+      "peak_cuda_bytes": 107812864,
+      "training_state_sha256": "0c6adc31be4f236486529a0ceedaba4d33bbd20d3662bd6f379c041e778d434d",
+      "checkpoints": {
+        "best": "0a9e4c6c38e03cd4051aca89dc428765b87a1166566f682261785531d1761375",
+        "final": "144fb94013baab220b6204b6c5727dc3641e51ba933ca8356b87d63199e57f7c"
+      }
+    }
+  },
+  "decision": "retain_original",
+  "elapsed_seconds": 24.797535500001686,
+  "limits": "D0 technical smoke only; no PPO clipping, repeated epochs, held-out games or win-rate claim."
+}

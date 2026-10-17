@@ -1,0 +1,18 @@
+======================================================================
+FAIL: test_real_cnn_first_trajectory_losses_gradients_and_adam_cpu_cuda (test_ppo_d0.D0TrainingChecks.test_real_cnn_first_trajectory_losses_gradients_and_adam_cpu_cuda)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_ppo_d0.py", line 228, in test_real_cnn_first_trajectory_losses_gradients_and_adam_cpu_cuda
+    torch.testing.assert_close(value, ratio['state'][key], rtol=1e-4, atol=5e-6)
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\testing\_comparison.py", line 1530, in assert_close
+    raise error_metas[0].to_error(msg)
+AssertionError: Tensor-likes are not close!
+
+Mismatched elements: 3 / 18432 (0.0%)
+Greatest absolute difference: 9.9940225481987e-06 at index (18, 22, 0, 0) (up to 5e-06 allowed)
+Greatest relative difference: 0.003685792675241828 at index (18, 13, 0, 0) (up to 0.0001 allowed)
+
+----------------------------------------------------------------------
+Ran 12 tests in 10.465s
+
+FAILED (failures=1)

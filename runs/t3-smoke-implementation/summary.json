@@ -1,0 +1,1044 @@
+{
+  "status": "complete",
+  "hashes_unchanged": true,
+  "cases_audited": 7,
+  "games_completed": 42,
+  "expected_games": 42,
+  "elapsed_seconds": 19.330051299999468,
+  "gate": {
+    "positive_combo_cases": 2,
+    "reference_combo_full_mask_pass": 2,
+    "teacher_old_best_genuine_full_mask_pass": 2,
+    "teacher_any_genuine_full_mask_pass": 2
+  },
+  "reference_outcomes": {
+    "complete": 6,
+    "illegal_capacity": 1
+  },
+  "by_model": {
+    "original": {
+      "ammo_control": {
+        "static": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 50.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 39.0,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        }
+      },
+      "approach": {
+        "static": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 16.0,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 66.0,
+          "mean_kills": 1.0
+        }
+      },
+      "combo": {
+        "static": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "rule": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 50.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 50.0
+          },
+          "mean_steps": 44.0,
+          "mean_kills": 0.5
+        }
+      },
+      "escape": {
+        "static": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "rule": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        }
+      },
+      "evader": {
+        "static": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        }
+      }
+    },
+    "two_bomb_final": {
+      "ammo_control": {
+        "static": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 50.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 19.5,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        }
+      },
+      "approach": {
+        "static": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "evader": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        }
+      },
+      "combo": {
+        "static": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 2,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 2,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        }
+      },
+      "escape": {
+        "static": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "rule": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        }
+      },
+      "evader": {
+        "static": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "mean_steps": 8.0,
+          "mean_kills": 1.0
+        },
+        "evader": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        },
+        "rule": {
+          "games": 1,
+          "owned_kill_success": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "suicide": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "two_or_more_placements": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "passive_win": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "actual_draw": {
+            "count": 0,
+            "percent": 0.0
+          },
+          "skill_horizon_truncated": {
+            "count": 1,
+            "percent": 100.0
+          },
+          "mean_steps": 80.0,
+          "mean_kills": 0.0
+        }
+      }
+    }
+  },
+  "by_corner": {
+    "original": {
+      "0": {
+        "games": 21,
+        "owned_kill_success": {
+          "count": 13,
+          "percent": 61.904761904761905
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 15,
+          "percent": 71.42857142857143
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 8,
+          "percent": 38.095238095238095
+        },
+        "mean_steps": 41.523809523809526,
+        "mean_kills": 0.6190476190476191
+      },
+      "1": {
+        "games": 0,
+        "owned_kill_success": {
+          "count": 0,
+          "percent": null
+        },
+        "suicide": {
+          "count": 0,
+          "percent": null
+        },
+        "two_or_more_placements": {
+          "count": 0,
+          "percent": null
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": null
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": null
+        },
+        "skill_horizon_truncated": {
+          "count": 0,
+          "percent": null
+        },
+        "mean_steps": null,
+        "mean_kills": null
+      }
+    },
+    "two_bomb_final": {
+      "0": {
+        "games": 21,
+        "owned_kill_success": {
+          "count": 8,
+          "percent": 38.095238095238095
+        },
+        "suicide": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "two_or_more_placements": {
+          "count": 13,
+          "percent": 61.904761904761905
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": 0.0
+        },
+        "skill_horizon_truncated": {
+          "count": 13,
+          "percent": 61.904761904761905
+        },
+        "mean_steps": 53.666666666666664,
+        "mean_kills": 0.38095238095238093
+      },
+      "1": {
+        "games": 0,
+        "owned_kill_success": {
+          "count": 0,
+          "percent": null
+        },
+        "suicide": {
+          "count": 0,
+          "percent": null
+        },
+        "two_or_more_placements": {
+          "count": 0,
+          "percent": null
+        },
+        "passive_win": {
+          "count": 0,
+          "percent": null
+        },
+        "actual_draw": {
+          "count": 0,
+          "percent": null
+        },
+        "skill_horizon_truncated": {
+          "count": 0,
+          "percent": null
+        },
+        "mean_steps": null,
+        "mean_kills": null
+      }
+    }
+  },
+  "decision": "review_required_keep_original",
+  "limits": [
+    "Synthetic skill benchmark, not random-map ActiveWR or checkpoint promotion.",
+    "Rotations/reflections/roles/RNG repeats are dependent; base layout family is the unit.",
+    "Related small layout families; test family must stay locked until a registered comparison.",
+    "Certificate is static and mask-valid through the hazard horizon; stress futures are sampled.",
+    "80-step skill limit is external truncation; env rules/reward/max_steps500 stay unchanged."
+  ]
+}

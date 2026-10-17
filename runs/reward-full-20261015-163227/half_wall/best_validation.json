@@ -1,0 +1,42 @@
+{
+  "episode": 100,
+  "seed": 21000,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 500,
+  "num_episodes": 100,
+  "win_rate": 37.0,
+  "active_win_rate": 30.0,
+  "suicide_rate": 0.0,
+  "draw_rate": 63.0,
+  "avg_kills": 0.3,
+  "avg_bombs": 42.08,
+  "avg_items": 1.69,
+  "avg_steps": 396.85,
+  "by_corner": {
+    "0": {
+      "num_episodes": 50,
+      "win_rate": 36.0,
+      "active_win_rate": 28.000000000000004,
+      "suicide_rate": 0.0,
+      "draw_rate": 64.0,
+      "avg_kills": 0.28,
+      "avg_bombs": 43.18,
+      "avg_items": 1.62,
+      "avg_steps": 409.16
+    },
+    "1": {
+      "num_episodes": 50,
+      "win_rate": 38.0,
+      "active_win_rate": 32.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 62.0,
+      "avg_kills": 0.32,
+      "avg_bombs": 40.98,
+      "avg_items": 1.76,
+      "avg_steps": 384.54
+    }
+  },
+  "device": "cpu",
+  "suicide_limit": 0.0
+}

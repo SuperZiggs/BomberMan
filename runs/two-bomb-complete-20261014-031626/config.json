@@ -1,0 +1,40 @@
+{
+  "started_utc": "2026-10-13T20:16:26.810665+00:00",
+  "training": {
+    "phase": "C",
+    "episodes": 200,
+    "board_size": 9,
+    "num_agents": 2,
+    "max_steps": 500,
+    "lr": 0.0001,
+    "seed": 2026101303,
+    "resume_from": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+    "validation_every": 100,
+    "validation_episodes": 100,
+    "validation_seed": 21000,
+    "device": "cuda",
+    "run_report": false,
+    "log_every": 10,
+    "attack_teacher": "two_bomb",
+    "checkpoint_dir": "D:\\fpt\\subject\\BomberMan\\runs\\two-bomb-complete-20261014-031626\\two_bomb"
+  },
+  "control_run": "D:\\fpt\\subject\\BomberMan\\runs\\two-bomb-pilot-20261014",
+  "warm_start_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+  "control_sha256": "12d98351de4d3e2a71482cfb285008856c2878cb5cf86928e246f1e46292591c",
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "ec1e86fc77f0b90ca1905d63c377828158ac174900092fd45ec6af757ddfa6ca",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a"
+  },
+  "evaluation": {
+    "episodes": 400,
+    "seed": 26000,
+    "last_seed": 26199,
+    "device": "cpu"
+  },
+  "time_limit": null,
+  "torch": "2.5.1",
+  "hardware": "NVIDIA GeForce RTX 3050 Laptop GPU"
+}

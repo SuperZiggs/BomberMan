@@ -1,0 +1,16 @@
+{
+  "checked_utc": "2026-10-15T15:56:51.928680+00:00",
+  "status": "resumed",
+  "control_files_unchanged": 10,
+  "paused_episode": 36,
+  "first_resumed_episode": 37,
+  "adam_steps_before": 144,
+  "adam_steps_after_first_resumed_episode": 148,
+  "episodes_observed": 92,
+  "committed_metric_rows_unchanged": 36,
+  "registered_utc": "2026-10-15T15:03:28.288823+00:00",
+  "training_deadline": {
+    "deadline_utc": "2026-10-15T16:43:36.088475+00:00"
+  },
+  "active_checkpoint_not_opened": true
+}

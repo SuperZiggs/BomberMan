@@ -1,0 +1,14 @@
+{
+  "powershell_blocks_parsed": 3,
+  "frozen_inputs_verified": true,
+  "wrapped_evaluator_cli_help_verified": true,
+  "bootstrap_guide_gates_tested_with_in_memory_fixtures": [
+    "gain_ci_pass",
+    "no_gain_fail",
+    "suicide_fail"
+  ],
+  "test32000_boards_or_policies_run": false,
+  "new_training_run": false,
+  "production_source_changed": false,
+  "current_B_replaced": false
+}

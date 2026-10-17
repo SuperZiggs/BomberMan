@@ -1,0 +1,255 @@
+{
+  "seed": 39890,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 40,
+  "num_episodes": 4,
+  "win_rate": 0.0,
+  "active_win_rate": 0.0,
+  "suicide_rate": 0.0,
+  "draw_rate": 100.0,
+  "avg_kills": 0.0,
+  "avg_bombs": 5.5,
+  "avg_items": 1.5,
+  "avg_steps": 40.0,
+  "contact": {
+    "reached_close_rate": 100.0,
+    "avg_first_close_step_conditional": 19.25,
+    "left_spawn_rate": 100.0
+  },
+  "avg_walls": 5.0,
+  "avg_walls_rewarded": 5.0,
+  "by_corner": {
+    "0": {
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 5.0,
+      "avg_items": 1.0,
+      "avg_steps": 40.0,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 20.0,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 4.5,
+      "avg_walls_rewarded": 4.5,
+      "passive_win_rate": 0.0,
+      "sudden_death": {
+        "learner_deaths": {
+          "alive": 2
+        },
+        "opponent_deaths": {
+          "alive": 2
+        },
+        "endings": {
+          "timeout": 2
+        },
+        "wins_opponent_sd": 0,
+        "both_sd_draws": 0,
+        "reached_sd": 0,
+        "mask": {
+          "learner": {},
+          "opponent": {}
+        },
+        "games": 2
+      }
+    },
+    "1": {
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 6.0,
+      "avg_items": 2.0,
+      "avg_steps": 40.0,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 18.5,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 5.5,
+      "avg_walls_rewarded": 5.5,
+      "passive_win_rate": 0.0,
+      "sudden_death": {
+        "learner_deaths": {
+          "alive": 2
+        },
+        "opponent_deaths": {
+          "alive": 2
+        },
+        "endings": {
+          "timeout": 2
+        },
+        "wins_opponent_sd": 0,
+        "both_sd_draws": 0,
+        "reached_sd": 0,
+        "mask": {
+          "learner": {},
+          "opponent": {}
+        },
+        "games": 2
+      }
+    }
+  },
+  "games": [
+    {
+      "seed": 39890,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 6.0,
+      "items": 2.0,
+      "steps": 40.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 3
+      },
+      "walls": 5,
+      "walls_rewarded": 5,
+      "learner_death": "alive",
+      "opponent_death": "alive",
+      "ending": "timeout",
+      "both_sd_draw": false,
+      "reached_sd": false,
+      "final_ring": 0,
+      "mask": {
+        "learner": {},
+        "opponent": {}
+      }
+    },
+    {
+      "seed": 39890,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 6.0,
+      "items": 1.0,
+      "steps": 40.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 2
+      },
+      "walls": 5,
+      "walls_rewarded": 5,
+      "learner_death": "alive",
+      "opponent_death": "alive",
+      "ending": "timeout",
+      "both_sd_draw": false,
+      "reached_sd": false,
+      "final_ring": 0,
+      "mask": {
+        "learner": {},
+        "opponent": {}
+      }
+    },
+    {
+      "seed": 39891,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 0.0,
+      "steps": 40.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 4,
+      "walls_rewarded": 4,
+      "learner_death": "alive",
+      "opponent_death": "alive",
+      "ending": "timeout",
+      "both_sd_draw": false,
+      "reached_sd": false,
+      "final_ring": 0,
+      "mask": {
+        "learner": {},
+        "opponent": {}
+      }
+    },
+    {
+      "seed": 39891,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 6.0,
+      "items": 3.0,
+      "steps": 40.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 12,
+        "min_distance": 2
+      },
+      "walls": 6,
+      "walls_rewarded": 6,
+      "learner_death": "alive",
+      "opponent_death": "alive",
+      "ending": "timeout",
+      "both_sd_draw": false,
+      "reached_sd": false,
+      "final_ring": 0,
+      "mask": {
+        "learner": {},
+        "opponent": {}
+      }
+    }
+  ],
+  "passive_win_rate": 0.0,
+  "sudden_death": {
+    "learner_deaths": {
+      "alive": 4
+    },
+    "opponent_deaths": {
+      "alive": 4
+    },
+    "endings": {
+      "timeout": 4
+    },
+    "wins_opponent_sd": 0,
+    "both_sd_draws": 0,
+    "reached_sd": 0,
+    "mask": {
+      "learner": {},
+      "opponent": {}
+    },
+    "games": 4
+  },
+  "seconds": 0.39344709999568295
+}

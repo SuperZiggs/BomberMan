@@ -1,0 +1,6 @@
+selected {'sudden_death_start': 400, 'sudden_death_interval': 40, 'sudden_death_warning_steps': 40, 'sudden_death_max_ring': 2}
+[off] WR=39.50 ActiveWR=35.50 Draw=59.25 Self=0.00
+[both_aware] WR=59.25 ActiveWR=31.50 Draw=9.75 Self=0.75
+[learner_aware] WR=69.50 ActiveWR=30.25 Draw=13.00 Self=0.25
+both_aware_vs_off {'win': (19.75, [14.499999999999998, 25.0]), 'active_win': (-4.0, [-7.249999999999999, -0.75]), 'draw': (-49.5, [-54.25, -44.5]), 'suicide': (0.75, [0.0, 1.7500000000000002])}
+learner_aware_vs_off {'win': (30.0, [24.75, 35.5]), 'active_win': (-5.25, [-8.25, -2.25]), 'draw': (-46.25, [-51.24999999999999, -41.25]), 'suicide': (0.25, [0.0, 0.75])}

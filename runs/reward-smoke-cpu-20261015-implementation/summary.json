@@ -1,0 +1,285 @@
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "arms": {
+    "control": {
+      "completed_episodes": 20,
+      "expected_episodes": 20,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "guidance": {
+        "labels": 111,
+        "agreements": 81,
+        "bomb_instead_of_move": 3,
+        "target_probability_sum": 77.34162616636604,
+        "entropy_sum": 49.2942761615559,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 29.09039439999833,
+      "peak_cuda_bytes": null,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-smoke-cpu-20261015-implementation\\control\\best_phaseC.pt",
+          "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-smoke-cpu-20261015-implementation\\control\\final_phaseC.pt",
+          "sha256": "b69622865204b234e8907afd7fdfcad9889e480eb51e0f1c8e725d0f403a0f92"
+        }
+      }
+    },
+    "half_wall": {
+      "completed_episodes": 20,
+      "expected_episodes": 20,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "guidance": {
+        "labels": 111,
+        "agreements": 81,
+        "bomb_instead_of_move": 3,
+        "target_probability_sum": 77.26725717354566,
+        "entropy_sum": 49.45065840393363,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 22.165492600001016,
+      "peak_cuda_bytes": null,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-smoke-cpu-20261015-implementation\\half_wall\\best_phaseC.pt",
+          "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-smoke-cpu-20261015-implementation\\half_wall\\final_phaseC.pt",
+          "sha256": "feb27a1536d47b4969243db8106e83e0a407ef4bfe03024fc1327614c3ed3ecd"
+        }
+      }
+    }
+  },
+  "evaluation_complete": true,
+  "hashes_unchanged": true,
+  "selected_checkpoints_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": 60.358037799996964,
+  "models": {
+    "original": {
+      "seed": 39860,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 0.0,
+        "avg_first_close_step_conditional": null,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.0,
+      "avg_walls_rewarded": 0.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "passive_win_rate": 0.0
+    },
+    "control": {
+      "seed": 39860,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 0.0,
+        "avg_first_close_step_conditional": null,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.0,
+      "avg_walls_rewarded": 0.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\reward-smoke-cpu-20261015-implementation\\control\\best_phaseC.pt",
+      "checkpoint_sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1",
+      "passive_win_rate": 0.0
+    },
+    "half_wall": {
+      "seed": 39860,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 0.0,
+        "avg_first_close_step_conditional": null,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.0,
+      "avg_walls_rewarded": 0.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\reward-smoke-cpu-20261015-implementation\\half_wall\\best_phaseC.pt",
+      "checkpoint_sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1",
+      "passive_win_rate": 0.0
+    }
+  }
+}

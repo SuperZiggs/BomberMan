@@ -1,0 +1,73 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[C] ep    10 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.340 | bombs: 2.9 | walls: 2.3 | combat bombs: 5/5 | loss: 0.1006 | lr: 5.3e-05 | pool: 0
+[C] ep    20 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.325 | bombs: 3.0 | walls: 2.1 | combat bombs: 3/3 | loss: 0.1864 | lr: 5.0e-06 | pool: 0
+
+Saved final model to D:\fpt\subject\BomberMan\runs\gae-b0-smoke-cuda-20261015-implementation\mc\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\gae-b0-smoke-cuda-20261015-implementation\mc\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[C] ep    10 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.340 | bombs: 2.9 | walls: 2.3 | combat bombs: 5/5 | loss: 0.1006 | lr: 5.3e-05 | pool: 0
+[C] ep    20 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.325 | bombs: 3.0 | walls: 2.1 | combat bombs: 3/3 | loss: 0.1864 | lr: 5.0e-06 | pool: 0
+
+Saved final model to D:\fpt\subject\BomberMan\runs\gae-b0-smoke-cuda-20261015-implementation\gae1\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\gae-b0-smoke-cuda-20261015-implementation\gae1\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[C] ep    10 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.340 | bombs: 2.9 | walls: 2.3 | combat bombs: 5/5 | loss: 0.0958 | lr: 5.3e-05 | pool: 0
+[C] ep    20 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.325 | bombs: 3.0 | walls: 2.1 | combat bombs: 3/3 | loss: 0.1916 | lr: 5.0e-06 | pool: 0
+
+Saved final model to D:\fpt\subject\BomberMan\runs\gae-b0-smoke-cuda-20261015-implementation\gae095\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\gae-b0-smoke-cuda-20261015-implementation\gae095\best_phaseC.pt (best episode: 0)
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "hashes_unchanged": true,
+  "modes": {
+    "mc": {
+      "episodes": 20,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "finite_weights": true,
+      "last_boundaries": null,
+      "checkpoints": {
+        "best": "edd760919c085cd4b8df5ca9e3d92b3cf4c0c67b76c55a5d8ebeb80ec4909fad",
+        "final": "965110f9aa88e01a2a2389e7addf98c16d53a240d0186e7cb429b069b92e2866"
+      }
+    },
+    "gae1": {
+      "episodes": 20,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "finite_weights": true,
+      "last_boundaries": {
+        "time_limit": 20,
+        "match_end": 0,
+        "learner_death": 0
+      },
+      "checkpoints": {
+        "best": "8daee268301a7e98e04d39b2377e6c2b46a9d00b06646350d4c97a0a95ee97f6",
+        "final": "9b63895eb7c3084bed3ea6b74e1c2fecf67e03d519b0082e777ba0819c2b556a"
+      }
+    },
+    "gae095": {
+      "episodes": 20,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "finite_weights": true,
+      "last_boundaries": {
+        "time_limit": 20,
+        "match_end": 0,
+        "learner_death": 0
+      },
+      "checkpoints": {
+        "best": "386e676ffa4acdf09edf6d1b8b189f95374c8110a805f087dadf8505c7bb45be",
+        "final": "196fc391fbc07a0c79423a611de6dc535ba5b52b73d38b79b102adf442e53eab"
+      }
+    }
+  },
+  "decision": "retain_original",
+  "elapsed_seconds": 14.826399999999921,
+  "limits": "Technical smoke only; no B1 pilot, held-out evaluation, win-rate claim or checkpoint replacement"
+}

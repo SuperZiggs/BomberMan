@@ -1,0 +1,42 @@
+{
+  "completed_episodes": 200,
+  "expected_episodes": 200,
+  "training_complete": true,
+  "validation_complete": true,
+  "skill_probes_complete": true,
+  "optimizer_instances": 1,
+  "optimizer_steps": 800,
+  "learner_steps": 76920,
+  "guidance": {
+    "labels": 32871,
+    "agreements": 18766,
+    "bomb_instead_of_move": 2129,
+    "target_probability_sum": 18822.282418989023,
+    "entropy_sum": 18106.709702756263,
+    "queries": 0,
+    "accepted": 0,
+    "accepted_agreements": 0,
+    "pressure_gain_sum": 0.0,
+    "certificate_steps": 0,
+    "milliseconds": 0.0,
+    "rejected": {}
+  },
+  "best_episode": 200,
+  "elapsed_seconds": 1742.7989364000023,
+  "peak_cuda_bytes": 365566976,
+  "checkpoints": {
+    "best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\control\\best_phaseC.pt",
+      "sha256": "fed6cf1d4c9f27f7ab36ae5a908afd80c8304d2c769a2331801374800011a309"
+    },
+    "final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\control\\final_phaseC.pt",
+      "sha256": "644012562dfa05a21b4e981054ef5ce08df6644b5c06cafed9487a05a4c07ee1"
+    }
+  },
+  "training_state": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\control\\training_state.pt",
+    "sha256": "0230e897f44240644ea82ddda15430613f6e573c2c1fd209b75b17217512a995",
+    "episode": 200
+  }
+}

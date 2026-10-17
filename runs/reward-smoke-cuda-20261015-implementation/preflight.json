@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "transitions": 39338,
+  "eligible_walls": 868,
+  "max_delta_error": 1.4155343563970746e-15,
+  "only_changed_component": "wall"
+}

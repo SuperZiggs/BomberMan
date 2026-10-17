@@ -1,0 +1,7 @@
+cpu control 20 updates clipped 5
+cpu normalized 20 updates clipped 5
+cpu seconds 46.598199100000784
+cuda control 20 updates clipped 5
+cuda normalized 20 updates clipped 5
+cuda seconds 55.355574799999886
+deadline check passed

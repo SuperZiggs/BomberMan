@@ -1,0 +1,58 @@
+[
+  {
+    "model": "original",
+    "seed": 32080,
+    "aid": 0,
+    "win": 0,
+    "active_win": 0,
+    "suicide": 1,
+    "draw": 0,
+    "kills": 0,
+    "bombs": 6,
+    "items": 1,
+    "steps": 49,
+    "first_no_known_safe_move_tick": 47
+  },
+  {
+    "model": "original",
+    "seed": 32133,
+    "aid": 0,
+    "win": 0,
+    "active_win": 0,
+    "suicide": 1,
+    "draw": 0,
+    "kills": 0,
+    "bombs": 5,
+    "items": 0,
+    "steps": 45,
+    "first_no_known_safe_move_tick": 41
+  },
+  {
+    "model": "control_best",
+    "seed": 32080,
+    "aid": 0,
+    "win": 0,
+    "active_win": 0,
+    "suicide": 1,
+    "draw": 0,
+    "kills": 0,
+    "bombs": 6,
+    "items": 1,
+    "steps": 49,
+    "first_no_known_safe_move_tick": 47
+  },
+  {
+    "model": "control_best",
+    "seed": 32133,
+    "aid": 0,
+    "win": 0,
+    "active_win": 0,
+    "suicide": 1,
+    "draw": 0,
+    "kills": 0,
+    "bombs": 5,
+    "items": 0,
+    "steps": 45,
+    "first_no_known_safe_move_tick": 41
+  }
+]

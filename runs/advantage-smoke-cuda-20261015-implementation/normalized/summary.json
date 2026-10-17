@@ -1,0 +1,37 @@
+{
+  "completed_episodes": 20,
+  "expected_episodes": 20,
+  "training_complete": true,
+  "validation_complete": true,
+  "skill_probes_complete": true,
+  "optimizer_instances": 1,
+  "optimizer_steps": 20,
+  "learner_steps": 400,
+  "guidance": {
+    "labels": 101,
+    "agreements": 68,
+    "bomb_instead_of_move": 3,
+    "target_probability_sum": 71.52766165323555,
+    "entropy_sum": 44.11425663393311,
+    "queries": 0,
+    "accepted": 0,
+    "accepted_agreements": 0,
+    "pressure_gain_sum": 0.0,
+    "certificate_steps": 0,
+    "milliseconds": 0.0,
+    "rejected": {}
+  },
+  "best_episode": 0,
+  "elapsed_seconds": 21.628632100000686,
+  "peak_cuda_bytes": 78914048,
+  "checkpoints": {
+    "best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\advantage-smoke-cuda-20261015-implementation\\normalized\\best_phaseC.pt",
+      "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+    },
+    "final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\advantage-smoke-cuda-20261015-implementation\\normalized\\final_phaseC.pt",
+      "sha256": "69066d5614c5d0012c351c32cedd6bef37e7d537b99b56cbeb133351753798ca"
+    }
+  }
+}

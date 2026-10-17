@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "reason": "corpus_finished",
+  "games_replayed": 4,
+  "expected_games": 4,
+  "states_checked": 4,
+  "elapsed_seconds": 9.777570799997193
+}

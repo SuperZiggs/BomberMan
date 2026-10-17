@@ -1,0 +1,18 @@
+[
+  {
+    "model": "original",
+    "seed": 28000,
+    "aid": 0,
+    "passed": true,
+    "steps": 334,
+    "action_tape_sha256": "a266263388f627295c6ff48147f3a6e3d0ebf47f2f031a24a81be65ecbaa67fa"
+  },
+  {
+    "model": "original",
+    "seed": 28000,
+    "aid": 1,
+    "passed": true,
+    "steps": 395,
+    "action_tape_sha256": "04954fdab0c5a6a29ea6641819946e16d59b86a0eac157846e0f4e7c49b7d7f9"
+  }
+]

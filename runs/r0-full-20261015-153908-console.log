@@ -1,0 +1,42 @@
+[original] 10/100 games; timeout replays 4
+[original] 20/100 games; timeout replays 4
+[original] 30/100 games; timeout replays 4
+[original] 40/100 games; timeout replays 4
+[original] 50/100 games; timeout replays 4
+[original] 60/100 games; timeout replays 4
+[original] 70/100 games; timeout replays 4
+[original] 80/100 games; timeout replays 4
+[original] 90/100 games; timeout replays 4
+[original] 100/100 games; timeout replays 4
+[mc_final] 10/100 games; timeout replays 4
+[mc_final] 20/100 games; timeout replays 4
+[mc_final] 30/100 games; timeout replays 4
+[mc_final] 40/100 games; timeout replays 4
+[mc_final] 50/100 games; timeout replays 4
+[mc_final] 60/100 games; timeout replays 4
+[mc_final] 70/100 games; timeout replays 4
+[mc_final] 80/100 games; timeout replays 4
+[mc_final] 90/100 games; timeout replays 4
+[mc_final] 100/100 games; timeout replays 4
+[gae_final] 10/100 games; timeout replays 4
+[gae_final] 20/100 games; timeout replays 4
+[gae_final] 30/100 games; timeout replays 4
+[gae_final] 40/100 games; timeout replays 4
+[gae_final] 50/100 games; timeout replays 4
+[gae_final] 60/100 games; timeout replays 4
+[gae_final] 70/100 games; timeout replays 4
+[gae_final] 80/100 games; timeout replays 4
+[gae_final] 90/100 games; timeout replays 4
+[gae_final] 100/100 games; timeout replays 4
+{
+  "status": "complete",
+  "full_protocol": true,
+  "reason": null,
+  "games_completed": 300,
+  "timeout_cases": 12,
+  "validation_parity": true,
+  "hashes_unchanged": true,
+  "training_updates": 0,
+  "decision": "retain_original",
+  "elapsed_seconds": 975.1635779999997
+}

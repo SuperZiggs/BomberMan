@@ -1,0 +1,39 @@
+======================================================================
+ERROR: test_invalid_action_old_probabilities_labels_and_boundaries_rejected (test_ppo_d0.RolloutChecks.test_invalid_action_old_probabilities_labels_and_boundaries_rejected) (change={'old_log_prob': tensor(0.)})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_ppo_d0.py", line 138, in test_invalid_action_old_probabilities_labels_and_boundaries_rejected
+    trainer.freeze_rollout_step(**{**args, **change})
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 226, in freeze_rollout_step
+    or not torch.isclose(old_probs[action].log(), old_log_prob.squeeze(), atol=1e-5).item()):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Double did not match Float
+
+======================================================================
+FAIL: test_ratio_full_state_resume_matches_continuous_cpu_cuda (test_ppo_d0.D0TrainingChecks.test_ratio_full_state_resume_matches_continuous_cpu_cuda)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_ppo_d0.py", line 307, in test_ratio_full_state_resume_matches_continuous_cpu_cuda
+    same(full, continued)
+  File "D:\fpt\subject\BomberMan\test_ppo_d0.py", line 302, in same
+    for key in a: same(a[key], b[key])
+                  ^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\test_ppo_d0.py", line 302, in same
+    for key in a: same(a[key], b[key])
+                  ^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\test_ppo_d0.py", line 299, in same
+    self.assertTrue(torch.equal(a, b))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_real_cnn_first_trajectory_losses_gradients_and_adam_cpu_cuda (test_ppo_d0.D0TrainingChecks.test_real_cnn_first_trajectory_losses_gradients_and_adam_cpu_cuda)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_ppo_d0.py", line 216, in test_real_cnn_first_trajectory_losses_gradients_and_adam_cpu_cuda
+    self.assertAlmostEqual(ac['rows'][0][field], ratio['rows'][0][field], delta=2e-5)
+AssertionError: 0.3558238446712494 != 0.3558467924594879 within 2e-05 delta (2.294778823852539e-05 difference)
+
+----------------------------------------------------------------------
+Ran 12 tests in 12.265s
+
+FAILED (failures=2, errors=1)

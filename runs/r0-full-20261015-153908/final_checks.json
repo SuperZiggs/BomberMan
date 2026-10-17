@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "games": 300,
+  "steps_verified": 118226,
+  "replays": 12,
+  "frames": 6012,
+  "source_files_verified": 11,
+  "checkpoints_verified": 3,
+  "parent_inputs_verified": 4,
+  "tests_passed": 188,
+  "tests_skipped_cuda": 1,
+  "training_updates": 0,
+  "new_heldout_opened": false,
+  "decision": "retain_original",
+  "original_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+}

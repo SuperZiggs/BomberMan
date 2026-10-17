@@ -1,0 +1,245 @@
+--- before/train_actor_critic.py
++++ train_actor_critic.py
+@@ -206,6 +206,84 @@
+                  for group in (escape, combat, navigation))
+ 
+ 
++def freeze_rollout_step(obs, action, mask, old_log_prob, old_value, old_probs,
++                        reward, terminal, boundary, teacher_group=None, teacher_actions=()):
++    """Keep the sampled policy and labels independent of later env/model changes."""
++    if (obs.ndim != 3 or mask.ndim != 1 or mask.dtype != torch.bool
++            or old_probs.shape != mask.shape or not mask.any().item()
++            or old_log_prob.numel() != 1 or old_value.numel() != 1):
++        raise ValueError('Invalid rollout tensor shapes or empty action mask')
++    if (not isinstance(action, int) or isinstance(action, bool) or not 0 <= action < len(mask)
++            or not mask[action].item()):
++        raise ValueError('Sampled action must be allowed by the stored mask')
++    tensors = (obs, old_log_prob, old_value, old_probs)
++    if any(not t.is_floating_point() or t.dtype != old_probs.dtype or t.device != mask.device
++           or not torch.isfinite(t).all().item() for t in tensors):
++        raise ValueError('Rollout tensors must be finite and on the same device')
++    if (not math.isfinite(reward) or (old_probs < 0).any().item()
++            or old_probs[~mask].count_nonzero().item()
++            or not torch.isclose(old_probs.sum(), old_probs.new_tensor(1.), atol=1e-6).item()
++            or old_probs[action].item() <= 0
++            or not torch.isclose(old_probs[action].log(), old_log_prob.squeeze(), atol=1e-5).item()):
++        raise ValueError('Stored probabilities, action log probability or reward disagree')
++    if (not isinstance(terminal, bool) or
++            (boundary not in ('learner_death', 'time_limit', 'match_end') if terminal else boundary is not None)):
++        raise ValueError('Terminal transition requires its actual boundary')
++    if (teacher_group not in (None, 'escape', 'combat', 'navigation')
++            or bool(teacher_actions) != (teacher_group is not None)
++            or len(set(teacher_actions)) != len(teacher_actions)
++            or any(not isinstance(a, int) or isinstance(a, bool) or not 0 <= a < len(mask)
++                   or not mask[a].item() for a in teacher_actions)):
++        raise ValueError('Teacher targets must belong to one group and the stored mask')
++    target = old_probs.new_zeros(old_probs.shape)
++    if teacher_actions:
++        target[list(teacher_actions)] = 1. / len(teacher_actions)
++    return {'obs': obs.detach().clone(), 'action': action, 'mask': mask.detach().clone(),
++            'old_log_prob': old_log_prob.detach().clone().squeeze(),
++            'old_value': old_value.detach().clone().squeeze(), 'old_probs': old_probs.detach().clone(),
++            'reward': float(reward), 'terminal': terminal, 'boundary': boundary,
++            'teacher_group': teacher_group, 'teacher_target': target.detach()}
++
++
++def ratio_rollout_losses(net, steps, advantages, returns):
++    """D0: one full-episode, unclipped ratio update; targets stay fixed."""
++    if (not steps or advantages.shape != (len(steps),) or returns.shape != advantages.shape
++            or any(s['terminal'] for s in steps[:-1]) or not steps[-1]['terminal']):
++        raise ValueError('D0 requires one complete learner trajectory and matching targets')
++    if not torch.isfinite(advantages).all().item() or not torch.isfinite(returns).all().item():
++        raise FloatingPointError('Non-finite fixed rollout targets')
++    mask = torch.stack([s['mask'] for s in steps])
++    logits, values = net(torch.stack([s['obs'] for s in steps]))
++    dist = torch.distributions.Categorical(logits=logits.masked_fill(~mask, -1e9))
++    actions = torch.tensor([s['action'] for s in steps], device=mask.device)
++    old_log_probs = torch.stack([s['old_log_prob'] for s in steps])
++    ratio = (dist.log_prob(actions) - old_log_probs).exp()
++    entropies = dist.entropy()
++    result = {'policy_loss': -(ratio * advantages.detach()).mean(),
++              'value_loss': F.mse_loss(values.reshape(-1), returns.detach()),
++              'entropy': entropies.mean(), 'entropies': entropies}
++    log_probs = F.log_softmax(logits.masked_fill(~mask, -1e9), dim=-1)
++    counts = {}
++    for group in ('escape', 'combat', 'navigation'):
++        indices = [i for i, s in enumerate(steps) if s['teacher_group'] == group]
++        counts[group] = len(indices)
++        result[group + '_loss'] = -(torch.stack([steps[i]['teacher_target'] for i in indices])
++            * log_probs[indices]).sum(-1).mean() if indices else values.new_zeros(())
++    old_probs = torch.stack([s['old_probs'] for s in steps])
++    old_logs = old_probs.clamp_min(torch.finfo(old_probs.dtype).tiny).log()
++    kl = (old_probs * (old_logs - dist.logits)).sum(-1)
++    if not all(torch.isfinite(result[k]).all().item() for k in
++               ('policy_loss', 'value_loss', 'entropy', 'escape_loss', 'combat_loss', 'navigation_loss')):
++        raise FloatingPointError('Non-finite ratio rollout loss')
++    result['diagnostics'] = {'objective': 'ratio', 'samples': len(steps), 'epochs': 1,
++        'clipped': False, 'ratio_mean': ratio.detach().mean().item(),
++        'ratio_min': ratio.detach().min().item(), 'ratio_max': ratio.detach().max().item(),
++        'ratio_max_abs_error_from_one': (ratio.detach() - 1).abs().max().item(),
++        'exact_kl_before_update': kl.detach().mean().item(), 'label_counts': counts,
++        'terminal_transitions': sum(s['terminal'] for s in steps), 'last_boundary': steps[-1]['boundary']}
++    return result
++
++
+ def _combat_reward(reward: float, agent_id: int, info, episode_kills: int):
+     """Reward owned eliminations; a token bomb cannot unlock a passive win bonus."""
+     kills = info["kills"]
+@@ -388,6 +466,7 @@
+     save_training_state: bool = False,
+     resume_training_state: str = "",
+     checkpoint_context=None,
++    policy_objective: str = "ac",
+ ):
+     """
+     Unified training loop for phases C, D, E.
+@@ -410,7 +489,8 @@
+         'phase', 'episodes', 'board_size', 'num_agents', 'gamma', 'lr', 'value_coef', 'entropy_coef',
+         'wall_destroy_bonus', 'max_steps', 'log_every', 'snapshot_every', 'resume_from', 'device', 'seed',
+         'validation_every', 'validation_episodes', 'validation_seed', 'attack_teacher',
+-        'normalize_advantage', 'advantage_diagnostics', 'advantage_estimator', 'gae_lambda', 'reward_diagnostics')}
++        'normalize_advantage', 'advantage_diagnostics', 'advantage_estimator', 'gae_lambda', 'reward_diagnostics',
++        'policy_objective')}
+     restored = load_training_state(resume_training_state) if resume_training_state else None
+     provenance = {'config': resume_config, 'sources': source_hashes(), 'runtime': runtime_state()} if save_training_state else None
+     if restored is not None and restored['provenance'] != provenance:
+@@ -420,6 +500,8 @@
+         raise ValueError("episodes, max_steps, log_every and snapshot_every must be positive")
+     if attack_teacher not in ("local", "two_bomb", "local_combat_move"):
+         raise ValueError("attack_teacher must be local, two_bomb or local_combat_move")
++    if policy_objective not in ('ac', 'ratio'):
++        raise ValueError('policy_objective must be ac/ratio')
+     if advantage_estimator not in ("mc", "gae") or not 0 <= gae_lambda <= 1:
+         raise ValueError("advantage_estimator must be mc/gae; gae_lambda must be finite and in [0, 1]")
+     if advantage_estimator == "gae" and not 0 <= gamma <= 1:
+@@ -429,7 +511,8 @@
+     if seed is not None:
+         np.random.seed(seed)
+         torch.manual_seed(seed)
+-    advantage_diagnostics = advantage_diagnostics or normalize_advantage or advantage_estimator == "gae"
++    advantage_diagnostics = (advantage_diagnostics or normalize_advantage
++                             or advantage_estimator == "gae" or policy_objective == 'ratio')
+ 
+     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
+                           max_steps=max_steps, seed=seed)
+@@ -637,6 +720,7 @@
+         aux_losses_buf = []
+         combat_losses_buf = []
+         attack_losses_buf = []
++        rollout = [] if policy_objective == 'ratio' else None
+         bombs_this_ep = 0
+         walls_this_ep = 0
+         suicide_this_ep = False
+@@ -662,7 +746,8 @@
+             # Learning agent: forward through network with action masking.
+             if alive_mask[learning_aid]:
+                 obs_t = obs_to_tensor(obs_list[learning_aid], device)
+-                logits, value = net(obs_t)
++                with torch.set_grad_enabled(policy_objective == 'ac'):
++                    logits, value = net(obs_t)
+                 mask = get_action_mask(env, learning_aid)
+                 mask_t = torch.tensor(mask, dtype=torch.bool, device=device)
+                 m_logits = logits.masked_fill(~mask_t, -1e9)
+@@ -673,6 +758,7 @@
+                 if advantage_diagnostics:
+                     mask_sizes_buf.append(sum(mask))
+                 actions[learning_aid] = action_t.item()
++                teacher_group, teacher_actions = None, ()
+                 # Auxiliary escape supervision when in danger
+                 r_l, c_l = env.agents[learning_aid].row, env.agents[learning_aid].col
+                 d_map = _build_danger_map(env)
+@@ -692,6 +778,7 @@
+                 if plan is not None:
+                     # Uniform soft target for equally good first actions, combat weight 0.5.
+                     combat_losses_buf.append(-F.log_softmax(m_logits, dim=-1)[0, plan["first_actions"]].mean())
++                    teacher_group, teacher_actions = 'combat', tuple(plan['first_actions'])
+                     combat_labels += 1
+                     combat_bombs += int(ACTION_BOMB in plan["first_actions"] and actions[learning_aid] == ACTION_BOMB)
+                     attack_labels += 1
+@@ -699,6 +786,7 @@
+                     if mask[ACTION_BOMB]:
+                         combat_losses_buf.append(F.cross_entropy(
+                             m_logits, torch.tensor([ACTION_BOMB], device=device)))
++                        teacher_group, teacher_actions = 'combat', (ACTION_BOMB,)
+                         followup_labels += 1
+                         followup_bombs += int(actions[learning_aid] == ACTION_BOMB)
+                         combat_labels += 1
+@@ -709,6 +797,7 @@
+                             aux_losses_buf.append(
+                                 F.cross_entropy(m_logits, torch.tensor([esc_act], device=device))
+                             )
++                            teacher_group, teacher_actions = 'escape', (esc_act,)
+                 else:
+                     attack_act = get_attack_action(env, learning_aid, d_map, mask)
+                     attack_labels += int(attack_act is not None)
+@@ -736,6 +825,7 @@
+                         combat_labels += int(combat)
+                         combat_bombs += int(combat and attack_act == ACTION_BOMB and actions[learning_aid] == ACTION_BOMB)
+                         (combat_losses_buf if combat else attack_losses_buf).append(target_loss)
++                        teacher_group, teacher_actions = ('combat' if combat else 'navigation'), (attack_act,)
+             else:
+                 log_prob = None
+                 value = None
+@@ -781,13 +871,17 @@
+                 values_buf.append(value.squeeze())
+                 rewards_buf.append(shaped_reward)
+                 entropies_buf.append(entropy.squeeze())
+-                if advantage_estimator == "gae":
++                if advantage_estimator == "gae" or rollout is not None:
+                     terminal = (dones[learning_aid] or not info["alive"][learning_aid]
+                                 or info["episode_done"] or t + 1 == max_steps)
+                     terminal_buf.append(bool(terminal))
+                     if terminal:
+                         last_boundary = ("learner_death" if not info["alive"][learning_aid] else
+                             "time_limit" if env.step_count >= env.max_steps or t + 1 == max_steps else "match_end")
++                if rollout is not None:
++                    rollout.append(freeze_rollout_step(obs_t.squeeze(0), actions[learning_aid], mask_t,
++                        log_prob, value, dist.probs.squeeze(0), shaped_reward, bool(terminal),
++                        last_boundary if terminal else None, teacher_group, teacher_actions))
+ 
+             alive_mask = list(info["alive"])
+             if on_step is not None:
+@@ -803,6 +897,7 @@
+         escape_loss, combat_loss, navigation_loss = _supervision_losses(
+             aux_losses_buf, combat_losses_buf, attack_losses_buf)
+         advantage_metrics = {}
++        ratio_metrics = {}
+         if len(rewards_buf) > 0:
+             values_t = torch.stack(values_buf)
+             log_probs_t = torch.stack(log_probs_buf)
+@@ -833,6 +928,11 @@
+             policy_loss = -(log_probs_t * advantages).mean()
+             value_loss = F.mse_loss(values_t, returns_t)
+             entropy_bonus = entropies_t.mean()
++            if rollout is not None:
++                replay = ratio_rollout_losses(net, rollout, advantages, returns_t)
++                policy_loss, value_loss, entropy_bonus = (replay[k] for k in ('policy_loss', 'value_loss', 'entropy'))
++                escape_loss, combat_loss, navigation_loss = (replay[k + '_loss'] for k in ('escape', 'combat', 'navigation'))
++                entropies_t, ratio_metrics = replay['entropies'], replay['diagnostics']
+ 
+             # Linearly anneal entropy coefficient: full at start, 20% at end
+             ent_coef_now = entropy_coef * max(0.2, 1.0 - 0.8 * ep / episodes)
+@@ -931,6 +1031,7 @@
+                         "move_guidance": {**move_guidance, "rejected": dict(move_rejected)},
+                         **({"reward_components": dict(reward_totals),
+                             "reward_component_max_error": reward_max_error} if reward_diagnostics else {}),
++                        **({'ratio_update': ratio_metrics} if rollout is not None else {}),
+                         **({"advantage": advantage_metrics} if advantage_diagnostics else {})})
+ 
+         # ── Print progress ──
+@@ -1339,6 +1440,8 @@
+     parser.add_argument("--gae_lambda", type=float, default=0.95)
+     parser.add_argument("--reward_diagnostics", action="store_true",
+                         help="Log reward components without changing learner rewards")
++    parser.add_argument('--policy_objective', choices=('ac', 'ratio'), default='ac',
++                        help='D0 ratio: one unclipped full-episode update using stored masks and targets')
+     args = parser.parse_args()
+ 
+     os.makedirs(args.checkpoint_dir, exist_ok=True)
+@@ -1373,5 +1476,6 @@
+             reward_diagnostics=args.reward_diagnostics,
+             save_training_state=args.save_training_state,
+             resume_training_state=args.resume_training_state,
++            policy_objective=args.policy_objective,
+             on_episode=write_metrics,
+         )

@@ -1,0 +1,70 @@
+{
+  "seed": 39850,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 8,
+  "num_episodes": 2,
+  "win_rate": 0.0,
+  "active_win_rate": 0.0,
+  "suicide_rate": 0.0,
+  "draw_rate": 100.0,
+  "avg_kills": 0.0,
+  "avg_bombs": 1.0,
+  "avg_items": 0.0,
+  "avg_steps": 8.0,
+  "by_corner": {
+    "0": {
+      "num_episodes": 1,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "passive_win_rate": 0.0
+    },
+    "1": {
+      "num_episodes": 1,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "passive_win_rate": 0.0
+    }
+  },
+  "games": [
+    {
+      "seed": 39850,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 1.0,
+      "items": 0.0,
+      "steps": 8.0
+    },
+    {
+      "seed": 39850,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 1.0,
+      "items": 0.0,
+      "steps": 8.0
+    }
+  ],
+  "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\gae-b1-smoke-cpu-20261015-implementation\\control\\best_phaseC.pt",
+  "checkpoint_sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1",
+  "passive_win_rate": 0.0
+}

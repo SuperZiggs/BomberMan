@@ -1,0 +1,37 @@
+{
+  "completed_episodes": 200,
+  "expected_episodes": 200,
+  "training_complete": true,
+  "validation_complete": true,
+  "skill_probes_complete": true,
+  "optimizer_instances": 1,
+  "optimizer_steps": 200,
+  "learner_steps": 75957,
+  "guidance": {
+    "labels": 32550,
+    "agreements": 18307,
+    "bomb_instead_of_move": 2170,
+    "target_probability_sum": 18362.832821130345,
+    "entropy_sum": 17935.0656059801,
+    "queries": 0,
+    "accepted": 0,
+    "accepted_agreements": 0,
+    "pressure_gain_sum": 0.0,
+    "certificate_steps": 0,
+    "milliseconds": 0.0,
+    "rejected": {}
+  },
+  "best_episode": 100,
+  "elapsed_seconds": 1759.8316678999981,
+  "peak_cuda_bytes": 110103552,
+  "checkpoints": {
+    "best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\advantage-full-20261015-030430\\normalized\\best_phaseC.pt",
+      "sha256": "2657cfa9495ef63b7874e1993591a6577fa9319b4575b9407ca875e6745a6f5d"
+    },
+    "final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\advantage-full-20261015-030430\\normalized\\final_phaseC.pt",
+      "sha256": "7f8cede7fcae56599c3bba7256087ff7641dc51c17645e46ed6f138b431c7d15"
+    }
+  }
+}

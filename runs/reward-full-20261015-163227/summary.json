@@ -1,0 +1,54 @@
+{
+  "status": "incomplete",
+  "full_protocol": true,
+  "reason": "process_terminated_during_half_wall_validation_200",
+  "arms": {
+    "control": {
+      "completed_episodes": 200,
+      "expected_episodes": 200,
+      "optimizer_steps_logged": 200,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "best_episode": 200,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-20261015-163227\\control\\best_phaseC.pt",
+          "sha256": "51343454012b8bb11118c397eeef1dcdbd7ca85474e722e79819aa54a2a08ac1"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-20261015-163227\\control\\final_phaseC.pt",
+          "sha256": "c053d4ba225479f5ff9efd1415c08c51b256b4234f3a8f2d61c2b57e9964836d"
+        }
+      },
+      "last_logged_elapsed_seconds": 1378.7860378000005
+    },
+    "half_wall": {
+      "completed_episodes": 199,
+      "expected_episodes": 200,
+      "optimizer_steps_logged": 199,
+      "training_complete": false,
+      "validation_complete": false,
+      "skill_probes_complete": false,
+      "best_episode": 100,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-20261015-163227\\half_wall\\best_phaseC.pt",
+          "sha256": "024e15b69695630aa4d0c6def6fcb4c54dabeea25162971346efe0847b138217"
+        }
+      },
+      "last_logged_elapsed_seconds": 1040.599906200001
+    }
+  },
+  "evaluation_complete": false,
+  "hashes_unchanged": true,
+  "comparisons": {},
+  "models": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": null,
+  "last_console_output_utc": "2026-10-15T10:14:07.971189+00:00",
+  "finalized_after_interruption_utc": "2026-10-15T12:01:18.852720+00:00",
+  "episode_200_half_wall_update_not_recoverable": true,
+  "archive_created_by": "post_interruption_audit"
+}

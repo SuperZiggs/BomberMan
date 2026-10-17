@@ -1,0 +1,4102 @@
+{
+  "original": [
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.680580554530025e-05,
+        0.0,
+        0.5578838586807251,
+        0.0,
+        0.4420492947101593,
+        0.0
+      ],
+      "teacher_probability": 0.5578838586807251
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.412155537167564e-05,
+        0.3877439796924591,
+        0.6121818423271179,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.6121818423271179
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        4.317998536862433e-05,
+        0.34418272972106934,
+        0.3513214588165283,
+        0.0,
+        0.3044525980949402,
+        0.0
+      ],
+      "teacher_probability": 0.3044525980949402
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        3.523170562402811e-06,
+        0.0,
+        0.0,
+        0.02036738209426403,
+        0.025050939992070198,
+        0.9545782208442688
+      ],
+      "teacher_probability": 0.025050939992070198
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.057057938349317e-06,
+        0.034941766411066055,
+        0.0,
+        0.021579736843705177,
+        0.0,
+        0.9434754252433777
+      ],
+      "teacher_probability": 0.9434754252433777
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9171459078788757,
+        0.0,
+        0.08285414427518845,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9171459078788757
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.680580554530025e-05,
+        0.0,
+        0.5578838586807251,
+        0.0,
+        0.4420492947101593,
+        0.0
+      ],
+      "teacher_probability": 0.5578838586807251
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.412155537167564e-05,
+        0.3877439796924591,
+        0.6121818423271179,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.6121818423271179
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        4.317998536862433e-05,
+        0.34418272972106934,
+        0.3513214588165283,
+        0.0,
+        0.3044525980949402,
+        0.0
+      ],
+      "teacher_probability": 0.3044525980949402
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        3.523170562402811e-06,
+        0.0,
+        0.0,
+        0.02036738209426403,
+        0.025050939992070198,
+        0.9545782208442688
+      ],
+      "teacher_probability": 0.025050939992070198
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.057057938349317e-06,
+        0.034941766411066055,
+        0.0,
+        0.021579736843705177,
+        0.0,
+        0.9434754252433777
+      ],
+      "teacher_probability": 0.9434754252433777
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9171459078788757,
+        0.0,
+        0.08285414427518845,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9171459078788757
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.399559060810134e-05,
+        0.0,
+        0.5721776485443115,
+        0.4277583956718445,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5721776485443115
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.81583585194312e-05,
+        0.4517929255962372,
+        0.5481289625167847,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5481289625167847
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        4.306784467189573e-05,
+        0.39255255460739136,
+        0.3239343762397766,
+        0.2834700047969818,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.2834700047969818
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        3.395976818865165e-06,
+        0.0,
+        0.0,
+        0.02647527866065502,
+        0.019932128489017487,
+        0.9535892009735107
+      ],
+      "teacher_probability": 0.02647527866065502
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.1387205581268063e-06,
+        0.03801780939102173,
+        0.0,
+        0.0,
+        0.01871170848608017,
+        0.9432674050331116
+      ],
+      "teacher_probability": 0.9432674050331116
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9823969602584839,
+        0.0,
+        0.0,
+        0.017603004351258278,
+        0.0
+      ],
+      "teacher_probability": 0.9823969602584839
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 7,
+      "label": 4,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.399559060810134e-05,
+        0.0,
+        0.5721776485443115,
+        0.4277583956718445,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5721776485443115
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.81583585194312e-05,
+        0.4517929255962372,
+        0.5481289625167847,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5481289625167847
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        4.306784467189573e-05,
+        0.39255255460739136,
+        0.3239343762397766,
+        0.2834700047969818,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.2834700047969818
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        3.395976818865165e-06,
+        0.0,
+        0.0,
+        0.02647527866065502,
+        0.019932128489017487,
+        0.9535892009735107
+      ],
+      "teacher_probability": 0.02647527866065502
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.1387205581268063e-06,
+        0.03801780939102173,
+        0.0,
+        0.0,
+        0.01871170848608017,
+        0.9432674050331116
+      ],
+      "teacher_probability": 0.9432674050331116
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9823969602584839,
+        0.0,
+        0.0,
+        0.017603004351258278,
+        0.0
+      ],
+      "teacher_probability": 0.9823969602584839
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 7,
+      "label": 4,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.319121166598052e-05,
+        0.0,
+        0.6024212837219238,
+        0.39751550555229187,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.6024212837219238
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.736040424788371e-05,
+        0.42116376757621765,
+        0.5787588357925415,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5787588357925415
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        7.565989653812721e-05,
+        0.5646801590919495,
+        0.0,
+        0.43524420261383057,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.43524420261383057
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        8.807850099401549e-05,
+        0.0,
+        0.0,
+        0.5263622999191284,
+        0.4735495448112488,
+        0.0
+      ],
+      "teacher_probability": 0.5263622999191284
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.5965679217042634e-06,
+        0.03243529051542282,
+        0.0,
+        0.0,
+        0.020426498726010323,
+        0.9471345543861389
+      ],
+      "teacher_probability": 0.9471345543861389
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9793784022331238,
+        0.0,
+        0.0,
+        0.02062159962952137,
+        0.0
+      ],
+      "teacher_probability": 0.9793784022331238
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.8491726517677307,
+        0.15082740783691406,
+        0.0
+      ],
+      "teacher_probability": 0.8491726517677307
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.319121166598052e-05,
+        0.0,
+        0.6024212837219238,
+        0.39751550555229187,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.6024212837219238
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.736040424788371e-05,
+        0.42116376757621765,
+        0.5787588357925415,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5787588357925415
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        7.565989653812721e-05,
+        0.5646801590919495,
+        0.0,
+        0.43524420261383057,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.43524420261383057
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        8.807850099401549e-05,
+        0.0,
+        0.0,
+        0.5263622999191284,
+        0.4735495448112488,
+        0.0
+      ],
+      "teacher_probability": 0.5263622999191284
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.5965679217042634e-06,
+        0.03243529051542282,
+        0.0,
+        0.0,
+        0.020426498726010323,
+        0.9471345543861389
+      ],
+      "teacher_probability": 0.9471345543861389
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9793784022331238,
+        0.0,
+        0.0,
+        0.02062159962952137,
+        0.0
+      ],
+      "teacher_probability": 0.9793784022331238
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.8491726517677307,
+        0.15082740783691406,
+        0.0
+      ],
+      "teacher_probability": 0.8491726517677307
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        7.503846427425742e-05,
+        0.5629756450653076,
+        0.0,
+        0.43694931268692017,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5629756450653076
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.919663039501756e-05,
+        0.49335768818855286,
+        0.5065631866455078,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.49335768818855286
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        7.559062942164019e-05,
+        0.0,
+        0.5631429553031921,
+        0.43678146600723267,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.43678146600723267
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        8.603939932072535e-05,
+        0.0,
+        0.0,
+        0.49853992462158203,
+        0.5013740658760071,
+        0.0
+      ],
+      "teacher_probability": 0.49853992462158203
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.6121557513979496e-06,
+        0.0,
+        0.0291383545845747,
+        0.0,
+        0.022846220061182976,
+        0.9480118751525879
+      ],
+      "teacher_probability": 0.9480118751525879
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.7747067213058472,
+        0.0,
+        0.22529323399066925,
+        0.0
+      ],
+      "teacher_probability": 0.7747067213058472
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.6664512753486633,
+        0.33354875445365906,
+        0.0
+      ],
+      "teacher_probability": 0.6664512753486633
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        7.503846427425742e-05,
+        0.5629756450653076,
+        0.0,
+        0.43694931268692017,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5629756450653076
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.919663039501756e-05,
+        0.49335768818855286,
+        0.5065631866455078,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.49335768818855286
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        7.559062942164019e-05,
+        0.0,
+        0.5631429553031921,
+        0.43678146600723267,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.43678146600723267
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        8.603939932072535e-05,
+        0.0,
+        0.0,
+        0.49853992462158203,
+        0.5013740658760071,
+        0.0
+      ],
+      "teacher_probability": 0.49853992462158203
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.6121557513979496e-06,
+        0.0,
+        0.0291383545845747,
+        0.0,
+        0.022846220061182976,
+        0.9480118751525879
+      ],
+      "teacher_probability": 0.9480118751525879
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.7747067213058472,
+        0.0,
+        0.22529323399066925,
+        0.0
+      ],
+      "teacher_probability": 0.7747067213058472
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.6664512753486633,
+        0.33354875445365906,
+        0.0
+      ],
+      "teacher_probability": 0.6664512753486633
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        7.819439633749425e-05,
+        0.560521125793457,
+        0.0,
+        0.43940067291259766,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.560521125793457
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        8.120581333059818e-05,
+        0.500652551651001,
+        0.49926623702049255,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.500652551651001
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        4.6912693505873904e-05,
+        0.37846413254737854,
+        0.3407290577888489,
+        0.28075993061065674,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.28075993061065674
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        4.2151791603828315e-06,
+        0.0,
+        0.0,
+        0.025615252554416656,
+        0.0244565661996603,
+        0.9499239921569824
+      ],
+      "teacher_probability": 0.025615252554416656
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.7570107451756485e-06,
+        0.0,
+        0.02922997809946537,
+        0.0,
+        0.022936269640922546,
+        0.9478299617767334
+      ],
+      "teacher_probability": 0.9478299617767334
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.7932974696159363,
+        0.0,
+        0.20670254528522491,
+        0.0
+      ],
+      "teacher_probability": 0.7932974696159363
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 7,
+      "label": 4,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        7.819439633749425e-05,
+        0.560521125793457,
+        0.0,
+        0.43940067291259766,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.560521125793457
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        8.120581333059818e-05,
+        0.500652551651001,
+        0.49926623702049255,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.500652551651001
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        4.6912693505873904e-05,
+        0.37846413254737854,
+        0.3407290577888489,
+        0.28075993061065674,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.28075993061065674
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        4.2151791603828315e-06,
+        0.0,
+        0.0,
+        0.025615252554416656,
+        0.0244565661996603,
+        0.9499239921569824
+      ],
+      "teacher_probability": 0.025615252554416656
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.7570107451756485e-06,
+        0.0,
+        0.02922997809946537,
+        0.0,
+        0.022936269640922546,
+        0.9478299617767334
+      ],
+      "teacher_probability": 0.9478299617767334
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.7932974696159363,
+        0.0,
+        0.20670254528522491,
+        0.0
+      ],
+      "teacher_probability": 0.7932974696159363
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 7,
+      "label": 4,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.968031084397808e-05,
+        0.5280433297157288,
+        0.0,
+        0.0,
+        0.4718869626522064,
+        0.0
+      ],
+      "teacher_probability": 0.5280433297157288
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.946482219267637e-05,
+        0.5029696822166443,
+        0.4969508647918701,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5029696822166443
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        4.609536335919984e-05,
+        0.3596723675727844,
+        0.33065348863601685,
+        0.0,
+        0.3096280097961426,
+        0.0
+      ],
+      "teacher_probability": 0.3096280097961426
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        4.215287844999693e-06,
+        0.0,
+        0.0,
+        0.022266844287514687,
+        0.027762342244386673,
+        0.9499666094779968
+      ],
+      "teacher_probability": 0.027762342244386673
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.684547664306592e-06,
+        0.0,
+        0.029468830674886703,
+        0.022659460082650185,
+        0.0,
+        0.9478679895401001
+      ],
+      "teacher_probability": 0.9478679895401001
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.5541144013404846,
+        0.4458855986595154,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5541144013404846
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.968031084397808e-05,
+        0.5280433297157288,
+        0.0,
+        0.0,
+        0.4718869626522064,
+        0.0
+      ],
+      "teacher_probability": 0.5280433297157288
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.946482219267637e-05,
+        0.5029696822166443,
+        0.4969508647918701,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5029696822166443
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        4.609536335919984e-05,
+        0.3596723675727844,
+        0.33065348863601685,
+        0.0,
+        0.3096280097961426,
+        0.0
+      ],
+      "teacher_probability": 0.3096280097961426
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        4.215287844999693e-06,
+        0.0,
+        0.0,
+        0.022266844287514687,
+        0.027762342244386673,
+        0.9499666094779968
+      ],
+      "teacher_probability": 0.027762342244386673
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.684547664306592e-06,
+        0.0,
+        0.029468830674886703,
+        0.022659460082650185,
+        0.0,
+        0.9478679895401001
+      ],
+      "teacher_probability": 0.9478679895401001
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.5541144013404846,
+        0.4458855986595154,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5541144013404846
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.69088403810747e-05,
+        0.537759006023407,
+        0.0,
+        0.0,
+        0.46217411756515503,
+        0.0
+      ],
+      "teacher_probability": 0.537759006023407
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.637290400452912e-05,
+        0.5019373893737793,
+        0.49798619747161865,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5019373893737793
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        7.347477367147803e-05,
+        0.0,
+        0.5288688540458679,
+        0.0,
+        0.4710577428340912,
+        0.0
+      ],
+      "teacher_probability": 0.4710577428340912
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        8.270911348517984e-05,
+        0.0,
+        0.0,
+        0.4591200053691864,
+        0.5407972931861877,
+        0.0
+      ],
+      "teacher_probability": 0.5407972931861877
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.2514851682208246e-06,
+        0.0,
+        0.028473300859332085,
+        0.022127976641058922,
+        0.0,
+        0.949395477771759
+      ],
+      "teacher_probability": 0.949395477771759
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.5557526350021362,
+        0.44424736499786377,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5557526350021362
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.6365507245063782,
+        0.3634493052959442,
+        0.0
+      ],
+      "teacher_probability": 0.6365507245063782
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.69088403810747e-05,
+        0.537759006023407,
+        0.0,
+        0.0,
+        0.46217411756515503,
+        0.0
+      ],
+      "teacher_probability": 0.537759006023407
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.637290400452912e-05,
+        0.5019373893737793,
+        0.49798619747161865,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5019373893737793
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        7.347477367147803e-05,
+        0.0,
+        0.5288688540458679,
+        0.0,
+        0.4710577428340912,
+        0.0
+      ],
+      "teacher_probability": 0.4710577428340912
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        8.270911348517984e-05,
+        0.0,
+        0.0,
+        0.4591200053691864,
+        0.5407972931861877,
+        0.0
+      ],
+      "teacher_probability": 0.5407972931861877
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.2514851682208246e-06,
+        0.0,
+        0.028473300859332085,
+        0.022127976641058922,
+        0.0,
+        0.949395477771759
+      ],
+      "teacher_probability": 0.949395477771759
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.5557526350021362,
+        0.44424736499786377,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5557526350021362
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.6365507245063782,
+        0.3634493052959442,
+        0.0
+      ],
+      "teacher_probability": 0.6365507245063782
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.40747748548165e-05,
+        0.0,
+        0.5754581093788147,
+        0.0,
+        0.42447778582572937,
+        0.0
+      ],
+      "teacher_probability": 0.5754581093788147
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.245248707477003e-05,
+        0.3636849820613861,
+        0.6362426280975342,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.6362426280975342
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        7.040651689749211e-05,
+        0.5242587924003601,
+        0.0,
+        0.0,
+        0.4756707549095154,
+        0.0
+      ],
+      "teacher_probability": 0.4756707549095154
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        8.061166590778157e-05,
+        0.0,
+        0.0,
+        0.451947420835495,
+        0.5479720234870911,
+        0.0
+      ],
+      "teacher_probability": 0.5479720234870911
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.051996827707626e-06,
+        0.029972050338983536,
+        0.0,
+        0.021428000181913376,
+        0.0,
+        0.9485968351364136
+      ],
+      "teacher_probability": 0.9485968351364136
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9112126231193542,
+        0.0,
+        0.08878733962774277,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9112126231193542
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.7665389180183411,
+        0.23346105217933655,
+        0.0
+      ],
+      "teacher_probability": 0.7665389180183411
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        6.40747748548165e-05,
+        0.0,
+        0.5754581093788147,
+        0.0,
+        0.42447778582572937,
+        0.0
+      ],
+      "teacher_probability": 0.5754581093788147
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        7.245248707477003e-05,
+        0.3636849820613861,
+        0.6362426280975342,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.6362426280975342
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        7.040651689749211e-05,
+        0.5242587924003601,
+        0.0,
+        0.0,
+        0.4756707549095154,
+        0.0
+      ],
+      "teacher_probability": 0.4756707549095154
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        8.061166590778157e-05,
+        0.0,
+        0.0,
+        0.451947420835495,
+        0.5479720234870911,
+        0.0
+      ],
+      "teacher_probability": 0.5479720234870911
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        3.051996827707626e-06,
+        0.029972050338983536,
+        0.0,
+        0.021428000181913376,
+        0.0,
+        0.9485968351364136
+      ],
+      "teacher_probability": 0.9485968351364136
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9112126231193542,
+        0.0,
+        0.08878733962774277,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9112126231193542
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.7665389180183411,
+        0.23346105217933655,
+        0.0
+      ],
+      "teacher_probability": 0.7665389180183411
+    }
+  ],
+  "curriculum_final200": [
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        3.695840793319942e-23,
+        0.0,
+        0.8389961123466492,
+        0.0,
+        0.16100382804870605,
+        0.0
+      ],
+      "teacher_probability": 0.8389961123466492
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        4.9388904946463954e-24,
+        0.9209482073783875,
+        0.07905179262161255,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.07905179262161255
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.488467918257829e-24,
+        0.9538583159446716,
+        0.0378556028008461,
+        0.0,
+        0.008286015130579472,
+        0.0
+      ],
+      "teacher_probability": 0.008286015130579472
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        1.069137267651978e-31,
+        0.0,
+        0.0,
+        4.871741232648219e-09,
+        7.725037276529179e-10,
+        1.0
+      ],
+      "teacher_probability": 7.725037276529179e-10
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        2.8243208976599576e-32,
+        1.5191312741080765e-07,
+        0.0,
+        4.089565575071674e-09,
+        0.0,
+        0.9999998807907104
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9998892545700073,
+        0.0,
+        0.00011075344809796661,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9998892545700073
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        3.695840793319942e-23,
+        0.0,
+        0.8389961123466492,
+        0.0,
+        0.16100382804870605,
+        0.0
+      ],
+      "teacher_probability": 0.8389961123466492
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        4.9388904946463954e-24,
+        0.9209482073783875,
+        0.07905179262161255,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.07905179262161255
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.488467918257829e-24,
+        0.9538583159446716,
+        0.0378556028008461,
+        0.0,
+        0.008286015130579472,
+        0.0
+      ],
+      "teacher_probability": 0.008286015130579472
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        1.069137267651978e-31,
+        0.0,
+        0.0,
+        4.871741232648219e-09,
+        7.725037276529179e-10,
+        1.0
+      ],
+      "teacher_probability": 7.725037276529179e-10
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        2.8243208976599576e-32,
+        1.5191312741080765e-07,
+        0.0,
+        4.089565575071674e-09,
+        0.0,
+        0.9999998807907104
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9998892545700073,
+        0.0,
+        0.00011075344809796661,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9998892545700073
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m0-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        3.4292197701932624e-24,
+        0.0,
+        0.4288051128387451,
+        0.5711948871612549,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.4288051128387451
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        1.1195396623836948e-24,
+        0.9548397660255432,
+        0.04516024887561798,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.04516024887561798
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.1622211295720974e-25,
+        0.9525817036628723,
+        0.017393482849001884,
+        0.030024830251932144,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.030024830251932144
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        1.501634376837168e-32,
+        0.0,
+        0.0,
+        4.353245763866198e-09,
+        2.4616828020462833e-10,
+        1.0
+      ],
+      "teacher_probability": 4.353245763866198e-09
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        9.87383810216837e-33,
+        1.5642119421954703e-07,
+        0.0,
+        0.0,
+        1.9670354234335719e-10,
+        0.9999998807907104
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9999997615814209,
+        0.0,
+        0.0,
+        1.9223094227527326e-07,
+        0.0
+      ],
+      "teacher_probability": 0.9999997615814209
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A0",
+      "tick": 7,
+      "label": 4,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        3.4292197701932624e-24,
+        0.0,
+        0.4288051128387451,
+        0.5711948871612549,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.4288051128387451
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        1.1195396623836948e-24,
+        0.9548397660255432,
+        0.04516024887561798,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.04516024887561798
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.1622211295720974e-25,
+        0.9525817036628723,
+        0.017393482849001884,
+        0.030024830251932144,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.030024830251932144
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        1.501634376837168e-32,
+        0.0,
+        0.0,
+        4.353245763866198e-09,
+        2.4616828020462833e-10,
+        1.0
+      ],
+      "teacher_probability": 4.353245763866198e-09
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        9.87383810216837e-33,
+        1.5642119421954703e-07,
+        0.0,
+        0.0,
+        1.9670354234335719e-10,
+        0.9999998807907104
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9999997615814209,
+        0.0,
+        0.0,
+        1.9223094227527326e-07,
+        0.0
+      ],
+      "teacher_probability": 0.9999997615814209
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot0-m1-A1",
+      "tick": 7,
+      "label": 4,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        5.750382241516388e-24,
+        0.0,
+        0.4185138940811157,
+        0.581486165523529,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.4185138940811157
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        2.2189734296607954e-24,
+        0.9555751085281372,
+        0.04442489147186279,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.04442489147186279
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        2.649814348997456e-25,
+        0.9667810201644897,
+        0.0,
+        0.03321902081370354,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.03321902081370354
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        7.822700512439808e-24,
+        0.0,
+        0.0,
+        0.9267849922180176,
+        0.07321497052907944,
+        0.0
+      ],
+      "teacher_probability": 0.9267849922180176
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        2.392347588757494e-32,
+        1.6162897509275354e-07,
+        0.0,
+        0.0,
+        3.166167050761004e-10,
+        0.9999998807907104
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9999998807907104,
+        0.0,
+        0.0,
+        1.6814641412565834e-07,
+        0.0
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.9980954527854919,
+        0.001904555014334619,
+        0.0
+      ],
+      "teacher_probability": 0.9980954527854919
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        5.750382241516388e-24,
+        0.0,
+        0.4185138940811157,
+        0.581486165523529,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.4185138940811157
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        2.2189734296607954e-24,
+        0.9555751085281372,
+        0.04442489147186279,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.04442489147186279
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        2.649814348997456e-25,
+        0.9667810201644897,
+        0.0,
+        0.03321902081370354,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.03321902081370354
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        7.822700512439808e-24,
+        0.0,
+        0.0,
+        0.9267849922180176,
+        0.07321497052907944,
+        0.0
+      ],
+      "teacher_probability": 0.9267849922180176
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        2.392347588757494e-32,
+        1.6162897509275354e-07,
+        0.0,
+        0.0,
+        3.166167050761004e-10,
+        0.9999998807907104
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9999998807907104,
+        0.0,
+        0.0,
+        1.6814641412565834e-07,
+        0.0
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m0-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.9980954527854919,
+        0.001904555014334619,
+        0.0
+      ],
+      "teacher_probability": 0.9980954527854919
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        3.6691695638866006e-25,
+        0.9416786432266235,
+        0.0,
+        0.05832132324576378,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9416786432266235
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        1.1527648073821802e-24,
+        0.9341793060302734,
+        0.06582070142030716,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9341793060302734
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        2.065505273715479e-24,
+        0.0,
+        0.4856291115283966,
+        0.5143709182739258,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5143709182739258
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        4.476326125651951e-24,
+        0.0,
+        0.0,
+        0.9112412333488464,
+        0.08875872194766998,
+        0.0
+      ],
+      "teacher_probability": 0.9112412333488464
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        1.0497584057389477e-32,
+        0.0,
+        2.5490716204501496e-09,
+        0.0,
+        2.3855761810409604e-10,
+        1.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.9957178235054016,
+        0.0,
+        0.004282193724066019,
+        0.0
+      ],
+      "teacher_probability": 0.9957178235054016
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.9938316345214844,
+        0.006168392952531576,
+        0.0
+      ],
+      "teacher_probability": 0.9938316345214844
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        3.6691695638866006e-25,
+        0.9416786432266235,
+        0.0,
+        0.05832132324576378,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9416786432266235
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        1.1527648073821802e-24,
+        0.9341793060302734,
+        0.06582070142030716,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9341793060302734
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        2.065505273715479e-24,
+        0.0,
+        0.4856291115283966,
+        0.5143709182739258,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5143709182739258
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        4.476326125651951e-24,
+        0.0,
+        0.0,
+        0.9112412333488464,
+        0.08875872194766998,
+        0.0
+      ],
+      "teacher_probability": 0.9112412333488464
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        1.0497584057389477e-32,
+        0.0,
+        2.5490716204501496e-09,
+        0.0,
+        2.3855761810409604e-10,
+        1.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.9957178235054016,
+        0.0,
+        0.004282193724066019,
+        0.0
+      ],
+      "teacher_probability": 0.9957178235054016
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot1-m1-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.9938316345214844,
+        0.006168392952531576,
+        0.0
+      ],
+      "teacher_probability": 0.9938316345214844
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        4.1009727949200177e-25,
+        0.9404001235961914,
+        0.0,
+        0.05959991365671158,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9404001235961914
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        1.3485825665938341e-24,
+        0.9318019151687622,
+        0.06819815188646317,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9318019151687622
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.8897860633432393e-25,
+        0.9126366376876831,
+        0.04202175885438919,
+        0.04534166678786278,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.04534166678786278
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        1.3468987657138517e-32,
+        0.0,
+        0.0,
+        3.0696341024594176e-09,
+        2.589478909076348e-10,
+        1.0
+      ],
+      "teacher_probability": 3.0696341024594176e-09
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        8.842347686793567e-33,
+        0.0,
+        2.545534449893694e-09,
+        0.0,
+        2.0980561732386604e-10,
+        1.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.9961054921150208,
+        0.0,
+        0.003894426394253969,
+        0.0
+      ],
+      "teacher_probability": 0.9961054921150208
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A0",
+      "tick": 7,
+      "label": 4,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        4.1009727949200177e-25,
+        0.9404001235961914,
+        0.0,
+        0.05959991365671158,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9404001235961914
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        1.3485825665938341e-24,
+        0.9318019151687622,
+        0.06819815188646317,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9318019151687622
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 2,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.8897860633432393e-25,
+        0.9126366376876831,
+        0.04202175885438919,
+        0.04534166678786278,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.04534166678786278
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 3,
+      "label": 3,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        1.3468987657138517e-32,
+        0.0,
+        0.0,
+        3.0696341024594176e-09,
+        2.589478909076348e-10,
+        1.0
+      ],
+      "teacher_probability": 3.0696341024594176e-09
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        8.842347686793567e-33,
+        0.0,
+        2.545534449893694e-09,
+        0.0,
+        2.0980561732386604e-10,
+        1.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.9961054921150208,
+        0.0,
+        0.003894426394253969,
+        0.0
+      ],
+      "teacher_probability": 0.9961054921150208
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m0-A1",
+      "tick": 7,
+      "label": 4,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        1.8873552377676073e-24,
+        0.9864810705184937,
+        0.0,
+        0.0,
+        0.013518869876861572,
+        0.0
+      ],
+      "teacher_probability": 0.9864810705184937
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        3.2405812368647986e-24,
+        0.9198129773139954,
+        0.08018697053194046,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9198129773139954
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.498920128036781e-24,
+        0.9199250340461731,
+        0.06824814528226852,
+        0.0,
+        0.011826791800558567,
+        0.0
+      ],
+      "teacher_probability": 0.011826791800558567
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        5.13384873805668e-32,
+        0.0,
+        0.0,
+        3.353050503918098e-09,
+        5.857281326626662e-10,
+        1.0
+      ],
+      "teacher_probability": 5.857281326626662e-10
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        1.864371068476199e-32,
+        0.0,
+        3.087667233003799e-09,
+        2.869252613280082e-09,
+        0.0,
+        1.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.5093575716018677,
+        0.4906424582004547,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5093575716018677
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        1.8873552377676073e-24,
+        0.9864810705184937,
+        0.0,
+        0.0,
+        0.013518869876861572,
+        0.0
+      ],
+      "teacher_probability": 0.9864810705184937
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        3.2405812368647986e-24,
+        0.9198129773139954,
+        0.08018697053194046,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9198129773139954
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.498920128036781e-24,
+        0.9199250340461731,
+        0.06824814528226852,
+        0.0,
+        0.011826791800558567,
+        0.0
+      ],
+      "teacher_probability": 0.011826791800558567
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        5.13384873805668e-32,
+        0.0,
+        0.0,
+        3.353050503918098e-09,
+        5.857281326626662e-10,
+        1.0
+      ],
+      "teacher_probability": 5.857281326626662e-10
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        1.864371068476199e-32,
+        0.0,
+        3.087667233003799e-09,
+        2.869252613280082e-09,
+        0.0,
+        1.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.5093575716018677,
+        0.4906424582004547,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5093575716018677
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot2-m1-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        9.73109624827147e-25,
+        0.989932656288147,
+        0.0,
+        0.0,
+        0.010067375376820564,
+        0.0
+      ],
+      "teacher_probability": 0.989932656288147
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        2.080042599692118e-24,
+        0.9304521083831787,
+        0.06954788416624069,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9304521083831787
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.3979538207775438e-23,
+        0.0,
+        0.8676056861877441,
+        0.0,
+        0.13239429891109467,
+        0.0
+      ],
+      "teacher_probability": 0.13239429891109467
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        1.031076938522869e-23,
+        0.0,
+        0.0,
+        0.8679857850074768,
+        0.1320142149925232,
+        0.0
+      ],
+      "teacher_probability": 0.1320142149925232
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        1.6717980574414393e-32,
+        0.0,
+        2.8614590696918185e-09,
+        2.9211761898295663e-09,
+        0.0,
+        1.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.5091248750686646,
+        0.49087512493133545,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5091248750686646
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.9925726652145386,
+        0.007427268195897341,
+        0.0
+      ],
+      "teacher_probability": 0.9925726652145386
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 0,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        9.73109624827147e-25,
+        0.989932656288147,
+        0.0,
+        0.0,
+        0.010067375376820564,
+        0.0
+      ],
+      "teacher_probability": 0.989932656288147
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 1,
+      "label": 1,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        2.080042599692118e-24,
+        0.9304521083831787,
+        0.06954788416624069,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9304521083831787
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.3979538207775438e-23,
+        0.0,
+        0.8676056861877441,
+        0.0,
+        0.13239429891109467,
+        0.0
+      ],
+      "teacher_probability": 0.13239429891109467
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        1.031076938522869e-23,
+        0.0,
+        0.0,
+        0.8679857850074768,
+        0.1320142149925232,
+        0.0
+      ],
+      "teacher_probability": 0.1320142149925232
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        1.6717980574414393e-32,
+        0.0,
+        2.8614590696918185e-09,
+        2.9211761898295663e-09,
+        0.0,
+        1.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 5,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.5091248750686646,
+        0.49087512493133545,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.5091248750686646
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 6,
+      "label": 2,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m0-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.9925726652145386,
+        0.007427268195897341,
+        0.0
+      ],
+      "teacher_probability": 0.9925726652145386
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        4.8864237502705986e-23,
+        0.0,
+        0.8346432447433472,
+        0.0,
+        0.16535671055316925,
+        0.0
+      ],
+      "teacher_probability": 0.8346432447433472
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        6.555927160452371e-24,
+        0.925582230091095,
+        0.07441781461238861,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.07441781461238861
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.3949688697198006e-24,
+        0.9928374886512756,
+        0.0,
+        0.0,
+        0.007162479683756828,
+        0.0
+      ],
+      "teacher_probability": 0.007162479683756828
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        2.223462521528046e-23,
+        0.0,
+        0.0,
+        0.8657195568084717,
+        0.13428038358688354,
+        0.0
+      ],
+      "teacher_probability": 0.13428038358688354
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        4.808401665961609e-32,
+        1.680582357721505e-07,
+        0.0,
+        4.941640430189409e-09,
+        0.0,
+        0.9999998807907104
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9999210834503174,
+        0.0,
+        7.892784924479201e-05,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9999210834503174
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A0",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.9959521293640137,
+        0.0040478273294866085,
+        0.0
+      ],
+      "teacher_probability": 0.9959521293640137
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 0,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 4,
+      "probabilities": [
+        4.8864237502705986e-23,
+        0.0,
+        0.8346432447433472,
+        0.0,
+        0.16535671055316925,
+        0.0
+      ],
+      "teacher_probability": 0.8346432447433472
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 1,
+      "label": 2,
+      "kind": "navigation",
+      "firing_distance": 3,
+      "probabilities": [
+        6.555927160452371e-24,
+        0.925582230091095,
+        0.07441781461238861,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.07441781461238861
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 2,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 2,
+      "probabilities": [
+        1.3949688697198006e-24,
+        0.9928374886512756,
+        0.0,
+        0.0,
+        0.007162479683756828,
+        0.0
+      ],
+      "teacher_probability": 0.007162479683756828
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 3,
+      "label": 4,
+      "kind": "navigation",
+      "firing_distance": 1,
+      "probabilities": [
+        2.223462521528046e-23,
+        0.0,
+        0.0,
+        0.8657195568084717,
+        0.13428038358688354,
+        0.0
+      ],
+      "teacher_probability": 0.13428038358688354
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 4,
+      "label": 5,
+      "kind": "combat",
+      "firing_distance": 0,
+      "probabilities": [
+        4.808401665961609e-32,
+        1.680582357721505e-07,
+        0.0,
+        4.941640430189409e-09,
+        0.0,
+        0.9999998807907104
+      ],
+      "teacher_probability": 0.9999998807907104
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 5,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 0,
+      "probabilities": [
+        0.0,
+        0.9999210834503174,
+        0.0,
+        7.892784924479201e-05,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 0.9999210834503174
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 6,
+      "label": 1,
+      "kind": "escape",
+      "firing_distance": 1,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "teacher_probability": 1.0
+    },
+    {
+      "scenario_id": "long_retreat-approach-a1-r2-static_kill-rot3-m1-A1",
+      "tick": 7,
+      "label": 3,
+      "kind": "escape",
+      "firing_distance": 2,
+      "probabilities": [
+        0.0,
+        0.0,
+        0.0,
+        0.9959521293640137,
+        0.0040478273294866085,
+        0.0
+      ],
+      "teacher_probability": 0.9959521293640137
+    }
+  ]
+}

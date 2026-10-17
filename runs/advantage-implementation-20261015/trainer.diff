@@ -1,0 +1,136 @@
+--- before/train_actor_critic.py
++++ train_actor_critic.py
+@@ -88,6 +88,22 @@
+ 
+ 
+ # --------------------------------- utilities ---------------------------------
++
++def normalize_policy_advantages(advantages: torch.Tensor):
++    """Normalize one learner trajectory; retain its signal if variance is absent."""
++    raw = advantages.detach()
++    if not torch.isfinite(raw).all().item():
++        raise FloatingPointError("Non-finite policy advantage")
++    if raw.numel() < 2 or raw.std(unbiased=False).item() < 1e-8:
++        return raw, True
++    return (raw - raw.mean()) / raw.std(unbiased=False), False
++
++
++def _tensor_stats(values):
++    values = values.detach()
++    return {"mean": values.mean().item(), "std": values.std(unbiased=False).item(),
++            "min": values.min().item(), "max": values.max().item()}
++
+ 
+ def obs_to_tensor(obs: np.ndarray, device) -> torch.Tensor:
+     """Single obs (C, H, W) -> tensor (1, C, H, W)."""
+@@ -290,6 +306,8 @@
+     validation_seed: int = 6000,
+     on_validation=None,
+     attack_teacher: str = "local",
++    normalize_advantage: bool = False,
++    advantage_diagnostics: bool = False,
+ ):
+     """
+     Unified training loop for phases C, D, E.
+@@ -315,6 +333,7 @@
+     if seed is not None:
+         np.random.seed(seed)
+         torch.manual_seed(seed)
++    advantage_diagnostics = advantage_diagnostics or normalize_advantage
+ 
+     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
+                           max_steps=max_steps, seed=seed)
+@@ -477,6 +496,7 @@
+         values_buf = []
+         rewards_buf = []
+         entropies_buf = []
++        mask_sizes_buf = []
+         aux_losses_buf = []
+         combat_losses_buf = []
+         attack_losses_buf = []
+@@ -513,6 +533,8 @@
+                 action_t = dist.sample()
+                 log_prob = dist.log_prob(action_t)
+                 entropy = dist.entropy()
++                if advantage_diagnostics:
++                    mask_sizes_buf.append(sum(mask))
+                 actions[learning_aid] = action_t.item()
+                 # Auxiliary escape supervision when in danger
+                 r_l, c_l = env.agents[learning_aid].row, env.agents[learning_aid].col
+@@ -633,6 +655,7 @@
+         # ── Compute loss (Monte-Carlo returns + advantage) ──
+         escape_loss, combat_loss, navigation_loss = _supervision_losses(
+             aux_losses_buf, combat_losses_buf, attack_losses_buf)
++        advantage_metrics = {}
+         if len(rewards_buf) > 0:
+             values_t = torch.stack(values_buf)
+             log_probs_t = torch.stack(log_probs_buf)
+@@ -646,6 +669,10 @@
+             returns_t = torch.tensor(returns, dtype=torch.float32, device=device)
+ 
+             advantages = returns_t - values_t.detach()
++            raw_advantages = advantages
++            normalization_skipped = False
++            if normalize_advantage:
++                advantages, normalization_skipped = normalize_policy_advantages(advantages)
+ 
+             policy_loss = -(log_probs_t * advantages).mean()
+             value_loss = F.mse_loss(values_t, returns_t)
+@@ -655,10 +682,28 @@
+             ent_coef_now = entropy_coef * max(0.2, 1.0 - 0.8 * ep / episodes)
+             loss = policy_loss + value_coef * value_loss - ent_coef_now * entropy_bonus
+             loss = loss + 0.5 * escape_loss + 0.5 * combat_loss + 0.2 * navigation_loss
++            if advantage_diagnostics and not torch.isfinite(loss).item():
++                raise FloatingPointError("Non-finite training loss")
+ 
+             optimizer.zero_grad()
+             loss.backward()
+-            torch.nn.utils.clip_grad_norm_(net.parameters(), max_norm=5.0)
++            grad_norm = torch.nn.utils.clip_grad_norm_(net.parameters(), max_norm=5.0)
++            if advantage_diagnostics:
++                if not torch.isfinite(grad_norm).item():
++                    raise FloatingPointError("Non-finite training gradient")
++                return_var = returns_t.var(unbiased=False).item()
++                advantage_metrics = {
++                    "normalize_enabled": normalize_advantage, "normalization_skipped": normalization_skipped,
++                    "samples": len(rewards_buf), "raw": _tensor_stats(raw_advantages),
++                    "policy": _tensor_stats(advantages), "returns": _tensor_stats(returns_t),
++                    "values": _tensor_stats(values_t), "grad_norm_before_clip": grad_norm.item(),
++                    "gradient_clipped": grad_norm.item() > 5.0,
++                    "explained_variance": 1 - raw_advantages.var(unbiased=False).item() / return_var
++                        if return_var >= 1e-8 else None,
++                    "entropy_mean": entropy_bonus.item(),
++                    "entropy_by_mask_size": {str(size): {"samples": mask_sizes_buf.count(size),
++                        "mean": entropies_t.detach()[torch.tensor([n == size for n in mask_sizes_buf],
++                            device=device)].mean().item()} for size in sorted(set(mask_sizes_buf))}}
+             optimizer.step()
+         else:
+             loss = torch.zeros(())
+@@ -716,7 +761,8 @@
+                         "validation": last_validation,
+                         "attack_teacher": attack_teacher,
+                         "teacher": {**teacher_stats, "rejected": dict(teacher_rejected)},
+-                        "move_guidance": {**move_guidance, "rejected": dict(move_rejected)}})
++                        "move_guidance": {**move_guidance, "rejected": dict(move_rejected)},
++                        **({"advantage": advantage_metrics} if advantage_diagnostics else {})})
+ 
+         # ── Print progress ──
+         if ep % log_every == 0:
+@@ -1111,6 +1157,9 @@
+     parser.add_argument("--validation_seed", type=int, default=6000)
+     parser.add_argument("--attack_teacher", choices=["local", "two_bomb", "local_combat_move"], default="local",
+                         help="Attack labels only; the CNN still samples every action through its mask")
++    parser.add_argument("--normalize_advantage", action="store_true",
++                        help="Normalize policy advantage per learner trajectory; keep MC critic targets")
++    parser.add_argument("--advantage_diagnostics", action="store_true")
+     args = parser.parse_args()
+ 
+     os.makedirs(args.checkpoint_dir, exist_ok=True)
+@@ -1138,5 +1187,7 @@
+             validation_episodes=args.validation_episodes,
+             validation_seed=args.validation_seed,
+             attack_teacher=args.attack_teacher,
++            normalize_advantage=args.normalize_advantage,
++            advantage_diagnostics=args.advantage_diagnostics,
+             on_episode=write_metrics,
+         )

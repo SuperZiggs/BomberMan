@@ -1,0 +1,14 @@
+{
+  "original": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+    "sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+  },
+  "control": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\combat-move-smoke-cpu-implementation\\control\\best_phaseC.pt",
+    "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+  },
+  "combat_move": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\combat-move-smoke-cpu-implementation\\combat_move\\best_phaseC.pt",
+    "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+  }
+}

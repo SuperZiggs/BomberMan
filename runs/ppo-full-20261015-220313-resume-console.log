@@ -1,0 +1,405 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[C] ep    40 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +5.081 | bombs: 35.0 | walls: 7.6 | combat bombs: 236/242 | loss: 13.3059 | lr: 9.1e-05 | pool: 0 | best validation active: 29%
+[C] ep    50 | WR:  60.0% | active WR:  60.0% | kills: 0.60 | reward: +9.459 | bombs: 29.1 | walls: 8.3 | combat bombs: 174/183 | loss: 41.3872 | lr: 8.6e-05 | pool: 0 | best validation active: 29%
+[C] ep    60 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.120 | bombs: 43.8 | walls: 8.5 | combat bombs: 278/282 | loss: 0.4119 | lr: 8.0e-05 | pool: 0 | best validation active: 29%
+[C] ep    70 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.173 | bombs: 40.0 | walls: 8.9 | combat bombs: 257/269 | loss: 0.3579 | lr: 7.4e-05 | pool: 0 | best validation active: 29%
+[C] ep    80 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +2.272 | bombs: 44.6 | walls: 8.2 | combat bombs: 317/319 | loss: 56.3707 | lr: 6.7e-05 | pool: 0 | best validation active: 29%
+[C] ep    90 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.123 | bombs: 35.4 | walls: 8.2 | combat bombs: 222/228 | loss: 0.3752 | lr: 6.0e-05 | pool: 0 | best validation active: 29%
+[Validation] ep 100 | 100 games, all corners, seed 21000
+[ppo validation] ep100: 0/100
+[ppo validation] ep100: 25/100
+[ppo validation] ep100: 50/100
+[ppo validation] ep100: 75/100
+[ppo validation] ep100: 100/100
+[Validation] ep 100 | ActiveWR 30.0% | Suicide 0.0% | Draw 63.0% | best ep 100
+[ppo skill] ep100: approach 93.8%
+[C] ep   100 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +2.477 | bombs: 48.3 | walls: 10.0 | combat bombs: 320/325 | loss: 0.2954 | lr: 5.3e-05 | pool: 0 | best validation active: 30%
+[C] ep   110 | WR:  40.0% | active WR:  40.0% | kills: 0.40 | reward: +6.412 | bombs: 36.2 | walls: 7.5 | combat bombs: 247/256 | loss: 0.3682 | lr: 4.5e-05 | pool: 0 | best validation active: 30%
+[C] ep   120 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.604 | bombs: 32.9 | walls: 8.5 | combat bombs: 214/219 | loss: 0.3819 | lr: 3.8e-05 | pool: 0 | best validation active: 30%
+[C] ep   130 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.930 | bombs: 43.5 | walls: 9.9 | combat bombs: 299/302 | loss: 12.9409 | lr: 3.1e-05 | pool: 0 | best validation active: 30%
+[C] ep   140 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.976 | bombs: 53.5 | walls: 10.1 | combat bombs: 371/380 | loss: 0.1780 | lr: 2.5e-05 | pool: 0 | best validation active: 30%
+[C] ep   150 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +5.211 | bombs: 42.1 | walls: 10.3 | combat bombs: 289/298 | loss: 0.3615 | lr: 1.9e-05 | pool: 0 | best validation active: 30%
+[C] ep   160 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.450 | bombs: 29.8 | walls: 7.5 | combat bombs: 196/200 | loss: 48.3595 | lr: 1.4e-05 | pool: 0 | best validation active: 30%
+[C] ep   170 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.533 | bombs: 33.3 | walls: 7.7 | combat bombs: 213/219 | loss: 0.4885 | lr: 1.0e-05 | pool: 0 | best validation active: 30%
+[C] ep   180 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +2.303 | bombs: 50.0 | walls: 8.6 | combat bombs: 339/355 | loss: 0.5085 | lr: 7.3e-06 | pool: 0 | best validation active: 30%
+[C] ep   190 | WR:  30.0% | active WR:  20.0% | kills: 0.20 | reward: +4.079 | bombs: 47.9 | walls: 10.4 | combat bombs: 329/340 | loss: 0.2664 | lr: 5.6e-06 | pool: 0 | best validation active: 30%
+[Validation] ep 200 | 100 games, all corners, seed 21000
+[ppo validation] ep200: 0/100
+[ppo validation] ep200: 25/100
+[ppo validation] ep200: 50/100
+[ppo validation] ep200: 75/100
+[ppo validation] ep200: 100/100
+[Validation] ep 200 | ActiveWR 31.0% | Suicide 0.0% | Draw 59.0% | best ep 200
+[ppo skill] ep200: approach 87.5%
+[C] ep   200 | WR:  50.0% | active WR:  40.0% | kills: 0.40 | reward: +6.362 | bombs: 29.8 | walls: 7.1 | combat bombs: 184/195 | loss: 0.4721 | lr: 5.0e-06 | pool: 0 | best validation active: 31%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\ppo-full-20261015-220313\ppo\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\ppo-full-20261015-220313\ppo\best_phaseC.pt (best episode: 200)
+[Evaluation] original: 0/400
+[Evaluation] original: 25/400
+[Evaluation] original: 50/400
+[Evaluation] original: 75/400
+[Evaluation] original: 100/400
+[Evaluation] original: 125/400
+[Evaluation] original: 150/400
+[Evaluation] original: 175/400
+[Evaluation] original: 200/400
+[Evaluation] original: 225/400
+[Evaluation] original: 250/400
+[Evaluation] original: 275/400
+[Evaluation] original: 300/400
+[Evaluation] original: 325/400
+[Evaluation] original: 350/400
+[Evaluation] original: 375/400
+[Evaluation] original: 400/400
+[Evaluation] control: 0/400
+[Evaluation] control: 25/400
+[Evaluation] control: 50/400
+[Evaluation] control: 75/400
+[Evaluation] control: 100/400
+[Evaluation] control: 125/400
+[Evaluation] control: 150/400
+[Evaluation] control: 175/400
+[Evaluation] control: 200/400
+[Evaluation] control: 225/400
+[Evaluation] control: 250/400
+[Evaluation] control: 275/400
+[Evaluation] control: 300/400
+[Evaluation] control: 325/400
+[Evaluation] control: 350/400
+[Evaluation] control: 375/400
+[Evaluation] control: 400/400
+[Evaluation] ppo: 0/400
+[Evaluation] ppo: 25/400
+[Evaluation] ppo: 50/400
+[Evaluation] ppo: 75/400
+[Evaluation] ppo: 100/400
+[Evaluation] ppo: 125/400
+[Evaluation] ppo: 150/400
+[Evaluation] ppo: 175/400
+[Evaluation] ppo: 200/400
+[Evaluation] ppo: 225/400
+[Evaluation] ppo: 250/400
+[Evaluation] ppo: 275/400
+[Evaluation] ppo: 300/400
+[Evaluation] ppo: 325/400
+[Evaluation] ppo: 350/400
+[Evaluation] ppo: 375/400
+[Evaluation] ppo: 400/400
+{
+  "status": "complete",
+  "full_protocol": true,
+  "reason": null,
+  "arms": {
+    "control": {
+      "completed_episodes": 200,
+      "expected_episodes": 200,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 800,
+      "learner_steps": 76920,
+      "guidance": {
+        "labels": 32871,
+        "agreements": 18766,
+        "bomb_instead_of_move": 2129,
+        "target_probability_sum": 18822.282418989023,
+        "entropy_sum": 18106.709702756263,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 200,
+      "elapsed_seconds": 1742.7989364000023,
+      "peak_cuda_bytes": 365566976,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\control\\best_phaseC.pt",
+          "sha256": "fed6cf1d4c9f27f7ab36ae5a908afd80c8304d2c769a2331801374800011a309"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\control\\final_phaseC.pt",
+          "sha256": "644012562dfa05a21b4e981054ef5ce08df6644b5c06cafed9487a05a4c07ee1"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\control\\training_state.pt",
+        "sha256": "0230e897f44240644ea82ddda15430613f6e573c2c1fd209b75b17217512a995",
+        "episode": 200
+      }
+    },
+    "ppo": {
+      "completed_episodes": 200,
+      "expected_episodes": 200,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 800,
+      "learner_steps": 75999,
+      "guidance": {
+        "labels": 33219,
+        "agreements": 18901,
+        "bomb_instead_of_move": 2054,
+        "target_probability_sum": 19047.26617083216,
+        "entropy_sum": 18251.65163578452,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 200,
+      "elapsed_seconds": 2364.8879175999973,
+      "peak_cuda_bytes": 364521984,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\ppo\\best_phaseC.pt",
+          "sha256": "a4f689f2b9361457f395058f55bf11c71d2cd560d0dcf925da26cd37bee477d2"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\ppo\\final_phaseC.pt",
+          "sha256": "26496ed3b5217e062aaa298622c4577cb12a668e233cb723522f7fefecc2fe14"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\ppo\\training_state.pt",
+        "sha256": "2a87e46151f806392d0c11a540e5e97a181c936c57657474cc815e498430de3b",
+        "episode": 200
+      }
+    }
+  },
+  "evaluation_complete": true,
+  "hashes_unchanged": true,
+  "selected_checkpoints_unchanged": true,
+  "comparisons": {
+    "original": {
+      "difference_pp": -5.5,
+      "ci95_pp": [
+        -11.25,
+        0.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "control": {
+      "difference_pp": -5.0,
+      "ci95_pp": [
+        -11.0,
+        1.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": 6413.399957,
+  "resumed": true,
+  "models": {
+    "original": {
+      "seed": 37000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 43.75,
+      "active_win_rate": 37.5,
+      "suicide_rate": 0.75,
+      "draw_rate": 53.5,
+      "avg_kills": 0.375,
+      "avg_bombs": 38.77,
+      "avg_items": 1.7225,
+      "avg_steps": 367.3675,
+      "contact": {
+        "reached_close_rate": 99.75,
+        "avg_first_close_step_conditional": 19.75689223057644,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 8.905,
+      "avg_walls_rewarded": 8.8975,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 42.5,
+          "active_win_rate": 36.5,
+          "suicide_rate": 1.5,
+          "draw_rate": 52.5,
+          "avg_kills": 0.365,
+          "avg_bombs": 38.78,
+          "avg_items": 1.77,
+          "avg_steps": 366.485,
+          "contact": {
+            "reached_close_rate": 99.5,
+            "avg_first_close_step_conditional": 18.743718592964825,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.905,
+          "avg_walls_rewarded": 8.89,
+          "passive_win_rate": 6.0
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 45.0,
+          "active_win_rate": 38.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 54.50000000000001,
+          "avg_kills": 0.385,
+          "avg_bombs": 38.76,
+          "avg_items": 1.675,
+          "avg_steps": 368.25,
+          "contact": {
+            "reached_close_rate": 100.0,
+            "avg_first_close_step_conditional": 20.765,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.905,
+          "avg_walls_rewarded": 8.905,
+          "passive_win_rate": 6.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "passive_win_rate": 6.25
+    },
+    "control": {
+      "seed": 37000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 43.25,
+      "active_win_rate": 37.0,
+      "suicide_rate": 1.0,
+      "draw_rate": 54.25,
+      "avg_kills": 0.37,
+      "avg_bombs": 39.18,
+      "avg_items": 1.6975,
+      "avg_steps": 362.27,
+      "contact": {
+        "reached_close_rate": 99.75,
+        "avg_first_close_step_conditional": 19.275689223057643,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 8.95,
+      "avg_walls_rewarded": 8.94,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 42.0,
+          "active_win_rate": 34.0,
+          "suicide_rate": 2.0,
+          "draw_rate": 53.5,
+          "avg_kills": 0.34,
+          "avg_bombs": 38.925,
+          "avg_items": 1.67,
+          "avg_steps": 358.35,
+          "contact": {
+            "reached_close_rate": 99.5,
+            "avg_first_close_step_conditional": 18.77889447236181,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.91,
+          "avg_walls_rewarded": 8.89,
+          "passive_win_rate": 8.0
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 44.5,
+          "active_win_rate": 40.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 55.00000000000001,
+          "avg_kills": 0.4,
+          "avg_bombs": 39.435,
+          "avg_items": 1.725,
+          "avg_steps": 366.19,
+          "contact": {
+            "reached_close_rate": 100.0,
+            "avg_first_close_step_conditional": 19.77,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.99,
+          "avg_walls_rewarded": 8.99,
+          "passive_win_rate": 4.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\control\\best_phaseC.pt",
+      "checkpoint_sha256": "fed6cf1d4c9f27f7ab36ae5a908afd80c8304d2c769a2331801374800011a309",
+      "passive_win_rate": 6.25
+    },
+    "ppo": {
+      "seed": 37000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 38.75,
+      "active_win_rate": 32.0,
+      "suicide_rate": 1.0,
+      "draw_rate": 58.75,
+      "avg_kills": 0.32,
+      "avg_bombs": 41.225,
+      "avg_items": 1.8,
+      "avg_steps": 379.925,
+      "contact": {
+        "reached_close_rate": 99.75,
+        "avg_first_close_step_conditional": 19.61152882205514,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 8.95,
+      "avg_walls_rewarded": 8.94,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 36.0,
+          "active_win_rate": 28.499999999999996,
+          "suicide_rate": 2.0,
+          "draw_rate": 59.0,
+          "avg_kills": 0.285,
+          "avg_bombs": 41.61,
+          "avg_items": 1.83,
+          "avg_steps": 376.045,
+          "contact": {
+            "reached_close_rate": 99.5,
+            "avg_first_close_step_conditional": 18.63819095477387,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.915,
+          "avg_walls_rewarded": 8.895,
+          "passive_win_rate": 7.5000000000000036
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 41.5,
+          "active_win_rate": 35.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 58.5,
+          "avg_kills": 0.355,
+          "avg_bombs": 40.84,
+          "avg_items": 1.77,
+          "avg_steps": 383.805,
+          "contact": {
+            "reached_close_rate": 100.0,
+            "avg_first_close_step_conditional": 20.58,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.985,
+          "avg_walls_rewarded": 8.985,
+          "passive_win_rate": 6.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-full-20261015-220313\\ppo\\best_phaseC.pt",
+      "checkpoint_sha256": "a4f689f2b9361457f395058f55bf11c71d2cd560d0dcf925da26cd37bee477d2",
+      "passive_win_rate": 6.75
+    }
+  }
+}

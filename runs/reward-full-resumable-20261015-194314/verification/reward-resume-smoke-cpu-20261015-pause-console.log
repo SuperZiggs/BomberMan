@@ -1,0 +1,143 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 2 games, all corners, seed 21000
+[control validation] ep0: 0/2
+[Validation] ep 0 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[control skill] ep0: approach 87.5%
+[C] ep     2 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 0/0 | loss: 0.1469 | lr: 9.8e-05 | pool: 0 | best validation active: 0%
+[C] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.155 | bombs: 3.0 | walls: 1.0 | combat bombs: 2/2 | loss: 0.0937 | lr: 9.1e-05 | pool: 0 | best validation active: 0%
+[C] ep     6 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.280 | bombs: 3.0 | walls: 2.0 | combat bombs: 0/0 | loss: 0.0633 | lr: 8.0e-05 | pool: 0 | best validation active: 0%
+[C] ep     8 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 2.5 | walls: 2.0 | combat bombs: 1/1 | loss: 0.0435 | lr: 6.7e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 10 | 2 games, all corners, seed 21000
+[control validation] ep10: 0/2
+[Validation] ep 10 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[control skill] ep10: approach 93.8%
+[C] ep    10 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.280 | bombs: 3.0 | walls: 2.0 | combat bombs: 2/2 | loss: 0.1000 | lr: 5.3e-05 | pool: 0 | best validation active: 0%
+[C] ep    12 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.280 | bombs: 3.0 | walls: 2.0 | combat bombs: 2/2 | loss: 0.0672 | lr: 3.8e-05 | pool: 0 | best validation active: 0%
+[C] ep    14 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/1 | loss: 0.0458 | lr: 2.5e-05 | pool: 0 | best validation active: 0%
+[C] ep    16 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.280 | bombs: 3.0 | walls: 2.0 | combat bombs: 0/0 | loss: 0.0518 | lr: 1.4e-05 | pool: 0 | best validation active: 0%
+[C] ep    18 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.280 | bombs: 3.0 | walls: 2.0 | combat bombs: 0/0 | loss: 0.0563 | lr: 7.3e-06 | pool: 0 | best validation active: 0%
+[Validation] ep 20 | 2 games, all corners, seed 21000
+[control validation] ep20: 0/2
+[Validation] ep 20 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[control skill] ep20: approach 93.8%
+[C] ep    20 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 2/2 | loss: 0.2025 | lr: 5.0e-06 | pool: 0 | best validation active: 0%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\reward-resume-smoke-cpu-20261015\control\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\reward-resume-smoke-cpu-20261015\control\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 2 games, all corners, seed 21000
+[half_wall validation] ep0: 0/2
+[Validation] ep 0 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[half_wall skill] ep0: approach 87.5%
+[C] ep     2 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.155 | bombs: 3.0 | walls: 2.0 | combat bombs: 0/0 | loss: 0.1910 | lr: 9.8e-05 | pool: 0 | best validation active: 0%
+[C] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.080 | bombs: 3.0 | walls: 1.0 | combat bombs: 2/2 | loss: 0.1002 | lr: 9.1e-05 | pool: 0 | best validation active: 0%
+[C] ep     6 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.130 | bombs: 3.0 | walls: 2.0 | combat bombs: 0/0 | loss: 0.0925 | lr: 8.0e-05 | pool: 0 | best validation active: 0%
+[C] ep     8 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.155 | bombs: 2.5 | walls: 2.0 | combat bombs: 1/1 | loss: 0.0627 | lr: 6.7e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 10 | 2 games, all corners, seed 21000
+[half_wall validation] ep10: 0/2
+[Validation] ep 10 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[half_wall skill] ep10: approach 87.5%
+[C] ep    10 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.130 | bombs: 3.0 | walls: 2.0 | combat bombs: 2/2 | loss: 0.1176 | lr: 5.3e-05 | pool: 0 | best validation active: 0%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\reward-resume-smoke-cpu-20261015\half_wall\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\reward-resume-smoke-cpu-20261015\half_wall\best_phaseC.pt (best episode: 0)
+{
+  "status": "incomplete",
+  "full_protocol": false,
+  "reason": "training_validation_or_skill_incomplete",
+  "arms": {
+    "control": {
+      "completed_episodes": 20,
+      "expected_episodes": 20,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 400,
+      "guidance": {
+        "labels": 111,
+        "agreements": 81,
+        "bomb_instead_of_move": 3,
+        "target_probability_sum": 77.34162616636604,
+        "entropy_sum": 49.2942761615559,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 14.964319700000488,
+      "peak_cuda_bytes": null,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-resume-smoke-cpu-20261015\\control\\best_phaseC.pt",
+          "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-resume-smoke-cpu-20261015\\control\\final_phaseC.pt",
+          "sha256": "b69622865204b234e8907afd7fdfcad9889e480eb51e0f1c8e725d0f403a0f92"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-resume-smoke-cpu-20261015\\control\\training_state.pt",
+        "sha256": "3aed9498668a663e3f79f9826aa415a30d421bc047f7f74b1ed11fece58d5234",
+        "episode": 20
+      }
+    },
+    "half_wall": {
+      "completed_episodes": 10,
+      "expected_episodes": 20,
+      "training_complete": false,
+      "validation_complete": false,
+      "skill_probes_complete": false,
+      "optimizer_instances": 1,
+      "optimizer_steps": 10,
+      "learner_steps": 200,
+      "guidance": {
+        "labels": 56,
+        "agreements": 41,
+        "bomb_instead_of_move": 1,
+        "target_probability_sum": 39.81234653573483,
+        "entropy_sum": 24.955622316367226,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 5.82191690000036,
+      "peak_cuda_bytes": null,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-resume-smoke-cpu-20261015\\half_wall\\best_phaseC.pt",
+          "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-resume-smoke-cpu-20261015\\half_wall\\final_phaseC.pt",
+          "sha256": "2e4def85d3e5c69f5c14fad821bd44ced1c513d9ca93744e9fefd34d91513810"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-resume-smoke-cpu-20261015\\half_wall\\training_state.pt",
+        "sha256": "5d7f1627a342cc44de895f17a311eac2a8ee7b5fe3abdfe41031cb638a41843c",
+        "episode": 10
+      }
+    }
+  },
+  "evaluation_complete": false,
+  "hashes_unchanged": true,
+  "selected_checkpoints_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": 25.93414699999994,
+  "resumed": false,
+  "models": {}
+}

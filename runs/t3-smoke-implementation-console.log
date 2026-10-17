@@ -1,0 +1,12 @@
+Output: D:\fpt\subject\BomberMan\runs\t3-smoke-implementation
+Cases: 7; games: 42; test_run=False
+[Certificates/teacher 7/7]
+[6/42] fork-escape-a1-r2-single_trap-rot0-m0-A0
+[12/42] fork-approach-a1-r2-single_trap-rot0-m0-A0
+[18/42] fork-evader-a1-r2-pressure-rot0-m0-A0
+[24/42] fork-combo-a2-r2-combo-rot0-m0-A0
+[30/42] fork-combo-a2-r3-combo-rot0-m0-A0
+[36/42] fork-ammo_control-a1-r2-illegal_capacity-rot0-m0-A0
+[42/42] fork-ammo_control-a1-r2-delayed_capacity-rot0-m0-A0
+COMPLETE: D:\fpt\subject\BomberMan\runs\t3-smoke-implementation-send.zip
+Gate: {"positive_combo_cases": 2, "reference_combo_full_mask_pass": 2, "teacher_old_best_genuine_full_mask_pass": 2, "teacher_any_genuine_full_mask_pass": 2}

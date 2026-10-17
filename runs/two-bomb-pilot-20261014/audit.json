@@ -1,0 +1,19 @@
+{
+  "tests_passed": 58,
+  "test_command": "python -m unittest test_tactical_teacher test_combat test_visualize -q",
+  "original_checkpoint_unchanged": true,
+  "candidate_best_weights_equal_original": true,
+  "core_source_unchanged_during_pilot": {
+    "bomberman_env.py": true,
+    "rule_based_bot.py": true,
+    "train_actor_critic.py": true,
+    "tactical_teacher.py": true,
+    "evaluate.py": true
+  },
+  "evaluation_pairs": {
+    "original": 200,
+    "local": 200,
+    "two_bomb": 200
+  },
+  "candidate_best_games_equal_original": true
+}

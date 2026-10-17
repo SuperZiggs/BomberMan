@@ -1,0 +1,88 @@
+{
+  "experiment": "SD3",
+  "full_protocol": true,
+  "warm_start": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+  "warm_start_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "9f257d65b1808820e4db1841f19d4f1eb148964edc60d4136a1c9e9e5f9e8168",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "combat_move_teacher.py": "e266982d70e78f7c3a8ce01469a75dbf74a14aa935385e7fc729cd53e2d0226d",
+    "evaluate.py": "a949be85b1ff93a8069e561dc1fadd8c789c4eb21097dc804c159a65103268d9",
+    "visualize.py": "fb6701a07ffe68345c1c83383530313956077a05ac361e7fa59ce97b837ef07c",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "audit_t2.py": "a3b6afcb3b36f59e46c95b9d26381f6a52271172f2ae099a0c44c5e3010bf055",
+    "audit_l2_candidates.py": "f87cf3d2456aaaf6a3d9b706d0cde0875e4bed0c6905da229d61ef5bcc4282ce",
+    "audit_t3_approach.py": "75963ad54b595fea917832247dc1af219ccca7d8dcc745c0acae7d34145bdd37",
+    "benchmark_t3.py": "8e6301506a8b6e93b9fa142660cd386ded6bc8bc6879216c7cf76eb676efaea6",
+    "run_t3_curriculum.py": "105bd2fd65b1745615e6fd92c9e4a4608789971eee72a3f454e0353b15a944f7",
+    "run_combat_move_pilot.py": "1debf4f141329c46bfbc150201c4dfe20e3572150c30bfa286399da3a70d37b7",
+    "test_combat_move_teacher.py": "a1b9749c7ce31dc2bb3b9445e0163db1482b5afa7c24b9fd7d92124e60c1465d",
+    "test_combat_move_pilot.py": "f782d46d5045208336cdf1782dd00f34aedafba897f75822c318679cfa4bab4b",
+    "sudden_death_experiment.py": "f087843332e0c838bc77a22afdb9e0357feb6ce780d455fa372835f94faf9833",
+    "run_sudden_death_experiment.py": "0b9f99d93a59ea1efc6057bbbfdb50aada81d966e243046a8e6190cecf2e6ff4",
+    "run_sd_training_pilot.py": "6a3980166dadd9ce6ddef33b6d8008e37855591b9083aa2279c40cd434ccc6a9",
+    "test_sd_training_pilot.py": "f9ad3dc9aa0ad87944488d1f6b1e2ab9e9f138502e745b28aac672cf82bd9e13",
+    "training_state.py": "1159cf982f2f3db1a68014f698073aeefaf754bca84c38966b7c2217e22b747b"
+  },
+  "arms": {
+    "sd_12ch": false,
+    "sd_13ch": true
+  },
+  "sudden_death": {
+    "sudden_death_start": 400,
+    "sudden_death_interval": 40,
+    "sudden_death_warning_steps": 40,
+    "sudden_death_max_ring": 2
+  },
+  "train_seed": 2026101601,
+  "episodes_per_arm": 200,
+  "phase": "C",
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 500,
+  "lr": 0.0001,
+  "train_device": "cuda",
+  "attack_teacher": "local",
+  "advantage_estimator": "mc",
+  "opponent": "RuleBot, sudden-death aware",
+  "validation_seed": 21000,
+  "validation_episodes": 100,
+  "validation_every": 100,
+  "evaluation": {
+    "seed": 40000,
+    "games_per_model": 400,
+    "case": "both_aware",
+    "ring_channel_env": true,
+    "device": "cpu",
+    "threads": 1
+  },
+  "budget_minutes": {
+    "overall": 150,
+    "training": 100,
+    "evaluation": 45
+  },
+  "gate": {
+    "gain_vs_B_pp": 5,
+    "ci95_lower_above": 0,
+    "suicide_not_above_B": true
+  },
+  "runtime": {
+    "torch": "2.5.1",
+    "numpy": "2.0.1",
+    "threads": 1,
+    "cuda": "12.4",
+    "cudnn": 90100,
+    "deterministic": true,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "cudnn_tf32": true,
+    "matmul_tf32": false,
+    "cublas_workspace": ":4096:8",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU"
+  },
+  "torch": "2.5.1",
+  "hardware": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "registered_utc": "2026-10-16T10:19:19.660618+00:00"
+}

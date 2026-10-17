@@ -1,0 +1,5108 @@
+{
+  "original": [
+    {
+      "seed": 21000,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6118557653822834,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7111987170780422,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21000,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.5205410288930538,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.6198839805888123,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21001,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.735453878610236,
+      "components": {
+        "time": -0.03764746051088,
+        "item": 0.06944015008783413,
+        "wall": 0.7036611890332812,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 6.298236312032324,
+        "passive_win_cancellation": -6.298236312032324,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21001,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7052691087825601,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02054214501764001,
+        "wall": 0.7840699154606787,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21002,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8307721433723053,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04136567190808116,
+        "wall": 0.8887494231599825,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21002,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9629468315152342,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.048697827828505263,
+        "wall": 1.0135919553824875,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21003,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9389987446535518,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02499185149495995,
+        "wall": 1.01334984485435,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21003,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6406567615406645,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7399997132364228,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21004,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.0076709420645278,
+      "components": {
+        "time": -0.09805465657148268,
+        "item": 0.034127729750519344,
+        "wall": 0.7964987981860792,
+        "owned_kill": 0.07859973448554551,
+        "active_win": 0.19649933621386362,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21004,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.47877189305199547,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.048737637757101174,
+        "wall": 0.5293772069906528,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21005,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.977815932012607,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02848006012385796,
+        "wall": 1.0486788235845073,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21005,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.8529660151942284,
+      "components": {
+        "time": -0.09229141576701072,
+        "item": 0.04431924358580646,
+        "wall": 0.810835366548661,
+        "owned_kill": 0.31145794880764754,
+        "active_win": 0.7786448720191177,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21006,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9215005398421484,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04387605114994839,
+        "wall": 0.9769674403879582,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21006,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8555792982601217,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.036985018669414,
+        "wall": 0.9179372312864665,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21007,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.826258496920682,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.040486393411062915,
+        "wall": 0.8851150552053775,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21007,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.1926582767459213,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.15376447419986197,
+        "wall": 1.1382367542418155,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21008,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8095285997811025,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06930011450049783,
+        "wall": 0.839571436976363,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21008,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7767400578629807,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0373586047165798,
+        "wall": 0.8387244048421597,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21009,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6821567568821476,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7814997085779058,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21009,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 6.099053076743078,
+      "components": {
+        "time": -0.06112160819257729,
+        "item": 0.0,
+        "wall": 0.6622202879263804,
+        "owned_kill": 1.57084411343122,
+        "active_win": 3.9271102835780485,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21010,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.738780194185441,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06739145410854983,
+        "wall": 0.77073169177265,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21010,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8992957886852636,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.032466493524098576,
+        "wall": 0.9661722468569234,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21011,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8098395222345431,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04089534687986153,
+        "wall": 0.8682871270504403,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21011,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 10.50547984761929,
+      "components": {
+        "time": -0.028226946740172495,
+        "item": 0.0,
+        "wall": 0.3839820909495022,
+        "owned_kill": 2.8999213438314135,
+        "active_win": 7.249803359578536,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21012,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.608259905262479,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7076028569582375,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21012,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7237755374542375,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07929046914386016,
+        "wall": 0.7438280200061361,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21013,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.5559721554807615,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.6553151071765196,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21013,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.7859412513980347,
+      "components": {
+        "time": -0.09691128860185691,
+        "item": 0.0,
+        "wall": 0.8828525399998914,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.31199105031747704,
+        "passive_win_cancellation": -0.31199105031747704,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21014,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.723297882156178,
+      "components": {
+        "time": -0.09524156695235253,
+        "item": 0.015899453190957195,
+        "wall": 1.129730272007825,
+        "owned_kill": 0.19225992111706866,
+        "active_win": 0.4806498027926711,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21014,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.9735896681323921,
+      "components": {
+        "time": -0.045831492403314626,
+        "item": 0.0,
+        "wall": 1.0194211605357062,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 5.471566423907612,
+        "passive_win_cancellation": -5.471566423907612,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21015,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7476089138261298,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.022602182513323778,
+        "wall": 0.8243496830085644,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21015,
+      "aid": 1,
+      "outcome": "enemy_death",
+      "return_t0": -0.3589856255882953,
+      "components": {
+        "time": -0.023765728565289627,
+        "item": 0.04431924358580646,
+        "wall": 0.38280357373829127,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": -0.7623427143471035,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21016,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7503166629900656,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8496596146858241,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21016,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.4875265539830386,
+      "components": {
+        "time": -0.02299568541948447,
+        "item": 0.0,
+        "wall": 0.5105222394025225,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 7.778213593991468,
+        "passive_win_cancellation": -7.778213593991468,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21017,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.1211276793568066,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08117310562791757,
+        "wall": 1.1392975254246445,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21017,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 2.1880573369837295,
+      "components": {
+        "time": -0.09172956676235268,
+        "item": 0.0554938207425669,
+        "wall": 1.0547368675786386,
+        "owned_kill": 0.3341589186928208,
+        "active_win": 0.8353972967320508,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21018,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 5.893456961280839,
+      "components": {
+        "time": -0.06622455991010977,
+        "item": 0.07981058848203706,
+        "wall": 1.1035460715123147,
+        "owned_kill": 1.3646642460561698,
+        "active_win": 3.4116606151404243,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21018,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 1.4450757392753693,
+      "components": {
+        "time": -0.09556482944595233,
+        "item": 0.09872691413808467,
+        "wall": 1.441913654583235,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.4479970256613771,
+        "passive_win_cancellation": -0.4479970256613771,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21019,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9967771534466777,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04387605114994839,
+        "wall": 1.052244053992487,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21019,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.781045981038623,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.017758040735253666,
+        "wall": 0.8626308919991278,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21020,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.707377986025638,
+      "components": {
+        "time": -0.03701763687967677,
+        "item": 0.034472454293453886,
+        "wall": 0.7099231686118604,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 6.361854860638711,
+        "passive_win_cancellation": -6.361854860638711,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21020,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.194388344135014,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08071074137331714,
+        "wall": 1.2130205544574537,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21021,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 5.1161084961374055,
+      "components": {
+        "time": -0.07006196086876686,
+        "item": 0.07545804915048451,
+        "wall": 0.8770503084893858,
+        "owned_kill": 1.209617742676086,
+        "active_win": 3.024044356690216,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21021,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.0020456422381765,
+      "components": {
+        "time": -0.09867219690399225,
+        "item": 0.07839617646708903,
+        "wall": 0.8345515278861086,
+        "owned_kill": 0.05364860993970548,
+        "active_win": 0.13412152484926354,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21022,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9194439702867907,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04717842347786726,
+        "wall": 0.9716084985046824,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21022,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8073066556982166,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03361720869372201,
+        "wall": 0.8730323987002534,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21023,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7699749523642155,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8693179040599743,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21023,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.5828672038065333,
+      "components": {
+        "time": -0.049001425375043456,
+        "item": 0.03928390704036094,
+        "wall": 0.5925847221412154,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 5.151371174238034,
+        "passive_win_cancellation": -5.151371174238034,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21024,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.712642655687462,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8119856073832207,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21024,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 0.8497319650134698,
+      "components": {
+        "time": -0.09899788139383425,
+        "item": 0.0,
+        "wall": 0.8070161041212424,
+        "owned_kill": 0.04048964065316024,
+        "active_win": 0.10122410163290044,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21025,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9498223852023222,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06398312569425395,
+        "wall": 0.9851822112038267,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21025,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.1637136594749946,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07038224953011896,
+        "wall": 1.1926743616406312,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21026,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.9209405519449764,
+      "components": {
+        "time": -0.08824300186575722,
+        "item": 0.0648104280053393,
+        "wall": 0.9443731258053941,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 1.1875755691154306,
+        "passive_win_cancellation": -1.1875755691154306,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21026,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6688750257473769,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06896645353492085,
+        "wall": 0.6992515239082145,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21027,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.4669145884160295,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.5662575401117881,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21027,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.934955197085843,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09790305334883521,
+        "wall": 0.9363950954327664,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21028,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.7159982881340465,
+      "components": {
+        "time": -0.0949457956700681,
+        "item": 0.03968071418218277,
+        "wall": 1.056527403772972,
+        "owned_kill": 0.20421027595684374,
+        "active_win": 0.5105256898921087,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21028,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.7510174226000068,
+      "components": {
+        "time": -0.09463164004769772,
+        "item": 0.07907244785133268,
+        "wall": 1.0074146013394774,
+        "owned_kill": 0.21690343241625318,
+        "active_win": 0.5422585810406322,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21029,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7060363976649631,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8053793493607218,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21029,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9059893952973922,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.027634173858119254,
+        "wall": 0.9776981731350316,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21030,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 2.493231852299343,
+      "components": {
+        "time": -0.08824300186575722,
+        "item": 0.031809274303193545,
+        "wall": 0.8870597831002989,
+        "owned_kill": 0.4750302276461726,
+        "active_win": 1.1875755691154306,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21030,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8664357512272999,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04343729063844891,
+        "wall": 0.9223414122846099,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21031,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7199059593943165,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.045693816293734986,
+        "wall": 0.7735550947963401,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21031,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 10.059392779517024,
+      "components": {
+        "time": -0.032427095093971674,
+        "item": 0.04172568807250437,
+        "wall": 0.49432985639306587,
+        "owned_kill": 2.730218380041548,
+        "active_win": 6.825545950103871,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21032,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.3700624560526173,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.10433190824499204,
+        "wall": 1.3650734995033813,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21032,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9350306098963398,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.057193473924003924,
+        "wall": 0.9771800876680944,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21033,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8587797158342383,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.088793594335155,
+        "wall": 0.8693290731948417,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21033,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.012599747744919,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08177652168142278,
+        "wall": 1.0301661777592532,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21034,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6476529446297566,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7469958963255151,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21034,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 0.8191622680545216,
+      "components": {
+        "time": -0.09883482486885008,
+        "item": 0.0,
+        "wall": 0.7532248521546998,
+        "owned_kill": 0.04707778307676295,
+        "active_win": 0.11769445769190721,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21035,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 3.6775221915793965,
+      "components": {
+        "time": -0.08151954360514534,
+        "item": 0.08036152244864425,
+        "wall": 1.065282338716056,
+        "owned_kill": 0.7466851068628134,
+        "active_win": 1.866712767157033,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21035,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8042778951527965,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.05955181539381844,
+        "wall": 0.8440690314547367,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21036,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.8313572118902008,
+      "components": {
+        "time": -0.09363140957251052,
+        "item": 0.0765513926876481,
+        "wall": 0.947828481453315,
+        "owned_kill": 0.2573167849490688,
+        "active_win": 0.643291962372671,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21036,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.1912413452775776,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07536780117331542,
+        "wall": 1.2152164958000182,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21037,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6264022978189476,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.048957655814890484,
+        "wall": 0.6767875936998159,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21037,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6062061434495581,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02306109837090478,
+        "wall": 0.682487996774412,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21038,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.3951799370078646,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.11170706594837718,
+        "wall": 1.3828158227552423,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21038,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.2344584606104776,
+      "components": {
+        "time": -0.0978053061479367,
+        "item": 0.06884845940295886,
+        "wall": 0.9530545605990332,
+        "owned_kill": 0.08867449907326218,
+        "active_win": 0.22168624768315529,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21039,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 0.9074116770384434,
+      "components": {
+        "time": -0.09913811952042566,
+        "item": 0.0,
+        "wall": 0.8846677085382593,
+        "owned_kill": 0.03482345372017401,
+        "active_win": 0.0870586343004349,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21039,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 0.9374899269110316,
+      "components": {
+        "time": -0.09776074497289736,
+        "item": 0.05703252954241531,
+        "wall": 0.6615558152764998,
+        "owned_kill": 0.09047495059000324,
+        "active_win": 0.22618737647500797,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21040,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8281373222796178,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03811713571735517,
+        "wall": 0.8893631382580209,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21040,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.179254502208341,
+      "components": {
+        "time": -0.07763113260213525,
+        "item": 0.05961158639354988,
+        "wall": 1.0339998709411105,
+        "owned_kill": 0.9037926221359491,
+        "active_win": 2.2594815553398724,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21041,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 9.031559460494863,
+      "components": {
+        "time": -0.04303987975228407,
+        "item": 0.04387605114994839,
+        "wall": 0.975756789420182,
+        "owned_kill": 2.301418999907714,
+        "active_win": 5.753547499769286,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21041,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7848900540074849,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06738034195671122,
+        "wall": 0.8168526637465321,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21042,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 2.092822910854212,
+      "components": {
+        "time": -0.09429795736456281,
+        "item": 0.13758029615664252,
+        "wall": 1.2431911084649476,
+        "owned_kill": 0.23038556102776478,
+        "active_win": 0.5759639025694111,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21042,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.9919320952098705,
+      "components": {
+        "time": -0.07152922267268044,
+        "item": 0.021711566339590593,
+        "wall": 1.015579220406867,
+        "owned_kill": 1.1503344374674562,
+        "active_win": 2.875836093668642,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21043,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7307382622858491,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0035209623252580816,
+        "wall": 0.8265602516563498,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21043,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.5770709582591405,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07765917546065464,
+        "wall": 0.5987547344942443,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21044,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8049466192888868,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.00933356383578518,
+        "wall": 0.8949560071488603,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21044,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.294953343248764,
+      "components": {
+        "time": -0.07450902393036907,
+        "item": 0.0,
+        "wall": 0.7646778724838561,
+        "owned_kill": 1.0299384270557947,
+        "active_win": 2.5748460676394878,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21045,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9907306591327076,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.051747591713501934,
+        "wall": 1.0383260191149637,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21045,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8602016761379518,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03378645245301415,
+        "wall": 0.9257581753806966,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21046,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.045808324153354,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07665901217865556,
+        "wall": 1.0684922636704555,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21046,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9841968165489374,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07916746052451847,
+        "wall": 1.0043723077201767,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21047,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.0446569386656943,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03586044238738257,
+        "wall": 1.1081394479740692,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21047,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.5156863174237485,
+      "components": {
+        "time": -0.09509591059287141,
+        "item": 0.0719534174439257,
+        "wall": 0.8453212176454137,
+        "owned_kill": 0.19814502655064953,
+        "active_win": 0.4953625663766232,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21048,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.1345043075165449,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07842959363109478,
+        "wall": 1.1554176655812076,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21048,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 9.977382866441442,
+      "components": {
+        "time": -0.03443407794258563,
+        "item": 0.04431924358580646,
+        "wall": 0.6955491270224359,
+        "owned_kill": 2.649128163935934,
+        "active_win": 6.622820409839836,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21049,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.2467106189695798,
+      "components": {
+        "time": -0.097974857892115,
+        "item": 0.09484235561605323,
+        "wall": 0.9634593888174657,
+        "owned_kill": 0.08182392355090619,
+        "active_win": 0.2045598088772653,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21049,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.5562632633926536,
+      "components": {
+        "time": -0.09582437496415627,
+        "item": 0.13599031461609676,
+        "wall": 0.9256048944294769,
+        "owned_kill": 0.16871212266035093,
+        "active_win": 0.4217803066508769,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    }
+  ],
+  "mc_final": [
+    {
+      "seed": 21000,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6118557653822834,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7111987170780422,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21000,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.479739442302188,
+      "components": {
+        "time": -0.09782725308645733,
+        "item": 0.0,
+        "wall": 0.5775666953886455,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.21946938520632372,
+        "passive_win_cancellation": -0.21946938520632372,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21001,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.735453878610236,
+      "components": {
+        "time": -0.03764746051088,
+        "item": 0.06944015008783413,
+        "wall": 0.7036611890332812,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 6.298236312032324,
+        "passive_win_cancellation": -6.298236312032324,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21001,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7043625151828101,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.019635551417890255,
+        "wall": 0.7840699154606787,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21002,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9744365642511285,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.035886526629913734,
+        "wall": 1.0378929893169722,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21002,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7110663184654641,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8104092701612226,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21003,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.5038650990267763,
+      "components": {
+        "time": -0.09602902213879928,
+        "item": 0.02499185149495995,
+        "wall": 1.01334984485435,
+        "owned_kill": 0.16044354994750204,
+        "active_win": 0.4011088748687547,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21003,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 2.472874570835468,
+      "components": {
+        "time": -0.08712996589103447,
+        "item": 0.0,
+        "wall": 0.7399997132364228,
+        "owned_kill": 0.5200013781400217,
+        "active_win": 1.3000034453500537,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21004,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7312835762408398,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.034127729750519344,
+        "wall": 0.7964987981860792,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21004,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.4924971057924667,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.5918400574882253,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21005,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.977815932012607,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02848006012385796,
+        "wall": 1.0486788235845073,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21005,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7558116584387088,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04431924358580646,
+        "wall": 0.810835366548661,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21006,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.0721913893899944,
+      "components": {
+        "time": -0.09637244323441743,
+        "item": 0.04387605114994839,
+        "wall": 0.6116999560385474,
+        "owned_kill": 0.14656795012454604,
+        "active_win": 0.36641987531136494,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21006,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.113145748195718,
+      "components": {
+        "time": -0.09818681280050043,
+        "item": 0.036985018669414,
+        "wall": 0.9179372312864665,
+        "owned_kill": 0.073260088868667,
+        "active_win": 0.18315022217166738,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21007,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8882009475907652,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.040486393411062915,
+        "wall": 0.9470575058754607,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21007,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.1926582767459213,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.15376447419986197,
+        "wall": 1.1382367542418155,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21008,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 0.9666763829037092,
+      "components": {
+        "time": -0.0988919300438855,
+        "item": 0.06930011450049783,
+        "wall": 0.839571436976363,
+        "owned_kill": 0.04477050327735218,
+        "active_win": 0.11192625819338027,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21008,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7767400578629807,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0373586047165798,
+        "wall": 0.8387244048421597,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21009,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 2.5187952901375623,
+      "components": {
+        "time": -0.08712996589103447,
+        "item": 0.0,
+        "wall": 0.7859204325385197,
+        "owned_kill": 0.5200013781400217,
+        "active_win": 1.3000034453500537,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21009,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 6.099053076743078,
+      "components": {
+        "time": -0.06112160819257729,
+        "item": 0.0,
+        "wall": 0.6622202879263804,
+        "owned_kill": 1.57084411343122,
+        "active_win": 3.9271102835780485,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21010,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.437343646634818,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.12789864953727598,
+        "wall": 1.4087879487932962,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21010,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6890320275169938,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7883749792127523,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21011,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8098395222345431,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04089534687986153,
+        "wall": 0.8682871270504403,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21011,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 10.50547984761929,
+      "components": {
+        "time": -0.028226946740172495,
+        "item": 0.0,
+        "wall": 0.3839820909495022,
+        "owned_kill": 2.8999213438314135,
+        "active_win": 7.249803359578536,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21012,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.707011769888747,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03882481814388892,
+        "wall": 0.7675299034406168,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21012,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.5757539426207613,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.6750968943165196,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21013,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8190864265737665,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0356501643815115,
+        "wall": 0.8827792138880133,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21013,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7203096196056423,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.028767737498846424,
+        "wall": 0.7908848338025543,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21014,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.6257829784312072,
+      "components": {
+        "time": -0.0954747775185719,
+        "item": 0.019635551417890255,
+        "wall": 1.0616917526127614,
+        "owned_kill": 0.18283727197689117,
+        "active_win": 0.4570931799422274,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21014,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.151619826029646,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 1.2509627777254027,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21015,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7476089138261298,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.022602182513323778,
+        "wall": 0.8243496830085644,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21015,
+      "aid": 1,
+      "outcome": "enemy_death",
+      "return_t0": -0.3589856255882953,
+      "components": {
+        "time": -0.023765728565289627,
+        "item": 0.04431924358580646,
+        "wall": 0.38280357373829127,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": -0.7623427143471035,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21016,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 6.1126505812054255,
+      "components": {
+        "time": -0.061895288189545,
+        "item": 0.022152399081308633,
+        "wall": 0.7638483658048714,
+        "owned_kill": 1.5395843155739388,
+        "active_win": 3.848960788934845,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21016,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.4875265539830386,
+      "components": {
+        "time": -0.02299568541948447,
+        "item": 0.0,
+        "wall": 0.5105222394025225,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 7.778213593991468,
+        "passive_win_cancellation": -7.778213593991468,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21017,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.1211276793568066,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08117310562791757,
+        "wall": 1.1392975254246445,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21017,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9304967859141269,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0554938207425669,
+        "wall": 0.9743459168673188,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21018,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9256919391498707,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09422378418212927,
+        "wall": 0.9308111066634998,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21018,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.2347260986480466,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07398498115807431,
+        "wall": 1.2600840691857287,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21019,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.003255448123135,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.05755050870105923,
+        "wall": 1.0450478911178334,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21019,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7801250916117484,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0649295848599028,
+        "wall": 0.8145384584476039,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21020,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.707377986025638,
+      "components": {
+        "time": -0.03701763687967677,
+        "item": 0.034472454293453886,
+        "wall": 0.7099231686118604,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 6.361854860638711,
+        "passive_win_cancellation": -6.361854860638711,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21020,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.1879173285460742,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07423972578437697,
+        "wall": 1.2130205544574537,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21021,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9463245305878244,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08527262485163581,
+        "wall": 0.9603948574319467,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21021,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8213937401217744,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0861851639314246,
+        "wall": 0.8345515278861086,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21022,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7583149946045389,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03497931580009131,
+        "wall": 0.8226786305002062,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21022,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8076611947497402,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.033971747745245626,
+        "wall": 0.8730323987002534,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21023,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8492382277392883,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06018180512636494,
+        "wall": 0.8883993743086811,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21023,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.5828672038065333,
+      "components": {
+        "time": -0.049001425375043456,
+        "item": 0.03928390704036094,
+        "wall": 0.5925847221412154,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 5.151371174238034,
+        "passive_win_cancellation": -5.151371174238034,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21024,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6911657142638264,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.005420411115571114,
+        "wall": 0.7850882548440138,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21024,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7560517488920805,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.020651088172151034,
+        "wall": 0.8347436124156884,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21025,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9456590243762056,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.059819764868137254,
+        "wall": 0.9851822112038267,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21025,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 2.662177672948545,
+      "components": {
+        "time": -0.08947350981516408,
+        "item": 0.07038224953011896,
+        "wall": 1.1926743616406312,
+        "owned_kill": 0.4253127347408449,
+        "active_win": 1.0632818368521109,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21026,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 7.4012175647999525,
+      "components": {
+        "time": -0.05246599579942928,
+        "item": 0.054197368837016195,
+        "wall": 0.677505799762449,
+        "owned_kill": 1.9205658262856848,
+        "active_win": 4.801414565714213,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21026,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6688750257473769,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06896645353492085,
+        "wall": 0.6992515239082145,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21027,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.4669145884160295,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.5662575401117881,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21027,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.7037432822086456,
+      "components": {
+        "time": -0.0949457956700681,
+        "item": 0.09790305334883521,
+        "wall": 0.986050058680918,
+        "owned_kill": 0.20421027595684374,
+        "active_win": 0.5105256898921087,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21028,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9968651662593974,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03968071418218277,
+        "wall": 1.056527403772972,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21028,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9871440974950527,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07907244785133268,
+        "wall": 1.0074146013394774,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21029,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7067954527290529,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.021066711107738414,
+        "wall": 0.785071693317073,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21029,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9059893952973922,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.027634173858119254,
+        "wall": 0.9776981731350316,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21030,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8326257480627153,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.004928857535447403,
+        "wall": 0.9270398422230264,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21030,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.0756767067855728,
+      "components": {
+        "time": -0.09899788139383425,
+        "item": 0.04990963770698534,
+        "wall": 0.9830512081863584,
+        "owned_kill": 0.04048964065316024,
+        "active_win": 0.10122410163290044,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21031,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7241922812327042,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04998013813212276,
+        "wall": 0.7735550947963401,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21031,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 10.059392779517024,
+      "components": {
+        "time": -0.032427095093971674,
+        "item": 0.04172568807250437,
+        "wall": 0.49432985639306587,
+        "owned_kill": 2.730218380041548,
+        "active_win": 6.825545950103871,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21032,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.3700624560526173,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.10433190824499204,
+        "wall": 1.3650734995033813,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21032,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9350306098963398,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.057193473924003924,
+        "wall": 0.9771800876680944,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21033,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8588690637904298,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08888294229134651,
+        "wall": 0.8693290731948417,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21033,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 2.00831068447379,
+      "components": {
+        "time": -0.09103713812976753,
+        "item": 0.03811713571735517,
+        "wall": 0.7937552708937261,
+        "owned_kill": 0.36213583314070585,
+        "active_win": 0.9053395828517632,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21034,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6968113582454272,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7961543099411855,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21034,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9299531992074084,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.05977834887717516,
+        "wall": 0.9695178020259917,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21035,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.5080749354305827,
+      "components": {
+        "time": -0.02602996266117196,
+        "item": 0.04300291773206442,
+        "wall": 0.49110198035968994,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 7.4717209433159635,
+        "passive_win_cancellation": -7.4717209433159635,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21035,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8042778951527965,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.05955181539381844,
+        "wall": 0.8440690314547367,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21036,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.2316369620071912,
+      "components": {
+        "time": -0.09773812623524986,
+        "item": 0.0765513926876481,
+        "wall": 0.9329627591254842,
+        "owned_kill": 0.09138883897980125,
+        "active_win": 0.228472097449503,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21036,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 2.027492823347801,
+      "components": {
+        "time": -0.09412341697204966,
+        "item": 0.07536780117331542,
+        "wall": 1.2152164958000182,
+        "owned_kill": 0.23743769809900328,
+        "active_win": 0.5935942452475074,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21037,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6262256629048227,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04878102090076551,
+        "wall": 0.6767875936998159,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21037,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6062061434495581,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02306109837090478,
+        "wall": 0.682487996774412,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21038,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.3951799370078646,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.11170706594837718,
+        "wall": 1.3828158227552423,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21038,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.922560068306233,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06884845940295886,
+        "wall": 0.9530545605990332,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21039,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7853247568425006,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8846677085382593,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21039,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6646060584735097,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.05703252954241531,
+        "wall": 0.7069164806268528,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21040,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.7970143129101719,
+      "components": {
+        "time": -0.09323555527799353,
+        "item": 0.04429858742417328,
+        "wall": 0.8893631382580209,
+        "owned_kill": 0.2733108978588471,
+        "active_win": 0.6832772446471166,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21040,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.179254502208341,
+      "components": {
+        "time": -0.07763113260213525,
+        "item": 0.05961158639354988,
+        "wall": 1.0339998709411105,
+        "owned_kill": 0.9037926221359491,
+        "active_win": 2.2594815553398724,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21041,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 9.031559460494863,
+      "components": {
+        "time": -0.04303987975228407,
+        "item": 0.04387605114994839,
+        "wall": 0.975756789420182,
+        "owned_kill": 2.301418999907714,
+        "active_win": 5.753547499769286,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21041,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7870854634317387,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06957575138096479,
+        "wall": 0.8168526637465321,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21042,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.2251419132184107,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.14190100745497408,
+        "wall": 1.1825838574591925,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21042,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.9919320952098705,
+      "components": {
+        "time": -0.07152922267268044,
+        "item": 0.021711566339590593,
+        "wall": 1.015579220406867,
+        "owned_kill": 1.1503344374674562,
+        "active_win": 2.875836093668642,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21043,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7307382622858491,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0035209623252580816,
+        "wall": 0.8265602516563498,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21043,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.5951527117640281,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0835763164178302,
+        "wall": 0.6109193470419562,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21044,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.0404255256898742,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07095708615737262,
+        "wall": 1.0688113912282584,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21044,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.294953343248764,
+      "components": {
+        "time": -0.07450902393036907,
+        "item": 0.0,
+        "wall": 0.7646778724838561,
+        "owned_kill": 1.0299384270557947,
+        "active_win": 2.5748460676394878,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21045,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9898922656419419,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.050909198222736,
+        "wall": 1.0383260191149637,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21045,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8602016761379518,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03378645245301415,
+        "wall": 0.9257581753806966,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21046,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.045808324153354,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07665901217865556,
+        "wall": 1.0684922636704555,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21046,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9944339152284567,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08898739078353139,
+        "wall": 1.0047894761406826,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21047,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.2310767724793779,
+      "components": {
+        "time": -0.09868547493495232,
+        "item": 0.03517315223818232,
+        "wall": 1.1086966617350653,
+        "owned_kill": 0.053112123840308424,
+        "active_win": 0.1327803096007709,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21047,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.086597479294835,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09910446390445775,
+        "wall": 1.0868359670861336,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21048,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 4.762683289545265,
+      "components": {
+        "time": -0.07450902393036907,
+        "item": 0.07699015319914755,
+        "wall": 1.1554176655812076,
+        "owned_kill": 1.0299384270557947,
+        "active_win": 2.5748460676394878,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21048,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.8888551780305325,
+      "components": {
+        "time": -0.05294133584143499,
+        "item": 0.04431924358580646,
+        "wall": 0.8974772702861605,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 4.75340042005707,
+        "passive_win_cancellation": -4.75340042005707,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21049,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.958681576558274,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09456513943656657,
+        "wall": 0.9634593888174657,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21049,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7805547558805229,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09520746898826644,
+        "wall": 0.7846902385880147,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    }
+  ],
+  "gae_final": [
+    {
+      "seed": 21000,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.6163555422284674,
+      "components": {
+        "time": -0.09484317484957464,
+        "item": 0.0,
+        "wall": 0.7111987170780422,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.5208914293358929,
+        "passive_win_cancellation": -0.5208914293358929,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21000,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.299074642399814,
+      "components": {
+        "time": -0.07346337502522945,
+        "item": 0.0,
+        "wall": 0.6198839805888123,
+        "owned_kill": 1.0721868676674962,
+        "active_win": 2.6804671691687414,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21001,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.735453878610236,
+      "components": {
+        "time": -0.03764746051088,
+        "item": 0.06944015008783413,
+        "wall": 0.7036611890332812,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 6.298236312032324,
+        "passive_win_cancellation": -6.298236312032324,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21001,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.029082042832163,
+      "components": {
+        "time": -0.0977152790255049,
+        "item": 0.019635551417890255,
+        "wall": 0.7840699154606787,
+        "owned_kill": 0.0923119585654558,
+        "active_win": 0.2307798964136394,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21002,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.3068745429561508,
+      "components": {
+        "time": -0.09665269124082257,
+        "item": 0.04142101680988084,
+        "wall": 0.8887494231599825,
+        "owned_kill": 0.13524479835060085,
+        "active_win": 0.33811199587650204,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21002,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7110663184654641,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8104092701612226,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21003,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9389987446535518,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02499185149495995,
+        "wall": 1.01334984485435,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21003,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9310659117592902,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.031176269744559996,
+        "wall": 0.9992325937104892,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21004,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7312835762408398,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.034127729750519344,
+        "wall": 0.7964987981860792,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21004,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.5123309961135679,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.019833890321101267,
+        "wall": 0.5918400574882253,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21005,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.977815932012607,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02848006012385796,
+        "wall": 1.0486788235845073,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21005,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7558116584387088,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04431924358580646,
+        "wall": 0.810835366548661,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21006,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.0721913893899944,
+      "components": {
+        "time": -0.09637244323441743,
+        "item": 0.04387605114994839,
+        "wall": 0.6116999560385474,
+        "owned_kill": 0.14656795012454604,
+        "active_win": 0.36641987531136494,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21006,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 0.9594335557903869,
+      "components": {
+        "time": -0.09926614516791146,
+        "item": 0.036985018669414,
+        "wall": 0.9179372312864665,
+        "owned_kill": 0.029650700286404912,
+        "active_win": 0.07412675071601217,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21007,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8882009475907652,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.040486393411062915,
+        "wall": 0.9470575058754607,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21007,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.1926582767459213,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.15376447419986197,
+        "wall": 1.1382367542418155,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21008,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8095285997811025,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06930011450049783,
+        "wall": 0.839571436976363,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21008,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7767400578629807,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0373586047165798,
+        "wall": 0.8387244048421597,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21009,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 2.5187952901375623,
+      "components": {
+        "time": -0.08712996589103447,
+        "item": 0.0,
+        "wall": 0.7859204325385197,
+        "owned_kill": 0.5200013781400217,
+        "active_win": 1.3000034453500537,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21009,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 6.099053076743078,
+      "components": {
+        "time": -0.06112160819257729,
+        "item": 0.0,
+        "wall": 0.6622202879263804,
+        "owned_kill": 1.57084411343122,
+        "active_win": 3.9271102835780485,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21010,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.437343646634818,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.12789864953727598,
+        "wall": 1.4087879487932962,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21010,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6890320275169938,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7883749792127523,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21011,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8098395222345431,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04089534687986153,
+        "wall": 0.8682871270504403,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21011,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 10.50547984761929,
+      "components": {
+        "time": -0.028226946740172495,
+        "item": 0.0,
+        "wall": 0.3839820909495022,
+        "owned_kill": 2.8999213438314135,
+        "active_win": 7.249803359578536,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21012,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.608259905262479,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7076028569582375,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21012,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 2.464076330138926,
+      "components": {
+        "time": -0.0867360121890618,
+        "item": 0.0,
+        "wall": 0.6750968943165196,
+        "owned_kill": 0.535918699431847,
+        "active_win": 1.339796748579617,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21013,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8190864265737665,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0356501643815115,
+        "wall": 0.8827792138880133,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21013,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.0543837702866765,
+      "components": {
+        "time": -0.09809336890571019,
+        "item": 0.0,
+        "wall": 0.8828525399998914,
+        "owned_kill": 0.07703559976928315,
+        "active_win": 0.19258899942320773,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21014,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9819843523348943,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.019635551417890255,
+        "wall": 1.0616917526127614,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21014,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.9735896681323921,
+      "components": {
+        "time": -0.045831492403314626,
+        "item": 0.0,
+        "wall": 1.0194211605357062,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 5.471566423907612,
+        "passive_win_cancellation": -5.471566423907612,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21015,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7476089138261298,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.022602182513323778,
+        "wall": 0.8243496830085644,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21015,
+      "aid": 1,
+      "outcome": "enemy_death",
+      "return_t0": -0.3589856255882953,
+      "components": {
+        "time": -0.023765728565289627,
+        "item": 0.04431924358580646,
+        "wall": 0.38280357373829127,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": -0.7623427143471035,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21016,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 6.1126505812054255,
+      "components": {
+        "time": -0.061895288189545,
+        "item": 0.022152399081308633,
+        "wall": 0.7638483658048714,
+        "owned_kill": 1.5395843155739388,
+        "active_win": 3.848960788934845,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21016,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.4875265539830386,
+      "components": {
+        "time": -0.02299568541948447,
+        "item": 0.0,
+        "wall": 0.5105222394025225,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 7.778213593991468,
+        "passive_win_cancellation": -7.778213593991468,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21017,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.1211276793568066,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08117310562791757,
+        "wall": 1.1392975254246445,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21017,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9721693309923873,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0554938207425669,
+        "wall": 1.016018461945578,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21018,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.1131259734152168,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09397883904562718,
+        "wall": 1.1184900860653453,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21018,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.2347260986480466,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07398498115807431,
+        "wall": 1.2600840691857287,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21019,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.003255448123135,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.05755050870105923,
+        "wall": 1.0450478911178334,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21019,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.065913718525081,
+      "components": {
+        "time": -0.09799510931319386,
+        "item": 0.017758040735253666,
+        "wall": 0.8626308919991278,
+        "owned_kill": 0.08100568431539712,
+        "active_win": 0.20251421078849263,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21020,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.707377986025638,
+      "components": {
+        "time": -0.03701763687967677,
+        "item": 0.034472454293453886,
+        "wall": 0.7099231686118604,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 6.361854860638711,
+        "passive_win_cancellation": -6.361854860638711,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21020,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.2838842416078962,
+      "components": {
+        "time": -0.09933631484420055,
+        "item": 0.0763455355179495,
+        "wall": 1.2130205544574537,
+        "owned_kill": 0.026815561850483033,
+        "active_win": 0.06703890462620747,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21021,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.2983419803004919,
+      "components": {
+        "time": -0.09747372151922311,
+        "item": 0.07816934205568773,
+        "wall": 0.9603948574319467,
+        "owned_kill": 0.10207185780916449,
+        "active_win": 0.2551796445229111,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21021,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8213937401217744,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0861851639314246,
+        "wall": 0.8345515278861086,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21022,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7583149946045389,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.03497931580009131,
+        "wall": 0.8226786305002062,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21022,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8016027539318881,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.027913306927393185,
+        "wall": 0.8730323987002534,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21023,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8114715213159241,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04475458159463241,
+        "wall": 0.8660598914170503,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21023,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.5828672038065333,
+      "components": {
+        "time": -0.049001425375043456,
+        "item": 0.03928390704036094,
+        "wall": 0.5925847221412154,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 5.151371174238034,
+        "passive_win_cancellation": -5.151371174238034,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21024,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.712642655687462,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8119856073832207,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21024,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7560517488920805,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.020651088172151034,
+        "wall": 0.8347436124156884,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21025,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9095934533471597,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.05534396076860052,
+        "wall": 0.9535924442743171,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21025,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.1637136594749946,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07038224953011896,
+        "wall": 1.1926743616406312,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21026,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 7.4012175647999525,
+      "components": {
+        "time": -0.05246599579942928,
+        "item": 0.054197368837016195,
+        "wall": 0.677505799762449,
+        "owned_kill": 1.9205658262856848,
+        "active_win": 4.801414565714213,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21026,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6230561718581313,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06896645353492085,
+        "wall": 0.653432670018969,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21027,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 2.4327235842736896,
+      "components": {
+        "time": -0.08619191869125273,
+        "item": 0.0,
+        "wall": 0.5662575401117881,
+        "owned_kill": 0.5579022751009001,
+        "active_win": 1.3947556877522498,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21027,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9846101603339955,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09790305334883521,
+        "wall": 0.986050058680918,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21028,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 1.149325988083796,
+      "components": {
+        "time": -0.09892484082965206,
+        "item": 0.03968071418218277,
+        "wall": 1.056527403772972,
+        "owned_kill": 0.04344077455951154,
+        "active_win": 0.10860193639877867,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21028,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9871440974950527,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07907244785133268,
+        "wall": 1.0074146013394774,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21029,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7060363976649631,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.8053793493607218,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21029,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9059893952973922,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.027634173858119254,
+        "wall": 0.9776981731350316,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21030,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 0.817131960754062,
+      "components": {
+        "time": -0.09932283934721003,
+        "item": 0.0,
+        "wall": 0.8206947077875374,
+        "owned_kill": 0.027360026375352547,
+        "active_win": 0.06840006593838126,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21030,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9290922547013881,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04538399821078802,
+        "wall": 0.9830512081863584,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21031,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7241922812327042,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04998013813212276,
+        "wall": 0.7735550947963401,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21031,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 10.059392779517024,
+      "components": {
+        "time": -0.032427095093971674,
+        "item": 0.04172568807250437,
+        "wall": 0.49432985639306587,
+        "owned_kill": 2.730218380041548,
+        "active_win": 6.825545950103871,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21032,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.3700624560526173,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.10433190824499204,
+        "wall": 1.3650734995033813,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21032,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.9350306098963398,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.057193473924003924,
+        "wall": 0.9771800876680944,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21033,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8578359334425648,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.08784981194348156,
+        "wall": 0.8693290731948417,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21033,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 2.00831068447379,
+      "components": {
+        "time": -0.09103713812976753,
+        "item": 0.03811713571735517,
+        "wall": 0.7937552708937261,
+        "owned_kill": 0.36213583314070585,
+        "active_win": 0.9053395828517632,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21034,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6968113582454272,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.7961543099411855,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21034,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7776052125258801,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04315305745226632,
+        "wall": 0.8337951067693725,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21035,
+      "aid": 0,
+      "outcome": "passive_win",
+      "return_t0": 0.5080749354305827,
+      "components": {
+        "time": -0.02602996266117196,
+        "item": 0.04300291773206442,
+        "wall": 0.49110198035968994,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 7.4717209433159635,
+        "passive_win_cancellation": -7.4717209433159635,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21035,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.8095411402452147,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0648150604862364,
+        "wall": 0.8440690314547367,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21036,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 2.454523537350782,
+      "components": {
+        "time": -0.08915129234922851,
+        "item": 0.0765513926876481,
+        "wall": 0.9329627591254842,
+        "owned_kill": 0.4383316222533929,
+        "active_win": 1.0958290556334809,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21036,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.1912413452775776,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07536780117331542,
+        "wall": 1.2152164958000182,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21037,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.6264022978189476,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.048957655814890484,
+        "wall": 0.6767875936998159,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21037,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.6084916093492692,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.02534656427061592,
+        "wall": 0.682487996774412,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21038,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.3951799370078646,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.11170706594837718,
+        "wall": 1.3828158227552423,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21038,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.922560068306233,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.06884845940295886,
+        "wall": 0.9530545605990332,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21039,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8178814913434217,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0,
+        "wall": 0.9172244430391802,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21039,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.4422150557669564,
+      "components": {
+        "time": -0.09452264059554916,
+        "item": 0.05703252954241531,
+        "wall": 0.7051290894229945,
+        "owned_kill": 0.22130745068488233,
+        "active_win": 0.553268626712205,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21040,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.8343187739864364,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.04429858742417328,
+        "wall": 0.8893631382580209,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21040,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.179254502208341,
+      "components": {
+        "time": -0.07763113260213525,
+        "item": 0.05961158639354988,
+        "wall": 1.0339998709411105,
+        "owned_kill": 0.9037926221359491,
+        "active_win": 2.2594815553398724,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21041,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 9.031559460494863,
+      "components": {
+        "time": -0.04303987975228407,
+        "item": 0.04387605114994839,
+        "wall": 0.975756789420182,
+        "owned_kill": 2.301418999907714,
+        "active_win": 5.753547499769286,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21041,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7879488752844704,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0704391632336965,
+        "wall": 0.8168526637465321,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21042,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 2.092822910854212,
+      "components": {
+        "time": -0.09429795736456281,
+        "item": 0.13758029615664252,
+        "wall": 1.2431911084649476,
+        "owned_kill": 0.23038556102776478,
+        "active_win": 0.5759639025694111,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21042,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 4.9919320952098705,
+      "components": {
+        "time": -0.07152922267268044,
+        "item": 0.021711566339590593,
+        "wall": 1.015579220406867,
+        "owned_kill": 1.1503344374674562,
+        "active_win": 2.875836093668642,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21043,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.7307382622858491,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0035209623252580816,
+        "wall": 0.8265602516563498,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21043,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.5951527117640281,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.0835763164178302,
+        "wall": 0.6109193470419562,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21044,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.0404255256898742,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07095708615737262,
+        "wall": 1.0688113912282584,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21044,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.0670018831875274,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07450864910121154,
+        "wall": 1.0918361857820722,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21045,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.9898922656419419,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.050909198222736,
+        "wall": 1.0383260191149637,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21045,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.43871892156046,
+      "components": {
+        "time": -0.09582437496415627,
+        "item": 0.0,
+        "wall": 0.9440508672133799,
+        "owned_kill": 0.16871212266035093,
+        "active_win": 0.4217803066508769,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21046,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.045808324153354,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.07665901217865556,
+        "wall": 1.0684922636704555,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21046,
+      "aid": 1,
+      "outcome": "active_win",
+      "return_t0": 1.946892355472672,
+      "components": {
+        "time": -0.09323555527799353,
+        "item": 0.07916746052451847,
+        "wall": 1.0043723077201767,
+        "owned_kill": 0.2733108978588471,
+        "active_win": 0.6832772446471166,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21047,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 1.039007463947683,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.027913306927393185,
+        "wall": 1.1104371087160474,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21047,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 1.086597479294835,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09910446390445775,
+        "wall": 1.0868359670861336,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21048,
+      "aid": 0,
+      "outcome": "active_win",
+      "return_t0": 4.762683289545265,
+      "components": {
+        "time": -0.07450902393036907,
+        "item": 0.07699015319914755,
+        "wall": 1.1554176655812076,
+        "owned_kill": 1.0299384270557947,
+        "active_win": 2.5748460676394878,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21048,
+      "aid": 1,
+      "outcome": "passive_win",
+      "return_t0": 0.8888551780305325,
+      "components": {
+        "time": -0.05294133584143499,
+        "item": 0.04431924358580646,
+        "wall": 0.8974772702861605,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 4.75340042005707,
+        "passive_win_cancellation": -4.75340042005707,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21049,
+      "aid": 0,
+      "outcome": "timeout",
+      "return_t0": 0.958681576558274,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09456513943656657,
+        "wall": 0.9634593888174657,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    },
+    {
+      "seed": 21049,
+      "aid": 1,
+      "outcome": "timeout",
+      "return_t0": 0.7805547558805229,
+      "components": {
+        "time": -0.09934295169575855,
+        "item": 0.09520746898826644,
+        "wall": 0.7846902385880147,
+        "owned_kill": 0.0,
+        "active_win": 0.0,
+        "passive_win_env": 0.0,
+        "passive_win_cancellation": 0.0,
+        "death": 0.0,
+        "self_blast": 0.0
+      }
+    }
+  ]
+}

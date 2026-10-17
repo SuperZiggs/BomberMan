@@ -1,0 +1,7 @@
+{
+  "status": "incomplete",
+  "completed_games": 4,
+  "expected_games": 40,
+  "error": "KeyboardInterrupt: ",
+  "elapsed_seconds": 44.018868699997256
+}

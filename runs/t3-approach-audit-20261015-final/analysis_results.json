@@ -1,0 +1,141 @@
+{
+  "approach": {
+    "original": {
+      "games": 32,
+      "owned_kill_successes": 28,
+      "clean_navigation_frames": 640,
+      "teacher_agreements": 324,
+      "any_progress_moves": 378,
+      "one_cell_away_frames": 70,
+      "one_cell_away_progress_moves": 32,
+      "one_cell_away_premature_bombs": 14
+    },
+    "curriculum_ep100": {
+      "games": 32,
+      "owned_kill_successes": 12,
+      "clean_navigation_frames": 1758,
+      "teacher_agreements": 886,
+      "any_progress_moves": 910,
+      "one_cell_away_frames": 170,
+      "one_cell_away_progress_moves": 12,
+      "one_cell_away_premature_bombs": 10
+    },
+    "curriculum_ep150": {
+      "games": 32,
+      "owned_kill_successes": 4,
+      "clean_navigation_frames": 2228,
+      "teacher_agreements": 1114,
+      "any_progress_moves": 1130,
+      "one_cell_away_frames": 162,
+      "one_cell_away_progress_moves": 4,
+      "one_cell_away_premature_bombs": 4
+    },
+    "curriculum_ep200": {
+      "games": 32,
+      "owned_kill_successes": 12,
+      "clean_navigation_frames": 1746,
+      "teacher_agreements": 828,
+      "any_progress_moves": 900,
+      "one_cell_away_frames": 124,
+      "one_cell_away_progress_moves": 12,
+      "one_cell_away_premature_bombs": 6
+    }
+  },
+  "common_teacher_path_probabilities": {
+    "original": {
+      "0": {
+        "states": 16,
+        "kind": "navigation",
+        "distance": 4,
+        "mean_probability": 0.5621550008654594,
+        "min_probability": 0.5280433297157288,
+        "max_probability": 0.6024212837219238
+      },
+      "1": {
+        "states": 16,
+        "kind": "navigation",
+        "distance": 3,
+        "mean_probability": 0.5467786975204945,
+        "min_probability": 0.49335768818855286,
+        "max_probability": 0.6362426280975342
+      },
+      "2": {
+        "states": 16,
+        "kind": "navigation",
+        "distance": 2,
+        "mean_probability": 0.3746330887079239,
+        "min_probability": 0.28075993061065674,
+        "max_probability": 0.4756707549095154
+      },
+      "3": {
+        "states": 16,
+        "kind": "navigation",
+        "distance": 1,
+        "mean_probability": 0.2773219193331897,
+        "min_probability": 0.025050939992070198,
+        "max_probability": 0.5479720234870911
+      },
+      "4": {
+        "states": 16,
+        "kind": "combat",
+        "distance": 0,
+        "mean_probability": 0.9469474405050278,
+        "min_probability": 0.9432674050331116,
+        "max_probability": 0.949395477771759
+      }
+    },
+    "curriculum_final200": {
+      "0": {
+        "states": 16,
+        "kind": "navigation",
+        "distance": 4,
+        "mean_probability": 0.7974313572049141,
+        "min_probability": 0.4185138940811157,
+        "max_probability": 0.989932656288147
+      },
+      "1": {
+        "states": 16,
+        "kind": "navigation",
+        "distance": 3,
+        "mean_probability": 0.49491263180971146,
+        "min_probability": 0.04442489147186279,
+        "max_probability": 0.9341793060302734
+      },
+      "2": {
+        "states": 16,
+        "kind": "navigation",
+        "distance": 2,
+        "mean_probability": 0.09782825270667672,
+        "min_probability": 0.007162479683756828,
+        "max_probability": 0.5143709182739258
+      },
+      "3": {
+        "states": 16,
+        "kind": "navigation",
+        "distance": 1,
+        "mean_probability": 0.2630401041159228,
+        "min_probability": 5.857281326626662e-10,
+        "max_probability": 0.9267849922180176
+      },
+      "4": {
+        "states": 16,
+        "kind": "combat",
+        "distance": 0,
+        "mean_probability": 0.9999999403953552,
+        "min_probability": 0.9999998807907104,
+        "max_probability": 1.0
+      }
+    }
+  },
+  "fixture_counts": {
+    "returned_capacity": 16,
+    "occupied_tile": 16,
+    "no_counter": 16,
+    "alternate_exit": 16,
+    "capacity_unavailable": 16,
+    "unreachable_door": 16
+  },
+  "test_log_sha256": "c5bb01bd23046de9bc496ae1daf07ae39093fa0396e79370451722615b09d1fa",
+  "source_and_inputs_still_match": true,
+  "note": "Descriptive frame ratios; rotated roles/repeated seeds are dependent. No new train/test."
+}

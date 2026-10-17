@@ -1,0 +1,2845 @@
+{
+  "queries": 147,
+  "plans": 4705,
+  "accepted": 137,
+  "two_bomb_labels": 100,
+  "pressure": 46.474220770072414,
+  "milliseconds": 4896.177400005399,
+  "rejected": {
+    "no_reduction": 39,
+    "search_limit": 1469,
+    "learner_dies": 202,
+    "no_safe_route": 9
+  },
+  "mean_ms": 33.30732925173741,
+  "p50_ms": 31.836499998462386,
+  "p95_ms": 62.82593000069025,
+  "max_ms": 71.92689999646973,
+  "states": [
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 10,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 4,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_reduction": 4
+      },
+      "milliseconds": 18.634399995789863
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 60,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 40,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4545454545454546,
+      "rejected": {
+        "search_limit": 3
+      },
+      "milliseconds": 35.38990000379272,
+      "example": {
+        "first_actions": [
+          1
+        ],
+        "bombs": [
+          [
+            2,
+            {
+              "row": 1,
+              "col": 4,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ],
+          [
+            12,
+            {
+              "row": 1,
+              "col": 3,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ]
+        ],
+        "path": [
+          1,
+          4,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          2,
+          0,
+          1,
+          5
+        ],
+        "pressure": 0.4545454545454546,
+        "trapped": 0,
+        "before": [
+          33
+        ],
+        "after": [
+          18
+        ],
+        "horizon": 21
+      }
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 100,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 62,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.22499999999999998,
+      "rejected": {
+        "search_limit": 11
+      },
+      "milliseconds": 58.97980000008829,
+      "example": {
+        "first_actions": [
+          4
+        ],
+        "bombs": [
+          [
+            1,
+            {
+              "row": 3,
+              "col": 3,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ]
+        ],
+        "path": [
+          4,
+          5
+        ],
+        "pressure": 0.22499999999999998,
+        "trapped": 0,
+        "before": [
+          40
+        ],
+        "after": [
+          31
+        ],
+        "horizon": 10
+      }
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 110,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 48,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.22499999999999998,
+      "rejected": {
+        "search_limit": 3
+      },
+      "milliseconds": 60.39220000093337,
+      "example": {
+        "first_actions": [
+          2
+        ],
+        "bombs": [
+          [
+            1,
+            {
+              "row": 4,
+              "col": 1,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ],
+          [
+            9,
+            {
+              "row": 5,
+              "col": 3,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ]
+        ],
+        "path": [
+          2,
+          5,
+          0,
+          0,
+          0,
+          0,
+          2,
+          4,
+          4,
+          5
+        ],
+        "pressure": 0.22499999999999998,
+        "trapped": 0,
+        "before": [
+          40
+        ],
+        "after": [
+          31
+        ],
+        "horizon": 18
+      }
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 120,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 48,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 13
+      },
+      "milliseconds": 39.702499998384155
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 130,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 17,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.30000000000000004,
+      "rejected": {
+        "learner_dies": 2
+      },
+      "milliseconds": 17.60900000226684
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 150,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 43,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.3055555555555556,
+      "rejected": {
+        "search_limit": 15,
+        "learner_dies": 5
+      },
+      "milliseconds": 46.586199998273514
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 160,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 40,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 12
+      },
+      "milliseconds": 32.095800001116004
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 170,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 18,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "learner_dies": 2,
+        "search_limit": 5
+      },
+      "milliseconds": 17.5604000032763
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 190,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 19,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.3214285714285714,
+      "rejected": {
+        "no_reduction": 1
+      },
+      "milliseconds": 21.49479999934556
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 210,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 57,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 26,
+        "learner_dies": 1
+      },
+      "milliseconds": 53.52159999893047
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 230,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 22,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.30000000000000004,
+      "rejected": {
+        "search_limit": 3,
+        "learner_dies": 1
+      },
+      "milliseconds": 20.744399997056462
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 260,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 63,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 18
+      },
+      "milliseconds": 60.002199999871664
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 270,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.6,
+      "rejected": {
+        "search_limit": 68,
+        "learner_dies": 1
+      },
+      "milliseconds": 63.894799997797236
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 280,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 40,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.3513513513513513,
+      "rejected": {
+        "search_limit": 14
+      },
+      "milliseconds": 33.35900000092806
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 290,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 57,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 42,
+        "learner_dies": 5
+      },
+      "milliseconds": 53.3551999978954
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 310,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 23,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 5,
+        "learner_dies": 1
+      },
+      "milliseconds": 24.58209999895189
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 320,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 14,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "no_reduction": 1
+      },
+      "milliseconds": 13.927100000728387
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 340,
+      "ammo": 2,
+      "active_bombs": 2,
+      "plans": 33,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.375,
+      "rejected": {
+        "learner_dies": 5,
+        "search_limit": 17
+      },
+      "milliseconds": 36.26850000000559
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 350,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 57,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.42500000000000004,
+      "rejected": {
+        "search_limit": 28,
+        "learner_dies": 2
+      },
+      "milliseconds": 50.67889999918407
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 360,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 19,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 5,
+        "learner_dies": 1,
+        "no_reduction": 1
+      },
+      "milliseconds": 23.646900001040194
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 370,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 17,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.2894736842105263,
+      "rejected": {
+        "learner_dies": 5,
+        "search_limit": 2
+      },
+      "milliseconds": 17.609700000321027
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 380,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 17
+      },
+      "milliseconds": 50.17539999971632
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 390,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 13,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "no_reduction": 1,
+        "search_limit": 1,
+        "learner_dies": 1
+      },
+      "milliseconds": 12.95189999655122
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 400,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 60,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 13,
+        "learner_dies": 6
+      },
+      "milliseconds": 58.86850000388222
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 410,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 25,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.625,
+      "rejected": {
+        "search_limit": 4,
+        "learner_dies": 3,
+        "no_reduction": 1
+      },
+      "milliseconds": 26.310300003387965
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 420,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 23,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 5,
+        "learner_dies": 1
+      },
+      "milliseconds": 25.999099998443853
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 430,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 17,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.33333333333333337,
+      "rejected": {
+        "learner_dies": 4,
+        "search_limit": 10
+      },
+      "milliseconds": 19.023100001504645
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 440,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 57,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4358974358974359,
+      "rejected": {
+        "search_limit": 38,
+        "learner_dies": 1
+      },
+      "milliseconds": 54.82250000204658
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 460,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 56,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.41025641025641024,
+      "rejected": {
+        "search_limit": 31,
+        "learner_dies": 4,
+        "no_reduction": 1
+      },
+      "milliseconds": 49.4475000014063
+    },
+    {
+      "seed": 19000,
+      "aid": 0,
+      "step": 480,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 31,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.33333333333333337,
+      "rejected": {
+        "no_reduction": 2
+      },
+      "milliseconds": 31.493800001044292
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 30,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 52,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.36,
+      "rejected": {
+        "search_limit": 10,
+        "learner_dies": 1
+      },
+      "milliseconds": 56.043600001430605,
+      "example": {
+        "first_actions": [
+          0
+        ],
+        "bombs": [
+          [
+            3,
+            {
+              "row": 3,
+              "col": 5,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ]
+        ],
+        "path": [
+          0,
+          0,
+          0,
+          5
+        ],
+        "pressure": 0.36,
+        "trapped": 0,
+        "before": [
+          25
+        ],
+        "after": [
+          16
+        ],
+        "horizon": 12
+      }
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 50,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 54,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.6896551724137931,
+      "rejected": {
+        "search_limit": 23,
+        "learner_dies": 1
+      },
+      "milliseconds": 52.097599997068755,
+      "example": {
+        "first_actions": [
+          5
+        ],
+        "bombs": [
+          [
+            0,
+            {
+              "row": 3,
+              "col": 5,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ]
+        ],
+        "path": [
+          5
+        ],
+        "pressure": 0.6896551724137931,
+        "trapped": 0,
+        "before": [
+          29
+        ],
+        "after": [
+          9
+        ],
+        "horizon": 9
+      }
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 80,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 12,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.23684210526315785,
+      "rejected": {},
+      "milliseconds": 17.3376000020653,
+      "example": {
+        "first_actions": [
+          0
+        ],
+        "bombs": [
+          [
+            6,
+            {
+              "row": 2,
+              "col": 1,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ],
+          [
+            14,
+            {
+              "row": 3,
+              "col": 3,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ]
+        ],
+        "path": [
+          0,
+          0,
+          0,
+          0,
+          3,
+          2,
+          5,
+          0,
+          0,
+          0,
+          0,
+          2,
+          4,
+          4,
+          5
+        ],
+        "pressure": 0.23684210526315785,
+        "trapped": 0,
+        "before": [
+          38
+        ],
+        "after": [
+          29
+        ],
+        "horizon": 23
+      }
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 90,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 21,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.28205128205128205,
+      "rejected": {
+        "search_limit": 3
+      },
+      "milliseconds": 23.13249999861,
+      "example": {
+        "first_actions": [
+          4
+        ],
+        "bombs": [
+          [
+            6,
+            {
+              "row": 3,
+              "col": 3,
+              "owner": 0,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ]
+        ],
+        "path": [
+          4,
+          0,
+          0,
+          0,
+          0,
+          4,
+          5
+        ],
+        "pressure": 0.28205128205128205,
+        "trapped": 0,
+        "before": [
+          39
+        ],
+        "after": [
+          28
+        ],
+        "horizon": 15
+      }
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 100,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 12,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.28205128205128205,
+      "rejected": {},
+      "milliseconds": 18.360699999902863
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 120,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 47,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 4
+      },
+      "milliseconds": 47.54050000337884
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 130,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 9,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.22499999999999998,
+      "rejected": {},
+      "milliseconds": 10.302800001227297
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 140,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.4923000014969148
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 150,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 59,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 13
+      },
+      "milliseconds": 71.92689999646973
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 160,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 14,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 17.501599999377504
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 180,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 56,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.30000000000000004,
+      "rejected": {
+        "search_limit": 20,
+        "learner_dies": 1
+      },
+      "milliseconds": 57.36790000082692
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 190,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 40,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 1
+      },
+      "milliseconds": 45.97950000606943
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 200,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 51,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 4
+      },
+      "milliseconds": 57.50339999940479
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 210,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 30,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 7,
+        "learner_dies": 1
+      },
+      "milliseconds": 36.247600000933744
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 220,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 34,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "learner_dies": 2,
+        "search_limit": 3
+      },
+      "milliseconds": 47.34949999692617
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 230,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.4994000046281144
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 240,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 6,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.22499999999999998,
+      "rejected": {},
+      "milliseconds": 7.489499999792315
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 250,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 4,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.22499999999999998,
+      "rejected": {
+        "no_reduction": 1
+      },
+      "milliseconds": 5.113900006108452
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 260,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 14,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 17.987399995035958
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 270,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 14,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 15.802800000528805
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 280,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 56,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 11
+      },
+      "milliseconds": 56.63810000260128
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 290,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 15,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 19.7039999984554
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 300,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 23,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 24.507599999196827
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 310,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.9175000013783574
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 320,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 54,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 8
+      },
+      "milliseconds": 49.7382999965339
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 330,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 8,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 2
+      },
+      "milliseconds": 11.822599997685757
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 340,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 29,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 2
+      },
+      "milliseconds": 28.321200006757863
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 350,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 46,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 2
+      },
+      "milliseconds": 49.67220000253292
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 360,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 28,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 27.408699999796227
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 370,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 4,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.22499999999999998,
+      "rejected": {},
+      "milliseconds": 7.596600000397302
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 380,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 61,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 16
+      },
+      "milliseconds": 55.28680000134045
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 390,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 15,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 19.742499993299134
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 400,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 8,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 3
+      },
+      "milliseconds": 11.84800000191899
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 410,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.30000000000000004,
+      "rejected": {
+        "search_limit": 29
+      },
+      "milliseconds": 68.10330000007525
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 420,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 7,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 8.177799994882662
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 430,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 14,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 15.804100003151689
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 440,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 16,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 6
+      },
+      "milliseconds": 18.007499995292164
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 450,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 21,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 4
+      },
+      "milliseconds": 25.858200002403464
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 460,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 44,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 7
+      },
+      "milliseconds": 43.96260000066832
+    },
+    {
+      "seed": 19003,
+      "aid": 0,
+      "step": 490,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 55,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 7
+      },
+      "milliseconds": 64.76139999722363
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 20,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 11,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.19999999999999996,
+      "rejected": {
+        "no_reduction": 10
+      },
+      "milliseconds": 12.880800000857562,
+      "example": {
+        "first_actions": [
+          3
+        ],
+        "bombs": [
+          [
+            5,
+            {
+              "row": 1,
+              "col": 6,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ],
+          [
+            15,
+            {
+              "row": 1,
+              "col": 5,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ]
+        ],
+        "path": [
+          3,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          2,
+          0,
+          1,
+          5
+        ],
+        "pressure": 0.19999999999999996,
+        "trapped": 0,
+        "before": [
+          10
+        ],
+        "after": [
+          8
+        ],
+        "horizon": 24
+      }
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 40,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 47,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.5925925925925926,
+      "rejected": {
+        "no_reduction": 1,
+        "search_limit": 2
+      },
+      "milliseconds": 50.451800001610536,
+      "example": {
+        "first_actions": [
+          0,
+          2
+        ],
+        "bombs": [
+          [
+            5,
+            {
+              "row": 3,
+              "col": 5,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ]
+        ],
+        "path": [
+          0,
+          0,
+          0,
+          2,
+          2,
+          5
+        ],
+        "pressure": 0.5925925925925926,
+        "trapped": 0,
+        "before": [
+          27
+        ],
+        "after": [
+          11
+        ],
+        "horizon": 14
+      }
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 50,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 43,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.7407407407407407,
+      "rejected": {
+        "search_limit": 32,
+        "learner_dies": 7
+      },
+      "milliseconds": 44.37740000139456,
+      "example": {
+        "first_actions": [
+          5
+        ],
+        "bombs": [
+          [
+            0,
+            {
+              "row": 3,
+              "col": 4,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ],
+          [
+            4,
+            {
+              "row": 3,
+              "col": 1,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ]
+        ],
+        "path": [
+          5,
+          3,
+          3,
+          3,
+          5
+        ],
+        "pressure": 0.7407407407407407,
+        "trapped": 0,
+        "before": [
+          27
+        ],
+        "after": [
+          7
+        ],
+        "horizon": 9
+      }
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 60,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 40,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.5,
+      "rejected": {
+        "search_limit": 30,
+        "learner_dies": 1
+      },
+      "milliseconds": 38.98369999660645,
+      "example": {
+        "first_actions": [
+          4
+        ],
+        "bombs": [
+          [
+            2,
+            {
+              "row": 3,
+              "col": 5,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ],
+          [
+            5,
+            {
+              "row": 3,
+              "col": 3,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ]
+        ],
+        "path": [
+          4,
+          4,
+          5,
+          3,
+          3,
+          5
+        ],
+        "pressure": 0.5,
+        "trapped": 0,
+        "before": [
+          32
+        ],
+        "after": [
+          16
+        ],
+        "horizon": 11
+      }
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 70,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 6,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.25,
+      "rejected": {
+        "no_reduction": 1
+      },
+      "milliseconds": 7.143000002542976
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 90,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 35,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.43243243243243246,
+      "rejected": {
+        "search_limit": 9,
+        "learner_dies": 4
+      },
+      "milliseconds": 32.898999997996725
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 100,
+      "ammo": 2,
+      "active_bombs": 0,
+      "plans": 60,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.42105263157894735,
+      "rejected": {
+        "search_limit": 28,
+        "learner_dies": 8
+      },
+      "milliseconds": 53.38560000382131
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 110,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 14,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.28205128205128205,
+      "rejected": {
+        "no_reduction": 1
+      },
+      "milliseconds": 16.042200004449114
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 120,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 25,
+        "learner_dies": 14
+      },
+      "milliseconds": 68.9734000043245
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 130,
+      "ammo": 2,
+      "active_bombs": 1,
+      "plans": 19,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.3214285714285714,
+      "rejected": {
+        "no_reduction": 1
+      },
+      "milliseconds": 18.771800001559313
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 140,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 27,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 6,
+        "learner_dies": 6
+      },
+      "milliseconds": 26.862399994570296
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 150,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 16,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.32499999999999996,
+      "rejected": {
+        "learner_dies": 2
+      },
+      "milliseconds": 17.290899995714426
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 170,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 13,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "no_reduction": 1,
+        "learner_dies": 2,
+        "search_limit": 1
+      },
+      "milliseconds": 17.13739999831887
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 180,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 29,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 2,
+        "learner_dies": 7,
+        "no_reduction": 1
+      },
+      "milliseconds": 24.975599997560494
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 200,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 57,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 27,
+        "learner_dies": 5
+      },
+      "milliseconds": 58.502100000623614
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 220,
+      "ammo": 3,
+      "active_bombs": 0,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4358974358974359,
+      "rejected": {
+        "search_limit": 59,
+        "learner_dies": 1
+      },
+      "milliseconds": 53.76799999794457
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 230,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 22,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 11,
+        "learner_dies": 4
+      },
+      "milliseconds": 21.75339999666903
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 260,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.45945945945945943,
+      "rejected": {
+        "search_limit": 32,
+        "learner_dies": 3
+      },
+      "milliseconds": 63.51079999876674
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 270,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 31,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.3846153846153846,
+      "rejected": {
+        "learner_dies": 6,
+        "search_limit": 8
+      },
+      "milliseconds": 32.26740000536665
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 280,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 28,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 1.0,
+      "rejected": {
+        "learner_dies": 9,
+        "no_reduction": 1,
+        "search_limit": 3
+      },
+      "milliseconds": 27.506500002346
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 290,
+      "ammo": 3,
+      "active_bombs": 0,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4864864864864865,
+      "rejected": {
+        "search_limit": 48
+      },
+      "milliseconds": 60.8626999965054
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 300,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 36,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4411764705882353,
+      "rejected": {
+        "search_limit": 22,
+        "learner_dies": 6
+      },
+      "milliseconds": 40.62779999367194
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 310,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.8918918918918919,
+      "rejected": {
+        "search_limit": 21,
+        "learner_dies": 3
+      },
+      "milliseconds": 61.227900005178526
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 320,
+      "ammo": 3,
+      "active_bombs": 0,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.42500000000000004,
+      "rejected": {
+        "search_limit": 55
+      },
+      "milliseconds": 54.848399995535146
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 330,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 39,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4473684210526315,
+      "rejected": {
+        "no_reduction": 2,
+        "learner_dies": 9,
+        "search_limit": 9
+      },
+      "milliseconds": 40.27910000149859
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 340,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 17,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.43243243243243246,
+      "rejected": {
+        "learner_dies": 5,
+        "search_limit": 8
+      },
+      "milliseconds": 16.24189999711234
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 350,
+      "ammo": 3,
+      "active_bombs": 0,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.42500000000000004,
+      "rejected": {
+        "search_limit": 55
+      },
+      "milliseconds": 60.75370000326075
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 370,
+      "ammo": 3,
+      "active_bombs": 0,
+      "plans": 56,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.42500000000000004,
+      "rejected": {
+        "search_limit": 38
+      },
+      "milliseconds": 49.01809999864781
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 380,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 11,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.30000000000000004,
+      "rejected": {
+        "learner_dies": 3,
+        "search_limit": 5
+      },
+      "milliseconds": 12.122299995098729
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 390,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 24,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.32499999999999996,
+      "rejected": {
+        "search_limit": 7,
+        "learner_dies": 1
+      },
+      "milliseconds": 24.882799996703397
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 410,
+      "ammo": 3,
+      "active_bombs": 2,
+      "plans": 32,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.5,
+      "rejected": {
+        "learner_dies": 6,
+        "no_reduction": 2,
+        "search_limit": 12
+      },
+      "milliseconds": 31.67070000199601
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 420,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 50,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 22,
+        "learner_dies": 7
+      },
+      "milliseconds": 51.3656000039191
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 430,
+      "ammo": 3,
+      "active_bombs": 2,
+      "plans": 13,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "no_reduction": 1,
+        "learner_dies": 2,
+        "search_limit": 1
+      },
+      "milliseconds": 19.961500001954846
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 450,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 48,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.375,
+      "rejected": {
+        "search_limit": 29,
+        "no_reduction": 1,
+        "learner_dies": 8
+      },
+      "milliseconds": 44.55420000158483
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 470,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 30,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.28205128205128205,
+      "rejected": {
+        "search_limit": 4,
+        "no_reduction": 1,
+        "learner_dies": 5
+      },
+      "milliseconds": 30.893000002834015
+    },
+    {
+      "seed": 19000,
+      "aid": 1,
+      "step": 490,
+      "ammo": 3,
+      "active_bombs": 1,
+      "plans": 57,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.4358974358974359,
+      "rejected": {
+        "search_limit": 55,
+        "learner_dies": 1
+      },
+      "milliseconds": 60.03690000216011
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 10,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 4,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.25,
+      "rejected": {},
+      "milliseconds": 5.648500002280343,
+      "example": {
+        "first_actions": [
+          4
+        ],
+        "bombs": [
+          [
+            7,
+            {
+              "row": 2,
+              "col": 7,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ],
+          [
+            15,
+            {
+              "row": 1,
+              "col": 5,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 2
+            }
+          ]
+        ],
+        "path": [
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          5,
+          0,
+          0,
+          0,
+          0,
+          1,
+          3,
+          3,
+          5
+        ],
+        "pressure": 0.25,
+        "trapped": 0,
+        "before": [
+          16
+        ],
+        "after": [
+          12
+        ],
+        "horizon": 24
+      }
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 40,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 28,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.3076923076923077,
+      "rejected": {
+        "search_limit": 1
+      },
+      "milliseconds": 34.142100004828535,
+      "example": {
+        "first_actions": [
+          3
+        ],
+        "bombs": [
+          [
+            2,
+            {
+              "row": 1,
+              "col": 3,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ]
+        ],
+        "path": [
+          3,
+          3,
+          5
+        ],
+        "pressure": 0.3076923076923077,
+        "trapped": 0,
+        "before": [
+          26
+        ],
+        "after": [
+          18
+        ],
+        "horizon": 11
+      }
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 50,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 35,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.3448275862068966,
+      "rejected": {
+        "search_limit": 2,
+        "no_reduction": 1,
+        "learner_dies": 2
+      },
+      "milliseconds": 35.95299999869894,
+      "example": {
+        "first_actions": [
+          0
+        ],
+        "bombs": [
+          [
+            1,
+            {
+              "row": 2,
+              "col": 7,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ],
+          [
+            9,
+            {
+              "row": 3,
+              "col": 5,
+              "owner": 1,
+              "timer": 8,
+              "blast_range": 3
+            }
+          ]
+        ],
+        "path": [
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          2,
+          3,
+          3,
+          5
+        ],
+        "pressure": 0.3448275862068966,
+        "trapped": 0,
+        "before": [
+          29
+        ],
+        "after": [
+          19
+        ],
+        "horizon": 18
+      }
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 60,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.46329999895533547
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 70,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 16,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.32258064516129037,
+      "rejected": {
+        "search_limit": 6
+      },
+      "milliseconds": 20.880600000964478
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 80,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 32,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.33333333333333337,
+      "rejected": {
+        "search_limit": 4
+      },
+      "milliseconds": 34.505499999795575
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 90,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 8,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.2941176470588235,
+      "rejected": {
+        "search_limit": 1
+      },
+      "milliseconds": 11.35210000211373
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 100,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 35,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.3142857142857143,
+      "rejected": {
+        "search_limit": 4
+      },
+      "milliseconds": 43.41839999688091
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 110,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 55,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.4285714285714286,
+      "rejected": {
+        "search_limit": 10
+      },
+      "milliseconds": 57.50809999881312
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 120,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 45,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.3142857142857143,
+      "rejected": {
+        "search_limit": 6
+      },
+      "milliseconds": 51.020699997025076
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 140,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 41,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.4411764705882353,
+      "rejected": {
+        "search_limit": 7,
+        "learner_dies": 1
+      },
+      "milliseconds": 47.51340000075288
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 150,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.41599999531172216
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 170,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 53,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.30000000000000004,
+      "rejected": {
+        "search_limit": 10
+      },
+      "milliseconds": 55.6192000003648
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 180,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 37,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "learner_dies": 1
+      },
+      "milliseconds": 47.73320000094827
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 190,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 48,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.4,
+      "rejected": {
+        "search_limit": 22,
+        "learner_dies": 2
+      },
+      "milliseconds": 47.03280000103405
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 200,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 7,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 9.483800000452902
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 210,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 21,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 3
+      },
+      "milliseconds": 28.54479999950854
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 220,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 43,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 5
+      },
+      "milliseconds": 50.11729999387171
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 230,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 51,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 4
+      },
+      "milliseconds": 50.701200001640245
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 250,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 27,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 1,
+        "learner_dies": 1
+      },
+      "milliseconds": 31.836499998462386
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 260,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 34,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 4,
+        "learner_dies": 1
+      },
+      "milliseconds": 40.93560000183061
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 270,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 40,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 10
+      },
+      "milliseconds": 36.91080000135116
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 280,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 8,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 1
+      },
+      "milliseconds": 9.642400000302587
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 300,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 16,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 2,
+        "learner_dies": 1
+      },
+      "milliseconds": 17.445599994971417
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 320,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 33,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 3
+      },
+      "milliseconds": 31.3804000033997
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 330,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.6374000004143454
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 340,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 26,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 24.85980000346899
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 350,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.436099995567929
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 360,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 14,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 17.44959999632556
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 370,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 29
+      },
+      "milliseconds": 64.24689999403199
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 380,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 58,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 16
+      },
+      "milliseconds": 58.6027000026661
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 390,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 32,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 10
+      },
+      "milliseconds": 33.93789999972796
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 400,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 47,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 5
+      },
+      "milliseconds": 43.84359999676235
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 410,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 7,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {},
+      "milliseconds": 11.863800005812664
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 420,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.7250000053318217
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 440,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 37,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 5,
+        "no_reduction": 1,
+        "learner_dies": 1
+      },
+      "milliseconds": 45.951700005389284
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 450,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 16,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 4
+      },
+      "milliseconds": 18.376599997282028
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 460,
+      "ammo": 1,
+      "active_bombs": 0,
+      "plans": 64,
+      "accepted": 1,
+      "two_bomb_labels": 0,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 30
+      },
+      "milliseconds": 65.18779999896651
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 480,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 16,
+      "accepted": 1,
+      "two_bomb_labels": 1,
+      "pressure": 0.275,
+      "rejected": {
+        "search_limit": 4
+      },
+      "milliseconds": 19.388100001378916
+    },
+    {
+      "seed": 19002,
+      "aid": 1,
+      "step": 490,
+      "ammo": 1,
+      "active_bombs": 1,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "rejected": {
+        "no_safe_route": 1
+      },
+      "milliseconds": 0.5517999961739406
+    }
+  ]
+}

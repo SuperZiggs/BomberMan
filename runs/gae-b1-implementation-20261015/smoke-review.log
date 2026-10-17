@@ -1,0 +1,38 @@
+{
+  "cpu": {
+    "passed": true,
+    "raw_files": 46,
+    "seconds": 57.492414499999995,
+    "arms": {
+      "control": {
+        "learner_steps": 397,
+        "boundaries": null
+      },
+      "gae": {
+        "learner_steps": 397,
+        "boundaries": {
+          "time_limit": 19,
+          "match_end": 1
+        }
+      }
+    }
+  },
+  "cuda": {
+    "passed": true,
+    "raw_files": 46,
+    "seconds": 73.65791149999995,
+    "arms": {
+      "control": {
+        "learner_steps": 394,
+        "boundaries": null
+      },
+      "gae": {
+        "learner_steps": 394,
+        "boundaries": {
+          "time_limit": 18,
+          "match_end": 2
+        }
+      }
+    }
+  }
+}

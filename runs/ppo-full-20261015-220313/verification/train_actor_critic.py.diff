@@ -1,0 +1,223 @@
+--- before/train_actor_critic.py
++++ train_actor_critic.py
+@@ -245,8 +245,10 @@
+             'teacher_group': teacher_group, 'teacher_target': target.detach()}
+ 
+ 
+-def ratio_rollout_losses(net, steps, advantages, returns):
+-    """D0: one full-episode, unclipped ratio update; targets stay fixed."""
++def ratio_rollout_losses(net, steps, advantages, returns, clip_epsilon=None):
++    """Full-episode ratio objective with fixed targets; optional D1 PPO clipping."""
++    if clip_epsilon is not None and (not math.isfinite(clip_epsilon) or not 0 < clip_epsilon < 1):
++        raise ValueError('clip_epsilon must be in (0, 1)')
+     if (not steps or advantages.shape != (len(steps),) or returns.shape != advantages.shape
+             or any(s['terminal'] for s in steps[:-1]) or not steps[-1]['terminal']):
+         raise ValueError('D0 requires one complete learner trajectory and matching targets')
+@@ -259,7 +261,10 @@
+     old_log_probs = torch.stack([s['old_log_prob'] for s in steps])
+     ratio = (dist.log_prob(actions) - old_log_probs).exp()
+     entropies = dist.entropy()
+-    result = {'policy_loss': -(ratio * advantages.detach()).mean(),
++    surrogate = ratio * advantages.detach()
++    if clip_epsilon is not None:
++        surrogate = torch.minimum(surrogate, ratio.clamp(1-clip_epsilon, 1+clip_epsilon) * advantages.detach())
++    result = {'policy_loss': -surrogate.mean(), 'ratios': ratio.detach(),
+               'value_loss': F.mse_loss(values.reshape(-1), returns.detach()),
+               'entropy': entropies.mean(), 'entropies': entropies}
+     log_probs = F.log_softmax(logits.masked_fill(~mask, -1e9), dim=-1)
+@@ -275,13 +280,67 @@
+     if not all(torch.isfinite(result[k]).all().item() for k in
+                ('policy_loss', 'value_loss', 'entropy', 'escape_loss', 'combat_loss', 'navigation_loss')):
+         raise FloatingPointError('Non-finite ratio rollout loss')
+-    result['diagnostics'] = {'objective': 'ratio', 'samples': len(steps), 'epochs': 1,
+-        'clipped': False, 'ratio_mean': ratio.detach().mean().item(),
++    result['diagnostics'] = {'objective': 'ppo' if clip_epsilon is not None else 'ratio', 'samples': len(steps), 'epochs': 1,
++        'clipped': clip_epsilon is not None, 'ratio_mean': ratio.detach().mean().item(),
+         'ratio_min': ratio.detach().min().item(), 'ratio_max': ratio.detach().max().item(),
+         'ratio_max_abs_error_from_one': (ratio.detach() - 1).abs().max().item(),
+         'exact_kl_before_update': kl.detach().mean().item(), 'label_counts': counts,
+         'terminal_transitions': sum(s['terminal'] for s in steps), 'last_boundary': steps[-1]['boundary']}
+     return result
++
++
++def update_ratio_rollout(net, optimizer, steps, advantages, returns, *, epochs, clipped,
++                         clip_epsilon, target_kl, value_coef, entropy_coef, stop_event=None):
++    """Reuse one fixed rollout; cancellation rolls back every update in this episode."""
++    if (not isinstance(epochs, int) or isinstance(epochs, bool) or epochs < 1
++            or not 0 < clip_epsilon < 1 or not math.isfinite(target_kl) or target_kl < 0):
++        raise ValueError('Invalid epoch count, clipping epsilon or KL target')
++    rollback = (deepcopy(net.state_dict()), deepcopy(optimizer.state_dict())) if stop_event is not None else None
++    history = []
++    def cancelled():
++        if stop_event is None or not stop_event.is_set():
++            return False
++        net.load_state_dict(rollback[0])
++        optimizer.load_state_dict(rollback[1])
++        optimizer.zero_grad(set_to_none=True)
++        return True
++    for epoch in range(1, epochs+1):
++        if cancelled():
++            return None
++        replay = ratio_rollout_losses(net, steps, advantages, returns, clip_epsilon if clipped else None)
++        loss = replay['policy_loss'] + value_coef*replay['value_loss'] - entropy_coef*replay['entropy']
++        loss = loss + .5*replay['escape_loss'] + .5*replay['combat_loss'] + .2*replay['navigation_loss']
++        if not torch.isfinite(loss).item():
++            raise FloatingPointError('Non-finite multi-epoch training loss')
++        optimizer.zero_grad()
++        loss.backward()
++        grad_norm = torch.nn.utils.clip_grad_norm_(net.parameters(), max_norm=5.)
++        if not torch.isfinite(grad_norm).item():
++            raise FloatingPointError('Non-finite multi-epoch training gradient')
++        optimizer.step()
++        if cancelled():
++            return None
++        with torch.no_grad():
++            post = ratio_rollout_losses(net, steps, advantages, returns, clip_epsilon if clipped else None)
++        if cancelled():
++            return None
++        diagnostics = dict(replay['diagnostics'])
++        ratios = replay['ratios']
++        diagnostics.update(epoch=epoch, ratio_p95=ratios.quantile(.95).item(),
++            clip_fraction=((ratios-1).abs() > clip_epsilon).float().mean().item(),
++            entropy=replay['entropy'].detach().item(), value_loss=replay['value_loss'].detach().item(),
++            policy_loss=replay['policy_loss'].detach().item(), loss=loss.detach().item(),
++            grad_norm_before_clip=grad_norm.item(),
++            exact_kl_after_update=post['diagnostics']['exact_kl_before_update'])
++        history.append(diagnostics)
++        exceeded = bool(target_kl and diagnostics['exact_kl_after_update'] > 1.5*target_kl)
++        if exceeded:
++            break
++    diagnostics = {**replay['diagnostics'], 'objective': 'ppo' if clipped else 'ratio',
++        'clipped': clipped, 'epochs': len(history), 'epochs_requested': epochs,
++        'clip_epsilon': clip_epsilon, 'target_kl': target_kl, 'kl_threshold': 1.5*target_kl if target_kl else None,
++        'guard_exceeded': exceeded, 'early_stop': exceeded and len(history) < epochs, 'epoch_metrics': history}
++    return {**replay, 'diagnostics': diagnostics, 'grad_norm': grad_norm}
+ 
+ 
+ def _combat_reward(reward: float, agent_id: int, info, episode_kills: int):
+@@ -467,6 +526,9 @@
+     resume_training_state: str = "",
+     checkpoint_context=None,
+     policy_objective: str = "ac",
++    update_epochs: int = 1,
++    clip_epsilon: float = 0.2,
++    target_kl: float = 0.0,
+ ):
+     """
+     Unified training loop for phases C, D, E.
+@@ -490,7 +552,7 @@
+         'wall_destroy_bonus', 'max_steps', 'log_every', 'snapshot_every', 'resume_from', 'device', 'seed',
+         'validation_every', 'validation_episodes', 'validation_seed', 'attack_teacher',
+         'normalize_advantage', 'advantage_diagnostics', 'advantage_estimator', 'gae_lambda', 'reward_diagnostics',
+-        'policy_objective')}
++        'policy_objective', 'update_epochs', 'clip_epsilon', 'target_kl')}
+     restored = load_training_state(resume_training_state) if resume_training_state else None
+     provenance = {'config': resume_config, 'sources': source_hashes(), 'runtime': runtime_state()} if save_training_state else None
+     if restored is not None and restored['provenance'] != provenance:
+@@ -500,8 +562,13 @@
+         raise ValueError("episodes, max_steps, log_every and snapshot_every must be positive")
+     if attack_teacher not in ("local", "two_bomb", "local_combat_move"):
+         raise ValueError("attack_teacher must be local, two_bomb or local_combat_move")
+-    if policy_objective not in ('ac', 'ratio'):
+-        raise ValueError('policy_objective must be ac/ratio')
++    if policy_objective not in ('ac', 'ratio', 'ppo'):
++        raise ValueError('policy_objective must be ac/ratio/ppo')
++    if (not isinstance(update_epochs, int) or isinstance(update_epochs, bool) or update_epochs < 1
++            or not 0 < clip_epsilon < 1 or not math.isfinite(target_kl) or target_kl < 0
++            or (policy_objective == 'ac' and (update_epochs != 1 or target_kl != 0))):
++        raise ValueError('Invalid epoch count, clipping epsilon or KL target for this objective')
++    multi_update = policy_objective == 'ppo' or update_epochs > 1 or target_kl > 0
+     if advantage_estimator not in ("mc", "gae") or not 0 <= gae_lambda <= 1:
+         raise ValueError("advantage_estimator must be mc/gae; gae_lambda must be finite and in [0, 1]")
+     if advantage_estimator == "gae" and not 0 <= gamma <= 1:
+@@ -512,7 +579,7 @@
+         np.random.seed(seed)
+         torch.manual_seed(seed)
+     advantage_diagnostics = (advantage_diagnostics or normalize_advantage
+-                             or advantage_estimator == "gae" or policy_objective == 'ratio')
++                             or advantage_estimator == "gae" or policy_objective != 'ac')
+ 
+     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
+                           max_steps=max_steps, seed=seed)
+@@ -720,7 +787,7 @@
+         aux_losses_buf = []
+         combat_losses_buf = []
+         attack_losses_buf = []
+-        rollout = [] if policy_objective == 'ratio' else None
++        rollout = [] if policy_objective != 'ac' else None
+         bombs_this_ep = 0
+         walls_this_ep = 0
+         suicide_this_ep = False
+@@ -928,22 +995,34 @@
+             policy_loss = -(log_probs_t * advantages).mean()
+             value_loss = F.mse_loss(values_t, returns_t)
+             entropy_bonus = entropies_t.mean()
++            ent_coef_now = entropy_coef * max(0.2, 1.0 - 0.8 * ep / episodes)
+             if rollout is not None:
+-                replay = ratio_rollout_losses(net, rollout, advantages, returns_t)
++                if multi_update:
++                    replay = update_ratio_rollout(net, optimizer, rollout, advantages, returns_t,
++                        epochs=update_epochs, clipped=policy_objective == 'ppo', clip_epsilon=clip_epsilon,
++                        target_kl=target_kl, value_coef=value_coef, entropy_coef=ent_coef_now, stop_event=stop_event)
++                    if replay is None:
++                        if save_training_state:
++                            restore_state(load_training_state(state_path))
++                        break
++                else:
++                    replay = ratio_rollout_losses(net, rollout, advantages, returns_t)
+                 policy_loss, value_loss, entropy_bonus = (replay[k] for k in ('policy_loss', 'value_loss', 'entropy'))
+                 escape_loss, combat_loss, navigation_loss = (replay[k + '_loss'] for k in ('escape', 'combat', 'navigation'))
+                 entropies_t, ratio_metrics = replay['entropies'], replay['diagnostics']
+ 
+             # Linearly anneal entropy coefficient: full at start, 20% at end
+-            ent_coef_now = entropy_coef * max(0.2, 1.0 - 0.8 * ep / episodes)
+             loss = policy_loss + value_coef * value_loss - ent_coef_now * entropy_bonus
+             loss = loss + 0.5 * escape_loss + 0.5 * combat_loss + 0.2 * navigation_loss
+             if advantage_diagnostics and not torch.isfinite(loss).item():
+                 raise FloatingPointError("Non-finite training loss")
+ 
+-            optimizer.zero_grad()
+-            loss.backward()
+-            grad_norm = torch.nn.utils.clip_grad_norm_(net.parameters(), max_norm=5.0)
++            if multi_update:
++                grad_norm = replay['grad_norm']
++            else:
++                optimizer.zero_grad()
++                loss.backward()
++                grad_norm = torch.nn.utils.clip_grad_norm_(net.parameters(), max_norm=5.0)
+             if advantage_diagnostics:
+                 if not torch.isfinite(grad_norm).item():
+                     raise FloatingPointError("Non-finite training gradient")
+@@ -966,7 +1045,8 @@
+                         "bootstrap_transitions": int(bootstrap.sum().item()),
+                         "continuations": int(continuation.sum().item())}
+                        if advantage_estimator == "gae" else {})}
+-            optimizer.step()
++            if not multi_update:
++                optimizer.step()
+         else:
+             loss = torch.zeros(())
+             policy_loss = value_loss = loss
+@@ -1440,8 +1520,11 @@
+     parser.add_argument("--gae_lambda", type=float, default=0.95)
+     parser.add_argument("--reward_diagnostics", action="store_true",
+                         help="Log reward components without changing learner rewards")
+-    parser.add_argument('--policy_objective', choices=('ac', 'ratio'), default='ac',
+-                        help='D0 ratio: one unclipped full-episode update using stored masks and targets')
++    parser.add_argument('--policy_objective', choices=('ac', 'ratio', 'ppo'), default='ac',
++                        help='Stored-rollout ratio objective, optionally PPO clipped')
++    parser.add_argument('--update_epochs', type=int, default=1)
++    parser.add_argument('--clip_epsilon', type=float, default=.2)
++    parser.add_argument('--target_kl', type=float, default=0., help='Stop remaining epochs above 1.5 times this KL; 0 disables')
+     args = parser.parse_args()
+ 
+     os.makedirs(args.checkpoint_dir, exist_ok=True)
+@@ -1477,5 +1560,8 @@
+             save_training_state=args.save_training_state,
+             resume_training_state=args.resume_training_state,
+             policy_objective=args.policy_objective,
++            update_epochs=args.update_epochs,
++            clip_epsilon=args.clip_epsilon,
++            target_kl=args.target_kl,
+             on_episode=write_metrics,
+         )

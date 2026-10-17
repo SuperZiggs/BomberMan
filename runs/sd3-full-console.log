@@ -1,0 +1,314 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 100 games, all corners, seed 21000
+[sd_12ch validation] ep0: 0/100
+[sd_12ch validation] ep0: 25/100
+[sd_12ch validation] ep0: 50/100
+[sd_12ch validation] ep0: 75/100
+[sd_12ch validation] ep0: 100/100
+[Validation] ep 0 | ActiveWR 28.0% | Suicide 0.0% | Draw 16.0% | best ep 0
+[sd_12ch skill] ep0: approach 87.5%
+[C] ep    10 | WR:  70.0% | active WR:  50.0% | kills: 0.50 | reward: +7.925 | bombs: 33.9 | walls: 9.6 | combat bombs: 205/207 | loss: 58.2592 | lr: 9.9e-05 | pool: 0 | best validation active: 28%
+[C] ep    20 | WR:  80.0% | active WR:  30.0% | kills: 0.30 | reward: +5.037 | bombs: 38.1 | walls: 8.8 | combat bombs: 249/254 | loss: 0.2291 | lr: 9.8e-05 | pool: 0 | best validation active: 28%
+[C] ep    30 | WR:  70.0% | active WR:  50.0% | kills: 0.50 | reward: +7.663 | bombs: 29.2 | walls: 7.8 | combat bombs: 189/198 | loss: 22.5219 | lr: 9.5e-05 | pool: 0 | best validation active: 28%
+[C] ep    40 | WR:  80.0% | active WR:  40.0% | kills: 0.40 | reward: +6.390 | bombs: 33.9 | walls: 8.3 | combat bombs: 229/237 | loss: 25.3380 | lr: 9.1e-05 | pool: 0 | best validation active: 28%
+[C] ep    50 | WR:  50.0% | active WR:  30.0% | kills: 0.30 | reward: +5.180 | bombs: 39.5 | walls: 10.1 | combat bombs: 270/273 | loss: 0.2103 | lr: 8.6e-05 | pool: 0 | best validation active: 28%
+[C] ep    60 | WR:  70.0% | active WR:  50.0% | kills: 0.50 | reward: +7.953 | bombs: 32.9 | walls: 9.4 | combat bombs: 209/223 | loss: 30.7517 | lr: 8.0e-05 | pool: 0 | best validation active: 28%
+[C] ep    70 | WR:  50.0% | active WR:  30.0% | kills: 0.30 | reward: +4.947 | bombs: 37.5 | walls: 9.7 | combat bombs: 239/245 | loss: 35.3318 | lr: 7.4e-05 | pool: 0 | best validation active: 28%
+[C] ep    80 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.651 | bombs: 40.3 | walls: 10.4 | combat bombs: 255/263 | loss: 0.1976 | lr: 6.7e-05 | pool: 0 | best validation active: 28%
+[C] ep    90 | WR:  80.0% | active WR:  60.0% | kills: 0.60 | reward: +9.558 | bombs: 35.1 | walls: 10.3 | combat bombs: 233/239 | loss: 22.9190 | lr: 6.0e-05 | pool: 0 | best validation active: 28%
+[Validation] ep 100 | 100 games, all corners, seed 21000
+[sd_12ch validation] ep100: 0/100
+[sd_12ch validation] ep100: 25/100
+[sd_12ch validation] ep100: 50/100
+[sd_12ch validation] ep100: 75/100
+[sd_12ch validation] ep100: 100/100
+[Validation] ep 100 | ActiveWR 30.0% | Suicide 0.0% | Draw 9.0% | best ep 100
+[sd_12ch skill] ep100: approach 93.8%
+[C] ep   100 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.302 | bombs: 36.2 | walls: 8.6 | combat bombs: 235/246 | loss: 12.9349 | lr: 5.3e-05 | pool: 0 | best validation active: 30%
+[C] ep   110 | WR:  70.0% | active WR:  50.0% | kills: 0.50 | reward: +8.002 | bombs: 30.7 | walls: 9.2 | combat bombs: 188/193 | loss: 22.1877 | lr: 4.5e-05 | pool: 0 | best validation active: 30%
+[C] ep   120 | WR:  40.0% | active WR:  10.0% | kills: 0.10 | reward: +2.082 | bombs: 38.5 | walls: 10.2 | combat bombs: 236/244 | loss: 0.2496 | lr: 3.8e-05 | pool: 0 | best validation active: 30%
+[C] ep   130 | WR:  60.0% | active WR:  20.0% | kills: 0.20 | reward: +3.465 | bombs: 33.4 | walls: 8.9 | combat bombs: 209/217 | loss: 0.2886 | lr: 3.1e-05 | pool: 0 | best validation active: 30%
+[C] ep   140 | WR:  70.0% | active WR:  30.0% | kills: 0.30 | reward: +5.143 | bombs: 41.5 | walls: 9.6 | combat bombs: 287/291 | loss: 0.2905 | lr: 2.5e-05 | pool: 0 | best validation active: 30%
+[C] ep   150 | WR:  60.0% | active WR:  30.0% | kills: 0.30 | reward: +4.953 | bombs: 33.6 | walls: 8.9 | combat bombs: 225/235 | loss: 31.6152 | lr: 1.9e-05 | pool: 0 | best validation active: 30%
+[C] ep   160 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.411 | bombs: 35.7 | walls: 9.7 | combat bombs: 232/241 | loss: 17.5972 | lr: 1.4e-05 | pool: 0 | best validation active: 30%
+[C] ep   170 | WR:  50.0% | active WR:  40.0% | kills: 0.40 | reward: +6.166 | bombs: 26.4 | walls: 8.3 | combat bombs: 161/171 | loss: 0.1875 | lr: 1.0e-05 | pool: 0 | best validation active: 30%
+[C] ep   180 | WR:  70.0% | active WR:  40.0% | kills: 0.40 | reward: +6.225 | bombs: 32.1 | walls: 7.9 | combat bombs: 207/217 | loss: 0.2098 | lr: 7.3e-06 | pool: 0 | best validation active: 30%
+[C] ep   190 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.307 | bombs: 42.8 | walls: 10.2 | combat bombs: 282/289 | loss: 0.1927 | lr: 5.6e-06 | pool: 0 | best validation active: 30%
+[Validation] ep 200 | 100 games, all corners, seed 21000
+[sd_12ch validation] ep200: 0/100
+[sd_12ch validation] ep200: 25/100
+[sd_12ch validation] ep200: 50/100
+[sd_12ch validation] ep200: 75/100
+[sd_12ch validation] ep200: 100/100
+[Validation] ep 200 | ActiveWR 31.0% | Suicide 0.0% | Draw 16.0% | best ep 200
+[sd_12ch skill] ep200: approach 100.0%
+[C] ep   200 | WR:  80.0% | active WR:  50.0% | kills: 0.50 | reward: +7.997 | bombs: 28.7 | walls: 9.6 | combat bombs: 167/178 | loss: 0.1606 | lr: 5.0e-06 | pool: 0 | best validation active: 31%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\sd3-full\sd_12ch\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\sd3-full\sd_12ch\best_phaseC.pt (best episode: 200)
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 100 games, all corners, seed 21000
+[sd_13ch validation] ep0: 0/100
+[sd_13ch validation] ep0: 25/100
+[sd_13ch validation] ep0: 50/100
+[sd_13ch validation] ep0: 75/100
+[sd_13ch validation] ep0: 100/100
+[Validation] ep 0 | ActiveWR 28.0% | Suicide 0.0% | Draw 16.0% | best ep 0
+[sd_13ch skill] ep0: approach 87.5%
+[C] ep    10 | WR:  70.0% | active WR:  50.0% | kills: 0.50 | reward: +7.925 | bombs: 33.9 | walls: 9.6 | combat bombs: 205/207 | loss: 58.2595 | lr: 9.9e-05 | pool: 0 | best validation active: 28%
+[C] ep    20 | WR:  80.0% | active WR:  30.0% | kills: 0.30 | reward: +5.037 | bombs: 38.1 | walls: 8.8 | combat bombs: 249/254 | loss: 0.2291 | lr: 9.8e-05 | pool: 0 | best validation active: 28%
+[C] ep    30 | WR:  70.0% | active WR:  50.0% | kills: 0.50 | reward: +7.663 | bombs: 29.2 | walls: 7.8 | combat bombs: 189/198 | loss: 22.5220 | lr: 9.5e-05 | pool: 0 | best validation active: 28%
+[C] ep    40 | WR:  80.0% | active WR:  40.0% | kills: 0.40 | reward: +6.390 | bombs: 33.9 | walls: 8.3 | combat bombs: 229/237 | loss: 25.3378 | lr: 9.1e-05 | pool: 0 | best validation active: 28%
+[C] ep    50 | WR:  50.0% | active WR:  30.0% | kills: 0.30 | reward: +5.180 | bombs: 39.5 | walls: 10.1 | combat bombs: 270/273 | loss: 0.2103 | lr: 8.6e-05 | pool: 0 | best validation active: 28%
+[C] ep    60 | WR:  70.0% | active WR:  30.0% | kills: 0.30 | reward: +5.067 | bombs: 35.4 | walls: 9.5 | combat bombs: 227/239 | loss: 0.1804 | lr: 8.0e-05 | pool: 0 | best validation active: 28%
+[C] ep    70 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.340 | bombs: 38.2 | walls: 8.8 | combat bombs: 264/270 | loss: 18.9897 | lr: 7.4e-05 | pool: 0 | best validation active: 28%
+[C] ep    80 | WR: 100.0% | active WR:  60.0% | kills: 0.60 | reward: +9.691 | bombs: 31.4 | walls: 9.7 | combat bombs: 203/207 | loss: 27.5451 | lr: 6.7e-05 | pool: 0 | best validation active: 28%
+[C] ep    90 | WR:  70.0% | active WR:  10.0% | kills: 0.10 | reward: +2.203 | bombs: 37.2 | walls: 8.2 | combat bombs: 244/247 | loss: 68.3071 | lr: 6.0e-05 | pool: 0 | best validation active: 28%
+[Validation] ep 100 | 100 games, all corners, seed 21000
+[sd_13ch validation] ep100: 0/100
+[sd_13ch validation] ep100: 25/100
+[sd_13ch validation] ep100: 50/100
+[sd_13ch validation] ep100: 75/100
+[sd_13ch validation] ep100: 100/100
+[Validation] ep 100 | ActiveWR 28.0% | Suicide 1.0% | Draw 18.0% | best ep 0
+[Validation] kept best: suicide exceeds warm-start limit 0.0%
+[sd_13ch skill] ep100: approach 93.8%
+[C] ep   100 | WR:  70.0% | active WR:  40.0% | kills: 0.40 | reward: +6.587 | bombs: 39.7 | walls: 10.1 | combat bombs: 256/262 | loss: 19.0910 | lr: 5.3e-05 | pool: 0 | best validation active: 28%
+[C] ep   110 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.611 | bombs: 36.5 | walls: 10.3 | combat bombs: 237/244 | loss: 0.2292 | lr: 4.5e-05 | pool: 0 | best validation active: 28%
+[C] ep   120 | WR:  40.0% | active WR:  20.0% | kills: 0.20 | reward: +3.403 | bombs: 39.8 | walls: 8.2 | combat bombs: 277/287 | loss: 0.2032 | lr: 3.8e-05 | pool: 0 | best validation active: 28%
+[C] ep   130 | WR:  50.0% | active WR:  10.0% | kills: 0.10 | reward: +2.012 | bombs: 40.3 | walls: 9.4 | combat bombs: 282/286 | loss: 31.4863 | lr: 3.1e-05 | pool: 0 | best validation active: 28%
+[C] ep   140 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.126 | bombs: 30.9 | walls: 7.4 | combat bombs: 184/191 | loss: 0.2676 | lr: 2.5e-05 | pool: 0 | best validation active: 28%
+[C] ep   150 | WR:  70.0% | active WR:  20.0% | kills: 0.20 | reward: +3.543 | bombs: 38.8 | walls: 9.1 | combat bombs: 240/244 | loss: 0.1599 | lr: 1.9e-05 | pool: 0 | best validation active: 28%
+[C] ep   160 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.544 | bombs: 40.7 | walls: 10.3 | combat bombs: 264/271 | loss: 13.4353 | lr: 1.4e-05 | pool: 0 | best validation active: 28%
+[C] ep   170 | WR:  60.0% | active WR:  30.0% | kills: 0.30 | reward: +5.033 | bombs: 39.8 | walls: 9.3 | combat bombs: 250/257 | loss: 0.2120 | lr: 1.0e-05 | pool: 0 | best validation active: 28%
+[C] ep   180 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +4.751 | bombs: 33.7 | walls: 8.8 | combat bombs: 206/215 | loss: 0.1768 | lr: 7.3e-06 | pool: 0 | best validation active: 28%
+[C] ep   190 | WR:  50.0% | active WR:  20.0% | kills: 0.20 | reward: +3.599 | bombs: 44.3 | walls: 9.2 | combat bombs: 297/312 | loss: 0.1909 | lr: 5.6e-06 | pool: 0 | best validation active: 28%
+[Validation] ep 200 | 100 games, all corners, seed 21000
+[sd_13ch validation] ep200: 0/100
+[sd_13ch validation] ep200: 25/100
+[sd_13ch validation] ep200: 50/100
+[sd_13ch validation] ep200: 75/100
+[sd_13ch validation] ep200: 100/100
+[Validation] ep 200 | ActiveWR 35.0% | Suicide 0.0% | Draw 13.0% | best ep 200
+[sd_13ch skill] ep200: approach 93.8%
+[C] ep   200 | WR:  70.0% | active WR:  30.0% | kills: 0.30 | reward: +5.061 | bombs: 29.8 | walls: 8.7 | combat bombs: 192/197 | loss: 23.7777 | lr: 5.0e-06 | pool: 0 | best validation active: 35%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\sd3-full\sd_13ch\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\sd3-full\sd_13ch\best_phaseC.pt (best episode: 200)
+[Evaluation] original: 0/400
+[Evaluation] original: 25/400
+[Evaluation] original: 50/400
+[Evaluation] original: 75/400
+[Evaluation] original: 100/400
+[Evaluation] original: 125/400
+[Evaluation] original: 150/400
+[Evaluation] original: 175/400
+[Evaluation] original: 200/400
+[Evaluation] original: 225/400
+[Evaluation] original: 250/400
+[Evaluation] original: 275/400
+[Evaluation] original: 300/400
+[Evaluation] original: 325/400
+[Evaluation] original: 350/400
+[Evaluation] original: 375/400
+[Evaluation] original: 400/400
+[Evaluation] sd_12ch: 0/400
+[Evaluation] sd_12ch: 25/400
+[Evaluation] sd_12ch: 50/400
+[Evaluation] sd_12ch: 75/400
+[Evaluation] sd_12ch: 100/400
+[Evaluation] sd_12ch: 125/400
+[Evaluation] sd_12ch: 150/400
+[Evaluation] sd_12ch: 175/400
+[Evaluation] sd_12ch: 200/400
+[Evaluation] sd_12ch: 225/400
+[Evaluation] sd_12ch: 250/400
+[Evaluation] sd_12ch: 275/400
+[Evaluation] sd_12ch: 300/400
+[Evaluation] sd_12ch: 325/400
+[Evaluation] sd_12ch: 350/400
+[Evaluation] sd_12ch: 375/400
+[Evaluation] sd_12ch: 400/400
+[Evaluation] sd_13ch: 0/400
+[Evaluation] sd_13ch: 25/400
+[Evaluation] sd_13ch: 50/400
+[Evaluation] sd_13ch: 75/400
+[Evaluation] sd_13ch: 100/400
+[Evaluation] sd_13ch: 125/400
+[Evaluation] sd_13ch: 150/400
+[Evaluation] sd_13ch: 175/400
+[Evaluation] sd_13ch: 200/400
+[Evaluation] sd_13ch: 225/400
+[Evaluation] sd_13ch: 250/400
+[Evaluation] sd_13ch: 275/400
+[Evaluation] sd_13ch: 300/400
+[Evaluation] sd_13ch: 325/400
+[Evaluation] sd_13ch: 350/400
+[Evaluation] sd_13ch: 375/400
+[Evaluation] sd_13ch: 400/400
+{
+  "status": "complete",
+  "full_protocol": true,
+  "reason": null,
+  "hashes_unchanged": true,
+  "comparisons": {
+    "sd_12ch": {
+      "gate": {
+        "difference_pp": -2.25,
+        "ci95_pp": [
+          -8.0,
+          3.5000000000000004
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "eligible": false,
+      "vs_original": {
+        "win": {
+          "difference_pp": 3.0,
+          "ci95_pp": [
+            -2.75,
+            8.75
+          ],
+          "board_pairs": 200,
+          "resamples": 10000,
+          "bootstrap_seed": 20261014
+        },
+        "active_win": {
+          "difference_pp": -2.25,
+          "ci95_pp": [
+            -8.0,
+            3.5000000000000004
+          ],
+          "board_pairs": 200,
+          "resamples": 10000,
+          "bootstrap_seed": 20261014
+        },
+        "draw": {
+          "difference_pp": -4.5,
+          "ci95_pp": [
+            -8.75,
+            -0.25
+          ],
+          "board_pairs": 200,
+          "resamples": 10000,
+          "bootstrap_seed": 20261014
+        },
+        "suicide": {
+          "difference_pp": -0.25,
+          "ci95_pp": [
+            -1.0,
+            0.5
+          ],
+          "board_pairs": 200,
+          "resamples": 10000,
+          "bootstrap_seed": 20261014
+        }
+      }
+    },
+    "sd_13ch": {
+      "gate": {
+        "difference_pp": -2.25,
+        "ci95_pp": [
+          -7.5,
+          3.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "eligible": false,
+      "vs_original": {
+        "win": {
+          "difference_pp": 4.0,
+          "ci95_pp": [
+            -2.0,
+            10.0
+          ],
+          "board_pairs": 200,
+          "resamples": 10000,
+          "bootstrap_seed": 20261014
+        },
+        "active_win": {
+          "difference_pp": -2.25,
+          "ci95_pp": [
+            -7.5,
+            3.25
+          ],
+          "board_pairs": 200,
+          "resamples": 10000,
+          "bootstrap_seed": 20261014
+        },
+        "draw": {
+          "difference_pp": -3.5000000000000004,
+          "ci95_pp": [
+            -8.0,
+            1.0
+          ],
+          "board_pairs": 200,
+          "resamples": 10000,
+          "bootstrap_seed": 20261014
+        },
+        "suicide": {
+          "difference_pp": -0.25,
+          "ci95_pp": [
+            -1.5,
+            1.0
+          ],
+          "board_pairs": 200,
+          "resamples": 10000,
+          "bootstrap_seed": 20261014
+        }
+      }
+    },
+    "sd_13ch_vs_sd_12ch": {
+      "win": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          -4.75,
+          6.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "active_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -4.75,
+          4.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          -2.75,
+          4.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -1.25,
+          1.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds_this_process": 2595.100548800001,
+  "resumed": false
+}

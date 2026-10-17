@@ -1,0 +1,42 @@
+{
+  "completed_episodes": 200,
+  "expected_episodes": 200,
+  "training_complete": true,
+  "validation_complete": true,
+  "skill_probes_complete": true,
+  "optimizer_instances": 1,
+  "optimizer_steps": 200,
+  "learner_steps": 75234,
+  "guidance": {
+    "labels": 31652,
+    "agreements": 18009,
+    "bomb_instead_of_move": 2080,
+    "target_probability_sum": 18058.493158764264,
+    "entropy_sum": 17213.515132921355,
+    "queries": 0,
+    "accepted": 0,
+    "accepted_agreements": 0,
+    "pressure_gain_sum": 0.0,
+    "certificate_steps": 0,
+    "milliseconds": 0.0,
+    "rejected": {}
+  },
+  "best_episode": 200,
+  "elapsed_seconds": 963.1989420999998,
+  "peak_cuda_bytes": 137966080,
+  "checkpoints": {
+    "best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\control\\best_phaseC.pt",
+      "sha256": "14082ec9dbde9de6d8ff70861c691b9e6c76d4804ebee539af64050ce4707453"
+    },
+    "final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\control\\final_phaseC.pt",
+      "sha256": "fcbf6e01b28bd9d9f4e014358d76c2e34ee2227fce6632648ee2b9ed7f10a2c0"
+    }
+  },
+  "training_state": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\control\\training_state.pt",
+    "sha256": "a178ba76a11e57ce1a074e7e8752124fedd45e485391a1ffe96ea001b010c0cb",
+    "episode": 200
+  }
+}

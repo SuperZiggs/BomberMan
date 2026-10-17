@@ -1,0 +1,92 @@
+ZIP/input/source/checkpoints, selections, scores and all summary fields: PASS
+Rebuilt original-28000-A0: 334 frames, 3 sampled states
+Rebuilt original-28000-A1: 395 frames, 4 sampled states
+Rebuilt original-28001-A0: 500 frames, 4 sampled states
+Rebuilt original-28001-A1: 379 frames, 3 sampled states
+Rebuilt original-28002-A0: 500 frames, 4 sampled states
+Rebuilt original-28002-A1: 500 frames, 4 sampled states
+Rebuilt original-28003-A0: 500 frames, 4 sampled states
+Rebuilt original-28003-A1: 500 frames, 4 sampled states
+Rebuilt original-28004-A0: 191 frames, 2 sampled states
+Rebuilt original-28004-A1: 500 frames, 4 sampled states
+Rebuilt original-28005-A0: 72 frames, 1 sampled states
+Rebuilt original-28005-A1: 500 frames, 4 sampled states
+Rebuilt original-28006-A0: 500 frames, 4 sampled states
+Rebuilt original-28006-A1: 500 frames, 4 sampled states
+Rebuilt original-28007-A0: 500 frames, 4 sampled states
+Rebuilt original-28007-A1: 500 frames, 4 sampled states
+Rebuilt original-28008-A0: 497 frames, 4 sampled states
+Rebuilt original-28008-A1: 457 frames, 4 sampled states
+Rebuilt original-28009-A0: 49 frames, 0 sampled states
+Rebuilt original-28009-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28000-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28000-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28001-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28001-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28002-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28002-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28003-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28003-A1: 412 frames, 4 sampled states
+Rebuilt two_bomb_final-28004-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28004-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28005-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28005-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28006-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28006-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28007-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28007-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28008-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28008-A1: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28009-A0: 500 frames, 4 sampled states
+Rebuilt two_bomb_final-28009-A1: 500 frames, 4 sampled states
+{
+  "frames": 18286,
+  "branches": 6836,
+  "diagnostics": {
+    "viable_paths_by_bomb_count": {
+      "1": 288,
+      "2": 27
+    },
+    "trapped_scored_paths": 0,
+    "selected_two_stress": {
+      "evader": {
+        "checks": 10,
+        "prefix_complete_and_survived": 3
+      },
+      "rule": {
+        "checks": 10,
+        "prefix_complete_and_survived": 1
+      }
+    },
+    "rescued_same_first_actions": 40,
+    "rescued_no_first_action_overlap": 22,
+    "top_k_selected_two": {
+      "1": 0,
+      "4": 0,
+      "8": 2
+    },
+    "rule_known_suffix_deaths": [
+      {
+        "game_id": "original-28004-A0",
+        "tick": 150
+      },
+      {
+        "game_id": "original-28007-A1",
+        "tick": 150
+      },
+      {
+        "game_id": "two_bomb_final-28001-A1",
+        "tick": 150
+      },
+      {
+        "game_id": "two_bomb_final-28004-A0",
+        "tick": 50
+      },
+      {
+        "game_id": "two_bomb_final-28009-A0",
+        "tick": 350
+      }
+    ]
+  }
+}
+All saved game states/candidates/guards/stress and viable two-bomb reachability: PASS

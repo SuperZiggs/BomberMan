@@ -1,0 +1,22 @@
+{
+  "arm": "curriculum",
+  "completed_episodes": 200,
+  "expected_episodes": 600,
+  "training_complete": false,
+  "validation_complete": false,
+  "curriculum_stages_complete": false,
+  "stage_failure": {
+    "stage": "C1_static",
+    "episode": 200,
+    "reason": "skill_gate_not_met_within_200_episodes"
+  },
+  "stage_events": [],
+  "stage_episode_counts": {
+    "C1_static": 200
+  },
+  "learner_steps": 41086,
+  "optimizer_instances": 1,
+  "optimizer_steps": 200,
+  "peak_cuda_bytes": 110139904,
+  "elapsed_seconds": 467.2928145000001
+}

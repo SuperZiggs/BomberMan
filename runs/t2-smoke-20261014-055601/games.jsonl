@@ -1,0 +1,4 @@
+{"model": "original", "game_id": "original-28000-A0", "seed": 28000, "aid": 0, "win": 1, "active_win": 1, "suicide": 0, "draw": 0, "kills": 1, "steps": 334, "bombs": 44, "items": 3}
+{"model": "original", "game_id": "original-28000-A1", "seed": 28000, "aid": 1, "win": 1, "active_win": 1, "suicide": 0, "draw": 0, "kills": 1, "steps": 395, "bombs": 33, "items": 0}
+{"model": "original", "game_id": "original-28001-A0", "seed": 28001, "aid": 0, "win": 0, "active_win": 0, "suicide": 0, "draw": 1, "kills": 0, "steps": 500, "bombs": 44, "items": 2}
+{"model": "original", "game_id": "original-28001-A1", "seed": 28001, "aid": 1, "win": 1, "active_win": 1, "suicide": 0, "draw": 0, "kills": 1, "steps": 379, "bombs": 52, "items": 2}

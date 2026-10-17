@@ -1,0 +1,153 @@
+[
+  {
+    "id": "fork-escape-a1-r2-single_trap-rot0-m0-A0",
+    "family": "fork",
+    "split": "train",
+    "group": "escape",
+    "ammo": 1,
+    "range": 2,
+    "expected": "single_trap",
+    "start": [
+      3,
+      3
+    ],
+    "prefix": [
+      5
+    ],
+    "rotation": 0,
+    "mirror": false,
+    "aid": 0
+  },
+  {
+    "id": "fork-approach-a1-r2-single_trap-rot0-m0-A0",
+    "family": "fork",
+    "split": "train",
+    "group": "approach",
+    "ammo": 1,
+    "range": 2,
+    "expected": "single_trap",
+    "start": [
+      1,
+      1
+    ],
+    "prefix": [
+      4,
+      4,
+      2,
+      2,
+      5
+    ],
+    "rotation": 0,
+    "mirror": false,
+    "aid": 0
+  },
+  {
+    "id": "fork-evader-a1-r2-pressure-rot0-m0-A0",
+    "family": "fork",
+    "split": "train",
+    "group": "evader",
+    "ammo": 1,
+    "range": 2,
+    "expected": "pressure",
+    "start": [
+      3,
+      3
+    ],
+    "prefix": [
+      5
+    ],
+    "rotation": 0,
+    "mirror": false,
+    "aid": 0
+  },
+  {
+    "id": "fork-combo-a2-r2-combo-rot0-m0-A0",
+    "family": "fork",
+    "split": "train",
+    "group": "combo",
+    "ammo": 2,
+    "range": 2,
+    "expected": "combo",
+    "start": [
+      3,
+      3
+    ],
+    "prefix": [
+      5,
+      1,
+      5
+    ],
+    "rotation": 0,
+    "mirror": false,
+    "aid": 0
+  },
+  {
+    "id": "fork-combo-a2-r3-combo-rot0-m0-A0",
+    "family": "fork",
+    "split": "train",
+    "group": "combo",
+    "ammo": 2,
+    "range": 3,
+    "expected": "combo",
+    "start": [
+      3,
+      3
+    ],
+    "prefix": [
+      5,
+      1,
+      5
+    ],
+    "rotation": 0,
+    "mirror": false,
+    "aid": 0
+  },
+  {
+    "id": "fork-ammo_control-a1-r2-illegal_capacity-rot0-m0-A0",
+    "family": "fork",
+    "split": "train",
+    "group": "ammo_control",
+    "ammo": 1,
+    "range": 2,
+    "expected": "illegal_capacity",
+    "start": [
+      3,
+      3
+    ],
+    "prefix": [
+      5,
+      1,
+      5
+    ],
+    "rotation": 0,
+    "mirror": false,
+    "aid": 0
+  },
+  {
+    "id": "fork-ammo_control-a1-r2-delayed_capacity-rot0-m0-A0",
+    "family": "fork",
+    "split": "train",
+    "group": "ammo_control",
+    "ammo": 1,
+    "range": 2,
+    "expected": "delayed_capacity",
+    "start": [
+      3,
+      3
+    ],
+    "prefix": [
+      5,
+      1,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      5
+    ],
+    "rotation": 0,
+    "mirror": false,
+    "aid": 0
+  }
+]

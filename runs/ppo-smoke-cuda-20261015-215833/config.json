@@ -1,0 +1,93 @@
+{
+  "registered_utc": "2026-10-15T15:00:32.333540+00:00",
+  "experiment": "T4-D1",
+  "full_protocol": false,
+  "warm_start": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+  "warm_start_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "0edfa404551c4f02cf4a5e12d4287b5986ccf724805f18d5b1bccfa9904dac25",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "combat_move_teacher.py": "e266982d70e78f7c3a8ce01469a75dbf74a14aa935385e7fc729cd53e2d0226d",
+    "evaluate.py": "d1ed074ed1e1d0b3cb8af29385ac2e0252d5acceffc60ef9ad20cb8f79be05c0",
+    "visualize.py": "fb6701a07ffe68345c1c83383530313956077a05ac361e7fa59ce97b837ef07c",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "audit_t2.py": "a3b6afcb3b36f59e46c95b9d26381f6a52271172f2ae099a0c44c5e3010bf055",
+    "audit_l2_candidates.py": "f87cf3d2456aaaf6a3d9b706d0cde0875e4bed0c6905da229d61ef5bcc4282ce",
+    "audit_t3_approach.py": "75963ad54b595fea917832247dc1af219ccca7d8dcc745c0acae7d34145bdd37",
+    "benchmark_t3.py": "86341d76d0351e4d97232208a943f9365c36d4ba348ea10c1afb9f8c8f7d1642",
+    "run_t3_curriculum.py": "105bd2fd65b1745615e6fd92c9e4a4608789971eee72a3f454e0353b15a944f7",
+    "run_combat_move_pilot.py": "1debf4f141329c46bfbc150201c4dfe20e3572150c30bfa286399da3a70d37b7",
+    "test_combat_move_teacher.py": "a1b9749c7ce31dc2bb3b9445e0163db1482b5afa7c24b9fd7d92124e60c1465d",
+    "test_combat_move_pilot.py": "f782d46d5045208336cdf1782dd00f34aedafba897f75822c318679cfa4bab4b",
+    "training_state.py": "1159cf982f2f3db1a68014f698073aeefaf754bca84c38966b7c2217e22b747b",
+    "test_training_state.py": "d25e4f8b25b7e9e0d038aa11acb206cd043e93714bbe590f34beae10817e4532",
+    "test_ppo_d0.py": "f9f5d75d6fb0588bd366a3cf881bfc3028e26550aecb68d1df03ad535f64c152",
+    "test_ppo_d1.py": "b1e117b567ca07b510d0e9cec620a55c379e0bb7a36d1198d734942ddb4c0e9e",
+    "run_ppo_pilot.py": "f4417cf7450f0cbc068cab6fb9543deec0a0f6d1e09bf4e3d72d65764b62cb41",
+    "test_ppo_pilot.py": "358e28c1bfe116c73d8adfc8b608cdcb484a64c10f93d7febfd489f6c166da50"
+  },
+  "runtime": {
+    "torch": "2.5.1",
+    "numpy": "2.0.1",
+    "threads": 1,
+    "cuda": "12.4",
+    "cudnn": 90100,
+    "deterministic": true,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "cudnn_tf32": false,
+    "matmul_tf32": false,
+    "cublas_workspace": ":4096:8",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU"
+  },
+  "train_device": "cuda",
+  "arms": {
+    "control": "ratio",
+    "ppo": "ppo"
+  },
+  "train_seed": 2026101507,
+  "episodes_per_arm": 20,
+  "phase": "C",
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 20,
+  "lr": 0.0001,
+  "gamma": 0.99,
+  "wall_destroy_bonus": 0.15,
+  "attack_teacher": "local",
+  "advantage_estimator": "mc",
+  "normalize_advantage": false,
+  "critic_target": "MC",
+  "update_epochs": 4,
+  "clip_epsilon": 0.2,
+  "target_kl": 0.02,
+  "kl_threshold": 0.03,
+  "scheduler_cadence": "one step per completed episode",
+  "resumable_training_state": true,
+  "validation": {
+    "seed": 21000,
+    "games": 2,
+    "every": 10
+  },
+  "evaluation": {
+    "seed": 39870,
+    "games_per_model": 2,
+    "last_board_seed": 39870,
+    "both_corners": true,
+    "device": "cpu"
+  },
+  "budget_minutes": {
+    "overall": 150,
+    "preflight": 15,
+    "training": 100,
+    "evaluation": 50
+  },
+  "only_treatment_change": "Unclipped U4 versus clipped P4; same four maximum epochs and post-update KL guard",
+  "gate": {
+    "gain_vs_both_pp": 5,
+    "ci95_lower_above": 0,
+    "suicide_not_above_either": true
+  }
+}

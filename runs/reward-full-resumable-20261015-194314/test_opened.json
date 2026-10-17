@@ -1,0 +1,5 @@
+{
+  "seed": 36000,
+  "num_episodes": 400,
+  "num_agents": 2
+}

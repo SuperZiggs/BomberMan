@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "hashes_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds_this_process": 0.09710119999999733,
+  "resumed": true
+}

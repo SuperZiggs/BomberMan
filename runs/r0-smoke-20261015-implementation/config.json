@@ -1,0 +1,196 @@
+{
+  "experiment": "T4-R0",
+  "registered_utc": "2026-10-15T08:37:23.707219+00:00",
+  "full_protocol": false,
+  "seed": 21000,
+  "games_per_model": 2,
+  "max_steps": 20,
+  "board_size": 9,
+  "num_agents": 2,
+  "device": "cpu",
+  "threads": 1,
+  "checkpoints": {
+    "original": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+    },
+    "mc_final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\control\\final_phaseC.pt",
+      "sha256": "b050f6c840a65aa166ab307df116feea2f5436861f593da8309539315078ed7e"
+    },
+    "gae_final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\gae\\final_phaseC.pt",
+      "sha256": "6bca938646a84434cda629f8ea62f6758e9c754ee3fe225b1bf03090e37e32ba"
+    }
+  },
+  "source_sha256": {
+    "audit_r0.py": "cd49443160f8df31dc9ac2fe752f9c2807cc79797e970a97876fd05a62d93b58",
+    "test_reward_audit.py": "c41f679124362bd550675e72888f4a27b33988692f865330a09ad8e7008f6ccf",
+    "train_actor_critic.py": "0e4b86f048756ed3e5647607db90c1d1ab42b2501b8a275833d98eca680793d8",
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a",
+    "visualize.py": "fb6701a07ffe68345c1c83383530313956077a05ac361e7fa59ce97b837ef07c",
+    "audit_t2.py": "a3b6afcb3b36f59e46c95b9d26381f6a52271172f2ae099a0c44c5e3010bf055",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "combat_move_teacher.py": "e266982d70e78f7c3a8ce01469a75dbf74a14aa935385e7fc729cd53e2d0226d"
+  },
+  "parent_input_sha256": {
+    "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\summary.json": "77e47d9740d1165501711c333da22761cb01cf2afee12bb62b56e2f2c5a5c3e8",
+    "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\config.json": "5c82649f165482c4cabdd1c3495bc5953f8f7c82ececaf5deb14757761ee971e",
+    "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\control\\validation_metrics.jsonl": "a5b7ae6c7899f16a6617b81199829206d82116a33a92a483704db2dd77da5c49",
+    "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\gae\\validation_metrics.jsonl": "f6dd7153833dd82a5c00320c498d7124396777615cea3ea2043eaae71853ae17"
+  },
+  "expected_validation": {
+    "original": {
+      "episode": 0,
+      "selected": true,
+      "seed": 21000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 100,
+      "win_rate": 37.0,
+      "active_win_rate": 28.999999999999996,
+      "suicide_rate": 0.0,
+      "draw_rate": 62.0,
+      "avg_kills": 0.29,
+      "avg_bombs": 40.89,
+      "avg_items": 1.57,
+      "avg_steps": 393.38,
+      "by_corner": {
+        "0": {
+          "num_episodes": 50,
+          "win_rate": 30.0,
+          "active_win_rate": 24.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 70.0,
+          "avg_kills": 0.24,
+          "avg_bombs": 41.6,
+          "avg_items": 1.5,
+          "avg_steps": 417.66
+        },
+        "1": {
+          "num_episodes": 50,
+          "win_rate": 44.0,
+          "active_win_rate": 34.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 54.0,
+          "avg_kills": 0.34,
+          "avg_bombs": 40.18,
+          "avg_items": 1.64,
+          "avg_steps": 369.1
+        }
+      },
+      "device": "cpu",
+      "suicide_limit": 0.0
+    },
+    "mc_final": {
+      "episode": 200,
+      "selected": false,
+      "seed": 21000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 100,
+      "win_rate": 32.0,
+      "active_win_rate": 25.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 67.0,
+      "avg_kills": 0.25,
+      "avg_bombs": 43.12,
+      "avg_items": 1.7,
+      "avg_steps": 399.29,
+      "by_corner": {
+        "0": {
+          "num_episodes": 50,
+          "win_rate": 30.0,
+          "active_win_rate": 24.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 70.0,
+          "avg_kills": 0.24,
+          "avg_bombs": 44.9,
+          "avg_items": 1.82,
+          "avg_steps": 413.44
+        },
+        "1": {
+          "num_episodes": 50,
+          "win_rate": 34.0,
+          "active_win_rate": 26.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 64.0,
+          "avg_kills": 0.26,
+          "avg_bombs": 41.34,
+          "avg_items": 1.58,
+          "avg_steps": 385.14
+        }
+      },
+      "device": "cpu",
+      "suicide_limit": 0.0
+    },
+    "gae_final": {
+      "episode": 200,
+      "selected": false,
+      "seed": 21000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 100,
+      "win_rate": 37.0,
+      "active_win_rate": 28.999999999999996,
+      "suicide_rate": 0.0,
+      "draw_rate": 62.0,
+      "avg_kills": 0.29,
+      "avg_bombs": 42.03,
+      "avg_items": 1.61,
+      "avg_steps": 389.59,
+      "by_corner": {
+        "0": {
+          "num_episodes": 50,
+          "win_rate": 34.0,
+          "active_win_rate": 26.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 66.0,
+          "avg_kills": 0.26,
+          "avg_bombs": 42.94,
+          "avg_items": 1.62,
+          "avg_steps": 403.38
+        },
+        "1": {
+          "num_episodes": 50,
+          "win_rate": 40.0,
+          "active_win_rate": 32.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 57.99999999999999,
+          "avg_kills": 0.32,
+          "avg_bombs": 41.12,
+          "avg_items": 1.6,
+          "avg_steps": 375.8
+        }
+      },
+      "device": "cpu",
+      "suicide_limit": 0.0
+    }
+  },
+  "wall_destroy_bonus": 0.15,
+  "near_distance": 3,
+  "timeout_replays_per_model": 4,
+  "components": [
+    "time",
+    "item",
+    "wall",
+    "owned_kill",
+    "active_win",
+    "passive_win_env",
+    "passive_win_cancellation",
+    "death",
+    "self_blast"
+  ],
+  "reward_tolerance": 1e-10,
+  "training_updates": 0,
+  "budget_minutes": 60,
+  "torch": "2.5.1",
+  "numpy": "2.0.1",
+  "limits": "Known validation only; descriptive proxies, no training, model selection or new held-out tests"
+}

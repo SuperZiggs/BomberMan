@@ -1,0 +1,265 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 2 games, all corners, seed 21000
+[control validation] ep0: 0/2
+[Validation] ep 0 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[control skill] ep0: approach 87.5%
+[Validation] ep 2 | 2 games, all corners, seed 21000
+[control validation] ep2: 0/2
+[Validation] ep 2 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[control skill] ep2: approach 87.5%
+[C] ep     2 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -0.008 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.5464 | lr: 5.3e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 4 | 2 games, all corners, seed 21000
+[control validation] ep4: 0/2
+[Validation] ep 4 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[control skill] ep4: approach 93.8%
+[C] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -0.008 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.2083 | lr: 5.0e-06 | pool: 0 | best validation active: 0%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\combat-move-smoke-cpu-implementation\control\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\combat-move-smoke-cpu-implementation\control\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 2 games, all corners, seed 21000
+[combat_move validation] ep0: 0/2
+[Validation] ep 0 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[combat_move skill] ep0: approach 87.5%
+[Validation] ep 2 | 2 games, all corners, seed 21000
+[combat_move validation] ep2: 0/2
+[Validation] ep 2 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[combat_move skill] ep2: approach 87.5%
+[C] ep     2 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -0.008 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.5464 | lr: 5.3e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 4 | 2 games, all corners, seed 21000
+[combat_move validation] ep4: 0/2
+[Validation] ep 4 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[combat_move skill] ep4: approach 93.8%
+[C] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -0.008 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.2083 | lr: 5.0e-06 | pool: 0 | best validation active: 0%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\combat-move-smoke-cpu-implementation\combat_move\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\combat-move-smoke-cpu-implementation\combat_move\best_phaseC.pt (best episode: 0)
+[Evaluation] original: 0/2
+[Evaluation] control: 0/2
+[Evaluation] combat_move: 0/2
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "arms": {
+    "control": {
+      "completed_episodes": 4,
+      "expected_episodes": 4,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 4,
+      "learner_steps": 32,
+      "guidance": {
+        "labels": 10,
+        "agreements": 4,
+        "bomb_instead_of_move": 0,
+        "target_probability_sum": 5.8087692856788635,
+        "entropy_sum": 5.747882544994354,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 20.759033800000907,
+      "peak_cuda_bytes": null,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\combat-move-smoke-cpu-implementation\\control\\best_phaseC.pt",
+          "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\combat-move-smoke-cpu-implementation\\control\\final_phaseC.pt",
+          "sha256": "6e2539d130ebcc5da08b4eb6c4fa3d3695d61b902674c91ca02a5b5a8204d8bd"
+        }
+      }
+    },
+    "combat_move": {
+      "completed_episodes": 4,
+      "expected_episodes": 4,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 4,
+      "learner_steps": 32,
+      "guidance": {
+        "labels": 10,
+        "agreements": 4,
+        "bomb_instead_of_move": 0,
+        "target_probability_sum": 5.8087692856788635,
+        "entropy_sum": 5.747882544994354,
+        "queries": 10,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 18.943200004287064,
+        "rejected": {
+          "no_pressure_increase": 4,
+          "next_bomb_masked": 6
+        }
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 17.465225799998734,
+      "peak_cuda_bytes": null,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\combat-move-smoke-cpu-implementation\\combat_move\\best_phaseC.pt",
+          "sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\combat-move-smoke-cpu-implementation\\combat_move\\final_phaseC.pt",
+          "sha256": "6e2539d130ebcc5da08b4eb6c4fa3d3695d61b902674c91ca02a5b5a8204d8bd"
+        }
+      }
+    }
+  },
+  "evaluation_complete": true,
+  "hashes_unchanged": true,
+  "selected_checkpoints_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": 47.48266439999861,
+  "models": {
+    "original": {
+      "seed": 39830,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "passive_win_rate": 0.0
+    },
+    "control": {
+      "seed": 39830,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\combat-move-smoke-cpu-implementation\\control\\best_phaseC.pt",
+      "checkpoint_sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1",
+      "passive_win_rate": 0.0
+    },
+    "combat_move": {
+      "seed": 39830,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\combat-move-smoke-cpu-implementation\\combat_move\\best_phaseC.pt",
+      "checkpoint_sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1",
+      "passive_win_rate": 0.0
+    }
+  }
+}
+Send D:\fpt\subject\BomberMan\runs\combat-move-smoke-cpu-implementation-send.zip and the console log. Keep B until a separate decision.

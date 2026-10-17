@@ -1,0 +1,4 @@
+{
+  "cuda": "runs\\ppo-d0-smoke-cuda-20261015-212624",
+  "cpu": "runs\\ppo-d0-smoke-cpu-20261015-212624"
+}

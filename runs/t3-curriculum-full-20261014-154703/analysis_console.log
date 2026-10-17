@@ -1,0 +1,132 @@
+ZIP 49 files, source/warm-start hashes, incomplete protocol: PASS
+800 episode rows, optimizer/LR/roles/layouts, ten Phase C validations: PASS
+Rebuilt all outcomes and masks: 64/192 games
+Rebuilt all outcomes and masks: 128/192 games
+Rebuilt all outcomes and masks: 192/192 games
+6870 frames/all masks; skill outcomes/pairs; 200 diagnostic games/rates/corners: PASS
+{
+  "baseline_group_success": {
+    "escape": {
+      "count": 32,
+      "percent": 100.0
+    },
+    "approach": {
+      "count": 28,
+      "percent": 87.5
+    }
+  },
+  "approach_failures": {
+    "B": {
+      "games": 4,
+      "skill_truncations": 4,
+      "never_bombed": 2,
+      "reached_reference_bomb_cell": 0,
+      "closest_manhattan_distance_counts": {
+        "4": 2,
+        "3": 2
+      },
+      "first_action_counts": {
+        "3": 2,
+        "4": 2
+      },
+      "stop_actions_percent": 0.0
+    },
+    "100": {
+      "games": 20,
+      "skill_truncations": 20,
+      "never_bombed": 12,
+      "reached_reference_bomb_cell": 0,
+      "closest_manhattan_distance_counts": {
+        "3": 12,
+        "4": 8
+      },
+      "first_action_counts": {
+        "2": 10,
+        "3": 2,
+        "1": 8
+      },
+      "stop_actions_percent": 0.0
+    },
+    "150": {
+      "games": 28,
+      "skill_truncations": 28,
+      "never_bombed": 24,
+      "reached_reference_bomb_cell": 0,
+      "closest_manhattan_distance_counts": {
+        "5": 8,
+        "3": 10,
+        "4": 10
+      },
+      "first_action_counts": {
+        "2": 12,
+        "3": 4,
+        "1": 12
+      },
+      "stop_actions_percent": 0.0
+    },
+    "200": {
+      "games": 20,
+      "skill_truncations": 20,
+      "never_bombed": 16,
+      "reached_reference_bomb_cell": 0,
+      "closest_manhattan_distance_counts": {
+        "4": 12,
+        "3": 8
+      },
+      "first_action_counts": {
+        "4": 4,
+        "2": 4,
+        "3": 6,
+        "1": 6
+      },
+      "stop_actions_percent": 0.0
+    }
+  },
+  "paired_difference": {
+    "difference_pp": -20.0,
+    "ci95_pp": [
+      -32.0,
+      -8.0
+    ],
+    "board_pairs": 50,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014,
+    "interpretation": "Exploratory validation21000; not the registered 400-game held-out test"
+  },
+  "training_layouts": {
+    "control": {
+      "random": {
+        "episodes": 600,
+        "active_wins": 201,
+        "suicides": 2,
+        "mean_steps": 377.73333333333335,
+        "mean_reward": 5.7174666666666925,
+        "initial_ammo": {
+          "1": 600
+        }
+      }
+    },
+    "curriculum": {
+      "random": {
+        "episodes": 101,
+        "active_wins": 53,
+        "suicides": 0,
+        "mean_steps": 306.84158415841586,
+        "mean_reward": 7.810980198019803,
+        "initial_ammo": {
+          "1": 101
+        }
+      },
+      "scenario": {
+        "episodes": 99,
+        "active_wins": 86,
+        "suicides": 0,
+        "mean_steps": 101.96969696969697,
+        "mean_reward": 12.059646464646464,
+        "initial_ammo": {
+          "1": 99
+        }
+      }
+    }
+  }
+}

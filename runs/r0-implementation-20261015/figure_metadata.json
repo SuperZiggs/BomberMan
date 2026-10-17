@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "actual": "PNG",
+      "detail": "File format is compared with the explicit allow-list.",
+      "expected": [
+        "PNG"
+      ],
+      "name": "format",
+      "status": "pass"
+    }
+  ],
+  "input": {
+    "name": "reward_scatter.png",
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\r0-full-20261015-153908\\reward_scatter.png",
+    "size_bytes": 374098,
+    "suffix": ".png"
+  },
+  "metadata": {
+    "bands": [
+      "R",
+      "G",
+      "B",
+      "A"
+    ],
+    "compression": null,
+    "dpi_x": 299.9994,
+    "dpi_y": 299.9994,
+    "exif_present": false,
+    "format": "PNG",
+    "frames": 1,
+    "has_alpha": true,
+    "height_mm_from_metadata": 177.8003556007112,
+    "height_px": 2100,
+    "icc_profile_bytes": 0,
+    "icc_profile_present": false,
+    "kind": "raster",
+    "mode": "RGBA",
+    "pixel_count": 7560000,
+    "width_mm_from_metadata": 304.8006096012192,
+    "width_px": 3600
+  },
+  "notice": "This deterministic metadata screen checks only the supplied constraints. It does not verify visual quality, scientific integrity, accessibility, embedded-raster resolution in vector files, or journal compliance.",
+  "schema_version": "1.0",
+  "screening_summary": {
+    "fail": 0,
+    "pass": 1,
+    "unknown": 0,
+    "warning": 0
+  }
+}

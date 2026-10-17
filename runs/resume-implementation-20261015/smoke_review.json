@@ -1,0 +1,20 @@
+{
+  "cpu_resume": {
+    "status": "reviewed",
+    "episodes_per_arm": 20,
+    "full_protocol": false,
+    "source_changes_after_completion": [
+      "run_reward_pilot.py",
+      "test_reward_pilot.py",
+      "training_state.py",
+      "test_training_state.py"
+    ],
+    "completed_control_files_byte_identical": 10
+  },
+  "cuda": {
+    "status": "reviewed",
+    "episodes_per_arm": 20,
+    "full_protocol": false,
+    "source_changes_after_completion": []
+  }
+}

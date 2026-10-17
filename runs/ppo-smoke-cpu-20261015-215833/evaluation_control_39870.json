@@ -1,0 +1,113 @@
+{
+  "seed": 39870,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 8,
+  "num_episodes": 2,
+  "win_rate": 0.0,
+  "active_win_rate": 0.0,
+  "suicide_rate": 0.0,
+  "draw_rate": 100.0,
+  "avg_kills": 0.0,
+  "avg_bombs": 1.0,
+  "avg_items": 0.0,
+  "avg_steps": 8.0,
+  "contact": {
+    "reached_close_rate": 50.0,
+    "avg_first_close_step_conditional": 5.0,
+    "left_spawn_rate": 100.0
+  },
+  "avg_walls": 0.5,
+  "avg_walls_rewarded": 0.5,
+  "by_corner": {
+    "0": {
+      "num_episodes": 1,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 5.0,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 1.0,
+      "avg_walls_rewarded": 1.0,
+      "passive_win_rate": 0.0
+    },
+    "1": {
+      "num_episodes": 1,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 0.0,
+        "avg_first_close_step_conditional": null,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.0,
+      "avg_walls_rewarded": 0.0,
+      "passive_win_rate": 0.0
+    }
+  },
+  "games": [
+    {
+      "seed": 39870,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 1.0,
+      "items": 0.0,
+      "steps": 8.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 3
+      },
+      "walls": 1,
+      "walls_rewarded": 1
+    },
+    {
+      "seed": 39870,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 1.0,
+      "items": 0.0,
+      "steps": 8.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": null,
+        "min_distance": 4
+      },
+      "walls": 0,
+      "walls_rewarded": 0
+    }
+  ],
+  "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cpu-20261015-215833\\control\\best_phaseC.pt",
+  "checkpoint_sha256": "ef5ee493674cdce76bba6d7f32032249113c882b988bc2233e8659d7fcaccfe1",
+  "passive_win_rate": 0.0
+}

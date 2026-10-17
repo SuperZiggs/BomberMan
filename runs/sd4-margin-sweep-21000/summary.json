@@ -1,0 +1,246 @@
+{
+  "seed": 21000,
+  "games": 400,
+  "rows": [
+    {
+      "margin": 0,
+      "win_rate": 63.24999999999999,
+      "active_win_rate": 33.5,
+      "passive_win_rate": 29.749999999999993,
+      "draw_rate": 12.0,
+      "suicide_rate": 0.5,
+      "avg_kills": 0.335,
+      "learner_sd_deaths": 112,
+      "sudden_death": {
+        "learner_deaths": {
+          "alive": 274,
+          "sudden_death": 112,
+          "opponent_bomb": 12,
+          "self_bomb": 2
+        },
+        "opponent_deaths": {
+          "self_bomb": 214,
+          "alive": 120,
+          "sudden_death": 44,
+          "opponent_bomb": 22
+        },
+        "endings": {
+          "sole_survivor": 352,
+          "timeout": 21,
+          "all_dead": 27
+        },
+        "wins_opponent_sd": 22,
+        "both_sd_draws": 22,
+        "reached_sd": 250,
+        "mask": {
+          "learner": {
+            "queries": 15081,
+            "blocked_actions": 1243,
+            "empty_intersections": 430,
+            "unavoidable_pre_move_closure": 112
+          },
+          "opponent": {
+            "queries": 16199,
+            "blocked_actions": 1796,
+            "empty_intersections": 845,
+            "unavoidable_pre_move_closure": 61
+          }
+        },
+        "games": 400
+      }
+    },
+    {
+      "margin": 5,
+      "win_rate": 65.75,
+      "active_win_rate": 33.5,
+      "passive_win_rate": 32.25,
+      "draw_rate": 15.25,
+      "suicide_rate": 1.0,
+      "avg_kills": 0.335,
+      "learner_sd_deaths": 89,
+      "sudden_death": {
+        "learner_deaths": {
+          "alive": 298,
+          "sudden_death": 89,
+          "opponent_bomb": 9,
+          "self_bomb": 4
+        },
+        "opponent_deaths": {
+          "self_bomb": 210,
+          "sudden_death": 56,
+          "alive": 111,
+          "opponent_bomb": 23
+        },
+        "endings": {
+          "sole_survivor": 339,
+          "all_dead": 26,
+          "timeout": 35
+        },
+        "wins_opponent_sd": 33,
+        "both_sd_draws": 23,
+        "reached_sd": 250,
+        "mask": {
+          "learner": {
+            "queries": 15795,
+            "blocked_actions": 1972,
+            "margin_fallbacks": 1187,
+            "empty_intersections": 366,
+            "unavoidable_pre_move_closure": 89
+          },
+          "opponent": {
+            "queries": 16908,
+            "blocked_actions": 1892,
+            "empty_intersections": 799,
+            "unavoidable_pre_move_closure": 69
+          }
+        },
+        "games": 400
+      }
+    },
+    {
+      "margin": 10,
+      "win_rate": 65.0,
+      "active_win_rate": 33.0,
+      "passive_win_rate": 32.0,
+      "draw_rate": 13.5,
+      "suicide_rate": 1.0,
+      "avg_kills": 0.33,
+      "learner_sd_deaths": 99,
+      "sudden_death": {
+        "learner_deaths": {
+          "sudden_death": 99,
+          "alive": 286,
+          "opponent_bomb": 11,
+          "self_bomb": 4
+        },
+        "opponent_deaths": {
+          "alive": 112,
+          "sudden_death": 64,
+          "self_bomb": 200,
+          "opponent_bomb": 24
+        },
+        "endings": {
+          "sole_survivor": 346,
+          "all_dead": 28,
+          "timeout": 26
+        },
+        "wins_opponent_sd": 38,
+        "both_sd_draws": 26,
+        "reached_sd": 250,
+        "mask": {
+          "learner": {
+            "queries": 15347,
+            "blocked_actions": 2603,
+            "margin_fallbacks": 1874,
+            "empty_intersections": 400,
+            "unavoidable_pre_move_closure": 99
+          },
+          "opponent": {
+            "queries": 16414,
+            "blocked_actions": 2019,
+            "empty_intersections": 841,
+            "unavoidable_pre_move_closure": 73
+          }
+        },
+        "games": 400
+      }
+    },
+    {
+      "margin": 15,
+      "win_rate": 67.0,
+      "active_win_rate": 34.75,
+      "passive_win_rate": 32.25,
+      "draw_rate": 16.75,
+      "suicide_rate": 0.75,
+      "avg_kills": 0.3475,
+      "learner_sd_deaths": 84,
+      "sudden_death": {
+        "learner_deaths": {
+          "alive": 304,
+          "self_bomb": 3,
+          "sudden_death": 84,
+          "opponent_bomb": 9
+        },
+        "opponent_deaths": {
+          "self_bomb": 206,
+          "alive": 101,
+          "sudden_death": 66,
+          "opponent_bomb": 27
+        },
+        "endings": {
+          "sole_survivor": 333,
+          "timeout": 36,
+          "all_dead": 31
+        },
+        "wins_opponent_sd": 36,
+        "both_sd_draws": 30,
+        "reached_sd": 250,
+        "mask": {
+          "learner": {
+            "queries": 15436,
+            "blocked_actions": 3090,
+            "margin_fallbacks": 2337,
+            "empty_intersections": 286,
+            "unavoidable_pre_move_closure": 84
+          },
+          "opponent": {
+            "queries": 16477,
+            "blocked_actions": 2022,
+            "empty_intersections": 836,
+            "unavoidable_pre_move_closure": 79
+          }
+        },
+        "games": 400
+      }
+    },
+    {
+      "margin": 20,
+      "win_rate": 65.0,
+      "active_win_rate": 32.5,
+      "passive_win_rate": 32.5,
+      "draw_rate": 16.5,
+      "suicide_rate": 0.5,
+      "avg_kills": 0.325,
+      "learner_sd_deaths": 94,
+      "sudden_death": {
+        "learner_deaths": {
+          "alive": 296,
+          "sudden_death": 94,
+          "opponent_bomb": 8,
+          "self_bomb": 2
+        },
+        "opponent_deaths": {
+          "self_bomb": 195,
+          "alive": 110,
+          "sudden_death": 71,
+          "opponent_bomb": 24
+        },
+        "endings": {
+          "sole_survivor": 334,
+          "timeout": 36,
+          "all_dead": 30
+        },
+        "wins_opponent_sd": 43,
+        "both_sd_draws": 28,
+        "reached_sd": 250,
+        "mask": {
+          "learner": {
+            "queries": 15100,
+            "blocked_actions": 3541,
+            "margin_fallbacks": 3104,
+            "empty_intersections": 286,
+            "unavoidable_pre_move_closure": 94
+          },
+          "opponent": {
+            "queries": 16053,
+            "blocked_actions": 1941,
+            "empty_intersections": 719,
+            "unavoidable_pre_move_closure": 81
+          }
+        },
+        "games": 400
+      }
+    }
+  ],
+  "selected_margin": 15
+}

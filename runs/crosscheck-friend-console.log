@@ -1,0 +1,9 @@
+E1_friend_E_31000 {'win_rate': 58.5, 'active_win_rate': 38.5, 'passive_win_rate': 7.000000000000001, 'sudden_death_win_rate': 13.0, 'draw_rate': 28.999999999999996, 'suicide_rate': 1.0, 'sudden_death_death_rate': 11.5, 'avg_kills': 0.385, 'avg_steps': 362.345}
+E2_B_E_31000 {'win_rate': 60.0, 'active_win_rate': 33.0, 'passive_win_rate': 13.0, 'sudden_death_win_rate': 14.000000000000002, 'draw_rate': 22.0, 'suicide_rate': 0.5, 'sudden_death_death_rate': 19.5, 'avg_kills': 0.33, 'avg_steps': 394.45}
+E3_friend_E_60000 {'win_rate': 67.5, 'active_win_rate': 48.5, 'passive_win_rate': 10.5, 'sudden_death_win_rate': 8.5, 'draw_rate': 25.5, 'suicide_rate': 0.5, 'sudden_death_death_rate': 10.75, 'avg_kills': 0.485, 'avg_steps': 347.8125}
+E3_B_E_60000 {'win_rate': 64.0, 'active_win_rate': 40.0, 'passive_win_rate': 12.5, 'sudden_death_win_rate': 11.5, 'draw_rate': 22.5, 'suicide_rate': 0.5, 'sudden_death_death_rate': 16.75, 'avg_kills': 0.4, 'avg_steps': 356.51}
+E4_friend_off_60000 {'win_rate': 52.0, 'active_win_rate': 45.25, 'passive_win_rate': 6.75, 'sudden_death_win_rate': 0.0, 'draw_rate': 46.25, 'suicide_rate': 0.5, 'sudden_death_death_rate': 0.0, 'avg_kills': 0.4525, 'avg_steps': 352.39}
+E4_B_off_60000 {'win_rate': 44.75, 'active_win_rate': 39.0, 'passive_win_rate': 5.75, 'sudden_death_win_rate': 0.0, 'draw_rate': 53.5, 'suicide_rate': 0.5, 'sudden_death_death_rate': 0.0, 'avg_kills': 0.39, 'avg_steps': 363.3525}
+E2_friend_vs_B_E_31000 {'win': (-1.5, [-10.0, 7.000000000000001]), 'active_win': (5.5, [-4.0, 15.0]), 'draw': (7.0, [-0.5, 14.499999999999998]), 'suicide': (0.5, [-1.0, 2.0])}
+E3_friend_vs_B_E_60000 {'win': (3.5, [-3.5000000000000004, 10.5]), 'active_win': (8.5, [1.4937500000000057, 15.75]), 'draw': (3.0, [-3.0, 9.0]), 'suicide': (0.0, [-0.75, 0.75])}
+E4_friend_vs_B_off_60000 {'win': (7.25, [0.25, 14.499999999999998]), 'active_win': (6.25, [-1.0, 13.5]), 'draw': (-7.25, [-14.249999999999998, -0.25]), 'suicide': (0.0, [-0.75, 0.75])}

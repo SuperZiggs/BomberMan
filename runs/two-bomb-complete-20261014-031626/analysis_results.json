@@ -1,0 +1,318 @@
+{
+  "source_checks": {
+    "bomberman_env.py": true,
+    "rule_based_bot.py": true,
+    "train_actor_critic.py": true,
+    "tactical_teacher.py": true,
+    "evaluate.py": true
+  },
+  "original_checkpoint_unchanged": true,
+  "evaluations_verified": {
+    "original": {
+      "games": 400,
+      "board_pairs": 200,
+      "counts": {
+        "win": 172,
+        "active_win": 146,
+        "suicide": 2.0,
+        "draw": 219,
+        "kills": 146.0
+      }
+    },
+    "local": {
+      "games": 400,
+      "board_pairs": 200,
+      "counts": {
+        "win": 176,
+        "active_win": 152,
+        "suicide": 1.0,
+        "draw": 218,
+        "kills": 152.0
+      }
+    },
+    "two_bomb": {
+      "games": 400,
+      "board_pairs": 200,
+      "counts": {
+        "win": 172,
+        "active_win": 146,
+        "suicide": 2.0,
+        "draw": 219,
+        "kills": 146.0
+      }
+    }
+  },
+  "best_weights_equal_original": true,
+  "final_changed_tensors": 12,
+  "original_and_two_bomb_game_records_equal": true,
+  "comparisons_recomputed": {
+    "original": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "local": {
+      "difference_pp": -1.5,
+      "ci95_pp": [
+        -7.249999999999999,
+        4.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "local_minus_original": {
+    "difference_pp": 1.5,
+    "ci95_pp": [
+      -4.5,
+      7.249999999999999
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+  },
+  "training": {
+    "episodes": 200,
+    "learner_steps": 81718,
+    "teacher": {
+      "queries": 81718,
+      "plans": 3308269,
+      "accepted": 77355,
+      "two_bomb_labels": 59064,
+      "pressure": 28030.048458944024,
+      "milliseconds": 1578337.1357994762,
+      "rejected": {
+        "no_reduction": 48878,
+        "learner_dies": 136622,
+        "no_safe_route": 1764,
+        "search_limit": 1273211,
+        "enemy_already_doomed": 6120
+      },
+      "accepted_rate": 94.66090702170881,
+      "two_bomb_share_of_labels": 76.35446965289897,
+      "mean_pressure": 0.36235600102054194,
+      "mean_ms": 19.314436670005094
+    },
+    "windows_50": [
+      {
+        "episodes": [
+          1,
+          50
+        ],
+        "bombs": 36.92,
+        "walls": 9.48,
+        "items": 1.94,
+        "steps": 406.78,
+        "reward": 3.8922400000000312,
+        "policy_loss": 0.4194820702821016,
+        "value_loss": 11.514952788725495,
+        "combat_loss": 1.9240846729278565,
+        "escape_loss": 0.10540984503924847,
+        "navigation_loss": 0.24655409805476666,
+        "loss": 7.234664590358734,
+        "win_rate": 26.0,
+        "active_win_rate": 20.0,
+        "suicide_rate": 0.0,
+        "draw_rate": 72.0
+      },
+      {
+        "episodes": [
+          51,
+          100
+        ],
+        "bombs": 29.44,
+        "walls": 8.76,
+        "items": 1.9,
+        "steps": 425.0,
+        "reward": 3.764020000000029,
+        "policy_loss": 0.6435542275384069,
+        "value_loss": 11.081270766854287,
+        "combat_loss": 0.9852581143379211,
+        "escape_loss": 0.10155056171119213,
+        "navigation_loss": 0.2633765037357807,
+        "loss": 6.772764064669609,
+        "win_rate": 24.0,
+        "active_win_rate": 20.0,
+        "suicide_rate": 0.0,
+        "draw_rate": 74.0
+      },
+      {
+        "episodes": [
+          101,
+          150
+        ],
+        "bombs": 23.98,
+        "walls": 8.7,
+        "items": 1.72,
+        "steps": 385.2,
+        "reward": 3.432860000000023,
+        "policy_loss": 0.6845650124549866,
+        "value_loss": 10.855017300099135,
+        "combat_loss": 0.9724344551563263,
+        "escape_loss": 0.09569674693048,
+        "navigation_loss": 0.33506340757012365,
+        "loss": 6.707577273845673,
+        "win_rate": 26.0,
+        "active_win_rate": 18.0,
+        "suicide_rate": 2.0,
+        "draw_rate": 68.0
+      },
+      {
+        "episodes": [
+          151,
+          200
+        ],
+        "bombs": 25.78,
+        "walls": 7.8,
+        "items": 1.86,
+        "steps": 417.38,
+        "reward": 3.0856200000000196,
+        "policy_loss": 0.5888461229694076,
+        "value_loss": 11.874128132276237,
+        "combat_loss": 0.9510379207134246,
+        "escape_loss": 0.08968966275453567,
+        "navigation_loss": 0.329946695715189,
+        "loss": 7.108773980736732,
+        "win_rate": 24.0,
+        "active_win_rate": 16.0,
+        "suicide_rate": 0.0,
+        "draw_rate": 76.0
+      }
+    ],
+    "peak_loss": {
+      "episode": 51,
+      "loss": 69.54517364501953,
+      "policy_loss": 2.855315923690796,
+      "value_loss": 132.10997009277344,
+      "combat_loss": 1.0251569747924805,
+      "escape_loss": 0.0626310184597969,
+      "navigation_loss": 0.47160810232162476
+    }
+  },
+  "control_training": {
+    "episodes": 200,
+    "learner_steps": 73318,
+    "teacher": {
+      "queries": 0,
+      "plans": 0,
+      "accepted": 0,
+      "two_bomb_labels": 0,
+      "pressure": 0.0,
+      "milliseconds": 0.0,
+      "rejected": {},
+      "accepted_rate": null,
+      "two_bomb_share_of_labels": null,
+      "mean_pressure": null,
+      "mean_ms": null
+    },
+    "windows_50": [
+      {
+        "episodes": [
+          1,
+          50
+        ],
+        "bombs": 35.82,
+        "walls": 8.28,
+        "items": 1.74,
+        "steps": 353.76,
+        "reward": 6.199300000000021,
+        "policy_loss": 0.6054780879383906,
+        "value_loss": 22.19859862728976,
+        "combat_loss": 0.02684530588332507,
+        "escape_loss": 0.050537128420546654,
+        "navigation_loss": 0.8559063896536827,
+        "loss": 11.910895653814077,
+        "win_rate": 42.0,
+        "active_win_rate": 38.0,
+        "suicide_rate": 2.0,
+        "draw_rate": 52.0
+      },
+      {
+        "episodes": [
+          51,
+          100
+        ],
+        "bombs": 38.18,
+        "walls": 9.46,
+        "items": 1.88,
+        "steps": 351.18,
+        "reward": 7.041820000000024,
+        "policy_loss": 0.7859831281052903,
+        "value_loss": 21.441470126081256,
+        "combat_loss": 0.02158833008259535,
+        "escape_loss": 0.05264391507953405,
+        "navigation_loss": 0.863884739279747,
+        "loss": 11.71355511136353,
+        "win_rate": 54.0,
+        "active_win_rate": 42.0,
+        "suicide_rate": 0.0,
+        "draw_rate": 46.0
+      },
+      {
+        "episodes": [
+          101,
+          150
+        ],
+        "bombs": 39.68,
+        "walls": 9.18,
+        "items": 1.72,
+        "steps": 386.9,
+        "reward": 6.116100000000028,
+        "policy_loss": 0.43388040689751506,
+        "value_loss": 15.832477807924151,
+        "combat_loss": 0.029615340139716863,
+        "escape_loss": 0.04429876634851098,
+        "navigation_loss": 0.8348530104756355,
+        "loss": 8.551967881023884,
+        "win_rate": 44.0,
+        "active_win_rate": 36.0,
+        "suicide_rate": 0.0,
+        "draw_rate": 56.00000000000001
+      },
+      {
+        "episodes": [
+          151,
+          200
+        ],
+        "bombs": 39.14,
+        "walls": 8.9,
+        "items": 1.78,
+        "steps": 374.52,
+        "reward": 4.856560000000026,
+        "policy_loss": 0.3596164627186954,
+        "value_loss": 17.728733389060945,
+        "combat_loss": 0.027727793175727128,
+        "escape_loss": 0.047497043712064625,
+        "navigation_loss": 0.8413614523410797,
+        "loss": 9.42865700185299,
+        "win_rate": 32.0,
+        "active_win_rate": 28.000000000000004,
+        "suicide_rate": 2.0,
+        "draw_rate": 60.0
+      }
+    ],
+    "peak_loss": {
+      "episode": 92,
+      "loss": 75.25435638427734,
+      "policy_loss": 4.433874130249023,
+      "value_loss": 141.3812713623047,
+      "combat_loss": 0.017403636127710342,
+      "escape_loss": 0.07935938239097595,
+      "navigation_loss": 0.4202219247817993
+    }
+  },
+  "decision": "retain_original",
+  "t1_execution": "complete",
+  "two_bomb_improvement_gate": "FAIL",
+  "limitations": [
+    "One training seed",
+    "Final ep200 has validation only; final held-out not evaluated",
+    "No per-state teacher agreement, plan completion or full-trap trace in current metrics"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "queries": 59261,
+  "plans": 2377107,
+  "accepted": 56036,
+  "two_bomb_labels": 43321,
+  "pressure": 20352.586056324362,
+  "milliseconds": 1656894.534900551,
+  "rejected": {
+    "no_reduction": 34322,
+    "learner_dies": 98747,
+    "no_safe_route": 1329,
+    "search_limit": 924629,
+    "enemy_already_doomed": 4536
+  },
+  "mean_ms": 27.959273972773847,
+  "mean_pressure": 0.363205547439581,
+  "preflight_full_trap_labels": 1,
+  "preflight_full_two_bomb_trap_labels": 0
+}

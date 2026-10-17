@@ -1,0 +1,701 @@
+{
+  "status": "complete",
+  "full_protocol": true,
+  "reason": null,
+  "games_completed": 300,
+  "timeout_cases": 12,
+  "validation_parity": true,
+  "hashes_unchanged": true,
+  "training_updates": 0,
+  "decision": "retain_original",
+  "elapsed_seconds": 975.1635779999997,
+  "models": {
+    "original": {
+      "games": 100,
+      "win_rate": 37.0,
+      "active_win_rate": 29.0,
+      "draw_rate": 62.0,
+      "suicide_rate": 0.0,
+      "stats": {
+        "shaped_reward": {
+          "mean": 5.037130000000022,
+          "median": 1.100000000000048,
+          "p95": 15.547600000000026,
+          "min": -0.527,
+          "max": 16.015000000000025
+        },
+        "env_reward": {
+          "mean": 3.665129999999999,
+          "median": -0.3500000000000004,
+          "p95": 10.96765,
+          "min": -0.977,
+          "max": 11.011000000000001
+        },
+        "kills": {
+          "mean": 0.29,
+          "median": 0.0,
+          "p95": 1.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "bombs": {
+          "mean": 40.89,
+          "median": 43.5,
+          "p95": 68.05,
+          "min": 3.0,
+          "max": 74.0
+        },
+        "items": {
+          "mean": 1.57,
+          "median": 1.5,
+          "p95": 4.0,
+          "min": 0.0,
+          "max": 4.0
+        },
+        "steps": {
+          "mean": 393.38,
+          "median": 500.0,
+          "p95": 500.0,
+          "min": 26.0,
+          "max": 500.0
+        },
+        "walls_all": {
+          "mean": 8.68,
+          "median": 8.0,
+          "p95": 13.0,
+          "min": 3.0,
+          "max": 16.0
+        },
+        "walls_rewarded": {
+          "mean": 8.68,
+          "median": 8.0,
+          "p95": 13.0,
+          "min": 3.0,
+          "max": 16.0
+        },
+        "initial_distance": {
+          "mean": 6.0,
+          "median": 6.0,
+          "p95": 6.0,
+          "min": 6.0,
+          "max": 6.0
+        },
+        "min_distance": {
+          "mean": 1.02,
+          "median": 1.0,
+          "p95": 1.0,
+          "min": 1.0,
+          "max": 2.0
+        },
+        "close_steps": {
+          "mean": 139.51,
+          "median": 166.0,
+          "p95": 211.14999999999998,
+          "min": 5.0,
+          "max": 232.0
+        },
+        "approach_available_steps": {
+          "mean": 297.79,
+          "median": 373.5,
+          "p95": 418.05,
+          "min": 3.0,
+          "max": 434.0
+        },
+        "approach_chosen_steps": {
+          "mean": 190.19,
+          "median": 238.0,
+          "p95": 264.05,
+          "min": 3.0,
+          "max": 278.0
+        },
+        "moved_closer_steps": {
+          "mean": 147.69,
+          "median": 180.5,
+          "p95": 198.14999999999998,
+          "min": 12.0,
+          "max": 206.0
+        },
+        "pressure_bombs": {
+          "mean": 37.73,
+          "median": 40.0,
+          "p95": 66.0,
+          "min": 1.0,
+          "max": 71.0
+        },
+        "wood_only_bombs": {
+          "mean": 3.16,
+          "median": 3.0,
+          "p95": 5.049999999999997,
+          "min": 0.0,
+          "max": 7.0
+        },
+        "neither_bombs": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "components": {
+        "time": {
+          "mean": -0.3933700000000002,
+          "median": -0.5000000000000003,
+          "p95": -0.04580000000000004,
+          "min": -0.5000000000000003,
+          "max": -0.026000000000000016
+        },
+        "item": {
+          "mean": 0.0785,
+          "median": 0.07500000000000001,
+          "p95": 0.2,
+          "min": 0.0,
+          "max": 0.2
+        },
+        "wall": {
+          "mean": 1.3019999999999998,
+          "median": 1.2,
+          "p95": 1.9499999999999995,
+          "min": 0.44999999999999996,
+          "max": 2.3999999999999995
+        },
+        "owned_kill": {
+          "mean": 1.16,
+          "median": 0.0,
+          "p95": 4.0,
+          "min": 0.0,
+          "max": 4.0
+        },
+        "active_win": {
+          "mean": 2.9,
+          "median": 0.0,
+          "p95": 10.0,
+          "min": 0.0,
+          "max": 10.0
+        },
+        "passive_win_env": {
+          "mean": 0.8,
+          "median": 0.0,
+          "p95": 10.0,
+          "min": 0.0,
+          "max": 10.0
+        },
+        "passive_win_cancellation": {
+          "mean": -0.8,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": -10.0,
+          "max": 0.0
+        },
+        "death": {
+          "mean": -0.01,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": -1.0,
+          "max": 0.0
+        },
+        "self_blast": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "component_sums": {
+        "time": -39.33700000000002,
+        "item": 7.849999999999997,
+        "wall": 130.2,
+        "owned_kill": 116.0,
+        "active_win": 290.0,
+        "passive_win_env": 80.0,
+        "passive_win_cancellation": -80.0,
+        "death": -1.0,
+        "self_blast": 0.0
+      },
+      "gross_abs_shares": {
+        "time": 0.052844823996120324,
+        "item": 0.010545589861187792,
+        "wall": 0.17490901909893644,
+        "owned_kill": 0.155832920241756,
+        "active_win": 0.38958230060439,
+        "passive_win_env": 0.10747097947707308,
+        "passive_win_cancellation": 0.10747097947707308,
+        "death": 0.0013433872434634136,
+        "self_blast": 0.0
+      },
+      "net_abs_shares": {
+        "time": 0.06731327014461311,
+        "item": 0.013432879239271233,
+        "wall": 0.22279756394307199,
+        "owned_kill": 0.19849859767585523,
+        "active_win": 0.49624649418963807,
+        "death": 0.0017111948075504762,
+        "self_blast": 0.0
+      },
+      "positive_reward_games": 99,
+      "reached_close_games": 100,
+      "pressure_bomb_fraction": 0.9227194913181707,
+      "mask_violations": 0,
+      "max_component_error": 1.7763568394002505e-15
+    },
+    "mc_final": {
+      "games": 100,
+      "win_rate": 32.0,
+      "active_win_rate": 25.0,
+      "draw_rate": 67.0,
+      "suicide_rate": 0.0,
+      "stats": {
+        "shaped_reward": {
+          "mean": 4.4747200000000245,
+          "median": 1.0750000000000477,
+          "p95": 15.426300000000008,
+          "min": -0.527,
+          "max": 15.82600000000002
+        },
+        "env_reward": {
+          "mean": 3.1257199999999994,
+          "median": -0.35000000000000037,
+          "p95": 10.954500000000001,
+          "min": -0.977,
+          "max": 11.026
+        },
+        "kills": {
+          "mean": 0.25,
+          "median": 0.0,
+          "p95": 1.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "bombs": {
+          "mean": 43.12,
+          "median": 44.5,
+          "p95": 71.0,
+          "min": 3.0,
+          "max": 76.0
+        },
+        "items": {
+          "mean": 1.7,
+          "median": 2.0,
+          "p95": 4.0,
+          "min": 0.0,
+          "max": 4.0
+        },
+        "steps": {
+          "mean": 399.29,
+          "median": 500.0,
+          "p95": 500.0,
+          "min": 26.0,
+          "max": 500.0
+        },
+        "walls_all": {
+          "mean": 8.66,
+          "median": 8.5,
+          "p95": 13.0,
+          "min": 3.0,
+          "max": 16.0
+        },
+        "walls_rewarded": {
+          "mean": 8.66,
+          "median": 8.5,
+          "p95": 13.0,
+          "min": 3.0,
+          "max": 16.0
+        },
+        "initial_distance": {
+          "mean": 6.0,
+          "median": 6.0,
+          "p95": 6.0,
+          "min": 6.0,
+          "max": 6.0
+        },
+        "min_distance": {
+          "mean": 1.02,
+          "median": 1.0,
+          "p95": 1.0,
+          "min": 1.0,
+          "max": 2.0
+        },
+        "close_steps": {
+          "mean": 141.0,
+          "median": 169.0,
+          "p95": 208.99999999999994,
+          "min": 5.0,
+          "max": 259.0
+        },
+        "approach_available_steps": {
+          "mean": 301.73,
+          "median": 369.5,
+          "p95": 407.1,
+          "min": 3.0,
+          "max": 423.0
+        },
+        "approach_chosen_steps": {
+          "mean": 193.4,
+          "median": 237.0,
+          "p95": 263.0,
+          "min": 3.0,
+          "max": 284.0
+        },
+        "moved_closer_steps": {
+          "mean": 147.79,
+          "median": 178.5,
+          "p95": 203.05,
+          "min": 12.0,
+          "max": 212.0
+        },
+        "pressure_bombs": {
+          "mean": 39.85,
+          "median": 41.0,
+          "p95": 68.0,
+          "min": 1.0,
+          "max": 73.0
+        },
+        "wood_only_bombs": {
+          "mean": 3.27,
+          "median": 3.0,
+          "p95": 5.0,
+          "min": 0.0,
+          "max": 8.0
+        },
+        "neither_bombs": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "components": {
+        "time": {
+          "mean": -0.3992800000000003,
+          "median": -0.5000000000000003,
+          "p95": -0.04565000000000005,
+          "min": -0.5000000000000003,
+          "max": -0.026000000000000016
+        },
+        "item": {
+          "mean": 0.085,
+          "median": 0.1,
+          "p95": 0.2,
+          "min": 0.0,
+          "max": 0.2
+        },
+        "wall": {
+          "mean": 1.2990000000000002,
+          "median": 1.275,
+          "p95": 1.9499999999999995,
+          "min": 0.44999999999999996,
+          "max": 2.3999999999999995
+        },
+        "owned_kill": {
+          "mean": 1.0,
+          "median": 0.0,
+          "p95": 4.0,
+          "min": 0.0,
+          "max": 4.0
+        },
+        "active_win": {
+          "mean": 2.5,
+          "median": 0.0,
+          "p95": 10.0,
+          "min": 0.0,
+          "max": 10.0
+        },
+        "passive_win_env": {
+          "mean": 0.7,
+          "median": 0.0,
+          "p95": 10.0,
+          "min": 0.0,
+          "max": 10.0
+        },
+        "passive_win_cancellation": {
+          "mean": -0.7,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": -10.0,
+          "max": 0.0
+        },
+        "death": {
+          "mean": -0.01,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": -1.0,
+          "max": 0.0
+        },
+        "self_blast": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "component_sums": {
+        "time": -39.92800000000001,
+        "item": 8.499999999999996,
+        "wall": 129.9,
+        "owned_kill": 100.0,
+        "active_win": 250.0,
+        "passive_win_env": 70.0,
+        "passive_win_cancellation": -70.0,
+        "death": -1.0,
+        "self_blast": 0.0
+      },
+      "gross_abs_shares": {
+        "time": 0.059653861783759254,
+        "item": 0.012699304376927302,
+        "wall": 0.19407525159563027,
+        "owned_kill": 0.14940358090502714,
+        "active_win": 0.37350895226256786,
+        "passive_win_env": 0.10458250663351899,
+        "passive_win_cancellation": 0.10458250663351899,
+        "death": 0.0014940358090502713,
+        "self_blast": 0.0
+      },
+      "net_abs_shares": {
+        "time": 0.07543149049360702,
+        "item": 0.016058096303237308,
+        "wall": 0.24540549526947378,
+        "owned_kill": 0.18891878003808604,
+        "active_win": 0.4722969500952151,
+        "death": 0.0018891878003808604,
+        "self_blast": 0.0
+      },
+      "positive_reward_games": 99,
+      "reached_close_games": 100,
+      "pressure_bomb_fraction": 0.924165120593692,
+      "mask_violations": 0,
+      "max_component_error": 1.7763568394002505e-15
+    },
+    "gae_final": {
+      "games": 100,
+      "win_rate": 37.0,
+      "active_win_rate": 29.0,
+      "draw_rate": 62.0,
+      "suicide_rate": 0.0,
+      "stats": {
+        "shaped_reward": {
+          "mean": 5.047420000000025,
+          "median": 1.1625000000000263,
+          "p95": 15.426300000000008,
+          "min": -0.527,
+          "max": 16.015000000000025
+        },
+        "env_reward": {
+          "mean": 3.6709199999999997,
+          "median": -0.35000000000000037,
+          "p95": 10.954500000000001,
+          "min": -0.977,
+          "max": 11.026
+        },
+        "kills": {
+          "mean": 0.29,
+          "median": 0.0,
+          "p95": 1.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "bombs": {
+          "mean": 42.03,
+          "median": 44.5,
+          "p95": 71.05,
+          "min": 3.0,
+          "max": 76.0
+        },
+        "items": {
+          "mean": 1.61,
+          "median": 2.0,
+          "p95": 4.0,
+          "min": 0.0,
+          "max": 4.0
+        },
+        "steps": {
+          "mean": 389.59,
+          "median": 500.0,
+          "p95": 500.0,
+          "min": 26.0,
+          "max": 500.0
+        },
+        "walls_all": {
+          "mean": 8.71,
+          "median": 9.0,
+          "p95": 13.0,
+          "min": 3.0,
+          "max": 16.0
+        },
+        "walls_rewarded": {
+          "mean": 8.71,
+          "median": 9.0,
+          "p95": 13.0,
+          "min": 3.0,
+          "max": 16.0
+        },
+        "initial_distance": {
+          "mean": 6.0,
+          "median": 6.0,
+          "p95": 6.0,
+          "min": 6.0,
+          "max": 6.0
+        },
+        "min_distance": {
+          "mean": 1.02,
+          "median": 1.0,
+          "p95": 1.0,
+          "min": 1.0,
+          "max": 2.0
+        },
+        "close_steps": {
+          "mean": 135.8,
+          "median": 158.0,
+          "p95": 213.14999999999998,
+          "min": 5.0,
+          "max": 260.0
+        },
+        "approach_available_steps": {
+          "mean": 294.04,
+          "median": 370.5,
+          "p95": 411.0,
+          "min": 3.0,
+          "max": 429.0
+        },
+        "approach_chosen_steps": {
+          "mean": 189.21,
+          "median": 236.0,
+          "p95": 265.2,
+          "min": 3.0,
+          "max": 286.0
+        },
+        "moved_closer_steps": {
+          "mean": 144.79,
+          "median": 177.5,
+          "p95": 201.0,
+          "min": 12.0,
+          "max": 207.0
+        },
+        "pressure_bombs": {
+          "mean": 38.76,
+          "median": 41.5,
+          "p95": 69.0,
+          "min": 1.0,
+          "max": 73.0
+        },
+        "wood_only_bombs": {
+          "mean": 3.27,
+          "median": 3.0,
+          "p95": 5.049999999999997,
+          "min": 0.0,
+          "max": 7.0
+        },
+        "neither_bombs": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "components": {
+        "time": {
+          "mean": -0.38958000000000026,
+          "median": -0.5000000000000003,
+          "p95": -0.04565000000000005,
+          "min": -0.5000000000000003,
+          "max": -0.026000000000000016
+        },
+        "item": {
+          "mean": 0.08049999999999999,
+          "median": 0.1,
+          "p95": 0.2,
+          "min": 0.0,
+          "max": 0.2
+        },
+        "wall": {
+          "mean": 1.3065,
+          "median": 1.3499999999999996,
+          "p95": 1.9499999999999995,
+          "min": 0.44999999999999996,
+          "max": 2.3999999999999995
+        },
+        "owned_kill": {
+          "mean": 1.16,
+          "median": 0.0,
+          "p95": 4.0,
+          "min": 0.0,
+          "max": 4.0
+        },
+        "active_win": {
+          "mean": 2.9,
+          "median": 0.0,
+          "p95": 10.0,
+          "min": 0.0,
+          "max": 10.0
+        },
+        "passive_win_env": {
+          "mean": 0.8,
+          "median": 0.0,
+          "p95": 10.0,
+          "min": 0.0,
+          "max": 10.0
+        },
+        "passive_win_cancellation": {
+          "mean": -0.8,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": -10.0,
+          "max": 0.0
+        },
+        "death": {
+          "mean": -0.01,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": -1.0,
+          "max": 0.0
+        },
+        "self_blast": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "component_sums": {
+        "time": -38.95800000000002,
+        "item": 8.049999999999997,
+        "wall": 130.65,
+        "owned_kill": 116.0,
+        "active_win": 290.0,
+        "passive_win_env": 80.0,
+        "passive_win_cancellation": -80.0,
+        "death": -1.0,
+        "self_blast": 0.0
+      },
+      "gross_abs_shares": {
+        "time": 0.052316633944710214,
+        "item": 0.010810331722750574,
+        "wall": 0.1754496695127159,
+        "owned_kill": 0.1557762086756605,
+        "active_win": 0.3894405216891513,
+        "passive_win_env": 0.10743186805217965,
+        "passive_win_cancellation": 0.10743186805217965,
+        "death": 0.0013428983506522457,
+        "self_blast": 0.0
+      },
+      "net_abs_shares": {
+        "time": 0.06663382695524567,
+        "item": 0.013768733173923896,
+        "wall": 0.22346397381033015,
+        "owned_kill": 0.19840658983542514,
+        "active_win": 0.49601647458856285,
+        "death": 0.0017104016365122859,
+        "self_blast": 0.0
+      },
+      "positive_reward_games": 99,
+      "reached_close_games": 100,
+      "pressure_bomb_fraction": 0.9221984296930764,
+      "mask_violations": 0,
+      "max_component_error": 1.7763568394002505e-15
+    }
+  }
+}

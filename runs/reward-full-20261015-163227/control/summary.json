@@ -1,0 +1,37 @@
+{
+  "completed_episodes": 200,
+  "expected_episodes": 200,
+  "training_complete": true,
+  "validation_complete": true,
+  "skill_probes_complete": true,
+  "optimizer_instances": 1,
+  "optimizer_steps": 200,
+  "learner_steps": 75334,
+  "guidance": {
+    "labels": 31683,
+    "agreements": 18021,
+    "bomb_instead_of_move": 2081,
+    "target_probability_sum": 18078.069186429173,
+    "entropy_sum": 17230.7285130181,
+    "queries": 0,
+    "accepted": 0,
+    "accepted_agreements": 0,
+    "pressure_gain_sum": 0.0,
+    "certificate_steps": 0,
+    "milliseconds": 0.0,
+    "rejected": {}
+  },
+  "best_episode": 200,
+  "elapsed_seconds": 1378.909871699998,
+  "peak_cuda_bytes": 87896576,
+  "checkpoints": {
+    "best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-20261015-163227\\control\\best_phaseC.pt",
+      "sha256": "51343454012b8bb11118c397eeef1dcdbd7ca85474e722e79819aa54a2a08ac1"
+    },
+    "final": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-20261015-163227\\control\\final_phaseC.pt",
+      "sha256": "c053d4ba225479f5ff9efd1415c08c51b256b4234f3a8f2d61c2b57e9964836d"
+    }
+  }
+}

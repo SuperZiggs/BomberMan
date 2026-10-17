@@ -1,0 +1,296 @@
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "arms": {
+    "control": {
+      "completed_episodes": 20,
+      "expected_episodes": 20,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 80,
+      "learner_steps": 400,
+      "guidance": {
+        "labels": 120,
+        "agreements": 82,
+        "bomb_instead_of_move": 5,
+        "target_probability_sum": 83.2981454897672,
+        "entropy_sum": 53.43610288618038,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 43.93320279999898,
+      "peak_cuda_bytes": 118935552,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\control\\best_phaseC.pt",
+          "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\control\\final_phaseC.pt",
+          "sha256": "f585a3c0219668a9ab315b9dcd0360e0e25cb60a8f58043f2e922533e99d3efb"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\control\\training_state.pt",
+        "sha256": "e62dfc267eb2fccf4e01c4235b4146cd7475033b95a252d2667cb47b7b066661",
+        "episode": 20
+      }
+    },
+    "ppo": {
+      "completed_episodes": 20,
+      "expected_episodes": 20,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 80,
+      "learner_steps": 400,
+      "guidance": {
+        "labels": 120,
+        "agreements": 82,
+        "bomb_instead_of_move": 5,
+        "target_probability_sum": 83.2981454897672,
+        "entropy_sum": 53.43610288618038,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 33.492333100002725,
+      "peak_cuda_bytes": 118935552,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\ppo\\best_phaseC.pt",
+          "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\ppo\\final_phaseC.pt",
+          "sha256": "f585a3c0219668a9ab315b9dcd0360e0e25cb60a8f58043f2e922533e99d3efb"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\ppo\\training_state.pt",
+        "sha256": "a2dbe4420c3c2beec985da2486d94b0141cd11d2cba0fc10cfb1407e3706f16d",
+        "episode": 20
+      }
+    }
+  },
+  "evaluation_complete": true,
+  "hashes_unchanged": true,
+  "selected_checkpoints_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": 87.841997,
+  "resumed": false,
+  "models": {
+    "original": {
+      "seed": 39870,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 50.0,
+        "avg_first_close_step_conditional": 5.0,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.5,
+      "avg_walls_rewarded": 0.5,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 100.0,
+            "avg_first_close_step_conditional": 5.0,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 1.0,
+          "avg_walls_rewarded": 1.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "passive_win_rate": 0.0
+    },
+    "control": {
+      "seed": 39870,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 50.0,
+        "avg_first_close_step_conditional": 5.0,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.5,
+      "avg_walls_rewarded": 0.5,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 100.0,
+            "avg_first_close_step_conditional": 5.0,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 1.0,
+          "avg_walls_rewarded": 1.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\control\\best_phaseC.pt",
+      "checkpoint_sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28",
+      "passive_win_rate": 0.0
+    },
+    "ppo": {
+      "seed": 39870,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 8,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 50.0,
+        "avg_first_close_step_conditional": 5.0,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.5,
+      "avg_walls_rewarded": 0.5,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 100.0,
+            "avg_first_close_step_conditional": 5.0,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 1.0,
+          "avg_walls_rewarded": 1.0,
+          "passive_win_rate": 0.0
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\ppo\\best_phaseC.pt",
+      "checkpoint_sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28",
+      "passive_win_rate": 0.0
+    }
+  }
+}

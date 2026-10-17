@@ -1,0 +1,21 @@
+{
+  "paused_at_ppo_episode": 36,
+  "adam_steps": [
+    144
+  ],
+  "state_sha256": "d459fe80c71442e22eb44a46708c9ba0eaffa3fa85b77915fd3862a016045d5a",
+  "control_files": {
+    "best_phaseC.pt": "fed6cf1d4c9f27f7ab36ae5a908afd80c8304d2c769a2331801374800011a309",
+    "best_validation.json": "dfff34403910b56cb45ed886791ce6ac7719931764662885c596405f6d4744a3",
+    "config.json": "1d6ead8920d3233ccfe2125692ed64e273bf0c3781d79e5669f0d3bd4c0ad742",
+    "final_phaseC.pt": "644012562dfa05a21b4e981054ef5ce08df6644b5c06cafed9487a05a4c07ee1",
+    "metrics.jsonl": "1ddc4837ad0c743139b5457a79ea1f724016acecd1ce76187c1b8ebdf63048c4",
+    "skill_games.jsonl.gz": "5e5449397e3afacdca17812ff0224cc02f2ffa7e73ae6da9b0859c6e739d1c0c",
+    "skill_metrics.jsonl": "f3f99a5f991ef4f06ff078bd07a762916debe5bddc0aa46addf8862b6041f3de",
+    "summary.json": "1cb716497f435e6ea2c594400f62b730692ad6c6d37e7b5b0548e8c0ff0dfb03",
+    "training_state.pt": "0230e897f44240644ea82ddda15430613f6e573c2c1fd209b75b17217512a995",
+    "validation_metrics.jsonl": "0242f6a9c884cf6a425eae86dd538c51cbc3af773a10712ceadc343669bf373a"
+  },
+  "metrics_rows_committed": 36,
+  "test_opened": false
+}

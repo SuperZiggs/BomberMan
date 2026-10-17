@@ -1,0 +1,208 @@
+{
+  "archive_files": 59,
+  "archive_sha256": "e8cb44f07c854c746fb11fbfaddefc5b09b66fa70f068e49b32d35dd17705ff5",
+  "source_and_checkpoint_hashes_pass": true,
+  "resume_checked": {
+    "checked_utc": "2026-10-15T15:56:51.928680+00:00",
+    "status": "resumed",
+    "control_files_unchanged": 10,
+    "paused_episode": 36,
+    "first_resumed_episode": 37,
+    "adam_steps_before": 144,
+    "adam_steps_after_first_resumed_episode": 148,
+    "episodes_observed": 92,
+    "committed_metric_rows_unchanged": 36,
+    "registered_utc": "2026-10-15T15:03:28.288823+00:00",
+    "training_deadline": {
+      "deadline_utc": "2026-10-15T16:43:36.088475+00:00"
+    },
+    "active_checkpoint_not_opened": true
+  },
+  "skills_replayed_games": 384,
+  "skills_replayed_frames": 8794,
+  "model_state_sha256": {
+    "original": "9cbd4a3dae13ff2a29da003a7b09b005ef2c22565ac7f36ff6b6c7dbec9b1e52",
+    "control": "cf1f29d9564b034ca6f4140f92df43223ec64fc02f618c02ed5f92412471686c",
+    "ppo": "56697c98573c800f126f85b15cc1398af9cfc205ca7470b8f74de63197c6353e"
+  },
+  "training_state_checks": {
+    "control": {
+      "episode": 200,
+      "adam_steps": 800,
+      "scheduler_last_epoch": 200,
+      "histories_and_log_context_match": true,
+      "inference_weights_match": true,
+      "python_numpy_env_torch_cpu_cuda_rng_present": true
+    },
+    "ppo": {
+      "episode": 200,
+      "adam_steps": 800,
+      "scheduler_last_epoch": 200,
+      "histories_and_log_context_match": true,
+      "inference_weights_match": true,
+      "python_numpy_env_torch_cpu_cuda_rng_present": true
+    }
+  },
+  "comparisons": {
+    "original": {
+      "difference_pp": -5.5,
+      "ci95_pp": [
+        -11.25,
+        0.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "control": {
+      "difference_pp": -5.0,
+      "ci95_pp": [
+        -11.0,
+        1.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "gates": {
+    "gain": false,
+    "ci": false,
+    "suicide": false
+  },
+  "decision": "retain_original",
+  "elapsed_seconds": 6413.399957,
+  "arms": {
+    "control": {
+      "best_episode": 200,
+      "update_diagnostics": {
+        "optimizer_steps": 800,
+        "epochs_per_episode": {
+          "4": 200
+        },
+        "early_stop_episodes": 0,
+        "guard_exceeded_episodes": 0,
+        "post_kl_max": 0.004991679918020964,
+        "post_kl_mean": 0.000186528599128718,
+        "sample_updates": 307680,
+        "clip_fraction_weighted": 0.00044201769664320244
+      },
+      "reward_component_means": {
+        "time": -0.38459500000000024,
+        "owned_kill": 1.26,
+        "self_blast": -0.0075,
+        "passive_win_cancellation": -0.8,
+        "passive_win_env": 0.8,
+        "wall": 1.3214999999999997,
+        "active_win": 3.15,
+        "death": -0.005,
+        "item": 0.08275
+      },
+      "walls_mean": 8.82,
+      "eligible_walls_mean": 8.809999999999999,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 18.43,
+        "left_spawn_rate": 100.0
+      },
+      "learner_steps": 76920,
+      "training_suicides": 1,
+      "training_active_wins": 63,
+      "clipped_updates": 326,
+      "normalization_skipped": 0,
+      "grad_norm_mean": 27.52342191170901,
+      "grad_norm_p95": 123.81931571960439,
+      "explained_variance_mean": 0.4525239968290261,
+      "advantage_raw_std_mean": 1.0335683320835232,
+      "advantage_policy_std_mean": 1.0335683320835232,
+      "gae_last_boundaries": null,
+      "td_delta_std_mean": null,
+      "mc_raw_std_mean": 1.0335683320835232,
+      "entropy_mean_per_episode": 0.28615108102560044,
+      "seconds": 1742.7989364000023
+    },
+    "ppo": {
+      "best_episode": 200,
+      "update_diagnostics": {
+        "optimizer_steps": 800,
+        "epochs_per_episode": {
+          "4": 200
+        },
+        "early_stop_episodes": 0,
+        "guard_exceeded_episodes": 0,
+        "post_kl_max": 0.004996735602617264,
+        "post_kl_mean": 0.0002148427295809996,
+        "sample_updates": 303996,
+        "clip_fraction_weighted": 0.0005065856235127418
+      },
+      "reward_component_means": {
+        "time": -0.37998000000000026,
+        "owned_kill": 1.2,
+        "self_blast": -0.0075,
+        "passive_win_cancellation": -0.7,
+        "passive_win_env": 0.7,
+        "wall": 1.3019999999999998,
+        "active_win": 3.0,
+        "death": -0.015,
+        "item": 0.08200000000000002
+      },
+      "walls_mean": 8.685,
+      "eligible_walls_mean": 8.68,
+      "contact": {
+        "reached_close_rate": 99.5,
+        "avg_first_close_step_conditional": 20.633165829145728,
+        "left_spawn_rate": 100.0
+      },
+      "learner_steps": 75999,
+      "training_suicides": 1,
+      "training_active_wins": 60,
+      "clipped_updates": 316,
+      "normalization_skipped": 0,
+      "grad_norm_mean": 33.49540379013866,
+      "grad_norm_p95": 151.30267181396482,
+      "explained_variance_mean": 0.3939859208080896,
+      "advantage_raw_std_mean": 0.9321897771582007,
+      "advantage_policy_std_mean": 0.9321897771582007,
+      "gae_last_boundaries": null,
+      "td_delta_std_mean": null,
+      "mc_raw_std_mean": 0.9321897771582007,
+      "entropy_mean_per_episode": 0.2865497650951147,
+      "seconds": 2364.8879175999973
+    }
+  },
+  "models": {
+    "original": {
+      "active_win_rate": 37.5,
+      "suicide_rate": 0.75,
+      "draw_rate": 53.5,
+      "counts": {
+        "win": 175,
+        "active_win": 150,
+        "suicide": 3.0,
+        "draw": 214
+      }
+    },
+    "control": {
+      "active_win_rate": 37.0,
+      "suicide_rate": 1.0,
+      "draw_rate": 54.25,
+      "counts": {
+        "win": 173,
+        "active_win": 148,
+        "suicide": 4.0,
+        "draw": 217
+      }
+    },
+    "ppo": {
+      "active_win_rate": 32.0,
+      "suicide_rate": 1.0,
+      "draw_rate": 58.75,
+      "counts": {
+        "win": 155,
+        "active_win": 128,
+        "suicide": 4.0,
+        "draw": 235
+      }
+    }
+  }
+}

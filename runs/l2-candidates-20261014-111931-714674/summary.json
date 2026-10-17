@@ -1,0 +1,583 @@
+{
+  "status": "complete",
+  "reason": "corpus_finished",
+  "full_protocol": false,
+  "decision": "review_pending_keep_original",
+  "games_replayed": 4,
+  "expected_games": 4,
+  "states_checked": 4,
+  "maximum_states": 4,
+  "hashes_unchanged": true,
+  "elapsed_seconds": 9.965243200000259,
+  "games_sampling": [
+    {
+      "model": "original",
+      "seed": 28000,
+      "aid": 0,
+      "states": 1,
+      "replayed_complete": true
+    },
+    {
+      "model": "original",
+      "seed": 28000,
+      "aid": 1,
+      "states": 1,
+      "replayed_complete": true
+    },
+    {
+      "model": "two_bomb_final",
+      "seed": 28000,
+      "aid": 0,
+      "states": 1,
+      "replayed_complete": true
+    },
+    {
+      "model": "two_bomb_final",
+      "seed": 28000,
+      "aid": 1,
+      "states": 1,
+      "replayed_complete": true
+    }
+  ],
+  "overall": {
+    "states": 4,
+    "fully_checked_states": 4,
+    "old_representative_viable": {
+      "numerator": 0,
+      "denominator": 4,
+      "percent": 0.0
+    },
+    "old_best_any_tied_viable": {
+      "numerator": 0,
+      "denominator": 4,
+      "percent": 0.0
+    },
+    "any_viable_candidate": {
+      "numerator": 4,
+      "denominator": 4,
+      "percent": 100.0
+    },
+    "rescued_original_invalid": {
+      "numerator": 4,
+      "denominator": 4,
+      "percent": 100.0
+    },
+    "any_viable_two_bomb": {
+      "numerator": 0,
+      "denominator": 4,
+      "percent": 0.0
+    },
+    "selected_best_is_two_bomb": {
+      "numerator": 0,
+      "denominator": 4,
+      "percent": 0.0
+    },
+    "any_genuine_combo_trap": {
+      "numerator": 0,
+      "denominator": 4,
+      "percent": 0.0
+    },
+    "scored_paths": 181,
+    "checked_paths": 181,
+    "guard_outcomes": {
+      "mask_blocked": 172,
+      "complete": 9
+    },
+    "teacher_ms": {
+      "count": 4,
+      "mean": 15.961950000928482,
+      "median": 16.25965000130236,
+      "p95": 20.385769995482406,
+      "max": 20.67709999391809
+    },
+    "guard_ms": {
+      "count": 4,
+      "mean": 77.93602499805274,
+      "median": 80.64834999822779,
+      "p95": 109.21400999359321,
+      "max": 110.30669999308884
+    },
+    "state_total_ms": {
+      "count": 4,
+      "mean": 108.44642499796464,
+      "median": 108.85884999879636,
+      "p95": 140.547835000325,
+      "max": 141.91720000235364
+    },
+    "selected_pressure": {
+      "count": 4,
+      "mean": 0.3319031728375444,
+      "median": 0.24137931034482762,
+      "p95": 0.5623973727422003,
+      "max": 0.6190476190476191
+    },
+    "selected_stress": {
+      "evader": {
+        "checks": 4,
+        "eligible_states": 4,
+        "prefix_pass": {
+          "numerator": 3,
+          "denominator": 4,
+          "percent": 75.0
+        },
+        "full_horizon_alive": {
+          "numerator": 3,
+          "denominator": 3,
+          "percent": 100.0
+        }
+      },
+      "rule": {
+        "checks": 4,
+        "eligible_states": 4,
+        "prefix_pass": {
+          "numerator": 4,
+          "denominator": 4,
+          "percent": 100.0
+        },
+        "full_horizon_alive": {
+          "numerator": 4,
+          "denominator": 4,
+          "percent": 100.0
+        }
+      }
+    },
+    "top_k": {
+      "1": {
+        "any_viable": {
+          "numerator": 0,
+          "denominator": 4,
+          "percent": 0.0
+        },
+        "best_score_recall": {
+          "numerator": 0,
+          "denominator": 4,
+          "percent": 0.0
+        },
+        "first_actions_exact_given_viable": {
+          "numerator": 0,
+          "denominator": 4,
+          "percent": 0.0
+        },
+        "guard_ms": {
+          "count": 4,
+          "mean": 2.4775749989203177,
+          "median": 2.201150004111696,
+          "p95": 3.776514997298363,
+          "max": 3.976299994974397
+        }
+      },
+      "4": {
+        "any_viable": {
+          "numerator": 1,
+          "denominator": 4,
+          "percent": 25.0
+        },
+        "best_score_recall": {
+          "numerator": 1,
+          "denominator": 4,
+          "percent": 25.0
+        },
+        "first_actions_exact_given_viable": {
+          "numerator": 1,
+          "denominator": 4,
+          "percent": 25.0
+        },
+        "guard_ms": {
+          "count": 4,
+          "mean": 9.848049994616304,
+          "median": 8.771649998379871,
+          "p95": 15.908164994471006,
+          "max": 16.889299993636087
+        }
+      },
+      "8": {
+        "any_viable": {
+          "numerator": 2,
+          "denominator": 4,
+          "percent": 50.0
+        },
+        "best_score_recall": {
+          "numerator": 2,
+          "denominator": 4,
+          "percent": 50.0
+        },
+        "first_actions_exact_given_viable": {
+          "numerator": 2,
+          "denominator": 4,
+          "percent": 50.0
+        },
+        "guard_ms": {
+          "count": 4,
+          "mean": 18.391825000435347,
+          "median": 17.792550002923235,
+          "p95": 24.65126499519101,
+          "max": 25.573299993993714
+        }
+      }
+    }
+  },
+  "by_model": {
+    "original": {
+      "states": 2,
+      "fully_checked_states": 2,
+      "old_representative_viable": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "old_best_any_tied_viable": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "any_viable_candidate": {
+        "numerator": 2,
+        "denominator": 2,
+        "percent": 100.0
+      },
+      "rescued_original_invalid": {
+        "numerator": 2,
+        "denominator": 2,
+        "percent": 100.0
+      },
+      "any_viable_two_bomb": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "selected_best_is_two_bomb": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "any_genuine_combo_trap": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "scored_paths": 47,
+      "checked_paths": 47,
+      "guard_outcomes": {
+        "mask_blocked": 44,
+        "complete": 3
+      },
+      "teacher_ms": {
+        "count": 2,
+        "mean": 12.217900002724491,
+        "median": 12.217900002724491,
+        "p95": 13.62774999870453,
+        "max": 13.784399998257868
+      },
+      "guard_ms": {
+        "count": 2,
+        "mean": 49.20765000133542,
+        "median": 49.20765000133542,
+        "p95": 57.3679050001374,
+        "max": 58.274600000004284
+      },
+      "state_total_ms": {
+        "count": 2,
+        "mean": 79.54020000033779,
+        "median": 79.54020000033779,
+        "p95": 84.39066000792081,
+        "max": 84.92960000876337
+      },
+      "selected_pressure": {
+        "count": 2,
+        "mean": 0.43021346469622335,
+        "median": 0.43021346469622335,
+        "p95": 0.6001642036124795,
+        "max": 0.6190476190476191
+      },
+      "selected_stress": {
+        "evader": {
+          "checks": 2,
+          "eligible_states": 2,
+          "prefix_pass": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          },
+          "full_horizon_alive": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          }
+        },
+        "rule": {
+          "checks": 2,
+          "eligible_states": 2,
+          "prefix_pass": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          },
+          "full_horizon_alive": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          }
+        }
+      },
+      "top_k": {
+        "1": {
+          "any_viable": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "best_score_recall": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "first_actions_exact_given_viable": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "guard_ms": {
+            "count": 2,
+            "mean": 2.201150004111696,
+            "median": 2.201150004111696,
+            "p95": 2.600075009831926,
+            "max": 2.644400010467507
+          }
+        },
+        "4": {
+          "any_viable": {
+            "numerator": 1,
+            "denominator": 2,
+            "percent": 50.0
+          },
+          "best_score_recall": {
+            "numerator": 1,
+            "denominator": 2,
+            "percent": 50.0
+          },
+          "first_actions_exact_given_viable": {
+            "numerator": 1,
+            "denominator": 2,
+            "percent": 50.0
+          },
+          "guard_ms": {
+            "count": 2,
+            "mean": 8.771649998379871,
+            "median": 8.771649998379871,
+            "p95": 10.190724999119993,
+            "max": 10.348399999202229
+          }
+        },
+        "8": {
+          "any_viable": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          },
+          "best_score_recall": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          },
+          "first_actions_exact_given_viable": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          },
+          "guard_ms": {
+            "count": 2,
+            "mean": 17.792550002923235,
+            "median": 17.792550002923235,
+            "p95": 19.26301500207046,
+            "max": 19.426400001975708
+          }
+        }
+      }
+    },
+    "two_bomb_final": {
+      "states": 2,
+      "fully_checked_states": 2,
+      "old_representative_viable": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "old_best_any_tied_viable": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "any_viable_candidate": {
+        "numerator": 2,
+        "denominator": 2,
+        "percent": 100.0
+      },
+      "rescued_original_invalid": {
+        "numerator": 2,
+        "denominator": 2,
+        "percent": 100.0
+      },
+      "any_viable_two_bomb": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "selected_best_is_two_bomb": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "any_genuine_combo_trap": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0
+      },
+      "scored_paths": 134,
+      "checked_paths": 134,
+      "guard_outcomes": {
+        "mask_blocked": 128,
+        "complete": 6
+      },
+      "teacher_ms": {
+        "count": 2,
+        "mean": 19.705999999132473,
+        "median": 19.705999999132473,
+        "p95": 20.57998999443953,
+        "max": 20.67709999391809
+      },
+      "guard_ms": {
+        "count": 2,
+        "mean": 106.66439999477006,
+        "median": 106.66439999477006,
+        "p95": 109.94246999325696,
+        "max": 110.30669999308884
+      },
+      "state_total_ms": {
+        "count": 2,
+        "mean": 137.3526499955915,
+        "median": 137.3526499955915,
+        "p95": 141.46074500167742,
+        "max": 141.91720000235364
+      },
+      "selected_pressure": {
+        "count": 2,
+        "mean": 0.23359288097886544,
+        "median": 0.23359288097886544,
+        "p95": 0.2406006674082314,
+        "max": 0.24137931034482762
+      },
+      "selected_stress": {
+        "evader": {
+          "checks": 2,
+          "eligible_states": 2,
+          "prefix_pass": {
+            "numerator": 1,
+            "denominator": 2,
+            "percent": 50.0
+          },
+          "full_horizon_alive": {
+            "numerator": 1,
+            "denominator": 1,
+            "percent": 100.0
+          }
+        },
+        "rule": {
+          "checks": 2,
+          "eligible_states": 2,
+          "prefix_pass": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          },
+          "full_horizon_alive": {
+            "numerator": 2,
+            "denominator": 2,
+            "percent": 100.0
+          }
+        }
+      },
+      "top_k": {
+        "1": {
+          "any_viable": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "best_score_recall": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "first_actions_exact_given_viable": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "guard_ms": {
+            "count": 2,
+            "mean": 2.7539999937289394,
+            "median": 2.7539999937289394,
+            "p95": 3.8540699948498514,
+            "max": 3.976299994974397
+          }
+        },
+        "4": {
+          "any_viable": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "best_score_recall": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "first_actions_exact_given_viable": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "guard_ms": {
+            "count": 2,
+            "mean": 10.924449990852736,
+            "median": 10.924449990852736,
+            "p95": 16.29281499335775,
+            "max": 16.889299993636087
+          }
+        },
+        "8": {
+          "any_viable": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "best_score_recall": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "first_actions_exact_given_viable": {
+            "numerator": 0,
+            "denominator": 2,
+            "percent": 0.0
+          },
+          "guard_ms": {
+            "count": 2,
+            "mean": 18.991099997947458,
+            "median": 18.991099997947458,
+            "p95": 24.91507999438909,
+            "max": 25.573299993993714
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Saved fixed-policy T2 corpus; diagnostic only, not new training/test for model promotion.",
+    "Only scored positive-pressure candidates within original <=64 schedules, not exhaustive game planning.",
+    "Static opponent; robust mask still models counter-bombs. Passing it does not guarantee future opponent reactions.",
+    "Viable requires prefix mask/physics pass and actual forecast suffix survival; post-terminal physics is not a game win.",
+    "Top-K measured through all paths in K schedules; timing includes clone/suffix overhead, not a production guard benchmark.",
+    "Frame/branch samples are correlated within board seeds; counts here are descriptive, not independent trials."
+  ]
+}

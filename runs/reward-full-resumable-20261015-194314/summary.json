@@ -1,0 +1,317 @@
+{
+  "status": "complete",
+  "full_protocol": true,
+  "reason": null,
+  "arms": {
+    "control": {
+      "completed_episodes": 200,
+      "expected_episodes": 200,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 200,
+      "learner_steps": 75234,
+      "guidance": {
+        "labels": 31652,
+        "agreements": 18009,
+        "bomb_instead_of_move": 2080,
+        "target_probability_sum": 18058.493158764264,
+        "entropy_sum": 17213.515132921355,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 200,
+      "elapsed_seconds": 963.1989420999998,
+      "peak_cuda_bytes": 137966080,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\control\\best_phaseC.pt",
+          "sha256": "14082ec9dbde9de6d8ff70861c691b9e6c76d4804ebee539af64050ce4707453"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\control\\final_phaseC.pt",
+          "sha256": "fcbf6e01b28bd9d9f4e014358d76c2e34ee2227fce6632648ee2b9ed7f10a2c0"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\control\\training_state.pt",
+        "sha256": "a178ba76a11e57ce1a074e7e8752124fedd45e485391a1ffe96ea001b010c0cb",
+        "episode": 200
+      }
+    },
+    "half_wall": {
+      "completed_episodes": 200,
+      "expected_episodes": 200,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 200,
+      "learner_steps": 73436,
+      "guidance": {
+        "labels": 31821,
+        "agreements": 17872,
+        "bomb_instead_of_move": 1993,
+        "target_probability_sum": 17922.78049103197,
+        "entropy_sum": 17845.877773064065,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 200,
+      "elapsed_seconds": 981.2240046999941,
+      "peak_cuda_bytes": 137970176,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\half_wall\\best_phaseC.pt",
+          "sha256": "76712cc0c17f14f8bdfa81da2a938a100f76b72770f34a4e0e729ec5a349d99f"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\half_wall\\final_phaseC.pt",
+          "sha256": "9fb5a3b00687220c68ece43eb6be5a6310fdc30ebbe3c017a37b6f95d6dc58f4"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\half_wall\\training_state.pt",
+        "sha256": "65883b45b6440a1352b7a9315578074161b4293051cd1bea64f2bc59cc58d87b",
+        "episode": 200
+      }
+    }
+  },
+  "evaluation_complete": true,
+  "hashes_unchanged": true,
+  "selected_checkpoints_unchanged": true,
+  "comparisons": {
+    "original": {
+      "difference_pp": 0.5,
+      "ci95_pp": [
+        -5.5,
+        6.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "control": {
+      "difference_pp": -1.25,
+      "ci95_pp": [
+        -7.249999999999999,
+        5.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": 2972.3186704,
+  "resumed": false,
+  "models": {
+    "original": {
+      "seed": 36000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 40.25,
+      "active_win_rate": 34.5,
+      "suicide_rate": 0.25,
+      "draw_rate": 57.99999999999999,
+      "avg_kills": 0.345,
+      "avg_bombs": 38.9775,
+      "avg_items": 1.7125,
+      "avg_steps": 370.1025,
+      "contact": {
+        "reached_close_rate": 99.75,
+        "avg_first_close_step_conditional": 19.734335839598998,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 8.9675,
+      "avg_walls_rewarded": 8.9625,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 41.0,
+          "active_win_rate": 32.0,
+          "suicide_rate": 0.5,
+          "draw_rate": 56.00000000000001,
+          "avg_kills": 0.32,
+          "avg_bombs": 37.09,
+          "avg_items": 1.62,
+          "avg_steps": 351.47,
+          "contact": {
+            "reached_close_rate": 99.5,
+            "avg_first_close_step_conditional": 19.412060301507537,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.76,
+          "avg_walls_rewarded": 8.75,
+          "passive_win_rate": 9.0
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 39.5,
+          "active_win_rate": 37.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 60.0,
+          "avg_kills": 0.37,
+          "avg_bombs": 40.865,
+          "avg_items": 1.805,
+          "avg_steps": 388.735,
+          "contact": {
+            "reached_close_rate": 100.0,
+            "avg_first_close_step_conditional": 20.055,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 9.175,
+          "avg_walls_rewarded": 9.175,
+          "passive_win_rate": 2.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "passive_win_rate": 5.75
+    },
+    "control": {
+      "seed": 36000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 42.5,
+      "active_win_rate": 36.25,
+      "suicide_rate": 0.25,
+      "draw_rate": 55.75,
+      "avg_kills": 0.3625,
+      "avg_bombs": 38.7125,
+      "avg_items": 1.7275,
+      "avg_steps": 364.015,
+      "contact": {
+        "reached_close_rate": 99.5,
+        "avg_first_close_step_conditional": 19.891959798994975,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 9.065,
+      "avg_walls_rewarded": 9.06,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 46.0,
+          "active_win_rate": 36.0,
+          "suicide_rate": 0.5,
+          "draw_rate": 51.0,
+          "avg_kills": 0.36,
+          "avg_bombs": 34.47,
+          "avg_items": 1.59,
+          "avg_steps": 326.67,
+          "contact": {
+            "reached_close_rate": 99.0,
+            "avg_first_close_step_conditional": 19.393939393939394,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.795,
+          "avg_walls_rewarded": 8.785,
+          "passive_win_rate": 10.0
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 39.0,
+          "active_win_rate": 36.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 60.5,
+          "avg_kills": 0.365,
+          "avg_bombs": 42.955,
+          "avg_items": 1.865,
+          "avg_steps": 401.36,
+          "contact": {
+            "reached_close_rate": 100.0,
+            "avg_first_close_step_conditional": 20.385,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 9.335,
+          "avg_walls_rewarded": 9.335,
+          "passive_win_rate": 2.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\control\\best_phaseC.pt",
+      "checkpoint_sha256": "14082ec9dbde9de6d8ff70861c691b9e6c76d4804ebee539af64050ce4707453",
+      "passive_win_rate": 6.25
+    },
+    "half_wall": {
+      "seed": 36000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 41.75,
+      "active_win_rate": 35.0,
+      "suicide_rate": 0.5,
+      "draw_rate": 56.25,
+      "avg_kills": 0.35,
+      "avg_bombs": 40.115,
+      "avg_items": 1.7275,
+      "avg_steps": 374.595,
+      "contact": {
+        "reached_close_rate": 99.5,
+        "avg_first_close_step_conditional": 19.527638190954775,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 8.91,
+      "avg_walls_rewarded": 8.9025,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 45.5,
+          "active_win_rate": 36.5,
+          "suicide_rate": 1.0,
+          "draw_rate": 51.0,
+          "avg_kills": 0.365,
+          "avg_bombs": 37.0,
+          "avg_items": 1.615,
+          "avg_steps": 349.505,
+          "contact": {
+            "reached_close_rate": 99.5,
+            "avg_first_close_step_conditional": 19.261306532663315,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 8.715,
+          "avg_walls_rewarded": 8.7,
+          "passive_win_rate": 9.0
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 38.0,
+          "active_win_rate": 33.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 61.5,
+          "avg_kills": 0.335,
+          "avg_bombs": 43.23,
+          "avg_items": 1.84,
+          "avg_steps": 399.685,
+          "contact": {
+            "reached_close_rate": 99.5,
+            "avg_first_close_step_conditional": 19.79396984924623,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 9.105,
+          "avg_walls_rewarded": 9.105,
+          "passive_win_rate": 4.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\half_wall\\best_phaseC.pt",
+      "checkpoint_sha256": "76712cc0c17f14f8bdfa81da2a938a100f76b72770f34a4e0e729ec5a349d99f",
+      "passive_win_rate": 6.75
+    }
+  }
+}

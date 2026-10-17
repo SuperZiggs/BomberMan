@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "control_files_unchanged": 10,
+  "resumed_from_half_wall_episode": 10,
+  "final_episodes_per_arm": 20,
+  "full_protocol": false,
+  "source_snapshot_unchanged": true
+}

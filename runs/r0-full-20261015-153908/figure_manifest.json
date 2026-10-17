@@ -1,0 +1,14 @@
+{
+  "data_sha256": "f28e86681734d36fa6dbf138cbead7295ec40613d69478e1d2c6594dcf981a7c",
+  "points": 300,
+  "unit": "one game/corner; two corners share a board seed",
+  "transforms": "y unchanged; deterministic x jitter at most0.035, solely to expose overlap",
+  "exclusions": [],
+  "uncertainty": "none; descriptive plot on reused validation boards",
+  "alt": "Shaped reward versus owned kills and active-win indicator, split by checkpoint and outcome.",
+  "matplotlib": "3.10.9",
+  "files": [
+    "reward_scatter.png",
+    "reward_scatter.svg"
+  ]
+}

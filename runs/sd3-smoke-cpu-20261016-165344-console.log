@@ -1,0 +1,58 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 2 games, all corners, seed 21000
+[sd_12ch validation] ep0: 0/2
+[Validation] ep 0 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[sd_12ch skill] ep0: approach 87.5%
+[C] ep     2 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -1.007 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 2.0023 | lr: 9.8e-05 | pool: 0 | best validation active: 0%
+[C] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -1.007 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 1.2268 | lr: 9.1e-05 | pool: 0 | best validation active: 0%
+[C] ep     6 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -1.007 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 1.0451 | lr: 8.0e-05 | pool: 0 | best validation active: 0%
+[C] ep     8 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -1.007 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 1.0196 | lr: 6.7e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 10 | 2 games, all corners, seed 21000
+[sd_12ch validation] ep10: 0/2
+[Validation] ep 10 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[sd_12ch skill] ep10: approach 87.5%
+[C] ep    10 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -1.007 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.8286 | lr: 5.3e-05 | pool: 0 | best validation active: 0%
+[C] ep    12 | WR:  50.0% | active WR:   0.0% | kills: 0.00 | reward: -0.507 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.9973 | lr: 3.8e-05 | pool: 0 | best validation active: 0%
+[C] ep    14 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -1.007 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.6152 | lr: 2.5e-05 | pool: 0 | best validation active: 0%
+[C] ep    16 | WR:  50.0% | active WR:   0.0% | kills: 0.00 | reward: -0.507 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.3928 | lr: 1.4e-05 | pool: 0 | best validation active: 0%
+[C] ep    18 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -1.007 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.7882 | lr: 7.3e-06 | pool: 0 | best validation active: 0%
+[Validation] ep 20 | 2 games, all corners, seed 21000
+[sd_12ch validation] ep20: 0/2
+[Validation] ep 20 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[sd_12ch skill] ep20: approach 87.5%
+[C] ep    20 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -1.007 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.8799 | lr: 5.0e-06 | pool: 0 | best validation active: 0%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\sd3-smoke-cpu-20261016-165344\sd_12ch\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\sd3-smoke-cpu-20261016-165344\sd_12ch\best_phaseC.pt (best episode: 0)
+Expanded observation channels 12 -> 13
+{
+  "status": "incomplete",
+  "full_protocol": false,
+  "reason": "ValueError: Unexpected observation channels",
+  "hashes_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds_this_process": 16.701265699999567,
+  "resumed": false
+}
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\run_sd_training_pilot.py", line 223, in <module>
+    run(args.output_dir.resolve(), args.device, args.smoke, args.budget_minutes, args.resume)
+  File "D:\fpt\subject\BomberMan\run_sd_training_pilot.py", line 88, in run
+    return _run(output, device, smoke, budget_minutes, resume)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\run_sd_training_pilot.py", line 153, in _run
+    baseline = skill_probe(net, 1, stop, smoke=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\run_t3_curriculum.py", line 72, in skill_probe
+    games.append(play_case(case, lambda e, obs, aid: policy.select_action(obs[aid], e, aid),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\benchmark_t3.py", line 340, in play_case
+    env, aid, tape = make_env(case, seed), case['aid'], []
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\benchmark_t3.py", line 111, in make_env
+    validate_env(env)
+  File "D:\fpt\subject\BomberMan\benchmark_t3.py", line 136, in validate_env
+    raise ValueError('Unexpected observation channels')
+ValueError: Unexpected observation channels

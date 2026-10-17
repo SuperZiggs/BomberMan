@@ -1,0 +1,167 @@
+original accounting passed 39338 steps
+mc_final accounting passed 39929 steps
+gae_final accounting passed 38959 steps
+{
+  "status": "reviewed",
+  "archive_files": 37,
+  "source_and_checkpoints_pass": true,
+  "games": 300,
+  "learner_steps_checked": 118226,
+  "max_component_error": 1.7763568394002505e-15,
+  "timeout_cases_replayed": 12,
+  "timeout_frames_replayed": 6012,
+  "chart_rows_verified": 300,
+  "training_updates": 0,
+  "heldout_tests_opened": false,
+  "fixed_action_timeout_accounting": {
+    "original": {
+      "observed": {
+        "n": 62,
+        "distribution": {
+          "mean": 0.916935483870995,
+          "median": 0.8500000000000297,
+          "p95": 1.5450000000000488,
+          "min": 0.24999999999999956,
+          "max": 2.1000000000000494
+        },
+        "positive_count": 62,
+        "near_zero_count": 0,
+        "negative_count": 0
+      },
+      "wall_0.075": {
+        "n": 62,
+        "distribution": {
+          "mean": 0.24919354838712407,
+          "median": 0.21250000000003055,
+          "p95": 0.573750000000049,
+          "min": -0.12500000000000044,
+          "max": 0.9000000000000494
+        },
+        "positive_count": 57,
+        "near_zero_count": 1,
+        "negative_count": 4
+      },
+      "item_0.025": {
+        "n": 62,
+        "distribution": {
+          "mean": 0.8762096774193822,
+          "median": 0.7750000000000297,
+          "p95": 1.4937500000000485,
+          "min": 0.24999999999999956,
+          "max": 2.0000000000000493
+        },
+        "positive_count": 62,
+        "near_zero_count": 0,
+        "negative_count": 0
+      }
+    },
+    "mc_final": {
+      "observed": {
+        "n": 67,
+        "distribution": {
+          "mean": 0.9656716417910747,
+          "median": 0.9000000000000379,
+          "p95": 1.5900000000000483,
+          "min": 0.24999999999999956,
+          "max": 2.1000000000000494
+        },
+        "positive_count": 67,
+        "near_zero_count": 0,
+        "negative_count": 0
+      },
+      "wall_0.075": {
+        "n": 67,
+        "distribution": {
+          "mean": 0.2817164179104778,
+          "median": 0.2750000000000342,
+          "p95": 0.6375000000000486,
+          "min": -0.12500000000000044,
+          "max": 0.9000000000000494
+        },
+        "positive_count": 62,
+        "near_zero_count": 1,
+        "negative_count": 4
+      },
+      "item_0.025": {
+        "n": 67,
+        "distribution": {
+          "mean": 0.9167910447761494,
+          "median": 0.8750000000000379,
+          "p95": 1.5200000000000486,
+          "min": 0.24999999999999956,
+          "max": 2.0000000000000493
+        },
+        "positive_count": 67,
+        "near_zero_count": 0,
+        "negative_count": 0
+      }
+    },
+    "gae_final": {
+      "observed": {
+        "n": 62,
+        "distribution": {
+          "mean": 1.0064516129032575,
+          "median": 0.9500000000000369,
+          "p95": 1.5975000000000485,
+          "min": 0.4499999999999995,
+          "max": 2.1000000000000494
+        },
+        "positive_count": 62,
+        "near_zero_count": 0,
+        "negative_count": 0
+      },
+      "wall_0.075": {
+        "n": 62,
+        "distribution": {
+          "mean": 0.30120967741938676,
+          "median": 0.275000000000037,
+          "p95": 0.6225000000000486,
+          "min": -4.440892098500626e-16,
+          "max": 0.9000000000000494
+        },
+        "positive_count": 61,
+        "near_zero_count": 1,
+        "negative_count": 0
+      },
+      "item_0.025": {
+        "n": 62,
+        "distribution": {
+          "mean": 0.9584677419355155,
+          "median": 0.9000000000000369,
+          "p95": 1.5237500000000488,
+          "min": 0.4249999999999995,
+          "max": 2.0000000000000493
+        },
+        "positive_count": 62,
+        "near_zero_count": 0,
+        "negative_count": 0
+      }
+    }
+  },
+  "positive_tolerance": 1e-10,
+  "discounted_gamma": 0.99,
+  "discounted_returns_file": "discounted_returns.json",
+  "timeout_last100_file": "timeout_last100.json",
+  "counterfactual_limit": "Reward arithmetic on unchanged trajectories, not a performance prediction",
+  "decision": "retain_original",
+  "paired_outcome_ranking_summaries": {
+    "original__mc_final": {
+      "eligible_pairs": 33,
+      "observed_gap": 1,
+      "wall_half_gap": 1,
+      "item_half_gap": 1
+    },
+    "original__gae_final": {
+      "eligible_pairs": 30,
+      "observed_gap": 0,
+      "wall_half_gap": 0,
+      "item_half_gap": 0
+    },
+    "mc_final__gae_final": {
+      "eligible_pairs": 25,
+      "observed_gap": 1,
+      "wall_half_gap": 0,
+      "item_half_gap": 1
+    }
+  }
+}

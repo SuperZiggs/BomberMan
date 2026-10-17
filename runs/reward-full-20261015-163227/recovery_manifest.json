@@ -1,0 +1,7 @@
+{
+  "original_gzip_sha256": "5d33445752efa1b5cc8cd38a721e9e6b0a01d4624a43c581119e53851f51483f",
+  "original_unchanged": true,
+  "gzip_complete": false,
+  "complete_records_recovered": 128,
+  "recovered_jsonl_sha256": "a4f3fe86d9ba025f96f231bfa2134c4ea87b332d04b59c1727858243ffb30fa3"
+}

@@ -1,0 +1,73 @@
+[Evaluation] original: 0/400
+[Evaluation] original: 50/400
+[Evaluation] original: 100/400
+[Evaluation] original: 150/400
+[Evaluation] original: 200/400
+[Evaluation] original: 250/400
+[Evaluation] original: 300/400
+[Evaluation] original: 350/400
+[Evaluation] original: 400/400
+[Evaluation] local: 0/400
+[Evaluation] local: 50/400
+[Evaluation] local: 100/400
+[Evaluation] local: 150/400
+[Evaluation] local: 200/400
+[Evaluation] local: 250/400
+[Evaluation] local: 300/400
+[Evaluation] local: 350/400
+[Evaluation] local: 400/400
+[Evaluation] two_bomb: 0/400
+[Evaluation] two_bomb: 50/400
+[Evaluation] two_bomb: 100/400
+[Evaluation] two_bomb: 150/400
+[Evaluation] two_bomb: 200/400
+[Evaluation] two_bomb: 250/400
+[Evaluation] two_bomb: 300/400
+[Evaluation] two_bomb: 350/400
+[Evaluation] two_bomb: 400/400
+{
+  "state": "inconclusive",
+  "promote": false,
+  "retain": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+  "completed_episodes": {
+    "local": 200,
+    "two_bomb": 146
+  },
+  "training_seconds": 3900.063000000002,
+  "reason": "Both 200-episode runs did not finish within 65 minutes",
+  "elapsed_seconds": 5200.461221,
+  "validations_complete": {
+    "local": true,
+    "two_bomb": false
+  },
+  "training_complete": false,
+  "decision": "retain_original",
+  "evaluated_models": [
+    "original",
+    "local",
+    "two_bomb"
+  ],
+  "evaluation_complete": true,
+  "comparisons": {
+    "original": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "local": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        -6.0,
+        5.75
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  }
+}

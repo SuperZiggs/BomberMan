@@ -1,0 +1,113 @@
+{
+  "status": "complete",
+  "confirmation_only": true,
+  "curriculum_protocol_completed": false,
+  "hashes_unchanged": true,
+  "games_per_model": 400,
+  "comparison": {
+    "difference_pp": 2.25,
+    "ci95_pp": [
+      -3.2562499999999943,
+      8.0
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+  },
+  "gate_passed": false,
+  "decision": "retain_original",
+  "automatic_model_replacement": false,
+  "runtime": {
+    "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:12:15) [MSC v.1942 64 bit (AMD64)]",
+    "torch": "2.5.1",
+    "numpy": "2.0.1",
+    "evaluation_device": "cpu",
+    "evaluation_torch_threads": 1
+  },
+  "models": {
+    "original": {
+      "seed": 32000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 38.0,
+      "active_win_rate": 32.75,
+      "suicide_rate": 0.5,
+      "draw_rate": 60.5,
+      "avg_kills": 0.3275,
+      "avg_bombs": 41.4525,
+      "avg_items": 1.7625,
+      "avg_steps": 390.5475,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 42.0,
+          "active_win_rate": 34.5,
+          "suicide_rate": 1.0,
+          "draw_rate": 56.00000000000001,
+          "avg_kills": 0.345,
+          "avg_bombs": 39.03,
+          "avg_items": 1.665,
+          "avg_steps": 372.04,
+          "passive_win_rate": 7.5
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 34.0,
+          "active_win_rate": 31.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 65.0,
+          "avg_kills": 0.31,
+          "avg_bombs": 43.875,
+          "avg_items": 1.86,
+          "avg_steps": 409.055,
+          "passive_win_rate": 3.0
+        }
+      },
+      "passive_win_rate": 5.25
+    },
+    "control_best": {
+      "seed": 32000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 40.25,
+      "active_win_rate": 35.0,
+      "suicide_rate": 0.5,
+      "draw_rate": 58.25,
+      "avg_kills": 0.35,
+      "avg_bombs": 40.6825,
+      "avg_items": 1.76,
+      "avg_steps": 379.6675,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 40.5,
+          "active_win_rate": 35.0,
+          "suicide_rate": 1.0,
+          "draw_rate": 56.99999999999999,
+          "avg_kills": 0.35,
+          "avg_bombs": 39.565,
+          "avg_items": 1.625,
+          "avg_steps": 375.09,
+          "passive_win_rate": 5.5
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 40.0,
+          "active_win_rate": 35.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 59.5,
+          "avg_kills": 0.35,
+          "avg_bombs": 41.8,
+          "avg_items": 1.895,
+          "avg_steps": 384.245,
+          "passive_win_rate": 5.0
+        }
+      },
+      "passive_win_rate": 5.25
+    }
+  }
+}

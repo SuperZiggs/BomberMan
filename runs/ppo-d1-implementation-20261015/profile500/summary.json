@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "full_protocol": false,
+  "modes": {
+    "ratio": {
+      "device": "cuda",
+      "steps": 500,
+      "epochs": 4,
+      "adam_steps": 4,
+      "seconds": 25.067376400002104,
+      "peak_cuda_bytes": 181558272,
+      "finite_weights": true
+    },
+    "ppo": {
+      "device": "cuda",
+      "steps": 500,
+      "epochs": 4,
+      "adam_steps": 4,
+      "seconds": 14.10636599999998,
+      "peak_cuda_bytes": 181558272,
+      "finite_weights": true
+    }
+  },
+  "baseline_unchanged": true,
+  "limits": "Static STOP fixture, KL disabled to force 4 epochs; not a policy or full-game throughput estimate."
+}

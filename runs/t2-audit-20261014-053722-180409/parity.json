@@ -1,0 +1,34 @@
+[
+  {
+    "model": "original",
+    "seed": 28000,
+    "aid": 0,
+    "passed": true,
+    "steps": 40,
+    "action_tape_sha256": "0b92a7cedbbd668f57762f28b3731dce227a22c70c307055d3bcead9f0b1e392"
+  },
+  {
+    "model": "original",
+    "seed": 28000,
+    "aid": 1,
+    "passed": true,
+    "steps": 40,
+    "action_tape_sha256": "2d427a94f5c7e30b349bd0e635f510442a1b463a7eda30892b678d59ec31a32d"
+  },
+  {
+    "model": "two_bomb_final",
+    "seed": 28000,
+    "aid": 0,
+    "passed": true,
+    "steps": 40,
+    "action_tape_sha256": "b32266e71ed709dd8dda48fe30c32590b888fef1adb26f395769c33f7c4ab74c"
+  },
+  {
+    "model": "two_bomb_final",
+    "seed": 28000,
+    "aid": 1,
+    "passed": true,
+    "steps": 40,
+    "action_tape_sha256": "aa1c2594624614c19fb61de5f5785f8d9eea918bd85a2edc0556b6b4b36c3799"
+  }
+]

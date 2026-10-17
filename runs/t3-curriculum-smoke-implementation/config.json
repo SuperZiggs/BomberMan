@@ -1,0 +1,58 @@
+{
+  "started_utc": "2026-10-14T07:16:57.978707+00:00",
+  "smoke": true,
+  "full_protocol": false,
+  "episodes_per_arm": 6,
+  "train_seed": 2026101303,
+  "device": "cpu",
+  "teacher": "local",
+  "max_steps": 8,
+  "lr": 0.0001,
+  "skill_min_episodes": 100,
+  "skill_max_episodes": 200,
+  "skill_probe_every": 50,
+  "skill_success_percent": 60,
+  "skill_consecutive_passes": 2,
+  "skill_seeds": [
+    2026101401,
+    2026101402
+  ],
+  "warm_start": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+  "warm_start_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "ec1e86fc77f0b90ca1905d63c377828158ac174900092fd45ec6af757ddfa6ca",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a",
+    "visualize.py": "fb6701a07ffe68345c1c83383530313956077a05ac361e7fa59ce97b837ef07c",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "audit_t2.py": "a3b6afcb3b36f59e46c95b9d26381f6a52271172f2ae099a0c44c5e3010bf055",
+    "audit_l2_candidates.py": "f87cf3d2456aaaf6a3d9b706d0cde0875e4bed0c6905da229d61ef5bcc4282ce",
+    "benchmark_t3.py": "86341d76d0351e4d97232208a943f9365c36d4ba348ea10c1afb9f8c8f7d1642",
+    "run_t3_curriculum.py": "541178758aa7738fe5a93e4ca35e979250cd0088f5ae0a1944c6421207960784",
+    "test_t3_curriculum.py": "ef2d4dc79b1b76e6bc206e5484c2c3f5f6b24edf4fbf4558053a969daf7593f9"
+  },
+  "registry_sha256": "878924793886d581afa64cb41541f54916db862c7e1384ccbf5a5d797fdf28a4",
+  "seconds_limit": 300,
+  "arm_order": [
+    "control",
+    "curriculum"
+  ],
+  "evaluation_seed": 29800,
+  "evaluation_games_per_model": 2,
+  "phaseC_validation": {
+    "every": 2,
+    "games": 2,
+    "seed": 21000
+  },
+  "curriculum": {
+    "C1": "50% certified train escape/approach, 50% random density0.25; static",
+    "C2": "certified train combo ammo2/range2-3; evader never bombs",
+    "C3": "50% train combo, 50% normal Phase C random maps; RuleBot",
+    "C4": "normal Phase C RuleBot consolidation to episode600 after C3 passes"
+  },
+  "control": "normal Phase C random maps/RuleBot for all600 episodes; same LR/entropy schedule",
+  "heldout_family": null,
+  "automatic_model_replacement": false
+}

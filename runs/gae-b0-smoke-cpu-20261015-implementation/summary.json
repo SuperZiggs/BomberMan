@@ -1,0 +1,55 @@
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "hashes_unchanged": true,
+  "modes": {
+    "mc": {
+      "episodes": 20,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 394,
+      "finite_weights": true,
+      "last_boundaries": null,
+      "checkpoints": {
+        "best": "14cab87a888ab64ad4c9fe3fde227a8cab4c761ff97f1939e5d9bcb274716176",
+        "final": "cc7cf09782156d2f625d7e2d148793b756f2ca436d26ae47586d70378ec39b6a"
+      }
+    },
+    "gae1": {
+      "episodes": 20,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 394,
+      "finite_weights": true,
+      "last_boundaries": {
+        "time_limit": 18,
+        "match_end": 2,
+        "learner_death": 0
+      },
+      "checkpoints": {
+        "best": "c4ccfb6bbf11cb8d94af284f2ba1c8fbaa4e0662f2f3f7eff930bda490338514",
+        "final": "53acfb2c2e243bfe79974b878d2c98a0a95882ed93e75764f8f2482d0bd5af8e"
+      }
+    },
+    "gae095": {
+      "episodes": 20,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 394,
+      "finite_weights": true,
+      "last_boundaries": {
+        "time_limit": 18,
+        "match_end": 2,
+        "learner_death": 0
+      },
+      "checkpoints": {
+        "best": "5303d8a37d1b0707541daaac51387bd7239fd56c3791fd18a407a847f4cd9137",
+        "final": "35a0bbbc943f68d119489428399068dfef4044be02994df36ecc7d8d7f76087f"
+      }
+    }
+  },
+  "decision": "retain_original",
+  "elapsed_seconds": 15.063864899999999,
+  "limits": "Technical smoke only; no B1 pilot, held-out evaluation, win-rate claim or checkpoint replacement"
+}

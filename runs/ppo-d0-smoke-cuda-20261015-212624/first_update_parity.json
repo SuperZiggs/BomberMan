@@ -1,0 +1,30 @@
+{
+  "actions_and_rewards_identical": true,
+  "auxiliary_and_value_loss_abs_delta": {
+    "value_loss": 2.9802322387695312e-08,
+    "escape_loss": 0.0,
+    "combat_loss": 0.0,
+    "navigation_loss": 0.0
+  },
+  "gradient_max_abs_delta": 2.384185791015625e-07,
+  "parameter_max_abs_delta": 7.060356438159943e-06,
+  "ratio": {
+    "objective": "ratio",
+    "samples": 20,
+    "epochs": 1,
+    "clipped": false,
+    "ratio_mean": 1.0,
+    "ratio_min": 0.9999998807907104,
+    "ratio_max": 1.0000001192092896,
+    "ratio_max_abs_error_from_one": 1.1920928955078125e-07,
+    "exact_kl_before_update": -2.2030939295092367e-09,
+    "label_counts": {
+      "escape": 11,
+      "combat": 0,
+      "navigation": 5
+    },
+    "terminal_transitions": 1,
+    "last_boundary": "time_limit"
+  },
+  "note": "Policy loss scalars differ; compare gradients. Float32/Adam parity uses registered tolerances."
+}

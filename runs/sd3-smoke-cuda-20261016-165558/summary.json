@@ -1,0 +1,555 @@
+{
+  "status": "complete",
+  "full_protocol": false,
+  "reason": null,
+  "arms": {
+    "sd_12ch": {
+      "completed_episodes": 20,
+      "expected_episodes": 20,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 160,
+      "guidance": {
+        "labels": 26,
+        "agreements": 16,
+        "bomb_instead_of_move": 1,
+        "target_probability_sum": 16.450789026916027,
+        "entropy_sum": 14.075719308108091,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 13.945370499999626,
+      "peak_cuda_bytes": 105985024,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_12ch\\best_phaseC.pt",
+          "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_12ch\\final_phaseC.pt",
+          "sha256": "ff75c8d3c9dc71f4ce9ef1bf8b3cd1540691a99423125a77c1de5afa99e85853"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_12ch\\training_state.pt",
+        "sha256": "89b1c1087b5152d3f91eb7170b717164239120ea7ab7583d790051a213ed7533",
+        "episode": 20
+      }
+    },
+    "sd_13ch": {
+      "completed_episodes": 20,
+      "expected_episodes": 20,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 20,
+      "learner_steps": 160,
+      "guidance": {
+        "labels": 26,
+        "agreements": 16,
+        "bomb_instead_of_move": 1,
+        "target_probability_sum": 16.444790824316442,
+        "entropy_sum": 14.088368880562484,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 11.581443999999465,
+      "peak_cuda_bytes": 105996800,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_13ch\\best_phaseC.pt",
+          "sha256": "4192c9aa933c1603b96cba79bd5548f1592df4f3d96d86d1b1cd0d2e78a6eea9"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_13ch\\final_phaseC.pt",
+          "sha256": "3cbbf9718bba16aad44ad1f96acd00b1c8361247e64edf68849d38726b5de1a6"
+        }
+      },
+      "training_state": {
+        "path": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_13ch\\training_state.pt",
+        "sha256": "40e8ead3251eef06c2c6fcaa5b1558a8c3b561afa9d67cabd2f86b4b857d77d2",
+        "episode": 20
+      }
+    }
+  },
+  "hashes_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds_this_process": 32.19492329999957,
+  "resumed": false,
+  "models": {
+    "original": {
+      "seed": 39840,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 20,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 0.0,
+        "avg_first_close_step_conditional": null,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.0,
+      "avg_walls_rewarded": 0.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0,
+          "sudden_death": {
+            "learner_deaths": {
+              "sudden_death": 1
+            },
+            "opponent_deaths": {
+              "sudden_death": 1
+            },
+            "endings": {
+              "all_dead": 1
+            },
+            "wins_opponent_sd": 0,
+            "both_sd_draws": 1,
+            "reached_sd": 1,
+            "mask": {
+              "learner": {
+                "queries": 6,
+                "blocked_actions": 7,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              },
+              "opponent": {
+                "queries": 6,
+                "blocked_actions": 7,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              }
+            },
+            "games": 1
+          }
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0,
+          "sudden_death": {
+            "learner_deaths": {
+              "sudden_death": 1
+            },
+            "opponent_deaths": {
+              "sudden_death": 1
+            },
+            "endings": {
+              "all_dead": 1
+            },
+            "wins_opponent_sd": 0,
+            "both_sd_draws": 1,
+            "reached_sd": 1,
+            "mask": {
+              "learner": {
+                "queries": 6,
+                "blocked_actions": 10,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              },
+              "opponent": {
+                "queries": 6,
+                "blocked_actions": 10,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              }
+            },
+            "games": 1
+          }
+        }
+      },
+      "passive_win_rate": 0.0,
+      "sudden_death": {
+        "learner_deaths": {
+          "sudden_death": 2
+        },
+        "opponent_deaths": {
+          "sudden_death": 2
+        },
+        "endings": {
+          "all_dead": 2
+        },
+        "wins_opponent_sd": 0,
+        "both_sd_draws": 2,
+        "reached_sd": 2,
+        "mask": {
+          "learner": {
+            "queries": 12,
+            "blocked_actions": 17,
+            "empty_intersections": 10,
+            "unavoidable_pre_move_closure": 2
+          },
+          "opponent": {
+            "queries": 12,
+            "blocked_actions": 17,
+            "empty_intersections": 10,
+            "unavoidable_pre_move_closure": 2
+          }
+        },
+        "games": 2
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+    },
+    "sd_12ch": {
+      "seed": 39840,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 20,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 0.0,
+        "avg_first_close_step_conditional": null,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.0,
+      "avg_walls_rewarded": 0.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0,
+          "sudden_death": {
+            "learner_deaths": {
+              "sudden_death": 1
+            },
+            "opponent_deaths": {
+              "sudden_death": 1
+            },
+            "endings": {
+              "all_dead": 1
+            },
+            "wins_opponent_sd": 0,
+            "both_sd_draws": 1,
+            "reached_sd": 1,
+            "mask": {
+              "learner": {
+                "queries": 6,
+                "blocked_actions": 7,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              },
+              "opponent": {
+                "queries": 6,
+                "blocked_actions": 7,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              }
+            },
+            "games": 1
+          }
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0,
+          "sudden_death": {
+            "learner_deaths": {
+              "sudden_death": 1
+            },
+            "opponent_deaths": {
+              "sudden_death": 1
+            },
+            "endings": {
+              "all_dead": 1
+            },
+            "wins_opponent_sd": 0,
+            "both_sd_draws": 1,
+            "reached_sd": 1,
+            "mask": {
+              "learner": {
+                "queries": 6,
+                "blocked_actions": 10,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              },
+              "opponent": {
+                "queries": 6,
+                "blocked_actions": 10,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              }
+            },
+            "games": 1
+          }
+        }
+      },
+      "passive_win_rate": 0.0,
+      "sudden_death": {
+        "learner_deaths": {
+          "sudden_death": 2
+        },
+        "opponent_deaths": {
+          "sudden_death": 2
+        },
+        "endings": {
+          "all_dead": 2
+        },
+        "wins_opponent_sd": 0,
+        "both_sd_draws": 2,
+        "reached_sd": 2,
+        "mask": {
+          "learner": {
+            "queries": 12,
+            "blocked_actions": 17,
+            "empty_intersections": 10,
+            "unavoidable_pre_move_closure": 2
+          },
+          "opponent": {
+            "queries": 12,
+            "blocked_actions": 17,
+            "empty_intersections": 10,
+            "unavoidable_pre_move_closure": 2
+          }
+        },
+        "games": 2
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_12ch\\best_phaseC.pt",
+      "checkpoint_sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+    },
+    "sd_13ch": {
+      "seed": 39840,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 20,
+      "num_episodes": 2,
+      "win_rate": 0.0,
+      "active_win_rate": 0.0,
+      "suicide_rate": 0.0,
+      "draw_rate": 100.0,
+      "avg_kills": 0.0,
+      "avg_bombs": 1.0,
+      "avg_items": 0.0,
+      "avg_steps": 8.0,
+      "contact": {
+        "reached_close_rate": 0.0,
+        "avg_first_close_step_conditional": null,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 0.0,
+      "avg_walls_rewarded": 0.0,
+      "by_corner": {
+        "0": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0,
+          "sudden_death": {
+            "learner_deaths": {
+              "sudden_death": 1
+            },
+            "opponent_deaths": {
+              "sudden_death": 1
+            },
+            "endings": {
+              "all_dead": 1
+            },
+            "wins_opponent_sd": 0,
+            "both_sd_draws": 1,
+            "reached_sd": 1,
+            "mask": {
+              "learner": {
+                "queries": 6,
+                "blocked_actions": 7,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              },
+              "opponent": {
+                "queries": 6,
+                "blocked_actions": 7,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              }
+            },
+            "games": 1
+          }
+        },
+        "1": {
+          "num_episodes": 1,
+          "win_rate": 0.0,
+          "active_win_rate": 0.0,
+          "suicide_rate": 0.0,
+          "draw_rate": 100.0,
+          "avg_kills": 0.0,
+          "avg_bombs": 1.0,
+          "avg_items": 0.0,
+          "avg_steps": 8.0,
+          "contact": {
+            "reached_close_rate": 0.0,
+            "avg_first_close_step_conditional": null,
+            "left_spawn_rate": 100.0
+          },
+          "avg_walls": 0.0,
+          "avg_walls_rewarded": 0.0,
+          "passive_win_rate": 0.0,
+          "sudden_death": {
+            "learner_deaths": {
+              "sudden_death": 1
+            },
+            "opponent_deaths": {
+              "sudden_death": 1
+            },
+            "endings": {
+              "all_dead": 1
+            },
+            "wins_opponent_sd": 0,
+            "both_sd_draws": 1,
+            "reached_sd": 1,
+            "mask": {
+              "learner": {
+                "queries": 6,
+                "blocked_actions": 10,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              },
+              "opponent": {
+                "queries": 6,
+                "blocked_actions": 10,
+                "empty_intersections": 5,
+                "unavoidable_pre_move_closure": 1
+              }
+            },
+            "games": 1
+          }
+        }
+      },
+      "passive_win_rate": 0.0,
+      "sudden_death": {
+        "learner_deaths": {
+          "sudden_death": 2
+        },
+        "opponent_deaths": {
+          "sudden_death": 2
+        },
+        "endings": {
+          "all_dead": 2
+        },
+        "wins_opponent_sd": 0,
+        "both_sd_draws": 2,
+        "reached_sd": 2,
+        "mask": {
+          "learner": {
+            "queries": 12,
+            "blocked_actions": 17,
+            "empty_intersections": 10,
+            "unavoidable_pre_move_closure": 2
+          },
+          "opponent": {
+            "queries": 12,
+            "blocked_actions": 17,
+            "empty_intersections": 10,
+            "unavoidable_pre_move_closure": 2
+          }
+        },
+        "games": 2
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\sd3-smoke-cuda-20261016-165558\\sd_13ch\\best_phaseC.pt",
+      "checkpoint_sha256": "4192c9aa933c1603b96cba79bd5548f1592df4f3d96d86d1b1cd0d2e78a6eea9"
+    }
+  }
+}

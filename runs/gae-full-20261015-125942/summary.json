@@ -1,0 +1,243 @@
+{
+  "status": "complete",
+  "full_protocol": true,
+  "reason": null,
+  "arms": {
+    "control": {
+      "completed_episodes": 200,
+      "expected_episodes": 200,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 200,
+      "learner_steps": 73101,
+      "guidance": {
+        "labels": 31569,
+        "agreements": 17868,
+        "bomb_instead_of_move": 2007,
+        "target_probability_sum": 17796.22999294562,
+        "entropy_sum": 17331.40075709384,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 1491.5936169999995,
+      "peak_cuda_bytes": 87901184,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\control\\best_phaseC.pt",
+          "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\control\\final_phaseC.pt",
+          "sha256": "b050f6c840a65aa166ab307df116feea2f5436861f593da8309539315078ed7e"
+        }
+      }
+    },
+    "gae": {
+      "completed_episodes": 200,
+      "expected_episodes": 200,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 200,
+      "learner_steps": 77005,
+      "guidance": {
+        "labels": 33374,
+        "agreements": 18830,
+        "bomb_instead_of_move": 2079,
+        "target_probability_sum": 18867.039403648436,
+        "entropy_sum": 18394.346611013363,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 803.9050314999986,
+      "peak_cuda_bytes": 110099968,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\gae\\best_phaseC.pt",
+          "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\gae\\final_phaseC.pt",
+          "sha256": "6bca938646a84434cda629f8ea62f6758e9c754ee3fe225b1bf03090e37e32ba"
+        }
+      }
+    }
+  },
+  "evaluation_complete": true,
+  "hashes_unchanged": true,
+  "selected_checkpoints_unchanged": true,
+  "comparisons": {
+    "original": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "control": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": 3292.2133637000006,
+  "models": {
+    "original": {
+      "seed": 35000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 36.5,
+      "active_win_rate": 31.75,
+      "suicide_rate": 0.75,
+      "draw_rate": 61.5,
+      "avg_kills": 0.3175,
+      "avg_bombs": 39.5925,
+      "avg_items": 1.675,
+      "avg_steps": 380.39,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 36.0,
+          "active_win_rate": 30.0,
+          "suicide_rate": 1.5,
+          "draw_rate": 60.0,
+          "avg_kills": 0.3,
+          "avg_bombs": 38.665,
+          "avg_items": 1.7,
+          "avg_steps": 366.275,
+          "passive_win_rate": 6.0
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 37.0,
+          "active_win_rate": 33.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 63.0,
+          "avg_kills": 0.335,
+          "avg_bombs": 40.52,
+          "avg_items": 1.65,
+          "avg_steps": 394.505,
+          "passive_win_rate": 3.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "passive_win_rate": 4.75
+    },
+    "control": {
+      "seed": 35000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 36.5,
+      "active_win_rate": 31.75,
+      "suicide_rate": 0.75,
+      "draw_rate": 61.5,
+      "avg_kills": 0.3175,
+      "avg_bombs": 39.5925,
+      "avg_items": 1.675,
+      "avg_steps": 380.39,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 36.0,
+          "active_win_rate": 30.0,
+          "suicide_rate": 1.5,
+          "draw_rate": 60.0,
+          "avg_kills": 0.3,
+          "avg_bombs": 38.665,
+          "avg_items": 1.7,
+          "avg_steps": 366.275,
+          "passive_win_rate": 6.0
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 37.0,
+          "active_win_rate": 33.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 63.0,
+          "avg_kills": 0.335,
+          "avg_bombs": 40.52,
+          "avg_items": 1.65,
+          "avg_steps": 394.505,
+          "passive_win_rate": 3.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\control\\best_phaseC.pt",
+      "checkpoint_sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28",
+      "passive_win_rate": 4.75
+    },
+    "gae": {
+      "seed": 35000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 36.5,
+      "active_win_rate": 31.75,
+      "suicide_rate": 0.75,
+      "draw_rate": 61.5,
+      "avg_kills": 0.3175,
+      "avg_bombs": 39.5925,
+      "avg_items": 1.675,
+      "avg_steps": 380.39,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 36.0,
+          "active_win_rate": 30.0,
+          "suicide_rate": 1.5,
+          "draw_rate": 60.0,
+          "avg_kills": 0.3,
+          "avg_bombs": 38.665,
+          "avg_items": 1.7,
+          "avg_steps": 366.275,
+          "passive_win_rate": 6.0
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 37.0,
+          "active_win_rate": 33.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 63.0,
+          "avg_kills": 0.335,
+          "avg_bombs": 40.52,
+          "avg_items": 1.65,
+          "avg_steps": 394.505,
+          "passive_win_rate": 3.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\gae\\best_phaseC.pt",
+      "checkpoint_sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28",
+      "passive_win_rate": 4.75
+    }
+  }
+}

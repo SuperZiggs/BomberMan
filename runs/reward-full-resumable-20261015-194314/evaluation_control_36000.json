@@ -1,0 +1,9267 @@
+{
+  "seed": 36000,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 500,
+  "num_episodes": 400,
+  "win_rate": 42.5,
+  "active_win_rate": 36.25,
+  "suicide_rate": 0.25,
+  "draw_rate": 55.75,
+  "avg_kills": 0.3625,
+  "avg_bombs": 38.7125,
+  "avg_items": 1.7275,
+  "avg_steps": 364.015,
+  "contact": {
+    "reached_close_rate": 99.5,
+    "avg_first_close_step_conditional": 19.891959798994975,
+    "left_spawn_rate": 100.0
+  },
+  "avg_walls": 9.065,
+  "avg_walls_rewarded": 9.06,
+  "by_corner": {
+    "0": {
+      "num_episodes": 200,
+      "win_rate": 46.0,
+      "active_win_rate": 36.0,
+      "suicide_rate": 0.5,
+      "draw_rate": 51.0,
+      "avg_kills": 0.36,
+      "avg_bombs": 34.47,
+      "avg_items": 1.59,
+      "avg_steps": 326.67,
+      "contact": {
+        "reached_close_rate": 99.0,
+        "avg_first_close_step_conditional": 19.393939393939394,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 8.795,
+      "avg_walls_rewarded": 8.785,
+      "passive_win_rate": 10.0
+    },
+    "1": {
+      "num_episodes": 200,
+      "win_rate": 39.0,
+      "active_win_rate": 36.5,
+      "suicide_rate": 0.0,
+      "draw_rate": 60.5,
+      "avg_kills": 0.365,
+      "avg_bombs": 42.955,
+      "avg_items": 1.865,
+      "avg_steps": 401.36,
+      "contact": {
+        "reached_close_rate": 100.0,
+        "avg_first_close_step_conditional": 20.385,
+        "left_spawn_rate": 100.0
+      },
+      "avg_walls": 9.335,
+      "avg_walls_rewarded": 9.335,
+      "passive_win_rate": 2.5
+    }
+  },
+  "games": [
+    {
+      "seed": 36000,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 4.0,
+      "items": 1.0,
+      "steps": 28.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 2
+      },
+      "walls": 3,
+      "walls_rewarded": 3
+    },
+    {
+      "seed": 36000,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 66.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 32,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36001,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 7.0,
+      "items": 0.0,
+      "steps": 58.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36001,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 19.0,
+      "items": 3.0,
+      "steps": 116.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36002,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 15.0,
+      "items": 1.0,
+      "steps": 128.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36002,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 38.0,
+      "items": 3.0,
+      "steps": 287.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36003,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 24.0,
+      "items": 2.0,
+      "steps": 196.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 13,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36003,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 32.0,
+      "items": 3.0,
+      "steps": 258.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 19,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36004,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 69.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 35,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36004,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 70.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36005,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 68.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36005,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 68.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36006,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 42.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 38,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36006,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 63.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36007,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 28.0,
+      "items": 1.0,
+      "steps": 287.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36007,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 62.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36008,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 60.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36008,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 33.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36009,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 57.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36009,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 52.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36010,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 9.0,
+      "items": 2.0,
+      "steps": 69.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36010,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 43.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 48,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36011,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36011,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 58.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 13,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36012,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 42.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36012,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 55.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36013,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 57.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36013,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 27.0,
+      "items": 1.0,
+      "steps": 320.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36014,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 52.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 31,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36014,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 35.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 36,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36015,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 2.0,
+      "steps": 209.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36015,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 24.0,
+      "items": 2.0,
+      "steps": 224.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36016,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 66.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36016,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36017,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 61.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 27,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36017,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 58.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 32,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36018,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 4.0,
+      "items": 2.0,
+      "steps": 26.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": null,
+        "min_distance": 5
+      },
+      "walls": 4,
+      "walls_rewarded": 4
+    },
+    {
+      "seed": 36018,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 62.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36019,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 73.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36019,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 42.0,
+      "items": 1.0,
+      "steps": 386.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36020,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36020,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 35.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36021,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 0.0,
+      "steps": 33.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 3
+      },
+      "walls": 3,
+      "walls_rewarded": 3
+    },
+    {
+      "seed": 36021,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 61.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36022,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 3.0,
+      "items": 1.0,
+      "steps": 26.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 4,
+      "walls_rewarded": 4
+    },
+    {
+      "seed": 36022,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 73.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36023,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 6.0,
+      "items": 2.0,
+      "steps": 50.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 2
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36023,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 39.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36024,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 41.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36024,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 67.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36025,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 63.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36025,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 18.0,
+      "items": 3.0,
+      "steps": 153.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36026,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 11.0,
+      "items": 1.0,
+      "steps": 98.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 17,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36026,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 48.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36027,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 41.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36027,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36028,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36028,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 13.0,
+      "items": 1.0,
+      "steps": 131.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36029,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 23.0,
+      "items": 1.0,
+      "steps": 232.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36029,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 42.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36030,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 73.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 15,
+      "walls_rewarded": 15
+    },
+    {
+      "seed": 36030,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 63.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 48,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36031,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 2.0,
+      "steps": 200.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36031,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 60.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 14,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36032,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 52.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 28,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36032,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 54.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36033,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 60.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36033,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 39.0,
+      "items": 1.0,
+      "steps": 440.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36034,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 6.0,
+      "items": 0.0,
+      "steps": 50.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36034,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 48.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36035,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 45.0,
+      "items": 2.0,
+      "steps": 438.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36035,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 3.0,
+      "steps": 131.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36036,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 51.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 32,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36036,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 32.0,
+      "items": 0.0,
+      "steps": 447.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 37,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36037,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 1.0,
+      "steps": 33.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 27,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36037,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 47.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 60,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36038,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 10.0,
+      "items": 2.0,
+      "steps": 85.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36038,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36039,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 37.0,
+      "items": 3.0,
+      "steps": 277.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36039,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 61.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36040,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 7.0,
+      "items": 2.0,
+      "steps": 56.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 28,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36040,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36041,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36041,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 44,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36042,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36042,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 70.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 31,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36043,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 18.0,
+      "items": 1.0,
+      "steps": 189.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36043,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 17.0,
+      "items": 2.0,
+      "steps": 170.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 26,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36044,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 46.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36044,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 35.0,
+      "items": 2.0,
+      "steps": 396.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 56,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36045,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 5.0,
+      "items": 1.0,
+      "steps": 51.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 17,
+        "min_distance": 1
+      },
+      "walls": 4,
+      "walls_rewarded": 4
+    },
+    {
+      "seed": 36045,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 46.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36046,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 40.0,
+      "items": 2.0,
+      "steps": 296.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36046,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 16.0,
+      "items": 1.0,
+      "steps": 196.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 39,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36047,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 62.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36047,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 0.0,
+      "steps": 274.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36048,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 23.0,
+      "items": 1.0,
+      "steps": 238.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36048,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 27.0,
+      "items": 2.0,
+      "steps": 278.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36049,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 79.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36049,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 17.0,
+      "items": 1.0,
+      "steps": 180.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36050,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 46.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36050,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 51.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36051,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 46.0,
+      "items": 4.0,
+      "steps": 346.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36051,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 58.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36052,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 25.0,
+      "items": 4.0,
+      "steps": 156.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 28,
+        "min_distance": 1
+      },
+      "walls": 15,
+      "walls_rewarded": 15
+    },
+    {
+      "seed": 36052,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 43.0,
+      "items": 4.0,
+      "steps": 259.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36053,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 2.0,
+      "steps": 287.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 26,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36053,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 44.0,
+      "items": 2.0,
+      "steps": 407.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 40,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36054,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 21.0,
+      "items": 0.0,
+      "steps": 252.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36054,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36055,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 23.0,
+      "items": 1.0,
+      "steps": 225.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36055,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36056,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 6.0,
+      "items": 0.0,
+      "steps": 45.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 2
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36056,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 28.0,
+      "items": 1.0,
+      "steps": 311.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36057,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 5.0,
+      "items": 1.0,
+      "steps": 43.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36057,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36058,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 12.0,
+      "items": 1.0,
+      "steps": 86.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 13,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36058,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36059,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 51.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36059,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 9.0,
+      "items": 1.0,
+      "steps": 71.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36060,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 11.0,
+      "items": 1.0,
+      "steps": 116.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36060,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 16.0,
+      "items": 1.0,
+      "steps": 163.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36061,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36061,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 53.0,
+      "items": 3.0,
+      "steps": 479.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36062,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 67.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36062,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 73.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36063,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 47.0,
+      "items": 2.0,
+      "steps": 489.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36063,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 14,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36064,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 10.0,
+      "items": 2.0,
+      "steps": 73.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36064,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 14.0,
+      "items": 2.0,
+      "steps": 106.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 37,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36065,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 68.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36065,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 45.0,
+      "items": 2.0,
+      "steps": 466.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36066,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 9.0,
+      "items": 1.0,
+      "steps": 86.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 26,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36066,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 1.0,
+      "steps": 218.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36067,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 6.0,
+      "items": 0.0,
+      "steps": 45.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 38,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36067,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 15.0,
+      "items": 4.0,
+      "steps": 110.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36068,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 33.0,
+      "items": 1.0,
+      "steps": 336.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36068,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 41.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36069,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 2.0,
+      "steps": 25.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": null,
+        "min_distance": 5
+      },
+      "walls": 3,
+      "walls_rewarded": 3
+    },
+    {
+      "seed": 36069,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 63.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36070,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 63.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36070,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 79.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36071,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 10.0,
+      "items": 1.0,
+      "steps": 76.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36071,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 43.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 36,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36072,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 11.0,
+      "items": 0.0,
+      "steps": 122.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 36,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36072,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 12.0,
+      "items": 2.0,
+      "steps": 76.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36073,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36073,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36074,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36074,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 31.0,
+      "items": 0.0,
+      "steps": 366.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36075,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 6.0,
+      "items": 1.0,
+      "steps": 45.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36075,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 67.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36076,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36076,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 98,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36077,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 52.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 17,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36077,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 53.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36078,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 1.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 7.0,
+      "items": 1.0,
+      "steps": 61.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 13,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36078,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 27.0,
+      "items": 2.0,
+      "steps": 261.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 40,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36079,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 47.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36079,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 22.0,
+      "items": 1.0,
+      "steps": 209.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36080,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 46.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36080,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36081,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 59.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 15,
+      "walls_rewarded": 15
+    },
+    {
+      "seed": 36081,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 8.0,
+      "items": 2.0,
+      "steps": 77.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36082,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "items": 0.0,
+      "steps": 17.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 11,
+        "min_distance": 1
+      },
+      "walls": 2,
+      "walls_rewarded": 2
+    },
+    {
+      "seed": 36082,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 69.0,
+      "items": 4.0,
+      "steps": 480.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36083,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 6.0,
+      "items": 2.0,
+      "steps": 36.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36083,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 37.0,
+      "items": 2.0,
+      "steps": 374.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36084,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 23.0,
+      "items": 2.0,
+      "steps": 261.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 51,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36084,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36085,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 73.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36085,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 70.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 15,
+      "walls_rewarded": 15
+    },
+    {
+      "seed": 36086,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 28,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36086,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36087,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 35,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36087,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 40.0,
+      "items": 1.0,
+      "steps": 476.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 37,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36088,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 65.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36088,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 55.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36089,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 18.0,
+      "items": 1.0,
+      "steps": 198.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36089,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36090,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 14.0,
+      "items": 0.0,
+      "steps": 149.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36090,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 8.0,
+      "items": 1.0,
+      "steps": 52.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36091,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 14.0,
+      "items": 2.0,
+      "steps": 145.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36091,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 62.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36092,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 62.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36092,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 34.0,
+      "items": 2.0,
+      "steps": 316.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36093,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 33.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36093,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 10.0,
+      "items": 0.0,
+      "steps": 104.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36094,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 27.0,
+      "items": 3.0,
+      "steps": 184.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36094,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36095,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "items": 0.0,
+      "steps": 17.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 11,
+        "min_distance": 1
+      },
+      "walls": 2,
+      "walls_rewarded": 2
+    },
+    {
+      "seed": 36095,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 42.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36096,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 19.0,
+      "items": 2.0,
+      "steps": 167.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36096,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 51.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36097,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 11.0,
+      "items": 2.0,
+      "steps": 68.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 41,
+        "min_distance": 2
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36097,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 0.0,
+      "steps": 28.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 3,
+      "walls_rewarded": 3
+    },
+    {
+      "seed": 36098,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 47.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 31,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36098,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 47.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 32,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36099,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 55.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 28,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36099,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 39.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36100,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "items": 0.0,
+      "steps": 17.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 11,
+        "min_distance": 1
+      },
+      "walls": 2,
+      "walls_rewarded": 2
+    },
+    {
+      "seed": 36100,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 25.0,
+      "items": 1.0,
+      "steps": 266.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36101,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 52.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36101,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36102,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 51.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36102,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 47.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36103,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 37.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36103,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 57.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36104,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 46.0,
+      "items": 2.0,
+      "steps": 473.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36104,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 2.0,
+      "steps": 355.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 32,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36105,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 40,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36105,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 10.0,
+      "items": 1.0,
+      "steps": 110.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36106,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 8.0,
+      "items": 3.0,
+      "steps": 64.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36106,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 16.0,
+      "items": 1.0,
+      "steps": 143.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36107,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 47.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36107,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36108,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 56.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 18,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36108,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 39,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36109,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36109,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 74.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36110,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 15.0,
+      "items": 0.0,
+      "steps": 158.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36110,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36111,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 37.0,
+      "items": 3.0,
+      "steps": 262.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 17,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36111,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 50.0,
+      "items": 3.0,
+      "steps": 406.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36112,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 67.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36112,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 57.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36113,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 5.0,
+      "items": 1.0,
+      "steps": 35.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 4,
+      "walls_rewarded": 4
+    },
+    {
+      "seed": 36113,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 46.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36114,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 15.0,
+      "items": 2.0,
+      "steps": 137.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 35,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36114,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 61.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36115,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 68.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36115,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 68.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36116,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 19.0,
+      "items": 1.0,
+      "steps": 220.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 31,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36116,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 59.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36117,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 66.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36117,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 54.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36118,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 6.0,
+      "items": 0.0,
+      "steps": 53.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36118,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 47.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36119,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 42.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 28,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36119,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36120,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 1.0,
+      "steps": 27.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 3,
+      "walls_rewarded": 3
+    },
+    {
+      "seed": 36120,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 38.0,
+      "items": 1.0,
+      "steps": 390.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36121,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36121,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 38.0,
+      "items": 2.0,
+      "steps": 444.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36122,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36122,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 31,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36123,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36123,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36124,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "items": 0.0,
+      "steps": 17.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 12,
+        "min_distance": 1
+      },
+      "walls": 3,
+      "walls_rewarded": 3
+    },
+    {
+      "seed": 36124,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 60.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36125,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 19.0,
+      "items": 3.0,
+      "steps": 136.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36125,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 57.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 45,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36126,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 39.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36126,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36127,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 9.0,
+      "items": 1.0,
+      "steps": 92.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 34,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36127,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 46.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 39,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36128,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 0.0,
+      "steps": 33.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 27,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 4
+    },
+    {
+      "seed": 36128,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 68.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36129,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 43.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36129,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 60.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36130,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 60.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 13,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36130,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 15.0,
+      "items": 0.0,
+      "steps": 165.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 53,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36131,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36131,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 1.0,
+      "steps": 25.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 3,
+      "walls_rewarded": 3
+    },
+    {
+      "seed": 36132,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "items": 0.0,
+      "steps": 17.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 11,
+        "min_distance": 1
+      },
+      "walls": 2,
+      "walls_rewarded": 2
+    },
+    {
+      "seed": 36132,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 21.0,
+      "items": 2.0,
+      "steps": 226.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36133,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 48.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 11,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36133,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 35.0,
+      "items": 3.0,
+      "steps": 290.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36134,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 31.0,
+      "items": 2.0,
+      "steps": 316.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36134,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36135,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 7.0,
+      "items": 1.0,
+      "steps": 64.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36135,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 65.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36136,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 51.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 31,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36136,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36137,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 7.0,
+      "items": 1.0,
+      "steps": 58.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 2
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36137,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 21.0,
+      "items": 2.0,
+      "steps": 234.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36138,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 11.0,
+      "items": 2.0,
+      "steps": 129.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36138,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 11.0,
+      "items": 1.0,
+      "steps": 71.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 13,
+        "min_distance": 2
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36139,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36139,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36140,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 54.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36140,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 43.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36141,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 48.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36141,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 9.0,
+      "items": 1.0,
+      "steps": 94.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36142,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 48.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36142,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 68.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 19,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36143,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 17.0,
+      "items": 2.0,
+      "steps": 124.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 27,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36143,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 6.0,
+      "items": 0.0,
+      "steps": 48.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 39,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36144,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 4.0,
+      "items": 1.0,
+      "steps": 42.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 4,
+      "walls_rewarded": 4
+    },
+    {
+      "seed": 36144,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36145,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 35.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36145,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36146,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36146,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 54.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36147,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 55.0,
+      "items": 2.0,
+      "steps": 484.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36147,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 60.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36148,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 60.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36148,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 13.0,
+      "items": 2.0,
+      "steps": 116.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 27,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36149,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 42.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36149,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 41.0,
+      "items": 2.0,
+      "steps": 409.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36150,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 8.0,
+      "items": 1.0,
+      "steps": 88.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 19,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36150,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 29.0,
+      "items": 2.0,
+      "steps": 251.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36151,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 13.0,
+      "items": 1.0,
+      "steps": 79.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 39,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36151,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 52.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36152,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36152,
+      "aid": 1,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 27.0,
+      "items": 0.0,
+      "steps": 343.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36153,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 59.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36153,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 70.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 41,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36154,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 16.0,
+      "items": 2.0,
+      "steps": 140.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 37,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36154,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 53.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 26,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36155,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 22.0,
+      "items": 0.0,
+      "steps": 302.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 2,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36155,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 1.0,
+      "steps": 223.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36156,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 5.0,
+      "items": 1.0,
+      "steps": 41.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 34,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36156,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 17.0,
+      "items": 0.0,
+      "steps": 213.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 57,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36157,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 70.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36157,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36158,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36158,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 57.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 26,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36159,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 52.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 14,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36159,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 12.0,
+      "items": 1.0,
+      "steps": 126.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 39,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36160,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 72.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36160,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 46.0,
+      "items": 2.0,
+      "steps": 397.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36161,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 5.0,
+      "items": 0.0,
+      "steps": 49.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 12,
+        "min_distance": 1
+      },
+      "walls": 5,
+      "walls_rewarded": 5
+    },
+    {
+      "seed": 36161,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 69.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36162,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 30.0,
+      "items": 0.0,
+      "steps": 361.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36162,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 56.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36163,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 12.0,
+      "items": 0.0,
+      "steps": 152.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36163,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 55.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 4,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36164,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 10.0,
+      "items": 3.0,
+      "steps": 62.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36164,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 59.0,
+      "items": 4.0,
+      "steps": 422.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 15,
+      "walls_rewarded": 15
+    },
+    {
+      "seed": 36165,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 43.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36165,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 12.0,
+      "items": 0.0,
+      "steps": 151.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36166,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 26.0,
+      "items": 1.0,
+      "steps": 276.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 39,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36166,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 43.0,
+      "items": 2.0,
+      "steps": 427.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36167,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 41.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 42,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36167,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 18.0,
+      "items": 1.0,
+      "steps": 173.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 14,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36168,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 10.0,
+      "items": 0.0,
+      "steps": 120.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36168,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 72.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36169,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 72.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36169,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 73.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36170,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 6.0,
+      "items": 1.0,
+      "steps": 58.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36170,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 66.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 10,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36171,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36171,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 18.0,
+      "items": 3.0,
+      "steps": 152.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36172,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 8.0,
+      "items": 1.0,
+      "steps": 98.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36172,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 41.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36173,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 53.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 34,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36173,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 53.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36174,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 16.0,
+      "items": 2.0,
+      "steps": 121.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 8,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36174,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 72.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 14,
+      "walls_rewarded": 14
+    },
+    {
+      "seed": 36175,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 67.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36175,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 70.0,
+      "items": 3.0,
+      "steps": 496.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 49,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36176,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 61.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 49,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36176,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 17.0,
+      "items": 3.0,
+      "steps": 122.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 26,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36177,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 58.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36177,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 63.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36178,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 57.0,
+      "items": 4.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36178,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 46.0,
+      "items": 2.0,
+      "steps": 471.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36179,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 20.0,
+      "items": 1.0,
+      "steps": 143.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36179,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36180,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "items": 0.0,
+      "steps": 36.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 14,
+        "min_distance": 2
+      },
+      "walls": 3,
+      "walls_rewarded": 3
+    },
+    {
+      "seed": 36180,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 27,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36181,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 33.0,
+      "items": 4.0,
+      "steps": 252.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36181,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 70.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36182,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36182,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 43.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 31,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36183,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 43.0,
+      "items": 3.0,
+      "steps": 337.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36183,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 58.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36184,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 485.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36184,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 26.0,
+      "items": 2.0,
+      "steps": 245.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36185,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 40.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 28,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36185,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 16.0,
+      "items": 1.0,
+      "steps": 160.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 34,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36186,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 16.0,
+      "items": 0.0,
+      "steps": 149.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 25,
+        "min_distance": 2
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36186,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 23.0,
+      "items": 1.0,
+      "steps": 240.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36187,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 42.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 7,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36187,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36188,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 27,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36188,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 8.0,
+      "items": 1.0,
+      "steps": 88.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36189,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 56.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 29,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36189,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 13.0,
+      "items": 1.0,
+      "steps": 89.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 15,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36190,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 64.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 14,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36190,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 26.0,
+      "items": 1.0,
+      "steps": 260.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36191,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 47.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 40,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36191,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 50.0,
+      "items": 1.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 17,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36192,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 26.0,
+      "items": 1.0,
+      "steps": 247.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36192,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 44.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 20,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36193,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 35.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36193,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 53.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 6,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36194,
+      "aid": 0,
+      "win": 1,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 0.0,
+      "bombs": 11.0,
+      "items": 2.0,
+      "steps": 92.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 30,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36194,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 53.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 8,
+      "walls_rewarded": 8
+    },
+    {
+      "seed": 36195,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 45.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 22,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36195,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 49.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 24,
+        "min_distance": 1
+      },
+      "walls": 11,
+      "walls_rewarded": 11
+    },
+    {
+      "seed": 36196,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 38.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 37,
+        "min_distance": 1
+      },
+      "walls": 6,
+      "walls_rewarded": 6
+    },
+    {
+      "seed": 36196,
+      "aid": 1,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 63.0,
+      "items": 3.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 37,
+        "min_distance": 1
+      },
+      "walls": 7,
+      "walls_rewarded": 7
+    },
+    {
+      "seed": 36197,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 46.0,
+      "items": 2.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 13,
+      "walls_rewarded": 13
+    },
+    {
+      "seed": 36197,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 30.0,
+      "items": 1.0,
+      "steps": 315.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 9,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36198,
+      "aid": 0,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 18.0,
+      "items": 1.0,
+      "steps": 179.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 21,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    },
+    {
+      "seed": 36198,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 53.0,
+      "items": 3.0,
+      "steps": 443.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 23,
+        "min_distance": 1
+      },
+      "walls": 12,
+      "walls_rewarded": 12
+    },
+    {
+      "seed": 36199,
+      "aid": 0,
+      "win": 0,
+      "active_win": 0,
+      "suicide": 0.0,
+      "draw": 1,
+      "kills": 0.0,
+      "bombs": 36.0,
+      "items": 0.0,
+      "steps": 500.0,
+      "contact": {
+        "initial_position": [
+          1,
+          1
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 9,
+      "walls_rewarded": 9
+    },
+    {
+      "seed": 36199,
+      "aid": 1,
+      "win": 1,
+      "active_win": 1,
+      "suicide": 0.0,
+      "draw": 0,
+      "kills": 1.0,
+      "bombs": 34.0,
+      "items": 2.0,
+      "steps": 377.0,
+      "contact": {
+        "initial_position": [
+          1,
+          7
+        ],
+        "left_spawn": true,
+        "first_close_step": 5,
+        "min_distance": 1
+      },
+      "walls": 10,
+      "walls_rewarded": 10
+    }
+  ],
+  "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\reward-full-resumable-20261015-194314\\control\\best_phaseC.pt",
+  "checkpoint_sha256": "14082ec9dbde9de6d8ff70861c691b9e6c76d4804ebee539af64050ce4707453",
+  "passive_win_rate": 6.25
+}

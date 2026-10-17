@@ -1,0 +1,14 @@
+{
+  "original": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+    "sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+  },
+  "control": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\control\\best_phaseC.pt",
+    "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+  },
+  "ppo": {
+    "path": "D:\\fpt\\subject\\BomberMan\\runs\\ppo-smoke-cuda-20261015-215833\\ppo\\best_phaseC.pt",
+    "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+  }
+}

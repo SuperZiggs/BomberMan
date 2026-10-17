@@ -1,0 +1,212 @@
+--- before/evaluate.py
++++ evaluate.py
+@@ -53,7 +53,7 @@
+ # ────────────────────── evaluation helpers ────────────────────────────────
+ 
+ def run_match(env: BombermanFFAEnv, agent_fns: list, num_episodes: int = 100,
+-              verbose: bool = False):
++              verbose: bool = False, on_step=None):
+     """
+     Chạy num_episodes, mỗi episode gọi agent_fns[i](env, obs_list, agent_id)
+     để lấy action.
+@@ -73,6 +73,8 @@
+ 
+     for ep in range(num_episodes):
+         obs_list = env.reset()
++        if on_step is not None:
++            on_step(env, None)
+         ep_rewards = [0.0] * num_agents
+         ep_bombs = [0] * num_agents
+ 
+@@ -86,6 +88,8 @@
+                 actions.append(a)
+ 
+             obs_list, rewards, dones, info = env.step(actions)
++            if on_step is not None:
++                on_step(env, info)
+             for i in info["bombs_placed"]:
+                 ep_bombs[i] += 1
+             own_deaths = set(info.get("self_blast_deaths", []))
+@@ -184,8 +188,34 @@
+     return fn
+ 
+ 
++def observe_contact(env, aid, state):
++    """Read-only Manhattan proximity; it does not certify a traversable or safe path."""
++    agent = env.agents[aid]
++    position = (agent.row, agent.col)
++    if not state:
++        state.update(initial_position=position, left_spawn=False, first_close_step=None, min_distance=None)
++    if not agent.alive:
++        return
++    state['left_spawn'] |= position != state['initial_position']
++    distances = [abs(agent.row - other.row) + abs(agent.col - other.col)
++                 for other in env.agents if other.agent_id != aid and other.alive]
++    if distances:
++        distance = min(distances)
++        state['min_distance'] = distance if state['min_distance'] is None else min(distance, state['min_distance'])
++        if distance <= 3 and state['first_close_step'] is None:
++            state['first_close_step'] = env.step_count
++
++
++def summarize_contact(rows):
++    reached = [r['contact']['first_close_step'] for r in rows if r['contact']['first_close_step'] is not None]
++    return {'reached_close_rate': len(reached) / len(rows) * 100,
++            'avg_first_close_step_conditional': float(np.mean(reached)) if reached else None,
++            'left_spawn_rate': sum(r['contact']['left_spawn'] for r in rows) / len(rows) * 100}
++
++
+ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
+-                    seed=7000, max_steps=500, stop_event=None, on_progress=None):
++                    seed=7000, max_steps=500, stop_event=None, on_progress=None,
++                    contact_diagnostics=False):
+     """Evaluate a fixed policy at every corner of each seeded board, preserving RNGs."""
+     if num_episodes < num_agents or num_episodes % num_agents:
+         raise ValueError("num_episodes must be positive and divisible by num_agents")
+@@ -208,13 +238,22 @@
+                                       max_steps=max_steps, seed=board_seed)
+                 fns = [make_rule_based_fn(i) for i in range(num_agents)]
+                 fns[aid] = agent_fn
+-                stats = run_match(env, fns, num_episodes=1)
++                contact, walls = {}, {'walls': 0, 'walls_rewarded': 0}
++                def observed(current, info):
++                    observe_contact(current, aid, contact)
++                    if info is not None:
++                        count = info['walls_destroyed'].get(aid, 0)
++                        walls['walls'] += count
++                        walls['walls_rewarded'] += count if info['alive'][aid] else 0
++                stats = (run_match(env, fns, num_episodes=1, on_step=observed) if contact_diagnostics
++                         else run_match(env, fns, num_episodes=1))
+                 games.append({"seed": board_seed, "aid": aid,
+                               "win": stats["wins"][aid], "active_win": stats["active_wins"][aid],
+                               "suicide": stats["suicide_rates"][aid] / 100,
+                               "draw": stats["draws"], "kills": stats["avg_kills"][aid],
+                               "bombs": stats["avg_bombs"][aid], "items": stats["avg_items"][aid],
+-                              "steps": stats["avg_steps"]})
++                              "steps": stats["avg_steps"],
++                              **({'contact': contact, **walls} if contact_diagnostics else {})})
+             if on_progress:
+                 on_progress(num_episodes, num_episodes)
+     finally:
+@@ -225,7 +264,11 @@
+                  for key in ("win", "active_win", "suicide", "draw")}
+         averages = {f"avg_{key}": sum(g[key] for g in rows) / len(rows)
+                     for key in ("kills", "bombs", "items", "steps")}
+-        return {"num_episodes": len(rows), **rates, **averages}
++        return {"num_episodes": len(rows), **rates, **averages,
++                **({'contact': summarize_contact(rows),
++                    'avg_walls': sum(g['walls'] for g in rows) / len(rows),
++                    'avg_walls_rewarded': sum(g['walls_rewarded'] for g in rows) / len(rows)}
++                   if contact_diagnostics else {})}
+ 
+     return {"seed": seed, "board_size": board_size, "num_agents": num_agents,
+             "max_steps": max_steps, **summarize(games),
+--- before/run_combat_move_pilot.py
++++ run_combat_move_pilot.py
+@@ -18,7 +18,7 @@
+ from benchmark_t3 import make_env, scenarios, summarize_games
+ from bomberman_env import _MOVE_DELTA
+ from combat_move_teacher import certify_combat_move
+-from evaluate import evaluate_seeded, make_ac_fn
++from evaluate import evaluate_seeded, make_ac_fn, observe_contact
+ from pilot_two_bomb import paired_active_bootstrap, stage_timer
+ from run_t3_curriculum import model_digest, skill_probe
+ import train_actor_critic as trainer
+@@ -92,12 +92,13 @@
+ 
+ def train_arm(output, arm, device, smoke, stop, baseline, *, attack_teacher=None,
+               normalize_advantage=None, advantage_estimator=None, gae_lambda=.95,
+-              train_seed=TRAIN_SEED, smoke_episodes=4, smoke_steps=8):
++              train_seed=TRAIN_SEED, smoke_episodes=4, smoke_steps=8,
++              wall_destroy_bonus=.15, reward_diagnostics=False, contact_diagnostics=False):
+     directory = output / arm
+     directory.mkdir()
+     config = {'phase': 'C', 'episodes': smoke_episodes if smoke else 200, 'board_size': 9, 'num_agents': 2,
+         'max_steps': smoke_steps if smoke else 500, 'lr': 1e-4, 'gamma': 0.99, 'value_coef': 0.5,
+-        'entropy_coef': 0.015, 'wall_destroy_bonus': 0.15, 'seed': train_seed,
++        'entropy_coef': 0.015, 'wall_destroy_bonus': wall_destroy_bonus, 'seed': train_seed,
+         'resume_from': str(WARM_START), 'checkpoint_dir': str(directory), 'device': device,
+         'attack_teacher': attack_teacher if attack_teacher is not None else ARMS[arm], 'run_report': False, 'log_every': 2 if smoke else 10,
+         'validation_every': smoke_episodes // 2 if smoke else 100, 'validation_episodes': 2 if smoke else 100,
+@@ -107,9 +108,19 @@
+     if advantage_estimator is not None:
+         config.update(advantage_estimator=advantage_estimator, gae_lambda=gae_lambda,
+                       advantage_diagnostics=True)
++    if reward_diagnostics:
++        config['reward_diagnostics'] = True
+     dump(directory / 'config.json', config)
+     networks, optimizers, rows, probes = [], [], [], []
+     started = perf_counter()
++    contact, current_episode = {}, None
++
++    def on_step(env, episode, aid, actions, opponents):
++        nonlocal current_episode
++        if current_episode != episode:
++            contact.clear()
++            current_episode = episode
++        observe_contact(env, aid, contact)
+ 
+     def net(*args, **kwargs):
+         value = BaseNet(*args, **kwargs)
+@@ -130,6 +141,8 @@
+             state = optimizers[0].state
+             updates = int(next(iter(state.values()))['step'].item()) if state else 0
+             row = {**row, 'optimizer_steps': updates, 'elapsed_seconds': perf_counter() - started}
++            if contact_diagnostics:
++                row['contact'] = dict(contact)
+             rows.append(row)
+             metrics.write(json.dumps(row) + '\n')
+             metrics.flush()
+@@ -158,7 +171,9 @@
+ 
+         with patch.object(trainer, 'ActorCriticNet', side_effect=net), \
+              patch.object(trainer.optim, 'Adam', side_effect=adam):
+-            _, rewards, _ = trainer.train(**config, stop_event=stop, on_episode=on_episode, on_validation=on_validation)
++            hooks = {'on_step': on_step} if contact_diagnostics else {}
++            _, rewards, _ = trainer.train(**config, stop_event=stop, on_episode=on_episode,
++                                         on_validation=on_validation, **hooks)
+     assert len(networks) == len(optimizers) == 1 and len(rows) == len(rewards)
+     validation = directory / 'validation_metrics.jsonl'
+     vals = [json.loads(line) for line in validation.read_text().splitlines()] if validation.exists() else []
+@@ -192,7 +207,8 @@
+         for a in arms.values())
+ 
+ 
+-def evaluate_models(output, stop, smoke, *, arm_names=ARMS, test_seed=TEST_SEED, smoke_seed=39830):
++def evaluate_models(output, stop, smoke, *, arm_names=ARMS, test_seed=TEST_SEED, smoke_seed=39830,
++                    contact_diagnostics=False):
+     results = {}
+     seed, count, steps = (smoke_seed, 2, 8) if smoke else (test_seed, 400, 500)
+     paths = {'original': WARM_START, **{arm: output / arm / 'best_phaseC.pt' for arm in arm_names}}
+@@ -200,8 +216,9 @@
+         def progress(done, total):
+             if done % 25 == 0:
+                 print(f'[Evaluation] {name}: {done}/{total}', flush=True)
++        diagnostics = {'contact_diagnostics': True} if contact_diagnostics else {}
+         result = evaluate_seeded(make_ac_fn(str(path), 9, 'cpu'), 9, 2, count, seed, steps,
+-                                 stop_event=stop, on_progress=progress)
++                                 stop_event=stop, on_progress=progress, **diagnostics)
+         if result is None:
+             break
+         assert len(result['games']) == count
+--- before/test_reward_audit.py
++++ test_reward_audit.py
+@@ -251,8 +251,18 @@
+ 
+     def test_cancelled_runner_records_incomplete_without_optimizer_or_plots(self):
+         saved = {}
++        read_text = Path.read_text
++        def current_runtime_fixture(path, *args, **kwargs):
++            text = read_text(path, *args, **kwargs)
++            if path == audit.PARENT / 'config.json':
++                config = json.loads(text)
++                for name in ('bomberman_env.py', 'rule_based_bot.py', 'evaluate.py'):
++                    config['source_sha256'][name] = audit.digest(audit.ROOT / name)
++                return json.dumps(config)
++            return text
+         with patch.object(audit, 'ActorCriticNet', side_effect=lambda **k: torch.nn.Linear(1, 1)), \
+              patch.object(audit, 'smart_load_weights'), patch.object(audit, 'play_game', return_value=None), \
++             patch.object(Path, 'read_text', new=current_runtime_fixture), \
+              patch.object(Path, 'mkdir'), patch.object(Path, 'write_text'), \
+              patch.object(audit.shutil, 'copy2'), patch.object(audit.shutil, 'make_archive'), \
+              patch.object(gzip, 'open', return_value=io.StringIO()), patch.object(audit, 'plot_results') as plot, \

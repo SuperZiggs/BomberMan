@@ -1,0 +1,15 @@
+======================================================================
+ERROR: test_cancelled_runner_records_incomplete_without_optimizer_or_plots (test_reward_audit.AuditChecks.test_cancelled_runner_records_incomplete_without_optimizer_or_plots)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\test_reward_audit.py", line 261, in test_cancelled_runner_records_incomplete_without_optimizer_or_plots
+    result = audit.run(audit.ROOT / ('runs/uncreated-r0-' + uuid4().hex), smoke=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\audit_r0.py", line 243, in run
+    raise ValueError('Validation runtime changed since B1')
+ValueError: Validation runtime changed since B1
+
+----------------------------------------------------------------------
+Ran 43 tests in 18.445s
+
+FAILED (errors=1)

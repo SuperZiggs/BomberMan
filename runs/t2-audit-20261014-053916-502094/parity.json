@@ -1,0 +1,34 @@
+[
+  {
+    "model": "original",
+    "seed": 28000,
+    "aid": 0,
+    "passed": true,
+    "steps": 80,
+    "action_tape_sha256": "a21643589afab5ba9b7d21e0ae59f80482762c38665fb5dc357d0fe3fb98cca7"
+  },
+  {
+    "model": "original",
+    "seed": 28000,
+    "aid": 1,
+    "passed": true,
+    "steps": 80,
+    "action_tape_sha256": "f7d2bf21a40677447b9da3070fbe1fd615e4f9fc07e91f662772a912aba640e9"
+  },
+  {
+    "model": "two_bomb_final",
+    "seed": 28000,
+    "aid": 0,
+    "passed": true,
+    "steps": 80,
+    "action_tape_sha256": "f28e86162baa48e6ea5937c03b43bcc54a5d73cb1a9c9c0409e979136f2e52be"
+  },
+  {
+    "model": "two_bomb_final",
+    "seed": 28000,
+    "aid": 1,
+    "passed": true,
+    "steps": 80,
+    "action_tape_sha256": "dd691eb0d5ac2f19911c92597316ddceb225398f720981168fa0e8bd18e128e4"
+  }
+]

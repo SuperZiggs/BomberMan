@@ -1,0 +1,36 @@
+--- before/run_combat_move_pilot.py
++++ run_combat_move_pilot.py
+@@ -97,7 +97,8 @@
+               normalize_advantage=None, advantage_estimator=None, gae_lambda=.95,
+               train_seed=TRAIN_SEED, smoke_episodes=4, smoke_steps=8,
+               wall_destroy_bonus=.15, reward_diagnostics=False, contact_diagnostics=False,
+-              save_training_state=False, resume=False):
++              save_training_state=False, resume=False, policy_objective=None,
++              update_epochs=1, clip_epsilon=.2, target_kl=0.):
+     directory = output / arm
+     directory.mkdir(exist_ok=resume)
+     config = {'phase': 'C', 'episodes': smoke_episodes if smoke else 200, 'board_size': 9, 'num_agents': 2,
+@@ -116,6 +117,9 @@
+         config['reward_diagnostics'] = True
+     if save_training_state:
+         config['save_training_state'] = True
++    if policy_objective is not None:
++        config.update(policy_objective=policy_objective, update_epochs=update_epochs,
++                      clip_epsilon=clip_epsilon, target_kl=target_kl)
+     state_path = directory / 'training_state.pt'
+     restored = load_training_state(state_path) if resume and state_path.exists() else None
+     if resume and (directory / 'config.json').exists():
+@@ -267,10 +271,11 @@
+     return result
+ 
+ 
+-def pair_ready(arms, arm_names=ARMS):
++def pair_ready(arms, arm_names=ARMS, *, max_updates_per_episode=1):
+     return set(arms) == set(arm_names) and all(a['training_complete'] and a['validation_complete']
+         and a['skill_probes_complete'] and a['completed_episodes'] == a['expected_episodes']
+-        and a['optimizer_instances'] == 1 and a['optimizer_steps'] == a['completed_episodes']
++        and a['optimizer_instances'] == 1
++        and a['completed_episodes'] <= a['optimizer_steps'] <= max_updates_per_episode*a['completed_episodes']
+         for a in arms.values())
+ 
+ 

@@ -1,0 +1,113 @@
+{
+  "archive_files": 46,
+  "archive_sha256": "470bbde57745069574313d38c4068a2fb07da7707a2084da342059b608dedbd0",
+  "source_and_checkpoint_hashes_pass": true,
+  "skills_replayed_games": 384,
+  "skills_replayed_frames": 8512,
+  "comparisons": {
+    "original": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "control": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "gates": {
+    "gain": false,
+    "ci": false,
+    "suicide": true
+  },
+  "decision": "retain_original",
+  "elapsed_seconds": 3292.2133637000006,
+  "arms": {
+    "control": {
+      "best_episode": 0,
+      "learner_steps": 73101,
+      "training_suicides": 3,
+      "training_active_wins": 67,
+      "clipped_updates": 81,
+      "normalization_skipped": 0,
+      "grad_norm_mean": 37.214422816261646,
+      "grad_norm_p95": 153.48716201782227,
+      "explained_variance_mean": 0.4778884186554443,
+      "advantage_raw_std_mean": 1.0573123514279723,
+      "advantage_policy_std_mean": 1.0573123514279723,
+      "gae_last_boundaries": null,
+      "td_delta_std_mean": null,
+      "mc_raw_std_mean": 1.0573123514279723,
+      "entropy_mean_per_episode": 0.28680257208645343,
+      "seconds": 1491.5936169999995
+    },
+    "gae": {
+      "best_episode": 0,
+      "learner_steps": 77005,
+      "training_suicides": 0,
+      "training_active_wins": 61,
+      "clipped_updates": 73,
+      "normalization_skipped": 0,
+      "grad_norm_mean": 30.541924962103366,
+      "grad_norm_p95": 134.4345672607421,
+      "explained_variance_mean": 0.4991534568140741,
+      "advantage_raw_std_mean": 0.8666753345355391,
+      "advantage_policy_std_mean": 0.8666753345355391,
+      "gae_last_boundaries": {
+        "match_end": 75,
+        "time_limit": 122,
+        "learner_death": 3
+      },
+      "td_delta_std_mean": 0.3645878191106021,
+      "mc_raw_std_mean": 0.9944499388430268,
+      "entropy_mean_per_episode": 0.2885688032209873,
+      "seconds": 803.9050314999986
+    }
+  },
+  "models": {
+    "original": {
+      "active_win_rate": 31.75,
+      "suicide_rate": 0.75,
+      "draw_rate": 61.5,
+      "counts": {
+        "win": 146,
+        "active_win": 127,
+        "suicide": 3.0,
+        "draw": 246
+      }
+    },
+    "control": {
+      "active_win_rate": 31.75,
+      "suicide_rate": 0.75,
+      "draw_rate": 61.5,
+      "counts": {
+        "win": 146,
+        "active_win": 127,
+        "suicide": 3.0,
+        "draw": 246
+      }
+    },
+    "gae": {
+      "active_win_rate": 31.75,
+      "suicide_rate": 0.75,
+      "draw_rate": 61.5,
+      "counts": {
+        "win": 146,
+        "active_win": 127,
+        "suicide": 3.0,
+        "draw": 246
+      }
+    }
+  }
+}

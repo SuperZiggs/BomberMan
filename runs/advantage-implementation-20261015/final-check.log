@@ -1,0 +1,12 @@
+Used seed guard verified: Test34000 already opened in D:\fpt\subject\BomberMan\runs\advantage-full-20261015-030430\evaluation_control_34000.json; register a new protocol, do not rerun to select another model
+Frozen hashes and all final artifacts verified
+{
+  "work_started_utc": "2026-10-14T19:53:44Z",
+  "deadline_utc": "2026-10-14T22:23:44Z",
+  "user_budget_minutes": 150,
+  "scope": "implementation, tests, CPU/CUDA smoke, paired training, evaluation and review",
+  "completed_utc": "2026-10-14T21:46:40.040270+00:00",
+  "total_work_minutes": 112.9340045,
+  "within_deadline": true,
+  "full_run_minutes": 96.93434903666676
+}

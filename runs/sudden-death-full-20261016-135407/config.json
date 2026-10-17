@@ -1,0 +1,62 @@
+{
+  "registered_utc": "2026-10-16T06:54:10.836225+00:00",
+  "experiment": "SD1-rules",
+  "full_protocol": true,
+  "cases": {
+    "off": [
+      false,
+      false,
+      false
+    ],
+    "rings_only": [
+      true,
+      false,
+      false
+    ],
+    "learner_aware": [
+      true,
+      true,
+      false
+    ],
+    "both_aware": [
+      true,
+      true,
+      true
+    ]
+  },
+  "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+  "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "0edfa404551c4f02cf4a5e12d4287b5986ccf724805f18d5b1bccfa9904dac25",
+    "evaluate.py": "d1ed074ed1e1d0b3cb8af29385ac2e0252d5acceffc60ef9ad20cb8f79be05c0",
+    "training_state.py": "1159cf982f2f3db1a68014f698073aeefaf754bca84c38966b7c2217e22b747b",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "combat_move_teacher.py": "e266982d70e78f7c3a8ce01469a75dbf74a14aa935385e7fc729cd53e2d0226d",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "sudden_death_experiment.py": "0720d0ba4fd3840189d8206e4303e83b2a986e7f5b100f2876d597639fbbe0e2",
+    "run_sudden_death_experiment.py": "eeece7c5cac7e6e42465c1c8f373faab4938ab564164f2af70de6801ad716ed9",
+    "test_sudden_death_experiment.py": "445a40d60090e38275f49cca409992490d678d4f96261d8725afb4abf50ae99d",
+    "test_sudden_death_runner.py": "6ca049bcc56489e40907e7a0f8c5f2c3cda111fd5882403959b819782722b383"
+  },
+  "reference_commit": "afbf6f9483a05ddddbd042cb716b545018bf7bde",
+  "board_size": 9,
+  "num_agents": 2,
+  "games_per_case": 400,
+  "seed": 38000,
+  "max_steps": 500,
+  "device": "cpu",
+  "threads": 1,
+  "timings": {
+    "sudden_death_start": 200,
+    "sudden_death_interval": 20,
+    "sudden_death_warning_steps": 40
+  },
+  "observation": "unchanged 12 channels; no additional warning channel",
+  "optimizer_steps": 0,
+  "budget_minutes": 90,
+  "torch_version": "2.5.1",
+  "numpy_version": "2.0.1",
+  "reference_env_sha256": "786243bf0dfbd34674bbbaca51c36e18898e7cf6144b4142789d1f3c7a6c80df"
+}

@@ -1,0 +1,104 @@
+{
+  "cpu": {
+    "archive_files": 22,
+    "elapsed_seconds": 15.063864899999999,
+    "hashes_and_metrics_pass": true,
+    "modes": {
+      "mc": {
+        "episodes": 20,
+        "optimizer_instances": 1,
+        "optimizer_steps": 20,
+        "learner_steps": 394,
+        "finite_weights": true,
+        "last_boundaries": null,
+        "checkpoints": {
+          "best": "14cab87a888ab64ad4c9fe3fde227a8cab4c761ff97f1939e5d9bcb274716176",
+          "final": "cc7cf09782156d2f625d7e2d148793b756f2ca436d26ae47586d70378ec39b6a"
+        }
+      },
+      "gae1": {
+        "episodes": 20,
+        "optimizer_instances": 1,
+        "optimizer_steps": 20,
+        "learner_steps": 394,
+        "finite_weights": true,
+        "last_boundaries": {
+          "time_limit": 18,
+          "match_end": 2,
+          "learner_death": 0
+        },
+        "checkpoints": {
+          "best": "c4ccfb6bbf11cb8d94af284f2ba1c8fbaa4e0662f2f3f7eff930bda490338514",
+          "final": "53acfb2c2e243bfe79974b878d2c98a0a95882ed93e75764f8f2482d0bd5af8e"
+        }
+      },
+      "gae095": {
+        "episodes": 20,
+        "optimizer_instances": 1,
+        "optimizer_steps": 20,
+        "learner_steps": 394,
+        "finite_weights": true,
+        "last_boundaries": {
+          "time_limit": 18,
+          "match_end": 2,
+          "learner_death": 0
+        },
+        "checkpoints": {
+          "best": "5303d8a37d1b0707541daaac51387bd7239fd56c3791fd18a407a847f4cd9137",
+          "final": "35a0bbbc943f68d119489428399068dfef4044be02994df36ecc7d8d7f76087f"
+        }
+      }
+    }
+  },
+  "cuda": {
+    "archive_files": 22,
+    "elapsed_seconds": 14.826399999999921,
+    "hashes_and_metrics_pass": true,
+    "modes": {
+      "mc": {
+        "episodes": 20,
+        "optimizer_instances": 1,
+        "optimizer_steps": 20,
+        "learner_steps": 400,
+        "finite_weights": true,
+        "last_boundaries": null,
+        "checkpoints": {
+          "best": "edd760919c085cd4b8df5ca9e3d92b3cf4c0c67b76c55a5d8ebeb80ec4909fad",
+          "final": "965110f9aa88e01a2a2389e7addf98c16d53a240d0186e7cb429b069b92e2866"
+        }
+      },
+      "gae1": {
+        "episodes": 20,
+        "optimizer_instances": 1,
+        "optimizer_steps": 20,
+        "learner_steps": 400,
+        "finite_weights": true,
+        "last_boundaries": {
+          "time_limit": 20,
+          "match_end": 0,
+          "learner_death": 0
+        },
+        "checkpoints": {
+          "best": "8daee268301a7e98e04d39b2377e6c2b46a9d00b06646350d4c97a0a95ee97f6",
+          "final": "9b63895eb7c3084bed3ea6b74e1c2fecf67e03d519b0082e777ba0819c2b556a"
+        }
+      },
+      "gae095": {
+        "episodes": 20,
+        "optimizer_instances": 1,
+        "optimizer_steps": 20,
+        "learner_steps": 400,
+        "finite_weights": true,
+        "last_boundaries": {
+          "time_limit": 20,
+          "match_end": 0,
+          "learner_death": 0
+        },
+        "checkpoints": {
+          "best": "386e676ffa4acdf09edf6d1b8b189f95374c8110a805f087dadf8505c7bb45be",
+          "final": "196fc391fbc07a0c79423a611de6dc535ba5b52b73d38b79b102adf442e53eab"
+        }
+      }
+    }
+  }
+}

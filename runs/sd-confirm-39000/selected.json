@@ -1,0 +1,99 @@
+{
+  "selected_validation": {
+    "case": "both_aware",
+    "sudden_death_start": 400,
+    "sudden_death_interval": 40,
+    "sudden_death_warning_steps": 40,
+    "sudden_death_max_ring": 2,
+    "games": 200,
+    "seed": 21000,
+    "win_rate": 62.0,
+    "active_win_rate": 30.5,
+    "passive_win_rate": 31.5,
+    "draw_rate": 14.000000000000002,
+    "suicide_rate": 0.0,
+    "avg_kills": 0.305,
+    "sudden_death": {
+      "learner_deaths": {
+        "alive": 137,
+        "sudden_death": 58,
+        "opponent_bomb": 5
+      },
+      "opponent_deaths": {
+        "self_bomb": 104,
+        "alive": 61,
+        "sudden_death": 24,
+        "opponent_bomb": 11
+      },
+      "endings": {
+        "sole_survivor": 172,
+        "timeout": 13,
+        "all_dead": 15
+      },
+      "wins_opponent_sd": 12,
+      "both_sd_draws": 12,
+      "reached_sd": 129,
+      "mask": {
+        "learner": {
+          "queries": 7927,
+          "blocked_actions": 668,
+          "empty_intersections": 239,
+          "unavoidable_pre_move_closure": 58
+        },
+        "opponent": {
+          "queries": 8510,
+          "blocked_actions": 928,
+          "empty_intersections": 453,
+          "unavoidable_pre_move_closure": 33
+        }
+      },
+      "games": 200
+    },
+    "seconds": 204.95333379999647
+  },
+  "off_validation": {
+    "case": "off",
+    "sudden_death_start": 200,
+    "sudden_death_interval": 20,
+    "sudden_death_warning_steps": 40,
+    "sudden_death_max_ring": 3,
+    "games": 200,
+    "seed": 21000,
+    "win_rate": 38.0,
+    "active_win_rate": 31.0,
+    "passive_win_rate": 7.0,
+    "draw_rate": 60.5,
+    "suicide_rate": 0.0,
+    "avg_kills": 0.31,
+    "sudden_death": {
+      "learner_deaths": {
+        "alive": 197,
+        "opponent_bomb": 3
+      },
+      "opponent_deaths": {
+        "alive": 124,
+        "self_bomb": 66,
+        "opponent_bomb": 10
+      },
+      "endings": {
+        "timeout": 121,
+        "sole_survivor": 79
+      },
+      "wins_opponent_sd": 0,
+      "both_sd_draws": 0,
+      "reached_sd": 0,
+      "mask": {
+        "learner": {},
+        "opponent": {}
+      },
+      "games": 200
+    },
+    "seconds": 352.19890080000187
+  },
+  "timings": {
+    "sudden_death_start": 400,
+    "sudden_death_interval": 40,
+    "sudden_death_warning_steps": 40,
+    "sudden_death_max_ring": 2
+  }
+}

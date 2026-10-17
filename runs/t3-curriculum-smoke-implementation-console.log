@@ -1,0 +1,51 @@
+Output: D:\fpt\subject\BomberMan\runs\t3-curriculum-smoke-implementation
+Mode: smoke; device=cpu; source trainer unchanged
+[Baseline skill] C1_static: 100.0% owned kill
+[Baseline skill] C2_evader: 50.0% owned kill
+[Baseline skill] C3_rule_mix: 0.0% owned kill
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 2 games, all corners, seed 21000
+[control Phase C validation] ep0 0/2
+[Validation] ep 0 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[Validation] ep 2 | 2 games, all corners, seed 21000
+[control Phase C validation] ep2 0/2
+[Validation] ep 2 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[C] ep     2 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -0.008 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.1518 | lr: 7.6e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 4 | 2 games, all corners, seed 21000
+[control Phase C validation] ep4 0/2
+[Validation] ep 4 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[C] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.142 | bombs: 1.0 | walls: 1.0 | combat bombs: 0/0 | loss: 0.4792 | lr: 2.9e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 6 | 2 games, all corners, seed 21000
+[control Phase C validation] ep6 0/2
+[Validation] ep 6 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[C] ep     6 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -0.008 | bombs: 1.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.2075 | lr: 5.0e-06 | pool: 0 | best validation active: 0%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\t3-curriculum-smoke-implementation\control\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\t3-curriculum-smoke-implementation\control\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 2 games, all corners, seed 21000
+[curriculum Phase C validation] ep0 0/2
+[Validation] ep 0 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[Validation] ep 2 | 2 games, all corners, seed 21000
+[curriculum Phase C validation] ep2 0/2
+[Validation] ep 2 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[curriculum skill] ep2 C1_static pass=True next=C2_evader
+[C] ep     2 | WR:  50.0% | active WR:  50.0% | kills: 0.50 | reward: +6.992 | bombs: 1.0 | walls: 0.0 | combat bombs: 1/1 | loss: 0.2681 | lr: 7.6e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 4 | 2 games, all corners, seed 21000
+[curriculum Phase C validation] ep4 0/2
+[Validation] ep 4 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[curriculum skill] ep4 C2_evader pass=True next=C3_rule_mix
+[C] ep     4 | WR: 100.0% | active WR: 100.0% | kills: 1.00 | reward: +13.992 | bombs: 2.0 | walls: 0.0 | combat bombs: 4/4 | loss: 90.3808 | lr: 2.9e-05 | pool: 0 | best validation active: 0%
+[Validation] ep 6 | 2 games, all corners, seed 21000
+[curriculum Phase C validation] ep6 0/2
+[Validation] ep 6 | ActiveWR 0.0% | Suicide 0.0% | Draw 100.0% | best ep 0
+[curriculum skill] ep6 C3_rule_mix pass=True next=C4_transfer
+[C] ep     6 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.067 | bombs: 1.0 | walls: 0.5 | combat bombs: 0/0 | loss: 0.1862 | lr: 5.0e-06 | pool: 0 | best validation active: 0%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\t3-curriculum-smoke-implementation\curriculum\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\t3-curriculum-smoke-implementation\curriculum\best_phaseC.pt (best episode: 0)
+[Final random-map evaluation] original 0/2
+[Final random-map evaluation] control 0/2
+[Final random-map evaluation] curriculum 0/2
+COMPLETE: D:\fpt\subject\BomberMan\runs\t3-curriculum-smoke-implementation-send.zip
+Decision: retain_original

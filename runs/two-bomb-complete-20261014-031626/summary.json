@@ -1,0 +1,165 @@
+{
+  "training_complete": true,
+  "completed_episodes": 200,
+  "evaluation_complete": true,
+  "comparisons": {
+    "original": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "local": {
+      "difference_pp": -1.5,
+      "ci95_pp": [
+        -7.249999999999999,
+        4.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "best_episode": 0,
+  "elapsed_seconds": 5118.983999999997,
+  "models": {
+    "original": {
+      "seed": 26000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 43.0,
+      "active_win_rate": 36.5,
+      "suicide_rate": 0.5,
+      "draw_rate": 54.75,
+      "avg_kills": 0.365,
+      "avg_bombs": 38.605,
+      "avg_items": 1.6675,
+      "avg_steps": 371.415,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 44.0,
+          "active_win_rate": 36.5,
+          "suicide_rate": 1.0,
+          "draw_rate": 52.0,
+          "avg_kills": 0.365,
+          "avg_bombs": 36.33,
+          "avg_items": 1.6,
+          "avg_steps": 347.585,
+          "passive_win_rate": 7.5
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 42.0,
+          "active_win_rate": 36.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 57.49999999999999,
+          "avg_kills": 0.365,
+          "avg_bombs": 40.88,
+          "avg_items": 1.735,
+          "avg_steps": 395.245,
+          "passive_win_rate": 5.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "checkpoint_sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "passive_win_rate": 6.5
+    },
+    "local": {
+      "seed": 26000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 44.0,
+      "active_win_rate": 38.0,
+      "suicide_rate": 0.25,
+      "draw_rate": 54.50000000000001,
+      "avg_kills": 0.38,
+      "avg_bombs": 38.485,
+      "avg_items": 1.6875,
+      "avg_steps": 367.6225,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 51.0,
+          "active_win_rate": 42.5,
+          "suicide_rate": 0.5,
+          "draw_rate": 46.5,
+          "avg_kills": 0.425,
+          "avg_bombs": 34.345,
+          "avg_items": 1.575,
+          "avg_steps": 328.605,
+          "passive_win_rate": 8.5
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 37.0,
+          "active_win_rate": 33.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 62.5,
+          "avg_kills": 0.335,
+          "avg_bombs": 42.625,
+          "avg_items": 1.8,
+          "avg_steps": 406.64,
+          "passive_win_rate": 3.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\two-bomb-pilot-20261014\\local\\best_phaseC.pt",
+      "checkpoint_sha256": "12d98351de4d3e2a71482cfb285008856c2878cb5cf86928e246f1e46292591c",
+      "passive_win_rate": 6.0
+    },
+    "two_bomb": {
+      "seed": 26000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "num_episodes": 400,
+      "win_rate": 43.0,
+      "active_win_rate": 36.5,
+      "suicide_rate": 0.5,
+      "draw_rate": 54.75,
+      "avg_kills": 0.365,
+      "avg_bombs": 38.605,
+      "avg_items": 1.6675,
+      "avg_steps": 371.415,
+      "by_corner": {
+        "0": {
+          "num_episodes": 200,
+          "win_rate": 44.0,
+          "active_win_rate": 36.5,
+          "suicide_rate": 1.0,
+          "draw_rate": 52.0,
+          "avg_kills": 0.365,
+          "avg_bombs": 36.33,
+          "avg_items": 1.6,
+          "avg_steps": 347.585,
+          "passive_win_rate": 7.5
+        },
+        "1": {
+          "num_episodes": 200,
+          "win_rate": 42.0,
+          "active_win_rate": 36.5,
+          "suicide_rate": 0.0,
+          "draw_rate": 57.49999999999999,
+          "avg_kills": 0.365,
+          "avg_bombs": 40.88,
+          "avg_items": 1.735,
+          "avg_steps": 395.245,
+          "passive_win_rate": 5.5
+        }
+      },
+      "checkpoint": "D:\\fpt\\subject\\BomberMan\\runs\\two-bomb-complete-20261014-031626\\two_bomb\\best_phaseC.pt",
+      "checkpoint_sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28",
+      "passive_win_rate": 6.5
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "events": [],
+  "failure": {
+    "stage": "C1_static",
+    "episode": 200,
+    "reason": "skill_gate_not_met_within_200_episodes"
+  }
+}

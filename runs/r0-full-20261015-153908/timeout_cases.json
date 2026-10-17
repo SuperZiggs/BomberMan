@@ -1,0 +1,74 @@
+[
+  {
+    "model": "original",
+    "seed": 21000,
+    "aid": 0,
+    "path": "timeout_original_21000_A0.json.gz"
+  },
+  {
+    "model": "original",
+    "seed": 21000,
+    "aid": 1,
+    "path": "timeout_original_21000_A1.json.gz"
+  },
+  {
+    "model": "original",
+    "seed": 21001,
+    "aid": 1,
+    "path": "timeout_original_21001_A1.json.gz"
+  },
+  {
+    "model": "original",
+    "seed": 21002,
+    "aid": 0,
+    "path": "timeout_original_21002_A0.json.gz"
+  },
+  {
+    "model": "mc_final",
+    "seed": 21000,
+    "aid": 0,
+    "path": "timeout_mc_final_21000_A0.json.gz"
+  },
+  {
+    "model": "mc_final",
+    "seed": 21001,
+    "aid": 1,
+    "path": "timeout_mc_final_21001_A1.json.gz"
+  },
+  {
+    "model": "mc_final",
+    "seed": 21002,
+    "aid": 0,
+    "path": "timeout_mc_final_21002_A0.json.gz"
+  },
+  {
+    "model": "mc_final",
+    "seed": 21002,
+    "aid": 1,
+    "path": "timeout_mc_final_21002_A1.json.gz"
+  },
+  {
+    "model": "gae_final",
+    "seed": 21002,
+    "aid": 1,
+    "path": "timeout_gae_final_21002_A1.json.gz"
+  },
+  {
+    "model": "gae_final",
+    "seed": 21003,
+    "aid": 0,
+    "path": "timeout_gae_final_21003_A0.json.gz"
+  },
+  {
+    "model": "gae_final",
+    "seed": 21003,
+    "aid": 1,
+    "path": "timeout_gae_final_21003_A1.json.gz"
+  },
+  {
+    "model": "gae_final",
+    "seed": 21004,
+    "aid": 0,
+    "path": "timeout_gae_final_21004_A0.json.gz"
+  }
+]

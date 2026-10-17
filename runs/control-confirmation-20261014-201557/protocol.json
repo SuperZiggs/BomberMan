@@ -1,0 +1,60 @@
+{
+  "registered_utc": "2026-10-14T12:51:45.869185+00:00",
+  "status": "planned_not_run",
+  "question": "Does the validation-selected control ep400 checkpoint improve on B on new boards?",
+  "scope": "Separate checkpoint confirmation, not success of the stopped T3.2 curriculum",
+  "parent_run": "D:\\fpt\\subject\\BomberMan\\runs\\t3-curriculum-full-20261014-154703",
+  "checkpoint_selected_on": {
+    "control_best_episode": 400,
+    "validation_seed": 21000
+  },
+  "checkpoints": {
+    "original": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt",
+      "sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60"
+    },
+    "control_best": {
+      "path": "D:\\fpt\\subject\\BomberMan\\runs\\t3-curriculum-full-20261014-154703\\control\\best_phaseC.pt",
+      "sha256": "71f806d04c703c815dca4c174bf28308e6cf1643dba05ad9f9015b003cc0da28"
+    }
+  },
+  "source_sha256": {
+    "bomberman_env.py": "f7679dbca90a6d5ba5a2c822a16c259725a999c2c504d1f749023da5bded74b5",
+    "rule_based_bot.py": "fffb52890deff25051f26b15a79d9221be71c4546d926bf41206063ad7063de1",
+    "train_actor_critic.py": "ec1e86fc77f0b90ca1905d63c377828158ac174900092fd45ec6af757ddfa6ca",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "evaluate.py": "c1504b1a6afe48bca77e0276c6cf217ab21c715f9937d9e1845af52a9d0ac64a",
+    "visualize.py": "fb6701a07ffe68345c1c83383530313956077a05ac361e7fa59ce97b837ef07c",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "audit_t2.py": "a3b6afcb3b36f59e46c95b9d26381f6a52271172f2ae099a0c44c5e3010bf055",
+    "audit_l2_candidates.py": "f87cf3d2456aaaf6a3d9b706d0cde0875e4bed0c6905da229d61ef5bcc4282ce",
+    "benchmark_t3.py": "86341d76d0351e4d97232208a943f9365c36d4ba348ea10c1afb9f8c8f7d1642",
+    "run_t3_curriculum.py": "105bd2fd65b1745615e6fd92c9e4a4608789971eee72a3f454e0353b15a944f7",
+    "test_t3_curriculum.py": "f5bb46a5e5bedcf0b8ed3a0562c4cf08e8e525051dd5fcd7539006580343652e"
+  },
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 500,
+  "num_episodes_per_model": 400,
+  "seed": 32000,
+  "last_board_seed": 32199,
+  "device": "cpu",
+  "torch_threads": 1,
+  "opponent": "RuleBot",
+  "action_selection": "CNN categorical through the current safety mask; no teacher",
+  "fresh_seed_check": "No local evaluation records for test32000 found before registration",
+  "bootstrap": {
+    "unit": "board seed with both A0/A1",
+    "samples": 10000,
+    "seed": 20261014
+  },
+  "gate": {
+    "minimum_activeWR_gain_pp": 5,
+    "ci95_difference_lower_above": 0,
+    "suicide_rate_not_above": "original"
+  },
+  "automatic_model_replacement": false,
+  "on_pass": "Independent train-seed replication before claiming training-method stability",
+  "on_incomplete": "Inconclusive; retain B",
+  "unopened_curriculum_test": "31000-31199 and wood_branch stay reserved"
+}

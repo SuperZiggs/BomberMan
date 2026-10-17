@@ -1,0 +1,15 @@
+{
+  "status": "incomplete",
+  "full_protocol": false,
+  "reason": "cancelled_or_budget_exhausted",
+  "arms": {},
+  "random_map_evaluation_complete": false,
+  "heldout_skills_complete": false,
+  "comparisons": {},
+  "matched_budget_diagnostic_complete": false,
+  "eligible_for_replication": false,
+  "hashes_unchanged": true,
+  "decision": "retain_original",
+  "elapsed_seconds": 1.053201100003207,
+  "models": {}
+}

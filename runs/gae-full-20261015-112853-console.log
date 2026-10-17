@@ -1,0 +1,175 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 100 games, all corners, seed 21000
+[control validation] ep0: 0/100
+[control validation] ep0: 25/100
+[control validation] ep0: 50/100
+[control validation] ep0: 75/100
+[control validation] ep0: 100/100
+[Validation] ep 0 | ActiveWR 29.0% | Suicide 0.0% | Draw 62.0% | best ep 0
+[control skill] ep0: approach 87.5%
+[C] ep    10 | WR:  60.0% | active WR:  50.0% | kills: 0.50 | reward: +8.138 | bombs: 37.1 | walls: 9.1 | combat bombs: 229/235 | loss: 0.1840 | lr: 9.9e-05 | pool: 0 | best validation active: 29%
+[C] ep    20 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.186 | bombs: 25.3 | walls: 6.9 | combat bombs: 167/171 | loss: 42.0847 | lr: 9.8e-05 | pool: 0 | best validation active: 29%
+[C] ep    30 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.275 | bombs: 39.9 | walls: 9.4 | combat bombs: 282/294 | loss: 0.1722 | lr: 9.5e-05 | pool: 0 | best validation active: 29%
+[C] ep    40 | WR:  40.0% | active WR:  40.0% | kills: 0.40 | reward: +6.601 | bombs: 35.4 | walls: 8.6 | combat bombs: 219/229 | loss: 0.2374 | lr: 9.1e-05 | pool: 0 | best validation active: 29%
+[C] ep    50 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.371 | bombs: 44.9 | walls: 9.9 | combat bombs: 300/309 | loss: 63.5342 | lr: 8.6e-05 | pool: 0 | best validation active: 29%
+[C] ep    60 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +2.410 | bombs: 53.2 | walls: 9.1 | combat bombs: 384/392 | loss: 0.1951 | lr: 8.0e-05 | pool: 0 | best validation active: 29%
+[C] ep    70 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +5.173 | bombs: 35.3 | walls: 8.4 | combat bombs: 218/225 | loss: 0.2553 | lr: 7.4e-05 | pool: 0 | best validation active: 29%
+[C] ep    80 | WR:  60.0% | active WR:  50.0% | kills: 0.50 | reward: +8.211 | bombs: 30.1 | walls: 9.6 | combat bombs: 184/191 | loss: 55.0097 | lr: 6.7e-05 | pool: 0 | best validation active: 29%
+[C] ep    90 | WR:  40.0% | active WR:  40.0% | kills: 0.40 | reward: +6.917 | bombs: 40.5 | walls: 10.6 | combat bombs: 271/275 | loss: 13.1514 | lr: 6.0e-05 | pool: 0 | best validation active: 29%
+[Validation] ep 100 | 100 games, all corners, seed 21000
+[control validation] ep100: 0/100
+[control validation] ep100: 25/100
+[control validation] ep100: 50/100
+[control validation] ep100: 75/100
+[control validation] ep100: 100/100
+[Validation] ep 100 | ActiveWR 28.0% | Suicide 0.0% | Draw 64.0% | best ep 0
+[control skill] ep100: approach 93.8%
+[C] ep   100 | WR:  40.0% | active WR:  40.0% | kills: 0.40 | reward: +6.752 | bombs: 43.2 | walls: 9.9 | combat bombs: 299/307 | loss: 11.4065 | lr: 5.3e-05 | pool: 0 | best validation active: 29%
+[C] ep   110 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.012 | bombs: 32.2 | walls: 7.8 | combat bombs: 215/221 | loss: 0.1334 | lr: 4.5e-05 | pool: 0 | best validation active: 29%
+[C] ep   120 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +5.405 | bombs: 47.0 | walls: 9.9 | combat bombs: 318/324 | loss: 0.1770 | lr: 3.8e-05 | pool: 0 | best validation active: 29%
+[C] ep   130 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.596 | bombs: 38.0 | walls: 9.2 | combat bombs: 247/257 | loss: 0.1617 | lr: 3.1e-05 | pool: 0 | best validation active: 29%
+[C] ep   140 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +1.961 | bombs: 34.8 | walls: 8.2 | combat bombs: 232/240 | loss: 0.1634 | lr: 2.5e-05 | pool: 0 | best validation active: 29%
+[C] ep   150 | WR:  40.0% | active WR:  40.0% | kills: 0.40 | reward: +6.812 | bombs: 41.8 | walls: 10.2 | combat bombs: 269/274 | loss: 15.0534 | lr: 1.9e-05 | pool: 0 | best validation active: 29%
+[C] ep   160 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.243 | bombs: 46.8 | walls: 9.2 | combat bombs: 309/317 | loss: 0.1824 | lr: 1.4e-05 | pool: 0 | best validation active: 29%
+[C] ep   170 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.256 | bombs: 39.0 | walls: 9.1 | combat bombs: 264/271 | loss: 0.2052 | lr: 1.0e-05 | pool: 0 | best validation active: 29%
+[C] ep   180 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.365 | bombs: 41.9 | walls: 9.9 | combat bombs: 270/284 | loss: 32.7156 | lr: 7.3e-06 | pool: 0 | best validation active: 29%
+[C] ep   190 | WR:  70.0% | active WR:  70.0% | kills: 0.70 | reward: +10.761 | bombs: 31.4 | walls: 8.2 | combat bombs: 201/204 | loss: 13.1778 | lr: 5.6e-06 | pool: 0 | best validation active: 29%
+[Validation] ep 200 | 100 games, all corners, seed 21000
+[control validation] ep200: 0/100
+[control validation] ep200: 25/100
+[control validation] ep200: 50/100
+[control validation] ep200: 75/100
+[control validation] ep200: 100/100
+[Validation] ep 200 | ActiveWR 25.0% | Suicide 0.0% | Draw 67.0% | best ep 0
+[control skill] ep200: approach 87.5%
+[C] ep   200 | WR:  60.0% | active WR:  20.0% | kills: 0.20 | reward: +3.831 | bombs: 33.0 | walls: 8.3 | combat bombs: 226/230 | loss: 20.4953 | lr: 5.0e-06 | pool: 0 | best validation active: 29%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\gae-full-20261015-112853\control\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\gae-full-20261015-112853\control\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\pressure-C-next\final_phaseC.pt
+[Validation] ep 0 | 100 games, all corners, seed 21000
+[gae validation] ep0: 0/100
+[gae validation] ep0: 25/100
+[gae validation] ep0: 50/100
+[gae validation] ep0: 75/100
+[gae validation] ep0: 100/100
+[Validation] ep 0 | ActiveWR 29.0% | Suicide 0.0% | Draw 62.0% | best ep 0
+[gae skill] ep0: approach 87.5%
+[C] ep    10 | WR:  50.0% | active WR:  40.0% | kills: 0.40 | reward: +6.584 | bombs: 35.2 | walls: 8.6 | combat bombs: 240/247 | loss: 0.2389 | lr: 9.9e-05 | pool: 0 | best validation active: 29%
+[C] ep    20 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +2.549 | bombs: 52.5 | walls: 10.2 | combat bombs: 344/353 | loss: 0.2244 | lr: 9.8e-05 | pool: 0 | best validation active: 29%
+[C] ep    30 | WR:  60.0% | active WR:  50.0% | kills: 0.50 | reward: +8.286 | bombs: 33.5 | walls: 10.1 | combat bombs: 217/221 | loss: 0.2434 | lr: 9.5e-05 | pool: 0 | best validation active: 29%
+[C] ep    40 | WR:  10.0% | active WR:  10.0% | kills: 0.10 | reward: +2.361 | bombs: 45.4 | walls: 9.0 | combat bombs: 293/296 | loss: 0.2976 | lr: 9.1e-05 | pool: 0 | best validation active: 29%
+[C] ep    50 | WR:  40.0% | active WR:  20.0% | kills: 0.20 | reward: +3.853 | bombs: 39.9 | walls: 8.9 | combat bombs: 267/276 | loss: 0.2784 | lr: 8.6e-05 | pool: 0 | best validation active: 29%
+[C] ep    60 | WR:  50.0% | active WR:  30.0% | kills: 0.30 | reward: +5.081 | bombs: 35.5 | walls: 7.9 | combat bombs: 233/244 | loss: 13.5695 | lr: 8.0e-05 | pool: 0 | best validation active: 29%
+[C] ep    70 | WR:  40.0% | active WR:  20.0% | kills: 0.20 | reward: +3.720 | bombs: 38.6 | walls: 7.9 | combat bombs: 258/265 | loss: 0.2297 | lr: 7.4e-05 | pool: 0 | best validation active: 29%
+[C] ep    80 | WR:  40.0% | active WR:  30.0% | kills: 0.30 | reward: +5.418 | bombs: 47.3 | walls: 10.3 | combat bombs: 317/326 | loss: 0.2502 | lr: 6.7e-05 | pool: 0 | best validation active: 29%
+[C] ep    90 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.994 | bombs: 49.2 | walls: 10.5 | combat bombs: 328/340 | loss: 0.2224 | lr: 6.0e-05 | pool: 0 | best validation active: 29%
+[Validation] ep 100 | 100 games, all corners, seed 21000
+[gae validation] ep100: 0/100
+[gae validation] ep100: 25/100
+[gae validation] ep100: 50/100
+[gae validation] ep100: 75/100
+[gae validation] ep100: 100/100
+[Validation] ep 100 | ActiveWR 29.0% | Suicide 0.0% | Draw 62.0% | best ep 0
+[gae skill] ep100: approach 87.5%
+[C] ep   100 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.472 | bombs: 34.6 | walls: 7.4 | combat bombs: 232/242 | loss: 0.2415 | lr: 5.3e-05 | pool: 0 | best validation active: 29%
+[C] ep   110 | WR:  40.0% | active WR:  40.0% | kills: 0.40 | reward: +6.564 | bombs: 39.3 | walls: 8.3 | combat bombs: 263/267 | loss: 0.2527 | lr: 4.5e-05 | pool: 0 | best validation active: 29%
+[C] ep   120 | WR:  40.0% | active WR:  40.0% | kills: 0.40 | reward: +6.512 | bombs: 35.1 | walls: 8.5 | combat bombs: 235/242 | loss: 0.2437 | lr: 3.8e-05 | pool: 0 | best validation active: 29%
+[C] ep   130 | WR:  50.0% | active WR:  50.0% | kills: 0.50 | reward: +7.974 | bombs: 35.8 | walls: 8.5 | combat bombs: 239/251 | loss: 0.2525 | lr: 3.1e-05 | pool: 0 | best validation active: 29%
+[C] ep   140 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.907 | bombs: 51.4 | walls: 9.6 | combat bombs: 364/374 | loss: 10.4873 | lr: 2.5e-05 | pool: 0 | best validation active: 29%
+[C] ep   150 | WR:  50.0% | active WR:  30.0% | kills: 0.30 | reward: +5.208 | bombs: 33.7 | walls: 8.7 | combat bombs: 210/218 | loss: 0.2514 | lr: 1.9e-05 | pool: 0 | best validation active: 29%
+[C] ep   160 | WR:  30.0% | active WR:  30.0% | kills: 0.30 | reward: +5.308 | bombs: 48.5 | walls: 9.5 | combat bombs: 339/351 | loss: 0.2428 | lr: 1.4e-05 | pool: 0 | best validation active: 29%
+[C] ep   170 | WR:  20.0% | active WR:  20.0% | kills: 0.20 | reward: +3.850 | bombs: 44.7 | walls: 9.3 | combat bombs: 295/307 | loss: 0.2645 | lr: 1.0e-05 | pool: 0 | best validation active: 29%
+[C] ep   180 | WR:  40.0% | active WR:  40.0% | kills: 0.40 | reward: +6.534 | bombs: 38.0 | walls: 8.7 | combat bombs: 258/267 | loss: 21.6833 | lr: 7.3e-06 | pool: 0 | best validation active: 29%
+
+Saved final model to D:\fpt\subject\BomberMan\runs\gae-full-20261015-112853\gae\final_phaseC.pt
+Saved best model to D:\fpt\subject\BomberMan\runs\gae-full-20261015-112853\gae\best_phaseC.pt (best episode: 0)
+{
+  "status": "incomplete",
+  "full_protocol": true,
+  "reason": "training_validation_or_skill_incomplete",
+  "arms": {
+    "control": {
+      "completed_episodes": 200,
+      "expected_episodes": 200,
+      "training_complete": true,
+      "validation_complete": true,
+      "skill_probes_complete": true,
+      "optimizer_instances": 1,
+      "optimizer_steps": 200,
+      "learner_steps": 73101,
+      "guidance": {
+        "labels": 31569,
+        "agreements": 17868,
+        "bomb_instead_of_move": 2007,
+        "target_probability_sum": 17796.24358285853,
+        "entropy_sum": 17331.432038759653,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 2506.8492133,
+      "peak_cuda_bytes": 87901184,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-112853\\control\\best_phaseC.pt",
+          "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-112853\\control\\final_phaseC.pt",
+          "sha256": "da3c52245480b7453e02c9e6ad741a1c99c2d3a6c96c1dbdcdec0e605c031cbb"
+        }
+      }
+    },
+    "gae": {
+      "completed_episodes": 184,
+      "expected_episodes": 200,
+      "training_complete": false,
+      "validation_complete": false,
+      "skill_probes_complete": false,
+      "optimizer_instances": 1,
+      "optimizer_steps": 184,
+      "learner_steps": 71429,
+      "guidance": {
+        "labels": 30937,
+        "agreements": 17457,
+        "bomb_instead_of_move": 1940,
+        "target_probability_sum": 17472.456617108546,
+        "entropy_sum": 17060.239182852696,
+        "queries": 0,
+        "accepted": 0,
+        "accepted_agreements": 0,
+        "pressure_gain_sum": 0.0,
+        "certificate_steps": 0,
+        "milliseconds": 0.0,
+        "rejected": {}
+      },
+      "best_episode": 0,
+      "elapsed_seconds": 2593.3247073000002,
+      "peak_cuda_bytes": 110099968,
+      "checkpoints": {
+        "best": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-112853\\gae\\best_phaseC.pt",
+          "sha256": "51c00b0148c3e31019adef960ab2253d504034efa296c92a3819e57a7bc02c28"
+        },
+        "final": {
+          "path": "D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-112853\\gae\\final_phaseC.pt",
+          "sha256": "ae235c8168d0aeada8565a2ee9cdfc8580bf3aa63a82411d74c23337661764d0"
+        }
+      }
+    }
+  },
+  "evaluation_complete": false,
+  "hashes_unchanged": true,
+  "selected_checkpoints_unchanged": true,
+  "comparisons": {},
+  "eligible_for_replication": false,
+  "decision": "retain_original",
+  "elapsed_seconds": 5106.6859005,
+  "models": {}
+}
