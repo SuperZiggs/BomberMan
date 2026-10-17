@@ -512,3 +512,10 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
 ## 38. Đưa repo lên GitHub (2026-10-17)
 
 - Không đổi code. Commit `runs/` (trừ lượt SD5.1 đang chạy) và `graphify-out/`, push nhánh `danh/sd5-friend-merge`; `.pt` đi qua LFS theo `.gitattributes` sẵn có. Các zip/json 50–75 MB vẫn là file git thường (GitHub chỉ cảnh báo); nếu repo phình to có thể chuyển `*.zip` sang LFS sau.
+
+## 39. SD5.3 — dense search distillation, runner độc lập (2026-10-18)
+
+- Thêm `run_sd53_pilot.py`: pipeline stage-based `collect/train/validate/test`, registration bất biến, checksum F bắt buộc và hash source chuẩn hóa xuống dòng. `collect` lưu shard `.npz` nguyên tử, kiểm metadata/hash khi resume, không ghi trùng state; mọi loop dài dùng `progress.parallel_map`.
+- Data: chỉ giữ decision state mà search có score không đồng nhất; anchor 5% state còn lại giữ logits F. `masked_soft_target` đặt khối lượng đều lên các action hợp lệ có điểm dương tốt nhất; logit bất hợp lệ bị che trong cả CE và KL. Split grouping theo seed bàn, không tách hai góc.
+- CNN thuần fine-tune từ F với CE + KL (50/50, Adam 1e-4, lambda 1.0); không dùng critic loss. `benchmark_t3.transform`/`transform_action` là mapping chuẩn cho 8 symmetry. Audit search sau biến đổi quyết định bật augmentation; không được giả định RuleBot đối xứng.
+- Test/selection: validate chỉ cân epoch 2/4/8 và bắt constraint tự nổ; `test_opened.json` exclusive ngăn mở seed 43000 hai lần trước evaluation. F+search chỉ là ceiling báo cáo, không đi vào gate. `test_run_sd53_pilot.py` có 12 contract test độc lập; smoke end-to-end đã tạo ZIP nhưng không phải full result.
