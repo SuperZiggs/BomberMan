@@ -1517,3 +1517,7 @@ Lỗi phát hiện khi viết test (đã sửa trước khi chạy full): resume
 ## TOOL — thanh progress cho các lượt chạy dài, 17/10/2026
 
 **DONE (công cụ, không có số liệu thí nghiệm).** Người dùng yêu cầu từ nay mọi lượt train/đánh giá có thanh progress. Đã gắn vào `run_sd5_pilot.py` (train: episode, ActiveWR 100 episode gần nhất, best episode, số nhãn search, tiến độ validation; test: tổng số trận qua các tiến trình). Smoke CLI train 2 nhánh + test chạy được; thanh ghi ra console nên log không đổi. Toàn bộ suite 361 OK (16 bỏ qua). Lệnh SD5.1 đã đưa người dùng không đổi.
+
+## PUSH — đưa code và artefact lên GitHub, 17/10/2026
+
+**DONE.** Nhánh `danh/sd5-friend-merge` push lên `origin` (https://github.com/SuperZiggs/BomberMan, tạo nhánh mới; `main` và `danh/bomberman-rl-results-checkpoints` không đổi). Gồm commit `860753f` (snapshot trước merge), `af83eca` (merge nhánh bạn), `61d2f9e` (SD5 code), `8c95375` (`runs/` tới SD5.0 + `graphify-out/`, ~2826 file; checkpoint `.pt` qua Git LFS). Không gồm lượt SD5.1 đang chạy (`runs/sd5-20261017*`), sẽ đưa lên sau khi xong. GitHub cảnh báo 8 file zip/json 50–75 MB (dưới giới hạn cứng 100 MB).

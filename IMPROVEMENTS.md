@@ -508,3 +508,7 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
 - Thêm `progress.py`: `bar(total, desc, initial=0)` (tqdm 4.67.3 có sẵn trong env torch) ghi ra thiết bị console (`CON` trên Windows, `/dev/tty` nơi khác, không có thì stderr), nên vẫn thấy khi người dùng chạy `> log 2>&1` và không làm bẩn log; `parallel_map(fn, jobs, total, desc, workers)` chạy job trong ProcessPool, worker gọi `ticks.put(n)` qua hàng đợi Manager để cập nhật một thanh chung, giữ thứ tự kết quả theo job.
 - `run_sd5_pilot.py`: thanh train bắt đầu từ episode đã lưu khi `--resume`, postfix ActiveWR(100)/best ep/nhãn search, hiện tiến độ validation qua `on_validation`; stage test dùng `parallel_map` với `evaluate_seeded(on_progress=...)` (thay ProcessPoolExecutor trực tiếp).
 - Test `test_progress.py` (2: thứ tự kết quả và đếm đủ tick qua nhiều tiến trình; bar resume từ vị trí cũ), viết trước và thấy lỗi trước khi cài. Quy ước ghi vào CLAUDE.md và memory.
+
+## 38. Đưa repo lên GitHub (2026-10-17)
+
+- Không đổi code. Commit `runs/` (trừ lượt SD5.1 đang chạy) và `graphify-out/`, push nhánh `danh/sd5-friend-merge`; `.pt` đi qua LFS theo `.gitattributes` sẵn có. Các zip/json 50–75 MB vẫn là file git thường (GitHub chỉ cảnh báo); nếu repo phình to có thể chuyển `*.zip` sang LFS sau.
