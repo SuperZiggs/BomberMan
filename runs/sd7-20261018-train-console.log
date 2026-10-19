@@ -1,0 +1,79 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\phaseC-sd-best-fallback\best_phaseC.pt
+[Validation] ep 0 | 400 games, all corners, seed 21000
+[Validation] ep 0 | ActiveWR 47.0% | Suicide 1.0% | Draw 19.8% | best ep 0
+[C] ep    50 | WR:  62.0% | active WR:  48.0% | kills: 0.48 | reward: +7.757 | bombs: 32.1 | walls: 9.4 | combat bombs: 845/7339 | loss: 22.3458 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   100 | WR:  62.0% | active WR:  48.0% | kills: 0.48 | reward: +7.679 | bombs: 32.9 | walls: 9.2 | combat bombs: 979/7366 | loss: 26.4785 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   150 | WR:  78.0% | active WR:  58.0% | kills: 0.58 | reward: +9.215 | bombs: 31.2 | walls: 9.5 | combat bombs: 835/7026 | loss: 15.3605 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+Warm-started from D:\fpt\subject\BomberMan\runs\phaseC-sd-best-fallback\best_phaseC.pt
+[C] ep   200 | WR:  70.0% | active WR:  54.0% | kills: 0.54 | reward: +8.623 | bombs: 33.4 | walls: 9.5 | combat bombs: 941/6746 | loss: 13.5581 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   250 | WR:  64.0% | active WR:  46.0% | kills: 0.46 | reward: +7.522 | bombs: 32.3 | walls: 9.4 | combat bombs: 939/6746 | loss: 29.1406 | lr: 2.5e-05 | pool: 0 | best validation active: 47%
+[C] ep   300 | WR:  58.0% | active WR:  36.0% | kills: 0.36 | reward: +5.937 | bombs: 30.8 | walls: 8.6 | combat bombs: 817/7307 | loss: 1.5075 | lr: 2.4e-05 | pool: 0 | best validation active: 47%
+[C] ep   350 | WR:  52.0% | active WR:  40.0% | kills: 0.40 | reward: +6.402 | bombs: 33.3 | walls: 8.9 | combat bombs: 908/8106 | loss: 1.4851 | lr: 2.4e-05 | pool: 0 | best validation active: 47%
+[C] ep   400 | WR:  48.0% | active WR:  34.0% | kills: 0.34 | reward: +5.763 | bombs: 35.8 | walls: 9.3 | combat bombs: 1088/8245 | loss: 43.6460 | lr: 2.4e-05 | pool: 0 | best validation active: 47%
+[C] ep   450 | WR:  50.0% | active WR:  34.0% | kills: 0.34 | reward: +5.638 | bombs: 32.6 | walls: 9.0 | combat bombs: 916/7292 | loss: 49.4986 | lr: 2.4e-05 | pool: 0 | best validation active: 47%
+[Validation] ep 500 | 400 games, all corners, seed 21000
+[Validation] ep 500 | ActiveWR 41.0% | Suicide 1.0% | Draw 22.2% | best ep 0
+[C] ep   500 | WR:  64.0% | active WR:  52.0% | kills: 0.52 | reward: +8.324 | bombs: 33.9 | walls: 9.4 | combat bombs: 943/7584 | loss: 0.8605 | lr: 2.3e-05 | pool: 0 | best validation active: 47%
+[C] ep   550 | WR:  78.0% | active WR:  66.0% | kills: 0.66 | reward: +10.256 | bombs: 30.6 | walls: 9.2 | combat bombs: 818/6255 | loss: 1.4672 | lr: 2.3e-05 | pool: 0 | best validation active: 47%
+[C] ep   600 | WR:  64.0% | active WR:  42.0% | kills: 0.42 | reward: +6.922 | bombs: 32.5 | walls: 8.8 | combat bombs: 940/6351 | loss: 30.2999 | lr: 2.3e-05 | pool: 0 | best validation active: 47%
+[C] ep   650 | WR:  74.0% | active WR:  62.0% | kills: 0.62 | reward: +9.662 | bombs: 33.4 | walls: 9.0 | combat bombs: 966/6926 | loss: 23.9748 | lr: 2.2e-05 | pool: 0 | best validation active: 47%
+[C] ep   700 | WR:  60.0% | active WR:  46.0% | kills: 0.46 | reward: +7.269 | bombs: 33.2 | walls: 8.6 | combat bombs: 917/6858 | loss: 1.8975 | lr: 2.2e-05 | pool: 0 | best validation active: 47%
+[C] ep   750 | WR:  64.0% | active WR:  38.0% | kills: 0.38 | reward: +6.233 | bombs: 32.9 | walls: 8.7 | combat bombs: 938/7042 | loss: 10.7324 | lr: 2.2e-05 | pool: 0 | best validation active: 47%
+[C] ep   800 | WR:  76.0% | active WR:  54.0% | kills: 0.54 | reward: +8.508 | bombs: 26.1 | walls: 8.4 | combat bombs: 720/5717 | loss: 13.1877 | lr: 2.1e-05 | pool: 0 | best validation active: 47%
+[C] ep   850 | WR:  66.0% | active WR:  58.0% | kills: 0.58 | reward: +9.095 | bombs: 30.8 | walls: 9.0 | combat bombs: 809/6601 | loss: 9.6673 | lr: 2.1e-05 | pool: 0 | best validation active: 47%
+[C] ep   900 | WR:  62.0% | active WR:  36.0% | kills: 0.36 | reward: +5.985 | bombs: 32.7 | walls: 9.1 | combat bombs: 953/6680 | loss: 1.0195 | lr: 2.0e-05 | pool: 0 | best validation active: 47%
+[C] ep   950 | WR:  68.0% | active WR:  48.0% | kills: 0.48 | reward: +7.761 | bombs: 31.0 | walls: 9.1 | combat bombs: 828/7467 | loss: 0.6190 | lr: 2.0e-05 | pool: 0 | best validation active: 47%
+[Validation] ep 1000 | 400 games, all corners, seed 21000
+[Validation] ep 1000 | ActiveWR 47.8% | Suicide 0.5% | Draw 23.0% | best ep 1000
+[C] ep  1000 | WR:  54.0% | active WR:  44.0% | kills: 0.44 | reward: +7.105 | bombs: 30.4 | walls: 9.1 | combat bombs: 824/6628 | loss: 1.3878 | lr: 1.9e-05 | pool: 0 | best validation active: 48%
+[C] ep  1050 | WR:  74.0% | active WR:  60.0% | kills: 0.60 | reward: +9.284 | bombs: 28.1 | walls: 8.3 | combat bombs: 772/6211 | loss: 42.2258 | lr: 1.9e-05 | pool: 0 | best validation active: 48%
+[C] ep  1100 | WR:  76.0% | active WR:  62.0% | kills: 0.62 | reward: +9.741 | bombs: 28.5 | walls: 8.8 | combat bombs: 797/5720 | loss: 13.8302 | lr: 1.8e-05 | pool: 0 | best validation active: 48%
+[C] ep  1150 | WR:  60.0% | active WR:  42.0% | kills: 0.42 | reward: +6.771 | bombs: 32.9 | walls: 8.6 | combat bombs: 940/6493 | loss: 40.7152 | lr: 1.7e-05 | pool: 0 | best validation active: 48%
+[C] ep  1200 | WR:  54.0% | active WR:  36.0% | kills: 0.36 | reward: +5.955 | bombs: 34.6 | walls: 9.0 | combat bombs: 1007/7421 | loss: 14.7864 | lr: 1.7e-05 | pool: 0 | best validation active: 48%
+[C] ep  1250 | WR:  70.0% | active WR:  46.0% | kills: 0.46 | reward: +7.369 | bombs: 29.8 | walls: 8.4 | combat bombs: 803/6688 | loss: 1.6958 | lr: 1.6e-05 | pool: 0 | best validation active: 48%
+[C] ep  1300 | WR:  70.0% | active WR:  48.0% | kills: 0.48 | reward: +7.740 | bombs: 34.2 | walls: 9.2 | combat bombs: 1005/7250 | loss: 1.5858 | lr: 1.6e-05 | pool: 0 | best validation active: 48%
+[C] ep  1350 | WR:  64.0% | active WR:  52.0% | kills: 0.52 | reward: +8.179 | bombs: 30.1 | walls: 8.9 | combat bombs: 871/6235 | loss: 1.7587 | lr: 1.5e-05 | pool: 0 | best validation active: 48%
+[C] ep  1400 | WR:  68.0% | active WR:  50.0% | kills: 0.50 | reward: +8.053 | bombs: 30.5 | walls: 9.1 | combat bombs: 808/6939 | loss: 38.6913 | lr: 1.4e-05 | pool: 0 | best validation active: 48%
+[C] ep  1450 | WR:  58.0% | active WR:  30.0% | kills: 0.30 | reward: +5.090 | bombs: 30.2 | walls: 8.5 | combat bombs: 788/7323 | loss: 51.3344 | lr: 1.4e-05 | pool: 0 | best validation active: 48%
+[Validation] ep 1500 | 400 games, all corners, seed 21000
+[Validation] ep 1500 | ActiveWR 47.0% | Suicide 0.8% | Draw 23.0% | best ep 1000
+[C] ep  1500 | WR:  60.0% | active WR:  34.0% | kills: 0.34 | reward: +5.730 | bombs: 34.3 | walls: 9.2 | combat bombs: 968/8062 | loss: 0.8545 | lr: 1.3e-05 | pool: 0 | best validation active: 48%
+[C] ep  1550 | WR:  60.0% | active WR:  44.0% | kills: 0.44 | reward: +7.245 | bombs: 33.1 | walls: 9.3 | combat bombs: 1039/7023 | loss: 1.4756 | lr: 1.3e-05 | pool: 0 | best validation active: 48%
+[C] ep  1600 | WR:  74.0% | active WR:  56.0% | kills: 0.56 | reward: +8.964 | bombs: 28.5 | walls: 9.1 | combat bombs: 764/6281 | loss: 28.0407 | lr: 1.2e-05 | pool: 0 | best validation active: 48%
+[C] ep  1650 | WR:  72.0% | active WR:  48.0% | kills: 0.48 | reward: +7.760 | bombs: 35.9 | walls: 9.1 | combat bombs: 1075/7176 | loss: 1.3262 | lr: 1.1e-05 | pool: 0 | best validation active: 48%
+[C] ep  1700 | WR:  64.0% | active WR:  52.0% | kills: 0.52 | reward: +8.299 | bombs: 30.8 | walls: 8.9 | combat bombs: 846/6827 | loss: 28.3428 | lr: 1.1e-05 | pool: 0 | best validation active: 48%
+[C] ep  1750 | WR:  58.0% | active WR:  50.0% | kills: 0.50 | reward: +7.920 | bombs: 32.2 | walls: 8.8 | combat bombs: 797/7017 | loss: 73.4595 | lr: 1.0e-05 | pool: 0 | best validation active: 48%
+[C] ep  1800 | WR:  58.0% | active WR:  50.0% | kills: 0.50 | reward: +8.052 | bombs: 34.2 | walls: 9.3 | combat bombs: 993/7369 | loss: 57.1027 | lr: 9.5e-06 | pool: 0 | best validation active: 48%
+[C] ep  1850 | WR:  60.0% | active WR:  34.0% | kills: 0.34 | reward: +5.740 | bombs: 34.4 | walls: 9.4 | combat bombs: 1043/7412 | loss: 1.3430 | lr: 8.9e-06 | pool: 0 | best validation active: 48%
+[C] ep  1900 | WR:  74.0% | active WR:  56.0% | kills: 0.56 | reward: +8.981 | bombs: 30.0 | walls: 9.3 | combat bombs: 809/6598 | loss: 52.7803 | lr: 8.3e-06 | pool: 0 | best validation active: 48%
+[C] ep  1950 | WR:  74.0% | active WR:  52.0% | kills: 0.52 | reward: +8.308 | bombs: 35.7 | walls: 9.0 | combat bombs: 1141/6874 | loss: 45.7230 | lr: 7.7e-06 | pool: 0 | best validation active: 48%
+[Validation] ep 2000 | 400 games, all corners, seed 21000
+[Validation] ep 2000 | ActiveWR 46.5% | Suicide 0.2% | Draw 23.0% | best ep 1000
+[C] ep  2000 | WR:  58.0% | active WR:  42.0% | kills: 0.42 | reward: +6.811 | bombs: 35.6 | walls: 9.0 | combat bombs: 1027/7846 | loss: 67.0726 | lr: 7.2e-06 | pool: 0 | best validation active: 48%
+[C] ep  2050 | WR:  48.0% | active WR:  30.0% | kills: 0.30 | reward: +5.188 | bombs: 36.6 | walls: 9.4 | combat bombs: 1069/7981 | loss: 1.5136 | lr: 6.7e-06 | pool: 0 | best validation active: 48%
+[C] ep  2100 | WR:  82.0% | active WR:  66.0% | kills: 0.66 | reward: +10.265 | bombs: 26.1 | walls: 8.7 | combat bombs: 610/6048 | loss: 17.5823 | lr: 6.1e-06 | pool: 0 | best validation active: 48%
+[C] ep  2150 | WR:  68.0% | active WR:  46.0% | kills: 0.46 | reward: +7.400 | bombs: 33.0 | walls: 9.0 | combat bombs: 943/7245 | loss: 0.9978 | lr: 5.7e-06 | pool: 0 | best validation active: 48%
+[C] ep  2200 | WR:  50.0% | active WR:  38.0% | kills: 0.38 | reward: +6.140 | bombs: 27.9 | walls: 8.6 | combat bombs: 697/6902 | loss: 0.9208 | lr: 5.2e-06 | pool: 0 | best validation active: 48%
+[C] ep  2250 | WR:  68.0% | active WR:  56.0% | kills: 0.56 | reward: +8.961 | bombs: 32.6 | walls: 9.4 | combat bombs: 1002/6791 | loss: 18.8657 | lr: 4.7e-06 | pool: 0 | best validation active: 48%
+[C] ep  2300 | WR:  64.0% | active WR:  42.0% | kills: 0.42 | reward: +6.742 | bombs: 30.7 | walls: 8.4 | combat bombs: 781/7632 | loss: 1.4539 | lr: 4.3e-06 | pool: 0 | best validation active: 48%
+[C] ep  2350 | WR:  64.0% | active WR:  50.0% | kills: 0.50 | reward: +7.906 | bombs: 29.3 | walls: 8.0 | combat bombs: 779/6791 | loss: 58.0529 | lr: 3.9e-06 | pool: 0 | best validation active: 48%
+[C] ep  2400 | WR:  72.0% | active WR:  60.0% | kills: 0.60 | reward: +9.409 | bombs: 29.2 | walls: 8.6 | combat bombs: 813/6405 | loss: 0.8451 | lr: 3.5e-06 | pool: 0 | best validation active: 48%
+[C] ep  2450 | WR:  70.0% | active WR:  58.0% | kills: 0.58 | reward: +9.097 | bombs: 30.8 | walls: 8.6 | combat bombs: 824/6271 | loss: 41.3332 | lr: 3.2e-06 | pool: 0 | best validation active: 48%
+[Validation] ep 2500 | 400 games, all corners, seed 21000
+[Validation] ep 2500 | ActiveWR 43.8% | Suicide 0.2% | Draw 24.5% | best ep 1000
+[C] ep  2500 | WR:  58.0% | active WR:  32.0% | kills: 0.32 | reward: +5.412 | bombs: 34.8 | walls: 8.9 | combat bombs: 1022/7424 | loss: 49.1466 | lr: 2.8e-06 | pool: 0 | best validation active: 48%
+[C] ep  2550 | WR:  64.0% | active WR:  44.0% | kills: 0.44 | reward: +7.046 | bombs: 31.3 | walls: 8.7 | combat bombs: 823/7541 | loss: 18.1936 | lr: 2.5e-06 | pool: 0 | best validation active: 48%
+[C] ep  2600 | WR:  80.0% | active WR:  66.0% | kills: 0.66 | reward: +10.345 | bombs: 29.1 | walls: 9.2 | combat bombs: 850/6071 | loss: 23.7280 | lr: 2.3e-06 | pool: 0 | best validation active: 48%
+[C] ep  2650 | WR:  62.0% | active WR:  38.0% | kills: 0.38 | reward: +6.329 | bombs: 35.1 | walls: 9.1 | combat bombs: 985/7951 | loss: 10.5123 | lr: 2.0e-06 | pool: 0 | best validation active: 48%
+[C] ep  2700 | WR:  66.0% | active WR:  46.0% | kills: 0.46 | reward: +7.418 | bombs: 28.7 | walls: 8.6 | combat bombs: 754/6704 | loss: 1.3329 | lr: 1.8e-06 | pool: 0 | best validation active: 48%
+[C] ep  2750 | WR:  72.0% | active WR:  54.0% | kills: 0.54 | reward: +8.492 | bombs: 33.1 | walls: 9.1 | combat bombs: 976/6857 | loss: 1.3936 | lr: 1.7e-06 | pool: 0 | best validation active: 48%
+[C] ep  2800 | WR:  72.0% | active WR:  64.0% | kills: 0.64 | reward: +10.084 | bombs: 31.2 | walls: 9.3 | combat bombs: 938/6077 | loss: 1.2545 | lr: 1.5e-06 | pool: 0 | best validation active: 48%
+[C] ep  2850 | WR:  44.0% | active WR:  36.0% | kills: 0.36 | reward: +5.847 | bombs: 32.9 | walls: 8.9 | combat bombs: 918/7361 | loss: 1.4589 | lr: 1.4e-06 | pool: 0 | best validation active: 48%
+[C] ep  2900 | WR:  74.0% | active WR:  56.0% | kills: 0.56 | reward: +8.622 | bombs: 23.8 | walls: 8.0 | combat bombs: 547/5788 | loss: 1.5808 | lr: 1.3e-06 | pool: 0 | best validation active: 48%
+[C] ep  2950 | WR:  62.0% | active WR:  52.0% | kills: 0.52 | reward: +8.112 | bombs: 30.1 | walls: 8.5 | combat bombs: 815/6753 | loss: 23.6015 | lr: 1.3e-06 | pool: 0 | best validation active: 48%
+[Validation] ep 3000 | 400 games, all corners, seed 21000
+[Validation] ep 3000 | ActiveWR 44.8% | Suicide 0.0% | Draw 22.5% | best ep 1000
+[C] ep  3000 | WR:  70.0% | active WR:  40.0% | kills: 0.40 | reward: +6.489 | bombs: 30.3 | walls: 8.7 | combat bombs: 816/6889 | loss: 0.8111 | lr: 1.3e-06 | pool: 0 | best validation active: 48%
+
+Saved final model to runs\sd7-20261018\group\final_phaseC.pt
+Saved best model to runs\sd7-20261018\group\best_phaseC.pt (best episode: 1000)

@@ -1,0 +1,25 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\phaseC-sd-best-fallback\best_phaseC.pt
+[C] ep    50 | WR:  60.0% | active WR:  42.0% | kills: 0.42 | reward: +6.866 | bombs: 32.0 | walls: 9.2 | combat bombs: 874/7219 | loss: 0.8973 | lr: 2.5e-05 | pool: 0
+[C] ep   100 | WR:  54.0% | active WR:  30.0% | kills: 0.30 | reward: +4.965 | bombs: 30.9 | walls: 8.3 | combat bombs: 810/7217 | loss: 1.1298 | lr: 2.4e-05 | pool: 0
+[C] ep   150 | WR:  68.0% | active WR:  46.0% | kills: 0.46 | reward: +7.562 | bombs: 30.5 | walls: 9.6 | combat bombs: 829/6547 | loss: 56.7138 | lr: 2.4e-05 | pool: 0
+[C] ep   200 | WR:  60.0% | active WR:  46.0% | kills: 0.46 | reward: +7.513 | bombs: 35.3 | walls: 9.9 | combat bombs: 925/7788 | loss: 0.9874 | lr: 2.3e-05 | pool: 0
+[C] ep   250 | WR:  64.0% | active WR:  46.0% | kills: 0.46 | reward: +7.315 | bombs: 32.4 | walls: 9.0 | combat bombs: 888/7010 | loss: 0.4996 | lr: 2.2e-05 | pool: 0
+[C] ep   300 | WR:  62.0% | active WR:  48.0% | kills: 0.48 | reward: +7.877 | bombs: 34.3 | walls: 10.0 | combat bombs: 909/7152 | loss: 11.2248 | lr: 2.0e-05 | pool: 0
+[C] ep   350 | WR:  64.0% | active WR:  36.0% | kills: 0.36 | reward: +6.050 | bombs: 32.2 | walls: 9.1 | combat bombs: 960/6803 | loss: 1.3211 | lr: 1.9e-05 | pool: 0
+[C] ep   400 | WR:  64.0% | active WR:  50.0% | kills: 0.50 | reward: +7.927 | bombs: 29.3 | walls: 9.1 | combat bombs: 740/6244 | loss: 1.5818 | lr: 1.7e-05 | pool: 0
+[C] ep   450 | WR:  58.0% | active WR:  46.0% | kills: 0.46 | reward: +7.457 | bombs: 29.5 | walls: 8.8 | combat bombs: 788/6408 | loss: 1.4657 | lr: 1.5e-05 | pool: 0
+[C] ep   500 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.617 | bombs: 33.1 | walls: 9.0 | combat bombs: 944/7258 | loss: 1.0052 | lr: 1.3e-05 | pool: 0
+[C] ep   550 | WR:  68.0% | active WR:  48.0% | kills: 0.48 | reward: +7.765 | bombs: 31.2 | walls: 9.0 | combat bombs: 885/6501 | loss: 11.5149 | lr: 1.1e-05 | pool: 0
+[C] ep   600 | WR:  84.0% | active WR:  56.0% | kills: 0.56 | reward: +8.900 | bombs: 30.3 | walls: 9.1 | combat bombs: 846/6150 | loss: 1.8285 | lr: 9.5e-06 | pool: 0
+[C] ep   650 | WR:  56.0% | active WR:  40.0% | kills: 0.40 | reward: +6.513 | bombs: 31.6 | walls: 8.8 | combat bombs: 821/6942 | loss: 1.1584 | lr: 7.7e-06 | pool: 0
+Warm-started from D:\fpt\subject\BomberMan\runs\phaseC-sd-best-fallback\best_phaseC.pt
+[C] ep   700 | WR:  58.0% | active WR:  48.0% | kills: 0.48 | reward: +7.656 | bombs: 31.5 | walls: 9.0 | combat bombs: 849/6573 | loss: 1.5722 | lr: 6.1e-06 | pool: 0
+[C] ep   750 | WR:  58.0% | active WR:  44.0% | kills: 0.44 | reward: +6.986 | bombs: 30.5 | walls: 8.8 | combat bombs: 804/7076 | loss: 1.6665 | lr: 4.7e-06 | pool: 0
+[C] ep   800 | WR:  66.0% | active WR:  44.0% | kills: 0.44 | reward: +7.161 | bombs: 33.8 | walls: 9.3 | combat bombs: 900/7426 | loss: 15.5350 | lr: 3.5e-06 | pool: 0
+[C] ep   850 | WR:  72.0% | active WR:  52.0% | kills: 0.52 | reward: +8.193 | bombs: 26.5 | walls: 8.6 | combat bombs: 641/6041 | loss: 0.9431 | lr: 2.5e-06 | pool: 0
+[C] ep   900 | WR:  66.0% | active WR:  42.0% | kills: 0.42 | reward: +6.839 | bombs: 29.4 | walls: 8.8 | combat bombs: 791/6214 | loss: 12.9878 | lr: 1.8e-06 | pool: 0
+[C] ep   950 | WR:  66.0% | active WR:  58.0% | kills: 0.58 | reward: +9.003 | bombs: 27.7 | walls: 8.5 | combat bombs: 771/5648 | loss: 11.7882 | lr: 1.4e-06 | pool: 0
+[C] ep  1000 | WR:  58.0% | active WR:  48.0% | kills: 0.48 | reward: +7.724 | bombs: 35.2 | walls: 9.3 | combat bombs: 955/7462 | loss: 17.2287 | lr: 1.3e-06 | pool: 0
+
+Saved final model to runs\sd74-20261018\group\final_phaseC.pt
+Saved best model to runs\sd74-20261018\group\best_phaseC.pt (best episode: 0)

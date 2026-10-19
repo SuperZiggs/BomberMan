@@ -1,0 +1,8 @@
+{
+  "seed": 6850,
+  "models": {
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+    "control": "6957c4593909dfbec34324c4819efdf821a3f8648b53eb0b2fcee7fc7d30d536",
+    "buffer": "bf78a7a1123d0fc1dd58a50c8a102f71bf42b156498cdde109ecded005692b23"
+  }
+}

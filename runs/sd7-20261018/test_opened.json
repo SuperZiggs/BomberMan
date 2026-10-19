@@ -1,0 +1,9 @@
+{
+  "seed": 44000,
+  "games": 400,
+  "models": {
+    "F": "0315a56f09079333d936db5f55587093f1b6415ed6355d2ef6ae2ab63f8b1483",
+    "control": "c3b4e37caa0e5bc254984157aed93233d25d44043d2778b54d8f55ba91bfd899",
+    "group": "ad4f1b90186f387127c5c3de27c2a1364482a30155f7c5fd9cf461890cfea6f6"
+  }
+}

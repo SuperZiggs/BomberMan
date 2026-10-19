@@ -112,4 +112,43 @@ Quy ước SD5: điểm xuất phát và đối chứng là F (`runs/phaseC-sd-b
   → ĐẠT: ActiveWR 47.0 → 69.5 (+22.5 [18.25, 26.75]); hòa −5.75; mọi trận đều chạm mặt (hòa do không kết liễu được, không do né).
 - [x] SD5.1a — cài `search_teacher` (nhóm loss riêng, IMPROVEMENTS §36), sửa resume SD, runner `run_sd5_pilot.py` + test; smoke CLI chạy được; đo 2.8 s/ep (control), ~8–9.5 s/ep (search). Có thanh progress (`progress.py`, IMPROVEMENTS §37).
 - [x] SD5.1 — (DONE, gate FAIL; RESULTS SD5.1 kết quả: search − F −2.75 [−9.75, 4.0], control − F −6.5 [−12.75, 0.0], search − control +3.75 [−2.75, 10.25]; giữ F; nhánh search train trên máy khác, torch 2.14.1, code giống hệt) train 2 nhánh × 3000 ep từ F, cùng train seed: `control` (công thức của bạn) và `search` (thêm nhãn kill-search ở nhóm combat khi search tìm được nước tốt hơn hẳn). Validation mỗi 500 ep, 400 trận. Gate đề xuất (nhánh search): ActiveWR ≥ +5pp so F, CI dưới > 0, không kém control, tự nổ không tăng quá 1pp.
+- [x] SD5.3a — đo mật độ khoảnh khắc quyết định (20 trận seed 6600: 2.2 bước có thông tin/trận, 1.1 lần search sửa nước) và viết spec `docs/superpowers/specs/2026-10-18-sd5-3-dense-search-distillation-design.md`.
+- [x] SD5.3 — (ĐẠT, bạn chạy: S − F ActiveWR +16.25 [+9.75, +22.5] test 43000; Claude review + phân tích offline, RESULTS SD5.3 review) chưng cất kill-search dày: F + search thu 3000 trận, fine-tune giám sát + KL neo, chọn 1 trong 3 ứng viên trên validation, test một lần seed 43000. Gate: ActiveWR ≥ +5pp so F, CI dưới > 0, tự nổ ≤ +1pp.
 - [ ] SD5.2 — (COND) đòn bẩy trận hòa: ưu tiên lại bàn F hay hòa/thua khi train (kiểu PLR), chỉ mở sau SD5.0/SD5.1.
+
+## SD6 — sửa điểm mù của F (đề xuất 18/10/2026, chạy song song SD5.3 của bạn)
+
+Insight rút ra từ SD5–SD6 được gom ở `INSIGHTS.md`.
+
+- [x] SD6.0 — chẩn đoán (RESULTS SD6.0): nhiệt độ/argmax bị bác bỏ; điểm mù (a) nước chặn đường thoát sau khi đặt bom (F gán xác suất ~0.001), (b) rời vành ngoài trước bước 475.
+- [x] SD6.1a — người dùng duyệt (18/10/2026); cài `cutoff_teacher.trap_actions` + `probe_sd6_cutoff.py` (test: `test_cutoff_teacher` 3, `test_probe_sd6_cutoff` 4; fixture chặn đường được kill-search xác nhận); kèm hồ sơ độ khớp với search trên seed 15000, 400 trận.
+- [x] SD6.1 — (DONE, KHÔNG ĐẠT; RESULTS SD6.1 và SD6.1b: bản đầu −2.25 ActiveWR, khớp 0/85; bản sửa −1.75 [−4.25, 0.75], khớp 56/85, WR +3.75 [1.75, 6.0] và hòa −2.75 nhưng đều là thắng thụ động) probe trên validation: F + luật "escape có xét đối thủ" lúc chơi (ưu tiên lối thoát an toàn làm đối thủ hết đường sống). Luật đề xuất: mở SD6.2 nếu ActiveWR ≥ +3pp với CI dưới > 0.
+- [ ] SD6.2 — (KHÔNG MỞ: SD6.1 không đạt) train 3000 ep từ F, công thức của bạn, thay nhãn escape `exits[0]` bằng nhãn escape có xét đối thủ (không có lối chặn thì đích mềm đều trên mọi lối thoát an toàn). So với F, test một lần seed 44000 (43000 để cho SD5.3).
+- [ ] SD6.3 — (COND, phụ, cho WR/hòa) biên an toàn với vòng của engine cho mask learner (giống SD4.1 k=15), probe trên validation.
+
+## SD7 — RL với advantage theo nhóm từ các khoảnh khắc quyết định (đề xuất 18/10/2026)
+
+Ý tưởng: phần thưởng đã khớp với ActiveWR, nhưng tín hiệu quá thưa (khoảng 0.5 kill và khoảng 2 bước quyết định mỗi trận). Từ cùng một trạng thái quyết định, cho policy chơi lại K lần ngắn; advantage của mỗi lần = kết quả − trung bình nhóm. Không cần teacher hay value function.
+
+- [x] SD7.0 — spike (RESULTS SD7.0): ở trạng thái search nói có nước giết, F giết được 60%, và 86% trạng thái cho kết quả lúc được lúc không → có tín hiệu để học. Tiêu chí rẻ không lọc bằng search vô dụng.
+- [x] SD7.1a — người dùng yêu cầu viết và chạy (18/10/2026); spec `docs/superpowers/specs/2026-10-18-sd7-group-advantage-design.md`; cài `group_rl.py`, trainer `group_rl`, `run_sd7_pilot.py` (12 test mới, suite 381 OK); đo 4.5 s/ep.
+- [x] SD7.1 — (DONE) train nhánh group 3000 ep (`runs/sd7-20261018`); best ep 1000, validation ActiveWR 47.75 vs F 47.0; không có xu hướng tăng (RESULTS SD7.1–SD7.3).
+- [x] SD7.2 — (KHÔNG ĐẠT: +2.05pp [−0.34, +4.62]) kiểm H1 (`mechanism`, seed 6650–6699): tỉ lệ giết group − F ≥ +10pp, CI dưới > 0.
+- [x] SD7.3 — (FAIL: group − F ActiveWR +0.25 [−5.75, +6.25]; group − control −3.25; giữ F) test một lần seed 44000; gate: group − F ActiveWR ≥ +5pp, CI dưới > 0, group − control ≥ 0, tự nổ ≤ +1pp.
+- [x] SD7.4 — (ĐẠT: group − control +7.12pp [+4.86, +9.72]; RESULTS SD7.4) probe cơ chế, tín hiệu dày hơn (coef 4, K 16): control và group 1000 ep từ F, `runs/sd74-20261018`; H1' trên seed 6700: group − control ≥ +5pp, CI dưới > 0. Spec `docs/superpowers/specs/2026-10-18-sd7-4-dense-group-probe-design.md`.
+- [x] SD7.5 — (FAIL: full − F ActiveWR +3.75 [−2.5, +10.0]; full − control +0.75; best ep 1000; gate giữ F, nhưng người dùng chọn SD7.5 best = G làm model tốt nhất 19/10/2026; RESULTS SD7.5) train full 3000 ep (`run_sd74_probe.py train --arm full`, thư mục `runs/sd75-<thời gian>`), test một lần seed 45000, gate như SD7 (full − F ActiveWR ≥ +5pp, CI dưới > 0, full − control SD5.1 ≥ 0, tự nổ ≤ +1pp).
+- [x] SD7.6a — (DONE, RESULTS SD7.6a) chẩn đoán `diagnose_sd75.py` seed 6800: điểm nghẽn là khoảnh khắc "đặt bom ngay" 1 bước (28/37 cửa sổ thất bại, P(bom) F 0.58); 38/57 trận không thắng chủ động không có cơ hội giết; mẫu SD7.5 rơi vào trạng thái đã chắc thắng.
+- [x] SD7.6-code — (DONE, IMPROVEMENTS §50) `group_rl.narrow`/`kill_actions`, buffer + advantage bước đầu trong trainer, `run_sd76_pilot.py`; spec `docs/superpowers/specs/2026-10-19-sd7-6-bomb-moment-buffer-design.md`.
+- [x] SD7.6-probe — (ĐẠT theo chữ: tỉ lệ giết +18.43pp [+14.58, +22.28], validation −0.5; nhưng kills/trận và ActiveWR không đổi, bom/trận +20%, hòa +6; RESULTS SD7.6-probe) control và buffer 1000 ep từ G (`runs/sd76-<thời gian>`), `mechanism` seed 6850; luật H1‴: buffer − control tỉ lệ giết ≥ +10pp, CI dưới > 0, chết ≤ +1pp, validation buffer − control ≥ −2pp.
+- [ ] SD7.6-full — (KHÔNG CHẠY: người dùng chọn sửa tác dụng phụ trước; seed 46000 chuyển cho SD7.7)
+- [x] SD7.7-code — (DONE, IMPROVEMENTS §52) `anchor_coef` (KL về G) trong trainer, `run_sd77_pilot.py`; spec `docs/superpowers/specs/2026-10-19-sd7-7-kl-anchor-design.md`.
+- [x] SD7.7-calibrate — (KHÔNG ĐẠT: không β nào đưa P(BOMB | hợp lệ) về ≤ 0.687; β 16 còn 0.829; P(bom) và P(nước giết) đi cùng nhau; RESULTS SD7.7-calibrate)
+- [ ] SD7.7-probe — (KHÔNG MỞ theo spec) anchor 1000 ep, mechanism seed 6900, luật H1⁗.
+- [ ] SD7.7-full — (KHÔNG MỞ) 3000 ep.
+- [x] SD7.8 — (ĐẠT: ActiveWR +16.5 [+12.5, +20.5], WR 69.0 → 84.0, hòa −8, tự nổ −0.75; RESULTS SD7.8) G + kill-search lúc chơi, test một lần seed 46000; gate ActiveWR ≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp. Spec `docs/superpowers/specs/2026-10-19-sd7-8-g-plus-search-design.md`. 3000 ep, test một lần seed 46000; gate full − G ActiveWR ≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp.
+- [x] SD7.9a — (KHÔNG MỞ TEST: S+search − G+search −0.75 [−6.75, +5.5]; S ≈ G+search về ActiveWR nhưng hòa nhiều hơn; RESULTS SD7.9a) S (SD5.3) vs G làm nền cho search, validation 21000. Spec `docs/superpowers/specs/2026-10-20-sd7-9-two-move-search-design.md`.
+- [x] SD7.9b — (ĐẠT luật: +17.5 [+13.75, +21.25]; RESULTS SD7.9b) G + search hai nước (`kill_search.search_action2`), validation 21000.
+- [x] SD7.9c — (ĐẠT: ActiveWR 61.0 → 82.0, +21.0 [+17.0, +25.25], WR 80.75 → 93.75, hòa −12.25, tự nổ 0; RESULTS SD7.9c) test một lần seed 47000, G+search2 vs G+search. Agent khuyến nghị mới: G + search hai nước.
+- [x] SD8-code — (DONE, IMPROVEMENTS §58) `kill_search.search_action3`/`search_action_deep`, `run_sd8a_distill.py`, `run_sd8b_search3.py`, runner SD5.3 của bạn đưa vào nhánh; spec `docs/superpowers/specs/2026-10-20-sd8-distill-and-deep-search-design.md`, hướng dẫn `SD8_GUIDE.md`; smoke và đo tốc độ (search3 ~23 s/trận vs search2 ~12 s).
+- [ ] SD8A — (CHƯA CHẠY, bạn chạy) chưng cất G+search2 vào CNN từ G: collect 3000 trận bàn 210000–211499, train 16 epoch, validation 21000 chọn epoch, test một lần seed 48000; gate S2 − G ActiveWR ≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp; luật phụ thay S nếu S2 − S CI dưới > 0.
+- [ ] SD8B — (CHƯA CHẠY, người dùng chạy) G + search ba nước: validation 21000 (luật ≥ +2pp so với search2), rồi test một lần seed 49000 lịch E; gate ActiveWR ≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp.

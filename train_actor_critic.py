@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import pickle
 import glob
 import json
 import math
@@ -747,6 +748,16 @@ def train(
     teacher_version: str = "v2",
     search_teacher: bool = False,
     search_loss_coef: float = 0.9,
+    group_rl: bool = False,
+    group_coef: float = 1.0,
+    group_k: int = 8,
+    group_horizon: int = 20,
+    group_max_states: int = 3,
+    group_gap: int = 8,
+    group_select: str = 'decisive',
+    group_buffer: int = 0,
+    group_first_step: bool = False,
+    anchor_coef: float = 0.0,
 ):
     """
     Unified training loop for phases C, D, E.
@@ -776,7 +787,8 @@ def train(
         'ring_safety_coef', 'late_game_start', 'late_game_attack_multiplier', 'escape_loss_coef',
         'combat_loss_coef', 'navigation_loss_coef', 'target_win_rate', 'target_active_win_rate',
         'target_draw_rate', 'target_sudden_death_death_rate', 'max_suicide_rate', 'teacher_version',
-        'search_teacher', 'search_loss_coef')}
+        'search_teacher', 'search_loss_coef', 'group_rl', 'group_coef', 'group_k', 'group_horizon',
+        'group_max_states', 'group_gap', 'group_select', 'group_buffer', 'group_first_step', 'anchor_coef')}
     restored = load_training_state(resume_training_state) if resume_training_state else None
     provenance = {'config': resume_config, 'sources': source_hashes(), 'runtime': runtime_state()} if save_training_state else None
     if restored is not None and restored['provenance'] != provenance:
@@ -829,9 +841,16 @@ def train(
         torch.manual_seed(seed)
     advantage_diagnostics = (advantage_diagnostics or normalize_advantage
                              or advantage_estimator == "gae" or policy_objective != 'ac')
-    if policy_objective != 'ac' and (sudden_death_probability > 0.0 or search_teacher):
-        raise ValueError("ring-safety and search supervision support policy_objective='ac' only")
+    if policy_objective != 'ac' and (sudden_death_probability > 0.0 or search_teacher or group_rl or anchor_coef):
+        raise ValueError("ring-safety, search supervision and group updates support policy_objective='ac' only")
     curriculum_rng = np.random.default_rng(seed)
+    group_rng = np.random.default_rng(None if seed is None else [seed, 7])  # SD7 replays only
+    if group_select not in ('decisive', 'narrow'):
+        raise ValueError("group_select must be 'decisive' or 'narrow'")
+    group_pool = []  # SD7.6: (env snapshot, learner id) kept across episodes when group_buffer > 0
+    if group_rl:
+        import group_rl as group_mod
+        group_selector = group_mod.narrow if group_select == 'narrow' else group_mod.decisive
 
     env = BombermanFFAEnv(board_size=board_size, num_agents=num_agents,
                           max_steps=max_steps, seed=seed,
@@ -871,6 +890,8 @@ def train(
     if _resume_path and os.path.exists(_resume_path):
         smart_load_weights(net, _resume_path, device)
         print(f"Warm-started from {_resume_path}")
+    # SD7.7: frozen copy of the warm start; built before any training-state restore.
+    anchor_net = deepcopy(net).eval().requires_grad_(False) if anchor_coef else None
 
     # Clean old snapshots when starting Phase D/E fresh (no explicit resume)
     if phase in ("D", "E") and not resume_from:
@@ -1009,6 +1030,10 @@ def train(
             best_state_dict = {key: value.to(device) for key, value in best_state_dict.items()}
         restore_rng(state['rng'], env)
         curriculum_rng.bit_generator.state = state['curriculum_rng']
+        if 'group_rng' in state:
+            group_rng.bit_generator.state = state['group_rng']
+        if 'group_pool' in state:
+            group_pool[:] = pickle.loads(state['group_pool'])  # our own training state, not foreign data
 
     def save_state(episode):
         if save_training_state:
@@ -1018,7 +1043,9 @@ def train(
                 'histories': histories, 'selection': (best_wr, best_active_wr, best_episode, best_score,
                     best_state_dict, last_validation, suicide_limit),
                 'context': json.loads(json.dumps(checkpoint_context())) if checkpoint_context is not None else None,
-                'rng': capture_rng(env), 'curriculum_rng': curriculum_rng.bit_generator.state}, state_path)
+                'rng': capture_rng(env), 'curriculum_rng': curriculum_rng.bit_generator.state,
+                'group_rng': group_rng.bit_generator.state,
+                **({'group_pool': pickle.dumps(group_pool)} if group_buffer else {})}, state_path)
 
     start_episode = restored['episode'] if restored is not None else 0
     if restored is not None:
@@ -1080,6 +1107,7 @@ def train(
         rollout = [] if policy_objective != 'ac' else None
         ring_losses_buf = []
         search_losses_buf = []
+        anchor_buf = []
         bombs_this_ep = 0
         walls_this_ep = 0
         suicide_this_ep = False
@@ -1096,6 +1124,7 @@ def train(
                                 pressure_gain_sum=0.0, certificate_steps=0, milliseconds=0.0)
         move_rejected = Counter()
         search_stats = Counter(queries=0, labels=0, bomb_labels=0)
+        group_states, last_group_snap = [], -group_gap
         sudden_death_deaths_this_ep = 0
         learner_sudden_death = False
 
@@ -1113,6 +1142,15 @@ def train(
                 mask = get_action_mask(env, learning_aid)
                 mask_t = torch.tensor(mask, dtype=torch.bool, device=device)
                 m_logits = logits.masked_fill(~mask_t, -1e9)
+                if anchor_coef:
+                    with torch.no_grad():
+                        ref = F.log_softmax(anchor_net(obs_t)[0].masked_fill(~mask_t, -1e9), -1)
+                    log_p = F.log_softmax(m_logits, -1)
+                    anchor_buf.append((log_p.exp() * (log_p - ref)).sum())
+                if (group_rl and len(group_states) < group_max_states and t - last_group_snap >= group_gap
+                        and group_selector(env, learning_aid, mask)):
+                    group_states.append(deepcopy(env))  # SD7: replayed after the episode
+                    last_group_snap = t
                 dist = torch.distributions.Categorical(logits=m_logits)
                 action_t = dist.sample()
                 log_prob = dist.log_prob(action_t)
@@ -1300,6 +1338,23 @@ def train(
         advantage_metrics = {}
         ratio_metrics = {}
         search_loss = torch.stack(search_losses_buf).mean() if search_losses_buf else 0.0
+        group_loss_t, group_stats = 0.0, None
+        if group_rl:
+            snaps = [(snap, learning_aid) for snap in group_states]
+            if group_buffer:
+                extra = min(group_max_states - len(snaps), len(group_pool))
+                picks = group_rng.choice(len(group_pool), extra, replace=False) if extra > 0 else []
+                replay = snaps + [group_pool[i] for i in picks]
+                group_pool[:] = (group_pool + snaps)[-group_buffer:]
+                snaps = replay
+            groups = [[group_mod.rollout(snap, aid,
+                                         group_mod.sampler(net, device, int(group_rng.integers(2**31))),
+                                         int(group_rng.integers(2**31)), group_horizon)
+                       for _ in range(group_k)] for snap, aid in snaps]
+            group_loss_t, group_stats = group_mod.group_loss(net, groups, device, first_only=group_first_step)
+            group_stats['states'] = len(snaps)
+            if group_buffer:
+                group_stats.update(new_states=len(group_states), buffer=len(group_pool))
         ring_safety_loss = (torch.stack(ring_losses_buf).mean()
                             if ring_losses_buf else 0.0)
         if len(rewards_buf) > 0:
@@ -1354,7 +1409,11 @@ def train(
                     + combat_loss_coef * combat_loss
                     + navigation_loss_coef * navigation_loss
                     + ring_safety_coef * ring_safety_loss
-                    + search_loss_coef * search_loss)
+                    + search_loss_coef * search_loss
+                    + group_coef * group_loss_t)
+            if anchor_buf:
+                anchor_kl = torch.stack(anchor_buf).mean()
+                loss = loss + anchor_coef * anchor_kl
             if advantage_diagnostics and not torch.isfinite(loss).item():
                 raise FloatingPointError("Non-finite training loss")
 
@@ -1465,6 +1524,8 @@ def train(
                         "teacher": {**teacher_stats, "rejected": dict(teacher_rejected)},
                         "move_guidance": {**move_guidance, "rejected": dict(move_rejected)},
                         **({"search": dict(search_stats)} if search_teacher else {}),
+                        **({"group": group_stats} if group_rl else {}),
+                        **({"anchor_kl": float(anchor_kl)} if anchor_buf else {}),
                         **({"reward_components": dict(reward_totals),
                             "reward_component_max_error": reward_max_error} if reward_diagnostics else {}),
                         **({'ratio_update': ratio_metrics} if rollout is not None else {}),

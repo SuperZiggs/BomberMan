@@ -1,0 +1,62 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+[C] ep    50 | WR:  62.0% | active WR:  50.0% | kills: 0.50 | reward: +8.070 | bombs: 35.3 | walls: 9.5 | combat bombs: 990/6640 | loss: 11.2801 | lr: 1.9e-05 | pool: 0
+[C] ep   100 | WR:  52.0% | active WR:  40.0% | kills: 0.40 | reward: +6.600 | bombs: 40.8 | walls: 9.2 | combat bombs: 1156/6640 | loss: -0.0001 | lr: 7.2e-06 | pool: 0
+[C] ep   150 | WR:  62.0% | active WR:  36.0% | kills: 0.36 | reward: +6.129 | bombs: 41.5 | walls: 9.7 | combat bombs: 1183/6594 | loss: 1.0953 | lr: 1.3e-06 | pool: 0
+
+Saved final model to runs\sd77-20261019\calib\beta_0\final_phaseC.pt
+Saved best model to runs\sd77-20261019\calib\beta_0\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+[C] ep    50 | WR:  70.0% | active WR:  54.0% | kills: 0.54 | reward: +8.517 | bombs: 32.3 | walls: 8.8 | combat bombs: 832/6213 | loss: 1.6401 | lr: 1.9e-05 | pool: 0
+[C] ep   100 | WR:  58.0% | active WR:  36.0% | kills: 0.36 | reward: +6.126 | bombs: 40.7 | walls: 9.4 | combat bombs: 1148/6505 | loss: 52.9686 | lr: 7.2e-06 | pool: 0
+[C] ep   150 | WR:  58.0% | active WR:  42.0% | kills: 0.42 | reward: +6.917 | bombs: 38.2 | walls: 9.6 | combat bombs: 1059/6243 | loss: 1.6728 | lr: 1.3e-06 | pool: 0
+
+Saved final model to runs\sd77-20261019\calib\beta_4\final_phaseC.pt
+Saved best model to runs\sd77-20261019\calib\beta_4\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+[C] ep    50 | WR:  64.0% | active WR:  50.0% | kills: 0.50 | reward: +7.987 | bombs: 35.2 | walls: 9.0 | combat bombs: 965/6352 | loss: 1.1010 | lr: 1.9e-05 | pool: 0
+[C] ep   100 | WR:  56.0% | active WR:  40.0% | kills: 0.40 | reward: +6.550 | bombs: 38.6 | walls: 8.9 | combat bombs: 1107/6409 | loss: 13.9259 | lr: 7.2e-06 | pool: 0
+[C] ep   150 | WR:  74.0% | active WR:  58.0% | kills: 0.58 | reward: +9.215 | bombs: 36.0 | walls: 9.1 | combat bombs: 1011/6016 | loss: 0.2070 | lr: 1.3e-06 | pool: 0
+
+Saved final model to runs\sd77-20261019\calib\beta_1\final_phaseC.pt
+Saved best model to runs\sd77-20261019\calib\beta_1\best_phaseC.pt (best episode: 0)
+Warm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+[C] ep    50 | WR:  68.0% | active WR:  50.0% | kills: 0.50 | reward: +7.997 | bombs: 33.3 | walls: 9.1 | combat bombs: 927/6334 | loss: 0.6380 | lr: 1.9e-05 | pool: 0
+[C] ep   100 | WR:  52.0% | active WR:  34.0% | kills: 0.34 | reward: +5.780 | bombs: 40.4 | walls: 9.4 | combat bombs: 1274/7098 | loss: 0.2688 | lr: 7.2e-06 | pool: 0
+[C] ep   150 | WR:  60.0% | active WR:  40.0% | kills: 0.40 | reward: +6.528 | bombs: 36.6 | walls: 9.2 | combat bombs: 999/6960 | loss: 11.1845 | lr: 1.3e-06 | pool: 0
+
+Saved final model to runs\sd77-20261019\calib\beta_16\final_phaseC.pt
+Saved best model to runs\sd77-20261019\calib\beta_16\best_phaseC.pt (best episode: 0)
+{
+  "G": {
+    "p_bomb": 0.6365495046596745,
+    "kl_to_g": 0.0,
+    "p_kill": 0.6870028600096703,
+    "narrow_states": 40
+  },
+  "beta_0": {
+    "p_bomb": 0.9487927398167851,
+    "kl_to_g": 0.05649309976794808,
+    "p_kill": 0.9455377993639559,
+    "narrow_states": 40
+  },
+  "beta_1": {
+    "p_bomb": 0.9378070382998501,
+    "kl_to_g": 0.051338471173001506,
+    "p_kill": 0.9383854192681611,
+    "narrow_states": 40
+  },
+  "beta_4": {
+    "p_bomb": 0.9425264969942676,
+    "kl_to_g": 0.0497171970132509,
+    "p_kill": 0.9409695058595389,
+    "narrow_states": 40
+  },
+  "beta_16": {
+    "p_bomb": 0.8285111926511848,
+    "kl_to_g": 0.01676782574132821,
+    "p_kill": 0.8680518142879009,
+    "narrow_states": 40
+  },
+  "chosen_beta": null,
+  "beta0_spilled": true
+}

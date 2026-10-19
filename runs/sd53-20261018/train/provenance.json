@@ -1,0 +1,14 @@
+{
+  "F_sha256": "0315a56f09079333d936db5f55587093f1b6415ed6355d2ef6ae2ab63f8b1483",
+  "registration_sources": {
+    "bomberman_env.py": "b9386a99d69ef0b254dbf68634e5b0620e711fd598028fa05c0e6dd6867f6e95",
+    "rule_based_bot.py": "991a57e3d12074a9cda4556507fc6ccb99704657ce870fcc0ea2507c62d30dcd",
+    "train_actor_critic.py": "2427d90f8f4f7207ab59a8f1f83253af93be2fd0cf3c21b9af96004c69e06eb8",
+    "evaluate.py": "e86814a771d3d4c660a089b085a66b9cb3f960e895e085095275700bc7f93de2",
+    "kill_search.py": "f461e1ed194e74a8849d9a012c8a9c905ffe6d7faf71b05134e295aa13d8b279",
+    "benchmark_t3.py": "89244a136bb3d982e7c7153cc25d08f2413da0cf0f03699ed37da0fae8a741dc",
+    "progress.py": "129e0d7c2259f1853c461bb7cb5e9d49a261d803e5c5c2eb67da791e7383cb2d",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "run_sd53_pilot.py": "bcc07727d9f41c7b61cb6392bed159b90169b6c35832f754c9dce98b1a8b4b49"
+  }
+}

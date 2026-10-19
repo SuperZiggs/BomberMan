@@ -519,3 +519,226 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
 - Kiểm nguồn gốc trước khi ghi kết luận: `config.json`, `source/` và `training_state.pt` (provenance runtime) của từng nhánh. Phát hiện nhánh search được train trên máy khác (torch 2.14.1, đường dẫn `E:\Bombermanv2`); so source bằng `diff --strip-trailing-cr` xác nhận code giống hệt (khác SHA chỉ do CRLF). Test vẫn hợp lệ vì `test_opened.json` ghi SHA đúng ba model và cả ba chạy cùng máy.
 - Bài học cho các lượt sau: (1) SHA source nên tính trên nội dung đã chuẩn hóa xuống dòng, hoặc ghi rõ máy chạy, để `registration.json` của các nhánh so được với nhau; (2) chọn best theo nhiều điểm validation 400 trận thiên lạc quan cỡ vài pp; với các khác biệt nhỏ cần validation lớn hơn hoặc giữ final; (3) khi hai nhánh train trên hai máy, validation không so trực tiếp được (cùng F cho 47.0 và 43.75 trên hai phiên bản torch).
 - Trạng thái: SD5.1 DONE (FAIL). Hướng chưng cất nhãn search thưa đã thử; xem đề xuất tiếp trong `PLAN_SUDDEN_DEATH.md`.
+
+## 40. SD5.3 — spec chưng cất kill-search dày (2026-10-18)
+
+- Không đổi code. Viết spec `docs/superpowers/specs/2026-10-18-sd5-3-dense-search-distillation-design.md`, gồm: lý do (SD5.0 +22.5 lúc chơi so với SD5.1 −2.75 khi chưng cất), hiện trạng, phương án đã bỏ, thiết kế 4 stage `collect` / `train` / `validate` / `test` cho runner `run_sd53_pilot.py`, gate chốt trước và hướng dẫn cho người chạy hộ trên máy khác.
+- Thiết kế chính:
+  - F + search tự chơi 3000 trận trên dải seed 200000+; thu mọi bước có thông tin cùng 5% bước khác làm mẫu neo.
+  - Fine-tune F bằng cross-entropy với đích mềm (đều trên các nước tốt nhất), cộng KL(F ‖ model) trên mẫu neo; tăng cường bằng 8 đối xứng bàn, có luật bật/tắt dựa trên phép kiểm tính đúng của nhãn sau biến đổi.
+  - 3 ứng viên chọn trên validation 21000; test một lần trên seed 43000, kèm F + search làm trần tham chiếu.
+  - Cả bốn stage chạy trên cùng một máy; SHA source chuẩn hóa xuống dòng.
+- Chưa duyệt, chưa cài.
+
+## 41. SD6.0 — chẩn đoán điểm mù của F (2026-10-18)
+
+- Không đổi code của repo. Ba probe tạm (chép vào `runs/sd6-diagnostics-6600`, `runs/sd6-temperature-probe-21000`):
+  1. Xác suất F gán cho nước giết, với search chỉ quan sát.
+  2. Đánh giá F với τ ∈ {1, 0.5, 0.25, argmax} trên validation.
+  3. Hồ sơ các lần search sửa F (loại nước, xác suất F gán cho nước đó, bom đang cháy, khoảng cách tới đối thủ, bước).
+- Kèm phân tích cặp các trận SD5.0 có sẵn. Kết quả ở RESULTS SD6.0: bác bỏ hướng hạ nhiệt độ/argmax; xác định hai điểm mù (nước chặn đường thoát sau khi đặt bom; rời vành ngoài trước bước 475).
+- Đọc code teacher escape (`train_actor_critic.py`, nhánh nguy hiểm → `_bfs_safe_cell(...)` trả về `exits[0]`) để lập giả thuyết nguyên nhân. Hướng đề xuất ghi trong `PLAN_SUDDEN_DEATH.md` SD6.
+
+## 42. SD6.1 — luật chặn đường `cutoff_teacher` và probe (2026-10-18)
+
+- `cutoff_teacher.trap_actions(env, aid, mask)`: với mỗi STOP/di chuyển mask cho phép, tạm đặt learner vào ô đích (đặt lại vị trí trong `finally`, không deepcopy), dùng `_survival_map(avoid_contests=False)` để xem đối thủ còn đường sống không. Trả về các nước mà learner giữ được ô (ô không bị cháy trong dự báo) và làm đối thủ hết đường, trong khi một nước hợp lệ khác để đối thủ thoát.
+  - Bản đầu so với "learner đứng yên", nên bỏ sót đúng loại nước search hay chọn (đứng giữ ô cửa) và khớp 0/85. Bản sửa so với các nước hợp lệ khác.
+- `probe_sd6_cutoff.py`: nhánh `f` và `cutoff` (F + luật lúc chơi) trên validation 21000; hồ sơ độ khớp với kill-search trên seed 15000; `summarize` tách riêng có test; lưu `parts.json` thô trước khi gộp. Lỗi của lượt đầu (`merge` cần `contact_diagnostics`) đã có test. Có thanh progress qua `parallel_map`.
+- Test:
+  - `test_cutoff_teacher.py` (4): chặn ô cửa bằng nước đi, kill-search xác nhận; đứng giữ ô cửa, viết trước và thấy lỗi với bản đầu; không bom hoặc đối thủ đã chết chắc thì không can thiệp; tôn trọng mask; trạng thái env không đổi.
+  - `test_probe_sd6_cutoff.py` (4).
+  - Toàn bộ suite 369 OK (16 bỏ qua).
+- Chẩn đoán cơ chế: `runs/sd6-diagnostics-6600/movekill_mechanism.py`.
+- Trạng thái: SD6.1/SD6.1b không đạt luật mở SD6.2 (ActiveWR không tăng; WR +3.75 và hòa −2.75 nhờ thắng thụ động). Code được giữ lại để tham khảo; trainer chưa dùng.
+
+## 43. File `INSIGHTS.md` (2026-10-18)
+
+- Không đổi code. Tạo `INSIGHTS.md` làm nơi duy nhất giữ insight có bằng chứng và các giả thuyết đã bác bỏ, để thiết kế thí nghiệm sau không phải đọc lại toàn bộ RESULTS.
+- CLAUDE.md thêm quy ước: đọc `INSIGHTS.md` trước khi thiết kế thí nghiệm mới và cập nhật nó cùng lượt với RESULTS/IMPROVEMENTS.
+- `PLAN_SUDDEN_DEATH.md` (SD6) trỏ tới file. Spec SD5.3 thêm mục 8b với các phát hiện SD6 liên quan tới việc cài SD5.3.
+
+## 44. SD7.0 — spike advantage theo nhóm từ trạng thái quyết định (2026-10-18)
+
+- Không đổi code của repo. Script tạm `runs/sd7-spike-6600/spike_group_rollouts.py`:
+  - chụp trạng thái bằng `deepcopy(env)`; khôi phục RNG numpy/torch của trận chính sau mỗi lần chơi lại;
+  - gán nhãn bằng `kill_search.search_action`;
+  - chơi lại K lần bằng `evaluate.make_ac_fn` và `make_rule_based_fn`.
+- Lần đầu (giữ 3 ứng viên đầu mỗi trận, không lọc) cho mẫu gần như toàn trạng thái không có nước giết. Đã sửa sang lọc bằng search và ghi cả hai lần.
+- Kết quả ở RESULTS SD7.0: có phương sai để học (86% trạng thái có nước giết cho kết quả lúc được lúc không). Bước tiếp theo là viết spec SD7, chờ người dùng.
+
+## 45. SD7 — cập nhật theo nhóm trong trainer và runner (2026-10-18)
+
+- `group_rl.py`:
+  - `decisive`: lọc rẻ trước (bom đang cháy, đối thủ trong vùng nguy hiểm, Manhattan ≤ 4), rồi mới gọi `kill_search`.
+  - `rollout`: chơi lại trên bản sao `deepcopy`, gặp `RuleBasedAgent` mới, lưu/khôi phục RNG numpy toàn cục; kết cục +1/−1/0 theo ghi công kill của env.
+  - `sampler`: lấy mẫu có che mask bằng `torch.Generator` riêng.
+  - `group_advantages`, `group_loss`: −trung bình A · log π trên mọi bước chơi lại; bỏ các nhóm không có chênh lệch.
+- `train_actor_critic.train(group_rl, group_coef, group_k, group_horizon, group_max_states, group_gap)`:
+  - Trong episode, chụp trạng thái quyết định (`deepcopy(env)`) trước khi lấy mẫu hành động.
+  - Cuối episode, chơi lại bằng policy hiện tại, rồi cộng `group_coef · group_loss` vào loss trước bước optimizer duy nhất.
+  - Metric `group` (states, groups, contrast_groups, rollouts, wins, deaths, steps).
+  - `group_rng` riêng, lưu trong training state; tham số mới nằm trong provenance; `group_rl.py` trong `source_hashes`. PPO/ratio từ chối `group_rl`.
+- `run_sd7_pilot.py`:
+  - `train`: config = control SD5.1 + `GROUP`; kiểm SHA của F và control; resume; thanh progress.
+  - `mechanism`: chơi lại H1 theo cặp trạng thái, seed cố định theo (trạng thái, k) để mọi model dùng chung số ngẫu nhiên; `paired_states` bootstrap theo trạng thái.
+  - `test`: một lần, seed 44000, gate.
+- Test:
+  - `test_group_rl.py` (6): kết cục theo chủ bom và env/RNG không đổi; advantage; loss nâng xác suất nước thắng; `group_coef=0` cho loss/phần thưởng giống hệt khi tắt; resume chơi lại giống hệt; PPO từ chối. Viết trước, thấy lỗi trước khi cài.
+  - `test_run_sd7_pilot.py` (6): viết cùng lúc với runner, không qua bước đỏ.
+  - Toàn bộ suite 381 OK (16 bỏ qua).
+
+## 46. SD7 — kết quả chạy thật và kết luận (2026-10-18)
+
+- Không đổi code ở bước này; chỉ chạy `run_sd7_pilot.py train --resume`, `mechanism`, `test` (người dùng chạy tay) và đọc `runs/sd7-20261018/summary.json`, `mechanism_summary.json`.
+- Kết quả: H1 không đạt (group − F tỉ lệ giết +2.05pp [−0.34, +4.62], luật ≥ +10pp); test seed 44000 gate FAIL (group − F ActiveWR +0.25 [−5.75, +6.25]; group − control −3.25). Giữ F. Số liệu đầy đủ ở RESULTS "SD7.1–SD7.3".
+- Vì sao có thể thất bại (giả thuyết, chưa kiểm): ~0.8 trạng thái quyết định/ep ⇒ ~2400 nhóm cả lượt, advantage trung bình nhóm với K = 8 rất nhiễu, và loss nhóm cộng với loss RL/teacher chung (`group_coef` 1.0) có thể bị lấn át. Phần thưởng đã khớp ActiveWR nhưng tín hiệu vẫn thưa, giống kết luận SD5.1 về nhãn thưa.
+- Kiểm thử: suite 381 OK trước lượt chạy (mục 45); không thêm test.
+- Trạng thái: hoàn tất, KHÔNG ĐẠT.
+
+## 47. SD7.4 — probe cơ chế với tín hiệu nhóm dày hơn (2026-10-18)
+
+- Spec: `docs/superpowers/specs/2026-10-18-sd7-4-dense-group-probe-design.md` (luật chốt trước khi train).
+- Lý do: ở SD7, group − control tỉ lệ giết chỉ +0.34pp; tín hiệu nhóm thưa (0.75 trạng thái/ep, 0.59 nhóm có chênh lệch/ep, 52 bước chơi lại/ep, chỉ 43/3000 ep chạm giới hạn 3 trạng thái).
+- `run_sd74_probe.py`: `train --arm control|group [--resume]` (config control SD5.1, 1000 ep, `validation_every = 0`, dùng `final_phaseC.pt`), `mechanism` (seed chẩn đoán mới 6700–6749, tái dùng `run_sd7_pilot.mechanism_shard`/`paired_states`). Nhánh group: `group_coef` 4.0, `group_k` 16, `group_max_states` 6, `group_gap` 4. Không đổi trainer hay `group_rl.py`.
+- Luật H1': group − control ≥ +5pp, CI dưới > 0, chết lúc chơi lại ≤ control + 1pp. Đạt thì mở SD7.5 (full 3000 ep, test một lần seed 45000); không đạt thì dừng SD7.
+- Test: `test_run_sd74_probe.py` (2: hai nhánh chỉ khác khóa `group_*`; luật H1'). Smoke train hai nhánh + mechanism chạy qua.
+- Kết quả: H1' ĐẠT, group − control +7.12pp [+4.86, +9.72] (RESULTS SD7.4).
+- SD7.5 (mở theo spec): `run_sd74_probe.py train --arm full` (config control SD5.1 + `GROUP`, 3000 ep, validation 21000 mỗi 500 ep chọn best) và `test` (F, control SD5.1, full best; seed 45000; tái dùng `run_sd7_pilot.test`, thêm tham số `seed`, `group` cho tên thư mục, mặc định giữ nguyên SD7). Test thêm `test_full_is_sd5_control_plus_group`; smoke train full + test chạy qua. Toàn bộ suite 384 OK (16 bỏ qua).
+- Trạng thái: SD7.4 xong; SD7.5 chờ người dùng chạy.
+
+## 48. SD7.5 — train full advantage theo nhóm và kết luận hướng SD7 (2026-10-19)
+
+- Không đổi code; người dùng chạy `run_sd74_probe.py train --arm full --output runs\sd75-20261018` (3000 ep, 4 giờ 58 phút) và `test` (seed 45000, F/control SD5.1/full, lịch E và off). Claude đọc `summary.json`, `validation_metrics.jsonl`, `metrics.jsonl`.
+- Kết quả: gate FAIL, full − F ActiveWR +3.75 [−2.5, +10.0]; full − control +0.75. Best validation ep 1000 (50.25), sau đó validation giảm còn 41.75 ở ep 3000. Giữ F. Số liệu ở RESULTS "SD7.5".
+- Kết luận hướng SD7: advantage theo nhóm đổi được hành vi ở trạng thái quyết định (SD7.4) nhưng hiệu ứng lên ActiveWR cả trận (~1pp theo ước tính) nhỏ hơn mức test 400 trận phát hiện được. Muốn đi tiếp thì phải tăng số trạng thái quyết định/trận hoặc đo bằng nhiều trận hơn, không phải chỉ tăng `group_coef`.
+- Kiểm thử: không có code mới; suite 384 OK từ mục 47.
+- Trạng thái: hoàn tất, KHÔNG ĐẠT. Đề xuất dừng hướng SD7 ở cấu hình hiện tại (chờ người dùng quyết định).
+
+## 49. SD7.6a — probe chẩn đoán SD7.5 và chọn G (2026-10-19)
+
+- Người dùng chọn SD7.5 best (`runs/sd75-20261018/full/best_phaseC.pt`, SHA `bb0c775c…`) làm model tốt nhất hiện tại, gọi là **G**, dù gate SD7.5 FAIL. Đã ghi vào CLAUDE.md (quy ước checkpoint), RESULTS SD7.5 và PLAN.
+- `diagnose_sd75.py` (mới, không train): F chơi seed 6800–6849; ở mỗi bước có đối thủ trong phạm vi, chạy `kill_search.search_action`; với trạng thái có nước giết thì ghi bộ lọc rẻ SD7 có giữ không, nước giết có cần bom không, và xác suất F/G/final đặt lên tập nước giết; tính entropy trung bình. Forward thêm không đụng RNG torch, search giữ RNG numpy, nên F chơi y như khi đánh giá. Chạy song song 4 tiến trình qua `progress.parallel_map`, có thanh progress.
+- Kiểm thử: smoke `--smoke` chạy qua (4 trận, 60 bước). Không thêm unittest vì đây là probe một lần, không có logic quyết định nào dùng lại.
+- Kết quả (RESULTS SD7.6a): điểm nghẽn là khoảnh khắc "đặt bom ngay" kéo dài một bước (28/37 cửa sổ giết thất bại; F đặt P(bom) 0.58). 38/57 trận không thắng chủ động không có cơ hội giết nào. Ngân sách mẫu của SD7.5 rơi chủ yếu vào trạng thái đã chắc thắng.
+- Trạng thái: chẩn đoán xong; thiết kế sửa (SD7.6) chờ người dùng duyệt.
+
+## 50. SD7.6 — group RL vào khoảnh khắc "đặt bom ngay", có buffer (2026-10-19)
+
+- Spec (luật chốt trước khi train): `docs/superpowers/specs/2026-10-19-sd7-6-bomb-moment-buffer-design.md`. Người dùng chọn hướng "buffer khoảnh khắc bom" sau chẩn đoán SD7.6a.
+- `group_rl.py`: `kill_actions(env, aid, mask)` trả tập nước kill-search chấm +1, chỉ search khi BOMB hợp lệ và có đối thủ trong khoảng ≤ 4 (search tốn ~19 ms). `narrow()` = có 1..2 nước giết. `group_loss(..., first_only=True)` chỉ tính A·log π ở bước đầu của mỗi lần chơi lại.
+- `train_actor_critic.train`: tham số mới `group_select` ('decisive' mặc định | 'narrow'), `group_buffer` (0 = tắt), `group_first_step`. Có buffer thì mỗi episode chơi lại các trạng thái mới, rồi lấy thêm ngẫu nhiên (`group_rng`) từ buffer cho đủ `group_max_states`; buffer FIFO lưu `(env, learner id)` và được pickle vào training_state (`group_pool`, dạng bytes, nên `weights_only=True` vẫn nạp được) để resume chính xác. Mặc định không đổi gì: khi tắt buffer, `group_rng` không bị rút thêm.
+- `run_sd74_probe.py`: tách thân `train_arm` thành `run_arm(directory, config, sources, registration, label, resume)` để dùng lại; hành vi SD7.4 không đổi.
+- `run_sd76_pilot.py`: `train --arm control|buffer` (probe 1000 ep từ G), `mechanism` (seed chẩn đoán 6850, G chơi, mỗi model chơi lại K 8 × H 20 các trạng thái hẹp, P(tập nước giết), rồi validation 21000 cho control/buffer; khóa seed bằng `mechanism_opened.json`), `train --arm full` (3000 ep, validation chọn best), `test` (G với full, seed 46000, một lần).
+- Test: `test_group_rl.py` thêm 5 (narrow giữ 1–2 nước giết, không search khi BOMB không hợp lệ hoặc đối thủ xa, loss chỉ bước đầu, buffer chơi lại trạng thái cũ, resume khôi phục buffer); `test_run_sd76_pilot.py` (3: config các nhánh, luật H1‴, gate). Smoke mọi stage chạy qua; toàn bộ suite 392 OK (16 bỏ qua).
+- Đo trên 20 episode thật từ G (cuda): 7.0 s/ep; 0.8 trạng thái hẹp mới/ep, 4.95 trạng thái chơi lại/ep; 89% nhóm có chênh lệch kết cục (SD7.5: 52%).
+- Trạng thái: code xong; probe chờ người dùng chạy.
+
+## 51. KC1 — kiểm chứng nhận định về SD7.5/G, gộp control − F trên ba seed test (2026-10-19)
+
+- Không đổi code. Đọc lại `summary.json`/`evaluation_*_E_*.json` của SD5.1, SD7, SD7.5 và gộp 600 cặp bàn bằng `pilot_two_bomb.paired_active_bootstrap` (lệnh một dòng, không giữ script).
+- Kiểm code: nhánh `search_teacher` của `train()` chỉ gắn nhãn, không thay hành động; spec SD5.3 đã là phương án "F + search chơi rồi học có giám sát".
+- Kết quả (RESULTS KC1): control − F gộp = 0.0 [−3.75, +3.75], trong khi từng seed dao động −6.5 … +3.5; nhận định "train thêm 3000 ep mang lại phần lớn mức hơn F" và "F không biết nước di chuyển (P ≈ 0.001)" không đứng vững.
+- Trạng thái: hoàn tất. Đề xuất SD8 (probe phân rã lợi ích kill-search trên G), chờ người dùng duyệt.
+
+## 51. SD7.6-probe — kết quả chạy và nhận xét (2026-10-19)
+
+- Không đổi code; người dùng chạy `run_sd76_pilot.py train --arm control|buffer` (có resume) và `mechanism`. Claude đọc `mechanism_summary.json`, `validation_*_21000.json`, `metrics.jsonl` và log console.
+- Kết quả: H1‴ đạt theo chữ (tỉ lệ giết ở trạng thái hẹp +18.43pp [+14.58, +22.28]; validation buffer − control −0.5), nhưng kills/trận và ActiveWR không đổi; bom/trận +20%, hòa +6 (RESULTS SD7.6-probe).
+- Hạ tầng: các lần ngắt (PermissionError khi `os.replace` file training_state trên Windows, lỗi CUDA, Ctrl+C) đều resume chính xác nhờ kiểm provenance; lần resume bị từ chối vì thiết bị khác (rơi về CPU) là đúng thiết kế. Chưa sửa PermissionError (có thể do antivirus hoặc trình index giữ file); nếu lặp lại thì thêm thử lại vài lần trong `training_state.atomic_save`.
+- Trạng thái: probe xong. SD7.6 full chờ người dùng quyết định vì bằng chứng validation cho thấy khó qua gate (+5pp so với G).
+
+## 52. SD7.7 — phạt KL về G cho buffer khoảnh khắc bom (2026-10-19)
+
+- Lý do (đo thêm sau SD7.6-probe, 40 trận G trên seed 6600): nhánh buffer SD7.6 chọn BOMB với P 0.943 ở mọi trạng thái BOMB hợp lệ (G 0.637, control 0.656); KL(π‖G) 0.049 so với control 0.003. Dữ liệu của bộ lọc hẹp một chiều (BOMB hợp lệ và thường là nước giết), còn group RL không sinh tín hiệu ngược ở trạng thái không có nước giết. Người dùng chọn sửa tác dụng phụ trước khi train full.
+- Spec chốt trước: `docs/superpowers/specs/2026-10-19-sd7-7-kl-anchor-design.md`.
+- `train_actor_critic.train(anchor_coef=β)`: cộng β · mean KL(π_θ‖π_ref) trên mọi bước learner (phân phối đã che mask); π_ref = bản đông cứng của trọng số warm start, tạo trước khi khôi phục training_state. β = 0 bit-exact như cũ; PPO/ratio từ chối anchor. Metric `anchor_kl` mỗi episode.
+- `run_sd77_pilot.py`: `calibrate` (4 lượt 150 ep, β ∈ {0, 1, 4, 16}, chạy song song; đo P(BOMB | hợp lệ), KL về G, P(nước giết) ở trạng thái hẹp trên 40 trận G seed 6600; chọn β theo luật cố định), `train --arm anchor|full` (đọc β đã chọn), `mechanism` (seed 6900, so với control SD7.6, validation 21000 cho anchor, control dùng lại kết quả SD7.6), `test` (dùng lại `run_sd76_pilot.test`, seed 46000).
+- Test: `test_group_rl.py` thêm 2 (β = 0 bit-exact, β > 0 đổi loss, KL bằng 0 ở episode đầu; resume giữ đúng anchor) và kiểm PPO từ chối anchor; `test_run_sd77_pilot.py` (3: config, luật β, luật H1⁗). Smoke mọi stage chạy qua (sửa một lỗi truyền `device` hai lần trong `calib_train`). Toàn bộ suite 397 OK (16 bỏ qua).
+- Trạng thái: hiệu chỉnh β đang chạy (`runs/sd77-20261019`).
+
+## 53. SD7.7-calibrate — kết quả hiệu chỉnh β (2026-10-19)
+
+- Không đổi code; Claude chạy `run_sd77_pilot.py calibrate` (4 lượt 150 ep song song, rồi đo trên 40 trận G seed 6600). `calib_train` không ghi `metrics.jsonl`; lịch sử bom/ActiveWR đọc từ `training_state.pt`.
+- Kết quả: không β ∈ {1, 4, 16} nào đưa P(BOMB | hợp lệ) về ≤ P_G + 0.05; β = 16 còn 0.829. P(BOMB) và P(nước giết) ở trạng thái hẹp tăng giảm cùng nhau (RESULTS SD7.7-calibrate). Theo spec: dừng, không chạy probe.
+- Ý nghĩa thiết kế: đẩy policy ở trạng thái được chọn bằng search không tách được khỏi hành vi chung khi CNN không thấy được điều kiện chọn; phạt KL chỉ đổi mức cân bằng giữa hai thứ chứ không tách chúng.
+- Trạng thái: hoàn tất, KHÔNG ĐẠT luật hiệu chỉnh; chờ người dùng chọn hướng.
+
+## 54. SD7.8 — test G + kill-search lúc chơi (2026-10-19)
+
+- Người dùng chọn "G + search lúc chơi" sau SD7.7. Spec chốt trước: `docs/superpowers/specs/2026-10-19-sd7-8-g-plus-search-design.md`.
+- `run_sd78_search_test.py` (mới): hai agent G và G+search (giống SD5.0, chỉ đổi F thành G), seed 46000, 400 trận mỗi agent, lịch E (gate) và off (báo cáo), một lần (`test_opened.json`). Nhánh search chia 4 shard theo seed bàn qua `progress.parallel_map` (có thanh progress); gate: ActiveWR ≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp.
+- Test: `test_run_sd78_search_test.py` (gate, tóm tắt tỉ lệ). Smoke 4 trận mỗi nhánh chạy qua, các shard ghép đủ trận.
+- Kết quả: gate ĐẠT, G+search − G ActiveWR +16.5 [+12.5, +20.5], tự nổ −0.75, chết vì vòng 11.0 → 1.0 (RESULTS SD7.8).
+- Trạng thái: hoàn tất, ĐẠT. Agent khuyến nghị: G + kill-search lúc chơi.
+
+## 55. SD5.3 — review và phân tích offline kết quả của bạn (2026-10-19)
+
+- Không đổi code dự án. Lấy `run_sd53_pilot.py` từ `origin/Loc/sd5-update` vào scratchpad (không checkout), xác nhận SHA chuẩn hóa LF khớp registration, SHA checkpoint S khớp manifest; tính lại tỉ lệ test từ file trận thô.
+- Phát hiện về code của bạn: khóa `search_vs_f` trong `summary.json` là S − F (chỉ đặt tên sai); audit đối xứng 79% < 90% nên augmentation đã tắt đúng luật (search/RuleBot không đối xứng dưới phép quay/lật).
+- Script phân tích (scratchpad, không vào repo): tái tạo split held-out của bạn (seed 530), tính P(nước tốt nhất) của F, G, S trên mẫu quyết định theo nhóm (giết bằng bom / bằng đứng-di chuyển / tránh chết) và P(BOMB), KL trên mẫu neo (RESULTS SD5.3 review).
+- Trạng thái: hoàn tất; S được dùng làm nhánh trong SD7.9a.
+
+## 56. SD7.9 — nền S cho search, search hai nước, test 47000 (2026-10-19/20)
+
+- Spec `docs/superpowers/specs/2026-10-20-sd7-9-two-move-search-design.md` (luật từng stage chốt trước khi chạy stage đó).
+- `kill_search.search_action2` (mới): khi search một nước không có nước giết, thử mọi nước đầu điểm ≥ 0 rồi mọi nước thứ hai hợp lệ (mask `_safe_action_mask` sau 1 tick RuleBot), sau đó chỉ né; chọn nước đầu của kế hoạch giết, giữ nước của CNN nếu nó đã nằm trong một kế hoạch giết. Khôi phục RNG numpy, không đổi env. `search_action` không đổi.
+- `run_sd79_probe.py` (mới): stage a (G+search, S, S+search) và stage b (G+search2, ghép cặp với trận G+search của stage a), validation 21000. `run_sd79_test.py` (mới): G+search vs G+search2, seed 47000 một lần, lịch E/off, 4 shard mỗi cấu hình qua `progress.parallel_map`, ZIP.
+- Test: `test_kill_search` thêm test search hai nước (bàn cố định: một nước không giết được, "bước sang trái rồi đặt bom" giết; env và RNG không đổi; có nước giết một bước thì trả đúng kết quả search một nước); `test_run_sd79_probe.py` (luật quyết định, nhánh). Smoke cả hai runner chạy qua.
+- Kết quả: SD7.9a không mở test (S+search − G+search −0.75); SD7.9b +17.5 [+13.75, +21.25]; SD7.9c gate ĐẠT +21.0 [+17.0, +25.25] (RESULTS SD7.9a–c).
+- Trạng thái: hoàn tất, ĐẠT. Agent khuyến nghị: G + `search_action2` lúc chơi.
+
+## 57. DOC — ghi insight chi tiết SD5.3 + SD7.9 (2026-10-20)
+
+- Không đổi code dự án. Theo yêu cầu người dùng, thêm mục "SD5.3 + SD7.9 — tổng hợp insight chi tiết" vào RESULTS.md, gồm 8 phần:
+  1. Bốn điều kiện giúp chưng cất dày thành công.
+  2. G không đổi CNN ở trạng thái quyết định.
+  3. Trần ~65% của search một nước.
+  4. S thuần so với G+search, và lối chơi cuối trận.
+  5. Cơ chế search hai nước phá trần.
+  6. Kiểm tra nhất quán dữ liệu.
+  7. Giới hạn.
+  8. Hệ quả cho bước tiếp theo.
+- Phân tích mới (script chạy một lần trong phiên, không vào repo), trên các file trận có sẵn của SD7.9b/c:
+  - Ghép cặp trận G+search và G+search2 theo (seed bàn, góc) và đếm trận đổi kết quả.
+  - Tính phân bố số bước của trận thắng chủ động và tách theo góc.
+  - Không chạy trận mới, không dùng seed mới.
+- Kết quả chính:
+  - Thay đổi gần như một chiều: test 47000 lịch E có 87 trận thành thắng chủ động (45 từ hòa, 23 từ thắng nhờ vòng, 15 từ thắng thụ động), chỉ 3 trận mất thắng chủ động. Ở lịch off, toàn bộ 90 trận hòa đổi được đều thành thắng chủ động.
+  - Trung vị bước của trận thắng chủ động 205 → 158; tỉ lệ thắng chủ động trước bước 300 là 42.0% → 65.75%.
+  - Hai góc tăng như nhau.
+  - Kiểm tra nhất quán: các trận thắng chủ động trước bước 300 trùng khớp giữa lịch E và off, đúng như ghép cặp RNG theo bàn.
+- Bài học thiết kế rút ra:
+  - (a) Muốn CNN học một kỹ năng do search chỉ ra, cần nhãn có giám sát dày, có ví dụ ngược và neo KL; tín hiệu RL một phía không đủ (SD7.6/7.7).
+  - (b) Khi một agent có search, cải thiện CNN ở chính những trạng thái search đã sửa không cộng thêm gì (S+search ≈ G+search). Muốn tăng thì phải mở rộng tập trạng thái mà search nhìn thấy cơ hội (search hai nước).
+  - (c) Đòn bẩy hiện tại là giữa trận (tạo cơ hội giết sớm), không phải cuối trận.
+- Sửa INSIGHTS.md:
+  - Bỏ tiền tố sai "(Đã trả lời: có, SD5.3.)" ở câu hỏi mở về chưng cất search hai nước; câu hỏi đó chưa được trả lời.
+  - Bổ sung bằng chứng chuyển kết quả và thời điểm giết vào insight "search hai nước phá trần".
+- Trạng thái: hoàn tất (chỉ tài liệu).
+
+## 58. SD8 — runner chưng cất search hai nước (A) và search ba nước (B) (2026-10-20)
+
+- Theo yêu cầu người dùng: làm cả hai hướng đề xuất sau SD7.9; chọn hướng nhẹ cho người dùng chạy và hướng nặng cho bạn chạy. Spec `docs/superpowers/specs/2026-10-20-sd8-distill-and-deep-search-design.md`, hướng dẫn và lệnh cmd ở `SD8_GUIDE.md`.
+- **Đưa runner SD5.3 của bạn vào nhánh này.** `run_sd53_pilot.py` và `test_run_sd53_pilot.py` được lấy nguyên từ `origin/Loc/sd5-update` (`git checkout origin/Loc/sd5-update -- ...`, không sửa). Test của nó qua trong repo (17 OK). SD8A tái dùng các helper: đích mềm, chia held-out theo bàn, ghi shard, metric held-out, đánh giá checkpoint.
+- **`kill_search.py`:**
+  - Thêm `_advance` (chép env rồi đi 1 tick với RuleBot) và `_best_plan` (đệ quy: điểm tốt nhất của tối đa `depth` nước rồi chỉ né).
+  - Thêm `search_action_deep(..., depth)`. Hàm gọi `search_action2` trước, nên kết quả giống hệt search2 khi search2 đã thấy kế hoạch giết; chỉ khi không có mới thử kế hoạch `depth` nước. Hàm khôi phục RNG numpy và không đổi env.
+  - Thêm `search_action3` (depth 3).
+  - `search_action` và `search_action2` không đổi. Agent đã qua gate SD7.9 giữ nguyên bit.
+- **`run_sd8a_distill.py` (mới):** bốn giai đoạn `collect` / `train` / `validate` / `test`.
+  - Nhãn `teacher_scores`: điểm search một nước, bị điểm kế hoạch hai nước ghi đè ở các nước đầu mà search2 đã lập kế hoạch.
+  - Student khởi đầu từ G và neo KL về logits của G. Không tăng cường dữ liệu bằng đối xứng.
+  - Train 16 epoch, ứng viên 4/8/12/16. Validation chọn epoch ActiveWR cao nhất có tự nổ ≤ G + 1pp.
+  - Test 48000 một lần: S2, G, S chạy CNN thuần trên lịch E và off; G+search2 trên lịch E chỉ để báo cáo. Gate S2 − G; luật phụ: thay S nếu CI95 dưới của S2 − S > 0.
+  - `registration.json` khóa cấu hình và SHA source (chuẩn hóa LF); shard thiếu hoặc sai bị từ chối; có `--resume` cho collect; ZIP gửi lại.
+- **`run_sd8b_search3.py` (mới):**
+  - `validate` (21000; `--base` tái dùng các trận G+search2 cũ): luật ≥ +2pp thì mở test.
+  - `test` (49000, một lần, lịch E): từ chối nếu luật validation không đạt; gate +5pp / CI dưới > 0 / tự nổ ≤ +1pp.
+  - Ghi thêm giây/trận của mỗi nhánh.
+- **Test:**
+  - `test_kill_search`: thêm test search ba nước. `_rollout` được giả lập để chỉ đặt bom ở (1,3) mới giết, và một tường gỗ ở (3,3) làm mục tiêu để mask cho phép BOMB. Kiểm tra: search2 trả STOP, search3 trả LEFT với kế hoạch 1.0, giữ nước CNN khi nó nằm trong kế hoạch, env và RNG không đổi.
+  - `test_run_sd8.py` (mới): nhãn teacher, luật chọn epoch (giới hạn tự nổ, hòa thì lấy epoch sớm), gate, chia shard phủ đúng 1500 bàn, ngưỡng mở test B.
+  - Smoke trọn quy trình của cả hai runner.
+  - Toàn bộ suite: 425 test OK, 16 bỏ qua.
+- Kết quả đo tốc độ và smoke: RESULTS "SD8 — chuẩn bị".
+- Trạng thái: code xong, chưa chạy full. Người dùng chạy B, bạn chạy A.

@@ -1,0 +1,30 @@
+{
+  "baseline_id": "sd53-epoch8-20261018",
+  "status": "frozen",
+  "role": "Phase D P0 starting checkpoint; never overwrite this file",
+  "checkpoint": "runs/sd53-20261018/train/epoch_8.pt",
+  "sha256": "8f7116d290593fa10de1753c4f0f96366e220a193e9860123ed72e0db46bfd4a",
+  "bytes": 5557823,
+  "compatibility": {
+    "phase_d_loader": "train_actor_critic.ActorCriticNet(board_size=9)",
+    "strict_state_dict": true,
+    "missing_keys": [],
+    "unexpected_keys": []
+  },
+  "selection": {
+    "validation_seed": 21000,
+    "selected_epoch": 8,
+    "criterion": "highest ActiveWR with suicide <= F + 1pp",
+    "active_win_rate": 64.25
+  },
+  "locked_test": {
+    "seed": 43000,
+    "games_per_model": 400,
+    "gate_pass": true,
+    "active_win_rate": 60.5,
+    "active_win_difference_vs_f_pp": 16.25,
+    "active_win_ci95_pp": [9.75, 22.5],
+    "suicide_rate": 1.0
+  },
+  "next_protocol_rule": "Phase D uses fresh evaluation seeds; never reuse test seed 43000 for selection or tuning."
+}

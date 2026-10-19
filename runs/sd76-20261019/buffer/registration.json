@@ -1,0 +1,22 @@
+{
+  "G_sha256": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+  "mechanism_seed": 6850,
+  "test_seed": 46000,
+  "rules": "(docs/superpowers/specs/2026-10-19-sd7-6-bomb-moment-buffer-design.md, fixed before training):\n  H1''': buffer - control conversion at narrow states >= +10pp, state-bootstrap CI95 lower > 0,\n         replay deaths <= control + 1pp, validation 21000 buffer - control ActiveWR >= -2pp.\n  Gate: full - G ActiveWR >= +5pp, CI95 lower > 0, suicide <= +1pp.",
+  "sources": {
+    "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+    "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+    "train_actor_critic.py": "bf8f9608b8ef64f711ed1277f862182f953d7fddac31f96d66e7239d7652ff76",
+    "evaluate.py": "e86814a771d3d4c660a089b085a66b9cb3f960e895e085095275700bc7f93de2",
+    "training_state.py": "765c9fad7c74b61d755e2bb8fdb495832bac08a62ae1d3cfa4770a39f23eaa74",
+    "tactical_teacher.py": "6063ef4ecede3c454a5faeed93470abef3d06749c175e7e444c6419042b17fad",
+    "combat_move_teacher.py": "e266982d70e78f7c3a8ce01469a75dbf74a14aa935385e7fc729cd53e2d0226d",
+    "kill_search.py": "f461e1ed194e74a8849d9a012c8a9c905ffe6d7faf71b05134e295aa13d8b279",
+    "pilot_two_bomb.py": "677b059e281811cf760f289ce454b7e048791a0d4ae7f0610f82384ea4d0ed30",
+    "run_sd5_pilot.py": "4a183467a06b7be6ad6b081ff248c051b1564dd3a2a26838762acb1c8cba66a7",
+    "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+    "run_sd7_pilot.py": "a8144d8c05aa1f9999ba7f987bfdadcd22f90003e4f610e807d228393487ce55",
+    "run_sd74_probe.py": "86d327a52529cfa5155beeff753f160a7ac0ec504942411b4419b40718b7dcec",
+    "run_sd76_pilot.py": "6116edfafdeaa7ab973f2d15ddc7e8ce72649302461eeb018b1d9aa11ae84e06"
+  }
+}

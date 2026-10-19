@@ -1,0 +1,39 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\run_sd76_pilot.py", line 183, in <module>
+    train_arm(a.output, a.arm, a.device, a.smoke, a.resume)
+  File "D:\fpt\subject\BomberMan\run_sd76_pilot.py", line 46, in train_arm
+    sd74.run_arm(Path(output) / arm, {**train_config(output, arm, smoke), 'device': device}, SOURCE_FILES,
+  File "D:\fpt\subject\BomberMan\run_sd74_probe.py", line 81, in run_arm
+    trainer.train(**{k: v for k, v in config.items() if k != 'device'}, device=device,
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1544, in train
+    save_state(ep)
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1037, in save_state
+    atomic_save({'format': 'bomberman_phase_c_training_v1', 'episode': episode,
+  File "D:\fpt\subject\BomberMan\training_state.py", line 50, in atomic_save
+    os.replace(temporary, path)
+PermissionError: [WinError 5] Access is denied: 'runs\\sd76-20261019\\control\\training_state.pt.tmp' -> 'runs\\sd76-20261019\\control\\training_state.pt'
+Warm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+[C] ep    50 | WR:  58.0% | active WR:  48.0% | kills: 0.48 | reward: +7.608 | bombs: 31.2 | walls: 8.8 | combat bombs: 904/6445 | loss: 12.5777 | lr: 2.5e-05 | pool: 0
+[C] ep   100 | WR:  68.0% | active WR:  56.0% | kills: 0.56 | reward: +8.841 | bombs: 33.4 | walls: 9.1 | combat bombs: 950/7185 | loss: 12.0329 | lr: 2.4e-05 | pool: 0
+[C] ep   150 | WR:  64.0% | active WR:  42.0% | kills: 0.42 | reward: +6.935 | bombs: 31.0 | walls: 9.5 | combat bombs: 883/6195 | loss: 60.5736 | lr: 2.4e-05 | pool: 0
+[C] ep   200 | WR:  56.0% | active WR:  48.0% | kills: 0.48 | reward: +7.709 | bombs: 36.7 | walls: 8.9 | combat bombs: 1104/7064 | loss: 22.8967 | lr: 2.3e-05 | pool: 0
+[C] ep   250 | WR:  66.0% | active WR:  42.0% | kills: 0.42 | reward: +6.805 | bombs: 30.1 | walls: 8.2 | combat bombs: 922/6094 | loss: 18.7706 | lr: 2.2e-05 | pool: 0
+[C] ep   300 | WR:  54.0% | active WR:  30.0% | kills: 0.30 | reward: +5.109 | bombs: 33.7 | walls: 9.1 | combat bombs: 1063/6887 | loss: 1.5260 | lr: 2.0e-05 | pool: 0
+[C] ep   350 | WR:  50.0% | active WR:  36.0% | kills: 0.36 | reward: +5.852 | bombs: 33.1 | walls: 8.7 | combat bombs: 944/7599 | loss: 1.4342 | lr: 1.9e-05 | pool: 0
+[C] ep   400 | WR:  62.0% | active WR:  42.0% | kills: 0.42 | reward: +6.827 | bombs: 30.6 | walls: 9.0 | combat bombs: 806/7251 | loss: 14.6539 | lr: 1.7e-05 | pool: 0
+[C] ep   450 | WR:  56.0% | active WR:  42.0% | kills: 0.42 | reward: +6.944 | bombs: 36.0 | walls: 9.5 | combat bombs: 1058/7857 | loss: 21.4158 | lr: 1.5e-05 | pool: 0
+[C] ep   500 | WR:  60.0% | active WR:  52.0% | kills: 0.52 | reward: +8.236 | bombs: 34.5 | walls: 9.3 | combat bombs: 1061/7025 | loss: 12.4269 | lr: 1.3e-05 | pool: 0
+[C] ep   550 | WR:  54.0% | active WR:  42.0% | kills: 0.42 | reward: +6.857 | bombs: 33.7 | walls: 9.4 | combat bombs: 943/7820 | loss: 46.4131 | lr: 1.1e-05 | pool: 0
+[C] ep   600 | WR:  66.0% | active WR:  52.0% | kills: 0.52 | reward: +8.300 | bombs: 27.2 | walls: 9.3 | combat bombs: 712/5912 | loss: 1.6174 | lr: 9.5e-06 | pool: 0
+[C] ep   650 | WR:  64.0% | active WR:  50.0% | kills: 0.50 | reward: +7.945 | bombs: 26.4 | walls: 8.5 | combat bombs: 640/6648 | loss: 1.0960 | lr: 7.7e-06 | pool: 0
+[C] ep   700 | WR:  66.0% | active WR:  60.0% | kills: 0.60 | reward: +9.441 | bombs: 28.0 | walls: 9.1 | combat bombs: 719/6350 | loss: 26.3871 | lr: 6.1e-06 | pool: 0
+[C] ep   750 | WR:  48.0% | active WR:  38.0% | kills: 0.38 | reward: +6.060 | bombs: 33.7 | walls: 8.6 | combat bombs: 950/7548 | loss: 30.0882 | lr: 4.7e-06 | pool: 0
+[C] ep   800 | WR:  66.0% | active WR:  58.0% | kills: 0.58 | reward: +9.181 | bombs: 28.2 | walls: 8.9 | combat bombs: 746/5965 | loss: 15.3479 | lr: 3.5e-06 | pool: 0
+[C] ep   850 | WR:  58.0% | active WR:  44.0% | kills: 0.44 | reward: +7.128 | bombs: 28.0 | walls: 9.1 | combat bombs: 796/6064 | loss: 1.4197 | lr: 2.5e-06 | pool: 0
+[C] ep   900 | WR:  70.0% | active WR:  60.0% | kills: 0.60 | reward: +9.350 | bombs: 26.3 | walls: 8.6 | combat bombs: 700/5630 | loss: 0.8862 | lr: 1.8e-06 | pool: 0
+[C] ep   950 | WR:  64.0% | active WR:  50.0% | kills: 0.50 | reward: +7.938 | bombs: 30.5 | walls: 8.8 | combat bombs: 830/6782 | loss: 1.1872 | lr: 1.4e-06 | pool: 0
+[C] ep  1000 | WR:  72.0% | active WR:  50.0% | kills: 0.50 | reward: +7.932 | bombs: 31.3 | walls: 8.8 | combat bombs: 899/6745 | loss: 1.4572 | lr: 1.3e-06 | pool: 0
+
+Saved final model to runs\sd76-20261019\control\final_phaseC.pt
+Saved best model to runs\sd76-20261019\control\best_phaseC.pt (best episode: 0)

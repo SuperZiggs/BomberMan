@@ -1,0 +1,102 @@
+{
+  "seed": 6850,
+  "games": 100,
+  "states": 78,
+  "buffer_vs_control": {
+    "difference_pp": 18.429487179487182,
+    "ci95_pp": [
+      14.583333333333334,
+      22.275641025641026
+    ],
+    "states": 78,
+    "left_pp": 83.97435897435898,
+    "right_pp": 65.5448717948718
+  },
+  "buffer_vs_g": {
+    "difference_pp": 19.391025641025642,
+    "ci95_pp": [
+      15.705128205128204,
+      23.076923076923077
+    ],
+    "states": 78,
+    "left_pp": 83.97435897435898,
+    "right_pp": 64.58333333333334
+  },
+  "control_vs_g": {
+    "difference_pp": 0.9615384615384616,
+    "ci95_pp": [
+      -0.4807692307692308,
+      2.403846153846154
+    ],
+    "states": 78,
+    "left_pp": 65.5448717948718,
+    "right_pp": 64.58333333333334
+  },
+  "deaths": {
+    "G": 0.0,
+    "control": 0.0,
+    "buffer": 0.0
+  },
+  "p_kill": {
+    "G": 0.7159437762621121,
+    "control": 0.7310387369913932,
+    "buffer": 0.9677515710011507
+  },
+  "validation": {
+    "control": {
+      "seed": 21000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "sudden_death": true,
+      "sudden_death_start": 475,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40,
+      "num_episodes": 400,
+      "win_rate": 70.0,
+      "active_win_rate": 45.75,
+      "sudden_death_win_rate": 14.000000000000002,
+      "passive_win_rate": 10.25,
+      "suicide_rate": 0.25,
+      "sudden_death_death_rate": 11.0,
+      "draw_rate": 18.5,
+      "avg_kills": 0.4575,
+      "avg_bombs": 32.1275,
+      "avg_items": 1.91,
+      "avg_steps": 337.3825
+    },
+    "buffer": {
+      "seed": 21000,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 500,
+      "sudden_death": true,
+      "sudden_death_start": 475,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40,
+      "num_episodes": 400,
+      "win_rate": 66.75,
+      "active_win_rate": 45.25,
+      "sudden_death_win_rate": 7.000000000000001,
+      "passive_win_rate": 14.499999999999998,
+      "suicide_rate": 0.75,
+      "sudden_death_death_rate": 11.25,
+      "draw_rate": 24.5,
+      "avg_kills": 0.4525,
+      "avg_bombs": 38.545,
+      "avg_items": 1.9325,
+      "avg_steps": 339.2925
+    },
+    "buffer_vs_control": {
+      "difference_pp": -0.5,
+      "ci95_pp": [
+        -7.5,
+        6.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "h1_pass": true
+}

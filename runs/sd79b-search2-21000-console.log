@@ -1,0 +1,90 @@
+{
+  "seed": 21000,
+  "games": 400,
+  "results": {
+    "G_search2": {
+      "num_episodes": 400,
+      "win_rate": 94.25,
+      "active_win_rate": 83.75,
+      "passive_win_rate": 6.75,
+      "sudden_death_win_rate": 3.75,
+      "draw_rate": 5.0,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.25,
+      "avg_kills": 0.8375,
+      "avg_bombs": 19.575,
+      "avg_steps": 200.47
+    },
+    "G_search": {
+      "num_episodes": 400,
+      "win_rate": 87.0,
+      "active_win_rate": 66.25,
+      "passive_win_rate": 10.0,
+      "sudden_death_win_rate": 10.75,
+      "draw_rate": 12.25,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.5,
+      "avg_kills": 0.6625,
+      "avg_bombs": 27.18,
+      "avg_steps": 287.76
+    }
+  },
+  "vs_g_search": {
+    "G_search2": {
+      "active_win": {
+        "difference_pp": 17.5,
+        "ci95_pp": [
+          13.750000000000002,
+          21.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 7.249999999999999,
+        "ci95_pp": [
+          4.75,
+          9.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -7.249999999999999,
+        "ci95_pp": [
+          -9.75,
+          -4.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": -3.25,
+        "ci95_pp": [
+          -5.5,
+          -1.0
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "decision": {
+    "G_search2_minus_G_search": 17.5,
+    "open_test_47000": true
+  }
+}

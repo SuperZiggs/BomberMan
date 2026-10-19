@@ -1,0 +1,8 @@
+{
+  "epoch": 8,
+  "checkpoint": "runs\\sd53-20261018\\train\\epoch_8.pt",
+  "selection": {
+    "criterion": "highest ActiveWR with suicide <= F + 1pp",
+    "active_win_rate": 64.25
+  }
+}

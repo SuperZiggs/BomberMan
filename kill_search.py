@@ -64,3 +64,88 @@ def search_action(env, aid, mask, default_action, horizon=HORIZON):
     # Prefer the bomb among equally good overrides (it is the kill), then the lowest action id.
     choice = ACTION_BOMB if scores.get(ACTION_BOMB) == best else min(a for a, s in scores.items() if s == best)
     return choice, {'skipped': False, 'scores': scores}
+
+
+def search_action2(env, aid, mask, default_action, horizon=HORIZON):
+    """Two-move search (SD7.9b): when no single move kills, try every safe move followed by every
+    legal second move next tick (then dodge). Returns the first move of a kill plan, else defers
+    to the one-move result. About 6x the cost of `search_action` on steps where it fires."""
+    from rule_based_bot import _safe_action_mask
+    action, info = search_action(env, aid, mask, default_action, horizon)
+    if info['skipped'] or max(info['scores'].values(), default=0.0) > 0:
+        return action, info
+    state = np.random.get_state()
+    plans = {}
+    try:
+        for first, score in info['scores'].items():
+            if score < 0:
+                continue
+            after = deepcopy(env)
+            actions = [ACTION_STOP] * after.num_agents
+            for a in after.agents:
+                if a.alive and a.agent_id != aid:
+                    actions[a.agent_id] = RuleBasedAgent(a.agent_id).select_action(after)
+            actions[aid] = first
+            _, _, _, step_info = after.step(actions)
+            if step_info['episode_done'] or not after.agents[aid].alive:
+                continue
+            second = _safe_action_mask(after, aid)
+            plans[first] = max((_rollout(deepcopy(after), aid, b, horizon - 1) for b in range(len(second)) if second[b]),
+                               default=0.0)
+    finally:
+        np.random.set_state(state)
+    if max(plans.values(), default=0.0) <= 0 or plans.get(default_action, -1.0) > 0:
+        return action, {**info, 'plans': plans}
+    return min(a for a, s in plans.items() if s > 0), {**info, 'plans': plans}
+
+
+def _advance(env, aid, action):
+    """Copy of env one tick later (learner plays `action`, others RuleBot), or None if the line ends."""
+    after = deepcopy(env)
+    actions = [ACTION_STOP] * after.num_agents
+    for a in after.agents:
+        if a.alive and a.agent_id != aid:
+            actions[a.agent_id] = RuleBasedAgent(a.agent_id).select_action(after)
+    actions[aid] = action
+    _, _, _, step_info = after.step(actions)
+    return None if step_info['episode_done'] or not after.agents[aid].alive else after
+
+
+def _best_plan(env, aid, depth, horizon):
+    """Best score of up to `depth` learner moves then dodging: 1 if some line kills, else the one-move best."""
+    from rule_based_bot import _safe_action_mask
+    mask = _safe_action_mask(env, aid)
+    scores = {b: _rollout(deepcopy(env), aid, b, horizon) for b in range(len(mask)) if mask[b]}
+    best = max(scores.values(), default=0.0)
+    if depth == 1 or best > 0:
+        return best
+    for b, score in scores.items():
+        after = _advance(env, aid, b) if score >= 0 else None
+        if after is not None and _best_plan(after, aid, depth - 1, horizon - 1) > 0:
+            return 1.0
+    return best
+
+
+def search_action_deep(env, aid, mask, default_action, depth=3, horizon=HORIZON):
+    """Multi-move search (SD8B): like `search_action2`, but a kill plan may use up to `depth` learner
+    moves before dodging. Shallower plans are tried first, so it returns `search_action2`'s answer
+    whenever that one finds a kill. Cost grows ~6x per extra move on steps with no shorter kill."""
+    action, info = search_action2(env, aid, mask, default_action, horizon)
+    if depth <= 2 or 'plans' not in info or max(info['plans'].values(), default=0.0) > 0:
+        return action, info
+    state = np.random.get_state()
+    plans = {}
+    try:
+        for first, score in info['scores'].items():
+            after = _advance(env, aid, first) if score >= 0 else None
+            if after is not None:
+                plans[first] = _best_plan(after, aid, depth - 1, horizon - 1)
+    finally:
+        np.random.set_state(state)
+    if max(plans.values(), default=0.0) <= 0 or plans.get(default_action, -1.0) > 0:
+        return action, {**info, 'deep_plans': plans}
+    return min(a for a, s in plans.items() if s > 0), {**info, 'deep_plans': plans}
+
+
+def search_action3(env, aid, mask, default_action, horizon=HORIZON):
+    return search_action_deep(env, aid, mask, default_action, 3, horizon)

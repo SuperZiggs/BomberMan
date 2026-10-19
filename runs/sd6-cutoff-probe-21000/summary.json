@@ -1,0 +1,86 @@
+{
+  "seed": 21000,
+  "games": 400,
+  "results": {
+    "f": {
+      "arm": "f",
+      "win_rate": 67.5,
+      "active_win_rate": 47.0,
+      "sudden_death_win_rate": 11.0,
+      "passive_win_rate": 9.5,
+      "draw_rate": 19.75,
+      "suicide_rate": 1.0,
+      "sudden_death_death_rate": 12.75,
+      "avg_kills": 0.47,
+      "avg_steps": 337.9675
+    },
+    "cutoff": {
+      "arm": "cutoff",
+      "win_rate": 68.25,
+      "active_win_rate": 44.75,
+      "sudden_death_win_rate": 10.25,
+      "passive_win_rate": 13.25,
+      "draw_rate": 18.75,
+      "suicide_rate": 1.0,
+      "sudden_death_death_rate": 12.5,
+      "avg_kills": 0.4475,
+      "avg_steps": 331.63
+    }
+  },
+  "paired_cutoff_vs_f": {
+    "active_win": {
+      "difference_pp": -2.25,
+      "ci95_pp": [
+        -4.5,
+        -0.25
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "win": {
+      "difference_pp": 0.75,
+      "ci95_pp": [
+        -1.0,
+        2.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "draw": {
+      "difference_pp": -1.0,
+      "ci95_pp": [
+        -2.5,
+        0.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "suicide": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "decision_open_sd6_2": false,
+  "profile": {
+    "seed": 15000,
+    "games": 400,
+    "overrides": 421,
+    "kill_bomb_overrides": 90,
+    "move_kill_overrides": 85,
+    "move_kill_hits": 0,
+    "rule_fires": 31,
+    "rule_fires_search_agrees": 0,
+    "active_win_rate": 65.0,
+    "move_kill_recall": 0.0,
+    "rule_precision_vs_search": 0.0
+  }
+}

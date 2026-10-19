@@ -1574,3 +1574,565 @@ Kết luận:
 - Chưng cất kill-search kiểu này không giữ được lợi thế +22.5pp mà search có khi chạy lúc chơi (SD5.0): search − F −2.75, chỉ nhỉnh hơn control +3.75 nhưng không có ý nghĩa thống kê. Nhãn quá thưa (0.89/ep): search hầu như chỉ khác CNN ở vài thời điểm quyết định mỗi trận.
 - Giữ F. Không chạy thêm test để cứu gate.
 - Giới hạn: một train seed mỗi nhánh; hai nhánh train trên hai máy và phiên bản torch khác nhau (không ảnh hưởng tính hợp lệ của test, nhưng ảnh hưởng việc chọn best và so validation).
+
+## SD5.3 — đo mật độ khoảnh khắc quyết định của kill-search (chuẩn bị), 18/10/2026
+
+**COMPLETE (chẩn đoán, không train, không dùng seed test).** Script tạm ở scratchpad, không giữ trong repo. F + kill-search chơi 20 trận trên seed chẩn đoán 6600 (lịch E, 500 bước), đếm theo từng bước của learner.
+
+| Đại lượng | Tổng | Mỗi trận |
+|---|---:|---:|
+| Bước của learner | 4603 | 230 |
+| Search chạy (đối thủ trong tầm ≤ 6) | 3975 | 199 |
+| Bước có thông tin (điểm các hành động không bằng nhau) | 44 | 2.2 |
+| — có nước giết được | 25 | 1.25 |
+| — search sửa nước CNN (8 lần là bom) | 22 | 1.1 |
+| — CNN đã chọn đúng nước giết | 12 | 0.6 |
+
+ActiveWR của 20 trận này là 80.0 (chỉ tham khảo, mẫu nhỏ); 5.0 s/trận.
+
+Kết luận: ở 99% số bước, search không phân biệt được các hành động, nên gắn nhãn ở mọi bước không thêm thông tin. Thông tin nằm trong khoảng 2 bước mỗi trận; 3000 trận cho khoảng 6 600 mẫu quyết định. Đây là cơ sở thiết kế SD5.3 (`docs/superpowers/specs/2026-10-18-sd5-3-dense-search-distillation-design.md`): thu các mẫu này, fine-tune có giám sát nhiều epoch, kèm KL neo về F. Giới hạn: 20 trận, một seed.
+
+## SD6.0 — chẩn đoán vì sao F bỏ lỡ kill (nhiệt độ lấy mẫu, phân tích cặp SD5.0, điểm mù), 18/10/2026
+
+**COMPLETE (chẩn đoán, không train, không dùng seed test).** Script và dữ liệu: `runs/sd6-temperature-probe-21000` (validation 21000, 400 trận/nhánh, lịch E) và `runs/sd6-diagnostics-6600` (seed chẩn đoán 6600–6630).
+
+**1. Nhiệt độ lấy mẫu của F** (giả thuyết: F biết nước giết nhưng lấy mẫu làm lỡ). Ở 42 trạng thái có nước giết (40 trận F tự chơi, search chỉ quan sát), argmax của F nằm trong tập nước tốt nhất 90.5%, nhưng lấy mẫu chỉ trúng 61.9% (xác suất trung bình dồn vào nước tốt nhất 0.64). Đánh giá cả trận:
+
+| τ | WR | ActiveWR | Hòa | Tự nổ | Chết vì vòng | ActiveWR − τ1 [CI95] |
+|---|---:|---:|---:|---:|---:|---|
+| 1.0 (F) | 67.5 | 47.0 | 19.75 | 1.0 | 12.75 | — |
+| 0.5 | 69.75 | 46.0 | 20.75 | 0.0 | 12.0 | −1.0 [−7.75, 5.5] |
+| 0.25 | 69.25 | 48.75 | 22.0 | 0.5 | 8.75 | +1.75 [−5.5, 8.75] |
+| argmax | 64.5 | 37.75 | 27.25 | 0.0 | 10.25 | **−9.25 [−16.0, −2.5]** |
+
+Bác bỏ: hạ nhiệt độ không tăng ActiveWR, argmax làm giảm (hòa +7.5 [1.25, 13.75]). Cơ hội giết kéo dài nhiều bước, nên lấy mẫu lỡ ở bước này thì bước sau vẫn kịp; policy tất định thì bị kẹt trước RuleBot.
+
+**2. Phân tích cặp 400 trận SD5.0** (F so với F + search, cùng bàn, cùng góc). Search thắng chủ động thêm 95 trận, mất 5. Trong 95 trận đó F: hòa 37, thắng nhờ vòng/thụ động 30, thua 28 (28 trận chết vì vòng). Khoảng 90% trận của F kết thúc ở bước ≥ 475, trong khi search hạ đối thủ ở trung vị khoảng bước 200 (87/95 trước bước 475). Trong 190 trận F sống tới bước 475, 174 trận chưa có kill nào. Như vậy ActiveWR được quyết định ở giữa trận: F đã chạm mặt đối thủ (khoảng bước 14) nhưng suốt 450 bước sau không kết liễu được. F chết vì vòng 51 trận (39 trận đúng bước 475, lúc vòng đầu đóng), trong đó 32 trận thua.
+
+**3. Search sửa F ở đâu** (80 trận F + search, seed 6600–6630): 70 lần sửa (0.875/trận).
+
+| Loại | Số lần | Nước search chọn | Xác suất F gán cho nước đó (trung vị) |
+|---|---:|---|---:|
+| Sửa để giết | 36 | đặt bom: 20 | 0.58 |
+| | | di chuyển: 16 | **0.001** |
+| Sửa để sống | 34 | di chuyển/đứng: 31 (trung vị bước 471.5) | **0.0** |
+
+Cả 16 lần di chuyển để giết đều xảy ra khi bom của learner đang cháy chậm: learner đứng chắn đường thoát của đối thủ, thay vì chạy về chỗ trú gần nhất. F gần như không bao giờ chọn những nước này. Nguyên nhân khả dĩ: teacher escape trong trainer (`_bfs_safe_cell`, hệ số 0.5, gán nhãn ở mọi bước learner đứng trong vùng nguy hiểm) luôn dạy đúng một lối thoát (`exits[0]`, chỗ trú gần nhất) mà không xét đối thủ, nên đè các lối thoát khác, kể cả lối chặn đường đối thủ. 34 lần sửa để sống tập trung quanh lúc vòng đầu đóng: F không rời vành ngoài.
+
+Kết luận: lợi thế của search đến từ hai điểm mù cụ thể, không phải từ nhiễu lấy mẫu: (a) nước chặn đường thoát của đối thủ sau khi đặt bom, nghi do teacher escape gây ra; (b) rời vành ngoài trước bước 475, chủ yếu ảnh hưởng WR và hòa. Giới hạn: phân tích điểm mù dựa trên 80 trận và quan hệ nhân quả với teacher escape mới là giả thuyết, cần probe kiểm (PLAN SD6).
+
+## SD6.1 — probe F + luật chặn đường (bản đầu), 18/10/2026
+
+**COMPLETE (chỉ validation), luật quyết định: KHÔNG ĐẠT.** Output `runs/sd6-cutoff-probe-21000` (log `runs/sd6-cutoff-probe-21000-console.log`). Lượt đầu tiên chạy đủ 1200 trận nhưng hỏng ở bước gộp (`KeyError: 'contact'`, thiếu `contact_diagnostics`) và không lưu được kết quả. Đã sửa bằng test và chạy lại; số dưới đây là của lượt chạy lại. F = `runs/phaseC-sd-best-fallback/best_phaseC.pt`, lịch E, validation 21000, 400 trận/nhánh.
+
+| Nhánh | WR | ActiveWR | Hòa | Tự nổ | Chết vì vòng | Kill TB |
+|---|---:|---:|---:|---:|---:|---:|
+| F | 67.5 | 47.0 | 19.75 | 1.0 | 12.75 | 0.47 |
+| F + luật chặn đường (bản đầu) | 68.25 | 44.75 | 18.75 | 1.0 | 12.5 | 0.45 |
+
+Delta (CI95): ActiveWR **−2.25 [−4.5, −0.25]**, WR +0.75 [−1.0, 2.5], hòa −1.0 [−2.5, 0.5].
+
+Hồ sơ độ khớp (seed 15000, 400 trận F + search): 421 lần search sửa, gồm 90 lần đặt bom để giết và 85 lần di chuyển để giết. Luật bản đầu khớp **0/85**; nó kích hoạt 31 lần và không lần nào trùng với search.
+
+Chẩn đoán cơ chế (`runs/sd6-diagnostics-6600/movekill_mechanism.py`, seed 15000–15075, 38 nước di chuyển-để-giết):
+- Cả 38 lần đều xảy ra khi bom của learner đang cháy và đối thủ nằm trong vùng nguy hiểm.
+- Nước F đã chọn luôn có điểm 0: không chết, nhưng cũng không giết được. Mỗi tình huống chỉ có đúng 1 nước giết.
+- Nước search chọn: STOP 28/38. F thì đi DOWN 21 lần và RIGHT 10 lần, tức là bỏ chạy.
+- Ở 32/38 tình huống, nếu learner **đứng yên**, đối thủ không còn đường sống.
+
+Vậy nước giết là đứng giữ ô cửa duy nhất của đối thủ; F bỏ chạy nên mở đường cho đối thủ thoát. Luật bản đầu lấy "learner đứng yên" làm mốc, nên coi đối thủ đã chết chắc và không can thiệp. Lỗi nằm ở cách định nghĩa luật; giả thuyết điểm mù vẫn đứng. Luật được sửa thành: so nước đang xét với các nước hợp lệ khác của learner (SD6.1b).
+
+## SD6.1b — probe F + luật chặn đường (đã sửa), 18/10/2026
+
+**COMPLETE (chỉ validation), luật quyết định: KHÔNG ĐẠT → không mở SD6.2.** Output `runs/sd6-cutoff-probe-21000-b` (log `runs/sd6-cutoff-probe-21000-b-console.log`). Luật sửa: một nước STOP/di chuyển là bẫy nếu learner giữ được ô đó (ô không bị cháy) và đối thủ hết đường sống, trong khi một nước hợp lệ khác của learner sẽ để đối thủ thoát. Cùng seed và cùng luật quyết định như SD6.1.
+
+| Nhánh | WR | ActiveWR | Thắng thụ động | Thắng do vòng | Hòa | Tự nổ | Chết vì vòng | Số bước TB |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| F | 67.5 | 47.0 | 9.5 | 11.0 | 19.75 | 1.0 | 12.75 | 338 |
+| F + luật chặn đường (sửa) | 71.25 | 45.25 | **15.25** | 10.75 | 17.0 | 0.75 | 11.0 | 322 |
+
+Delta (CI95): ActiveWR **−1.75 [−4.25, 0.75]**; WR **+3.75 [1.75, 6.0]**; hòa **−2.75 [−4.75, −1.0]**; tự nổ −0.25 [−0.75, 0.0].
+
+Hồ sơ độ khớp (seed 15000, 400 trận): luật bắt được **56/85** nước di chuyển-để-giết của search (66%). Luật kích hoạt 126 lần, trong đó 56 lần trùng với search (44%).
+
+Kết quả đổi theo cặp (F → luật): active → thụ động 16 trận; hòa → thụ động 5; hòa → active 4; thua → active 3; thua → thụ động 3; thắng do vòng → active 2; thụ động → active 2; các thay đổi khác ≤ 3 trận.
+
+Kết luận:
+- Đứng giữ ô cửa đúng là làm đối thủ chết: WR tăng có ý nghĩa, hòa giảm có ý nghĩa. Nhưng đối thủ thường chết bởi **bom của chính nó** (bị kẹt giữa bom của mình và bom của learner), nên trận được tính là thắng thụ động: thụ động 9.5 → 15.25. Có 16 trận F vốn thắng chủ động (sau đó tự đặt bom giết) bị đổi thành thắng thụ động, vì đối thủ chết sớm hơn do bom của nó.
+- Theo quy ước, thắng thụ động không tính là agent giỏi hơn. ActiveWR không tăng, nên không mở SD6.2. Không chỉnh luật thêm trên cùng validation (tránh dò nhiều lần trên một seed).
+- Giải thích được một phần khoảng cách với search: phần lớn lợi thế +22.5 của search đến từ các nước giết mà search được tính điểm chỉ khi **bom của learner** gây chết (kill_search chấm +1 theo người giết). Luật chặn đường không phân biệt bom của ai.
+- Giới hạn: một seed validation; độ khớp đo trên seed 15000.
+
+## DOC — gom insight vào `INSIGHTS.md`, 18/10/2026
+
+**DONE (tài liệu, không có số liệu mới).** Gom các insight đã có bằng chứng từ SD4–SD6 (trận đấu được quyết định ở đâu, metric và thắng thụ động, hành vi và điểm mù của F, train/chưng cất, quy trình/hạ tầng, các giả thuyết đã bác bỏ, câu hỏi còn mở) vào `INSIGHTS.md`, mỗi mục trỏ về mục RESULTS/IMPROVEMENTS nguồn. Thêm ghi chú SD6 vào spec SD5.3 (mục 8b) cho người cài đặt.
+
+## SD7.0 — spike: phương sai kết quả của F tại các khoảnh khắc quyết định, 18/10/2026
+
+**COMPLETE (chẩn đoán, không train, seed chẩn đoán 6600–6649, 100 trận, lịch E).** Script `runs/sd7-spike-6600/spike_group_rollouts.py`, dữ liệu `states.json`; lần đầu chọn mẫu sai, dữ liệu lưu ở `states_v1_cheap_criterion.json`. F tự chơi. Ứng viên là các bước có bom đang cháy, đối thủ trong vùng nguy hiểm và cách learner Manhattan ≤ 4, cách trạng thái giữ trước đó ≥ 8 bước. Kill-search gán nhãn mỗi ứng viên: có hay không có nước giết bằng bom của learner trong 12 tick. Từ mỗi trạng thái được giữ, F chơi lại K = 8 lần, mỗi lần H = 20 tick, gặp RuleBot, mỗi lần một seed riêng. Kết cục mỗi lần: +1 nếu bom của learner giết đối thủ khi learner còn sống, −1 nếu learner chết, 0 nếu không có gì.
+
+| Nhóm trạng thái | Số trạng thái | Tỉ lệ F giết được | 0/8 | 8/8 | Lúc được lúc không | Chết khi chơi lại |
+|---|---:|---:|---:|---:|---:|---:|
+| Search: có nước giết | 81 (0.81/trận) | **0.602** | 0.02 | 0.11 | **0.86** | 0.003 |
+| Search: không có nước giết (đối chứng) | 98 | 0.003 | 0.98 | 0.00 | 0.02 | 0.010 |
+| Lần đầu: 3 ứng viên đầu tiên mỗi trận, không lọc bằng search | 261 | 0.016 | 0.95 | 0.00 | 0.05 | 0.009 |
+
+Phân bố số lần giết được trên 8 lần chơi lại, ở các trạng thái có nước giết: [2, 4, 5, 7, 20, 15, 5, 14, 9] (tương ứng 0, 1, …, 8 lần).
+
+Kết luận:
+- Tại 86% trạng thái có nước giết, F lúc giết được lúc không (trung bình 60%). Đây đúng là loại phương sai mà advantage theo nhóm (kết quả của mỗi lần chơi lại trừ trung bình nhóm, cùng trạng thái) học được, nên hướng SD7 có tín hiệu để học.
+- Kill-search tách rất rõ trạng thái quyết định: ở trạng thái search nói không có nước giết, F gần như không bao giờ giết được (0.3%). Tiêu chí rẻ không lọc bằng search vô dụng (1.6%), nên SD7 cần search để chọn trạng thái, nhưng chỉ ở các bước ứng viên.
+- Chơi lại rất ít chết (≤ 1%), nên tối ưu kill ngắn hạn không có dấu hiệu làm policy liều.
+- Giới hạn: 100 trận, một nhóm seed; các trạng thái của cùng một cơ hội có thể được đếm hơn một lần (giãn cách 8 bước); chưa đo thời gian chạy khi train.
+
+## SD7.1 — chuẩn bị: train F + cập nhật theo nhóm (3000 ep), 18/10/2026
+
+**RUNNING (Claude chạy ở nền), chưa có kết quả.** Spec `docs/superpowers/specs/2026-10-18-sd7-group-advantage-design.md`, runner `run_sd7_pilot.py`, output `runs/sd7-20261018` (log `runs/sd7-20261018-train-console.log`). Nhánh group = config của control SD5.1 (`runs/sd5-20261017/control/config.json`) + `group_rl` (K = 8, H = 20, tối đa 3 trạng thái/ep, giãn cách 8, `group_coef` = 1.0). Control là best ep 2500 của SD5.1 (SHA `c3b4e37c…`), tái dùng vì cùng config, cùng seed và cùng máy.
+
+Luật chốt trước khi train:
+- H1 (cơ chế): trên các trạng thái quyết định cố định (F tự chơi, seed 6650–6699, 100 trận), tỉ lệ giết của group − F ≥ +10pp, CI95 bootstrap theo trạng thái có cận dưới > 0.
+- Gate (test một lần, seed 44000, 400 trận/model, lịch E): group − F ActiveWR ≥ +5pp, CI95 dưới > 0, group − control ≥ 0, tự nổ ≤ +1pp.
+
+Đo chuẩn bị (GPU, 10 ep đầy đủ, không dùng để kết luận): 4.5 s/ep (control 2.8 s/ep); 0.8 trạng thái quyết định/ep; 6/8 nhóm có chênh lệch kết cục; 27/64 lần chơi lại giết được; khoảng 60 bước chơi lại/ep. Ước tính khoảng 5 giờ, gồm cả 7 lần validation.
+
+Cập nhật SD7.1 (18/10/2026): lượt train ở nền bị Claude Code dừng ở episode 174/3000 vì máy thiếu RAM khi phiên đang chờ (không phải lỗi của lệnh). `training_state.pt` đã lưu tới episode 174 và resume được (`--resume`). Validation ep 0 (chính là F) ra ActiveWR 47.0, WR 67.5, khớp với F đo trước đó trên máy này. Chưa có kết quả.
+
+
+## SD7.1–SD7.3 — Advantage theo nhóm từ trạng thái quyết định: kết quả, 18/10/2026
+
+Thư mục `runs/sd7-20261018` (log `runs/sd7-20261018-{train,mechanism,test}-console.log`). Train nhánh group 3000 ep (4 giờ 28 phút, người dùng chạy tay, có resume sau lần bị dừng ở ep 174), 1 train seed. Chọn best theo validation seed 21000: **ep 1000** (ActiveWR 47.75, ghi trước khi test). SHA model: F `0315a56f…`, control `c3b4e37c…` (best ep 2500 SD5.1), group `ad4f1b90…`.
+
+**Validation 21000 (400 trận, lịch E), ActiveWR / WR / tự nổ:** ep0 (=F) 47.0/67.5/1.0; 500: 41.0/65.0/1.0; 1000: 47.75/67.5/0.5; 1500: 47.0/63.5/0.75; 2000: 46.5/68.0/0.25; 2500: 43.75/67.0/0.25; 3000: 44.75/66.75/0.0. Không có xu hướng tăng; best ep 1000 hơn F chỉ +0.75 và nằm trong nhiễu.
+
+**H1 (cơ chế, seed 6650–6699, 100 trận, 73 trạng thái quyết định cố định):** tỉ lệ giết F 58.9%, control 60.6%, group 61.0%. group − F = +2.05pp [−0.34, +4.62]; group − control = +0.34pp [−1.03, +1.71]. Luật chốt trước là ≥ +10pp với CI dưới > 0 → **H1 KHÔNG ĐẠT**. Số lần chết trong lúc chơi lại: F 0, control 0.17%, group 0.
+
+**Test một lần, seed 44000, 400 trận/model (200 cặp bàn), lịch E:**
+
+| Model | WR | ActiveWR | Hòa | Tự nổ | Chết vì vòng |
+|---|---|---|---|---|---|
+| F | 63.75 | 44.75 | 26.5 | 0.0 | 14.25 |
+| control (SD5.1) | 68.0 | 48.25 | 24.0 | 0.25 | 9.5 |
+| group (SD7) | 67.0 | 45.0 | 26.0 | 0.75 | 10.25 |
+
+| So sánh (lịch E) | ActiveWR Δ, CI95 | WR Δ, CI95 | Tự nổ Δ, CI95 |
+|---|---|---|---|
+| group − F | +0.25 [−5.75, +6.25] | +3.25 [−2.75, +9.25] | +0.75 [0.0, +1.75] |
+| control − F | +3.5 [−2.75, +10.0] | +4.25 [−1.75, +10.5] | +0.25 [0.0, +0.75] |
+| group − control | −3.25 [−9.75, +3.25] | −1.0 [−6.75, +5.0] | +0.5 [0.0, +1.25] |
+
+Lịch off (không SD): group − F ActiveWR +1.0 [−5.0, +7.0]; control − F +3.75 [−2.5, +10.25]; group − control −2.75 [−9.25, +3.75].
+
+**Gate: FAIL** (≥ +5pp: không; CI dưới > 0: không; group ≥ control: không; tự nổ ≤ +1pp: đạt). **Quyết định: giữ F.** Không train thêm, không đổi checkpoint sau khi xem test; seed 44000 đã dùng.
+
+Giới hạn: một train seed; best chọn trên validation có nhiễu cỡ ±3pp nên mọi chênh lệch đều trong CI. Control không phải F mà là best ep 2500 của SD5.1; ở SD5.1 control ra −6.5 trên seed 42000, còn ở đây +3.5 trên seed 44000 (không ý nghĩa), tức là nhiễu giữa các seed test lớn hơn mọi hiệu ứng ta đo được. Lượt train chỉ thu ~0.8 trạng thái quyết định/ep (log cuối: 2 trạng thái, 9/16 thắng) nên tín hiệu nhóm có thể quá thưa để thay đổi CNN trong 3000 ep; chưa thử K/ngưỡng/`group_coef` khác.
+
+
+## SD7.4 — Probe cơ chế, tín hiệu nhóm dày hơn (coef 4, K 16), 18/10/2026
+
+Thư mục `runs/sd74-20261018` (log `runs/sd74-20261018-{control,group,mechanism}-console.log`). Spec chốt trước: `docs/superpowers/specs/2026-10-18-sd7-4-dense-group-probe-design.md`. Hai nhánh từ F, config control SD5.1, train seed 2026101701, 1000 ep, không validation, đo `final_phaseC.pt`. group: `group_coef` 4.0, K 16, tối đa 6 trạng thái/ep, giãn cách 4. Nhánh group bị Claude Code dừng ở ep 697 vì máy thiếu RAM; người dùng chạy tiếp bằng `--resume` tới 1000. SHA: control `95c443a2…`, group `69017438…`.
+
+Train: control 2.6 s/ep; group 5.2–6.4 s/ep, 1.20 trạng thái/ep, 0.65 nhóm có chênh lệch/ep. Tỉ lệ giết trong lúc chơi lại khi train không tăng theo thời gian (0.747 → 0.762 → 0.744 → 0.768 theo từng khối 250 ep; trạng thái lấy từ policy đang train nên không so trực tiếp được). ActiveWR lúc train (tham khảo, nhiễu): control 48.0 / 44.8, group 43.0 / 48.0 ở ep 1–500 / 501–1000.
+
+**H1' (seed chẩn đoán mới 6700–6749, 100 trận, 72 trạng thái quyết định, K 8 × H 20, chung seed lấy mẫu):**
+
+| So sánh | Tỉ lệ giết | Δ (pp) | CI95 |
+|---|---|---|---|
+| group − control | 68.92 vs 61.81 | **+7.12** | [+4.86, +9.72] |
+| group − F | 68.92 vs 61.81 | +7.12 | [+4.69, +9.90] |
+| control − F | 61.81 vs 61.81 | 0.00 | [−1.39, +1.39] |
+
+Chết trong lúc chơi lại: F 0.17%, control 0, group 0. **H1' ĐẠT** (≥ +5pp, CI dưới > 0, chết không tăng).
+
+Kiểm thêm: control − F = 0 không phải lỗi; trọng số control lệch F tối đa 0.009 sau 1000 ep (lr 2.5e-5), và do mọi model dùng chung seed lấy mẫu nên control cho kết cục giống hệt F ở 54/72 trạng thái; group khác F ở 32/72 trạng thái, 397 vs 356 lần giết trên 576 lần chơi lại.
+
+So với SD7 (K 8, coef 1, 3000 ep): group − control +0.34 → +7.12pp với 1/3 số episode. Như vậy cơ chế nhóm có tác dụng khi tín hiệu đủ mạnh.
+
+Giới hạn: một train seed; 72 trạng thái từ 100 trận; mới là điều kiện cần. SD7 cho thấy tăng tỉ lệ giết ở trạng thái quyết định chưa chắc thành ActiveWR cả trận (ước chừng +7pp tỉ lệ giết với khoảng 1 trạng thái quyết định/trận chỉ tương ứng vài pp ActiveWR). Quyết định theo spec: mở SD7.5 (train full 3000 ep, test một lần seed 45000).
+
+
+## SD7.5 — Train full advantage theo nhóm (coef 4, K 16, 3000 ep), test seed 45000, 19/10/2026
+
+Thư mục `runs/sd75-20261018` (log `runs/sd75-20261018-{train,test}-console.log`). Người dùng chạy tay: `run_sd74_probe.py train --arm full` (4 giờ 58 phút, 5.96 s/ep, không bị ngắt) rồi `test`. Từ F, config control SD5.1 + nhóm SD7.4 (`group_coef` 4.0, K 16, tối đa 6 trạng thái/ep, giãn cách 4), 1 train seed. Best chọn theo validation seed 21000 trước khi test: **ep 1000**. SHA: F `0315a56f…`, control `c3b4e37c…` (best ep 2500 SD5.1), full `bb0c775c…` (trong `summary.json` nhánh này mang tên `group`).
+
+**Validation 21000 (400 trận, lịch E), ActiveWR / WR:** ep0 (=F) 47.0/67.5; 500: 46.75/66.25; 1000: **50.25**/73.25; 1500: 44.25/67.0; 2000: 47.75/67.75; 2500: 44.25/67.5; 3000: 41.75/65.5. Đỉnh ở ep 1000 rồi giảm dần; ep 3000 thấp hơn F 5.25pp.
+
+Train (trung bình theo khối 750 ep, ep 1–750 / –1500 / –2250 / –3000): trạng thái quyết định/ep 1.12 / 1.19 / 1.22 / 1.24; tỉ lệ giết trong lúc chơi lại 77.0 / 77.1 / 81.5 / 79.0%; chết lúc chơi lại ≤ 0.06/ep; ActiveWR lúc train 43.1 / 46.9 / 49.6 / 49.1 (lấy mẫu từ policy đang train, nhiễu, không thay validation).
+
+**Test một lần, seed 45000, 400 trận/model (200 cặp bàn), lịch E:**
+
+| Model | WR | ActiveWR | Hòa | Tự nổ | Chết vì vòng |
+|---|---|---|---|---|---|
+| F | 67.25 | 47.25 | 24.75 | 0.25 | 11.5 |
+| control (SD5.1) | 70.5 | 50.25 | 21.25 | 0.5 | 9.25 |
+| full (SD7.5) | 71.5 | 51.0 | 19.75 | 0.25 | 9.5 |
+
+| So sánh (lịch E) | ActiveWR Δ, CI95 | WR Δ, CI95 | Hòa Δ, CI95 | Tự nổ Δ, CI95 |
+|---|---|---|---|---|
+| full − F | +3.75 [−2.5, +10.0] | +4.25 [−1.5, +10.25] | −5.0 [−10.25, +0.25] | 0.0 [0.0, 0.0] |
+| control − F | +3.0 [−3.5, +9.5] | +3.25 [−3.0, +9.5] | −3.5 [−9.0, +1.75] | +0.25 [0.0, +0.75] |
+| full − control | +0.75 [−5.75, +7.25] | +1.0 [−5.0, +7.0] | −1.5 [−6.5, +3.5] | −0.25 [−0.75, 0.0] |
+
+Lịch off (không SD): full − F ActiveWR +3.0 [−3.5, +9.25], WR +5.5 [−0.75, +11.75]; control − F +2.25 [−4.25, +8.75]; full − control +0.75 [−5.5, +7.0].
+
+**Gate: FAIL** (full − F ≥ +5pp: không, +3.75; CI dưới > 0: không, −2.5; full ≥ control: đạt, +0.75; tự nổ ≤ +1pp: đạt). **Quyết định: giữ F.** Không train thêm, không đổi checkpoint sau khi xem test; seed 45000 đã dùng.
+
+Giới hạn và đọc kết quả: một train seed. Phần lớn chênh lệch so với F cũng có ở control (train tiếp 3000 ep không có nhóm, +3.0), nên phần riêng của nhóm chỉ +0.75 [−5.75, +7.25] ActiveWR, trong khi SD7.4 đo được +7.12pp tỉ lệ giết ở trạng thái quyết định sau 1000 ep. Với ~1.2 trạng thái quyết định/trận, +7pp tỉ lệ giết chỉ ứng với khoảng +1pp ActiveWR, nhỏ hơn nhiều so với độ rộng CI (±6pp) của 400 trận. Validation giảm sau ep 1000 (41.75 ở ep 3000) cho thấy train lâu với `group_coef` 4 có thể làm hỏng phần còn lại của policy; chưa kiểm cơ chế này.
+
+**Cập nhật 19/10/2026 — quyết định của người dùng:** chọn SD7.5 best (`runs/sd75-20261018/full/best_phaseC.pt`, SHA `bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac`, gọi là **G**) làm model tốt nhất hiện tại và điểm xuất phát cho các bước sau. Đây là lựa chọn của người dùng, không phải kết quả gate: trên seed 45000 G có ActiveWR cao nhất trong ba model (51.0 vs control 50.25 vs F 47.25), nhưng hơn F +3.75 [−2.5, +10.0] và hơn control +0.75 [−5.75, +7.25], đều chưa có ý nghĩa thống kê. Seed 45000 không được dùng lại để đánh giá G.
+
+
+## SD7.6a — Chẩn đoán: vì sao SD7.5 tăng ActiveWR ít, 19/10/2026
+
+Thư mục `runs/sd76-diagnosis-6800` (log `runs/sd76-diagnosis-6800-console.log`), script `diagnose_sd75.py`. Không train. F chơi seed chẩn đoán mới 6800–6849 (100 trận, lịch E, mọi góc). Ở mỗi bước learner có đối thủ trong phạm vi 6, chạy kill-search; ở mỗi trạng thái có nước giết, ghi xác suất F, G (SD7.5 best ep 1000) và SD7.5 final (ep 3000) đặt lên tập nước giết. "Cửa sổ giết" = chuỗi trạng thái có nước giết cách nhau ≤ 4 bước. F ở lượt này: ActiveWR 43/100.
+
+**Độ phủ theo trận:** 62/100 trận có ít nhất một trạng thái có nước giết. Thắng chủ động 43/43; thắng thụ động 5/15; hòa 9/24; thua 3/8. Như vậy **38/57 trận không thắng chủ động không bao giờ có cơ hội giết** trong tầm 12 tick, nên mọi cách cải thiện "kết liễu" chỉ nâng được tối đa khoảng +19pp trên seed này (43 → 62).
+
+**Cửa sổ giết thất bại so với thành công (F):**
+
+| | Số cửa sổ | Dài trung vị (bước) | Dài 1 bước | Bước cuối chỉ có nước giết = đặt bom | P(nước giết) F / G ở bước cuối |
+|---|---|---|---|---|---|
+| Thất bại | 37 | 1 | 31 | 28 | 0.58 / 0.63 |
+| Thành công | 43 | 6 | 0 | 0 | 1.0 / 1.0 |
+
+36/37 cửa sổ thất bại có đúng một nước giết ở bước cuối. Điểm nghẽn là **khoảnh khắc "đặt bom ngay"**: chỉ kéo dài một bước, nước giết duy nhất là BOMB, F gán xác suất trung bình 0.58. Lỡ bước đó là mất cơ hội. Phát hiện này sửa lại insight cũ "lỡ một bước không mất cơ hội", vốn chỉ đúng với cửa sổ dài.
+
+**Xác suất trên tập nước giết (336 trạng thái):**
+
+| Nhóm | n | F | G (ep 1000) | final (ep 3000) |
+|---|---|---|---|---|
+| Tất cả | 336 | 0.890 | 0.903 | 0.919 |
+| Nước giết là đặt bom | 85 | 0.688 | 0.739 | 0.798 |
+| Nước giết là di chuyển/đứng | 251 | 0.958 | 0.959 | 0.960 |
+| Qua bộ lọc rẻ của SD7 | 286 | 0.903 | 0.917 | 0.930 |
+| Không qua bộ lọc rẻ (thường chưa có bom cháy) | 50 | 0.814 | 0.826 | 0.855 |
+
+Entropy policy trung bình trên mọi bước: F 0.432, G 0.421, final 0.396.
+
+**Phân bổ tín hiệu khi train SD7.5** (`metrics.jsonl`): 3576 nhóm, chỉ 1843 nhóm (52%) có chênh lệch kết cục; 79% lần chơi lại đã giết được. Phần lớn trạng thái được lấy từ cửa sổ dài mà F vốn đã thắng (6.6 trạng thái/cửa sổ thành công so với 1.4/cửa sổ thất bại, giãn cách 4). Khoảnh khắc đặt bom một bước, nơi có gần hết các lần thất bại, chỉ chiếm phần nhỏ mẫu train. Ngoài ra 12/37 cửa sổ thất bại không qua bộ lọc rẻ (chưa có bom cháy), nên SD7 không bao giờ train trên chúng.
+
+**Kết luận chẩn đoán:**
+1. Giả thuyết "khám phá" (nước giết bằng di chuyển có xác suất ~0.001 nên không bao giờ được lấy mẫu) **bị bác bỏ ở cấp tập nước giết**: F đã đặt 0.96 lên tập nước giết bằng di chuyển.
+2. Điểm nghẽn là xác suất đặt bom đúng lúc (0.58–0.69). Group RL có kéo lên (0.69 → 0.74 → 0.80) nhưng chậm, vì phần lớn ngân sách mẫu rơi vào trạng thái đã chắc thắng và vì bộ lọc loại các trạng thái chưa có bom cháy.
+3. Train lâu làm policy nhọn hơn (entropy giảm) và tăng P(bom) cả ở nơi khác: final đặt nhiều bom hơn trên validation (34.2 so với 30.5 ở ep 1000), hòa tăng (25.75 so với 18.5), ActiveWR giảm. Đây là giải thích khả dĩ cho việc validation tụt; mới là tương quan, chưa kiểm nhân quả.
+4. Trần của mọi cách cải thiện kết liễu trên seed này là khoảng +19pp; vượt mức đó phải tạo thêm cơ hội (38% trận không có cơ hội giết nào).
+
+Giới hạn: một seed chẩn đoán, 100 trận, trạng thái lấy từ trận của F (không phải G). Nhãn "nước giết" dựa trên search 12 tick với RuleBot hoàn hảo và learner chỉ né sau bước đầu.
+
+## KC1 — kiểm chứng các nhận định về SD7.5/G và kill-search, 19/10/2026
+
+**COMPLETE (phân tích lại dữ liệu có sẵn, không chạy trận mới, không dùng seed test mới).** Nguồn: `runs/sd5-20261017`, `runs/sd7-20261018`, `runs/sd75-20261018` (`summary.json` và `evaluation_*_E_*.json`), code `train_actor_critic.py` (nhánh `search_teacher`), spec SD5.3, RESULTS SD5.1/SD6.0/SD7.6a.
+
+**Gộp control SD5.1 so với F trên ba seed test.** Cùng một checkpoint control (SD5.1 best ep 2500, `c3b4e37c…`) đã được test với F trên 42000, 44000, 45000 (lịch E, 400 trận/seed, paired bootstrap theo bàn, 10 000 lần):
+
+| Seed test | F ActiveWR | control ActiveWR | control − F, CI95 |
+|---|---:|---:|---|
+| 42000 | 48.5 | 42.0 | −6.5 [−12.75, 0.0] |
+| 44000 | 44.75 | 48.25 | +3.5 [−2.75, +10.0] |
+| 45000 | 47.25 | 50.25 | +3.0 [−3.5, +9.5] |
+| Gộp 600 cặp bàn | 46.83 | | **0.0 [−3.75, +3.75]** |
+
+Cùng một cặp model mà chênh lệch đi từ −6.5 tới +3.5 giữa các seed test 400 trận; gộp lại bằng 0.
+
+| Nhận định | Kết luận kiểm chứng |
+|---|---|
+| Bảng F / control / SD7.5 trên 45000 và các CI | Đúng, khớp `summary.json` (bootstrap 10 000 lần). |
+| Gate SD7.5 FAIL; G hơn F chưa có ý nghĩa thống kê | Đúng. |
+| "Phần lớn mức hơn F đến từ train thêm 3000 ep" | **Không được ủng hộ.** Control − F gộp 3 seed = 0.0 [−3.75, +3.75]; +3.0 trên 45000 nằm trong dao động giữa các seed. Mức G hơn F (+3.75, một seed) cũng nằm trong dao động đó. |
+| B kém F ~7.5pp; SD7 hơn F +0.25; +22.5 là search lúc chơi | Đúng (XC, SD7.3, SD5.0; search chậm ~6 lần: 6.6 so với 1.1 s/trận). |
+| SD5.3 chưa có kết quả | Đúng: repo không có output SD5.3, PLAN vẫn WAIT. |
+| SD5.1 có để search điều khiển hành động khi train không | **Không.** `train_actor_critic.py` dòng 1146–1179: hành động thực hiện luôn là mẫu của CNN; search chỉ sinh nhãn khi nước của nó khác nước CNN đã lấy mẫu (0.89 nhãn/ep). |
+| "Chưa thử: F + search chơi rồi học có giám sát (expert iteration/DAgger)" | Đúng là chưa chạy, nhưng đó chính là SD5.3 (spec: F + search thu 3000 trận, BC trên mẫu quyết định + KL neo; DAgger nhiều vòng đã cân nhắc và để có điều kiện). Spec cũng đã loại việc học trên toàn bộ trận (99% bước không có thông tin). |
+| Search đồng ý với F 99.7% | Đúng về số, nhưng tính trên mọi lần gọi; ở bước có thông tin thì CNN chỉ chọn đúng nước giết 12/25 lần (SD5.3a). |
+| "Phần F thực sự không biết là nước di chuyển/đứng giữ ô cửa, P ≈ 0.001" | **Đã lỗi thời.** 0.001 là trung vị xác suất của đúng nước search chọn ở 16 lần sửa bằng di chuyển (SD6.0). Ở cấp tập nước giết, F đặt 0.958 lên tập nước giết bằng di chuyển; điểm nghẽn là khoảnh khắc "đặt bom ngay" một bước (28/37 cửa sổ thất bại, P(bom) 0.58) (SD7.6a). |
+
+Kết luận:
+- Dữ liệu ủng hộ việc G có số cao nhất trên seed 45000, nhưng không ủng hộ G hay control tốt hơn F: dao động giữa các seed test của cùng một cặp model (~±5pp) bằng cỡ mức chênh của G.
+- Không chạy test lại G trên seed mới để "cứu" gate (quy ước). G vẫn là lựa chọn của người dùng.
+- Câu hỏi chưa có bằng chứng nhân quả: sửa riêng khoảnh khắc đặt bom thì ActiveWR tăng tối đa bao nhiêu. SD7.6a chỉ đếm; đây là tiền đề của SD7.6 → đề xuất SD8 (probe phân rã lợi ích của kill-search theo loại nước sửa, không train).
+
+Giới hạn: gộp ba seed test giả định các lượt đánh giá cùng điều kiện (cùng máy người dùng, torch 2.5.1, CPU, theo RESULTS từng mục); chỉ một checkpoint control.
+
+
+## SD7.6-probe — Group RL vào khoảnh khắc "đặt bom ngay" có buffer, từ G (1000 ep), 19/10/2026
+
+Thư mục `runs/sd76-20261019` (log `runs/sd76-20261019-{control,buffer,mechanism}-console.log`). Spec chốt trước: `docs/superpowers/specs/2026-10-19-sd7-6-bomb-moment-buffer-design.md`. Hai nhánh từ G, config control SD5.1, train seed 2026101701, 1000 ep, không validation khi train, đo `final_phaseC.pt`. SHA: G `bb0c775c…`, control `6957c459…`, buffer `bf78a7a1…`. Người dùng chạy tay; cả hai nhánh bị ngắt và resume chính xác (provenance được kiểm): control một lần (PermissionError khi đổi tên `training_state.pt.tmp` trên Windows); buffer ba lần (Ctrl+C sau ep ~700, lỗi CUDA "unknown error" sau ep ~850, một lần resume bị từ chối vì config khác do tiến trình rơi về CPU, rồi resume với cuda tới 1000). `metrics.jsonl` đủ 1000 dòng, không trùng.
+
+**Train nhánh buffer** (theo khối 250 ep): trạng thái hẹp mới 0.52 / 0.48 / 0.48 / 0.47 mỗi ep; chơi lại 5.9–6.0 trạng thái/ep; buffer 131 → 488; tỉ lệ nhóm có chênh lệch chỉ 0.34–0.38 (đo thử 20 ep đầu: 0.89), tỉ lệ giết lúc chơi lại 0.83–0.85; số bom/ep 39.0 → 41.0 (control 32.5 → 28.9); ActiveWR lúc train 40.8 / 39.2 / 39.2 / 40.4 (control 47.2 / 40.4 / 48.4 / 52.4; tham khảo, nhiễu).
+
+**Cơ chế (seed chẩn đoán 6850–6899, 100 trận do G chơi, 78 trạng thái hẹp, K 8 × H 20, chung seed lấy mẫu):**
+
+| So sánh | Tỉ lệ giết | Δ (pp) | CI95 |
+|---|---|---|---|
+| buffer − control | 83.97 vs 65.54 | **+18.43** | [+14.58, +22.28] |
+| buffer − G | 83.97 vs 64.58 | +19.39 | [+15.71, +23.08] |
+| control − G | 65.54 vs 64.58 | +0.96 | [−0.48, +2.40] |
+
+P(tập nước giết) ở trạng thái hẹp: G 0.716, control 0.731, buffer **0.968**. Chết lúc chơi lại: 0 ở cả ba.
+
+**Validation 21000 (400 trận, lịch E):**
+
+| Model | WR | ActiveWR | Hòa | Thắng thụ động | Thắng nhờ vòng | Tự nổ | Bom/trận | Kills |
+|---|---|---|---|---|---|---|---|---|
+| control | 70.0 | 45.75 | 18.5 | 10.25 | 14.0 | 0.25 | 32.1 | 0.46 |
+| buffer | 66.75 | 45.25 | 24.5 | 14.5 | 7.0 | 0.75 | 38.6 | 0.45 |
+
+buffer − control ActiveWR −0.5 [−7.5, +6.5] (bootstrap theo cặp bàn).
+
+**Luật H1‴: ĐẠT theo đúng chữ** (tỉ lệ giết +18.43 ≥ +10, CI dưới > 0; chết không tăng; validation −0.5 ≥ −2). Theo spec, bước tiếp theo là SD7.6 full.
+
+**Đọc kết quả (quan trọng):** cơ chế làm đúng việc được giao: ở khoảnh khắc đặt bom, P(nước giết) từ 0.72 lên 0.97. Nhưng **không ra thêm kill nào cả trận**: kills/trận 0.45 so với 0.46, ActiveWR đứng yên. Đồng thời policy đặt bom nhiều hơn rõ rệt ở mọi nơi (38.6 so với 32.1 bom/trận, +20%), hòa +6, thắng thụ động +4.25, WR −3.25, tự nổ +0.5. Như vậy việc đẩy BOMB lên ở trạng thái hẹp đã **lan sang các trạng thái khác** (CNN không phân biệt đủ), và cái giá đó ăn hết phần lợi. Giả thuyết chưa kiểm: đặt bom bừa làm hết bom (giới hạn số bom) hoặc đẩy đối thủ đi xa, nên khoảnh khắc "đặt bom ngay" xuất hiện ít hơn trong trận của chính nhánh buffer (trạng thái hẹp của probe cơ chế lấy từ trận của G, không phải của buffer). Tỉ lệ nhóm có chênh lệch giảm từ 0.89 xuống ~0.37 trong lúc train cho thấy buffer đã học thuộc các trạng thái cũ.
+
+Giới hạn: một train seed; 78 trạng thái; validation 400 trận có CI ±7pp; G trên validation (SD7.5, cùng máy) là 50.25 nên cả control lẫn buffer đều thấp hơn G sau 1000 ep.
+
+
+## SD7.7-calibrate — Hiệu chỉnh hệ số phạt KL về G, 19/10/2026
+
+Thư mục `runs/sd77-20261019/calib` (log `runs/sd77-20261019-calibrate-console.log`). Spec chốt trước: `docs/superpowers/specs/2026-10-19-sd7-7-kl-anchor-design.md`. Claude chạy (4 tiến trình song song). Bốn lượt 150 ep từ G với config buffer SD7.6 + `anchor_coef` β, train seed 2026101701. Đo trên 40 trận G chơi (seed chẩn đoán 6600, lịch E), 40 trạng thái hẹp.
+
+| Model | P(BOMB \| hợp lệ) | KL(π‖G) | P(nước giết) ở trạng thái hẹp | Bom/ep lúc train (50 ep đầu → 50 ep cuối) |
+|---|---|---|---|---|
+| G | 0.637 | 0 | 0.687 | — |
+| β = 0 | 0.949 | 0.056 | 0.946 | 35.3 → 41.5 |
+| β = 1 | 0.938 | 0.051 | 0.938 | 35.2 → 36.0 |
+| β = 4 | 0.943 | 0.050 | 0.941 | 32.3 → 38.2 |
+| β = 16 | 0.829 | 0.017 | 0.868 | 33.3 → 36.6 |
+
+**Luật chọn β: không β nào thỏa** (cần P(BOMB | hợp lệ) ≤ 0.687). β = 0 đã lan bom sau 150 ep (`beta0_spilled` = true), nên hiệu chỉnh có ý nghĩa. **Theo spec: dừng, không chạy probe SD7.7.** Seed 6900 và 46000 chưa dùng.
+
+**Đọc kết quả:**
+- Lan bom xảy ra rất nhanh: chỉ sau 150 ep, β = 0 đã ở 0.949, gần bằng SD7.6 sau 1000 ep (0.943).
+- Ở mọi β, phần tăng P(BOMB | hợp lệ) và phần tăng P(nước giết) gần như bằng nhau (β = 0: +0.31 / +0.26; β = 16: +0.19 / +0.18). Phạt KL chỉ kéo **cả hai** xuống cùng lúc chứ không tách được hai việc. CNN không phân biệt "khoảnh khắc đặt bom ngay" với "bất kỳ chỗ nào được đặt bom", vì để nhận ra khoảnh khắc đó cần nhìn trước như kill-search.
+- β = 1 và 4 gần như không có tác dụng; β = 16 mới giảm được một phần.
+
+Giới hạn: 150 ep, 40 trận, 40 trạng thái hẹp; một train seed; chưa thử β > 16.
+
+
+## SD7.8 — G + kill-search lúc chơi, test một lần seed 46000, 19/10/2026
+
+Thư mục `runs/sd78-20261019` (log `runs/sd78-20261019-test-console.log`, ZIP `runs/sd78-20261019-send.zip`). Spec chốt trước: `docs/superpowers/specs/2026-10-19-sd7-8-g-plus-search-design.md`. Claude chạy (5 tiến trình). Không train. G = `runs/sd75-20261018/full/best_phaseC.pt` (SHA `bb0c775c…`); G+search = hành động lấy mẫu của G, trừ khi `kill_search` tìm được nước có điểm cao hơn hẳn (cấu hình SD5.0: 12 tick, phạm vi 6, đối thủ RuleBot). 400 trận mỗi agent, 200 cặp bàn, cùng luồng RNG theo bàn.
+
+**Lịch E (gate):**
+
+| Agent | WR | ActiveWR | Hòa | Thắng thụ động | Thắng nhờ vòng | Tự nổ | Chết vì vòng | Kills | Bom/trận | Số bước |
+|---|---|---|---|---|---|---|---|---|---|---|
+| G | 69.0 | 48.25 | 23.25 | 8.75 | 12.0 | 0.75 | 11.0 | 0.48 | 31.1 | 335 |
+| G+search | **84.0** | **64.75** | 15.25 | 8.25 | 11.0 | 0.0 | 1.0 | 0.65 | 27.3 | 287 |
+
+| G+search − G | Δ (pp) | CI95 |
+|---|---|---|
+| ActiveWR | **+16.5** | [+12.5, +20.5] |
+| WR | +15.0 | [+11.24, +19.0] |
+| Hòa | −8.0 | [−12.25, −4.0] |
+| Thắng thụ động | −0.5 | [−2.5, +1.5] |
+| Tự nổ | −0.75 | [−1.75, 0.0] |
+
+Lịch off (không SD): G 53.0 WR / 47.5 ActiveWR / hòa 45.25; G+search 68.5 / 63.0 / 31.25; ActiveWR +15.5 [+11.5, +19.25], hòa −14.0 [−17.75, −10.25].
+
+**Gate: ĐẠT** (+16.5 ≥ +5, CI dưới +12.5 > 0, tự nổ −0.75 ≤ +1). Phần WR tăng gần như toàn bộ là thắng chủ động (thắng thụ động −0.5), nên không phải WR "đẹp giả". Chết vì vòng giảm 11.0 → 1.0 vì search chấm −1 cho nước dẫn tới chết khi có đối thủ trong phạm vi. Bom/trận giảm (31.1 → 27.3), trận ngắn hơn (335 → 287 bước).
+
+**Quyết định:** agent mạnh nhất hiện tại là **G + kill-search lúc chơi**; checkpoint CNN vẫn là G. Seed 46000 đã dùng.
+
+Giới hạn: kill-search dùng RuleBot làm mô hình đối thủ, đúng với đối thủ trong bài này nên đây là cận trên thuận lợi; với đối thủ khác (self-play, người chơi) lợi thế có thể nhỏ hơn. Agent cần chạy search khi chơi (~19 ms mỗi bước có đối thủ trong phạm vi 6). Mức tăng trên G (+16.5) nhỏ hơn trên F ở validation (+22.5, SD5.0), khác seed và khác model nên không so trực tiếp.
+
+## SD5.3 — kết quả của bạn (review + kiểm định lại), 19/10/2026
+
+Thư mục `runs/sd53-20261018` (bạn của người dùng chạy trên máy RTX 4060, torch 2.14.1; runner `run_sd53_pilot.py` ở nhánh `origin/Loc/sd5-update`, SHA chuẩn hóa LF `bcc07727…` khớp registration). S = `runs/sd53-20261018/train/epoch_8.pt`, SHA `8f7116d2…fd4a` (khớp `phase_d_baseline.json`). Spec: `docs/superpowers/specs/2026-10-18-sd5-3-dense-search-distillation-design.md`.
+
+**Kiểm định (Claude):** tính lại tỉ lệ từ file trận thô khớp `summary.json`; chọn checkpoint trên validation trước khi mở test (runtime validate 05:03 UTC, test 05:13 UTC); seed thu thập 200000–201499 không trùng validation/test; audit đối xứng 79.19% < 90% nên augmentation **tắt** đúng luật. Khóa `search_vs_f` trong `summary.json` thực ra là **S − F** (chỉ đặt tên sai, gate dùng đúng cặp).
+
+**Dữ liệu:** 3000 trận F+search; 6171 mẫu quyết định (3159 có nước giết: 1933 giết bằng bom, 1226 chỉ giết bằng đứng/di chuyển, trong đó 664 có STOP), 43 547 mẫu neo.
+
+**Validation 21000 (máy bạn), ActiveWR:** F 43.75; epoch 2: 56.75; epoch 4: 61.25; epoch 8: **64.25** (tự nổ 0.75). Tăng đều theo epoch, chưa bão hòa.
+
+**Test một lần seed 43000, 400 trận/model:**
+
+| Model (lịch E) | WR | ActiveWR | Hòa | Tự nổ | Chết vì vòng | Bom/trận |
+|---|---|---|---|---|---|---|
+| F | 63.5 | 44.25 | 25.0 | 1.0 | 14.0 | 30.8 |
+| S | 78.5 | **60.5** | 18.0 | 1.0 | 3.25 | 26.7 |
+| F + search (trần, báo cáo) | 81.25 | 64.25 | 17.25 | 0.0 | 1.5 | 26.1 |
+
+S − F: ActiveWR **+16.25 [+9.75, +22.5]**, WR +15.0, hòa −7.0, tự nổ 0.0. Lịch off: +20.25 [+14.0, +26.5]. **Gate: ĐẠT** (bạn chạy). Đây là lần đầu một CNN thuần (không search lúc chơi) vượt F rõ trên test.
+
+**Phân tích offline của Claude** (`P(best)` = xác suất policy đặt vào tập nước tốt nhất theo search; held-out = 640 mẫu của 10% bàn mà S không train):
+
+| Nhóm mẫu (held-out) | F | G | S |
+|---|---|---|---|
+| Mọi trạng thái quyết định | 0.52 | 0.55 | **0.91** |
+| Giết bằng bom | 0.63 | 0.70 | 0.96 |
+| Giết bằng đứng/di chuyển (ô cửa) | 0.28 | 0.30 | **0.93** |
+| Không có nước giết (tránh chết) | 0.55 | 0.57 | 0.87 |
+| P(BOMB) trung bình ở mẫu neo | 0.088 | 0.091 | 0.095 |
+
+Đọc: G (group RL, SD7.5) gần như không đổi P(best) so với F (+0.03) và không chạm vào nhóm "đứng ở ô cửa"; S học được cả ba nhóm mà không lan sang đặt bom bừa (P(BOMB) ở trạng thái thường gần như F, argmax đổi 7.2% mẫu neo).
+
+Giới hạn: một train seed; mô hình RuleBot hoàn hảo; số liệu validation/test của bạn trên torch 2.14.1 (Claude đo lại S trên torch 2.5.1 ở SD7.9a: 64.0).
+
+## SD7.9a — S hay G làm nền cho kill-search (validation), 19/10/2026
+
+Thư mục `runs/sd79-probe-21000` (log `runs/sd79-probe-21000-console.log`). `run_sd79_probe.py`, Claude chạy (5 tiến trình). Spec `docs/superpowers/specs/2026-10-20-sd7-9-two-move-search-design.md`. Validation 21000, 400 trận/nhánh, lịch E. Luật chốt trước: S+search − G+search ≥ +2pp thì mở test 47000.
+
+| Nhánh | WR | ActiveWR | Hòa | Thắng thụ động | Thắng nhờ vòng | Tự nổ | Chết vì vòng | Bom/trận |
+|---|---|---|---|---|---|---|---|---|
+| G+search | 87.0 | 66.25 | 12.25 | 10.0 | 10.75 | 0.0 | 0.5 | 27.2 |
+| S | 76.25 | 64.0 | 20.25 | 7.0 | 5.25 | 0.25 | 2.5 | 26.3 |
+| S+search | 79.5 | 65.5 | 19.5 | 7.25 | 6.75 | 0.0 | 1.5 | 26.3 |
+
+S − G+search: ActiveWR −2.25 [−8.25, +4.0], WR −10.75 [−16.25, −5.25], hòa +8.0. S+search − G+search: ActiveWR **−0.75 [−6.75, +5.5]**, WR −7.5, hòa +7.25 [+2.25, +12.25].
+
+**Quyết định theo luật: không mở test** (−0.75 < +2). Đọc: (1) S tái lập trên máy mình (64.0 vs 64.25 của bạn); (2) CNN thuần S có ActiveWR ngang G+search mà không cần search; (3) mọi nền + search một nước đều dừng quanh 65% ActiveWR (F+search 64.25 test 43000, G+search 64.75 test 46000, 66.25 và S+search 65.5 ở đây): trần nằm ở search, không ở CNN; (4) G chơi cuối trận tốt hơn S (ít hòa hơn, thắng nhờ vòng nhiều hơn), có lẽ nhờ train dưới SD.
+
+## SD7.9b — search hai nước (validation), 19/10/2026
+
+Thư mục `runs/sd79b-search2-21000`. `run_sd79_probe.py --stage b`: G+search2 (`kill_search.search_action2`), so cặp với các trận G+search của SD7.9a trên cùng bàn. Luật chốt sau SD7.9a, trước khi chạy: ≥ +2pp thì mở test 47000. Đo tốc độ (4 trận seed 6600): search 4.5 s/trận, search2 17.8 s/trận.
+
+| Nhánh | WR | ActiveWR | Hòa | Thắng thụ động | Thắng nhờ vòng | Tự nổ | Bom/trận | Số bước |
+|---|---|---|---|---|---|---|---|---|
+| G+search | 87.0 | 66.25 | 12.25 | 10.0 | 10.75 | 0.0 | 27.2 | 288 |
+| G+search2 | 94.25 | **83.75** | 5.0 | 6.75 | 3.75 | 0.0 | 19.6 | 200 |
+
+G+search2 − G+search: ActiveWR **+17.5 [+13.75, +21.25]**, WR +7.25, hòa −7.25, thắng thụ động −3.25, tự nổ 0. **Luật ĐẠT → mở test 47000.**
+
+## SD7.9c — test G + search hai nước, seed 47000, 20/10/2026
+
+Thư mục `runs/sd79-20261020` (log `runs/sd79-20261020-test-console.log`, ZIP `runs/sd79-20261020-send.zip`). `run_sd79_test.py`, Claude chạy một lần (`test_opened.json`). G = `bb0c775c…`. 400 trận/agent, 200 cặp bàn.
+
+| Agent | Lịch | WR | ActiveWR | Hòa | Thắng thụ động | Thắng nhờ vòng | Tự nổ | Chết vì vòng | Kills | Bom/trận | Số bước |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| G+search | E | 80.75 | 61.0 | 18.0 | 10.75 | 9.0 | 0.0 | 1.75 | 0.61 | 28.6 | 300 |
+| G+search2 | E | **93.75** | **82.0** | 5.75 | 8.25 | 3.5 | 0.0 | 0.25 | 0.82 | 20.7 | 208 |
+| G+search | off | 67.25 | 60.0 | 32.5 | 7.25 | — | 0.0 | — | 0.60 | 29.0 | 303 |
+| G+search2 | off | 90.0 | 82.0 | 9.5 | 8.0 | — | 0.0 | — | 0.82 | 20.9 | 209 |
+
+| G+search2 − G+search | Lịch E | Lịch off |
+|---|---|---|
+| ActiveWR | **+21.0 [+17.0, +25.25]** | +22.0 [+18.0, +26.25] |
+| WR | +13.0 [+10.0, +16.25] | +22.75 [+18.75, +27.0] |
+| Hòa | −12.25 [−15.25, −9.25] | −23.0 [−27.25, −19.0] |
+| Thắng thụ động | −2.5 [−4.75, −0.5] | +0.75 [−0.25, +2.0] |
+| Tự nổ | 0.0 | 0.0 |
+
+**Gate: ĐẠT** (+21.0 ≥ +5, CI dưới +17.0 > 0, tự nổ 0). Phần tăng là thắng chủ động (thắng thụ động và thắng nhờ vòng đều giảm), trận ngắn hơn ~90 bước, ít bom hơn. **Quyết định: agent khuyến nghị mới là G + kill-search hai nước** (checkpoint CNN vẫn là G). Seed 47000 đã dùng.
+
+Giới hạn: search dùng RuleBot làm mô hình đối thủ (đúng với đối thủ của bài, nên đây là kết quả thuận lợi; với đối thủ khác lợi thế có thể nhỏ hơn); chậm khoảng 4 lần search một nước mỗi trận (đo trên 4 trận); G+search trên seed này (61.0) thấp hơn trên 46000 (64.75), trong dao động ±5pp giữa seed.
+
+## SD5.3 + SD7.9 — tổng hợp insight chi tiết, 20/10/2026
+
+Không chạy thêm trận và không dùng seed mới. Mục này gom các insight của review SD5.3 và SD7.9a–c, cộng một phân tích lại các file trận có sẵn (`runs/sd79-20261020/evaluation_*_47000.json`, `runs/sd79b-search2-21000/evaluation_*_21000.json`). Phân tích ghép từng trận theo cặp (seed bàn, góc) giữa G+search và G+search2, rồi đếm trận đổi kết quả.
+
+### 1. Chưng cất dày đưa được search vào CNN, nhờ bốn điều kiện cùng lúc
+
+- **Dày:** 6171 trạng thái quyết định thu từ 3000 trận, so với ~0.9 nhãn/trận ở SD5.1, nơi chưng cất thưa FAIL.
+- **Có ví dụ ngược:** gồm cả trạng thái mà đặt bom không phải nước tốt nhất (1226 mẫu chỉ giết bằng đứng/di chuyển, 3012 mẫu không có nước giết). RL ở SD7.6 chỉ có tín hiệu một phía, làm policy "cứ được đặt bom là đặt" (P(BOMB) 0.94).
+- **Đích mềm theo điểm search, học nhiều epoch.**
+- **KL neo về F trên 43 547 mẫu neo:** giữ hành vi ở trạng thái thường.
+
+Bằng chứng ở held-out 640 mẫu theo bàn mà S không train:
+- P(nước tốt nhất): F 0.52 → S 0.91.
+- Nhóm "đứng chặn ô cửa": 0.28 → 0.93.
+- P(BOMB) ở mẫu neo gần như không đổi: 0.088 → 0.095.
+
+Validation tăng đều theo epoch (56.75 / 61.25 / 64.25 ở epoch 2/4/8), chưa bão hòa. Test 43000: S − F +16.25 [+9.75, +22.5]. Đây là CNN thuần đầu tiên vượt F rõ trên test.
+
+### 2. Group RL (G) gần như không đổi CNN ở các trạng thái quyết định
+
+- P(nước tốt nhất): F 0.52, G 0.55.
+- Nhóm ô cửa: 0.28 so với 0.30.
+
+Điều này giải thích vì sao SD7.5 chỉ +3.75 ActiveWR so với F. Phần G hơn F (nếu có) không nằm ở khoảnh khắc ra đòn mà search chấm điểm.
+
+### 3. Search một nước có trần ~65% ActiveWR, bất kể CNN nền
+
+| Agent | Seed | ActiveWR |
+|---|---|---|
+| F+search | test 43000 | 64.25 |
+| G+search | test 46000 | 64.75 |
+| G+search | test 47000 | 61.0 |
+| G+search | val 21000 | 66.25 |
+| S+search | val 21000 | 65.5 |
+
+S+search − G+search = −0.75 [−6.75, +5.5]. CNN tốt hơn ở trạng thái quyết định không thêm gì khi đã có search, vì search đã tự sửa đúng những trạng thái đó; phần S học được trùng với phần search làm sẵn. ~35% trận còn lại không thắng chủ động vì **không bao giờ xuất hiện nước giết trong một bước**, chứ không phải vì kết liễu sai.
+
+### 4. S chạy một mình ≈ G+search về ActiveWR, nhưng kém ở cuối trận
+
+- S − G+search (val 21000): ActiveWR −2.25 [−8.25, +4.0], WR −10.75 [−16.25, −5.25], hòa +8.0.
+- G+search so với S+search: hòa 12.25 vs 19.5, thắng nhờ vòng 10.75 vs 6.75.
+
+G chơi cuối trận tốt hơn, có lẽ nhờ G được train dưới sudden death 3000 + 1000 ep; S chưng cất từ F. Vì vậy nếu chưng cất tiếp thì nên đi từ G, không từ F.
+
+### 5. Search hai nước phá trần bằng cách tạo cơ hội giết sớm hơn
+
+Đếm trận đổi kết quả, G+search → G+search2, cùng bàn cùng góc (400 cặp):
+
+| Chuyển | Test 47000 lịch E | Test 47000 lịch off | Val 21000 lịch E |
+|---|---|---|---|
+| hòa → thắng chủ động | 45 | **90** | 26 |
+| thắng nhờ vòng → thắng chủ động | 23 | — | 28 |
+| thắng thụ động → thắng chủ động | 15 | 1 | 16 |
+| chết vì vòng → thắng chủ động | 3 | — | 1 |
+| thua → thắng chủ động | 1 | 0 | 0 |
+| **Tổng thành thắng chủ động** | **87** | **91** | **71** |
+| Thắng chủ động → khác (thụ động/thua) | 3 | 3 | 1 |
+| Đổi khác (không liên quan thắng chủ động) | 5 | 2 | 4 |
+
+- **Gần như một chiều.** Test E: 87 trận thành thắng chủ động, 3 trận mất; net +84 trận = +21.0pp.
+- **Lịch off rõ nhất.** Toàn bộ 90 trận hòa đổi được đều thành thắng chủ động. Search hai nước chủ yếu phá thế giằng co: hai bên đi vòng quanh mà không ai có nước giết một bước.
+- **Ăn cả vào thắng nhờ vòng** (23 trận test, 28 trận val). Ở những trận này G+search chỉ thắng vì đối thủ chết vì vòng, còn G+search2 giết được trước đó.
+
+Thời điểm thắng chủ động (số bước của trận thắng chủ động; tỉ lệ tính trên tất cả 400 trận):
+
+| | G+search | G+search2 |
+|---|---|---|
+| Trung vị số bước (test 47000 E) | 205 | **158** |
+| Tứ phân vị 25–75 | 115–343 | 100–261 |
+| Thắng chủ động trước bước 150 | 22.5% | **37.75%** |
+| Thắng chủ động trước bước 300 | 42.0% | **65.75%** |
+| Trung vị (val 21000) | 210 | 144 |
+
+Giết sớm hơn ~50 bước. Điều này khớp với insight cũ "ActiveWR do giai đoạn trước bước 475 quyết định": đòn bẩy nằm ở giữa trận, không ở vòng.
+
+Không lệch theo góc: test E góc 0 59.0 → 81.0, góc 1 63.0 → 83.0; val góc 0 67.0 → 85.0, góc 1 65.5 → 82.5.
+
+### 6. Kiểm tra tính nhất quán của dữ liệu
+
+- Các trận thắng chủ động trước bước 300 của cùng agent giống hệt nhau giữa lịch E và lịch off (37.75% / 65.75%). Kết quả này đúng kỳ vọng: vòng chỉ tác động từ bước 435 (cảnh báo 40 bước trước 475), và RNG được ghép theo bàn. Điều đó xác nhận việc ghép cặp và luồng RNG đúng.
+- S tái lập trên máy mình: 64.0 so với 64.25 của bạn, khác torch 2.5.1/2.14.1.
+- Khóa `search_vs_f` trong `summary.json` của SD5.3 là S − F (đặt tên sai, số đúng).
+- Audit đối xứng 79% < 90%: nhãn search/RuleBot không bất biến dưới phép quay/lật, nên không được tăng cường dữ liệu bằng đối xứng.
+
+### 7. Giới hạn của các insight
+
+- Mọi search dùng RuleBot làm mô hình đối thủ, và đối thủ trong bài cũng là RuleBot. Đây là điều kiện thuận lợi nhất; với self-play hoặc người chơi, lợi thế có thể nhỏ hơn nhiều.
+- Search hai nước chậm ~4 lần mỗi trận (17.8 s so với 4.5 s, đo trên 4 trận seed 6600).
+- G+search dao động giữa seed: 64.75 (46000) và 61.0 (47000).
+- Một train seed cho G và cho S.
+- Bảng chuyển kết quả là phân tích sau khi đã mở test 47000. Nó chỉ dùng để giải thích, không dùng để chọn model hay cấu hình.
+
+### 8. Hệ quả cho bước tiếp theo
+
+- **Ứng viên 1, chưng cất search hai nước vào CNN từ G** theo công thức SD5.3 (thu bằng G+search2). Mục tiêu: một CNN thuần gần 82% mà vẫn giữ lối chơi cuối trận của G. Chi phí thu dữ liệu ~4 lần SD5.3. Đây là hướng có cơ sở nhất, theo mục 1 và mục 4.
+- **Ứng viên 2, search sâu hơn:** ba nước, hoặc dùng CNN làm chính sách tiếp diễn thay vì "chỉ né". Mục 5 cho thấy đòn bẩy nằm ở việc tạo cơ hội. Chi phí tăng theo cấp số nhân, nên cần đo tốc độ trước.
+- **Không nên** quay lại RL một phía (SD7.x) để học khoảnh khắc ra đòn: mục 2 cho thấy nó không đổi được CNN ở đúng trạng thái cần đổi.
+
+## SD8 — chuẩn bị A (chưng cất search hai nước từ G) và B (search ba nước), 20/10/2026
+
+Chưa có kết quả thí nghiệm: lượt này chỉ viết code, chạy smoke và đo tốc độ. Spec chốt trước: `docs/superpowers/specs/2026-10-20-sd8-distill-and-deep-search-design.md`. Hướng dẫn chạy: `SD8_GUIDE.md`.
+
+**Đo tốc độ** (G + search, lịch E, 3 seed chẩn đoán 6600/6610/6620 × 8 trận, chạy 6 tiến trình song song, trong scratchpad):
+
+| Agent | Giây/trận | Tổng số bước (24 trận) | Thắng chủ động (24 trận) |
+|---|---|---|---|
+| G + search2 | 12.0 / 12.0 / 13.1 (TB ~12.4) | 3665 | 20 |
+| G + search3 | 18.7 / 23.4 / 27.5 (TB ~23.2) | 2342 | 22 |
+
+Mỗi bước, search3 chậm khoảng 4 lần search2. Nhưng trận ngắn hơn, nên mỗi trận chỉ chậm khoảng 1.9 lần. Số thắng chủ động trên 24 trận chỉ là quan sát, cỡ mẫu quá nhỏ để kết luận.
+
+**Smoke** (scratchpad, không phải kết quả):
+- SD8A: collect 8 trận → 21 trạng thái quyết định (~2.6/trận, ước ~7900 cho 3000 trận; SD5.3 có 6171) và 48 mẫu neo. Train 2 epoch, validate, test đều chạy qua. Mở test lần hai bị từ chối, và `--resume` trên bộ dữ liệu đã đủ không thu lại.
+- SD8B: validate và test chạy qua. Test không có `--validation` thì bị từ chối.
+
+**Phân công** theo yêu cầu người dùng: hướng nhẹ hơn do người dùng chạy, hướng nặng hơn do bạn chạy.
+- **B: người dùng chạy.** Khoảng 7–8 giờ CPU, ~1.5–2 giờ thực. Tái dùng 400 trận G+search2 của SD7.9b, nên validation chỉ cần chạy G+search3.
+- **A: bạn chạy.** Thu 3000 trận G+search2 mất ~10–15 giờ CPU, cộng validate/test ~3 giờ CPU và train trên GPU.
+
+Seed test giữ chỗ: **48000** cho SD8A, **49000** cho SD8B. Seed mới tiếp theo là 50000.

@@ -1,0 +1,91 @@
+Warm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+[C] ep    50 | WR:  66.0% | active WR:  54.0% | kills: 0.54 | reward: +8.565 | bombs: 34.0 | walls: 9.2 | combat bombs: 946/6190 | loss: 9.4985 | lr: 2.5e-05 | pool: 0
+[C] ep   100 | WR:  52.0% | active WR:  36.0% | kills: 0.36 | reward: +6.132 | bombs: 44.9 | walls: 9.9 | combat bombs: 1350/7387 | loss: 10.8721 | lr: 2.4e-05 | pool: 0
+[C] ep   150 | WR:  70.0% | active WR:  40.0% | kills: 0.40 | reward: +6.807 | bombs: 38.9 | walls: 10.0 | combat bombs: 1127/5826 | loss: 0.2011 | lr: 2.4e-05 | pool: 0
+[C] ep   200 | WR:  48.0% | active WR:  32.0% | kills: 0.32 | reward: +5.332 | bombs: 39.4 | walls: 9.1 | combat bombs: 1034/6812 | loss: 27.0574 | lr: 2.3e-05 | pool: 0
+[C] ep   250 | WR:  72.0% | active WR:  42.0% | kills: 0.42 | reward: +6.981 | bombs: 37.7 | walls: 9.1 | combat bombs: 1089/6030 | loss: 0.5085 | lr: 2.2e-05 | pool: 0
+[C] ep   300 | WR:  56.0% | active WR:  44.0% | kills: 0.44 | reward: +7.106 | bombs: 43.0 | walls: 9.3 | combat bombs: 1363/6522 | loss: 19.9174 | lr: 2.0e-05 | pool: 0
+[C] ep   350 | WR:  48.0% | active WR:  30.0% | kills: 0.30 | reward: +5.161 | bombs: 41.4 | walls: 9.2 | combat bombs: 1279/6311 | loss: 19.6407 | lr: 1.9e-05 | pool: 0
+[C] ep   400 | WR:  64.0% | active WR:  46.0% | kills: 0.46 | reward: +7.476 | bombs: 36.3 | walls: 9.3 | combat bombs: 970/6001 | loss: 0.0177 | lr: 1.7e-05 | pool: 0
+[C] ep   450 | WR:  62.0% | active WR:  36.0% | kills: 0.36 | reward: +6.096 | bombs: 37.9 | walls: 9.5 | combat bombs: 1072/6144 | loss: 22.6038 | lr: 1.5e-05 | pool: 0
+[C] ep   500 | WR:  58.0% | active WR:  40.0% | kills: 0.40 | reward: +6.721 | bombs: 38.9 | walls: 9.7 | combat bombs: 1108/6283 | loss: 0.8272 | lr: 1.3e-05 | pool: 0
+[C] ep   550 | WR:  60.0% | active WR:  44.0% | kills: 0.44 | reward: +7.245 | bombs: 38.9 | walls: 9.6 | combat bombs: 1108/6220 | loss: 1.8112 | lr: 1.1e-05 | pool: 0
+[C] ep   600 | WR:  64.0% | active WR:  34.0% | kills: 0.34 | reward: +5.875 | bombs: 43.6 | walls: 9.9 | combat bombs: 1276/7123 | loss: 0.3898 | lr: 9.5e-06 | pool: 0
+[C] ep   650 | WR:  64.0% | active WR:  36.0% | kills: 0.36 | reward: +6.084 | bombs: 38.6 | walls: 9.4 | combat bombs: 1094/6276 | loss: 0.9920 | lr: 7.7e-06 | pool: 0
+[C] ep   700 | WR:  54.0% | active WR:  40.0% | kills: 0.40 | reward: +6.664 | bombs: 42.5 | walls: 9.7 | combat bombs: 1242/6988 | loss: 29.3210 | lr: 6.1e-06 | pool: 0
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\run_sd76_pilot.py", line 183, in <module>
+    train_arm(a.output, a.arm, a.device, a.smoke, a.resume)
+  File "D:\fpt\subject\BomberMan\run_sd76_pilot.py", line 46, in train_arm
+    sd74.run_arm(Path(output) / arm, {**train_config(output, arm, smoke), 'device': device}, SOURCE_FILES,
+  File "D:\fpt\subject\BomberMan\run_sd74_probe.py", line 81, in run_arm
+    trainer.train(**{k: v for k, v in config.items() if k != 'device'}, device=device,
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1341, in train
+    groups = [[group_mod.rollout(snap, aid,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1341, in <listcomp>
+    groups = [[group_mod.rollout(snap, aid,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1341, in <listcomp>
+    groups = [[group_mod.rollout(snap, aid,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\group_rl.py", line 70, in rollout
+    mask = _safe_action_mask(env, aid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\rule_based_bot.py", line 148, in _safe_action_mask
+    safe, blocked, burns = _survival_map(env, r, c, avoid_contests=avoid_contests,
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\rule_based_bot.py", line 98, in _survival_map
+    burns, blocked = env._forecast_blasts(extra_bomb)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\bomberman_env.py", line -1, in _forecast_blasts
+KeyboardInterrupt
+^CWarm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+[C] ep   750 | WR:  66.0% | active WR:  42.0% | kills: 0.42 | reward: +6.886 | bombs: 41.7 | walls: 9.6 | combat bombs: 1108/6702 | loss: 34.1373 | lr: 4.7e-06 | pool: 0
+[C] ep   800 | WR:  48.0% | active WR:  28.0% | kills: 0.28 | reward: +4.958 | bombs: 46.3 | walls: 9.9 | combat bombs: 1337/7701 | loss: 1.5449 | lr: 3.5e-06 | pool: 0
+[C] ep   850 | WR:  60.0% | active WR:  38.0% | kills: 0.38 | reward: +6.318 | bombs: 38.8 | walls: 9.5 | combat bombs: 1115/6429 | loss: 0.2418 | lr: 2.5e-06 | pool: 0
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\run_sd76_pilot.py", line 183, in <module>
+    train_arm(a.output, a.arm, a.device, a.smoke, a.resume)
+  File "D:\fpt\subject\BomberMan\run_sd76_pilot.py", line 46, in train_arm
+    sd74.run_arm(Path(output) / arm, {**train_config(output, arm, smoke), 'device': device}, SOURCE_FILES,
+  File "D:\fpt\subject\BomberMan\run_sd74_probe.py", line 81, in run_arm
+    trainer.train(**{k: v for k, v in config.items() if k != 'device'}, device=device,
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1341, in train
+    groups = [[group_mod.rollout(snap, aid,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1341, in <listcomp>
+    groups = [[group_mod.rollout(snap, aid,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\train_actor_critic.py", line 1341, in <listcomp>
+    groups = [[group_mod.rollout(snap, aid,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\group_rl.py", line 71, in rollout
+    actions[aid] = select(obs, mask)
+                   ^^^^^^^^^^^^^^^^^
+  File "D:\anaconda\envs\torch\Lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fpt\subject\BomberMan\group_rl.py", line 92, in select
+    logits, _ = net(torch.from_numpy(np.asarray(obs, dtype=np.float32)).unsqueeze(0).to(device))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: unknown error
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Traceback (most recent call last):
+  File "D:\fpt\subject\BomberMan\run_sd76_pilot.py", line 183, in <module>
+    train_arm(a.output, a.arm, a.device, a.smoke, a.resume)
+  File "D:\fpt\subject\BomberMan\run_sd76_pilot.py", line 46, in train_arm
+    sd74.run_arm(Path(output) / arm, {**train_config(output, arm, smoke), 'device': device}, SOURCE_FILES,
+  File "D:\fpt\subject\BomberMan\run_sd74_probe.py", line 52, in run_arm
+    raise ValueError('Arm config changed; resume refused')
+ValueError: Arm config changed; resume refused
+Warm-started from D:\fpt\subject\BomberMan\runs\sd75-20261018\full\best_phaseC.pt
+[C] ep   900 | WR:  72.0% | active WR:  50.0% | kills: 0.50 | reward: +8.153 | bombs: 38.7 | walls: 9.8 | combat bombs: 1125/6154 | loss: -0.3528 | lr: 1.8e-06 | pool: 0
+[C] ep   950 | WR:  56.0% | active WR:  46.0% | kills: 0.46 | reward: +7.524 | bombs: 39.2 | walls: 9.8 | combat bombs: 1083/6598 | loss: 12.7678 | lr: 1.4e-06 | pool: 0
+[C] ep  1000 | WR:  58.0% | active WR:  40.0% | kills: 0.40 | reward: +6.732 | bombs: 41.8 | walls: 9.8 | combat bombs: 1146/7022 | loss: 0.9425 | lr: 1.3e-06 | pool: 0
+
+Saved final model to runs\sd76-20261019\buffer\final_phaseC.pt
+Saved best model to runs\sd76-20261019\buffer\best_phaseC.pt (best episode: 0)

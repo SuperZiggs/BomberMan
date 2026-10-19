@@ -1,0 +1,13 @@
+{
+  "games": 3000,
+  "diagnostic_rates": {
+    "win": 79.66666666666667,
+    "active_win": 65.8,
+    "draw": 19.4,
+    "suicide": 0.03333333333333333,
+    "sudden_death_death": 1.0666666666666667
+  },
+  "audit_samples": 6171,
+  "audit_agreement": 0.7919299951385513,
+  "shards": 60
+}
