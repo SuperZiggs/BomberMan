@@ -2136,3 +2136,39 @@ Mỗi bước, search3 chậm khoảng 4 lần search2. Nhưng trận ngắn hơ
 - **A: bạn chạy.** Thu 3000 trận G+search2 mất ~10–15 giờ CPU, cộng validate/test ~3 giờ CPU và train trên GPU.
 
 Seed test giữ chỗ: **48000** cho SD8A, **49000** cho SD8B. Seed mới tiếp theo là 50000.
+
+## SD8A — chưng cất G + search hai nước thành CNN thuần, test seed 48000, 20/10/2026
+
+Thư mục `runs/sd8a-20261020` (log theo từng stage, ZIP `runs/sd8a-20261020-send.zip`). Theo đúng thứ tự của spec, chạy `collect --resume`, `train`, `validate`, rồi mở test một lần. Không đổi source trong khi chạy. Bộ kiểm tra trước lượt chạy: 425 OK, 16 bỏ qua.
+
+**Thu thập/huấn luyện.** Teacher G + search hai nước chơi 3000 trận, cho 8449 trạng thái quyết định và 29483 mẫu neo. Tỉ lệ teacher: thắng 93.10%, thắng chủ động 84.33%, hòa 6.17% (chỉ mô tả dữ liệu train). Từ G, train 16 epoch và lưu ứng viên 4/8/12/16; validation seed 21000, 400 trận/nhánh, chọn epoch 16.
+
+| Checkpoint | ActiveWR | Tự nổ | WR | Hòa |
+|---|---:|---:|---:|---:|
+| G | 48.25 | 1.25 | 69.0 | 20.5 |
+| epoch 4 | 71.0 | 1.75 | 82.5 | 10.25 |
+| epoch 8 | 77.5 | 1.25 | 86.25 | 8.75 |
+| epoch 12 | 78.5 | 0.75 | 88.0 | 7.5 |
+| **epoch 16 (S2)** | **84.0** | **0.0** | **93.0** | **6.5** |
+
+**Test một lần, seed 48000, 400 trận/agent (200 cặp bàn).** S2 = `runs/sd8a-20261020/train/epoch_16.pt`. Lịch E là lịch gate; lịch off chỉ báo cáo.
+
+| Agent | Lịch | WR | ActiveWR | Hòa | Thắng thụ động | Thắng nhờ vòng | Tự nổ | Chết vì vòng | Kills | Bom/trận | Số bước |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| S2 | E | **90.25** | **83.0** | 7.0 | 5.5 | 1.75 | 0.25 | 1.25 | 0.83 | 20.3 | 211 |
+| G | E | 65.25 | 48.0 | 24.25 | 9.0 | 8.25 | 0.75 | 11.5 | 0.48 | 30.0 | 327 |
+| S | E | 77.0 | 57.5 | 20.5 | 7.25 | 12.25 | 0.25 | 2.0 | 0.58 | 27.1 | 298 |
+| G + search2 | E | 94.75 | **86.5** | 5.25 | 6.5 | 1.75 | 0.0 | 0.0 | 0.87 | 19.4 | 196 |
+| S2 | off | 89.25 | **83.75** | 9.0 | 5.5 | — | 0.25 | — | 0.84 | 20.4 | 211 |
+| G | off | 53.25 | 45.75 | 43.5 | 7.5 | — | 0.75 | — | 0.46 | 30.7 | 331 |
+| S | off | 67.0 | 60.75 | 31.5 | 6.25 | — | 0.25 | — | 0.61 | 27.9 | 301 |
+
+| So cặp lịch E | ActiveWR Δpp (CI95) | WR Δpp | Hòa Δpp | Tự nổ Δpp |
+|---|---:|---:|---:|---:|
+| S2 − G | **+35.0 [ +29.0, +41.25 ]** | +25.0 | −17.25 | −0.5 |
+| S2 − S | **+25.5 [ +19.25, +31.75 ]** | +13.25 | −13.5 | 0.0 |
+| S2 − G + search2 | −3.5 [−8.25, +1.25] | −4.5 | +1.75 | +0.25 |
+
+**Gate: ĐẠT.** S2 − G vượt +5pp, cận dưới CI dương, và tự nổ không tăng quá +1pp. Luật phụ cũng ĐẠT: S2 thay S (cận dưới ActiveWR +19.25pp > 0). S2 chuyển phần lớn khác biệt từ hòa và chết vì vòng sang thắng chủ động; số bước giảm 327 → 211 và bom/trận 30.0 → 20.3 so với G.
+
+**Quyết định:** CNN thuần tốt nhất hiện tại là **S2 epoch 16**. G + search hai nước vẫn có ActiveWR cao hơn 3.5pp trên seed này; CI của S2 − G+search2 bao gồm 0, nên chưa có bằng chứng S2 thay được search runtime. Seed test 48000 đã dùng. Giới hạn: một seed train/test và teacher RuleBot trùng đối thủ đánh giá.

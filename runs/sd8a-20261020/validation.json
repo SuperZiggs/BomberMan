@@ -1,0 +1,282 @@
+{
+  "seed": 21000,
+  "results": {
+    "G": {
+      "num_episodes": 400,
+      "win_rate": 69.0,
+      "active_win_rate": 48.25,
+      "passive_win_rate": 10.25,
+      "sudden_death_win_rate": 10.5,
+      "draw_rate": 20.5,
+      "suicide_rate": 1.25,
+      "sudden_death_death_rate": 9.5,
+      "avg_kills": 0.4825,
+      "avg_bombs": 30.0525,
+      "avg_steps": 332.2425
+    },
+    "epoch_4": {
+      "num_episodes": 400,
+      "win_rate": 82.5,
+      "active_win_rate": 71.0,
+      "passive_win_rate": 4.5,
+      "sudden_death_win_rate": 7.0,
+      "draw_rate": 10.25,
+      "suicide_rate": 1.75,
+      "sudden_death_death_rate": 5.5,
+      "avg_kills": 0.71,
+      "avg_bombs": 23.4475,
+      "avg_steps": 251.1825
+    },
+    "epoch_8": {
+      "num_episodes": 400,
+      "win_rate": 86.25,
+      "active_win_rate": 77.5,
+      "passive_win_rate": 6.0,
+      "sudden_death_win_rate": 2.75,
+      "draw_rate": 8.75,
+      "suicide_rate": 1.25,
+      "sudden_death_death_rate": 3.75,
+      "avg_kills": 0.775,
+      "avg_bombs": 22.5275,
+      "avg_steps": 233.475
+    },
+    "epoch_12": {
+      "num_episodes": 400,
+      "win_rate": 88.0,
+      "active_win_rate": 78.5,
+      "passive_win_rate": 6.0,
+      "sudden_death_win_rate": 3.5,
+      "draw_rate": 7.5,
+      "suicide_rate": 0.75,
+      "sudden_death_death_rate": 3.75,
+      "avg_kills": 0.785,
+      "avg_bombs": 20.8525,
+      "avg_steps": 213.835
+    },
+    "epoch_16": {
+      "num_episodes": 400,
+      "win_rate": 93.0,
+      "active_win_rate": 84.0,
+      "passive_win_rate": 4.5,
+      "sudden_death_win_rate": 4.5,
+      "draw_rate": 6.5,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.25,
+      "avg_kills": 0.84,
+      "avg_bombs": 20.375,
+      "avg_steps": 208.9175
+    }
+  },
+  "paired_vs_G": {
+    "epoch_4": {
+      "active_win": {
+        "difference_pp": 22.75,
+        "ci95_pp": [
+          16.0,
+          29.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 13.5,
+        "ci95_pp": [
+          8.0,
+          19.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -10.25,
+        "ci95_pp": [
+          -15.0,
+          -5.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": -5.75,
+        "ci95_pp": [
+          -9.0,
+          -2.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -1.25,
+          2.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "epoch_8": {
+      "active_win": {
+        "difference_pp": 29.25,
+        "ci95_pp": [
+          23.0,
+          35.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 17.25,
+        "ci95_pp": [
+          11.75,
+          23.0
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -11.75,
+        "ci95_pp": [
+          -16.75,
+          -7.000000000000001
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": -4.25,
+        "ci95_pp": [
+          -8.0,
+          -0.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -1.5,
+          1.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "epoch_12": {
+      "active_win": {
+        "difference_pp": 30.25,
+        "ci95_pp": [
+          24.25,
+          36.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 19.0,
+        "ci95_pp": [
+          13.5,
+          24.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -13.0,
+        "ci95_pp": [
+          -17.75,
+          -8.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": -4.25,
+        "ci95_pp": [
+          -8.0,
+          -0.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -0.5,
+        "ci95_pp": [
+          -2.0,
+          0.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "epoch_16": {
+      "active_win": {
+        "difference_pp": 35.75,
+        "ci95_pp": [
+          29.75,
+          41.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 24.0,
+        "ci95_pp": [
+          18.75,
+          29.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -14.000000000000002,
+        "ci95_pp": [
+          -18.75,
+          -9.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": -5.75,
+        "ci95_pp": [
+          -9.0,
+          -2.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -2.5,
+          -0.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "selected_epoch": 16,
+  "selected_checkpoint": "runs\\sd8a-20261020\\train\\epoch_16.pt"
+}

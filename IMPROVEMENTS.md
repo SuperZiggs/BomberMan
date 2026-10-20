@@ -742,3 +742,12 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
   - Toàn bộ suite: 425 test OK, 16 bỏ qua.
 - Kết quả đo tốc độ và smoke: RESULTS "SD8 — chuẩn bị".
 - Trạng thái: code xong, chưa chạy full. Người dùng chạy B, bạn chạy A.
+
+## 59. SD8A — chưng cất search hai nước từ G, lượt chạy thật (2026-10-20)
+
+- Không đổi mã nguồn trong lượt chạy. Chạy tuần tự `collect --resume` → `train` → `validate` → `test` trong `runs/sd8a-20261020`; tất cả artifact bắt buộc đã xuất hiện. Suite kiểm tra trước khi chạy: 425 OK, 16 bỏ qua.
+- **Dữ liệu teacher:** 3000 trận G + search hai nước, 8449 trạng thái quyết định và 29483 mẫu neo. Teacher thắng 93.10%, thắng chủ động 84.33%, hòa 6.17% trên lượt thu thập; đây là dữ liệu huấn luyện, không phải test độc lập.
+- **Huấn luyện/chọn checkpoint:** bốn checkpoint epoch 4/8/12/16; validation seed 21000 chọn epoch 16 theo ActiveWR cao nhất và ràng buộc tự nổ. ActiveWR lần lượt 71.0 / 77.5 / 78.5 / **84.0** so với G 48.25; tự nổ ở epoch 16 là 0.0 so với G 1.25.
+- **Test đã mở một lần:** seed 48000, 400 trận mỗi agent, 200 cặp bàn. CNN thuần S2 (epoch 16) đạt 83.0% ActiveWR, so với G 48.0% và S 57.5%; S2 − G = **+35.0pp [ +29.0, +41.25 ]**, tự nổ −0.5pp. Gate SD8A ĐẠT và luật phụ thay S cũng ĐẠT: S2 − S = **+25.5pp [ +19.25, +31.75 ]**, tự nổ không đổi.
+- **Giới hạn/đối chiếu:** G + search hai nước lúc chơi vẫn cao hơn S2 3.5pp ActiveWR trên seed này (86.5% so với 83.0%; CI của S2 − G+search2 là [−8.25, +1.25]), nên S2 là CNN thuần tốt nhất hiện tại chứ chưa chứng minh thay được search runtime. Một seed train và một seed test; teacher dùng RuleBot, cũng là đối thủ đánh giá.
+- Trạng thái: SD8A hoàn tất, ĐẠT. Checkpoint CNN khuyến nghị mới: `runs/sd8a-20261020/train/epoch_16.pt`; agent tổng thể mạnh nhất vẫn là G + `search_action2` khi chấp nhận chi phí search.
