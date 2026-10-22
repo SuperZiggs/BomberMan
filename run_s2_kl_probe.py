@@ -7,6 +7,9 @@ from pathlib import Path
 import sys
 
 from s2_kl_protocol import ROOT, config_for, seed_manifest, register, verify_run
+from s2_kl_training import build_train_schedule, candidates_for_run, train_arm
+from s2_kl_evaluation import (load_samples, decision_targets, diagnose_model, validation_tasks,
+    cluster_comparison, decide_gate, build_report)
 
 
 def main(argv=None):
