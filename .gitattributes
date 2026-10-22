@@ -1,1 +1,4 @@
 *.pt filter=lfs diff=lfs merge=lfs -text
+# Preserve the bytes covered by registered experiment and report hashes.
+runs/phaseD-s2-20261022/** -text
+runs/phaseD-s2-validation-full-20261023/** -text

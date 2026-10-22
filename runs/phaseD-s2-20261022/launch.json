@@ -1,0 +1,14 @@
+{
+  "terminal_pid": 21924,
+  "launched_at": "2026-10-22T16:18:30.7115672+07:00",
+  "device": "cuda:0",
+  "arm_order": [
+    "control",
+    "pool"
+  ],
+  "episodes_per_arm": 2000,
+  "launcher": "E:\\Bomberman\\runs\\phaseD-s2-20261022-train.cmd",
+  "monitor_requested": false,
+  "validation_started": false,
+  "test_started": false
+}

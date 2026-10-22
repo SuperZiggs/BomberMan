@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-10-22T19:03:06.8819131+07:00",
+  "action": "resume_training",
+  "terminal_pid": 19628,
+  "launcher": "E:\\Bomberman\\runs\\phaseD-s2-20261022-train.cmd",
+  "output": "E:\\Bomberman\\runs\\phaseD-s2-20261022",
+  "device": "cuda:0",
+  "registration_digest": "474530836ca88ee9be260f8ca3af7f823e2fe3ec9ecba7f2f7a5c086d4de1951",
+  "preflight": {
+    "verification_passed": true,
+    "control_completed_episode": 2000,
+    "control_complete": true,
+    "pool_completed_episode": 2,
+    "duplicate_process_found": false
+  },
+  "post_launch_monitoring": false
+}

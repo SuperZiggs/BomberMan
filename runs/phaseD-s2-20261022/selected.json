@@ -1,0 +1,693 @@
+{
+  "models": {
+    "S2": {
+      "id": "S2",
+      "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "episode": 0,
+      "role": "reference",
+      "metrics": {
+        "G": {
+          "games": 80,
+          "win_rate": 28.749999999999996,
+          "active_win_rate": 7.5,
+          "draw_rate": 63.74999999999999,
+          "passive_win_rate": 0.0,
+          "sudden_death_win_rate": 21.25,
+          "suicide_rate": 7.5,
+          "sudden_death_death_rate": 7.5,
+          "elapsed_seconds": 116.74532400000317,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 35.0,
+              "active_win_rate": 10.0,
+              "draw_rate": 60.0,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 25.0,
+              "suicide_rate": 5.0,
+              "sudden_death_death_rate": 7.5
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 22.5,
+              "active_win_rate": 5.0,
+              "draw_rate": 67.5,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 17.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 7.5
+            }
+          },
+          "avg_kills": 0.0875,
+          "avg_bombs": 41.0375,
+          "avg_steps": 449.2375
+        },
+        "F": {
+          "games": 80,
+          "win_rate": 27.500000000000004,
+          "active_win_rate": 6.25,
+          "draw_rate": 63.74999999999999,
+          "passive_win_rate": 0.0,
+          "sudden_death_win_rate": 21.25,
+          "suicide_rate": 6.25,
+          "sudden_death_death_rate": 8.75,
+          "elapsed_seconds": 117.9768979000255,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 27.500000000000004,
+              "active_win_rate": 5.0,
+              "draw_rate": 57.49999999999999,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 22.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 10.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 27.500000000000004,
+              "active_win_rate": 7.5,
+              "draw_rate": 70.0,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 20.0,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 7.5
+            }
+          },
+          "avg_kills": 0.0625,
+          "avg_bombs": 41.2875,
+          "avg_steps": 453.0875
+        },
+        "S": {
+          "games": 80,
+          "win_rate": 16.25,
+          "active_win_rate": 6.25,
+          "draw_rate": 73.75,
+          "passive_win_rate": 3.75,
+          "sudden_death_win_rate": 6.25,
+          "suicide_rate": 2.5,
+          "sudden_death_death_rate": 11.25,
+          "elapsed_seconds": 120.1547799,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 17.5,
+              "active_win_rate": 7.5,
+              "draw_rate": 75.0,
+              "passive_win_rate": 2.5,
+              "sudden_death_win_rate": 7.5,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 7.5
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 15.0,
+              "active_win_rate": 5.0,
+              "draw_rate": 72.5,
+              "passive_win_rate": 5.0,
+              "sudden_death_win_rate": 5.0,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 15.0
+            }
+          },
+          "avg_kills": 0.0625,
+          "avg_bombs": 41.0375,
+          "avg_steps": 458.175
+        },
+        "S2": {
+          "games": 80,
+          "win_rate": 17.5,
+          "active_win_rate": 5.0,
+          "draw_rate": 65.0,
+          "passive_win_rate": 3.75,
+          "sudden_death_win_rate": 8.75,
+          "suicide_rate": 8.75,
+          "sudden_death_death_rate": 13.750000000000002,
+          "elapsed_seconds": 111.27284769999096,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 10.0,
+              "active_win_rate": 0.0,
+              "draw_rate": 65.0,
+              "passive_win_rate": 2.5,
+              "sudden_death_win_rate": 7.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 15.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 25.0,
+              "active_win_rate": 10.0,
+              "draw_rate": 65.0,
+              "passive_win_rate": 5.0,
+              "sudden_death_win_rate": 10.0,
+              "suicide_rate": 7.5,
+              "sudden_death_death_rate": 12.5
+            }
+          },
+          "avg_kills": 0.05,
+          "avg_bombs": 39.2125,
+          "avg_steps": 421.1
+        },
+        "RB": {
+          "games": 80,
+          "win_rate": 93.75,
+          "active_win_rate": 83.75,
+          "draw_rate": 5.0,
+          "passive_win_rate": 8.75,
+          "sudden_death_win_rate": 1.25,
+          "suicide_rate": 0.0,
+          "sudden_death_death_rate": 0.0,
+          "elapsed_seconds": 37.48832679999032,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 92.5,
+              "active_win_rate": 85.0,
+              "draw_rate": 5.0,
+              "passive_win_rate": 7.5,
+              "sudden_death_win_rate": 0.0,
+              "suicide_rate": 0.0,
+              "sudden_death_death_rate": 0.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 95.0,
+              "active_win_rate": 82.5,
+              "draw_rate": 5.0,
+              "passive_win_rate": 10.0,
+              "sudden_death_win_rate": 2.5,
+              "suicide_rate": 0.0,
+              "sudden_death_death_rate": 0.0
+            }
+          },
+          "avg_kills": 0.8375,
+          "avg_bombs": 20.7125,
+          "avg_steps": 211.0375
+        }
+      }
+    },
+    "control": {
+      "id": "S2",
+      "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "episode": 0,
+      "role": "reference",
+      "metrics": {
+        "G": {
+          "games": 80,
+          "win_rate": 28.749999999999996,
+          "active_win_rate": 7.5,
+          "draw_rate": 63.74999999999999,
+          "passive_win_rate": 0.0,
+          "sudden_death_win_rate": 21.25,
+          "suicide_rate": 7.5,
+          "sudden_death_death_rate": 7.5,
+          "elapsed_seconds": 116.74532400000317,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 35.0,
+              "active_win_rate": 10.0,
+              "draw_rate": 60.0,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 25.0,
+              "suicide_rate": 5.0,
+              "sudden_death_death_rate": 7.5
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 22.5,
+              "active_win_rate": 5.0,
+              "draw_rate": 67.5,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 17.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 7.5
+            }
+          },
+          "avg_kills": 0.0875,
+          "avg_bombs": 41.0375,
+          "avg_steps": 449.2375
+        },
+        "F": {
+          "games": 80,
+          "win_rate": 27.500000000000004,
+          "active_win_rate": 6.25,
+          "draw_rate": 63.74999999999999,
+          "passive_win_rate": 0.0,
+          "sudden_death_win_rate": 21.25,
+          "suicide_rate": 6.25,
+          "sudden_death_death_rate": 8.75,
+          "elapsed_seconds": 117.9768979000255,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 27.500000000000004,
+              "active_win_rate": 5.0,
+              "draw_rate": 57.49999999999999,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 22.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 10.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 27.500000000000004,
+              "active_win_rate": 7.5,
+              "draw_rate": 70.0,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 20.0,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 7.5
+            }
+          },
+          "avg_kills": 0.0625,
+          "avg_bombs": 41.2875,
+          "avg_steps": 453.0875
+        },
+        "S": {
+          "games": 80,
+          "win_rate": 16.25,
+          "active_win_rate": 6.25,
+          "draw_rate": 73.75,
+          "passive_win_rate": 3.75,
+          "sudden_death_win_rate": 6.25,
+          "suicide_rate": 2.5,
+          "sudden_death_death_rate": 11.25,
+          "elapsed_seconds": 120.1547799,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 17.5,
+              "active_win_rate": 7.5,
+              "draw_rate": 75.0,
+              "passive_win_rate": 2.5,
+              "sudden_death_win_rate": 7.5,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 7.5
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 15.0,
+              "active_win_rate": 5.0,
+              "draw_rate": 72.5,
+              "passive_win_rate": 5.0,
+              "sudden_death_win_rate": 5.0,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 15.0
+            }
+          },
+          "avg_kills": 0.0625,
+          "avg_bombs": 41.0375,
+          "avg_steps": 458.175
+        },
+        "S2": {
+          "games": 80,
+          "win_rate": 17.5,
+          "active_win_rate": 5.0,
+          "draw_rate": 65.0,
+          "passive_win_rate": 3.75,
+          "sudden_death_win_rate": 8.75,
+          "suicide_rate": 8.75,
+          "sudden_death_death_rate": 13.750000000000002,
+          "elapsed_seconds": 111.27284769999096,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 10.0,
+              "active_win_rate": 0.0,
+              "draw_rate": 65.0,
+              "passive_win_rate": 2.5,
+              "sudden_death_win_rate": 7.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 15.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 25.0,
+              "active_win_rate": 10.0,
+              "draw_rate": 65.0,
+              "passive_win_rate": 5.0,
+              "sudden_death_win_rate": 10.0,
+              "suicide_rate": 7.5,
+              "sudden_death_death_rate": 12.5
+            }
+          },
+          "avg_kills": 0.05,
+          "avg_bombs": 39.2125,
+          "avg_steps": 421.1
+        },
+        "RB": {
+          "games": 80,
+          "win_rate": 93.75,
+          "active_win_rate": 83.75,
+          "draw_rate": 5.0,
+          "passive_win_rate": 8.75,
+          "sudden_death_win_rate": 1.25,
+          "suicide_rate": 0.0,
+          "sudden_death_death_rate": 0.0,
+          "elapsed_seconds": 37.48832679999032,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 92.5,
+              "active_win_rate": 85.0,
+              "draw_rate": 5.0,
+              "passive_win_rate": 7.5,
+              "sudden_death_win_rate": 0.0,
+              "suicide_rate": 0.0,
+              "sudden_death_death_rate": 0.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 95.0,
+              "active_win_rate": 82.5,
+              "draw_rate": 5.0,
+              "passive_win_rate": 10.0,
+              "sudden_death_win_rate": 2.5,
+              "suicide_rate": 0.0,
+              "sudden_death_death_rate": 0.0
+            }
+          },
+          "avg_kills": 0.8375,
+          "avg_bombs": 20.7125,
+          "avg_steps": 211.0375
+        }
+      }
+    },
+    "pool": {
+      "id": "S2",
+      "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "episode": 0,
+      "role": "reference",
+      "metrics": {
+        "G": {
+          "games": 80,
+          "win_rate": 28.749999999999996,
+          "active_win_rate": 7.5,
+          "draw_rate": 63.74999999999999,
+          "passive_win_rate": 0.0,
+          "sudden_death_win_rate": 21.25,
+          "suicide_rate": 7.5,
+          "sudden_death_death_rate": 7.5,
+          "elapsed_seconds": 116.74532400000317,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 35.0,
+              "active_win_rate": 10.0,
+              "draw_rate": 60.0,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 25.0,
+              "suicide_rate": 5.0,
+              "sudden_death_death_rate": 7.5
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 22.5,
+              "active_win_rate": 5.0,
+              "draw_rate": 67.5,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 17.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 7.5
+            }
+          },
+          "avg_kills": 0.0875,
+          "avg_bombs": 41.0375,
+          "avg_steps": 449.2375
+        },
+        "F": {
+          "games": 80,
+          "win_rate": 27.500000000000004,
+          "active_win_rate": 6.25,
+          "draw_rate": 63.74999999999999,
+          "passive_win_rate": 0.0,
+          "sudden_death_win_rate": 21.25,
+          "suicide_rate": 6.25,
+          "sudden_death_death_rate": 8.75,
+          "elapsed_seconds": 117.9768979000255,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 27.500000000000004,
+              "active_win_rate": 5.0,
+              "draw_rate": 57.49999999999999,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 22.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 10.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 27.500000000000004,
+              "active_win_rate": 7.5,
+              "draw_rate": 70.0,
+              "passive_win_rate": 0.0,
+              "sudden_death_win_rate": 20.0,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 7.5
+            }
+          },
+          "avg_kills": 0.0625,
+          "avg_bombs": 41.2875,
+          "avg_steps": 453.0875
+        },
+        "S": {
+          "games": 80,
+          "win_rate": 16.25,
+          "active_win_rate": 6.25,
+          "draw_rate": 73.75,
+          "passive_win_rate": 3.75,
+          "sudden_death_win_rate": 6.25,
+          "suicide_rate": 2.5,
+          "sudden_death_death_rate": 11.25,
+          "elapsed_seconds": 120.1547799,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 17.5,
+              "active_win_rate": 7.5,
+              "draw_rate": 75.0,
+              "passive_win_rate": 2.5,
+              "sudden_death_win_rate": 7.5,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 7.5
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 15.0,
+              "active_win_rate": 5.0,
+              "draw_rate": 72.5,
+              "passive_win_rate": 5.0,
+              "sudden_death_win_rate": 5.0,
+              "suicide_rate": 2.5,
+              "sudden_death_death_rate": 15.0
+            }
+          },
+          "avg_kills": 0.0625,
+          "avg_bombs": 41.0375,
+          "avg_steps": 458.175
+        },
+        "S2": {
+          "games": 80,
+          "win_rate": 17.5,
+          "active_win_rate": 5.0,
+          "draw_rate": 65.0,
+          "passive_win_rate": 3.75,
+          "sudden_death_win_rate": 8.75,
+          "suicide_rate": 8.75,
+          "sudden_death_death_rate": 13.750000000000002,
+          "elapsed_seconds": 111.27284769999096,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 10.0,
+              "active_win_rate": 0.0,
+              "draw_rate": 65.0,
+              "passive_win_rate": 2.5,
+              "sudden_death_win_rate": 7.5,
+              "suicide_rate": 10.0,
+              "sudden_death_death_rate": 15.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 25.0,
+              "active_win_rate": 10.0,
+              "draw_rate": 65.0,
+              "passive_win_rate": 5.0,
+              "sudden_death_win_rate": 10.0,
+              "suicide_rate": 7.5,
+              "sudden_death_death_rate": 12.5
+            }
+          },
+          "avg_kills": 0.05,
+          "avg_bombs": 39.2125,
+          "avg_steps": 421.1
+        },
+        "RB": {
+          "games": 80,
+          "win_rate": 93.75,
+          "active_win_rate": 83.75,
+          "draw_rate": 5.0,
+          "passive_win_rate": 8.75,
+          "sudden_death_win_rate": 1.25,
+          "suicide_rate": 0.0,
+          "sudden_death_death_rate": 0.0,
+          "elapsed_seconds": 37.48832679999032,
+          "by_corner": {
+            "0": {
+              "games": 40,
+              "win_rate": 92.5,
+              "active_win_rate": 85.0,
+              "draw_rate": 5.0,
+              "passive_win_rate": 7.5,
+              "sudden_death_win_rate": 0.0,
+              "suicide_rate": 0.0,
+              "sudden_death_death_rate": 0.0
+            },
+            "1": {
+              "games": 40,
+              "win_rate": 95.0,
+              "active_win_rate": 82.5,
+              "draw_rate": 5.0,
+              "passive_win_rate": 10.0,
+              "sudden_death_win_rate": 2.5,
+              "suicide_rate": 0.0,
+              "sudden_death_death_rate": 0.0
+            }
+          },
+          "avg_kills": 0.8375,
+          "avg_bombs": 20.7125,
+          "avg_steps": 211.0375
+        }
+      }
+    }
+  },
+  "validation_summary": {
+    "control": [
+      {
+        "id": "control-0",
+        "guard": true,
+        "score": [
+          6.25,
+          -66.5625,
+          22.5,
+          -6.25,
+          0
+        ]
+      },
+      {
+        "id": "control-500",
+        "guard": false,
+        "score": [
+          8.4375,
+          -61.25,
+          25.625,
+          -5.3125,
+          -500
+        ]
+      },
+      {
+        "id": "control-1000",
+        "guard": false,
+        "score": [
+          9.6875,
+          -61.25,
+          27.5,
+          -5.3125,
+          -1000
+        ]
+      },
+      {
+        "id": "control-1500",
+        "guard": false,
+        "score": [
+          6.5625,
+          -60.9375,
+          25.625,
+          -5.9375,
+          -1500
+        ]
+      },
+      {
+        "id": "control-2000",
+        "guard": false,
+        "score": [
+          6.25,
+          -64.6875,
+          24.375,
+          -6.25,
+          -2000
+        ]
+      }
+    ],
+    "pool": [
+      {
+        "id": "pool-0",
+        "guard": true,
+        "score": [
+          6.25,
+          -66.5625,
+          22.5,
+          -6.25,
+          0
+        ]
+      },
+      {
+        "id": "pool-500",
+        "guard": false,
+        "score": [
+          5.625,
+          -58.4375,
+          26.875,
+          -7.5,
+          -500
+        ]
+      },
+      {
+        "id": "pool-1000",
+        "guard": false,
+        "score": [
+          5.625,
+          -59.6875,
+          27.8125,
+          -6.875,
+          -1000
+        ]
+      },
+      {
+        "id": "pool-1500",
+        "guard": false,
+        "score": [
+          5.3125,
+          -62.8125,
+          24.375,
+          -5.9375,
+          -1500
+        ]
+      },
+      {
+        "id": "pool-2000",
+        "guard": false,
+        "score": [
+          7.1875,
+          -65.3125,
+          23.4375,
+          -5.625,
+          -2000
+        ]
+      }
+    ]
+  },
+  "open_test": false,
+  "mode": "full",
+  "registration_digest": "474530836ca88ee9be260f8ca3af7f823e2fe3ec9ecba7f2f7a5c086d4de1951",
+  "validation_ledger_digest": "41ae59af9fc3bd601b320da806d88eda8167b5f0479c79842168503496025f36",
+  "test_manifest": [],
+  "selection_digest": "e863f7fc7f548356e7a48612bb0806600b109818a51b1bbd077445071294cd93"
+}

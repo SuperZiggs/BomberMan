@@ -1,0 +1,57 @@
+[Thu 10/22/2026 17:20:01.97] train pool 
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+Traceback (most recent call last):
+  File "E:\Bomberman\runs\phaseD-s2-20261022\sources\run_phase_d_s2.py", line 61, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "E:\Bomberman\runs\phaseD-s2-20261022\sources\run_phase_d_s2.py", line 51, in main
+    elif args.stage=='train':result=train_arm(args.output,args.arm,resume=args.resume)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\runs\phaseD-s2-20261022\sources\run_phase_d_s2.py", line 21, in train_arm
+    return run(*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\runs\phaseD-s2-20261022\sources\phase_d_s2_training.py", line 181, in train_arm
+    train(**reg['config']['train'],device=reg['device'],checkpoint_dir=str(directory),
+  File "E:\Bomberman\runs\phaseD-s2-20261022\sources\train_actor_critic.py", line 1165, in train
+    m_logits = logits.masked_fill(~mask_t, -1e9)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "E:\Bomberman\run_phase_d_s2.py", line 61, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "E:\Bomberman\run_phase_d_s2.py", line 49, in main
+    return subprocess.call([sys.executable,str(frozen),*(argv if argv is not None else sys.argv[1:])])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\subprocess.py", line 391, in call
+    return p.wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\subprocess.py", line 1590, in _wait
+    result = _winapi.WaitForSingleObject(self._handle,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+^C[Thu 10/22/2026 19:03:15.82] train pool --resume
+[Thu 10/22/2026 20:25:14.21] train pool --resume
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep  1150 | WR:  34.0% | active WR:  20.0% | kills: 0.20 | reward: +3.974 | bombs: 44.4 | walls: 10.9 | combat bombs: 1466/8565 | loss: 1.1210 | lr: 1.0e-05 | pool: 0
+[D] ep  1200 | WR:  36.0% | active WR:  20.0% | kills: 0.22 | reward: +3.728 | bombs: 39.6 | walls: 10.4 | combat bombs: 1244/8220 | loss: 13.3935 | lr: 9.5e-06 | pool: 0
+[D] ep  1250 | WR:  36.0% | active WR:  16.0% | kills: 0.16 | reward: +3.319 | bombs: 43.1 | walls: 10.8 | combat bombs: 1454/8895 | loss: 0.9182 | lr: 8.6e-06 | pool: 0
+[D] ep  1300 | WR:  34.0% | active WR:  10.0% | kills: 0.10 | reward: +2.471 | bombs: 41.2 | walls: 10.1 | combat bombs: 1341/8198 | loss: 0.5796 | lr: 7.7e-06 | pool: 0
+[D] ep  1350 | WR:  32.0% | active WR:  16.0% | kills: 0.20 | reward: +3.088 | bombs: 39.2 | walls: 10.4 | combat bombs: 1292/8087 | loss: 1.1513 | lr: 6.9e-06 | pool: 0
+[D] ep  1400 | WR:  34.0% | active WR:  14.0% | kills: 0.14 | reward: +3.038 | bombs: 41.6 | walls: 11.2 | combat bombs: 1417/8035 | loss: 0.9314 | lr: 6.1e-06 | pool: 0
+[D] ep  1450 | WR:  36.0% | active WR:  18.0% | kills: 0.22 | reward: +3.518 | bombs: 44.0 | walls: 10.7 | combat bombs: 1460/8618 | loss: 1.1439 | lr: 5.4e-06 | pool: 0
+[D] ep  1500 | WR:  28.0% | active WR:  18.0% | kills: 0.18 | reward: +3.649 | bombs: 41.8 | walls: 10.6 | combat bombs: 1343/8755 | loss: 0.9732 | lr: 4.7e-06 | pool: 0
+[D] ep  1550 | WR:  38.0% | active WR:  20.0% | kills: 0.20 | reward: +3.976 | bombs: 45.6 | walls: 11.1 | combat bombs: 1570/8610 | loss: 0.9721 | lr: 4.1e-06 | pool: 0
+[D] ep  1600 | WR:  38.0% | active WR:  24.0% | kills: 0.24 | reward: +4.372 | bombs: 39.1 | walls: 10.4 | combat bombs: 1241/8301 | loss: 1.0319 | lr: 3.5e-06 | pool: 0
+[D] ep  1650 | WR:  36.0% | active WR:  16.0% | kills: 0.18 | reward: +3.175 | bombs: 42.1 | walls: 10.8 | combat bombs: 1379/8631 | loss: 1.1284 | lr: 3.0e-06 | pool: 0
+[D] ep  1700 | WR:  32.0% | active WR:  16.0% | kills: 0.16 | reward: +3.260 | bombs: 39.8 | walls: 10.4 | combat bombs: 1306/7997 | loss: 1.1872 | lr: 2.5e-06 | pool: 0
+[D] ep  1750 | WR:  46.0% | active WR:  22.0% | kills: 0.24 | reward: +4.206 | bombs: 42.8 | walls: 10.9 | combat bombs: 1483/8005 | loss: 1.2006 | lr: 2.2e-06 | pool: 0
+[D] ep  1800 | WR:  34.0% | active WR:  18.0% | kills: 0.18 | reward: +3.570 | bombs: 44.6 | walls: 11.3 | combat bombs: 1506/8416 | loss: 1.0953 | lr: 1.8e-06 | pool: 0
+[D] ep  1850 | WR:  30.0% | active WR:  20.0% | kills: 0.20 | reward: +3.812 | bombs: 40.2 | walls: 10.8 | combat bombs: 1275/8562 | loss: 1.1764 | lr: 1.6e-06 | pool: 0
+[D] ep  1900 | WR:  24.0% | active WR:  18.0% | kills: 0.20 | reward: +3.454 | bombs: 41.0 | walls: 10.5 | combat bombs: 1281/8535 | loss: 1.3761 | lr: 1.4e-06 | pool: 0
+[D] ep  1950 | WR:  32.0% | active WR:  20.0% | kills: 0.20 | reward: +3.852 | bombs: 42.9 | walls: 10.8 | combat bombs: 1408/8653 | loss: 1.1907 | lr: 1.3e-06 | pool: 0
+[D] ep  2000 | WR:  36.0% | active WR:  22.0% | kills: 0.22 | reward: +4.145 | bombs: 40.2 | walls: 10.4 | combat bombs: 1285/7877 | loss: 1.3484 | lr: 1.3e-06 | pool: 0
+{"stage": "train", "output": "E:\\Bomberman\\runs\\phaseD-s2-20261022", "status": "OK"}

@@ -1,0 +1,52 @@
+{
+  "format": "d-s2-board-result-v1",
+  "id": "040c7d5bc4754106a2099d842e6a3690ac1bbbbdcf430a9a49b5f34a5bce8542",
+  "registration_digest": "474530836ca88ee9be260f8ca3af7f823e2fe3ec9ecba7f2f7a5c086d4de1951",
+  "selection_digest": null,
+  "records": [
+    {
+      "learner_sha256": "1578c186259517281ab6c58963cd6ea442d3644fc4b211b1295c3ff048e8229e",
+      "opponent_id": "S2",
+      "opponent_sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "board": 620024,
+      "corner": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "passive_win": 0,
+      "sudden_death_win": 0,
+      "suicide": 0.0,
+      "sudden_death_death": 1.0,
+      "kills": 0.0,
+      "bombs": 29.0,
+      "steps": 475.0,
+      "opponent_outcome": "win",
+      "elapsed_seconds": 2.908436800000345
+    },
+    {
+      "learner_sha256": "1578c186259517281ab6c58963cd6ea442d3644fc4b211b1295c3ff048e8229e",
+      "opponent_id": "S2",
+      "opponent_sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "board": 620024,
+      "corner": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 0,
+      "passive_win": 0,
+      "sudden_death_win": 0,
+      "suicide": 0.0,
+      "sudden_death_death": 0.0,
+      "kills": 0.0,
+      "bombs": 6.0,
+      "steps": 78.0,
+      "opponent_outcome": "win",
+      "elapsed_seconds": 0.4689018999997643
+    }
+  ],
+  "worker_runtime": {
+    "device": "cpu",
+    "threads": 1,
+    "deterministic": true,
+    "source_root": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\sources"
+  }
+}

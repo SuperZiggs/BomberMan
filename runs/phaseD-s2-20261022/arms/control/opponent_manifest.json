@@ -1,0 +1,126 @@
+{
+  "snapshots": [
+    {
+      "id": "snapshot-200",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_200.pt",
+      "sha256": "a4d84a4430dbbf7082281f551de7e365d5c9257c233d87922f9b7a29c27b2eb4",
+      "episode": 200,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-400",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_400.pt",
+      "sha256": "ef792ee54bc6897060487830b4abf733cdd28a14ee25aa75eb0469e910fc693e",
+      "episode": 400,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-600",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_600.pt",
+      "sha256": "d09248e5b3783dfc06dfe2566441c0900e67047d3e69d56fefebfd3a46ae1291",
+      "episode": 600,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-800",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_800.pt",
+      "sha256": "dc837f28a6dd9f536d5a11a975e601c0fac72e6cf6bf1f6217662d742c0147ad",
+      "episode": 800,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-1000",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_1000.pt",
+      "sha256": "91f91e2123c4562ecc7e847d9eb6c0f0f6f6c29eefad990017268215a4343ad7",
+      "episode": 1000,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-1200",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_1200.pt",
+      "sha256": "0ab872a258a6ff88aec873e4d51b2514cad15d3089e17469466c3855d68d54c1",
+      "episode": 1200,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-1400",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_1400.pt",
+      "sha256": "6e2eec507deaf48fe8c6805ef49e44213bca83e8c0635b2c81a22f4acce28de2",
+      "episode": 1400,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-1600",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_1600.pt",
+      "sha256": "8923cb32d268a68f84fc0e165f9600ef13ee91a329ff38b0380263d865445586",
+      "episode": 1600,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-1800",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_1800.pt",
+      "sha256": "6f2ef414e77d58352c884d5b791eacdb543ad159d749eae877b9c29766fb5221",
+      "episode": 1800,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-2000",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\snapshots\\episode_2000.pt",
+      "sha256": "c00e75ff416aa73c640a6ecb404a62f37579df1fc12953291f3086300c72ae5c",
+      "episode": 2000,
+      "role": "opponent",
+      "arm": "control"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "control-0",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\checkpoints\\episode_0.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "episode": 0,
+      "role": "candidate",
+      "arm": "control"
+    },
+    {
+      "id": "control-500",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\checkpoints\\episode_500.pt",
+      "sha256": "2bf04d2ca0622e9965b728fb1ec99d7ef469c17132d176094e0a9ff089834dec",
+      "episode": 500,
+      "role": "candidate",
+      "arm": "control"
+    },
+    {
+      "id": "control-1000",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\checkpoints\\episode_1000.pt",
+      "sha256": "91f91e2123c4562ecc7e847d9eb6c0f0f6f6c29eefad990017268215a4343ad7",
+      "episode": 1000,
+      "role": "candidate",
+      "arm": "control"
+    },
+    {
+      "id": "control-1500",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\checkpoints\\episode_1500.pt",
+      "sha256": "1625712e1acfc2d54c007273d84ac900b1ac57451fe1363bcc7db4c4a78cce5b",
+      "episode": 1500,
+      "role": "candidate",
+      "arm": "control"
+    },
+    {
+      "id": "control-2000",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\control\\checkpoints\\episode_2000.pt",
+      "sha256": "c00e75ff416aa73c640a6ecb404a62f37579df1fc12953291f3086300c72ae5c",
+      "episode": 2000,
+      "role": "candidate",
+      "arm": "control"
+    }
+  ]
+}

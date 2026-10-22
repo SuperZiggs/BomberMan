@@ -1,0 +1,22 @@
+{
+  "mode": "full",
+  "ranges": {
+    "train": {
+      "start": 610000,
+      "end_inclusive": 610999
+    },
+    "validation": {
+      "start": 620000,
+      "end_inclusive": 620039
+    },
+    "test_reference": {
+      "start": 630000,
+      "end_inclusive": 630099
+    },
+    "test_snapshots": {
+      "start": 640000,
+      "end_inclusive": 640099
+    }
+  },
+  "inventory_digest": "567d2a9cfb1708c1f4af3baeec03572fb93077d296e1adfaa523a580f23847c9"
+}

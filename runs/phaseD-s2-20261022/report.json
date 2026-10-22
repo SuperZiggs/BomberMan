@@ -1,0 +1,135 @@
+{
+  "stage": "validation",
+  "status": "VALIDATION_STOP",
+  "complete": true,
+  "actual_games": 3600,
+  "expected_games": 3600,
+  "summary": {
+    "control": [
+      {
+        "id": "control-0",
+        "guard": true,
+        "score": [
+          6.25,
+          -66.5625,
+          22.5,
+          -6.25,
+          0
+        ]
+      },
+      {
+        "id": "control-500",
+        "guard": false,
+        "score": [
+          8.4375,
+          -61.25,
+          25.625,
+          -5.3125,
+          -500
+        ]
+      },
+      {
+        "id": "control-1000",
+        "guard": false,
+        "score": [
+          9.6875,
+          -61.25,
+          27.5,
+          -5.3125,
+          -1000
+        ]
+      },
+      {
+        "id": "control-1500",
+        "guard": false,
+        "score": [
+          6.5625,
+          -60.9375,
+          25.625,
+          -5.9375,
+          -1500
+        ]
+      },
+      {
+        "id": "control-2000",
+        "guard": false,
+        "score": [
+          6.25,
+          -64.6875,
+          24.375,
+          -6.25,
+          -2000
+        ]
+      }
+    ],
+    "pool": [
+      {
+        "id": "pool-0",
+        "guard": true,
+        "score": [
+          6.25,
+          -66.5625,
+          22.5,
+          -6.25,
+          0
+        ]
+      },
+      {
+        "id": "pool-500",
+        "guard": false,
+        "score": [
+          5.625,
+          -58.4375,
+          26.875,
+          -7.5,
+          -500
+        ]
+      },
+      {
+        "id": "pool-1000",
+        "guard": false,
+        "score": [
+          5.625,
+          -59.6875,
+          27.8125,
+          -6.875,
+          -1000
+        ]
+      },
+      {
+        "id": "pool-1500",
+        "guard": false,
+        "score": [
+          5.3125,
+          -62.8125,
+          24.375,
+          -5.9375,
+          -1500
+        ]
+      },
+      {
+        "id": "pool-2000",
+        "guard": false,
+        "score": [
+          7.1875,
+          -65.3125,
+          23.4375,
+          -5.625,
+          -2000
+        ]
+      }
+    ]
+  },
+  "comparisons": {},
+  "pilot_gate": {
+    "pass": false,
+    "status": "NOT_EVALUATED"
+  },
+  "phase_d_gate": {
+    "pass": false,
+    "status": "NOT_EVALUATED"
+  },
+  "limitations": [
+    "Validation only; held-out test has not run."
+  ]
+}

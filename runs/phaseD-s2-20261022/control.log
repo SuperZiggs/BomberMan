@@ -1,0 +1,49 @@
+[Thu 10/22/2026 16:18:31.01] train control 
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep    50 | WR:  92.0% | active WR:  82.0% | kills: 0.82 | reward: +12.594 | bombs: 23.4 | walls: 8.5 | combat bombs: 589/4720 | loss: 8.1790 | lr: 2.5e-05 | pool: 0
+[D] ep   100 | WR:  84.0% | active WR:  76.0% | kills: 0.76 | reward: +11.710 | bombs: 22.9 | walls: 8.5 | combat bombs: 643/4229 | loss: 18.5893 | lr: 2.5e-05 | pool: 0
+[D] ep   150 | WR:  84.0% | active WR:  68.0% | kills: 0.68 | reward: +10.725 | bombs: 26.7 | walls: 9.5 | combat bombs: 721/5339 | loss: 16.3722 | lr: 2.5e-05 | pool: 0
+[D] ep   200 | WR:  84.0% | active WR:  72.0% | kills: 0.72 | reward: +11.126 | bombs: 25.3 | walls: 8.8 | combat bombs: 739/5190 | loss: 6.9973 | lr: 2.4e-05 | pool: 0
+[D] ep   250 | WR:  86.0% | active WR:  82.0% | kills: 0.82 | reward: +12.626 | bombs: 22.9 | walls: 9.2 | combat bombs: 615/4289 | loss: 27.9581 | lr: 2.4e-05 | pool: 0
+[D] ep   300 | WR:  84.0% | active WR:  80.0% | kills: 0.80 | reward: +12.280 | bombs: 21.9 | walls: 8.6 | combat bombs: 563/4659 | loss: 16.9762 | lr: 2.4e-05 | pool: 0
+[D] ep   350 | WR:  86.0% | active WR:  76.0% | kills: 0.76 | reward: +11.585 | bombs: 20.1 | walls: 7.8 | combat bombs: 571/4320 | loss: 6.2898 | lr: 2.3e-05 | pool: 0
+[D] ep   400 | WR:  88.0% | active WR:  78.0% | kills: 0.78 | reward: +11.921 | bombs: 20.5 | walls: 8.2 | combat bombs: 498/4480 | loss: 16.0530 | lr: 2.3e-05 | pool: 0
+[D] ep   450 | WR:  92.0% | active WR:  84.0% | kills: 0.84 | reward: +12.733 | bombs: 19.2 | walls: 7.8 | combat bombs: 433/4296 | loss: 20.9832 | lr: 2.2e-05 | pool: 0
+[D] ep   500 | WR:  84.0% | active WR:  70.0% | kills: 0.70 | reward: +10.955 | bombs: 22.9 | walls: 8.7 | combat bombs: 617/4510 | loss: 9.4965 | lr: 2.2e-05 | pool: 0
+[D] ep   550 | WR:  92.0% | active WR:  76.0% | kills: 0.76 | reward: +11.576 | bombs: 21.7 | walls: 8.3 | combat bombs: 567/4763 | loss: 7.8803 | lr: 2.1e-05 | pool: 0
+[D] ep   600 | WR:  86.0% | active WR:  72.0% | kills: 0.72 | reward: +11.115 | bombs: 24.1 | walls: 8.6 | combat bombs: 630/5110 | loss: 14.3198 | lr: 2.0e-05 | pool: 0
+[D] ep   650 | WR:  92.0% | active WR:  80.0% | kills: 0.80 | reward: +12.186 | bombs: 18.3 | walls: 7.7 | combat bombs: 396/4339 | loss: 7.3704 | lr: 1.9e-05 | pool: 0
+[D] ep   700 | WR:  86.0% | active WR:  76.0% | kills: 0.76 | reward: +11.828 | bombs: 23.1 | walls: 9.0 | combat bombs: 615/5102 | loss: 13.5178 | lr: 1.9e-05 | pool: 0
+[D] ep   750 | WR:  88.0% | active WR:  76.0% | kills: 0.76 | reward: +11.821 | bombs: 25.8 | walls: 9.5 | combat bombs: 773/5000 | loss: 4.1357 | lr: 1.8e-05 | pool: 0
+[D] ep   800 | WR:  88.0% | active WR:  76.0% | kills: 0.76 | reward: +11.741 | bombs: 23.8 | walls: 8.8 | combat bombs: 628/4937 | loss: 5.3404 | lr: 1.7e-05 | pool: 0
+[D] ep   850 | WR:  80.0% | active WR:  66.0% | kills: 0.66 | reward: +10.309 | bombs: 25.2 | walls: 8.9 | combat bombs: 580/6046 | loss: 8.9825 | lr: 1.6e-05 | pool: 0
+[D] ep   900 | WR:  94.0% | active WR:  82.0% | kills: 0.82 | reward: +12.663 | bombs: 21.4 | walls: 8.9 | combat bombs: 564/4354 | loss: 20.7885 | lr: 1.5e-05 | pool: 0
+[D] ep   950 | WR:  90.0% | active WR:  70.0% | kills: 0.70 | reward: +10.938 | bombs: 27.9 | walls: 9.1 | combat bombs: 834/5502 | loss: 12.9567 | lr: 1.4e-05 | pool: 0
+[D] ep  1000 | WR:  82.0% | active WR:  68.0% | kills: 0.68 | reward: +10.690 | bombs: 29.2 | walls: 9.4 | combat bombs: 826/5667 | loss: 23.6154 | lr: 1.3e-05 | pool: 0
+[D] ep  1050 | WR:  86.0% | active WR:  70.0% | kills: 0.70 | reward: +10.900 | bombs: 23.8 | walls: 8.6 | combat bombs: 710/4451 | loss: 19.7912 | lr: 1.2e-05 | pool: 0
+[D] ep  1100 | WR:  88.0% | active WR:  72.0% | kills: 0.72 | reward: +11.142 | bombs: 21.8 | walls: 8.3 | combat bombs: 558/4278 | loss: 18.3639 | lr: 1.1e-05 | pool: 0
+[D] ep  1150 | WR:  84.0% | active WR:  68.0% | kills: 0.68 | reward: +10.569 | bombs: 23.5 | walls: 8.5 | combat bombs: 629/4541 | loss: 7.2880 | lr: 1.0e-05 | pool: 0
+[D] ep  1200 | WR:  88.0% | active WR:  78.0% | kills: 0.78 | reward: +11.901 | bombs: 23.7 | walls: 8.1 | combat bombs: 533/5334 | loss: 6.4729 | lr: 9.5e-06 | pool: 0
+[D] ep  1250 | WR:  84.0% | active WR:  74.0% | kills: 0.74 | reward: +11.368 | bombs: 21.1 | walls: 8.2 | combat bombs: 566/4159 | loss: 25.8589 | lr: 8.6e-06 | pool: 0
+[D] ep  1300 | WR:  80.0% | active WR:  78.0% | kills: 0.78 | reward: +12.009 | bombs: 25.3 | walls: 9.0 | combat bombs: 659/5547 | loss: 14.7650 | lr: 7.7e-06 | pool: 0
+[D] ep  1350 | WR:  78.0% | active WR:  70.0% | kills: 0.70 | reward: +10.842 | bombs: 22.6 | walls: 8.6 | combat bombs: 574/4895 | loss: 10.3447 | lr: 6.9e-06 | pool: 0
+[D] ep  1400 | WR:  80.0% | active WR:  64.0% | kills: 0.64 | reward: +10.088 | bombs: 22.7 | walls: 9.0 | combat bombs: 633/4346 | loss: 17.0894 | lr: 6.1e-06 | pool: 0
+[D] ep  1450 | WR:  90.0% | active WR:  78.0% | kills: 0.78 | reward: +11.985 | bombs: 20.2 | walls: 8.6 | combat bombs: 460/4591 | loss: 12.1446 | lr: 5.4e-06 | pool: 0
+[D] ep  1500 | WR:  82.0% | active WR:  60.0% | kills: 0.60 | reward: +9.549 | bombs: 23.6 | walls: 8.8 | combat bombs: 514/5382 | loss: 4.9023 | lr: 4.7e-06 | pool: 0
+[D] ep  1550 | WR:  88.0% | active WR:  80.0% | kills: 0.80 | reward: +12.385 | bombs: 24.6 | walls: 9.2 | combat bombs: 670/4749 | loss: 6.0475 | lr: 4.1e-06 | pool: 0
+[D] ep  1600 | WR:  86.0% | active WR:  68.0% | kills: 0.68 | reward: +10.603 | bombs: 23.0 | walls: 8.6 | combat bombs: 614/4667 | loss: 2.1834 | lr: 3.5e-06 | pool: 0
+[D] ep  1650 | WR:  86.0% | active WR:  68.0% | kills: 0.68 | reward: +10.637 | bombs: 23.8 | walls: 8.9 | combat bombs: 637/5002 | loss: 4.3115 | lr: 3.0e-06 | pool: 0
+[D] ep  1700 | WR:  92.0% | active WR:  78.0% | kills: 0.78 | reward: +11.949 | bombs: 21.8 | walls: 8.4 | combat bombs: 562/4320 | loss: 5.8405 | lr: 2.5e-06 | pool: 0
+[D] ep  1750 | WR:  94.0% | active WR:  80.0% | kills: 0.80 | reward: +12.382 | bombs: 21.4 | walls: 8.9 | combat bombs: 622/4099 | loss: 10.7594 | lr: 2.2e-06 | pool: 0
+[D] ep  1800 | WR:  94.0% | active WR:  82.0% | kills: 0.82 | reward: +12.499 | bombs: 18.2 | walls: 7.6 | combat bombs: 479/3503 | loss: 20.1117 | lr: 1.8e-06 | pool: 0
+[D] ep  1850 | WR:  88.0% | active WR:  74.0% | kills: 0.74 | reward: +11.367 | bombs: 24.9 | walls: 8.5 | combat bombs: 657/5209 | loss: 14.3200 | lr: 1.6e-06 | pool: 0
+[D] ep  1900 | WR:  80.0% | active WR:  76.0% | kills: 0.76 | reward: +11.594 | bombs: 21.1 | walls: 8.0 | combat bombs: 526/4607 | loss: 39.9294 | lr: 1.4e-06 | pool: 0
+[D] ep  1950 | WR:  90.0% | active WR:  68.0% | kills: 0.68 | reward: +10.585 | bombs: 25.5 | walls: 8.4 | combat bombs: 719/5201 | loss: 4.1731 | lr: 1.3e-06 | pool: 0
+[D] ep  2000 | WR:  92.0% | active WR:  78.0% | kills: 0.78 | reward: +11.944 | bombs: 23.2 | walls: 8.2 | combat bombs: 615/5051 | loss: 29.7696 | lr: 1.3e-06 | pool: 0
+{"stage": "train", "output": "E:\\Bomberman\\runs\\phaseD-s2-20261022", "status": "OK"}
+[Thu 10/22/2026 19:03:07.16] train control --resume
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+{"stage": "train", "output": "E:\\Bomberman\\runs\\phaseD-s2-20261022", "status": "OK"}
+[Thu 10/22/2026 20:25:05.94] train control --resume
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+{"stage": "train", "output": "E:\\Bomberman\\runs\\phaseD-s2-20261022", "status": "OK"}

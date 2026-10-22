@@ -1,0 +1,126 @@
+{
+  "snapshots": [
+    {
+      "id": "snapshot-200",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_200.pt",
+      "sha256": "7ef3e97aadfd0b13f598db759832e6e3c5565c93d774aa3103e0ffbe8f13c035",
+      "episode": 200,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-400",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_400.pt",
+      "sha256": "f0bd59e02ca9408f7d0740c2d4bc0bf5f6de8a3d8539053b555bca4b3fe6132b",
+      "episode": 400,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-600",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_600.pt",
+      "sha256": "3daf882d98f63486d6e6ce788cab78280853735e5fce56fc1fbe37f5dc5a93b9",
+      "episode": 600,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-800",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_800.pt",
+      "sha256": "b6a76f1891ce12660ad939755957099c3d5bb082c82f2b8ee997c1eaf8d39dd6",
+      "episode": 800,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-1000",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_1000.pt",
+      "sha256": "2de6465a58c3c3acf4f3fc82d10d2ee60df7e2cf95627a75b2dcc1e5ed437467",
+      "episode": 1000,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-1200",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_1200.pt",
+      "sha256": "d1522be95ce40994b1d663c1ff5547eb34a7924cab5e02e6bc4aa37651b99e54",
+      "episode": 1200,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-1400",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_1400.pt",
+      "sha256": "98b44384cc70519841e50d61fbf5d18e938f23a348b93630c85bcd5fbbdd61fc",
+      "episode": 1400,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-1600",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_1600.pt",
+      "sha256": "2fccfcd60088d21c91e0474a89e44e361309c186e18c5be72eb85fe8caae4b0e",
+      "episode": 1600,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-1800",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_1800.pt",
+      "sha256": "c7937046b171c845c331600169599ba371a1bd9c3ac985097705e9270013490d",
+      "episode": 1800,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-2000",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\snapshots\\episode_2000.pt",
+      "sha256": "1578c186259517281ab6c58963cd6ea442d3644fc4b211b1295c3ff048e8229e",
+      "episode": 2000,
+      "role": "opponent",
+      "arm": "pool"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "pool-0",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\checkpoints\\episode_0.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "episode": 0,
+      "role": "candidate",
+      "arm": "pool"
+    },
+    {
+      "id": "pool-500",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\checkpoints\\episode_500.pt",
+      "sha256": "9cd4b17d963a54667c24257c0d2e353de527fc08d4be88663913d9a69e0f459f",
+      "episode": 500,
+      "role": "candidate",
+      "arm": "pool"
+    },
+    {
+      "id": "pool-1000",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\checkpoints\\episode_1000.pt",
+      "sha256": "2de6465a58c3c3acf4f3fc82d10d2ee60df7e2cf95627a75b2dcc1e5ed437467",
+      "episode": 1000,
+      "role": "candidate",
+      "arm": "pool"
+    },
+    {
+      "id": "pool-1500",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\checkpoints\\episode_1500.pt",
+      "sha256": "7da1ac3b5748e9ec430241d80693be7919df444b1d8688491df862cbdfb0dedb",
+      "episode": 1500,
+      "role": "candidate",
+      "arm": "pool"
+    },
+    {
+      "id": "pool-2000",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseD-s2-20261022\\arms\\pool\\checkpoints\\episode_2000.pt",
+      "sha256": "1578c186259517281ab6c58963cd6ea442d3644fc4b211b1295c3ff048e8229e",
+      "episode": 2000,
+      "role": "candidate",
+      "arm": "pool"
+    }
+  ]
+}
