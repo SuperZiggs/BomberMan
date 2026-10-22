@@ -192,6 +192,8 @@ def validate_run(output, *, resume=False):
         reg = verify_run(output)
         models = _models(output, reg, required=True)
         diagnostics = _diagnostics(output, reg, models)
+        if set(diagnostics) != {model['sha256'] for model in models}:
+            raise ValueError('Complete diagnostics required before validation')
         tasks = validation_tasks(reg, models)
         saved = _boards(output, reg, tasks)
         _check_previous(output, reg, models, diagnostics, saved)

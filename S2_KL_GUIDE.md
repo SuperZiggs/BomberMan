@@ -71,6 +71,8 @@ Ctrl+C trả mã130. Full-state lưu model/Adam/scheduler/Python/numpy/torch/CUD
 
 Chọn đúng stage/arm bị ngắt và kiểm errorlevel sau từng lệnh. Arm đã đủ500 có thể resume để tái dựng projection; không train thêm. Diagnostic/modelSHA và task/board có đủ hai góc đã commit được kiểm rồi tái dùng, không cộng lặp. Shard/summary/source/runtime sai bị từ chối.
 
+Validation yêu cầu đủ diagnostics của tất cả SHA trước khi chạy bất kỳ trận nào; diagnostics thiếu hoặc mới có một phần sẽ báo lỗi để bạn chạy/resume `diagnose` trước. Identity của lượt gắn với đúng đường dẫn output đã đăng ký: bản copy ở thư mục khác không thể tiếp tục cùng reservation. Backup chỉ được phục hồi về đúng output ban đầu trên cùng máy/runtime.
+
 Nếu ngắt lúc đăng ký, dùng nguyên lệnh register và thêm `--resume`, giữ đúng output/input-root/device/workers/mode. Giữ cả thư mục `.registration-pending` và registry để phục hồi cùng identity. Không xóa reservation của lượt khác. Cùng một output chỉ một writer.
 
 Không chuyển máy, nâng torch/numpy, sửa source/spec đã đăng ký hoặc đổi config giữa lượt. Source worker chạy từ `OUT\sources`; live source cũng được kiểm SHA trước dispatch.
@@ -105,6 +107,6 @@ set S2_KL_ACCEPTANCE_CUDA=1
 set S2_KL_ACCEPTANCE_CUDA=
 ```
 
-Smoke riêng4episode/arm,max20bước; train790000–790001 và validation790002–790003, chỉ audit trong output, không đặt chỗ dải full. Code smoke dùng output mới `runs/s2-kl-code-smoke-20261023-cpu` và `...-cuda`; có đủ register/train/diagnose/validate/package.
+Smoke riêng4episode/arm,max20bước; train790000–790001 và validation790002–790003, chỉ audit trong output, không đặt chỗ dải full. Code smoke đầu dùng `runs/s2-kl-code-smoke-20261023-cpu` và `...-cuda`; bản sau review dùng output mới thêm hậu tố `-review`, có đủ register/train/diagnose/validate/package. Giữ các output trước làm bằng chứng lịch sử; source thay đổi thì output cũ sẽ bị từ chối resume theo SHA.
 
 `logs/stages.jsonl` ghi thời gian stage sau import và peak RSS của tiến trình stage; raw board payload ghi PID/peak RSS riêng từng worker. Hai số này không cộng thành peak RAM toàn cây tiến trình. Bản verification còn ghi walltime CLI có startup/dispatch. Smoke20bước kiểm tính đúng và resume; không suy ETA500bước bằng phép nhân25. Ngân sách full tối đa500000learner steps train và700000environment steps validation; cần đo thêm throughput500bước trên dải smoke riêng trước khi hứa thời gian chạy. Offline có cùng2048quan sát/model, tối đa7model; dự phóng offline từ sốSHA là ước lượng có giới hạn startup/I/O/runtime.

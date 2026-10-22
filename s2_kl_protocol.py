@@ -298,6 +298,13 @@ def verify_run(output, *, allow_pending=False):
     reg = read_json(output / 'registration.json')
     if reg.get('format') != 's2-kl-registration-v1' or canonical_digest(reg, 'registration_digest') != reg.get('registration_digest'):
         raise ValueError('Registration digest drift')
+    registered_output = Path(reg['output']).resolve()
+    allowed = {registered_output}
+    if allow_pending:
+        allowed.add(registered_output.with_name(registered_output.name + '.registration-pending'))
+    if (output not in allowed or reg['output'] != str(registered_output) or
+            reg['experiment_id'] != 'S2-KL:' + str(registered_output)):
+        raise ValueError('Registered output/experiment identity mismatch')
     configure_runtime(reg['device'])
     if runtime() != reg['runtime']:
         raise ValueError('Runtime drift')

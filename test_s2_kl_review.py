@@ -113,5 +113,35 @@ class EquivalentModelTests(unittest.TestCase):
             self.assertEqual(report['endpoints']['anchor500']['episode'], 4)
 
 
+class FinalReviewTests(unittest.TestCase):
+    def test_copied_output_cannot_reuse_original_experiment_identity(self):
+        import shutil
+        from test_s2_kl_support import register_case
+        verify = function(self, 'verify_run')
+        for smoke in (False, True):
+            with self.subTest(smoke=smoke), tempfile.TemporaryDirectory(dir=ROOT, prefix='s2-kl-copy-') as temporary:
+                _, output, _ = register_case(self, temporary, smoke=smoke)
+                copied = Path(temporary) / 'copied'
+                shutil.copytree(output, copied)
+                with self.assertRaisesRegex(ValueError, '(?i)(output|identity|experiment)'):
+                    verify(copied)
+
+    def test_validation_requires_all_diagnostics_before_any_game_or_projection(self):
+        from test_s2_kl_support import ready_case
+        validate = function(self, 'validate_run')
+        diagnose = function(self, 'diagnose_model')
+        for partial in (False, True):
+            with self.subTest(partial=partial), tempfile.TemporaryDirectory(dir=ROOT, prefix='s2-kl-prerequisite-') as temporary:
+                _, output, reg, models = ready_case(self, temporary)
+                if partial:
+                    write_json(output / 'diagnostics' / (models[0]['sha256'] + '.json'), diagnose(models[0], reg))
+                with patch('s2_kl_ledger._frozen_job') as worker:
+                    with self.assertRaisesRegex(ValueError, '(?i)diagnostic'):
+                        validate(output)
+                    worker.assert_not_called()
+                self.assertFalse((output / 'validation.json').exists())
+                self.assertFalse(list((output / 'validation/tasks').glob('*.json')))
+
+
 if __name__ == '__main__':
     unittest.main()
