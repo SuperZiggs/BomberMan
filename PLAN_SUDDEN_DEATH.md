@@ -159,7 +159,7 @@ Insight rút ra từ SD5–SD6 được gom ở `INSIGHTS.md`.
 - [x] D-S2-spec — soạn `docs/superpowers/specs/2026-10-22-phase-d-s2-pool-design.md`; **APPROVED_DESIGN**, hai nhánh 2.000 episode, pool-aware validation, seed tách dải, resume và test một lần.
 - [x] D-S2-spec-approval — người dùng duyệt written spec, ngân sách và gate ngày 22/10/2026; cho phép viết implementation plan, chưa yêu cầu chạy train.
 - [x] D-S2-plan — viết `docs/superpowers/plans/2026-10-22-phase-d-s2-pool.md`, **PLAN_REVIEW**; có public contracts, acceptance độc lập, task/kiểm chứng/bàn giao.
-- [ ] D-S2-plan-approval — người dùng review plan và chọn cách triển khai; chưa bắt đầu production edits.
-- [ ] D-S2-code — acceptance tests, runner/state/pool/evaluation, smoke riêng và lệnh CMD; chưa triển khai.
+- [x] D-S2-plan-approval — người dùng đã duyệt ngày 22/10/2026; triển khai Native với acceptance độc lập và review cuối.
+- [ ] D-S2-code — ĐANG KIỂM CHỨNG acceptance độc lập, runner/state/pool/evaluation và CLI; CPU/CUDA resume đã qua, chưa chạy full.
 - [ ] D-S2-run — chạy trên máy đã đăng ký khi người dùng yêu cầu; chưa đặt chỗ/mở seed full mới.
 - [ ] D-S2-review — đọc gate pilot và gate Phase D riêng; chỉ quyết định E 3 → 4 agent sau khi có kết quả.

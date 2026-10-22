@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-10-22-phase-d-s2-pool-design.md` — người dùng duyệt ngày 22/10/2026 sau commit tài liệu `2b16eb5`.
 
-**Status:** PLAN_REVIEW. Chỉ tài liệu được viết trong lượt này; chưa viết test hoặc production code, chưa đặt chỗ seed full.
+**Status:** EXECUTING_NATIVE — người dùng đã duyệt ngày 22/10/2026. Acceptance độc lập đã khóa; đang triển khai/kiểm chứng, chưa đặt chỗ hoặc mở seed full.
 
 ## Global Constraints
 
