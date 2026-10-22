@@ -71,6 +71,13 @@ def _incomplete(stage,actual,expected,status='INCOMPLETE'):
         phase_d_gate={'pass':False,'status':'NOT_EVALUATED'},limitations=['Evaluation is incomplete.'])
 
 
+def _validation_report(selected,games):
+    report=_incomplete('validation',games,games,'TEST_READY' if selected['open_test'] else 'VALIDATION_STOP')
+    report.update(complete=True,summary=selected['validation_summary'],
+                  limitations=['Validation only; held-out test has not run.'])
+    return report
+
+
 def _decision(output,report):
     text='# D-S2 decision\n\nStatus: '+report['status']+'\n\n'
     text+='Complete: '+str(report['complete'])+'; games: '+str(report['actual_games'])+'/'+str(report['expected_games'])+'\n\n'
@@ -122,10 +129,7 @@ def evaluate_stage(output,stage,*,resume=False,evaluator=None,commit_hook=None):
             if not (output/'validation.json').exists():atomic_json(output/'validation.json',validation)
             elif read_json(output/'validation.json')!=validation:raise ValueError('Validation projection drift')
             if opened_path.exists():return selected
-            report=_incomplete(stage,2*len(saved),2*len(val_tasks),
-                'TEST_READY' if selected['open_test'] else 'VALIDATION_STOP')
-            report.update(complete=True,summary=selected['validation_summary'],
-                          limitations=['Validation only; held-out test has not run.'])
+            report=_validation_report(selected,2*len(saved))
             if not (output/'report.json').exists() or read_json(output/'report.json')!=report:
                 atomic_json(output/'report.json',report,overwrite=True)
             _decision(output,report)
@@ -171,11 +175,18 @@ def package_run(output):
     output=Path(output).resolve()
     with run_lock(output):
         reg=verify_run(output)
+        report_path=output/'report.json'
+        previous=read_json(report_path) if report_path.exists() else None
+        report=_incomplete('training' if (output/'arms').exists() else 'registered',0,0)
+        allowed_previous=[]
         if (output/'selected.json').exists():
             candidates,snapshots=candidates_for_run(output,reg)
             selected=_selection(output,reg,candidates,snapshots,validation_tasks(output))
             if read_json(output/'selected.json')!=selected:raise ValueError('Selection drift')
+            report=_validation_report(selected,2*len(validation_tasks(output)))
             if (output/'test_opened.json').exists():
+                if not selected['open_test']:raise ValueError('Test marker without eligible selection')
+                allowed_previous.append(report)
                 tasks=deepcopy(selected['test_manifest'])
                 for task in tasks:task['selection_digest']=selected['selection_digest']
                 marker=read_json(output/'test_opened.json')
@@ -183,14 +194,23 @@ def package_run(output):
                     selection_digest=selected['selection_digest'],models=selected['models'],task_manifest=tasks)
                 if marker!=expected:raise ValueError('Test-open marker drift')
                 saved=_read_ledger(output/'test/tasks',tasks)
-                if (output/'report.json').exists() and read_json(output/'report.json').get('complete'):
-                    if len(saved)!=len(tasks):raise ValueError('Incomplete test ledger with completed report')
-                    expected=build_report(_rows(saved),selected)
-                    expected.update(registration_digest=reg['registration_digest'],selection_digest=selected['selection_digest'])
-                    if read_json(output/'report.json')!=expected:raise ValueError('Report drift')
-        if not (output/'report.json').exists():
-            atomic_json(output/'report.json',_incomplete('registered',0,0))
-        report=read_json(output/'report.json')
+                report=_incomplete('test',2*len(saved),2*len(tasks))
+                if len(saved)==len(tasks):
+                    report=build_report(_rows(saved),selected)
+                    report.update(registration_digest=reg['registration_digest'],selection_digest=selected['selection_digest'])
+        else:
+            if (output/'test_opened.json').exists() or any((output/'test/tasks').glob('*.json')):
+                raise ValueError('Test artifacts without selection')
+            if all((output/'arms'/arm/'completed.json').is_file() for arm in ('control','pool')):
+                tasks=validation_tasks(output);saved=_read_ledger(output/'validation/tasks',tasks)
+                report=_incomplete('validation',2*len(saved),2*len(tasks))
+        incomplete_previous=(previous is not None and previous.get('status')=='INCOMPLETE'
+            and previous.get('complete') is False
+            and previous.get('pilot_gate',{}).get('pass') is False
+            and previous.get('phase_d_gate',{}).get('pass') is False)
+        if previous is not None and previous!=report and previous not in allowed_previous and not incomplete_previous:
+            raise ValueError('Report status/completeness unsupported by stage artifacts')
+        if previous!=report:atomic_json(report_path,report,overwrite=True)
         _decision(output,report)
         destination=output.with_name(output.name+'-send.zip');temporary=destination.with_suffix('.zip.tmp')
         try:

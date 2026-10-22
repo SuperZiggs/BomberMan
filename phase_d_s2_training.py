@@ -156,10 +156,22 @@ def train_arm(output,arm,*,resume=False,stop_event=None,on_episode=None,on_step=
     with run_lock(output):
         reg=verify_run(output);directory=output/'arms'/arm;state_path=directory/'training_state.pt'
         if directory.exists() and not resume:raise FileExistsError('Arm exists; use --resume')
-        if resume and not state_path.is_file():raise ValueError('Missing training state')
+        resume_state=resume and state_path.is_file()
+        initial=dict(format='d-s2-arm-initialization-v1',arm=arm,
+            registration_digest=reg['registration_digest'],initial_sha256=reg['checkpoints']['S2']['sha256'])
+        marker=directory/'initializing.json'
+        if resume and not resume_state:
+            if not directory.is_dir():raise ValueError('Missing training state')
+            files=[p for p in directory.rglob('*') if p.is_file() and p.suffix!='.tmp']
+            if files and (not marker.is_file() or read_json(marker)!=initial):raise ValueError('Missing training state/initialization identity')
+            if any((directory/n).exists() for n in ('metrics.jsonl','opponent_manifest.json','completed.json')):
+                raise ValueError('Committed artifacts exist without training state')
         directory.mkdir(parents=True,exist_ok=resume)
+        if marker.exists():
+            if read_json(marker)!=initial:raise ValueError('Arm initialization drift')
+        else:atomic_json(marker,initial)
         context=PhaseDRun(output,arm,reg,commit_hook)
-        done=load_training_state(state_path,expected_format=FORMAT)['episode'] if resume else 0
+        done=load_training_state(state_path,expected_format=FORMAT)['episode'] if resume_state else 0
         seed=reg['config']['train']['seed'];random.seed(seed);np.random.seed(seed);torch.manual_seed(seed)
         if reg['device'].startswith('cuda'):torch.cuda.manual_seed_all(seed)
         with bar(reg['config']['train']['episodes'],f'D-S2 {arm}',done) as shown:
@@ -168,7 +180,7 @@ def train_arm(output,arm,*,resume=False,stop_event=None,on_episode=None,on_step=
                 if on_episode:on_episode(row)
             train(**reg['config']['train'],device=reg['device'],checkpoint_dir=str(directory),
                 resume_from=reg['checkpoints']['S2']['checkpoint'],save_training_state=True,
-                resume_training_state=str(state_path) if resume else '',phase_d_run=context,
+                resume_training_state=str(state_path) if resume_state else '',phase_d_run=context,
                 on_episode=episode,on_step=on_step,stop_event=stop_event)
         state=load_training_state(state_path,expected_format=FORMAT)
         context.load_state_dict(state['context']);context.after_commit(state['episode'])

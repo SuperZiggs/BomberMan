@@ -311,5 +311,141 @@
       "evaluation_seconds_per_step": 0.006806941749928228
     }
   ],
-  "caveat": "Only 20 steps per game and 4 episodes per arm; interpreter startup included. Full estimates scale all timings by 500/20 and are conservative linear proxies, not measured full-run ETAs. CPU teacher/env limit GPU speed. RSS sampling every250ms, process-tree RSS includes shared pages."
+  "caveat": "Only 20 steps per game and 4 episodes per arm; interpreter startup included. Full estimates scale all timings by 500/20 and are conservative linear proxies, not measured full-run ETAs. CPU teacher/env limit GPU speed. RSS sampling every250ms, process-tree RSS includes shared pages.",
+  "post_review_smokes": [
+    {
+      "output": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cpu-final",
+      "device": "cpu",
+      "workers": 2,
+      "measurements": [
+        {
+          "stage": "register",
+          "seconds": 5.279749399999673,
+          "peak_tree_rss_mib": 577.40234375,
+          "observed_processes": 2,
+          "samples": 21,
+          "exit_code": 0
+        },
+        {
+          "stage": "train-control",
+          "seconds": 8.04789879999953,
+          "peak_tree_rss_mib": 1194.07421875,
+          "observed_processes": 4,
+          "samples": 32,
+          "exit_code": 0
+        },
+        {
+          "stage": "train-pool",
+          "seconds": 8.04382540000006,
+          "peak_tree_rss_mib": 1188.51171875,
+          "observed_processes": 4,
+          "samples": 32,
+          "exit_code": 0
+        },
+        {
+          "stage": "validation",
+          "seconds": 12.570568099999946,
+          "peak_tree_rss_mib": 2372.45703125,
+          "observed_processes": 6,
+          "samples": 50,
+          "exit_code": 0
+        },
+        {
+          "stage": "package",
+          "seconds": 12.074717299999975,
+          "peak_tree_rss_mib": 1177.078125,
+          "observed_processes": 4,
+          "samples": 48,
+          "exit_code": 0
+        }
+      ],
+      "note": "Peak RSS sampled over the CLI process tree, 250ms; excludes unrelated processes. Smoke max20 steps.",
+      "status": "VALIDATION_STOP",
+      "validation_games": 40,
+      "source_hashes": {
+        "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+        "combat_move_teacher.py": "a30a2f2b8450c3e13734f5d7f525e275ee0655f77fe0b7bfddc37cbba3959616",
+        "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+        "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+        "kill_search.py": "033deceeeb1f9e60d7ff970e8880dbc438f15260f3297c69e496f874cc4ad12d",
+        "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+        "phase_d_s2_ledger.py": "bca39ff1e636c5595a07dd5aa9c800260f1eb3a82a2b3fdf2131078521aa3353",
+        "phase_d_s2_protocol.py": "53109dff9f198db56ec88faaf8c8841b170d4afd874904ed93f96817f0dfc953",
+        "phase_d_s2_training.py": "1b4a8a6138f5cc04033d12fb98be2208c18b6bd5d9d5ba0246febd41aab3b4b2",
+        "progress.py": "b63c84e729c8fd214bcf0f457d20abb1d4cbba28b5c7d514aa3e6c29ec162eb4",
+        "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+        "run_phase_d_s2.py": "7d9bc3d5651b04a9c69e6a77368705aaac2829916b761f1a10017cfd082c41b7",
+        "tactical_teacher.py": "b1166e4eb347d538d59c1ecf1d854bba403177d72467bd61f2055f828c04dd77",
+        "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+        "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc"
+      }
+    },
+    {
+      "output": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cuda-final",
+      "device": "cuda:0",
+      "workers": 2,
+      "measurements": [
+        {
+          "stage": "register",
+          "seconds": 4.021410999999716,
+          "peak_tree_rss_mib": 601.30078125,
+          "observed_processes": 4,
+          "samples": 16,
+          "exit_code": 0
+        },
+        {
+          "stage": "train-control",
+          "seconds": 9.30877049999981,
+          "peak_tree_rss_mib": 2213.26953125,
+          "observed_processes": 4,
+          "samples": 37,
+          "exit_code": 0
+        },
+        {
+          "stage": "train-pool",
+          "seconds": 9.092250400000012,
+          "peak_tree_rss_mib": 2201.73046875,
+          "observed_processes": 4,
+          "samples": 36,
+          "exit_code": 0
+        },
+        {
+          "stage": "validation",
+          "seconds": 12.827501499999926,
+          "peak_tree_rss_mib": 2377.765625,
+          "observed_processes": 6,
+          "samples": 51,
+          "exit_code": 0
+        },
+        {
+          "stage": "package",
+          "seconds": 9.549224700000195,
+          "peak_tree_rss_mib": 1169.9453125,
+          "observed_processes": 4,
+          "samples": 38,
+          "exit_code": 0
+        }
+      ],
+      "note": "Peak RSS sampled over the CLI process tree, 250ms; excludes unrelated processes. Smoke max20 steps.",
+      "status": "VALIDATION_STOP",
+      "validation_games": 40,
+      "source_hashes": {
+        "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+        "combat_move_teacher.py": "a30a2f2b8450c3e13734f5d7f525e275ee0655f77fe0b7bfddc37cbba3959616",
+        "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+        "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+        "kill_search.py": "033deceeeb1f9e60d7ff970e8880dbc438f15260f3297c69e496f874cc4ad12d",
+        "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+        "phase_d_s2_ledger.py": "bca39ff1e636c5595a07dd5aa9c800260f1eb3a82a2b3fdf2131078521aa3353",
+        "phase_d_s2_protocol.py": "53109dff9f198db56ec88faaf8c8841b170d4afd874904ed93f96817f0dfc953",
+        "phase_d_s2_training.py": "1b4a8a6138f5cc04033d12fb98be2208c18b6bd5d9d5ba0246febd41aab3b4b2",
+        "progress.py": "b63c84e729c8fd214bcf0f457d20abb1d4cbba28b5c7d514aa3e6c29ec162eb4",
+        "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+        "run_phase_d_s2.py": "7d9bc3d5651b04a9c69e6a77368705aaac2829916b761f1a10017cfd082c41b7",
+        "tactical_teacher.py": "b1166e4eb347d538d59c1ecf1d854bba403177d72467bd61f2055f828c04dd77",
+        "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+        "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc"
+      }
+    }
+  ]
 }

@@ -148,8 +148,11 @@ def inventory_seeds(input_root,exclude=()):
         if isinstance(v,dict):
             if 'start' in v and ('end_inclusive' in v or 'end' in v):
                 a,b = v['start'],v.get('end_inclusive',v.get('end'))
-                if isinstance(a,int) and isinstance(b,int): ranges.append([a,b,source])
+                if type(a) is int and type(b) is int and 0<=a<=b:ranges.append([a,b,source])
+                else:unresolved.append(source+': invalid seed interval')
             for k,x in v.items():
+                if k in ('board','board_seed','seed','normal_seed','validation_seed','test_seed','train_seed','mechanism_seed','collect_seed') and type(x) is not int:
+                    unresolved.append(source+': invalid seed value '+k)
                 if k=='seed' and isinstance(x,int) and 'phase' in v and 'episodes' in v:
                     rng_seeds.append(dict(source=source,seed=x,kind='training_rng'))
                 elif k in ('board','board_seed','seed','normal_seed','validation_seed','test_seed','train_seed','mechanism_seed','collect_seed') and isinstance(x,int):
@@ -174,7 +177,7 @@ def inventory_seeds(input_root,exclude=()):
                 try:
                     with path.open(encoding='utf-8') as handle:
                         for line in handle:
-                            if line.strip():visit(json.loads(line),rel)
+                            if line.strip():visit(json.loads(line,parse_constant=lambda x:(_ for _ in ()).throw(ValueError('Nonfinite JSON: '+x))),rel)
                     sources[rel]=sha(path)
                 except (ValueError,OSError) as e:unresolved.append(rel+': '+str(e))
                 continue
@@ -185,7 +188,7 @@ def inventory_seeds(input_root,exclude=()):
             except (ValueError,OSError) as e:unresolved.append(rel+': '+str(e));continue
             sources[rel]=sha(path)
             before=len(ranges);visit(data,rel)
-            if path.name=='registration.json' and len(ranges)==before and 'config' not in data:
+            if path.name=='registration.json' and len(ranges)==before:
                 unresolved.append(rel+': unknown seed mapping')
             if path.name=='registration.json' and data.get('mechanism_seed')==6700:
                 # SD7.4's frozen runner explicitly registers 100 corner-paired games.
@@ -265,21 +268,31 @@ def register(output,input_root,device='cpu',workers=2,smoke=False,resume=False):
         temp=output.with_name(output.name+'.registration-pending')
         if temp.exists():
             if not resume:raise FileExistsError('Pending registration exists; use --resume')
-            old=read_json(temp/'registration.json')
+            identity=temp/'registration.json'
+            if not identity.is_file():
+                registry=input_root/'runs/phase_d_s2_seed_registry.json'
+                if registry.is_file() and reg['experiment_id'] in read_json(registry)['reservations']:
+                    raise ValueError('Reserved transaction is missing its identity')
+                # No reservation or games exist yet. Recover an interrupted mkdir/identity write.
+                atomic_json(identity,reg)
+            old=read_json(identity)
             if {k:v for k,v in old.items() if k not in ('git','registration_digest')}!={k:v for k,v in reg.items() if k not in ('git','registration_digest')}:
                 raise ValueError('Pending registration drift')
             reg=old
         else:
             temp.mkdir(parents=True)
+            atomic_json(temp/'registration.json',reg)
         (temp/'sources').mkdir(exist_ok=True)
         for name,expected in {**reg['sources'],'spec.md':reg['spec_sha256']}.items():
             target=temp/'sources'/name
-            if target.exists():
-                if sha(target)!=expected:raise ValueError('Prepared source drift: '+name)
-            else:
+            if not target.exists() or sha(target)!=expected:
                 source=ROOT/SPEC if name=='spec.md' else ROOT/name
                 if sha(source)!=expected:raise ValueError('Source changed during registration')
-                shutil.copy2(source,target)
+                copying=target.with_name(target.name+'.copy.tmp')
+                shutil.copy2(source,copying)
+                if sha(copying)!=expected:raise ValueError('Prepared source copy mismatch')
+                with copying.open('r+b') as handle:handle.flush();os.fsync(handle.fileno())
+                os.replace(copying,target)
         for name,value in [('registration.json',reg),('seed_manifest.json',manifest),('runtime.json',reg['runtime'])]:
             target=temp/name
             if target.exists():

@@ -684,3 +684,9 @@ Hướng mở sau khi có agent ổn định: opponent modelling nếu thua do k
 Ghi chú nghiên cứu và giới hạn truy cập nguồn ở [RESEARCH_BOMBERMAN_2026.md](/D:/fpt/subject/BomberMan/RESEARCH_BOMBERMAN_2026.md). Quy trình đối chiếu nguồn sử dụng literature-review; nguồn công cụ được ghi riêng, không phải nghiên cứu Bomberman: Kassis, Agarwal, He, Patel, Brueckner (2026), [Scientific Agent Skills](https://arxiv.org/abs/2609.00065).
 
 
+
+## Cập nhật D-S2, 22/10/2026
+
+- [x] D-S2-code: runner hai nhánh, full-state CPU/CUDA resume, source/seed registration, pool-aware selection, board ledger/CI/gates và package; acceptance độc lập + smoke + review/fix pass. Full suite535test còn20error/1failure cùng baseline, không có error mới.
+- [ ] D-S2-run: chưa đăng ký namespace thật hoặc chạy4.000episode/9.000game; xem `PHASE_D_S2_GUIDE.md` và `PLAN_SUDDEN_DEATH.md`.
+- [ ] D-S2-result: chỉ quyết định gate pilot/Phase D và hướng E sau kết quả thật; hiện giữ S2.

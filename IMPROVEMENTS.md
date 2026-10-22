@@ -793,3 +793,11 @@ Test độc lập đi RED→GREEN; bổ sung lỗi thật từ integration (NumP
 ## 67. D-S2 T6 — smoke thật và bàn giao (22/10/2026)
 
 GUIDE có lệnh CMD tuyệt đối cho từng stage/resume, log trong output và ZIP; map CLAUDE/tracker tách code khỏi experiment full. Chạy smoke CPU/GPU2worker, kiểm source_root/threads trong mọi shard và VALIDATION_STOP không mở test; package đủ artifact. Có JSON wall time/RSS/profile và dự phóng riêng train/validation/test; registration mới nhúng evidence. Source CUDA resume cuối qua lại1test. Full suite526test vẫn20error+1failure cùng baseline, không báo toàn repo xanh hoặc Phase D PASS. Review độc lập cuối còn được ghi sau.
+
+## 68. D-S2 — fix pass sau review độc lập (22/10/2026)
+
+Inventory fail-closed không coi presence của config là mapping; reject seed interval/value/JSONL sai. Pending registration lưu identity trước copy, source temp/fsync/atomic replace và rebuild chuẩn bị chưa reserve. Package tái dựng report theo stage/ledger/selection thật, refuse PASS không dữ liệu và recover INCOMPLETE sau marker crash. Khởi tạo arm có identity; resume trước state0 được làm lại từ S2/Adam mới nhưng không reset sau committed episode mất state. Review/recovery16testOK53,051s, thêm negative committed-state1testOK6,980s; chờ full suite/CUDA sau fix. Không sửa training math hoặc acceptance đã khóa.
+
+Kiểm chứng fix pass:535test419,117s, không có error mới so baseline20error/1failure; D-S2 không failure/error; CUDA exact-resume source sau fix1testOK12,037s. Cả3Important đã được khắc phục; không có Minor hoãn. Chưa có gate thí nghiệm mới, chưa mở full run.
+
+Smoke CPU/CUDA hai worker lặp trên source cuối sau fix pass đều qua, package và verify_run hợp lệ; không mở test khi VALIDATION_STOP. JSON evidence nhúng số đo cuối; source/checkpoint/acceptance hash giữ đúng contract.

@@ -2213,3 +2213,11 @@ Acceptance 62 + recovery2:64 test OK,1CUDA skip; recovery mở rộng8 test OK; 
 Chỉ smoke 690000–690003; dữ liệu CPU/GPU, RAM và review cuối được bổ sung sau. Không chạy/reserve experiment full hoặc suy ra gate khoa học từ smoke.
 
 T6 smoke cuối: CPU/GPU mỗi lượt8episode/160steps,40trận validation, cả hai VALIDATION_STOP, không mở test; package exit0. Worker payload xác nhận frozen sources, CPU1thread. Peak process-tree RSS train~1,2GiBCPU/~2,2GiBGPU; evaluation2worker~2,4GiB. Profile committed episode:6,35ms/stepCPU,15,44ms/stepGPU; chưa suy ra hiệu năng full. Chi tiết wall time, dự phóng theo trần và giới hạn trong verification.md/JSON. CUDA exact-resume rerun source cuối:1testOK13,674s. Checkpoint S2/G/F/S/B vẫn giữ nguyên SHA; chưa có gate khoa học mới.
+
+## D-S2-final-review — sửa lỗi crash/provenance/package, 22/10/2026
+
+Review độc lập ba Important (không Critical/Minor): unknown config-only history, copy source trước identity và package nhận report PASS thiếu artifact. Đã sửa cùng một lượt; không thay4acceptancefile. Bổ sung malformed JSONL/interval, crash sau test marker và khởi tạo train trước state0; resume không reset nếu đã có artifact committed mà state mất. RED7test (10failures/subtests,4behavior errors) → GREEN review+recovery16test; test chống reset committed state thêm1testOK. Full discovery và CUDA trên source sau fix còn ghi bên dưới. Chưa có gate khoa học mới hoặc full run.
+
+Sau fix: full discover535test419,117s,20error/1failure/2skip; đối chiếu baseline không thêm/mất error nào, failure PDE cùng tên. D-S2 không failure/error. CUDA resume source mới1testOK12,037s. Cả3Important đã sửa RED→GREEN, không Minor hoãn hoặc Declined-to-judge; không re-review. Full repo vẫn đỏ vì baseline, giữ local branch, chưa merge/push hoặc chạy full.
+
+Smoke cuối sau review/fix: CPU-final và CUDA-final đều exit0 toàn stage, VALIDATION_STOP, không test_opened; verify source/runtime và CPU1thread từng shard khớp. Bàn giao code/command, giữ S2 và chưa mở lượt full.

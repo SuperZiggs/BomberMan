@@ -160,6 +160,6 @@ Insight rút ra từ SD5–SD6 được gom ở `INSIGHTS.md`.
 - [x] D-S2-spec-approval — người dùng duyệt written spec, ngân sách và gate ngày 22/10/2026; cho phép viết implementation plan, chưa yêu cầu chạy train.
 - [x] D-S2-plan — viết `docs/superpowers/plans/2026-10-22-phase-d-s2-pool.md`, **PLAN_REVIEW**; có public contracts, acceptance độc lập, task/kiểm chứng/bàn giao.
 - [x] D-S2-plan-approval — người dùng đã duyệt ngày 22/10/2026; triển khai Native với acceptance độc lập và review cuối.
-- [ ] D-S2-code — ĐANG KIỂM CHỨNG acceptance độc lập, runner/state/pool/evaluation và CLI; CPU/CUDA resume đã qua, chưa chạy full.
+- [x] D-S2-code — code/acceptance độc lập, CPU/CUDA resume, CLI smoke và review/fix pass hoàn tất;535test không thêm lỗi so baseline20error/1failure. Hướng dẫn `PHASE_D_S2_GUIDE.md`; chưa chạy experiment full.
 - [ ] D-S2-run — chạy trên máy đã đăng ký khi người dùng yêu cầu; chưa đặt chỗ/mở seed full mới.
 - [ ] D-S2-review — đọc gate pilot và gate Phase D riêng; chỉ quyết định E 3 → 4 agent sau khi có kết quả.
