@@ -1,8 +1,8 @@
 # S2-KL — pilot ngắn kiểm khả năng giữ kỹ năng S2
 
-Ngày: 23/10/2026. Trạng thái: **SPEC_REVIEW**.
+Ngày: 23/10/2026. Trạng thái: **APPROVED_DESIGN** — người dùng duyệt bản spec trong commit59350ac ngày23/10/2026.
 
-Người dùng đã đồng ý hướng thử pilot ngắn sau phân tích D-S2: so sánh đối chứng với KL neo vào S2, cùng đấu RuleBot và giữ các yếu tố khác giống nhau. Văn bản này chốt các lựa chọn cụ thể để review trước implementation plan. Chưa đăng ký output, đặt chỗ seed, sửa production hoặc chạy train/evaluation mới.
+Người dùng đã duyệt pilot ngắn sau phân tích D-S2: so sánh đối chứng với KL neo vào S2, cùng đấu RuleBot và giữ các yếu tố khác giống nhau. Các lựa chọn cụ thể dưới đây đã được duyệt, cho phép lập implementation plan. Chưa đăng ký output, đặt chỗ seed, sửa production hoặc chạy train/evaluation mới.
 
 ## 1. Câu hỏi và bằng chứng
 
@@ -189,6 +189,6 @@ Trước lượt thật cần acceptance theo thiết kế, integration/smoke CP
 
 ## 11. Ranh giới phê duyệt
 
-Hướng nghiên cứu đã được đồng ý; spec cụ thể này chờ review. Sau khi spec được duyệt mới viết implementation plan. Chỉ chạy lượt mới khi implementation/kiểm chứng xong và có yêu cầu khởi chạy trong phiên làm việc; không diễn giải việc duyệt tài liệu thành lệnh mở terminal ngay.
+Người dùng đã duyệt spec cụ thể ngày23/10/2026 sau commit59350ac, cho phép viết implementation plan. Plan cần review trước production edits; cách triển khai Native đã dùng trong chuỗi công việc này được giữ lại. Chỉ chạy lượt mới khi implementation/kiểm chứng xong và có yêu cầu khởi chạy trong phiên làm việc; không diễn giải việc duyệt tài liệu thành lệnh mở terminal ngay.
 
 Không sửa hoặc ghi đè D-S2/SD8A đã có. Giữ mặc địnhS2 trong suốt pilot và sau mọi kết quả cho đến khi có quyết định riêng dựa trên thí nghiệm phù hợp.
