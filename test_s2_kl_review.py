@@ -71,6 +71,19 @@ class HistoricalSeedTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, '(?i)(unresolved|seed|count)'):
                 register(Path(temporary) / 'output', inputs, device='cpu', smoke=False)
 
+    def test_prior_inventory_rng_records_do_not_poison_later_registration(self):
+        register = function(self, 'register')
+        for rng_records in ([], [dict(source='old/config.json', seed=710003, kind='training_rng')]):
+            with self.subTest(records=rng_records), tempfile.TemporaryDirectory(dir=ROOT, prefix='s2-kl-inventory-history-') as temporary:
+                inputs = copy_inputs(Path(temporary) / 'inputs')
+                write_json(inputs / 'runs/old/seed_inventory.json',
+                    dict(ranges=[], unresolved=[], sources={}, rng_seeds=rng_records))
+                try:
+                    reg = register(Path(temporary) / 'output', inputs, device='cpu', smoke=False)
+                except ValueError as error:
+                    self.fail('Known RNG inventory metadata must not block a disjoint board reservation: ' + str(error))
+                self.assertEqual(reg['mode'], 'full')
+
 
 class EquivalentModelTests(unittest.TestCase):
     def test_deduplicated_sha_keeps_both_endpoint_aliases_in_report(self):

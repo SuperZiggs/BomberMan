@@ -132,7 +132,9 @@ def _inventory(input_root, exclude):
                                'bootstrap_seed', 'original_heldout_seed'):
                         rng = (key in ('bootstrap_seed', 'original_heldout_seed') or
                                key == 'seed' and ('phase' in value and 'episodes' in value or
-                                                  value.get('train_only') is True and 'samples' in value))
+                                                  value.get('train_only') is True and 'samples' in value or
+                                                  value.get('kind') in ('rng', 'training_rng', 'scenario_rng') and
+                                                  isinstance(value.get('source'), str)))
                         if rng:
                             if type(item) is not int:
                                 result['unresolved'].append(source + ': invalid training RNG')
@@ -162,6 +164,12 @@ def _inventory(input_root, exclude):
                                 result['rng_seeds'].extend(dict(source=source, seed=n, kind='scenario_rng') for n in item)
                         else:
                             result['unresolved'].append(source + ': invalid seeds')
+                    elif key == 'rng_seeds':
+                        if (not isinstance(item, list) or any(not isinstance(record, dict) or
+                                type(record.get('seed')) is not int or record['seed'] < 0 or
+                                record.get('kind') not in ('rng', 'training_rng', 'scenario_rng') or
+                                not isinstance(record.get('source'), str) for record in item)):
+                            result['unresolved'].append(source + ': invalid RNG inventory')
                     elif key.endswith(('_seed', '_seeds')) or key == 'seed_scheme':
                         result['unresolved'].append(source + ': unknown seed mapping ' + key)
                     visit(item, source)
