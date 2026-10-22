@@ -760,3 +760,10 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
 - Provenance: xác minh SHA của S2/G/F/S/B và shape CNN; G/F/S/S2 có 13 kênh, B có 12. Runtime đọc trực tiếp: Python 3.11.9, torch 2.11.0+cu128, numpy 2.4.6. Spec yêu cầu đo lại baseline trong cùng runtime, source snapshot đầy đủ, resume kiểm hash/runtime và ledger atomically theo board.
 - Review dữ liệu: report khớp shard; tính lại summary/theo góc và 37 CI bootstrap khớp. Ghi giới hạn trùng seed PDE/PDE2 và mirror 11×11 chỉ 20 trận phân thắng bại vào RESULTS. Đây là kiểm tra artifact, không phải chạy lại test hoặc kiểm thử runner mới.
 - Ngân sách/dải seed mới và tiêu chí gate đều là **đề xuất chờ duyệt**. Không mở test, không tạo output full, không ghi đè checkpoint hoặc run cũ. Sau duyệt spec mới viết implementation plan, rồi acceptance tests và implementation.
+
+## 61. D-S2 — implementation plan theo spec đã duyệt (22/10/2026)
+
+- Người dùng duyệt written spec; cập nhật trạng thái **APPROVED_DESIGN**, giữ nguyên thiết kế thí nghiệm. Viết `docs/superpowers/plans/2026-10-22-phase-d-s2-pool.md`, trạng thái **PLAN_REVIEW**.
+- Plan chọn phần mở rộng tối thiểu: context D-S2 opt-in vào trainer/state hiện tại; module protocol, training context và evaluation riêng, CLI điều phối frozen sources. Mặc định Phase C và D/E cũ giữ nguyên; không nhân bản training loop hoặc sửa loss/reward/mask.
+- Chốt public CLI/artifact schemas, interfaces giữa task, acceptance độc lập trước production, các cửa sổ crash/resume cần kiểm, macro CI và các gate biên, source closure/seed audit cùng smoke và lệnh CMD phải bàn giao. Native được đề xuất vì các task nối nhau qua trainer/state; phương thức thực hiện vẫn chờ người dùng chọn.
+- Chưa sửa code, viết/chạy test hoặc triển khai runner trong lượt này. Kiểm chứng ở mức tài liệu: coverage spec, tính nhất quán interfaces/budget và diff; chưa phải bằng chứng các khả năng của runner đã hoạt động.

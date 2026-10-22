@@ -1,10 +1,10 @@
 # D-S2 — Phase D từ S2 với đối chứng và opponent pool
 
-Ngày: 22/10/2026. Trạng thái: **DRAFT_REVIEW — đã soạn để người dùng duyệt; chưa cho phép triển khai hoặc train**.
+Ngày: 22/10/2026. Trạng thái: **APPROVED_DESIGN — người dùng duyệt written spec ngày 22/10/2026; đã cho phép viết implementation plan, chưa yêu cầu triển khai hoặc train**.
 
 ## 1. Mục tiêu và phạm vi
 
-Người dùng đã đồng ý bước tiếp theo là viết spec Phase D: warm-start từ S2, 1v1 trên 9×9, học với CNN đông cứng và snapshot, giữ RuleBot làm mỏ neo; chọn checkpoint bằng validation trên CNN và RuleBot, rồi test một lần trên seed mới. Spec này đề xuất ngân sách và luật quyết định cụ thể để duyệt trước khi viết implementation plan.
+Người dùng đã đồng ý bước tiếp theo là viết spec Phase D: warm-start từ S2, 1v1 trên 9×9, học với CNN đông cứng và snapshot, giữ RuleBot làm mỏ neo; chọn checkpoint bằng validation trên CNN và RuleBot, rồi test một lần trên seed mới. Written spec với ngân sách và luật quyết định dưới đây đã được người dùng duyệt; implementation plan tại `docs/superpowers/plans/2026-10-22-phase-d-s2-pool.md` cần được review trước implementation.
 
 Câu hỏi chính: **opponent pool có làm CNN thắng chủ động trước các CNN tốt hơn S2 ban đầu và tốt hơn việc chỉ train thêm với RuleBot không?**
 
@@ -99,7 +99,7 @@ Mỗi episode log `board_seed`, learner corner, loại đối thủ, SHA đối 
 
 ## 6. Seed, đăng ký và provenance
 
-Các dải dưới đây là **đề xuất, chưa được đặt chỗ hoặc mở**:
+Các dải dưới đây đã được duyệt ở mức thiết kế; **chưa được đặt chỗ hoặc mở**, và vẫn phải qua kiểm tra lịch sử ở preflight:
 
 | Mục đích | Dải seed bàn | Số bàn / cách dùng |
 |---|---|---|
@@ -216,8 +216,8 @@ Yêu cầu acceptance để chuyển sang chạy thật:
 - [x] Đọc hai báo cáo và tính lại summary/CI.
 - [x] Kiểm SHA/input channels, code train/selection/resume và đề xuất seed tách dải.
 - [x] Soạn spec để review.
-- [ ] Người dùng duyệt written spec, gồm ngân sách hai nhánh và đánh giá tối đa 9.000 trận.
-- [ ] Viết implementation plan theo spec được duyệt.
+- [x] Người dùng duyệt written spec, gồm ngân sách hai nhánh và đánh giá tối đa 9.000 trận (22/10/2026).
+- [x] Viết implementation plan theo spec được duyệt; plan đang PLAN_REVIEW, chưa phải code đã được thực hiện.
 - [ ] Implement/kiểm thử runner và resume; bàn giao lệnh CMD cụ thể.
 - [ ] Người dùng yêu cầu chạy train/validation/test trên máy đã đăng ký.
 - [ ] Đọc gate; quyết định tiếp tục D hay thiết kế E 3 agent → 4 agent.

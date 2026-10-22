@@ -2185,3 +2185,9 @@ Thư mục `runs/sd8a-20261020` (log theo từng stage, ZIP `runs/sd8a-20261020-
 - Phát hiện seed nền trùng giữa các bối cảnh: PDE E1 và PDE2 FFA_9 cùng 51000–51049; PDE D và PDE2 FFA_11 cùng 52000–52049. Chưa đủ bằng chứng kết luận rò rỉ, nhưng không xem hai lượt là độc lập hoàn toàn về seed nền. Lượt mới phải khóa toàn bộ dải theo stage.
 
 **Đề xuất:** ưu tiên D từ S2, chọn bằng CNN-pool validation và giữ kiểm tra RuleBot; E đi sau, 3 agent rồi 4 agent. Spec `docs/superpowers/specs/2026-10-22-phase-d-s2-pool-design.md` ở trạng thái **DRAFT_REVIEW**, đề xuất hai nhánh 2.000 episode (RB đối chứng / pool) cùng từ S2; validation/test tối đa 9.000 trận, tách gate cải thiện pilot với gate hoàn thành Phase D. Các dải 610000/620000/630000/640000 là đề xuất, chưa đặt chỗ hoặc mở. Chưa có runner D-S2, implementation plan hoặc kết quả train mới; không tuyên bố PASS mới.
+
+## D-S2 — duyệt spec và viết implementation plan, 22/10/2026
+
+Người dùng duyệt written spec sau commit `2b16eb5`. Đánh dấu spec **APPROVED_DESIGN** và viết `docs/superpowers/plans/2026-10-22-phase-d-s2-pool.md` ở trạng thái **PLAN_REVIEW**. Plan gồm acceptance tests do tác giả độc lập viết trước production, registration/source/seed audit, context pool, tích hợp resume D, evaluation/selection/gates, CLI/ledger/progress/package và kiểm chứng/bàn giao CMD.
+
+Giữ nguyên ngân sách, checkpoint và gate đã duyệt; bổ sung contract CLI/JSON để review cách triển khai. Lượt này chỉ đọc source và sửa tài liệu: chưa viết/chạy test D-S2, chưa implement runner, chưa tạo output hoặc mở seed full, chưa có kết quả train/validation/test mới. Không có gate thực nghiệm mới để kết luận PASS. Chỉ tiếp tục implementation sau khi plan được review và chọn execution method.
