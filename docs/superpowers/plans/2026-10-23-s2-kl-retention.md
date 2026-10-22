@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-10-23-s2-kl-retention-design.md`, người dùng duyệt bản `59350ac` ngày 23/10/2026.
 
-**Status:** PLAN_REVIEW. Giữ phương thức Native đã chọn trong chuỗi D-S2: implementer hiện tại thực hiện các task, acceptance có tác giả độc lập và cuối lượt có reviewer độc lập. Chưa viết production/tests, đăng ký hoặc chạy pilot S2-KL.
+**Status:** APPROVED_IMPLEMENTATION — người dùng duyệt và yêu cầu triển khai ngày23/10/2026. Giữ phương thức Native: implementer hiện tại thực hiện các task, acceptance có tác giả độc lập và cuối lượt có reviewer độc lập. Theo dõi execution trong ledger của plan; full pilot chỉ khởi chạy khi có yêu cầu riêng sau code-ready.
 
 ## Global Constraints
 
