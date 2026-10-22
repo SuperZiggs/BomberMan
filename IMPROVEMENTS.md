@@ -767,3 +767,19 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
 - Plan chọn phần mở rộng tối thiểu: context D-S2 opt-in vào trainer/state hiện tại; module protocol, training context và evaluation riêng, CLI điều phối frozen sources. Mặc định Phase C và D/E cũ giữ nguyên; không nhân bản training loop hoặc sửa loss/reward/mask.
 - Chốt public CLI/artifact schemas, interfaces giữa task, acceptance độc lập trước production, các cửa sổ crash/resume cần kiểm, macro CI và các gate biên, source closure/seed audit cùng smoke và lệnh CMD phải bàn giao. Native được đề xuất vì các task nối nhau qua trainer/state; phương thức thực hiện vẫn chờ người dùng chọn.
 - Chưa sửa code, viết/chạy test hoặc triển khai runner trong lượt này. Kiểm chứng ở mức tài liệu: coverage spec, tính nhất quán interfaces/budget và diff; chưa phải bằng chứng các khả năng của runner đã hoạt động.
+
+## 62. D-S2 T0/T1 — acceptance độc lập và registration (22/10/2026)
+
+Requirements/matrix và 62 acceptance đã khóa riêng trong commit `30083da`; implementer không viết lại suite. `phase_d_s2_protocol.py` quản lý config, metadata digest, inputs/checkpoint/source closure, runtime deterministic và seed reservation. Các prerequisites đã tồn tại lúc CLI suite khóa được ghi là regression, không giả làm RED. T1 còn kiểm các cửa sổ recovery/JSONL bằng test bổ sung; chưa mở full seed.
+
+## 63. D-S2 T2 — lịch pool và snapshot state (22/10/2026)
+
+`phase_d_s2_training.py` giữ lịch 20 episode/block, hai góc cùng board/opponent; recent round-robin hai snapshot của pool trước block, fallback S2 có audit. Snapshot/candidate là weights CPU, committed state quyết định membership; opponent eval, không gradient, cache giới hạn. Acceptance lịch/count/snapshot/frozen đối thủ đã qua.
+
+## 64. D-S2 T3 — full-state opt-in và GPU resume (22/10/2026)
+
+Trainer nhận context D-S2 tường minh; `training_state` có format D riêng nhưng loader mặc định vẫn C. Lưu/restores Adam, cosine scheduler, toàn bộ RNG và context sau episode. Không đổi loss/reward/mask hoặc đường mặc định D/E. Batch protocol/training 21 test OK (1 CUDA opt-in skip); CUDA thật + legacy state 13 test OK. Test injection trước/sau commit và partial episode giữ đúng kết quả liên tục; dữ liệu smoke không chứng minh cải thiện agent.
+
+## 65. D-S2 T4 — validation macro CNN và hai tầng gate (22/10/2026)
+
+`phase_d_s2_evaluation.py` dùng evaluator hiện tại cho task một board/hai góc, strict 9×9 load, B zero-pad giữ logits. Selection có S2 fallback, guards/tie tuple và khóa test manifest; CI resample board sau mean bốn CNN/hai góc, RB/B riêng. 21 acceptance math/manifest/channel/gate qua; chưa chạy test full hoặc kết luận PILOT/PHASE_D_PASS.

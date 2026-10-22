@@ -2191,3 +2191,15 @@ Thư mục `runs/sd8a-20261020` (log theo từng stage, ZIP `runs/sd8a-20261020-
 Người dùng duyệt written spec sau commit `2b16eb5`. Đánh dấu spec **APPROVED_DESIGN** và viết `docs/superpowers/plans/2026-10-22-phase-d-s2-pool.md` ở trạng thái **PLAN_REVIEW**. Plan gồm acceptance tests do tác giả độc lập viết trước production, registration/source/seed audit, context pool, tích hợp resume D, evaluation/selection/gates, CLI/ledger/progress/package và kiểm chứng/bàn giao CMD.
 
 Giữ nguyên ngân sách, checkpoint và gate đã duyệt; bổ sung contract CLI/JSON để review cách triển khai. Lượt này chỉ đọc source và sửa tài liệu: chưa viết/chạy test D-S2, chưa implement runner, chưa tạo output hoặc mở seed full, chưa có kết quả train/validation/test mới. Không có gate thực nghiệm mới để kết luận PASS. Chỉ tiếp tục implementation sau khi plan được review và chọn execution method.
+
+## D-S2-code T0–T4 — acceptance, context, resume và evaluation, 22/10/2026
+
+Người dùng duyệt implementation plan (Native). Bộ 62 acceptance do tác giả độc lập viết từ requirements đã khóa, không đọc plan hoặc production mới; commit `30083da`. RED protocol/training: 20 failure đúng hành vi thiếu + 1 CUDA skip; evaluation 21 test với 46 assertion/subtest thiếu hành vi; CLI/ledger RED chi tiết trong test matrix. Không sửa giảm assertion để làm xanh.
+
+- T0/T1: đóng băng requirements/matrix, config/digest/seed/source/runtime/checkpoint và validator payload; 8 test protocol qua trong batch đầu.
+- T2/T3: context lịch cặp bàn, recent pool/cursor, atomic candidates/snapshots và full-state D opt-in vào trainer hiện có; protocol + training **21 test OK, 1 CUDA skip** (54,262 s). Sau đó bật CUDA thật: CUDA resume + regression state **13 test OK** (59,173 s), RTX 4060 Laptop, Python 3.11.9 / torch 2.11.0+cu128 / numpy 2.4.6. Trọng số/Adam/scheduler/RNG/pool của lượt liên tục khớp resume trên cùng runtime. Không thay công thức loss.
+- T4: selection/guard/tie-break/open-test, bootstrap theo board (4 CNN × 2 góc), gate pilot/Phase D và B zero-pad: **21 test OK** (2,096 s).
+
+Baseline trước production: 431 tracked test, 20 error, 1 skip (155,311 s); lỗi cũ ở contracts/fixtures. Batch state+PDE riêng có 37 test, 1 failure cũ tại `test_pde_evaluator_contracts.py:155` (xóa underscore trước khi so `test_opened`). Không gọi full suite PASS.
+
+Chưa có số WR/ActiveWR, delta/CI hoặc gate thực nghiệm D-S2 mới. Smoke chỉ dùng 690000–690003. Giữ S2; chưa đặt chỗ/mở dải full. Worktree native bị sandbox chặn ghi nên làm trên nhánh hiện có `Loc/sd8-huong-a`; commit theo phạm vi, giữ các PDE source/artifact untracked trước lượt. Bash helper bị chặn MSYS, dùng Python ghi cùng task ledger.
