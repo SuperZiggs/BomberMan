@@ -152,3 +152,13 @@ Insight rút ra từ SD5–SD6 được gom ở `INSIGHTS.md`.
 - [x] SD8-code — (DONE, IMPROVEMENTS §58) `kill_search.search_action3`/`search_action_deep`, `run_sd8a_distill.py`, `run_sd8b_search3.py`, runner SD5.3 của bạn đưa vào nhánh; spec `docs/superpowers/specs/2026-10-20-sd8-distill-and-deep-search-design.md`, hướng dẫn `SD8_GUIDE.md`; smoke và đo tốc độ (search3 ~23 s/trận vs search2 ~12 s).
 - [ ] SD8A — (CHƯA CHẠY, bạn chạy) chưng cất G+search2 vào CNN từ G: collect 3000 trận bàn 210000–211499, train 16 epoch, validation 21000 chọn epoch, test một lần seed 48000; gate S2 − G ActiveWR ≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp; luật phụ thay S nếu S2 − S CI dưới > 0.
 - [ ] SD8B — (CHƯA CHẠY, người dùng chạy) G + search ba nước: validation 21000 (luật ≥ +2pp so với search2), rồi test một lần seed 49000 lịch E; gate ActiveWR ≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp.
+
+### PDE/PDE2 → D-S2 (cập nhật 22/10/2026)
+
+- [x] PDE/PDE2-review — đọc hai report người dùng chạy, đối chiếu shard/SHA, tính lại summary và 37 CI; ghi kết quả và giới hạn seed/góc trong RESULTS. S2 SD8A đã hoàn tất theo artifact và mục RESULTS ngày 20/10; checklist SD8A phía trên chưa được đồng bộ ở lượt cũ.
+- [x] D-S2-spec — soạn `docs/superpowers/specs/2026-10-22-phase-d-s2-pool-design.md`; **DRAFT_REVIEW**, hai nhánh 2.000 episode, pool-aware validation, seed tách dải, resume và test một lần.
+- [ ] D-S2-spec-approval — người dùng duyệt written spec, ngân sách và gate; chưa cho phép train chỉ bằng việc đồng ý soạn spec.
+- [ ] D-S2-plan — viết implementation plan theo spec đã duyệt.
+- [ ] D-S2-code — acceptance tests, runner/state/pool/evaluation, smoke riêng và lệnh CMD; chưa triển khai.
+- [ ] D-S2-run — chạy trên máy đã đăng ký khi người dùng yêu cầu; chưa đặt chỗ/mở seed full mới.
+- [ ] D-S2-review — đọc gate pilot và gate Phase D riêng; chỉ quyết định E 3 → 4 agent sau khi có kết quả.

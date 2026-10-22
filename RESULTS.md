@@ -2172,3 +2172,16 @@ Thư mục `runs/sd8a-20261020` (log theo từng stage, ZIP `runs/sd8a-20261020-
 **Gate: ĐẠT.** S2 − G vượt +5pp, cận dưới CI dương, và tự nổ không tăng quá +1pp. Luật phụ cũng ĐẠT: S2 thay S (cận dưới ActiveWR +19.25pp > 0). S2 chuyển phần lớn khác biệt từ hòa và chết vì vòng sang thắng chủ động; số bước giảm 327 → 211 và bom/trận 30.0 → 20.3 so với G.
 
 **Quyết định:** CNN thuần tốt nhất hiện tại là **S2 epoch 16**. G + search hai nước vẫn có ActiveWR cao hơn 3.5pp trên seed này; CI của S2 − G+search2 bao gồm 0, nên chưa có bằng chứng S2 thay được search runtime. Seed test 48000 đã dùng. Giới hạn: một seed train/test và teacher RuleBot trùng đối thủ đánh giá.
+
+## PDE/PDE2 review và đề xuất D-S2, 22/10/2026
+
+Đọc artifact người dùng đã chạy: `runs/pde-50000-resumable/report.json` và `runs/pde2-51000/report.json`. Lượt này chỉ review và soạn spec; không chạy lại trận, không train hoặc mở seed full mới.
+
+- PDE: 3.360 bản ghi / 200 shard; PDE2: 5.600 bản ghi / 1.100 shard. Report khớp raw shard, không trùng định danh bản ghi. Tính lại summary/theo góc và toàn bộ 13 + 24 so sánh bootstrap khớp. Các SHA source/checkpoint đã đăng ký khớp file hiện tại khi kiểm tra.
+- PDE E2: G / G+search3 WR = 32,5 / 83,75%, ActiveWR = 22,5 / 82,5%; G − RB ActiveWR +16,25pp [9,375; 23,125]. E1 ActiveWR = 32,22 / 91,67%. Theo luật đã chốt: đề xuất D từ G, không kích hoạt E từ G. Trước CNN G/F/S/B, G+search3 WR chỉ 17,5–47,5%.
+- PDE2 FFA 9×9: G+search3 / S2 / G WR = 15 / 7 / 4%, ActiveWR = 9 / 5 / 2%, hòa 73,5%. G+search3 − S2 ActiveWR +4pp [−1; 9]: chưa đủ bằng chứng phân biệt, không chứng minh tương đương.
+- PDE2 FFA 11×11: WR = 7 / 4 / 1%, ActiveWR = 5,5 / 1 / 0%, hòa 88%. Mirror S2 9×9 hòa 75,75%; 11×11 hòa 95%, chỉ 20/400 trận có người thắng. Luật đề xuất E kích hoạt qua phân bố góc 11×11 (15/20/40/25%), nhưng kết luận thiên lệch góc còn ít mẫu.
+- PDE2 1v1: S2 vs G WR 31 / 8,5%, ActiveWR 7,5 / 4%, hòa 60,5%; G+search3 vs S2 WR 23,5 / 12%, ActiveWR 14 / 8,5%, hòa 64,5%. Đề xuất D từ S2 kích hoạt.
+- Phát hiện seed nền trùng giữa các bối cảnh: PDE E1 và PDE2 FFA_9 cùng 51000–51049; PDE D và PDE2 FFA_11 cùng 52000–52049. Chưa đủ bằng chứng kết luận rò rỉ, nhưng không xem hai lượt là độc lập hoàn toàn về seed nền. Lượt mới phải khóa toàn bộ dải theo stage.
+
+**Đề xuất:** ưu tiên D từ S2, chọn bằng CNN-pool validation và giữ kiểm tra RuleBot; E đi sau, 3 agent rồi 4 agent. Spec `docs/superpowers/specs/2026-10-22-phase-d-s2-pool-design.md` ở trạng thái **DRAFT_REVIEW**, đề xuất hai nhánh 2.000 episode (RB đối chứng / pool) cùng từ S2; validation/test tối đa 9.000 trận, tách gate cải thiện pilot với gate hoàn thành Phase D. Các dải 610000/620000/630000/640000 là đề xuất, chưa đặt chỗ hoặc mở. Chưa có runner D-S2, implementation plan hoặc kết quả train mới; không tuyên bố PASS mới.
