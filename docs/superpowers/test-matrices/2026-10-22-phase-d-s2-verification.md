@@ -10,7 +10,21 @@
 - Regression state/SD8/PDE: 42 test, một failure giống baseline, tại `test_pde_evaluator_contracts.py:155`; test xóa `_` trước khi tìm `test_opened`.
 - Baseline tracked trước production: 431 test, 20 error, 1 skip (155,311 s). Mtime log hoàn tất trước production write đầu tiên; không coi lỗi thiếu behavior mới là baseline.
 
-Full discover, smoke hai worker và review cuối đang được hoàn tất; số cuối được bổ sung bên dưới.
+Full discover: **526 test, 20 error, 1 failure, 2 skip, 471,437 s**. So sánh tên từng error với baseline: không thêm hoặc mất error nào (20/20 khớp). Failure PDE trùng batch baseline riêng. Hai skip gồm skip cũ và CUDA opt-in. Bộ acceptance D-S2 nằm trong discover không có failure/error. Test one-ULP bổ sung sau collection: 1 test OK (1,318 s).
+
+Hai lượt CLI smoke `runs/d-s2-code-smoke-20261022-cpu` và `...-cuda`: register → train control → train pool → validate → package, exit0; 8 episode/160 learner steps và 40 trận validation mỗi lượt (SHA trùng được reuse). Cả hai **VALIDATION_STOP**, không có `test_opened.json`. Đã kiểm mọi payload worker: CPU/threads1/source_root đúng `output/sources`. Success path mở/resume test được kiểm bằng fixture độc lập đủ gate, không ép mở seed khoa học. CUDA resume rerun trên source cuối:1 test OK13,674s.
+
+| Stage | CPU wall s | CUDA wall s | Peak RSS tree MiB CPU / CUDA |
+|---|---:|---:|---:|
+| Register |3,27|4,28|577 /589|
+| Train control 4ep |7,30|9,84|1199 /2199|
+| Train pool 4ep |7,57|9,84|1195 /2201|
+| Validation40games,2workersCPU |12,12|13,84|2379 /2374|
+| Package |11,61|12,33|1165 /1164|
+
+RSS lấy mẫu250ms theo process tree, có đếm lặp shared pages, không gồm tiến trình ngoài cây. Theo callback từ bước đầu đến episode commit (source frozen, thêm output profile riêng):CPU6,35ms/learner-step,CUDA15,44ms. Dự phóng tuyến tính với trần2triệu learner steps:3,5h CPU /8,6h GPU; evaluation tối đa3600/5400trận trên2worker CPU khoảng1,5–1,7h /2,2–2,6h. Đây **không phải ETA hoặc cận trên**: smoke chỉ20bước, chưa đo trạng thái cuối trận hoặc I/O history lớn; episode thật có thể kết thúc sớm, teacher cuối trận có thể tốn hơn. GPU không được chứng minh nhanh hơn CPU ở workload này. File JSON kèm raw stage/profile/runtime/source hashes được nhúng vào registration mới; snapshot registration đã tạo không bị viết lại.
+
+Review độc lập cuối đang thực hiện.
 
 ## Các quyết định trong execution ledger
 

@@ -2203,3 +2203,13 @@ Người dùng duyệt implementation plan (Native). Bộ 62 acceptance do tác 
 Baseline trước production: 431 tracked test, 20 error, 1 skip (155,311 s); lỗi cũ ở contracts/fixtures. Batch state+PDE riêng có 37 test, 1 failure cũ tại `test_pde_evaluator_contracts.py:155` (xóa underscore trước khi so `test_opened`). Không gọi full suite PASS.
 
 Chưa có số WR/ActiveWR, delta/CI hoặc gate thực nghiệm D-S2 mới. Smoke chỉ dùng 690000–690003. Giữ S2; chưa đặt chỗ/mở dải full. Worktree native bị sandbox chặn ghi nên làm trên nhánh hiện có `Loc/sd8-huong-a`; commit theo phạm vi, giữ các PDE source/artifact untracked trước lượt. Bash helper bị chặn MSYS, dùng Python ghi cùng task ledger.
+
+## D-S2-code T5/T6 — CLI, ledger và kiểm chứng tích hợp, 22/10/2026
+
+`run_phase_d_s2.py` có register/train/validate/test/package, source snapshot cho CLI/worker, khóa writer và ledger mỗi board đủ hai góc. Test-open write-once, selection/manifest/ledger drift từ chối trước trận mới; resume tái dùng đúng shard đã commit. Package kiểm selection/report từ raw ledger và không ngầm train/test. GUIDE dùng Python venv thật và lệnh CMD tuyệt đối.
+
+Acceptance 62 + recovery2:64 test OK,1CUDA skip; recovery mở rộng8 test OK; one-ULP boundary regression1 test OK. Full discover526test (471,437s):20error cùng tên chính xác baseline20error;1failure PDE cùng baseline riêng;2skip. Không có error mới; không gọi full suite xanh. Giữ lỗi ngoài phạm vi được ghi nhận, không sửa source/fixture lịch sử để hợp thức hóa.
+
+Chỉ smoke 690000–690003; dữ liệu CPU/GPU, RAM và review cuối được bổ sung sau. Không chạy/reserve experiment full hoặc suy ra gate khoa học từ smoke.
+
+T6 smoke cuối: CPU/GPU mỗi lượt8episode/160steps,40trận validation, cả hai VALIDATION_STOP, không mở test; package exit0. Worker payload xác nhận frozen sources, CPU1thread. Peak process-tree RSS train~1,2GiBCPU/~2,2GiBGPU; evaluation2worker~2,4GiB. Profile committed episode:6,35ms/stepCPU,15,44ms/stepGPU; chưa suy ra hiệu năng full. Chi tiết wall time, dự phóng theo trần và giới hạn trong verification.md/JSON. CUDA exact-resume rerun source cuối:1testOK13,674s. Checkpoint S2/G/F/S/B vẫn giữ nguyên SHA; chưa có gate khoa học mới.

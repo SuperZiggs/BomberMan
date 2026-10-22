@@ -10,6 +10,19 @@ from test_phase_d_s2_protocol import ROOT, copy_inputs, read_json
 
 
 class RegistrationRecoveryTests(unittest.TestCase):
+    def test_gate_rejects_one_ulp_beyond_each_point_boundary(self):
+        import math
+        from test_phase_d_s2_evaluation import passing_gate_fixture
+        from phase_d_s2_evaluation import decide_gates
+        changes=[('macro_cnn','active_win',5.,-math.inf),('macro_cnn','draw',0.,math.inf),
+                 ('macro_cnn','suicide',1.,math.inf),('RB','active_win',-2.,-math.inf),
+                 ('RB','suicide',1.,math.inf)]
+        for group,metric,boundary,direction in changes:
+            fixture=passing_gate_fixture()
+            fixture[0]['pool_minus_S2'][group][metric]['difference_pp']=math.nextafter(boundary,direction)
+            with self.subTest(metric=(group,metric)):
+                self.assertFalse(decide_gates(*fixture)['pilot_gate']['pass'])
+
     def test_resume_reconciles_selection_projections_after_publish_interruption(self):
         from test_run_phase_d_s2 import ready_case,synthetic_result
         import phase_d_s2_ledger as ledger

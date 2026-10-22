@@ -50,3 +50,5 @@ Registration khóa checkpoint, config, spec, toàn bộ source dependency và ru
 ZIP chỉ chứa output của lượt: registration/source/runtime/state/checkpoint/manifests/raw ledger/report. Log train/evaluation trong output được gói cùng ZIP; gửi kèm log register nằm cạnh output. Báo cáo incomplete không có quyền kết luận gate.
 
 Smoke dùng output riêng với `register --smoke --device cpu` hoặc `cuda:0`, 4 episode/nhánh, max20 bước; seed 690000–690003. Nó không đặt chỗ dải full. Không dùng tốc độ 20 bước để cam kết thời gian trận 500 bước; đo và dự báo từng stage được ghi cùng bằng chứng kiểm chứng.
+
+Bằng chứng kiểm chứng: `docs/superpowers/test-matrices/2026-10-22-phase-d-s2-verification.md` và JSON cùng tên. CPU/GPU smoke đều hoàn tất, peak RSS validation hai worker khoảng2,4GiB (đếm shared pages). GPU hoạt động nhưng chưa nhanh hơn CPU trong smoke batch1/20bước; môi trường và teacher chạy CPU. Dự phóng tuyến tính riêng từng stage có trong bằng chứng, không phải ETA lượt full.

@@ -783,3 +783,13 @@ Trainer nhận context D-S2 tường minh; `training_state` có format D riêng 
 ## 65. D-S2 T4 — validation macro CNN và hai tầng gate (22/10/2026)
 
 `phase_d_s2_evaluation.py` dùng evaluator hiện tại cho task một board/hai góc, strict 9×9 load, B zero-pad giữ logits. Selection có S2 fallback, guards/tie tuple và khóa test manifest; CI resample board sau mean bốn CNN/hai góc, RB/B riêng. 21 acceptance math/manifest/channel/gate qua; chưa chạy test full hoặc kết luận PILOT/PHASE_D_PASS.
+
+## 66. D-S2 T5 — CLI, frozen workers và atomic ledger/package (22/10/2026)
+
+CLI xác minh source/config/checkpoint/runtime rồi chạy snapshot; worker spawn áp dụng CPU threads1/deterministic. Ledger theo matchup-board, kiểm đủ corners/schema/identity trước reuse; test marker write-once và chỉ mở khi validation đạt. Report có theo góc/thời gian và CI board; selection/projection/package được phục hồi hoặc từ chối nếu drift. `progress.bar` với public spawn Pool để Ctrl+C kết thúc task dở; không sửa helper progress chung.
+
+Test độc lập đi RED→GREEN; bổ sung lỗi thật từ integration (NumPy CI scalar → Python float), PENDING sau publish, partial prepare, JSONL overlap, history CRLF, thiếu snapshot và projection/package. Full discover không thêm error so với baseline; vẫn20error/1failure cũ, không gọi green. Smoke mới không chứng minh model cải thiện.
+
+## 67. D-S2 T6 — smoke thật và bàn giao (22/10/2026)
+
+GUIDE có lệnh CMD tuyệt đối cho từng stage/resume, log trong output và ZIP; map CLAUDE/tracker tách code khỏi experiment full. Chạy smoke CPU/GPU2worker, kiểm source_root/threads trong mọi shard và VALIDATION_STOP không mở test; package đủ artifact. Có JSON wall time/RSS/profile và dự phóng riêng train/validation/test; registration mới nhúng evidence. Source CUDA resume cuối qua lại1test. Full suite526test vẫn20error+1failure cùng baseline, không báo toàn repo xanh hoặc Phase D PASS. Review độc lập cuối còn được ghi sau.
