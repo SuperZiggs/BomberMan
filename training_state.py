@@ -50,9 +50,11 @@ def atomic_save(value, path):
     os.replace(temporary, path)
 
 
-def load_training_state(path):
+def load_training_state(path, *, expected_format='bomberman_phase_c_training_v1'):
     state = torch.load(path, map_location='cpu', weights_only=True)
-    if not isinstance(state, dict) or state.get('format') != 'bomberman_phase_c_training_v1':
+    if expected_format not in ('bomberman_phase_c_training_v1', 'bomberman_phase_d_training_v1'):
+        raise ValueError('Unsupported training state format')
+    if not isinstance(state, dict) or state.get('format') != expected_format:
         raise ValueError('Expected a full Phase C training state, not an inference checkpoint')
     if not isinstance(state.get('episode'), int) or state['episode'] < 0:
         raise ValueError('Invalid completed episode in training state')

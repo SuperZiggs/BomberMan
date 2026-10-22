@@ -758,6 +758,7 @@ def train(
     group_buffer: int = 0,
     group_first_step: bool = False,
     anchor_coef: float = 0.0,
+    phase_d_run=None,
 ):
     """
     Unified training loop for phases C, D, E.
@@ -774,7 +775,9 @@ def train(
     """
     phase = phase.upper()
     save_training_state = save_training_state or bool(resume_training_state)
-    if save_training_state and phase != "C":
+    if phase_d_run is not None and (phase != 'D' or validation_every or run_report or not save_training_state):
+        raise ValueError('D-S2 context requires Phase D, full state, external validation/report')
+    if save_training_state and phase != "C" and phase_d_run is None:
         raise ValueError("Full training-state resume currently supports Phase C only")
     resume_config = {key: value for key, value in locals().copy().items() if key in (
         'phase', 'episodes', 'board_size', 'num_agents', 'gamma', 'lr', 'value_coef', 'entropy_coef',
@@ -789,8 +792,14 @@ def train(
         'target_draw_rate', 'target_sudden_death_death_rate', 'max_suicide_rate', 'teacher_version',
         'search_teacher', 'search_loss_coef', 'group_rl', 'group_coef', 'group_k', 'group_horizon',
         'group_max_states', 'group_gap', 'group_select', 'group_buffer', 'group_first_step', 'anchor_coef')}
-    restored = load_training_state(resume_training_state) if resume_training_state else None
+    state_format = 'bomberman_phase_d_training_v1' if phase_d_run is not None else 'bomberman_phase_c_training_v1'
+    def read_state(path):
+        return load_training_state(path, expected_format=state_format)
+    restored = read_state(resume_training_state) if resume_training_state else None
     provenance = {'config': resume_config, 'sources': source_hashes(), 'runtime': runtime_state()} if save_training_state else None
+    if phase_d_run is not None:
+        provenance.update(registration_digest=phase_d_run.registration['registration_digest'],
+            initial_sha256=phase_d_run.registration['checkpoints']['S2']['sha256'])
     if restored is not None and restored['provenance'] != provenance:
         raise ValueError("Training config, source, device or runtime changed; exact resume refused")
     assert phase in ("C", "D", "E"), f"Phase must be C, D, or E, got {phase}"
@@ -894,7 +903,7 @@ def train(
     anchor_net = deepcopy(net).eval().requires_grad_(False) if anchor_coef else None
 
     # Clean old snapshots when starting Phase D/E fresh (no explicit resume)
-    if phase in ("D", "E") and not resume_from:
+    if phase in ("D", "E") and not resume_from and phase_d_run is None:
         prefix = f"snapshot_phaseE_{num_agents}a_ep*.pt" if phase == "E" else "snapshot_ep*.pt"
         old_snaps = glob.glob(os.path.join(checkpoint_dir, prefix))
         for f in old_snaps:
@@ -911,7 +920,7 @@ def train(
     rule_bots = {i: RuleBasedOpponent(i) for i in range(num_agents)}
     snapshot_pool: list[SnapshotOpponent] = []
 
-    if phase in ("D", "E"):
+    if phase in ("D", "E") and phase_d_run is None:
         snapshot_pool = load_opponent_pool(checkpoint_dir, board_size, device,
                                            phase=phase, num_agents=num_agents)
         print(f"Loaded {len(snapshot_pool)} snapshots from {checkpoint_dir}")
@@ -1034,23 +1043,32 @@ def train(
             group_rng.bit_generator.state = state['group_rng']
         if 'group_pool' in state:
             group_pool[:] = pickle.loads(state['group_pool'])  # our own training state, not foreign data
+        if phase_d_run is not None:
+            phase_d_run.load_state_dict(state['context'])
 
     def save_state(episode):
         if save_training_state:
-            atomic_save({'format': 'bomberman_phase_c_training_v1', 'episode': episode,
+            if phase_d_run is not None and phase_d_run.commit_hook:
+                phase_d_run.commit_hook('before_state_commit', episode)
+            atomic_save({'format': state_format, 'episode': episode,
                 'provenance': provenance, 'model': net.state_dict(), 'training_mode': net.training,
                 'optimizer': optimizer.state_dict(), 'scheduler': scheduler.state_dict(),
                 'histories': histories, 'selection': (best_wr, best_active_wr, best_episode, best_score,
                     best_state_dict, last_validation, suicide_limit),
-                'context': json.loads(json.dumps(checkpoint_context())) if checkpoint_context is not None else None,
+                'context': phase_d_run.state_dict() if phase_d_run is not None else (
+                    json.loads(json.dumps(checkpoint_context())) if checkpoint_context is not None else None),
                 'rng': capture_rng(env), 'curriculum_rng': curriculum_rng.bit_generator.state,
                 'group_rng': group_rng.bit_generator.state,
                 **({'group_pool': pickle.dumps(group_pool)} if group_buffer else {})}, state_path)
+            if phase_d_run is not None and phase_d_run.commit_hook:
+                phase_d_run.commit_hook('after_state_commit', episode)
 
     start_episode = restored['episode'] if restored is not None else 0
     if restored is not None:
         restore_state(restored)
     else:
+        if phase_d_run is not None:
+            phase_d_run.snapshot_completed(0, net)
         save_state(0)
     if validation_enabled and last_validation is None:
         validate_candidate(0)  # Keep the warm-start if subsequent updates fail validation.
@@ -1066,15 +1084,16 @@ def train(
             env.sudden_death = (sudden_death_probability == 1.0
                                 or bool(curriculum_rng.random() < sudden_death_probability))
         sudden_death_enabled = env.sudden_death
+        episode_plan = phase_d_run.prepare_episode(ep, env, device) if phase_d_run is not None else None
         obs_list = env.reset()
         alive_mask = [True] * num_agents
 
-        learning_aid = (ep - 1) % num_agents
+        learning_aid = episode_plan['learning_aid'] if episode_plan is not None else (ep - 1) % num_agents
 
         # ── Decide opponents for this episode ──
         opponents = {}  # agent_id -> opponent object or None (learning agent)
 
-        for opp_id in range(num_agents):
+        for opp_id in (() if episode_plan is not None else range(num_agents)):
             if opp_id == learning_aid:
                 continue
             if phase == "C":
@@ -1087,6 +1106,8 @@ def train(
                     opponents[opp_id] = snapshot_pool[
                         np.random.randint(len(snapshot_pool))
                     ]
+        if episode_plan is not None:
+            opponents = episode_plan['opponents']
 
         if on_step is not None:
             on_step(env, ep, learning_aid, [ACTION_STOP] * num_agents, opponents)
@@ -1479,7 +1500,7 @@ def train(
                 break
 
         # ── Save snapshot (Phase D/E) ──
-        if phase in ("D", "E") and ep % snapshot_every == 0:
+        if phase in ("D", "E") and phase_d_run is None and ep % snapshot_every == 0:
             path = save_snapshot(net, checkpoint_dir, ep, phase=phase, num_agents=num_agents)
             # Add to live pool
             snap_net = ActorCriticNet(board_size=board_size).to(device)
@@ -1487,11 +1508,13 @@ def train(
             snap_net.eval()
             snapshot_pool.append(SnapshotOpponent(snap_net, device))
 
+        if phase_d_run is not None:
+            phase_d_run.snapshot_completed(ep, net)
         # ── LR schedule step ──
         scheduler.step()
 
-        if on_episode is not None:
-            on_episode({"episode": ep, "reward": ep_reward, "win": won,
+        if on_episode is not None or phase_d_run is not None:
+            episode_row = {"episode": ep, "reward": ep_reward, "win": won,
                         "bombs": bombs_this_ep, "walls": walls_this_ep,
                          "kills": kills_this_ep, "active_win": active_win,
                          "suicide": int(suicide_this_ep),
@@ -1529,7 +1552,11 @@ def train(
                         **({"reward_components": dict(reward_totals),
                             "reward_component_max_error": reward_max_error} if reward_diagnostics else {}),
                         **({'ratio_update': ratio_metrics} if rollout is not None else {}),
-                        **({"advantage": advantage_metrics} if advantage_diagnostics else {})})
+                         **({"advantage": advantage_metrics} if advantage_diagnostics else {})}
+            if phase_d_run is not None:
+                phase_d_run.record_episode(episode_row)
+            else:
+                on_episode(episode_row)
 
         # ── Print progress ──
         if ep % log_every == 0:
@@ -1555,7 +1582,13 @@ def train(
                   f"lr: {cur_lr:.1e} | "
                   f"pool: {len(snapshot_pool)}{best_tag}")
         save_state(ep)
+        if phase_d_run is not None:
+            phase_d_run.after_commit(ep)
+            if on_episode is not None:
+                on_episode(phase_d_run.state['metrics'][-1])
 
+    if phase_d_run is not None:
+        return net, reward_history, win_history
     # ── Save final model ──
     os.makedirs(checkpoint_dir, exist_ok=True)
     tag = f"phaseE_{num_agents}a" if phase == "E" else f"phase{phase}"
