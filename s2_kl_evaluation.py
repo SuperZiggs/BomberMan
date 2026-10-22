@@ -289,6 +289,15 @@ def build_report(reg, models, diagnostics, rb_rows):
             raise ValueError('Duplicate/drifted model descriptor')
         by_sha[model['sha256']] = model
     manifest = model_manifest(reg, descriptors) if descriptors else None
+    # Evaluation deduplicates SHA, but the committed inventory retains every
+    # candidate/endpoint alias, including two arms with identical checkpoint bytes.
+    manifest_path = Path(reg['output']) / 'model_manifest.json'
+    if descriptors and manifest_path.is_file():
+        manifest = read_json(manifest_path)
+        if (manifest.get('registration_digest') != reg['registration_digest'] or
+                canonical_digest(manifest, 'model_manifest_digest') != manifest.get('model_manifest_digest') or
+                manifest.get('models') != descriptors):
+            raise ValueError('Model manifest identity/inventory drift')
     tasks = validation_tasks(reg, descriptors)
     expected = {(t['learner']['sha256'], t['board']): t for t in tasks}
     groups = defaultdict(list)
@@ -326,8 +335,8 @@ def build_report(reg, models, diagnostics, rb_rows):
         summary[model['id']] = entry
     endpoint = reg['config']['endpoint_episode']
     inventory_complete = (manifest is not None and len(manifest['endpoints']) == 3 and
-        all({d['episode'] for d in descriptors if d['arm'] == arm} == set(reg['config']['checkpoint_episodes']) - {0}
-            for arm in ('control', 'anchor')))
+        all(manifest['aliases'].get(f'{arm}-{ep}') in by_sha
+            for arm in ('control', 'anchor') for ep in reg['config']['checkpoint_episodes']))
     complete = bool(inventory_complete and set(diagnostics) == set(by_sha) and
         len(rb_rows) == 2 * len(tasks) and all(len(groups[key]) == 2 for key in expected))
     comparisons = {}
@@ -353,10 +362,11 @@ def build_report(reg, models, diagnostics, rb_rows):
             comparisons[name] = compared
     conditions = {k: False for k in CONDITIONS}
     gate = dict(status='INCOMPLETE', complete=False, conditions=conditions, **{'pass': False})
-    if len(endpoints) == 3 and all('offline' in summary[d['id']] and 'RB' in summary[d['id']] for d in endpoints.values()) and 'R' in comparisons.get('anchor_minus_control', {}):
+    if len(endpoints) == 3 and all('offline' in summary[by_sha[d['sha256']]['id']] and
+            'RB' in summary[by_sha[d['sha256']]['id']] for d in endpoints.values()) and 'R' in comparisons.get('anchor_minus_control', {}):
         values = []
         for key in ('baseline', 'control500', 'anchor500'):
-            entry = summary[endpoints[key]['id']]
+            entry = summary[by_sha[endpoints[key]['sha256']]['id']]
             values.append(dict(R=entry['offline']['R'], Q=entry['offline']['Q'],
                 AW=entry['RB']['active_win_rate'], SU=entry['RB']['suicide_rate']))
         gate = decide_gate(*values, comparisons, complete=complete, smoke=reg['mode'] == 'smoke')

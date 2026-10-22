@@ -56,3 +56,13 @@ Frozen test SHA256:
 | `test_s2_kl_support.py` | `aa196acdcf29c5c4e01af6b2817a51c78d1243b55e3a4d29cd061170cfa53a61` |
 
 The suite is handed off unchanged. Its runtime integration assertions will execute after implementation exists. Any subsequent test correction requires author review with frozen-requirements evidence or a demonstrated technical invalidity, preserving the prior assertion and reason.
+
+## Independent-author fixture correction: valid JSONL overlap case
+
+After the original acceptance suite passed, a fixture-integrity audit proved a technical invalidity in `SeedSafetyTests.test_nested_ui_history_raw_ledger_mechanism_and_reservation_conflicts_fail_closed`: the `runs/legacy/raw.jsonl` case was emitted through `write_json`, which uses `indent=2`. Its eight-line pretty JSON object was valid JSON but invalid JSONL. Parsing its first line raised `JSONDecodeError: Expecting property name enclosed in double quotes`; registration rejected `Unresolved seed history` due to JSON parsing, so the original broad rejection assertion did not demonstrate the intended board710012 overlap.
+
+The independent author corrected only that JSONL fixture to one complete JSON object per line, with a trailing newline, and strengthened only that case's expected reason to `(?i)overlap`. Other fixtures and assertions remain unchanged. A separate proof parsed the corrected single line as `{'records': [{'board': 710012, 'corner': 0}]}` and observed registration rejection `Seed overlap with historical boards`, with no output published. This correction removes an unrelated setup rejection and strengthens the existing frozen seed-isolation requirement; it does not relax a production acceptance criterion or create a new RED claim.
+
+The original test is preserved in existing commit `58e5321:test_s2_kl_protocol.py`. Original SHA256: `4b82443a8b2d25d7c63d306d09b33b35b977395ed955042fc714c0922a50ca16`. Corrected SHA256: `6e829dbb0c7d2c4af4bbc64c440e7a9b6ac65a3e099e7739d975e4a968aa9abd`. The original freeze table above intentionally remains historical evidence.
+
+Validation command: `E:\Bomberman\venv\Scripts\python.exe -m unittest test_s2_kl_protocol.SeedSafetyTests.test_nested_ui_history_raw_ledger_mechanism_and_reservation_conflicts_fail_closed -v`. Result: exit0, 1 test passed in 1.997 seconds, no errors/failures. The scalar710012 overlap behavior was already implemented; this is fixture-integrity verification and regression coverage. No production code, other tests, original experiment artifacts, staging, commit or journal was changed for this correction.

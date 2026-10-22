@@ -2,7 +2,7 @@
 
 Ngày: 23/10/2026. Trạng thái: **APPROVED_DESIGN** — người dùng duyệt bản spec trong commit59350ac ngày23/10/2026.
 
-Người dùng đã duyệt pilot ngắn sau phân tích D-S2: so sánh đối chứng với KL neo vào S2, cùng đấu RuleBot và giữ các yếu tố khác giống nhau. Các lựa chọn cụ thể dưới đây đã được duyệt, cho phép lập implementation plan. Chưa đăng ký output, đặt chỗ seed, sửa production hoặc chạy train/evaluation mới.
+Người dùng đã duyệt pilot ngắn và implementation plan ngày23/10/2026: so sánh đối chứng với KL neo vào S2, cùng đấu RuleBot và giữ các yếu tố khác giống nhau. Runner/context/metric/ledger đã triển khai, acceptance40/40 gồm CUDA thật đã pass; kiểm chứng tích hợp/regression/smoke/review được ghi riêng trong `docs/superpowers/test-matrices/2026-10-23-s2-kl-verification.md`. Chưa đăng ký output full, đặt chỗ seed full hoặc khởi chạy pilot500episode/arm.
 
 ## 1. Câu hỏi và bằng chứng
 
@@ -160,7 +160,7 @@ Không status nào là PHASE_D_PASS hoặc tự thay model mặc địnhS2. Pass
 
 ## 10. Artifact, stages và kiểm chứng trước chạy
 
-Output dự kiến `runs/s2-kl-20261023`, namespaceS2-KL riêng. CLI dự kiến `run_s2_kl_probe.py` gồm `register`, `train --arm control|anchor [--resume]`, `diagnose [--resume]`, `validate [--resume]`, `package`. Đây là contract thiết kế, chưa phải runner/lệnh có thể chạy. Không có stage test. Luồng đầy đủ: register → traincontrol → trainanchor → diagnose → validate → package.
+Output full dự kiến `runs/s2-kl-20261023`, namespaceS2-KL riêng. CLI `run_s2_kl_probe.py` gồm `register`, `train --arm control|anchor [--resume]`, `diagnose [--resume]`, `validate [--resume]`, `package`; lệnhCMD ở `S2_KL_GUIDE.md`. Không có stage test. Luồng đầy đủ: register → traincontrol → trainanchor → diagnose → validate → package.
 
 Artifact tối thiểu:
 
@@ -189,6 +189,6 @@ Trước lượt thật cần acceptance theo thiết kế, integration/smoke CP
 
 ## 11. Ranh giới phê duyệt
 
-Người dùng đã duyệt spec cụ thể ngày23/10/2026 sau commit59350ac, cho phép viết implementation plan. Plan cần review trước production edits; cách triển khai Native đã dùng trong chuỗi công việc này được giữ lại. Chỉ chạy lượt mới khi implementation/kiểm chứng xong và có yêu cầu khởi chạy trong phiên làm việc; không diễn giải việc duyệt tài liệu thành lệnh mở terminal ngay.
+Người dùng đã duyệt spec cụ thể sau commit59350ac, rồi duyệt plan ed7c749 và yêu cầu triển khai ngày23/10/2026. Giữ cách triển khai Native, acceptance có tác giả độc lập và reviewer cuối. Chỉ chạy lượt full mới khi implementation/kiểm chứng xong và có yêu cầu khởi chạy trong phiên làm việc; duyệt triển khai code không tự mở terminal train full.
 
 Không sửa hoặc ghi đè D-S2/SD8A đã có. Giữ mặc địnhS2 trong suốt pilot và sau mọi kết quả cho đến khi có quyết định riêng dựa trên thí nghiệm phù hợp.

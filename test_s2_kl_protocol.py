@@ -164,8 +164,14 @@ class SeedSafetyTests(unittest.TestCase):
             with self.subTest(path=relative), tempfile.TemporaryDirectory(dir=ROOT, prefix='s2-kl-seeds-') as tmp:
                 inputs = copy_inputs(Path(tmp) / 'inputs'); output = Path(tmp) / 'output'
                 path = inputs / relative
-                write_json(path, payload)
-                with self.assertRaisesRegex(ValueError, '(?i)(overlap|conflict|unresolved|mapping|seed)'):
+                if path.suffix == '.jsonl':
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(json.dumps(payload, ensure_ascii=False, allow_nan=False) + '\n', encoding='utf-8')
+                    expected_error = '(?i)overlap'
+                else:
+                    write_json(path, payload)
+                    expected_error = '(?i)(overlap|conflict|unresolved|mapping|seed)'
+                with self.assertRaisesRegex(ValueError, expected_error):
                     register(output, inputs, smoke=False, device='cpu')
                 self.assertFalse(output.exists())
 

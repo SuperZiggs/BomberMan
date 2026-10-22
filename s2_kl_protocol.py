@@ -115,16 +115,37 @@ def _inventory(input_root, exclude):
 
         def visit(value, source):
             if isinstance(value, dict):
+                # Historical collection/export indexes declare inclusive endpoints.
+                for first, last in (('first_seed', 'last_seed'),
+                                    ('collect_first_seed', 'collect_last_seed'), ('seed_min', 'seed_max')):
+                    if first in value and last in value:
+                        a, b = value[first], value[last]
+                        if type(a) is int and type(b) is int and 0 <= a <= b:
+                            result['ranges'].append([a, b, source])
+                        else:
+                            result['unresolved'].append(source + ': invalid seed interval')
                 for key, item in value.items():
                     if key in ('board', 'board_seed', 'normal_seed', 'validation_seed', 'test_seed',
-                               'train_seed', 'mechanism_seed', 'collect_seed', 'seed'):
-                        if key == 'seed' and 'phase' in value and 'episodes' in value:
+                               'train_seed', 'mechanism_seed', 'collect_seed', 'seed', 'evaluation_seed',
+                               'selection_seed', 'first_seed', 'last_seed', 'last_board_seed',
+                               'collect_first_seed', 'collect_last_seed', 'seed_min', 'seed_max',
+                               'bootstrap_seed', 'original_heldout_seed'):
+                        rng = (key in ('bootstrap_seed', 'original_heldout_seed') or
+                               key == 'seed' and ('phase' in value and 'episodes' in value or
+                                                  value.get('train_only') is True and 'samples' in value))
+                        if rng:
                             if type(item) is not int:
                                 result['unresolved'].append(source + ': invalid training RNG')
+                            else:
+                                result['rng_seeds'].append(dict(source=source, seed=item, kind='rng'))
                         elif type(item) is int and item >= 0:
-                            count = value.get(key.replace('_seed', '_games'),
-                                value.get(key.replace('_seed', '_episodes'), 1))
-                            result['ranges'].append([item, item + (count if type(count) is int and count > 0 else 1) - 1, source])
+                            # A scalar board/seed is one board, never its own range length.
+                            count = (value.get(key[:-5] + '_games', value.get(key[:-5] + '_episodes', 1))
+                                     if key.endswith('_seed') else 1)
+                            if type(count) is not int or count <= 0:
+                                result['unresolved'].append(source + ': invalid seed count ' + key)
+                            else:
+                                result['ranges'].append([item, item + count - 1, source])
                         else:
                             result['unresolved'].append(source + ': invalid seed ' + key)
                     elif key in ('board_ids', 'board_seeds') or key.endswith(('_board_ids', '_board_seeds')):
@@ -132,6 +153,17 @@ def _inventory(input_root, exclude):
                             result['ranges'].extend([n, n, source] for n in item)
                         else:
                             result['unresolved'].append(source + ': invalid board IDs')
+                    elif key in ('seeds', 'rollout_seeds', 'skill_seeds'):
+                        if isinstance(item, list) and item and all(type(n) is int and n >= 0 for n in item):
+                            # Old evaluation exports use seeds=[first,last], conservatively inclusive.
+                            if key == 'seeds':
+                                result['ranges'].append([min(item), max(item), source])
+                            else:
+                                result['rng_seeds'].extend(dict(source=source, seed=n, kind='scenario_rng') for n in item)
+                        else:
+                            result['unresolved'].append(source + ': invalid seeds')
+                    elif key.endswith(('_seed', '_seeds')) or key == 'seed_scheme':
+                        result['unresolved'].append(source + ': unknown seed mapping ' + key)
                     visit(item, source)
             elif isinstance(value, list):
                 for item in value:
