@@ -281,6 +281,7 @@ def validate_diagnostic(payload, model, reg, samples):
 
 
 def build_report(reg, models, diagnostics, rb_rows):
+    rb_rows = sorted(rb_rows, key=lambda r: (r['learner_sha256'], r['board'], r['corner']))
     descriptors = list(models)
     by_sha = {}
     for model in descriptors:
