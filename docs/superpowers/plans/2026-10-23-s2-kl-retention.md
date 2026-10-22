@@ -85,10 +85,10 @@ Offline payload format `s2-kl-diagnostics-v1`: model_sha256/registration_digest/
 
 **Interfaces:** Consumes spec/public contracts; produces requirements packet/hash, matrix, executable acceptance và RED evidence. Không tạo production skeleton để làm test pass.
 
-- [ ] **Step 1 — chuẩn bị baseline và packet:** xác minh checkout/input fixture thực tế, ghi source/test baseline và `git status`; packet chỉ chứa hành vi/giá trị/public contract/artifact/non-goals, không internal plan/code. Fixture copy đúng S2, metadata SD8A, sample manifest và shard cần thiết có SHA; không copy/junction mutable cả runs hoặc tạo RED do thiếu fixture. Chạy baseline root `venv\Scripts\python.exe -m unittest discover -p "test_*.py" -q`, lưu tên lỗi hiện hữu; không giả định 20 error/1 failure trước đây vẫn đúng.
-- [ ] **Step 2 — tác giả độc lập:** theo independent-test-first, giao agent context mới chỉ packet/current code/conventions/commands; không gửi implementation plan/history. Agent viết matrix rồi acceptance cho các task và Review Focus. Implementer không tự thay acceptance để xanh.
-- [ ] **Step 3 — RED hợp lệ:** chạy `venv\Scripts\python.exe -m unittest test_s2_kl_protocol test_s2_kl_training test_s2_kl_evaluation test_run_s2_kl_probe -q`; thiếu public behavior phải thành assertion rõ ràng, không phải syntax/dependency/fixture failures. Behavior đã có ở trainer được ghi regression, không giả làm RED.
-- [ ] **Step 4 — đóng băng:** commit packet/matrix/tests và SHA từng file; các task sau dùng nguyên suite. Việc sửa test chỉ do tác giả/reviewer chứng minh sai requirements, giữ lý do và phiên bản cũ. Commit `test: freeze S2 KL acceptance contracts`.
+- [x] **Step 1 — chuẩn bị baseline và packet:** xác minh checkout/input fixture thực tế, ghi source/test baseline và `git status`; packet chỉ chứa hành vi/giá trị/public contract/artifact/non-goals, không internal plan/code. Fixture copy đúng S2, metadata SD8A, sample manifest và shard cần thiết có SHA; không copy/junction mutable cả runs hoặc tạo RED do thiếu fixture. Chạy baseline root `venv\Scripts\python.exe -m unittest discover -p "test_*.py" -q`, lưu tên lỗi hiện hữu; không giả định 20 error/1 failure trước đây vẫn đúng.
+- [x] **Step 2 — tác giả độc lập:** theo independent-test-first, giao agent context mới chỉ packet/current code/conventions/commands; không gửi implementation plan/history. Agent viết matrix rồi acceptance cho các task và Review Focus. Implementer không tự thay acceptance để xanh.
+- [x] **Step 3 — RED hợp lệ:** chạy `venv\Scripts\python.exe -m unittest test_s2_kl_protocol test_s2_kl_training test_s2_kl_evaluation test_run_s2_kl_probe -q`; thiếu public behavior phải thành assertion rõ ràng, không phải syntax/dependency/fixture failures. Behavior đã có ở trainer được ghi regression, không giả làm RED.
+- [x] **Step 4 — đóng băng:** commit packet/matrix/tests và SHA từng file; các task sau dùng nguyên suite. Việc sửa test chỉ do tác giả/reviewer chứng minh sai requirements, giữ lý do và phiên bản cũ. Commit `test: freeze S2 KL acceptance contracts`.
 
 ## Task 1: Protocol, inputs, seed audit và registration
 
@@ -96,17 +96,17 @@ Offline payload format `s2-kl-diagnostics-v1`: model_sha256/registration_digest/
 
 **Interfaces:** Consumes stdlib/shared helpers và locked inputs; produces config/seed_manifest/register/verify_run theo contract, source snapshot và registry entry mới. Mọi scalar/hash trong Global Constraints là input đã chốt.
 
-- [ ] **Step 1 — RED requirements:** kiểm hai arm chỉ khác beta; S2/13 channels và manifest/shard SHA đúng; đủ source import gián tiếp/động; từ chối CUDA thiếu, metadata không rõ, giao dải qua offset hoặc UI root; kiểm crash lúc đăng ký và hai writer cùng registry. Assertion tiêu biểu:
+- [x] **Step 1 — RED requirements:** kiểm hai arm chỉ khác beta; S2/13 channels và manifest/shard SHA đúng; đủ source import gián tiếp/động; từ chối CUDA thiếu, metadata không rõ, giao dải qua offset hoặc UI root; kiểm crash lúc đăng ký và hai writer cùng registry. Assertion tiêu biểu:
   ```python
   self.assertEqual(config_for()['anchor_coef'], {'control': 0.0, 'anchor': 1.0})
   self.assertEqual(seed_manifest()['ranges']['train'], {'start':710000,'end_inclusive':710249})
   with self.assertRaisesRegex(ValueError, 'Seed overlap'):
       register(output, inputs_with_ui_board_overlap, device='cpu')
   ```
-- [ ] **Step 2 — chạy RED:** `venv\Scripts\python.exe -m unittest test_s2_kl_protocol -q`, ghi các assertion thiếu behavior của T1; không mở seed thật.
-- [ ] **Step 3 — implement config/verify:** lưu S2 trong `checkpoints.S2` để trainer dùng provenance hiện có; copy source/sample manifest vào output, khóa collection shards bằng SHA; kiểm live source, snapshot, spec, runtime, inputs và registry. Scan `inventory_seeds(input_root)` và `inventory_seeds(input_root/'game UI')`, gắn prefix nguồn để không trùng path; phân biệt training RNG có phase/episodes với board seed. Metadata không rõ vẫn phải từ chối.
-- [ ] **Step 4 — implement registration atomic:** khóa output rồi shared registry, lưu identity pending trước copy, publish atomic và COMPLETE; phục hồi mọi cửa sổ crash mà không reset artifact/reservation của lượt khác. Smoke chỉ audit dải 790000–790003, không ghi reservation full 710000/720000. Task này chỉ hoàn thiện CLI register; stage còn thiếu trả lỗi rõ.
-- [ ] **Step 5 — GREEN và commit:** chạy lại suite T1, xác minh registry/checkpoint gốc không đổi; fixture hoạt động dưới root tạm. Commit `feat: register frozen S2 KL experiments`.
+- [x] **Step 2 — chạy RED:** `venv\Scripts\python.exe -m unittest test_s2_kl_protocol -q`, ghi các assertion thiếu behavior của T1; không mở seed thật.
+- [x] **Step 3 — implement config/verify:** lưu S2 trong `checkpoints.S2` để trainer dùng provenance hiện có; copy source/sample manifest vào output, khóa collection shards bằng SHA; kiểm live source, snapshot, spec, runtime, inputs và registry. Scan `inventory_seeds(input_root)` và `inventory_seeds(input_root/'game UI')`, gắn prefix nguồn để không trùng path; phân biệt training RNG có phase/episodes với board seed. Metadata không rõ vẫn phải từ chối.
+- [x] **Step 4 — implement registration atomic:** khóa output rồi shared registry, lưu identity pending trước copy, publish atomic và COMPLETE; phục hồi mọi cửa sổ crash mà không reset artifact/reservation của lượt khác. Smoke chỉ audit dải 790000–790003, không ghi reservation full 710000/720000. Task này chỉ hoàn thiện CLI register; stage còn thiếu trả lỗi rõ.
+- [x] **Step 5 — GREEN và commit:** chạy lại suite T1, xác minh registry/checkpoint gốc không đổi; fixture hoạt động dưới root tạm. Commit `feat: register frozen S2 KL experiments`.
 
 ## Task 2: Train context, KL reference và GPU/full-state resume
 
