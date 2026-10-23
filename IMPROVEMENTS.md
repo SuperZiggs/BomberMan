@@ -1241,3 +1241,30 @@ Ghi chú 24/10/2026: đã đồng bộ `PLAN_BOMBERMAN.md` (hàng SD và ghi ch�
 **Kiểm thử:** `test_probe_draw_kills`, `test_probe_sd_schedule` chạy lại trước khi commit, 6/6 OK. Số liệu trong báo cáo được đối chiếu với các mục RESULTS gốc.
 
 **Trạng thái:** xong.
+
+## 88. SD10 — runner chưng cất S3 + search3 đoán đối thủ đúng (2026-10-24)
+
+**Thông số:** như RESULTS "SD10-prep". Claude chạy trên máy người dùng, torch 2.5.1 CPU, 4 tiến trình.
+
+**Thay đổi code:**
+- File mới `run_sd10_distill.py`, cùng quy trình collect / train / validate / test với `run_sd9_distill.py`. Runner SD9 giữ nguyên vì lượt đã chạy kiểm SHA source của nó.
+- Thu dữ liệu từ S3 + search3, bàn 214000–214999. `opponent_for` xoay vòng RuleBot/S2/G/S3 theo bàn. Đối thủ CNN đi bằng `evaluate.make_ac_fn` (lấy mẫu).
+- `kill_search.OPPONENT_MODEL` = `probe_search_cnn_model.cnn_model` của chính đối thủ đó (argmax), và luôn được trả về None trong `finally`. Đấu RuleBot thì để None, tức đoán bằng RuleBot.
+- Mỗi trận ghi thêm `opponent` và `decisions`. `collection_summary.json` có thống kê theo đối thủ.
+- Train từ S3 với KL về S3, seed chia 1010.
+- Validation: S3 và các ứng viên đấu S2/G/S3/RuleBot trên seed 21000, 400 trận mỗi cặp.
+  - `select`: chỉ xét ứng viên có ActiveWR đấu RuleBot ≥ S3 − 3, tự nổ macro CNN ≤ S3 + 1, tự nổ đấu RuleBot ≤ S3 + 1.
+  - Chọn ActiveWR macro CNN cao nhất, bằng nhau thì lấy epoch sớm hơn.
+  - `proceed_to_test` chỉ đúng khi ứng viên được chọn hơn S3; nếu không thì `test` dừng với VALIDATION_STOP.
+- Test seed 58000: S4 và S3 đấu S2/G/S3/RuleBot/F. `gate` gồm: macro CNN ActiveWR ≥ +5 với CI dưới > 0, macro tự nổ ≤ +1, ActiveWR đấu RuleBot ≥ −3.
+- `SD10_GUIDE.md`: lệnh cmd kèm cảnh báo chi phí.
+
+**Kiểm thử:** `test_run_sd10.py` (4 test, OK):
+- dải bàn, xoay vòng đối thủ, seed;
+- luật chọn: loại vì tự nổ, loại vì RuleBot, hòa thì lấy epoch sớm, không hơn S3 thì dừng;
+- các nhánh gate;
+- một trận thật đấu S2 (max_steps 60): search dùng đúng mô hình S2, hook được trả về None, chạy lại cho kết quả y hệt.
+
+Chưa chạy smoke toàn bộ quy trình (collect → test).
+
+**Trạng thái:** code xong, chưa chạy. Thu dữ liệu khoảng 53 giờ, chờ người dùng quyết.

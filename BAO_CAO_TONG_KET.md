@@ -88,7 +88,10 @@ Vì vậy, khi đấu CNN, báo cáo này dùng ActiveWR và tỉ lệ thua, kh�
 - Khi thu dữ liệu, search đoán đối thủ bằng chính CNN của đối thủ (biết được vì đối thủ là S2/G/S3). Ván đấu RuleBot vẫn đoán bằng RuleBot.
 - S4 lúc chơi là CNN thuần, không cần biết đối thủ.
 - Theo SD9.2, mức lợi ích tối đa đấu CNN chỉ khoảng +10pp, và đây là ước lượng lạc quan.
+- Đã đo chi phí: mỗi trận đấu CNN tốn khoảng 10 phút (search phải chạy CNN của đối thủ ở từng bước mô phỏng) và chỉ cho khoảng 2.7 trạng thái có nhãn. Thu đủ dữ liệu cần khoảng 53 giờ. Code và test đã xong nhưng **chưa chạy**.
 - Spec: `docs/superpowers/specs/2026-10-24-sd10-cnn-aware-distillation.md`, lệnh chạy ở `SD10_GUIDE.md`.
+
+Việc nhãn đấu CNN vừa hiếm vừa đắt là thêm một bằng chứng cho mục 5: khi đấu CNN, cơ hội giết hầu như không tồn tại.
 
 ## 9. Tái lập
 

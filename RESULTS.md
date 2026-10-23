@@ -3315,3 +3315,32 @@ RuleBot, X − E ActiveWR: S400 −0.50 [−1.5, +0.5], S350 −0.50 [−2.0, +0
 - Làm hướng A (SD10).
 
 **Commit:** SD9.1–SD9.3 (code, test, spec, `runs/sd91-21000`, `runs/sd92-21000`, `runs/sd93-21000` và log), các file md và báo cáo được đưa lên nhánh `danh/sd9-s3-distillation`. Không commit `.github/` (file của plugin claude-mem) và các file `runs/resume-budget-test-*.lock` (đồ thừa của test).
+
+## SD10-prep — chuẩn bị hướng A (chưng cất S3 + search3 đoán đối thủ đúng), đo chi phí, 24/10/2026
+
+**Thông số:**
+- **Code:** `run_sd10_distill.py`. Thiết kế đăng ký: thu 2000 trận S3 + search3 trên bàn 214000–214999, đối thủ lần lượt theo bàn RuleBot/S2/G/S3; khi đấu CNN, search đoán đối thủ bằng argmax của chính CNN đó; train từ S3 16 epoch; validation 21000; test 58000. Spec `docs/superpowers/specs/2026-10-24-sd10-cnn-aware-distillation.md`, lệnh ở `SD10_GUIDE.md`.
+- **Đo thời gian:** `_record_game` 1 trận/đối thủ, bàn 214000–214003, góc 0, max_steps 500, lịch theo `_schedule_e` của bàn. Chạy bằng script tạm trong scratchpad, không lưu output trong `runs/`.
+- **Môi trường:** Claude chạy trên máy người dùng, torch 2.5.1 CPU, 1 luồng mỗi tiến trình, 4 tiến trình song song.
+- **Test:** `test_run_sd10.py` 4/4 OK, 76 giây.
+
+**Thời gian và mật độ nhãn:**
+
+| Đối thủ | Số bước | Giây/trận | Trạng thái quyết định | Neo | Kết quả |
+|---|---|---|---|---|---|
+| RuleBot | 75 | 32.9 | 3 | 4 | thắng chủ động |
+| S2 | 500 | 651.2 | 0 | 33 | hòa |
+| G | 475 | 628.9 | 2 | 20 | thua |
+| S3 | 500 | 603.0 | 6 | 16 | hòa |
+
+**Ước tính:**
+- Một trận đấu CNN tốn khoảng 628 giây và cho khoảng 2.7 trạng thái quyết định.
+- Thiết kế đầy đủ tốn khoảng **53 giờ** với 5 tiến trình, cho khoảng 4000 trạng thái quyết định khi đấu CNN (SD9 có 10 425 trạng thái khi đấu RuleBot).
+- Đạt 10 000 trạng thái khi đấu CNN cần khoảng 130 giờ.
+- Bản rút gọn (300 trận CNN) mất khoảng 11 giờ nhưng chỉ cho khoảng 800 trạng thái.
+
+**Quyết định:** chưa chạy, chờ người dùng.
+- Chi phí 53 giờ cho mức lợi ích tối đa khoảng +10pp (SD9.2), trong khi nhãn khi đấu CNN thưa, mà nhãn thưa đã không đổi được CNN (INSIGHTS).
+- Nếu chạy, giữ nguyên thiết kế đã đăng ký.
+
+**Giới hạn:** chỉ 4 trận đo, 4 tiến trình chạy cùng lúc nên mỗi tiến trình có thể chậm hơn khi chạy một mình.
