@@ -1,0 +1,14 @@
+S2_vs_G          ActiveWR   5.75 WR  31.00 draw  58.50 (timeout  53.75) loss  10.50 s/game    1.7
+S2_vs_G_search3  ActiveWR   5.00 WR  14.00 draw  62.00 (timeout  59.00) loss  24.00 s/game  116.6
+S2_vs_S2         ActiveWR   7.00 WR  18.25 draw  63.50 (timeout  58.50) loss  18.25 s/game    1.7
+S2_vs_S3         ActiveWR   3.50 WR  18.25 draw  63.50 (timeout  57.00) loss  18.25 s/game    1.7
+S3_vs_G          ActiveWR  10.75 WR  36.50 draw  52.75 (timeout  48.75) loss  10.75 s/game    1.7
+S3_vs_G_search3  ActiveWR  18.00 WR  22.00 draw  55.00 (timeout  52.00) loss  23.00 s/game  122.5
+S3_vs_S2         ActiveWR   6.50 WR  18.25 draw  63.50 (timeout  57.00) loss  18.25 s/game    1.6
+S3_vs_S3         ActiveWR   9.00 WR  21.50 draw  57.00 (timeout  52.50) loss  21.50 s/game    1.6
+S3 - S2 vs S2: ActiveWR -0.50 [-3.75, +2.75], draw +0.00 [-8.00, +8.00]
+S3 - S2 vs G: ActiveWR +5.00 [+1.25, +8.75], draw -5.75 [-12.75, +1.25]
+S3 - S2 vs S3: ActiveWR +5.50 [+2.25, +8.75], draw -6.50 [-14.25, +1.00]
+S3 - S2 vs G_search3: ActiveWR +13.00 [+6.00, +21.00], draw -7.00 [-20.00, +6.00]
+S3 - S2 macro CNN: ActiveWR +3.33 [+1.25, +5.50], draw -4.08 [-8.17, -0.17]
+verdict {'draw_down_15pp': False, 'draw_ci_upper_negative': True, 'active_up_5pp': False, 'active_ci_lower_positive': True, 's3_fixes_draws': False}

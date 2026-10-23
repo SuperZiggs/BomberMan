@@ -1,0 +1,39 @@
+{
+  "seed": 21000,
+  "boards": 200,
+  "max_steps": 500,
+  "learner": "S3",
+  "opponents": [
+    "S2",
+    "G",
+    "S3",
+    "rulebot"
+  ],
+  "schedules": {
+    "E": {
+      "sudden_death_start": 475,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40
+    },
+    "S400": {
+      "sudden_death_start": 400,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40
+    },
+    "S350": {
+      "sudden_death_start": 350,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40
+    },
+    "S300": {
+      "sudden_death_start": 300,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40
+    }
+  },
+  "sha256": {
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+    "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "S3": "4185375f8b5f5cf070d3eef6ce98bec27e23fe06c64d97b500c939e36e669ed7"
+  }
+}

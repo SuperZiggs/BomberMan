@@ -1,0 +1,1427 @@
+{
+  "seed": 21000,
+  "boards": 200,
+  "max_steps": 500,
+  "learner": "S3",
+  "opponents": [
+    "S2",
+    "G",
+    "S3",
+    "rulebot"
+  ],
+  "schedules": {
+    "E": {
+      "sudden_death_start": 475,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40
+    },
+    "S400": {
+      "sudden_death_start": 400,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40
+    },
+    "S350": {
+      "sudden_death_start": 350,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40
+    },
+    "S300": {
+      "sudden_death_start": 300,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40
+    }
+  },
+  "sha256": {
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+    "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "S3": "4185375f8b5f5cf070d3eef6ce98bec27e23fe06c64d97b500c939e36e669ed7"
+  },
+  "seconds_per_game": {
+    "E_vs_S2": 3.1336243855953216,
+    "E_vs_G": 3.5998513317108154,
+    "E_vs_S3": 3.411589542031288,
+    "E_vs_rulebot": 0.6911616456508637,
+    "S400_vs_S2": 3.1760345590114594,
+    "S400_vs_G": 3.2107455742359163,
+    "S400_vs_S3": 3.0589326709508895,
+    "S400_vs_rulebot": 0.6801989334821701,
+    "S350_vs_S2": 2.8478178918361663,
+    "S350_vs_G": 2.8133255290985106,
+    "S350_vs_S3": 2.7389006245136263,
+    "S350_vs_rulebot": 0.6704230934381485,
+    "S300_vs_S2": 2.5005154621601107,
+    "S300_vs_G": 2.528127852678299,
+    "S300_vs_S3": 2.4195385974645616,
+    "S300_vs_rulebot": 0.6746667522192001
+  },
+  "replay_E_matches_sd91": {
+    "S2": {
+      "compared": 400,
+      "identical": 400
+    },
+    "G": {
+      "compared": 400,
+      "identical": 400
+    },
+    "S3": {
+      "compared": 400,
+      "identical": 400
+    }
+  },
+  "results": {
+    "E_vs_S2": {
+      "num_episodes": 400,
+      "win_rate": 18.25,
+      "active_win_rate": 6.5,
+      "passive_win_rate": 1.0,
+      "sudden_death_win_rate": 10.75,
+      "draw_rate": 63.5,
+      "suicide_rate": 6.5,
+      "sudden_death_death_rate": 18.5,
+      "avg_kills": 0.095,
+      "avg_bombs": 34.6275,
+      "avg_steps": 448.1675,
+      "loss_rate": 18.25,
+      "draw_at_max_steps": 57.0
+    },
+    "E_vs_G": {
+      "num_episodes": 400,
+      "win_rate": 36.5,
+      "active_win_rate": 10.75,
+      "passive_win_rate": 2.25,
+      "sudden_death_win_rate": 23.5,
+      "draw_rate": 52.75,
+      "suicide_rate": 3.25,
+      "sudden_death_death_rate": 11.5,
+      "avg_kills": 0.12,
+      "avg_bombs": 33.565,
+      "avg_steps": 443.2725,
+      "loss_rate": 10.75,
+      "draw_at_max_steps": 48.75
+    },
+    "E_vs_S3": {
+      "num_episodes": 400,
+      "win_rate": 21.5,
+      "active_win_rate": 9.0,
+      "passive_win_rate": 0.75,
+      "sudden_death_win_rate": 11.75,
+      "draw_rate": 57.0,
+      "suicide_rate": 8.5,
+      "sudden_death_death_rate": 17.25,
+      "avg_kills": 0.115,
+      "avg_bombs": 36.4125,
+      "avg_steps": 425.43,
+      "loss_rate": 21.5,
+      "draw_at_max_steps": 52.5
+    },
+    "E_vs_rulebot": {
+      "num_episodes": 400,
+      "win_rate": 96.5,
+      "active_win_rate": 90.5,
+      "passive_win_rate": 5.75,
+      "sudden_death_win_rate": 0.25,
+      "draw_rate": 1.5,
+      "suicide_rate": 0.5,
+      "sudden_death_death_rate": 0.25,
+      "avg_kills": 0.905,
+      "avg_bombs": 12.28,
+      "avg_steps": 127.84,
+      "loss_rate": 2.0,
+      "draw_at_max_steps": 1.25
+    },
+    "S400_vs_S2": {
+      "num_episodes": 400,
+      "win_rate": 22.0,
+      "active_win_rate": 6.5,
+      "passive_win_rate": 2.0,
+      "sudden_death_win_rate": 13.5,
+      "draw_rate": 61.0,
+      "suicide_rate": 8.25,
+      "sudden_death_death_rate": 67.5,
+      "avg_kills": 0.095,
+      "avg_bombs": 31.1125,
+      "avg_steps": 395.9275,
+      "loss_rate": 17.0,
+      "draw_at_max_steps": 0.0
+    },
+    "S400_vs_G": {
+      "num_episodes": 400,
+      "win_rate": 39.25,
+      "active_win_rate": 11.5,
+      "passive_win_rate": 3.5,
+      "sudden_death_win_rate": 24.25,
+      "draw_rate": 48.0,
+      "suicide_rate": 6.5,
+      "sudden_death_death_rate": 52.5,
+      "avg_kills": 0.1225,
+      "avg_bombs": 29.8775,
+      "avg_steps": 388.1225,
+      "loss_rate": 12.75,
+      "draw_at_max_steps": 0.0
+    },
+    "S400_vs_S3": {
+      "num_episodes": 400,
+      "win_rate": 22.75,
+      "active_win_rate": 7.75,
+      "passive_win_rate": 1.25,
+      "sudden_death_win_rate": 13.75,
+      "draw_rate": 54.5,
+      "suicide_rate": 8.75,
+      "sudden_death_death_rate": 64.25,
+      "avg_kills": 0.0975,
+      "avg_bombs": 32.4075,
+      "avg_steps": 377.125,
+      "loss_rate": 22.75,
+      "draw_at_max_steps": 0.0
+    },
+    "S400_vs_rulebot": {
+      "num_episodes": 400,
+      "win_rate": 96.5,
+      "active_win_rate": 90.0,
+      "passive_win_rate": 5.75,
+      "sudden_death_win_rate": 0.75,
+      "draw_rate": 1.75,
+      "suicide_rate": 0.5,
+      "sudden_death_death_rate": 1.75,
+      "avg_kills": 0.9,
+      "avg_bombs": 12.1575,
+      "avg_steps": 126.7125,
+      "loss_rate": 1.75,
+      "draw_at_max_steps": 0.0
+    },
+    "S350_vs_S2": {
+      "num_episodes": 400,
+      "win_rate": 24.5,
+      "active_win_rate": 5.75,
+      "passive_win_rate": 2.75,
+      "sudden_death_win_rate": 16.0,
+      "draw_rate": 57.5,
+      "suicide_rate": 8.75,
+      "sudden_death_death_rate": 64.5,
+      "avg_kills": 0.085,
+      "avg_bombs": 27.945,
+      "avg_steps": 350.785,
+      "loss_rate": 18.0,
+      "draw_at_max_steps": 0.0
+    },
+    "S350_vs_G": {
+      "num_episodes": 400,
+      "win_rate": 36.75,
+      "active_win_rate": 8.5,
+      "passive_win_rate": 4.25,
+      "sudden_death_win_rate": 24.0,
+      "draw_rate": 52.0,
+      "suicide_rate": 5.5,
+      "sudden_death_death_rate": 56.75,
+      "avg_kills": 0.095,
+      "avg_bombs": 27.12,
+      "avg_steps": 346.085,
+      "loss_rate": 11.25,
+      "draw_at_max_steps": 0.0
+    },
+    "S350_vs_S3": {
+      "num_episodes": 400,
+      "win_rate": 19.5,
+      "active_win_rate": 7.75,
+      "passive_win_rate": 1.0,
+      "sudden_death_win_rate": 10.75,
+      "draw_rate": 61.0,
+      "suicide_rate": 7.5,
+      "sudden_death_death_rate": 68.25,
+      "avg_kills": 0.0925,
+      "avg_bombs": 29.365,
+      "avg_steps": 338.37,
+      "loss_rate": 19.5,
+      "draw_at_max_steps": 0.0
+    },
+    "S350_vs_rulebot": {
+      "num_episodes": 400,
+      "win_rate": 97.0,
+      "active_win_rate": 90.0,
+      "passive_win_rate": 5.75,
+      "sudden_death_win_rate": 1.25,
+      "draw_rate": 1.25,
+      "suicide_rate": 0.5,
+      "sudden_death_death_rate": 1.0,
+      "avg_kills": 0.9,
+      "avg_bombs": 11.995,
+      "avg_steps": 124.8625,
+      "loss_rate": 1.75,
+      "draw_at_max_steps": 0.0
+    },
+    "S300_vs_S2": {
+      "num_episodes": 400,
+      "win_rate": 23.5,
+      "active_win_rate": 7.5,
+      "passive_win_rate": 2.5,
+      "sudden_death_win_rate": 13.5,
+      "draw_rate": 59.75,
+      "suicide_rate": 8.75,
+      "sudden_death_death_rate": 65.25,
+      "avg_kills": 0.1025,
+      "avg_bombs": 24.9325,
+      "avg_steps": 306.9075,
+      "loss_rate": 16.75,
+      "draw_at_max_steps": 0.0
+    },
+    "S300_vs_G": {
+      "num_episodes": 400,
+      "win_rate": 36.5,
+      "active_win_rate": 10.0,
+      "passive_win_rate": 4.75,
+      "sudden_death_win_rate": 21.75,
+      "draw_rate": 49.75,
+      "suicide_rate": 6.0,
+      "sudden_death_death_rate": 56.25,
+      "avg_kills": 0.1075,
+      "avg_bombs": 24.0975,
+      "avg_steps": 302.3275,
+      "loss_rate": 13.75,
+      "draw_at_max_steps": 0.0
+    },
+    "S300_vs_S3": {
+      "num_episodes": 400,
+      "win_rate": 22.5,
+      "active_win_rate": 7.25,
+      "passive_win_rate": 1.5,
+      "sudden_death_win_rate": 13.75,
+      "draw_rate": 55.0,
+      "suicide_rate": 9.0,
+      "sudden_death_death_rate": 63.75,
+      "avg_kills": 0.0825,
+      "avg_bombs": 25.8375,
+      "avg_steps": 295.58,
+      "loss_rate": 22.5,
+      "draw_at_max_steps": 0.0
+    },
+    "S300_vs_rulebot": {
+      "num_episodes": 400,
+      "win_rate": 93.75,
+      "active_win_rate": 86.75,
+      "passive_win_rate": 5.75,
+      "sudden_death_win_rate": 1.25,
+      "draw_rate": 3.25,
+      "suicide_rate": 0.75,
+      "sudden_death_death_rate": 4.25,
+      "avg_kills": 0.8675,
+      "avg_bombs": 11.9,
+      "avg_steps": 124.3825,
+      "loss_rate": 3.0,
+      "draw_at_max_steps": 0.0
+    }
+  },
+  "macro_cnn": {
+    "S400": {
+      "active_win": {
+        "difference_pp": -0.1666666666666666,
+        "ci95_pp": [
+          -1.25,
+          0.9999999999999999
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 2.583333333333333,
+        "ci95_pp": [
+          -0.41666666666666646,
+          5.583333333333333
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -3.25,
+        "ci95_pp": [
+          -7.333333333333333,
+          0.9166666666666662
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.9166666666666666,
+        "ci95_pp": [
+          0.25,
+          1.583333333333333
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 1.7499999999999998,
+        "ci95_pp": [
+          0.5,
+          3.083333333333333
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 1.8333333333333333,
+        "ci95_pp": [
+          -1.0833333333333335,
+          4.666666666666667
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 45.66666666666667,
+        "ci95_pp": [
+          42.166666666666664,
+          49.085416666666646
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S350": {
+      "active_win": {
+        "difference_pp": -1.4166666666666665,
+        "ci95_pp": [
+          -2.4166666666666665,
+          -0.4166666666666667
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 1.5,
+        "ci95_pp": [
+          -1.3333333333333333,
+          4.333333333333334
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -0.9166666666666663,
+        "ci95_pp": [
+          -4.916666666666667,
+          3.083333333333333
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 1.333333333333333,
+        "ci95_pp": [
+          0.5,
+          2.1666666666666665
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 1.1666666666666667,
+        "ci95_pp": [
+          -5.551115123125783e-17,
+          2.4166666666666665
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 1.5833333333333335,
+        "ci95_pp": [
+          -1.1666666666666667,
+          4.333333333333333
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 47.41666666666667,
+        "ci95_pp": [
+          43.833333333333336,
+          51.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S300": {
+      "active_win": {
+        "difference_pp": -0.49999999999999994,
+        "ci95_pp": [
+          -1.833333333333333,
+          0.7500000000000001
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 2.0833333333333335,
+        "ci95_pp": [
+          -0.8333333333333329,
+          4.916666666666666
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -2.916666666666667,
+        "ci95_pp": [
+          -7.083333333333335,
+          1.4166666666666665
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 1.583333333333333,
+        "ci95_pp": [
+          0.8333333333333334,
+          2.4166666666666665
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 1.8333333333333333,
+        "ci95_pp": [
+          0.4166666666666667,
+          3.3333333333333335
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          -1.5833333333333335,
+          3.5833333333333335
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 46.0,
+        "ci95_pp": [
+          42.333333333333336,
+          49.58333333333333
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "comparisons": {
+    "S400 - E vs S2": {
+      "active_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -1.7500000000000002,
+          1.7500000000000002
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 3.75,
+        "ci95_pp": [
+          -1.0,
+          9.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -2.5,
+        "ci95_pp": [
+          -8.75,
+          3.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          0.0,
+          2.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 1.7500000000000002,
+        "ci95_pp": [
+          -0.25,
+          4.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 2.75,
+        "ci95_pp": [
+          -2.0,
+          7.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 49.0,
+        "ci95_pp": [
+          43.5,
+          54.50000000000001
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S400 - E vs G": {
+      "active_win": {
+        "difference_pp": 0.75,
+        "ci95_pp": [
+          -2.0,
+          3.5000000000000004
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 2.75,
+        "ci95_pp": [
+          -3.25,
+          8.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -4.75,
+        "ci95_pp": [
+          -11.0,
+          1.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 1.25,
+        "ci95_pp": [
+          -0.25,
+          2.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 3.25,
+        "ci95_pp": [
+          1.5,
+          5.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 0.75,
+        "ci95_pp": [
+          -5.0,
+          6.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 41.0,
+        "ci95_pp": [
+          35.25,
+          46.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S400 - E vs S3": {
+      "active_win": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -3.0,
+          0.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 1.25,
+        "ci95_pp": [
+          -2.75,
+          5.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -2.5,
+        "ci95_pp": [
+          -10.5,
+          5.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          0.0,
+          1.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          -1.7500000000000002,
+          2.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 2.0,
+        "ci95_pp": [
+          -1.7500000000000002,
+          5.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 47.0,
+        "ci95_pp": [
+          40.75,
+          53.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S400 - E vs rulebot": {
+      "active_win": {
+        "difference_pp": -0.5,
+        "ci95_pp": [
+          -1.5,
+          0.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -1.25,
+          1.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          -0.75,
+          1.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -0.5,
+          1.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 1.5,
+        "ci95_pp": [
+          0.25,
+          3.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S350 - E vs S2": {
+      "active_win": {
+        "difference_pp": -0.75,
+        "ci95_pp": [
+          -2.5,
+          0.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 6.25,
+        "ci95_pp": [
+          1.25,
+          11.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -6.0,
+        "ci95_pp": [
+          -12.0,
+          0.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 1.7500000000000002,
+        "ci95_pp": [
+          0.25,
+          3.5000000000000004
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 2.25,
+        "ci95_pp": [
+          0.25,
+          4.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 5.25,
+        "ci95_pp": [
+          0.75,
+          9.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 46.0,
+        "ci95_pp": [
+          40.25,
+          51.74999999999999
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S350 - E vs G": {
+      "active_win": {
+        "difference_pp": -2.25,
+        "ci95_pp": [
+          -4.25,
+          -0.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          -5.75,
+          6.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -0.75,
+        "ci95_pp": [
+          -7.000000000000001,
+          5.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 2.0,
+        "ci95_pp": [
+          0.25,
+          4.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 2.25,
+        "ci95_pp": [
+          0.25,
+          4.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -5.25,
+          6.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 45.25,
+        "ci95_pp": [
+          39.75,
+          51.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S350 - E vs S3": {
+      "active_win": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -3.0,
+          0.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -2.0,
+        "ci95_pp": [
+          -6.25,
+          2.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 4.0,
+        "ci95_pp": [
+          -4.5,
+          12.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          0.0,
+          0.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -1.0,
+        "ci95_pp": [
+          -3.25,
+          1.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": -1.0,
+        "ci95_pp": [
+          -5.0,
+          2.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 51.0,
+        "ci95_pp": [
+          45.25,
+          56.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S350 - E vs rulebot": {
+      "active_win": {
+        "difference_pp": -0.5,
+        "ci95_pp": [
+          -2.0,
+          0.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -1.0,
+          2.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -0.25,
+        "ci95_pp": [
+          -1.5,
+          1.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          0.0,
+          2.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 0.75,
+        "ci95_pp": [
+          -0.25,
+          2.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S300 - E vs S2": {
+      "active_win": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          -1.25,
+          3.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 5.25,
+        "ci95_pp": [
+          0.75,
+          10.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -3.75,
+        "ci95_pp": [
+          -10.25,
+          2.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 1.5,
+        "ci95_pp": [
+          0.25,
+          3.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 2.25,
+        "ci95_pp": [
+          0.25,
+          4.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 2.75,
+        "ci95_pp": [
+          -1.7500000000000002,
+          7.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 46.75,
+        "ci95_pp": [
+          41.25,
+          52.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S300 - E vs G": {
+      "active_win": {
+        "difference_pp": -0.75,
+        "ci95_pp": [
+          -3.25,
+          1.7500000000000002
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -5.5,
+          5.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -3.0,
+        "ci95_pp": [
+          -9.25,
+          3.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 2.5,
+        "ci95_pp": [
+          0.75,
+          4.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 2.75,
+        "ci95_pp": [
+          0.75,
+          5.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": -1.7500000000000002,
+        "ci95_pp": [
+          -7.249999999999999,
+          3.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 44.75,
+        "ci95_pp": [
+          39.25,
+          50.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S300 - E vs S3": {
+      "active_win": {
+        "difference_pp": -1.7500000000000002,
+        "ci95_pp": [
+          -3.75,
+          0.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          -3.25,
+          5.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -2.0,
+        "ci95_pp": [
+          -10.0,
+          6.5
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.75,
+        "ci95_pp": [
+          0.0,
+          1.7500000000000002
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -2.75,
+          3.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 2.0,
+        "ci95_pp": [
+          -2.25,
+          6.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 46.5,
+        "ci95_pp": [
+          39.75,
+          53.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S300 - E vs rulebot": {
+      "active_win": {
+        "difference_pp": -3.75,
+        "ci95_pp": [
+          -5.75,
+          -2.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -2.75,
+        "ci95_pp": [
+          -4.5,
+          -1.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 1.7500000000000002,
+        "ci95_pp": [
+          0.0,
+          3.5000000000000004
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          0.0,
+          0.75
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          0.0,
+          2.25
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 4.0,
+        "ci95_pp": [
+          2.25,
+          6.0
+        ],
+        "boards": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "verdict": {
+    "S400": {
+      "draw_down_15pp": false,
+      "draw_ci_upper_negative": false,
+      "active_up_5pp": false,
+      "active_ci_lower_positive": false,
+      "suicide_within_1pp": false,
+      "rulebot_active_within_3pp": true,
+      "helps": false
+    },
+    "S350": {
+      "draw_down_15pp": false,
+      "draw_ci_upper_negative": false,
+      "active_up_5pp": false,
+      "active_ci_lower_positive": false,
+      "suicide_within_1pp": false,
+      "rulebot_active_within_3pp": true,
+      "helps": false
+    },
+    "S300": {
+      "draw_down_15pp": false,
+      "draw_ci_upper_negative": false,
+      "active_up_5pp": false,
+      "active_ci_lower_positive": false,
+      "suicide_within_1pp": false,
+      "rulebot_active_within_3pp": false,
+      "helps": false
+    },
+    "chosen": null
+  }
+}

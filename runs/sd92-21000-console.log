@@ -1,0 +1,7 @@
+S2      draws  67/100 states  5726 | oracle: states   0.1% draws  10.4% [4.285714285714286, 17.741935483870968] | rulebot: states   3.1% draws  94.0% [86.36363636363636, 100.0]
+G       draws  62/100 states  5423 | oracle: states   0.3% draws  27.4% [16.129032258064516, 39.682539682539684] | rulebot: states   3.1% draws  93.5% [85.24590163934425, 100.0]
+S3      draws  66/100 states  6006 | oracle: states   0.1% draws  10.6% [3.0303030303030303, 19.696969696969695] | rulebot: states   2.8% draws  83.3% [72.72727272727273, 92.42424242424242]
+pooled  draws 195/300 states 17155 | oracle: states   0.2% draws  15.9% [9.859154929577464, 22.727272727272727] | rulebot: states   3.0% draws  90.3% [82.77511961722487, 95.91888532062569]
+control (active wins with a kill state) {'oracle': {'percent': np.float64(100.0), 'ci95': [100.0, 100.0], 'games': 20}, 'rulebot': {'percent': np.float64(100.0), 'ci95': [100.0, 100.0], 'games': 20}}
+replay {'S2': {'compared': 100, 'identical': 100}, 'G': {'compared': 100, 'identical': 100}, 'S3': {'compared': 100, 'identical': 100}} 
+verdict {'percent': np.float64(15.897435897435898), 'control': np.float64(100.0), 'call': 'structural_consider_rules'}

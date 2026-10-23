@@ -1,0 +1,23 @@
+{
+  "seed": 21000,
+  "boards": 50,
+  "max_steps": 500,
+  "stride": 5,
+  "learner": "S3",
+  "opponents": [
+    "S2",
+    "G",
+    "S3"
+  ],
+  "models": [
+    "oracle",
+    "rulebot"
+  ],
+  "depth": 3,
+  "sha256": {
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+    "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "S3": "4185375f8b5f5cf070d3eef6ce98bec27e23fe06c64d97b500c939e36e669ed7"
+  },
+  "kill_search_sha256": "7c8b9f493ac7c6e2b1f13ff6b41f7b54f7941e96865d20544aebf5f0f08c7991"
+}

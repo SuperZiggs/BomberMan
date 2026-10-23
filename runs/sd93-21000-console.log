@@ -1,0 +1,21 @@
+E_vs_G         ActiveWR  10.75 WR  36.50 SDwin  23.50 passive   2.25 draw  52.75 loss  10.75 SDdeath  11.50
+E_vs_S2        ActiveWR   6.50 WR  18.25 SDwin  10.75 passive   1.00 draw  63.50 loss  18.25 SDdeath  18.50
+E_vs_S3        ActiveWR   9.00 WR  21.50 SDwin  11.75 passive   0.75 draw  57.00 loss  21.50 SDdeath  17.25
+E_vs_rulebot   ActiveWR  90.50 WR  96.50 SDwin   0.25 passive   5.75 draw   1.50 loss   2.00 SDdeath   0.25
+S300_vs_G      ActiveWR  10.00 WR  36.50 SDwin  21.75 passive   4.75 draw  49.75 loss  13.75 SDdeath  56.25
+S300_vs_S2     ActiveWR   7.50 WR  23.50 SDwin  13.50 passive   2.50 draw  59.75 loss  16.75 SDdeath  65.25
+S300_vs_S3     ActiveWR   7.25 WR  22.50 SDwin  13.75 passive   1.50 draw  55.00 loss  22.50 SDdeath  63.75
+S300_vs_rulebot ActiveWR  86.75 WR  93.75 SDwin   1.25 passive   5.75 draw   3.25 loss   3.00 SDdeath   4.25
+S350_vs_G      ActiveWR   8.50 WR  36.75 SDwin  24.00 passive   4.25 draw  52.00 loss  11.25 SDdeath  56.75
+S350_vs_S2     ActiveWR   5.75 WR  24.50 SDwin  16.00 passive   2.75 draw  57.50 loss  18.00 SDdeath  64.50
+S350_vs_S3     ActiveWR   7.75 WR  19.50 SDwin  10.75 passive   1.00 draw  61.00 loss  19.50 SDdeath  68.25
+S350_vs_rulebot ActiveWR  90.00 WR  97.00 SDwin   1.25 passive   5.75 draw   1.25 loss   1.75 SDdeath   1.00
+S400_vs_G      ActiveWR  11.50 WR  39.25 SDwin  24.25 passive   3.50 draw  48.00 loss  12.75 SDdeath  52.50
+S400_vs_S2     ActiveWR   6.50 WR  22.00 SDwin  13.50 passive   2.00 draw  61.00 loss  17.00 SDdeath  67.50
+S400_vs_S3     ActiveWR   7.75 WR  22.75 SDwin  13.75 passive   1.25 draw  54.50 loss  22.75 SDdeath  64.25
+S400_vs_rulebot ActiveWR  90.00 WR  96.50 SDwin   0.75 passive   5.75 draw   1.75 loss   1.75 SDdeath   1.75
+S400 - E macro CNN: active_win -0.17 [-1.25, +1.00], draw -3.25 [-7.33, +0.92], sudden_death_win +1.83 [-1.08, +4.67], passive_win +0.92 [+0.25, +1.58]
+S350 - E macro CNN: active_win -1.42 [-2.42, -0.42], draw -0.92 [-4.92, +3.08], sudden_death_win +1.58 [-1.17, +4.33], passive_win +1.33 [+0.50, +2.17]
+S300 - E macro CNN: active_win -0.50 [-1.83, +0.75], draw -2.92 [-7.08, +1.42], sudden_death_win +1.00 [-1.58, +3.58], passive_win +1.58 [+0.83, +2.42]
+replay {'S2': {'compared': 400, 'identical': 400}, 'G': {'compared': 400, 'identical': 400}, 'S3': {'compared': 400, 'identical': 400}} 
+verdict {'S400': {'draw_down_15pp': False, 'draw_ci_upper_negative': False, 'active_up_5pp': False, 'active_ci_lower_positive': False, 'suicide_within_1pp': False, 'rulebot_active_within_3pp': True, 'helps': False}, 'S350': {'draw_down_15pp': False, 'draw_ci_upper_negative': False, 'active_up_5pp': False, 'active_ci_lower_positive': False, 'suicide_within_1pp': False, 'rulebot_active_within_3pp': True, 'helps': False}, 'S300': {'draw_down_15pp': False, 'draw_ci_upper_negative': False, 'active_up_5pp': False, 'active_ci_lower_positive': False, 'suicide_within_1pp': False, 'rulebot_active_within_3pp': False, 'helps': False}, 'chosen': None}

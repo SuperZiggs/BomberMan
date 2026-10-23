@@ -2988,3 +2988,330 @@ Theo bạn, sự suy giảm đã xuất hiện từ checkpoint 500.
   - 7 file `runs/resume-budget-test-*-run.lock` và `graphify-out/.rebuild.lock`;
   - `.github/copilot-instructions.md`, file do công cụ claude-mem tự tạo.
 - Chưa merge vào `main` và chưa tạo PR.
+
+## SD9.1 — probe: S3 có bớt hòa khi đấu CNN không, 23/10/2026
+
+**Thông số:**
+- **Đánh giá:**
+  - Learner (CNN lấy mẫu): S3 `runs/sd9-20261023/train/epoch_12.pt` (`4185375f…69ed7`) và S2 `runs/sd8a-20261020/train/epoch_16.pt` (`d222d81f…6814`).
+  - Đối thủ CNN (lấy mẫu): S2, G `runs/sd75-20261018/full/best_phaseC.pt` (`bb0c775c…c7ac`) và S3.
+  - Đối thủ có search: G + `kill_search.search_action3` (`kill_search.py` SHA `7c8b9f49…7991`), đoán đối thủ bằng RuleBot.
+  - Seed validation 21000. Mỗi cặp CNN: bàn 21000–21199 × 2 góc = 400 trận. Cặp có G + search3: bàn 21000–21049 × 2 góc = 100 trận.
+  - Luật chơi: 9×9 1v1, max_steps 500, lịch E 475/25/40.
+  - Bootstrap ghép cặp theo bàn, 10 000 lần, seed 20261014.
+- **Môi trường:** người dùng chạy trên máy của họ; torch 2.5.1, CPU, 1 luồng mỗi tiến trình; 5 tiến trình; 2600 trận trong 1 giờ 33 phút 16 giây.
+- **Lệnh:** `probe_s3_cnn.py --output runs/sd91-21000 --workers 5`.
+- **Output:** `runs/sd91-21000` (`opened.json`, 260 shard, `summary.json`) và `runs/sd91-21000-console.log`.
+
+**Kết quả từng cặp (%):**
+
+| Learner vs đối thủ | ActiveWR | WR | Hòa (hết 500 bước) | Thua | Tự nổ | Thắng nhờ vòng | Bom/trận | s/trận |
+|---|---|---|---|---|---|---|---|---|
+| S3 vs S2 | 6.50 | 18.25 | 63.50 (57.00) | 18.25 | 6.50 | 10.75 | 34.6 | 1.6 |
+| S2 vs S2 | 7.00 | 18.25 | 63.50 (58.50) | 18.25 | 6.50 | 10.50 | 42.0 | 1.7 |
+| S3 vs G | 10.75 | 36.50 | 52.75 (48.75) | 10.75 | 3.25 | 23.50 | 33.6 | 1.7 |
+| S2 vs G | 5.75 | 31.00 | 58.50 (53.75) | 10.50 | 4.50 | 24.50 | 41.8 | 1.7 |
+| S3 vs S3 | 9.00 | 21.50 | 57.00 (52.50) | 21.50 | 8.50 | 11.75 | 36.4 | 1.6 |
+| S2 vs S3 | 3.50 | 18.25 | 63.50 (57.00) | 18.25 | 8.25 | 14.00 | 45.0 | 1.7 |
+| S3 vs G + search3 | 18.00 | 22.00 | 55.00 (52.00) | 23.00 | 7.00 | 3.00 | 32.2 | 122.5 |
+| S2 vs G + search3 | 5.00 | 14.00 | 62.00 (59.00) | 24.00 | 14.00 | 7.00 | 38.1 | 116.6 |
+
+**S3 − S2, ghép cặp theo bàn (pp, CI95):**
+
+| Đối thủ | ActiveWR | Hòa |
+|---|---|---|
+| S2 | −0.50 [−3.75, +2.75] | +0.00 [−8.00, +8.00] |
+| G | +5.00 [+1.25, +8.75] | −5.75 [−12.75, +1.25] |
+| S3 | +5.50 [+2.25, +8.75] | −6.50 [−14.25, +1.00] |
+| G + search3 (mô tả, 50 bàn) | +13.00 [+6.00, +21.00] | −7.00 [−20.00, +6.00] |
+| **Macro CNN** (S2, G, S3) | **+3.33 [+1.25, +5.50]** | **−4.08 [−8.17, −0.17]** |
+
+Macro CNN, các chỉ số khác: WR +2.92 [−0.33, +6.17], thắng thụ động +0.58 [−0.25, +1.50], tự nổ −0.33 [−2.17, +1.42].
+
+**Luật chốt trước (macro CNN):**
+- hòa ≤ −15pp: **không** (−4.08);
+- CI trên của hiệu hòa < 0: có (−0.17);
+- ActiveWR ≥ +5pp: **không** (+3.33);
+- CI dưới của hiệu ActiveWR > 0: có (+1.25).
+
+→ `s3_fixes_draws = False`. **KHÔNG ĐẠT.**
+
+**Ghi chú:**
+- S3 hơn S2 một chút nhưng có ý nghĩa khi đấu CNN: ActiveWR +3.3, hòa −4.1, cả hai CI đều không chứa 0. Tuy vậy S3 vẫn hòa 53–64% khi đấu CNN, và gần hết là hòa vì hết 500 bước (49–58%). Mức tăng còn xa ngưỡng chốt trước.
+- Cặp "S3 vs S2" và "S2 vs S3" là cùng 400 trận nhìn từ hai phía: 400/400 trận trùng số bước và kết quả, vì seed bàn quyết định cả RNG lấy mẫu. Đối đầu trực tiếp, S3 và S2 ngang nhau: mỗi bên thắng 18.25%, hòa 63.5%. Trong cùng các trận đó, S3 thắng chủ động 6.5% còn S2 chỉ 3.5%.
+- S3 đặt ít bom hơn S2 (32–36 so với 38–45 bom/trận) mà không thua nhiều hơn.
+- Đấu G + search3 (100 trận, chỉ để mô tả): S3 ngang agent mạnh nhất (thắng 22, thua 23); S2 thắng 14, thua 24. Cặp này cũng hòa 55–62%. Như vậy kỹ năng search (đoán đối thủ bằng RuleBot), dù ở dạng search hay đã chưng cất vào CNN, không phá được thế hòa khi đấu CNN.
+
+**Quyết định (theo luật):**
+- S3 vẫn hòa nhiều khi đấu CNN. Không mở seed test 58000 cho câu hỏi này.
+- Chọn giữa hai hướng sau khi có kết quả S2-KL của bạn:
+  - A: chưng cất search3 khi đấu CNN, search đoán đối thủ bằng CNN đó;
+  - B: RL có KL neo.
+- S3 vẫn là CNN thuần mạnh nhất (SD9).
+
+**Giới hạn:**
+- Chỉ seed validation và một bộ checkpoint.
+- Đối thủ CNN lấy mẫu nên có nhiễu.
+- Cặp có G + search3 chỉ có 100 trận.
+- Probe không tách được nguyên nhân hòa.
+
+## SD9.1-diag — vì sao hòa cao khi đấu CNN (phân tích lại dữ liệu sẵn có), 23/10/2026
+
+**Thông số:**
+- Không chạy trận mới. Claude đọc lại shard của `runs/sd91-21000`: seed validation 21000, mỗi cặp CNN 400 trận, cặp với G + search3 100 trận.
+- Đối chiếu với trận test SD9 đấu RuleBot (`runs/sd9-20261023/evaluation_*_E_57000.json`, seed 57000, 400 trận).
+- Luật chơi: 9×9 1v1, max_steps 500, lịch E 475/25/40.
+- Môi trường: torch 2.5.1, CPU.
+
+**Khi nào trận kết thúc (learner S3):**
+
+| Đối thủ | Kết thúc trước bước 475 | Bước 475–499 | Đủ 500 bước | Số trận có thắng thua / tổng | Trong đó trước bước 475 |
+|---|---|---|---|---|---|
+| S2 | 12.8% | 22.2% | 65.0% | 146 / 400 | 34 |
+| G | 14.0% | 26.5% | 59.5% | 189 / 400 | 49 |
+| S3 | 20.0% | 20.5% | 59.5% | 172 / 400 | 66 |
+| G + search3 | 25.0% | 14.0% | 61.0% | 45 / 100 | 22 |
+| RuleBot (test 57000) | hòa 0.50%; đủ 500 bước 0.75%; trung vị 105 bước | | | | |
+
+**Đối chiếu với RuleBot (test 57000):**
+- S2: hòa 6.75%, trung vị 158 bước.
+- G + search3: hòa 0.25%, trung vị 98 bước.
+
+**Engine (`bomberman_env._target_sudden_death_ring`):**
+- Vòng 1 đóng ở bước 475. Phần trống còn lại là ô 5×5 trừ 9 cột, tức 16 ô.
+- Vòng 2 đóng ở bước 500, đúng lúc trận hết giờ.
+- Như vậy sudden death chỉ tạo áp lực trong 25 bước cuối.
+
+**Nhận xét:**
+- Khi đấu CNN, chỉ 8.5–16.5% số trận có kết quả thắng thua trước bước 475. Phần còn lại hoặc do vòng phân xử, hoặc hòa vì hết giờ.
+- Learner vẫn đặt 33–45 bom mỗi trận, nhưng chỉ hạ được 0.10–0.13 đối thủ mỗi trận.
+- Khi đấu RuleBot thì gần như không có trận hòa.
+
+**Giới hạn:** chưa kiểm được trong các trận hòa có tồn tại nước giết chắc chắn hay không, vì shard không lưu lại diễn biến trận.
+
+## SD9.2-prep — chuẩn bị probe nước giết trong các trận hòa của S3 khi đấu CNN, 23/10/2026
+
+**Quyết định của người dùng (23/10/2026):** tạm lấy S3 (`runs/sd9-20261023/train/epoch_12.pt`, `4185375f…69ed7`) làm agent chính. G + search3 giữ vai trò thầy và mốc trần.
+
+**Thông số:**
+- **Chạy thử đo thời gian (không phải kết quả):** `probe_draw_kills.run(boards=5, workers=3)`, stride 5.
+  - Learner S3 đấu S2, G, S3, tất cả lấy mẫu.
+  - Bàn 21000–21004 × 2 góc = 10 trận mỗi đối thủ.
+  - Luật chơi: 9×9 1v1, max_steps 500, lịch E.
+  - Search: `_best_plan` depth 3, đoán đối thủ bằng mô hình oracle (CNN argmax) và bằng RuleBot.
+- **Môi trường:** Claude chạy trên máy người dùng, torch 2.5.1 CPU, 3 tiến trình, 16 phút 14 giây.
+- **Output:** scratchpad (`sd92-timing`), không lưu trong `runs/`.
+
+**Kiểm tra:**
+- Chơi lại khớp SD9.1: 30/30 trận giống hệt (thắng, hòa, số bước, ActiveWR).
+- Đối chứng: 3/3 trận S3 thắng chủ động có trạng thái mà search tìm được kế hoạch giết, theo cả hai mô hình đối thủ.
+- Thời gian: S2 80 s/trận, G 97 s/trận, S3 34 s/trận (gồm cả phần phân tích). Lượt chính 300 trận với 5 tiến trình ước tính khoảng 70 phút.
+
+**Ghi chú:**
+- Lượt chính dùng bàn 21000–21049, trong đó có 5 bàn của lượt chạy thử. Trận là tất định nên hai lượt cho cùng kết quả trên 5 bàn này.
+- Số liệu lượt thử (16 trận hòa) quá ít để kết luận, nên không đọc.
+- Spec và luật chốt trước khi có output lượt thử: `docs/superpowers/specs/2026-10-23-sd9-2-draw-kill-probe.md`.
+  - Chỉ số P = % trận hòa có ít nhất một trạng thái mà oracle tìm được kế hoạch giết.
+  - P ≥ 50% → hướng A; P ≤ 20% → xét đổi luật; ở giữa → `mixed`.
+  - Đối chứng phải ≥ 50%, nếu không thì kết quả không hợp lệ.
+  - Điều kiện đối chứng được thêm vào `verdict` trước khi lượt thử in kết quả; lượt thử chạy bằng bản code chưa có điều kiện này.
+
+## S2-KL-review — KL neo về S2 khi train RL tiếp (bạn chạy, Claude kiểm định), 23/10/2026
+
+**Nguồn:**
+- Nhánh `origin/Loc/s2-kl`, commit `d60684b` (23/10 23:18). Output `runs/s2-kl-20261023`, phân tích của bạn ở `runs/s2-kl-20261023-analysis-20261023/analysis_vi.md`.
+- Chưa merge vào nhánh của mình.
+
+**Thông số:**
+- **Train:**
+  - Xuất phát từ S2 `runs/sd8a-20261020/train/epoch_16.pt` (`d222d81f…6814`).
+  - Phase D, 1v1 9×9, chỉ đấu RuleBot. 500 episode mỗi nhánh. Train seed 2026102301, bàn train 710000–710249.
+  - Hai nhánh: control `anchor_coef` 0 và anchor `anchor_coef` 1 (KL learner‖S2).
+  - Hệ số: lr 2.5e-5, entropy 0.0075, MC, AC, teacher local v2, escape 0.5, combat 0.9, navigation 0.4, ring_safety 0.6, ×1.75 từ bước 350.
+  - Luật chơi: max_steps 500, sudden death xác suất 1.0 với lịch E 475/25/40.
+  - Snapshot ở episode 0/100/250/500. Endpoint chốt trước: 500.
+- **Đánh giá:**
+  - Mỗi checkpoint đấu RuleBot trên bàn validation 720000–720099 × 2 góc = 200 trận, lịch E, max_steps 500, lấy mẫu.
+  - Offline: 1024 trạng thái quyết định và 1024 trạng thái neo, lấy từ dữ liệu thu SD8A (bàn 210000–…), đo R (argmax rơi vào tập nước tốt nhất của search) và Q (tổng xác suất dồn cho tập đó).
+  - Bootstrap theo cụm bàn 10 000 lần, seed 20261023.
+- **Môi trường:** bạn chạy trên RTX 4060 Laptop, torch 2.11.0+cu128, CUDA ở chế độ tất định, 2 tiến trình. Train control 525 s, anchor 637 s; validate 977 s.
+
+**Kết quả (endpoint 500, validation 200 trận/model):**
+
+| Model | R | Q | WR | ActiveWR | Hòa | Tự sát | Kills/trận | Bom/trận | Bước/trận |
+|---|---|---|---|---|---|---|---|---|---|
+| S2 | 97.36 | 91.83 | 93.0 | 84.0 | 4.5 | 0.5 | 0.84 | 19.9 | 204 |
+| control-500 | 75.00 | 70.00 | 88.0 | 76.0 | 8.0 | 1.0 | 0.76 | 23.2 | 241 |
+| anchor-500 | 77.54 | 73.22 | 82.5 | 68.0 | 10.5 | 0.5 | 0.68 | 26.9 | 270 |
+| anchor-250 (chẩn đoán) | 82.81 | 76.75 | 87.5 | 76.5 | 8.0 | 1.0 | 0.77 | 23.4 | 245 |
+
+**So sánh (pp, CI95):**
+- Anchor − control: R +2.54 [+1.34, +3.87], Q +3.22 [+2.67, +3.81], ActiveWR −8.0 [−16.0, 0.0].
+- Anchor − S2: ActiveWR −16.0 [−24.0, −8.0], hòa +6.0 [+1.0, +11.5].
+- Control − S2: R −22.36 [−25.17, −19.62], ActiveWR −8.0 [−16.0, −0.5].
+- KL offline (S2‖model): trên trạng thái quyết định, control 1.44, anchor 0.91; trên trạng thái neo, control 0.12, anchor 0.09.
+
+**Sáu gate chốt trước:** đạt 2/6.
+
+| Gate | Kết quả |
+|---|---|
+| DRIFT_REPRODUCED (control R giảm ≥ 10pp) | Đạt |
+| DECISION_RETAINED (anchor R ≥ 92.36) | Không đạt |
+| PROBABILITY_RETAINED (anchor Q ≥ 86.83) | Không đạt |
+| ANCHOR_BENEFIT (anchor − control R ≥ 10pp) | Không đạt |
+| RB_ACTIVE_RETAINED (anchor ActiveWR ≥ 82) | Không đạt |
+| RB_SUICIDE_RETAINED | Đạt |
+
+→ `RB_RETENTION_FAIL`. Giữ S2 làm mặc định.
+
+**Kiểm định của Claude:**
+- Gate nằm trong spec của bạn, SHA được ghi trong registration.
+- Endpoint 500 chốt trước. Thứ tự các bước đúng: register → train → diagnose → validate → package.
+- Số liệu trong `decision_report.md`, `analysis_vi.md` và `report.json` khớp nhau.
+
+**Nhận xét:**
+- Chỉ train 500 episode đấu RuleBot cũng đã làm mất kỹ năng chưng cất. Đây là lần tái hiện thứ hai, sau D-S2.
+- KL neo β = 1 trên các trạng thái gặp lúc train giúp rất ít: R chỉ +2.5pp, còn ActiveWR thấp hơn cả control.
+- Mức trôi tập trung ở các trạng thái quyết định. KL trên trạng thái quyết định lớn gấp khoảng 10 lần KL trên trạng thái thường (control 1.44 so với 0.12; anchor 0.91 so với 0.09).
+  - Giả thuyết, chưa kiểm: KL trung bình trên mọi trạng thái bị trạng thái thường lấn át, nên không bảo vệ được những khoảnh khắc giết hiếm. Hệ số teacher phụ dày (combat 0.9, navigation 0.4) có thể kéo về hành vi cũ.
+
+**Hệ quả cho kế hoạch:**
+- Hướng B (RL có KL neo) với cấu hình này không giữ được kỹ năng, nên không dùng làm Phase D/E từ S3.
+- Theo luật SD9.1, còn lại hướng A, hoặc đổi luật chơi nếu SD9.2 cho thấy hòa do cấu trúc.
+- Nếu vẫn muốn train RL từ S3, các biến thể đáng thử (chưa đăng ký):
+  - giữ loss chưng cất trên dữ liệu search đã thu (rehearsal) song song với RL;
+  - tắt teacher phụ.
+
+**Giới hạn:**
+- Một train seed và một β.
+- Chỉ đấu RuleBot.
+- 200 trận validation mỗi model.
+- Bạn chạy torch 2.11 + CUDA, khác máy mình (torch 2.5.1 CPU), nên không so trực tiếp với validation của mình.
+
+## SD9.2 — trong các trận hòa của S3 khi đấu CNN, có nước giết bị bỏ lỡ không, 24/10/2026
+
+**Thông số:**
+- **Trận đấu:**
+  - Learner S3 `runs/sd9-20261023/train/epoch_12.pt` (`4185375f…69ed7`), lấy mẫu.
+  - Đối thủ S2 (`d222d81f…6814`), G (`bb0c775c…c7ac`) và S3, đều lấy mẫu.
+  - Seed validation 21000, bàn 21000–21049 × 2 góc = 100 trận mỗi đối thủ, tổng 300 trận.
+  - Luật chơi: 9×9 1v1, max_steps 500, lịch E 475/25/40.
+- **Phân tích:**
+  - Chụp trạng thái mỗi 5 bước khi đối thủ cách trong 6 ô.
+  - Với trận hòa và trận thắng chủ động (đối chứng), chạy `kill_search._best_plan(depth=3, HORIZON=12)` (`kill_search.py` `7c8b9f49…7991`). Đối thủ được mô hình bằng CNN của chính nó (argmax, gọi là oracle) và bằng RuleBot.
+  - Bootstrap theo bàn 10 000 lần, seed 20261014.
+- **Môi trường:** người dùng chạy trên máy của họ, torch 2.5.1 CPU, 5 tiến trình, 1 giờ 32 phút 32 giây.
+- **Lệnh:** `probe_draw_kills.py --output runs/sd92-21000 --workers 5`.
+- **Output:** `runs/sd92-21000` (`summary.json`, 30 shard) và `runs/sd92-21000-console.log`.
+
+**Kiểm tra:**
+- Chơi lại khớp SD9.1: 300/300 trận giống hệt.
+- Đối chứng (trận S3 thắng chủ động có trạng thái search tìm được kế hoạch giết): 20/20 với cả hai mô hình. Điều kiện hợp lệ đạt.
+
+**Kết quả:**
+
+| Đối thủ | Trận hòa | Trạng thái | % trạng thái có kế hoạch giết, oracle | % trận hòa có kế hoạch giết, oracle [CI95] | Như cột trước, chỉ tính trước bước 475 | % trạng thái có kế hoạch giết, RuleBot | % trận hòa có kế hoạch giết, RuleBot [CI95] |
+|---|---|---|---|---|---|---|---|
+| S2 | 67/100 | 5 726 | 0.14 | 10.4 [4.3, 17.7] | 9.0 | 3.11 | 94.0 [86.4, 100] |
+| G | 62/100 | 5 423 | 0.33 | 27.4 [16.1, 39.7] | 19.4 | 3.10 | 93.5 [85.2, 100] |
+| S3 | 66/100 | 6 006 | 0.12 | 10.6 [3.0, 19.7] | 10.6 | 2.76 | 83.3 [72.7, 92.4] |
+| **Gộp** | 195/300 | 17 155 | **0.19** | **15.9 [9.9, 22.7]** | 12.8 | 2.98 | 90.3 [82.8, 95.9] |
+
+Số giây mỗi trận (gồm cả phân tích): S2 120, G 87, S3 54.
+
+**Luật chốt trước:** P = 15.9% ≤ 20%, đối chứng 100% ≥ 50%. → `structural_consider_rules`: hòa chủ yếu do cấu trúc, đề xuất spec thử đổi luật.
+- Lưu ý: CI trên của P là 22.7, vượt ngưỡng 20 một chút. Luật dùng ước lượng điểm.
+
+**Nhận xét:**
+- Khi đấu CNN, kế hoạch giết rất hiếm: chỉ 0.2% trạng thái gần nhau, và 84% trận hòa không có lúc nào có kế hoạch giết. Đây là đối thủ được mô hình bằng argmax, tức là lạc quan.
+- Nếu search giả định đối thủ là RuleBot, nó "thấy" kế hoạch giết ở 90% trận hòa (3% trạng thái), nhiều gấp 15 lần. Các bẫy kiểu RuleBot mà S3 học từ thầy là ảo khi đấu CNN, vì đối thủ CNN không bước vào bẫy. Điều này giải thích vì sao S3 thắng RuleBot 92% nhưng vẫn hòa với CNN.
+- G là đối thủ dễ bị bẫy nhất (27% trận hòa có kế hoạch giết). S2 và S3 chỉ khoảng 10%.
+- Cận trên lạc quan của lợi ích hướng A: 15.9% × 65% hòa ≈ 10pp trận đổi thành thắng chủ động. Con số này chỉ đạt được nếu học được hết, và nếu đối thủ thật đi đúng nước argmax.
+
+**Giới hạn:**
+- Oracle dùng argmax, trong khi đối thủ thật lấy mẫu.
+- Search chỉ thử tối đa 3 nước rồi né, nên có thể bỏ sót kế hoạch dài hơn.
+- Chỉ lấy mẫu mỗi 5 bước.
+- Chỉ seed validation, 300 trận, một bộ checkpoint.
+
+## SD9.3-prep — chuẩn bị probe vòng sudden death sớm hơn, 24/10/2026
+
+**Thông số:**
+- Chưa chạy lượt chính. Đã chạy test `test_probe_sd_schedule.py`, gồm một lượt nhỏ chạy thật: 2 bàn, max_steps 12, cho mọi cặp (lịch, đối thủ).
+- Thêm một lượt thật S300 đấu S2 trên bàn 21000, 2 trận, max_steps 500.
+- **Môi trường:** Claude chạy trên máy người dùng, torch 2.5.1 CPU, 2 tiến trình. Không lưu output trong `runs/`.
+
+**Thiết kế lượt chính** (spec `docs/superpowers/specs/2026-10-24-sd9-3-sd-schedule-probe.md`):
+- S3 (lấy mẫu) đấu S2, G, S3 và RuleBot.
+- Bốn lịch vòng: E 475/25/40, S400, S350, S300 (đều là khoảng cách 25, cảnh báo 40).
+- Seed validation 21000, 200 bàn × 2 góc = 400 trận mỗi cặp, tổng 6400 trận. 9×9 1v1, max_steps 500. Bootstrap theo bàn 10 000 lần.
+
+**Kiểm tra:** trên 9×9, vòng 3 lấp kín mọi ô trống. Lượt thật S300 xác nhận mọi trận kết thúc trước bước 350.
+
+**Luật chốt trước:**
+- Lịch X "giúp" nếu, trên macro CNN so với E, có đủ:
+  - hòa giảm ≥ 15pp, CI trên < 0;
+  - ActiveWR tăng ≥ 5pp, CI dưới > 0;
+  - tự nổ tăng không quá 1pp;
+  - ActiveWR đấu RuleBot giảm không quá 3pp.
+- Chọn lịch có mức tăng ActiveWR lớn nhất; nếu chênh nhau trong vòng 1pp thì chọn lịch bắt đầu muộn nhất.
+- Có lịch được chọn → kiểm lại trên test 58000 và bàn với bạn. Không có lịch nào → giữ E.
+
+## SD9.3 — vòng sudden death sớm hơn không biến hòa thành thắng chủ động, 24/10/2026
+
+**Thông số:**
+- **Đánh giá:** learner S3 = `runs/sd9-20261023/train/epoch_12.pt` (SHA `4185375f…69ed7`, lấy mẫu) đấu S2 (`d222d81f…6814`), G (`bb0c775c…c7ac`), S3 (đều lấy mẫu) và RuleBot. Seed validation 21000, bàn 21000–21199 × 2 góc = 400 trận mỗi cặp (lịch, đối thủ), 16 cặp, 6400 trận. 9×9 1v1, max_steps 500, SD engine bật.
+- **Lịch:** E 475/25/40; S400, S350, S300 (start/25/40).
+- **Thống kê:** paired bootstrap theo bàn, 10 000 lần, seed 20261014; macro CNN = trung bình S2/G/S3 theo (bàn, góc).
+- **Môi trường:** người dùng chạy `probe_sd_schedule.py --output runs/sd93-21000 --workers 5` trên máy của họ, torch 2.5.1 CPU, 5 tiến trình, 51 phút 9 giây. Output `runs/sd93-21000/` (`summary.json`, `shards/`), log `runs/sd93-21000-console.log`.
+
+**Tái lập:** lịch E đấu CNN khớp SD9.1 400/400 trận với mỗi đối thủ.
+
+**Macro CNN, lịch X − E (pp, CI95):**
+
+| | ActiveWR | WR | Hòa | Thắng nhờ vòng | Thắng thụ động | Tự nổ | Chết vì vòng |
+|---|---|---|---|---|---|---|---|
+| S400 | −0.17 [−1.25, +1.00] | +2.58 [−0.42, +5.58] | −3.25 [−7.33, +0.92] | +1.83 [−1.08, +4.67] | +0.92 [+0.25, +1.58] | +1.75 [+0.50, +3.08] | +45.67 [+42.17, +49.09] |
+| S350 | −1.42 [−2.42, −0.42] | +1.50 [−1.33, +4.33] | −0.92 [−4.92, +3.08] | +1.58 [−1.17, +4.33] | +1.33 [+0.50, +2.17] | +1.17 [−0.00, +2.42] | +47.42 [+43.83, +51.00] |
+| S300 | −0.50 [−1.83, +0.75] | +2.08 [−0.83, +4.92] | −2.92 [−7.08, +1.42] | +1.00 [−1.58, +3.58] | +1.58 [+0.83, +2.42] | +1.83 [+0.42, +3.33] | +46.00 [+42.33, +49.58] |
+
+**Theo đối thủ (ActiveWR / hòa, %):**
+
+| Lịch | vs S2 | vs G | vs S3 | vs RuleBot |
+|---|---|---|---|---|
+| E | 6.50 / 63.50 | 10.75 / 52.75 | 9.00 / 57.00 | 90.50 / 1.50 |
+| S400 | 6.50 / 61.00 | 11.50 / 48.00 | 7.75 / 54.50 | 90.00 / 1.75 |
+| S350 | 5.75 / 57.50 | 8.50 / 52.00 | 7.75 / 61.00 | 90.00 / 1.25 |
+| S300 | 7.50 / 59.75 | 10.00 / 49.75 | 7.25 / 55.00 | 86.75 / 3.25 |
+
+RuleBot, X − E ActiveWR: S400 −0.50 [−1.5, +0.5], S350 −0.50 [−2.0, +0.75], S300 −3.75 [−5.75, −2.0].
+
+**Trận kết thúc lúc nào** (phân tích thêm từ shard, mô tả):
+- Với lịch sớm, khoảng 80–87% trận hòa là hai bên cùng còn sống tới vòng 3 và cùng chết. Hòa chỉ đổi dạng từ "hết giờ" sang "cùng chết vì vòng".
+- Thắng chủ động trong giai đoạn vòng đang co chỉ 3–15 trận trên 400. Phần lớn trận ngã ngũ trong giai đoạn này là thắng nhờ vòng: đối thủ chết vì vòng trước.
+- Trận ngắn hơn: S300 khoảng 2.5 s/trận CNN, E khoảng 3.4 s/trận.
+
+**Luật chốt trước:** không lịch nào "giúp" → `chosen = None`.
+- Cả ba lịch trượt: hòa giảm ≥ 15pp; ActiveWR tăng ≥ 5pp; cả hai CI đúng phía.
+- Tự nổ tăng quá 1pp ở cả ba lịch.
+- S300 trượt thêm điều kiện RuleBot (−3.75).
+
+**Quyết định:** giữ lịch E. Không mở seed test 58000.
+- Vòng sớm hơn trên 9×9 không tạo thắng chủ động. Hai CNN né nhau tới khi vòng cuối giết cả hai.
+- Khi đấu CNN, báo ActiveWR, không dùng WR.
+
+**Giới hạn:**
+- S3 được train dưới lịch E, nên kết quả đo S3 hiện tại chứ không phải model train cho lịch mới. Chết vì vòng tăng mạnh nhưng phần lớn là chết cùng lúc ở vòng 3.
+- Chỉ dùng seed validation và một bộ checkpoint; chỉ thử khoảng cách 25 và max_steps 500.
+- Chưa thử các kiểu đổi luật khác: max_steps dài hơn, vòng cuối không lấp kín, bàn 11×11.
+
+## FINAL-S3 — chốt S3 làm agent chính, báo cáo tổng kết, đẩy lên GitHub, 24/10/2026
+
+**Thông số:** không chạy thí nghiệm mới. Số liệu trong báo cáo lấy từ các mục RESULTS đã có (control confirmation, SD5.3, SD7.5, SD7.8, SD7.9c, SD8A, SD8B, SD9, SD9.1–SD9.3, PDE, SDM, D-S2, S2-KL). Thao tác: Claude, trên máy người dùng.
+
+**Quyết định của người dùng** ("làm cả 3 việc của đề xuất"):
+- S3 = `runs/sd9-20261023/train/epoch_12.pt` (SHA `4185375f…69ed7`) là agent chính chính thức.
+- Viết báo cáo tổng kết `BAO_CAO_TONG_KET.md`.
+- Làm hướng A (SD10).
+
+**Commit:** SD9.1–SD9.3 (code, test, spec, `runs/sd91-21000`, `runs/sd92-21000`, `runs/sd93-21000` và log), các file md và báo cáo được đưa lên nhánh `danh/sd9-s3-distillation`. Không commit `.github/` (file của plugin claude-mem) và các file `runs/resume-budget-test-*.lock` (đồ thừa của test).

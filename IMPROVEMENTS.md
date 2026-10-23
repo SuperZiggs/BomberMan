@@ -1091,3 +1091,153 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
 - Không đổi code. Commit toàn bộ thay đổi từ SD8B-off tới SD9.1-prep lên nhánh mới và push.
 - Loại khỏi commit: file lock, output SD9.1 đang chạy, file tự sinh của claude-mem.
 - Đã kiểm checkpoint là con trỏ LFS. `git lfs push --dry-run` không còn object nào chờ đẩy.
+
+## 80. SD9.1 — kết quả probe S3 đấu CNN (2026-10-23)
+
+**Thông số:** như RESULTS "SD9.1".
+- Learner S3/S2 (CNN lấy mẫu). Đối thủ S2/G/S3 (200 bàn × 2 góc) và G + search3 (50 bàn × 2 góc).
+- Seed validation 21000, 9×9 1v1, max_steps 500, lịch E, bootstrap 10 000.
+- Người dùng chạy: torch 2.5.1 CPU, 5 tiến trình, 1 giờ 33 phút.
+
+**Thay đổi code:** không. Chạy `probe_s3_cnn.py` (mục 78) đúng thiết kế đã đăng ký.
+
+**Kết quả:**
+- Macro CNN S3 − S2: ActiveWR +3.33 [+1.25, +5.50], hòa −4.08 [−8.17, −0.17].
+- Luật chốt trước cần hòa ≤ −15pp và ActiveWR ≥ +5pp, nên **KHÔNG ĐẠT**.
+- S3 vẫn hòa 53–64% khi đấu CNN, chủ yếu do hết giờ.
+
+**Kiểm tra thêm:** hai cặp S3 vs S2 và S2 vs S3 là cùng các trận: 400/400 trận trùng số bước và kết quả.
+
+**Trạng thái:**
+- Không mở seed 58000.
+- Hướng đấu CNN chọn giữa A (chưng cất search3 với search đoán đối thủ bằng CNN) và B (RL có KL neo), sau khi có S2-KL của bạn.
+
+## 81. SD9.1-diag — phân tích vì sao hòa cao khi đấu CNN (2026-10-23)
+
+**Thông số:** như RESULTS "SD9.1-diag". Không chạy trận mới; chỉ đọc lại shard SD9.1 và trận test SD9.
+
+- Không đổi code.
+- Kết quả: khi đấu CNN, khoảng 60% trận đi đủ 500 bước và chỉ 8–16% trận có kết quả thắng thua trước bước 475. Khi đấu RuleBot thì hòa dưới 1%.
+- Lịch E chỉ tạo 25 bước áp lực: vòng 1 đóng ở bước 475, còn 16 ô; vòng 2 đóng ở bước 500, trùng lúc hết giờ.
+- **Trạng thái:** phân tích xong. Đề xuất probe đo trong các trận hòa có tồn tại nước giết chắc chắn không (search đoán đối thủ bằng CNN thật), để biết hòa là do luật chơi hay do learner bỏ lỡ cơ hội.
+
+## 82. SD9.2 — probe nước giết trong các trận hòa của S3 (2026-10-23)
+
+**Thông số:** như RESULTS "SD9.2-prep".
+- Chạy thử: 5 bàn × 3 đối thủ, 30 trận, torch 2.5.1 CPU, 3 tiến trình.
+- Lượt chính: 50 bàn × 2 góc × 3 đối thủ (S2, G, S3), seed validation 21000, stride 5, depth 3, max_steps 500, lịch E, bootstrap 10 000.
+- Chưa chạy.
+
+**Quyết định:** S3 tạm là agent chính (người dùng, 23/10). Đã ghi vào CLAUDE.md và PLAN.
+
+**Thay đổi code:**
+- `probe_draw_kills.py` (mới):
+  - Chơi lại trận S3 đấu CNN qua `evaluate_seeded`, dùng một wrapper learner chụp trạng thái (`deepcopy`, không dùng RNG) mỗi 5 bước khi đối thủ trong phạm vi `REACH`.
+  - Sau trận, với các trận hòa (và trận thắng chủ động, làm đối chứng), gọi `kill_search._best_plan(depth=3)` hai lần: `OPPONENT_MODEL` = CNN của đối thủ (`probe_search_cnn_model.cnn_model`), và RuleBot.
+  - So kết quả các trận với shard SD9.1.
+  - Tính CI95 bootstrap theo bàn (`_share`).
+  - `verdict` áp luật chốt trước, gồm cả điều kiện đối chứng.
+  - Có `--resume`, từ chối ghi đè, kiểm SHA của checkpoint và `kill_search.py`.
+
+**Kiểm thử:**
+- `test_probe_draw_kills.py` (3 test): biên của `verdict` (gồm `invalid_control`); `_share`; một lượt nhỏ chạy thật (max_steps 12) kiểm cấu trúc trạng thái, việc từ chối resume khi thiết kế khác, và FileExistsError.
+- Cùng `test_probe_s3_cnn`: 5 test OK.
+- Lượt chạy thử khớp SD9.1 30/30 trận.
+
+**Trạng thái:** code xong, chờ người dùng chạy.
+
+## 83. S2-KL review — KL neo không giữ được kỹ năng chưng cất (2026-10-23)
+
+**Thông số:** như RESULTS "S2-KL-review".
+- Bạn chạy: từ S2, Phase D đấu RuleBot, 500 episode mỗi nhánh, β 0 so với 1, train seed 2026102301.
+- Validation 720000–720099 × 2 góc, 200 trận mỗi model.
+- RTX 4060, torch 2.11.0+cu128.
+
+**Thay đổi code:**
+- Không đổi code của mình.
+- Code của bạn (`run_s2_kl_probe.py`, `s2_kl_*.py`, thay đổi `anchor_coef` trong trainer) nằm ở `origin/Loc/s2-kl`, chưa merge.
+
+**Kết quả kiểm định:**
+- `RB_RETENTION_FAIL`, đạt 2/6 gate.
+- Anchor-500: R 77.5 (S2 97.4), ActiveWR 68 (S2 84).
+- Anchor − control: R +2.5pp, ActiveWR −8pp.
+
+**Quyết định:**
+- Bỏ hướng B (RL + KL neo toàn cục) cho Phase D/E từ S3.
+- Hướng đấu CNN sẽ chọn giữa A và đổi luật, tùy SD9.2.
+
+**Trạng thái:** đã review.
+
+## 84. SD9.2 — kết quả: hòa với CNN chủ yếu do cấu trúc (2026-10-24)
+
+**Thông số:** như RESULTS "SD9.2".
+- S3 đấu S2/G/S3, 50 bàn × 2 góc mỗi đối thủ, validation 21000, stride 5, depth 3, lịch E, max_steps 500.
+- Người dùng chạy: torch 2.5.1 CPU, 5 tiến trình, 1 giờ 33 phút.
+
+**Thay đổi code:** không. Chạy `probe_draw_kills.py` (mục 82) đúng thiết kế đã đăng ký.
+
+**Kết quả:**
+- Chơi lại khớp SD9.1 300/300 trận. Đối chứng 20/20.
+- P (% trận hòa có kế hoạch giết theo oracle) = 15.9 [9.9, 22.7] ≤ 20 → `structural_consider_rules`.
+- Nếu search giả định đối thủ là RuleBot thì thấy kế hoạch giết ở 90.3% trận hòa. Các bẫy kiểu RuleBot không có tác dụng khi đấu CNN.
+
+**Trạng thái:** xong.
+- Hướng A có cận trên lợi ích khoảng 10pp, và đây là ước lượng lạc quan.
+- Theo luật, đề xuất spec thử đổi luật (lịch vòng hoặc max_steps), đánh giá không train, báo cả ActiveWR lẫn thắng thụ động. Chờ người dùng đồng ý.
+
+## 85. SD9.3 — probe lịch sudden death sớm hơn (2026-10-24)
+
+**Thông số:** như RESULTS "SD9.3-prep".
+- Lượt chính: S3 đấu S2/G/S3/RuleBot dưới lịch E, S400, S350, S300; 200 bàn × 2 góc mỗi cặp; validation 21000; max_steps 500; bootstrap 10 000.
+- Chưa chạy.
+
+**Thay đổi code:**
+- `probe_sd_schedule.py` (mới):
+  - `play` gọi `evaluate_seeded` với lịch vòng được truyền vào (`SCHEDULES`).
+  - Shard 10 bàn, có `--resume`, từ chối ghi đè, kiểm SHA của checkpoint.
+  - Kiểm lịch E khớp shard SD9.1.
+  - Macro CNN dùng lại `probe_s3_cnn._macro`.
+  - `verdict` gồm 6 điều kiện chốt trước và cách chọn lịch.
+- Không đổi engine, không đổi luật chính thức.
+
+**Kiểm thử:** `test_probe_sd_schedule.py` (3 test), OK:
+- luật và cách chọn lịch (gồm trường hợp chênh trong 1pp và điều kiện RuleBot);
+- vòng 3 kết thúc mọi trận trước bước start + 50 (S300 đấu S2, bàn 21000);
+- lượt nhỏ đủ 16 cặp, từ chối resume khi thiết kế khác, FileExistsError.
+
+**Trạng thái:** code xong, chờ người dùng chạy.
+
+Ghi chú 24/10/2026: đã đồng bộ `PLAN_BOMBERMAN.md` (hàng SD và ghi chú đầu file: S3 là agent chính tạm thời; SD9.1, S2-KL, SD9.2, SD9.3) theo các mục RESULTS tương ứng. Không đổi code.
+
+## 86. SD9.3 — kết quả: lịch vòng sớm hơn không giúp, giữ E (2026-10-24)
+
+**Thông số:** như RESULTS "SD9.3".
+- S3 đấu S2/G/S3/RuleBot, lịch E/S400/S350/S300, validation 21000, 200 bàn × 2 góc mỗi cặp, max_steps 500.
+- Người dùng chạy: torch 2.5.1 CPU, 5 tiến trình, 51 phút 9 giây.
+
+**Thay đổi code:** không. Chạy `probe_sd_schedule.py` (mục 85) đúng thiết kế đã đăng ký. Phần phân tích lúc trận kết thúc làm thêm bằng script tạm đọc shard, không lưu vào repo.
+
+**Kết quả:**
+- Lịch E khớp SD9.1 1200/1200 trận.
+- Macro CNN X − E: ActiveWR −1.42…−0.17, hòa −3.25…−0.92 (CI đều chứa 0 hoặc ngược phía), tự nổ +1.2…+1.8.
+- 80–87% trận hòa ở lịch sớm là cùng chết ở vòng 3.
+- `chosen = None`.
+
+**Trạng thái:** xong. Giữ lịch E; hướng "đổi lịch vòng" dừng.
+
+## 87. Chốt S3 và báo cáo tổng kết (2026-10-24)
+
+**Thông số:** không có thí nghiệm. Claude thao tác trên máy người dùng.
+
+**Thay đổi:**
+- `CLAUDE.md`, `PLAN_SUDDEN_DEATH.md`, `PLAN_BOMBERMAN.md`: S3 đổi từ "tạm thời" sang agent chính chính thức (24/10).
+- File mới `BAO_CAO_TONG_KET.md`, gồm:
+  - bài toán và giao thức đo;
+  - bảng mốc ActiveWR B → F → G → G + search1/2/3 → S → S2 → S3;
+  - hành trình;
+  - vì sao hòa khi đấu CNN (PDE, SD9.1–SD9.3, SDM);
+  - giả thuyết bị bác bỏ, giới hạn, hướng tiếp theo, cách tái lập.
+
+**Kiểm thử:** `test_probe_draw_kills`, `test_probe_sd_schedule` chạy lại trước khi commit, 6/6 OK. Số liệu trong báo cáo được đối chiếu với các mục RESULTS gốc.
+
+**Trạng thái:** xong.
