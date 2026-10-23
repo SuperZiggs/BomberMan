@@ -1,0 +1,92 @@
+{
+  "seed": 21000,
+  "games": 400,
+  "base": "runs\\sd79b-search2-21000",
+  "seconds_per_game": {
+    "G_search3": 22.403225192427634
+  },
+  "results": {
+    "G_search3": {
+      "num_episodes": 400,
+      "win_rate": 99.0,
+      "active_win_rate": 93.0,
+      "passive_win_rate": 6.0,
+      "sudden_death_win_rate": 0.0,
+      "draw_rate": 0.5,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.0,
+      "avg_kills": 0.93,
+      "avg_bombs": 10.975,
+      "avg_steps": 102.5275
+    },
+    "G_search2": {
+      "num_episodes": 400,
+      "win_rate": 94.25,
+      "active_win_rate": 83.75,
+      "passive_win_rate": 6.75,
+      "sudden_death_win_rate": 3.75,
+      "draw_rate": 5.0,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.25,
+      "avg_kills": 0.8375,
+      "avg_bombs": 19.575,
+      "avg_steps": 200.47
+    }
+  },
+  "search3_vs_search2": {
+    "active_win": {
+      "difference_pp": 9.25,
+      "ci95_pp": [
+        5.75,
+        12.75
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "win": {
+      "difference_pp": 4.75,
+      "ci95_pp": [
+        2.75,
+        7.000000000000001
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "draw": {
+      "difference_pp": -4.5,
+      "ci95_pp": [
+        -6.5,
+        -2.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "passive_win": {
+      "difference_pp": -0.75,
+      "ci95_pp": [
+        -3.0,
+        1.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "suicide": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "decision": {
+    "search3_minus_search2": 9.25,
+    "open_test_49000": true
+  }
+}

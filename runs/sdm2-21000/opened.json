@@ -1,0 +1,18 @@
+{
+  "seed": 21000,
+  "boards": 50,
+  "max_steps": 500,
+  "opponents": [
+    "rulebot",
+    "S",
+    "F"
+  ],
+  "models": [
+    "rulebot",
+    "self"
+  ],
+  "learner": "G + search_action3",
+  "G_sha256": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+  "kill_search_sha256": "7c8b9f493ac7c6e2b1f13ff6b41f7b54f7941e96865d20544aebf5f0f08c7991",
+  "reuse": "runs\\sdm-21000"
+}

@@ -1,0 +1,94 @@
+{
+  "seed": 49000,
+  "games": 400,
+  "seconds_per_game": {
+    "G_search2": 23.12050045967102,
+    "G_search3": 27.08127821803093
+  },
+  "results": {
+    "G_search2": {
+      "num_episodes": 400,
+      "win_rate": 94.25,
+      "active_win_rate": 85.75,
+      "passive_win_rate": 6.25,
+      "sudden_death_win_rate": 2.25,
+      "draw_rate": 4.75,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 1.0,
+      "avg_kills": 0.8575,
+      "avg_bombs": 19.215,
+      "avg_steps": 195.8975
+    },
+    "G_search3": {
+      "num_episodes": 400,
+      "win_rate": 99.5,
+      "active_win_rate": 94.0,
+      "passive_win_rate": 5.5,
+      "sudden_death_win_rate": 0.0,
+      "draw_rate": 0.25,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.0,
+      "avg_kills": 0.94,
+      "avg_bombs": 12.1575,
+      "avg_steps": 114.1625
+    }
+  },
+  "search3_vs_search2": {
+    "active_win": {
+      "difference_pp": 8.25,
+      "ci95_pp": [
+        5.25,
+        11.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "win": {
+      "difference_pp": 5.25,
+      "ci95_pp": [
+        3.0,
+        7.75
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "draw": {
+      "difference_pp": -4.5,
+      "ci95_pp": [
+        -7.000000000000001,
+        -2.25
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "passive_win": {
+      "difference_pp": -0.75,
+      "ci95_pp": [
+        -2.75,
+        1.25
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "suicide": {
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "gate": {
+    "active_5pp": true,
+    "active_ci_lower_positive": true,
+    "suicide_within_1pp": true,
+    "pass": true
+  }
+}

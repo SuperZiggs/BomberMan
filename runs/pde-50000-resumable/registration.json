@@ -1,0 +1,30 @@
+{
+  "seed": 50000,
+  "normal_seed": 50000,
+  "smoke": false,
+  "schedule_E": {
+    "sudden_death": true,
+    "sudden_death_start": 475,
+    "sudden_death_interval": 25,
+    "sudden_death_warning_steps": 40
+  },
+  "max_steps": 500,
+  "workers": 5,
+  "checkpoints": {
+    "runs\\sd75-20261018\\full\\best_phaseC.pt": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+    "runs\\phaseC-sd-best-fallback\\best_phaseC.pt": "0315a56f09079333d936db5f55587093f1b6415ed6355d2ef6ae2ab63f8b1483",
+    "runs\\sd53-20261018\\train\\epoch_8.pt": "8f7116d290593fa10de1753c4f0f96366e220a193e9860123ed72e0db46bfd4a",
+    "runs\\pressure-C-next\\final_phaseC.pt": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+    "checkpoints\\best_phaseD.pt": "530f64f29bac538a53d1fb49a5592403fcc9116059a48b4843b1989fa55e7ae5",
+    "checkpoints\\best_phaseE_3a.pt": "9e9f87534473389dfc7a37b872a6a2693dc9bff70dd685433917d6ae37531dce",
+    "checkpoints\\best_phaseE_4a.pt": "b014702f958c79bb33b9a89b3eed5f9785d9d5209c5f6154fd2dd62d703fdc59"
+  },
+  "sources": {
+    "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+    "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+    "pde_eval.py": "b6eb378e646d03807e8305bfdffce48094c84870590660f52e488554adf79905",
+    "run_pde_check.py": "ea7737e4a9a796d7e729380d32ea069a235384bea697993742af9e457f574aa5"
+  },
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0"
+}

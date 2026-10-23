@@ -238,8 +238,9 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                     seed=7000, max_steps=500, stop_event=None, on_progress=None,
                     sudden_death=False, sudden_death_start=350,
                     sudden_death_interval=20, sudden_death_warning_steps=40,
-                    contact_diagnostics=False):
-    """Evaluate a fixed policy at every corner of each seeded board, preserving RNGs."""
+                    contact_diagnostics=False, opponent_fn=None):
+    """Evaluate a fixed policy at every corner of each seeded board, preserving RNGs.
+    `opponent_fn(agent_id)` builds the other seats (default: RuleBot)."""
     if num_episodes < num_agents or num_episodes % num_agents:
         raise ValueError("num_episodes must be positive and divisible by num_agents")
     if not _torch_available:
@@ -263,7 +264,7 @@ def evaluate_seeded(agent_fn, board_size=9, num_agents=2, num_episodes=100,
                                       sudden_death_start=sudden_death_start,
                                       sudden_death_interval=sudden_death_interval,
                                       sudden_death_warning_steps=sudden_death_warning_steps)
-                fns = [make_rule_based_fn(i) for i in range(num_agents)]
+                fns = [(opponent_fn or make_rule_based_fn)(i) for i in range(num_agents)]
                 fns[aid] = agent_fn
                 contact, walls = {}, {'walls': 0, 'walls_rewarded': 0}
                 def observed(current, info):

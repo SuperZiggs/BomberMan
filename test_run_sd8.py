@@ -46,6 +46,20 @@ class SD8BTests(unittest.TestCase):
         self.assertFalse(sd8b.decide({'active_win': diff(1.75)})['open_test_49000'])
         self.assertEqual(sd8b.TEST_SEED, 49000)
 
+    def test_sd_effects_pairs_boards_and_interaction(self):
+        def games(wins, steps=100):
+            return [{'seed': s, 'aid': a, 'active_win': w, 'win': w, 'draw': 1 - w, 'passive_win': 0, 'suicide': 0,
+                     'steps': steps} for (s, a), w in zip([(b, a) for b in range(4) for a in (0, 1)], wins)]
+        on = {'G_search2': games([1, 1, 1, 1, 0, 0, 0, 0], 480), 'G_search3': games([1] * 8)}
+        off = {'G_search2': games([1, 1, 0, 0, 0, 0, 0, 0]), 'G_search3': games([1] * 7 + [0])}
+        out = sd8b.sd_effects(on, off)
+        self.assertEqual(out['E_minus_off']['G_search2']['active_win']['difference_pp'], 25.0)
+        self.assertEqual(out['E_minus_off']['G_search3']['draw']['difference_pp'], -12.5)
+        self.assertEqual(out['interaction_active_pp']['difference_pp'], -12.5)
+        self.assertEqual(out['active_win_after_step_475_rate']['G_search2'], {'E': 50.0, 'off': 0.0})
+        with self.assertRaises(ValueError):
+            sd8b.sd_effects(on, {**off, 'G_search3': off['G_search3'][::-1]})
+
 
 if __name__ == '__main__':
     unittest.main()

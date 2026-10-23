@@ -1,0 +1,6 @@
+{
+  "seed": 49000,
+  "games": 400,
+  "G_sha256": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+  "validation": "runs\\sd8b-val-21000"
+}

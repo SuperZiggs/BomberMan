@@ -1,0 +1,6 @@
+oracle_vs_G      ActiveWR  26.00 WR  48.00 draw  50.00 loss   2.00 s/game  291.7
+oracle_vs_S      ActiveWR  18.00 WR  25.00 draw  68.00 loss   7.00 s/game  304.7
+rulebot_vs_G     ActiveWR  12.00 WR  33.00 draw  63.00 loss   4.00 s/game  127.0
+rulebot_vs_S     ActiveWR  14.00 WR  19.00 draw  69.00 loss  12.00 s/game  125.2
+oracle - rulebot vs S: ActiveWR +4.00 [-6.00, +15.00], draw -1.00
+oracle - rulebot vs G: ActiveWR +14.00 [+3.00, +25.00], draw -13.00

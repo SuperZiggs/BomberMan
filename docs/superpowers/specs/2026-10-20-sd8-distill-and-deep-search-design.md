@@ -59,3 +59,18 @@ Test seed **49000**, chạy một lần, chỉ lịch E: G + search3 và G + sea
 - G chỉ có một train seed; SD8A cũng chỉ một train seed.
 - Search ba nước chậm khoảng 2 lần mỗi trận so với hai nước.
 - Nhãn của SD8A là nước đầu của một kế hoạch hai nước (thường là một bước đi), nên có thể khó học hơn nhãn "đặt bom ngay" của SD5.3.
+
+## SD8B-off — ablation lịch sudden death (chốt trước khi chạy, 20/10/2026)
+
+Người dùng yêu cầu sau khi SD8B ĐẠT. Câu hỏi: G + search3 phụ thuộc vào sudden death đến mức nào?
+
+Cách làm:
+- `run_sd8b_search3.py ablate`: G + search3 và G + search2 chạy lại với lịch **off** trên đúng các bàn của seed 49000, 400 trận mỗi agent.
+- Ghép cặp với các trận lịch E đã có trong `runs/sd8b-20261020`.
+- Dùng lại 49000 thay vì seed mới, vì ablation chỉ để mô tả: không có gate, không chọn model, không quyết định nào dựa vào nó. Ghép cặp trên cùng bàn khử được dao động giữa các bàn và tiết kiệm 800 trận lịch E.
+
+Báo cáo, không có luật đạt/không đạt:
+- Với mỗi agent: hiệu lịch E − off (bootstrap ghép cặp theo bàn) của ActiveWR, WR, hòa, thắng thụ động, tự nổ.
+- Lịch off: search3 − search2.
+- Tương tác: (E − off của search3) − (E − off của search2) theo ActiveWR. Con số này cho biết search3 có bớt cần sudden death hơn search2 không.
+- Tỉ lệ thắng chủ động sau bước 475 (lúc vòng bắt đầu) dưới lịch E.

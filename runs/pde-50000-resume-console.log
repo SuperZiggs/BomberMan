@@ -1,0 +1,106 @@
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 8 -> 13
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+{
+ "E2_G_search3": [
+  86.25,
+  88.75,
+  10.625
+ ],
+ "E1_G_search3": [
+  94.44444444444444,
+  98.88888888888889,
+  0.5555555555555556
+ ],
+ "D_G_vs_G": [
+  5.5,
+  19.5,
+  61.0
+ ],
+ "D_G_search3_vs_G": [
+  14.5,
+  39.5,
+  54.0
+ ],
+ "D_G_vs_F": [
+  4.5,
+  19.0,
+  66.5
+ ],
+ "D_G_search3_vs_F": [
+  20.0,
+  43.0,
+  51.0
+ ],
+ "D_G_vs_S": [
+  0.5,
+  5.5,
+  56.5
+ ],
+ "D_G_search3_vs_S": [
+  13.0,
+  19.0,
+  70.5
+ ],
+ "D_G_vs_B": [
+  4.0,
+  28.5,
+  61.5
+ ],
+ "D_G_search3_vs_B": [
+  20.5,
+  44.0,
+  50.0
+ ],
+ "D_G_vs_oldD": [
+  3.0,
+  50.0,
+  48.0
+ ],
+ "D_G_search3_vs_oldD": [
+  8.5,
+  72.0,
+  27.0
+ ],
+ "E1_rulebot": [
+  8.333333333333334,
+  20.555555555555557,
+  38.333333333333336
+ ],
+ "E1_oldE3": [
+  0.5555555555555556,
+  22.22222222222222,
+  52.22222222222222
+ ],
+ "E1_G": [
+  27.22222222222222,
+  40.55555555555556,
+  39.44444444444444
+ ],
+ "E2_rulebot": [
+  6.25,
+  11.875,
+  52.5
+ ],
+ "E2_oldE4": [
+  1.25,
+  16.875,
+  53.75
+ ],
+ "E2_G": [
+  23.125,
+  36.25,
+  53.75
+ ]
+}

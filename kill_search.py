@@ -17,6 +17,15 @@ from rule_based_bot import RuleBasedAgent, _bfs_safe_cell, _build_danger_map
 
 HORIZON = 12   # bomb_timer 8 + flame 2 + slack
 REACH = 6      # Manhattan distance beyond which no kill line fits the horizon
+# Opponent model used inside rollouts: None = RuleBot (default), else fn(env, agent_id) -> action (stateless).
+OPPONENT_MODEL = None
+
+
+def _opponents(env, aid):
+    if OPPONENT_MODEL is None:
+        bots = {a.agent_id: RuleBasedAgent(a.agent_id) for a in env.agents if a.agent_id != aid}
+        return lambda e, i: bots[i].select_action(e)
+    return OPPONENT_MODEL
 
 
 def _dodge(env, aid):
@@ -30,12 +39,12 @@ def _dodge(env, aid):
 
 
 def _rollout(env, aid, action, horizon):
-    bots = {a.agent_id: RuleBasedAgent(a.agent_id) for a in env.agents if a.agent_id != aid}
+    model = _opponents(env, aid)
     for tick in range(horizon):
         actions = [ACTION_STOP] * env.num_agents
-        for other, bot in bots.items():
-            if env.agents[other].alive:
-                actions[other] = bot.select_action(env)
+        for other in env.agents:
+            if other.alive and other.agent_id != aid:
+                actions[other.agent_id] = model(env, other.agent_id)
         actions[aid] = action if tick == 0 else _dodge(env, aid)
         _, _, _, info = env.step(actions)
         if any(k == aid and v != aid for k, v in info['kills']) and env.agents[aid].alive:
@@ -82,9 +91,10 @@ def search_action2(env, aid, mask, default_action, horizon=HORIZON):
                 continue
             after = deepcopy(env)
             actions = [ACTION_STOP] * after.num_agents
+            model = _opponents(after, aid)
             for a in after.agents:
                 if a.alive and a.agent_id != aid:
-                    actions[a.agent_id] = RuleBasedAgent(a.agent_id).select_action(after)
+                    actions[a.agent_id] = model(after, a.agent_id)
             actions[aid] = first
             _, _, _, step_info = after.step(actions)
             if step_info['episode_done'] or not after.agents[aid].alive:
@@ -100,12 +110,13 @@ def search_action2(env, aid, mask, default_action, horizon=HORIZON):
 
 
 def _advance(env, aid, action):
-    """Copy of env one tick later (learner plays `action`, others RuleBot), or None if the line ends."""
+    """Copy of env one tick later (learner plays `action`, others the opponent model), or None if the line ends."""
     after = deepcopy(env)
     actions = [ACTION_STOP] * after.num_agents
+    model = _opponents(after, aid)
     for a in after.agents:
         if a.alive and a.agent_id != aid:
-            actions[a.agent_id] = RuleBasedAgent(a.agent_id).select_action(after)
+            actions[a.agent_id] = model(after, a.agent_id)
     actions[aid] = action
     _, _, _, step_info = after.step(actions)
     return None if step_info['episode_done'] or not after.agents[aid].alive else after

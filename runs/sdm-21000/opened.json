@@ -1,0 +1,15 @@
+{
+  "seed": 21000,
+  "boards": 50,
+  "max_steps": 500,
+  "opponents": [
+    "S",
+    "G"
+  ],
+  "models": [
+    "rulebot",
+    "oracle"
+  ],
+  "learner": "G + search_action3",
+  "G_sha256": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac"
+}

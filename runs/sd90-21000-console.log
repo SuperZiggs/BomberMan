@@ -1,0 +1,9 @@
+G_search3_vs_G           ActiveWR  12.00 WR  33.00 draw  63.00 loss   4.00 s/game  127.0
+G_search3_vs_S2          ActiveWR  16.00 WR  24.00 draw  62.00 loss  14.00 s/game  127.6
+G_search3_vs_rulebot     ActiveWR  96.00 WR  99.00 draw   1.00 loss   0.00 s/game   24.2
+S2_search3_vs_G          ActiveWR  19.00 WR  45.00 draw  52.00 loss   3.00 s/game  215.3
+S2_search3_vs_S2         ActiveWR  14.00 WR  22.00 draw  68.00 loss  10.00 s/game  224.1
+S2_search3_vs_rulebot    ActiveWR  91.00 WR 100.00 draw   0.00 loss   0.00 s/game   20.6
+S2_search3 - G_search3 vs rulebot: ActiveWR -5.00 [-11.00, +1.00], draw -1.00
+S2_search3 - G_search3 vs S2: ActiveWR -2.00 [-11.00, +7.00], draw +6.00
+S2_search3 - G_search3 vs G: ActiveWR +7.00 [-2.00, +16.00], draw -11.00

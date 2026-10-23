@@ -1,0 +1,281 @@
+{
+  "seed": 21000,
+  "boards": 50,
+  "max_steps": 500,
+  "opponents": [
+    "rulebot",
+    "S",
+    "F"
+  ],
+  "models": [
+    "rulebot",
+    "self"
+  ],
+  "learner": "G + search_action3",
+  "G_sha256": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+  "kill_search_sha256": "7c8b9f493ac7c6e2b1f13ff6b41f7b54f7941e96865d20544aebf5f0f08c7991",
+  "reuse": "runs\\sdm-21000",
+  "schedule": {
+    "sudden_death_start": 475,
+    "sudden_death_interval": 25,
+    "sudden_death_warning_steps": 40
+  },
+  "seconds_per_game": {
+    "rulebot_vs_S": 125.24249729394913,
+    "self_vs_rulebot": 184.37662578105926,
+    "self_vs_S": 347.2123638343811,
+    "self_vs_F": 335.47598608255385,
+    "rulebot_vs_rulebot": 24.186835017204285,
+    "rulebot_vs_F": 126.89461526155472
+  },
+  "results": {
+    "rulebot_vs_S": {
+      "num_episodes": 100,
+      "win_rate": 19.0,
+      "active_win_rate": 14.0,
+      "passive_win_rate": 2.0,
+      "sudden_death_win_rate": 3.0,
+      "draw_rate": 69.0,
+      "suicide_rate": 5.0,
+      "sudden_death_death_rate": 5.0,
+      "avg_kills": 0.15,
+      "avg_bombs": 42.55,
+      "avg_steps": 435.4,
+      "loss_rate": 12.0,
+      "draw_at_max_steps": 65.0
+    },
+    "self_vs_rulebot": {
+      "num_episodes": 100,
+      "win_rate": 81.0,
+      "active_win_rate": 63.0,
+      "passive_win_rate": 5.0,
+      "sudden_death_win_rate": 13.0,
+      "draw_rate": 17.0,
+      "suicide_rate": 1.0,
+      "sudden_death_death_rate": 0.0,
+      "avg_kills": 0.63,
+      "avg_bombs": 27.65,
+      "avg_steps": 299.15,
+      "loss_rate": 2.0,
+      "draw_at_max_steps": 16.0
+    },
+    "self_vs_S": {
+      "num_episodes": 100,
+      "win_rate": 29.0,
+      "active_win_rate": 23.0,
+      "passive_win_rate": 2.0,
+      "sudden_death_win_rate": 4.0,
+      "draw_rate": 65.0,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 5.0,
+      "avg_kills": 0.23,
+      "avg_bombs": 41.83,
+      "avg_steps": 427.59,
+      "loss_rate": 6.0,
+      "draw_at_max_steps": 65.0
+    },
+    "self_vs_F": {
+      "num_episodes": 100,
+      "win_rate": 49.0,
+      "active_win_rate": 28.0,
+      "passive_win_rate": 0.0,
+      "sudden_death_win_rate": 21.0,
+      "draw_rate": 45.0,
+      "suicide_rate": 2.0,
+      "sudden_death_death_rate": 6.0,
+      "avg_kills": 0.28,
+      "avg_bombs": 39.42,
+      "avg_steps": 422.32,
+      "loss_rate": 6.0,
+      "draw_at_max_steps": 44.0
+    },
+    "rulebot_vs_rulebot": {
+      "num_episodes": 100,
+      "win_rate": 99.0,
+      "active_win_rate": 96.0,
+      "passive_win_rate": 3.0,
+      "sudden_death_win_rate": 0.0,
+      "draw_rate": 1.0,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.0,
+      "avg_kills": 0.96,
+      "avg_bombs": 11.66,
+      "avg_steps": 110.63,
+      "loss_rate": 0.0,
+      "draw_at_max_steps": 1.0
+    },
+    "rulebot_vs_F": {
+      "num_episodes": 100,
+      "win_rate": 37.0,
+      "active_win_rate": 16.0,
+      "passive_win_rate": 0.0,
+      "sudden_death_win_rate": 21.0,
+      "draw_rate": 54.0,
+      "suicide_rate": 6.0,
+      "sudden_death_death_rate": 7.0,
+      "avg_kills": 0.17,
+      "avg_bombs": 40.17,
+      "avg_steps": 442.14,
+      "loss_rate": 9.0,
+      "draw_at_max_steps": 49.0
+    }
+  },
+  "comparisons": {
+    "self - rulebot vs rulebot": {
+      "active_win": {
+        "difference_pp": -33.0,
+        "ci95_pp": [
+          -41.0,
+          -25.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -18.0,
+        "ci95_pp": [
+          -26.0,
+          -11.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 16.0,
+        "ci95_pp": [
+          9.0,
+          24.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 2.0,
+        "ci95_pp": [
+          -3.0,
+          7.000000000000001
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          0.0,
+          3.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "self - rulebot vs S": {
+      "active_win": {
+        "difference_pp": 9.0,
+        "ci95_pp": [
+          -1.0,
+          20.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 10.0,
+        "ci95_pp": [
+          -1.0,
+          21.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -4.0,
+        "ci95_pp": [
+          -17.0,
+          10.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -3.0,
+          3.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -5.0,
+        "ci95_pp": [
+          -11.0,
+          -1.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "self - rulebot vs F": {
+      "active_win": {
+        "difference_pp": 12.0,
+        "ci95_pp": [
+          3.0,
+          22.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 12.0,
+        "ci95_pp": [
+          0.0,
+          24.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -9.0,
+        "ci95_pp": [
+          -22.0,
+          5.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -4.0,
+        "ci95_pp": [
+          -9.0,
+          0.0
+        ],
+        "boards": 50,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  }
+}

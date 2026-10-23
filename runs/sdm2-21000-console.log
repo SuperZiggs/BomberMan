@@ -1,0 +1,9 @@
+rulebot_vs_F     ActiveWR  16.00 WR  37.00 draw  54.00 loss   9.00 s/game  126.9
+rulebot_vs_S     ActiveWR  14.00 WR  19.00 draw  69.00 loss  12.00 s/game  125.2
+rulebot_vs_rulebot ActiveWR  96.00 WR  99.00 draw   1.00 loss   0.00 s/game   24.2
+self_vs_F        ActiveWR  28.00 WR  49.00 draw  45.00 loss   6.00 s/game  335.5
+self_vs_S        ActiveWR  23.00 WR  29.00 draw  65.00 loss   6.00 s/game  347.2
+self_vs_rulebot  ActiveWR  63.00 WR  81.00 draw  17.00 loss   2.00 s/game  184.4
+self - rulebot vs rulebot: ActiveWR -33.00 [-41.00, -25.00], draw +16.00
+self - rulebot vs S: ActiveWR +9.00 [-1.00, +20.00], draw -4.00
+self - rulebot vs F: ActiveWR +12.00 [+3.00, +22.00], draw -9.00

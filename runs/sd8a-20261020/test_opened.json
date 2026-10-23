@@ -1,0 +1,9 @@
+{
+  "seed": 48000,
+  "games": 400,
+  "models": {
+    "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+    "S": "8f7116d290593fa10de1753c4f0f96366e220a193e9860123ed72e0db46bfd4a"
+  }
+}
