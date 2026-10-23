@@ -1,5 +1,5 @@
 {
-  "status": "FINAL_REVIEW_AND_REGRESSION_PENDING",
+  "status": "CODE_VERIFIED_WITH_KNOWN_BASELINE_FAILURES",
   "date": "2026-10-23",
   "branch": "Loc_s2-kl-retention",
   "baseline": {
@@ -129,10 +129,7 @@
   },
   "full_run_started": false,
   "full_seed_reservation_created": false,
-  "pending": [
-    "final whole-project regression on final source",
-    "independent final review"
-  ],
+  "pending": [],
   "acceptance_final": {
     "tests": 48,
     "seconds": 215.774,
@@ -261,7 +258,156 @@
     },
     "reason": "Independent author corrected technically invalid JSONL fixture; original preserved at58e5321"
   },
-  "smokes": {
+  "progress": {
+    "command": "venv\\Scripts\\python.exe -c [progress.bar update2;stdout redirected]",
+    "tty": true,
+    "exit_code": 0,
+    "observed_console_progress": "0/2 ->2/2",
+    "redirected_log": "redirected stdout marker\n",
+    "scope": "same unchanged progress.py helper copied into frozen closure; not a full training launch"
+  },
+  "full_seed_preflight": {
+    "status": "REJECTED",
+    "error": "Unresolved seed history: ['E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed']",
+    "ranges": 316238,
+    "sources": 5914,
+    "unresolved": [
+      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
+      "E:\\Bomberman\\runs\\t2-full-20261014-060320\\replay_cases.json: metadata requires verified seed index",
+      "E:\\Bomberman\\runs\\t2-smoke-20261014-060320\\replay_cases.json: metadata requires verified seed index"
+    ],
+    "full_registration_created": false
+  },
+  "protected_unchanged": true,
+  "review": {
+    "base": "ed7c7493318061dc8f70921fea3ad319c0814a53",
+    "head": "2dbcdd3da4acaa29a56df4567a7f98a69ac85e19",
+    "model": "gpt-6-astra",
+    "critical": 0,
+    "important": 2,
+    "minor": 0,
+    "fix_commit": "52b407e",
+    "fix_passes": 1,
+    "re_review": false,
+    "narrow_red": {
+      "methods": 2,
+      "assertion_failure_records": 4,
+      "errors": 0,
+      "seconds": 13.875
+    },
+    "narrow_green": {
+      "methods": 2,
+      "exit_code": 0,
+      "seconds": 14.803
+    },
+    "report": "docs/superpowers/test-matrices/2026-10-23-s2-kl-final-review.md",
+    "important_fixed": 2,
+    "important_remaining": 0,
+    "minor_deferred": [],
+    "inventory_followup": {
+      "red_methods": 1,
+      "red_assertion_records": 2,
+      "red_seconds": 2.023,
+      "green": "Included in26/26 protocol and final51/51 scope"
+    }
+  },
+  "regression_before_review_fix": {
+    "tests": 583,
+    "seconds": 631.627,
+    "errors": 20,
+    "failures": 1,
+    "skipped": 3,
+    "qualified_failures": [
+      [
+        "ERROR",
+        "test_resume_keeps_the_warm_start_as_anchor (test_group_rl.TrainerTests.test_resume_keeps_the_warm_start_as_anchor)"
+      ],
+      [
+        "ERROR",
+        "test_resume_replays_group_rollouts (test_group_rl.TrainerTests.test_resume_replays_group_rollouts)"
+      ],
+      [
+        "ERROR",
+        "test_resume_restores_the_buffer (test_group_rl.TrainerTests.test_resume_restores_the_buffer)"
+      ],
+      [
+        "ERROR",
+        "test_phase_d_snapshot_evaluation (unittest.loader._FailedTest.test_phase_d_snapshot_evaluation)"
+      ],
+      [
+        "ERROR",
+        "test_parallel_map_keeps_job_order_and_counts_every_tick (test_progress.ProgressTests.test_parallel_map_keeps_job_order_and_counts_every_tick)"
+      ],
+      [
+        "ERROR",
+        "test_cancelled_runner_records_incomplete_without_optimizer_or_plots (test_reward_audit.AuditChecks.test_cancelled_runner_records_incomplete_without_optimizer_or_plots)"
+      ],
+      [
+        "ERROR",
+        "test_invalid_completed_shard_is_not_resumed (test_run_sd53_pilot.PublicContracts.test_invalid_completed_shard_is_not_resumed)"
+      ],
+      [
+        "ERROR",
+        "test_smoke_train_refuses_overwrite_and_resumes (test_run_sd5_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)"
+      ],
+      [
+        "ERROR",
+        "test_test_stage_needs_both_models_and_opens_once (test_run_sd5_pilot.StageTests.test_test_stage_needs_both_models_and_opens_once)"
+      ],
+      [
+        "ERROR",
+        "test_smoke_train_refuses_overwrite_and_resumes (test_run_sd7_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)"
+      ],
+      [
+        "ERROR",
+        "test_test_stage_opens_once (test_run_sd7_pilot.StageTests.test_test_stage_opens_once)"
+      ],
+      [
+        "ERROR",
+        "test_new_recipe_settings_are_part_of_the_resume_provenance (test_search_teacher.SearchTeacherTests.test_new_recipe_settings_are_part_of_the_resume_provenance)"
+      ],
+      [
+        "ERROR",
+        "test_resume_replays_sudden_death_curriculum (test_search_teacher.SearchTeacherTests.test_resume_replays_sudden_death_curriculum)"
+      ],
+      [
+        "ERROR",
+        "test_ring_schedule_matches_loc_update (test_sudden_death_experiment.SuddenDeathTests.test_ring_schedule_matches_loc_update)"
+      ],
+      [
+        "ERROR",
+        "test_changed_source_cannot_reuse_control (test_two_bomb_complete.CompleteRunChecks.test_changed_source_cannot_reuse_control)"
+      ],
+      [
+        "ERROR",
+        "test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds (test_two_bomb_complete.CompleteRunChecks.test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds)"
+      ],
+      [
+        "ERROR",
+        "test_current_trainer_cannot_reuse_the_old_control (test_two_bomb_complete.CompleteRunChecks.test_current_trainer_cannot_reuse_the_old_control)"
+      ],
+      [
+        "ERROR",
+        "test_existing_output_is_not_overwritten_or_trained (test_two_bomb_complete.CompleteRunChecks.test_existing_output_is_not_overwritten_or_trained)"
+      ],
+      [
+        "ERROR",
+        "test_missing_cuda_rejects_training_before_creating_output (test_two_bomb_complete.CompleteRunChecks.test_missing_cuda_rejects_training_before_creating_output)"
+      ],
+      [
+        "ERROR",
+        "test_real_reference_is_complete_and_unchanged (test_two_bomb_complete.CompleteRunChecks.test_real_reference_is_complete_and_unchanged)"
+      ],
+      [
+        "FAIL",
+        "test_frozen_normal_matrix_and_statistics_are_declared (test_pde_evaluator_contracts.PDECheckContractTests.test_frozen_normal_matrix_and_statistics_are_declared)"
+      ]
+    ],
+    "new_failures": [],
+    "known_failures_unchanged": true,
+    "scope": "2dbcdd3 before review fixes"
+  },
+  "historical_smokes": {
     "cpu": {
       "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu",
       "device": "cpu",
@@ -451,93 +597,566 @@
       "full_run_started": false
     }
   },
-  "progress": {
-    "command": "venv\\Scripts\\python.exe -c [progress.bar update2;stdout redirected]",
-    "tty": true,
+  "execution_rulings": [
+    "Ruling: execute in the existing dedicated approved branch Loc_s2-kl-retention at E:\\Bomberman; only new S2-KL files and scoped journal/plan additions, preserving all pre-existing UI/PDE/local changes — existing read-only inputs and user-approved branch remain directly available — cost if wrong: accidental cross-scope edit, mitigated by baseline inventory and explicit staging.",
+    "Ruling: use native PowerShell/Python equivalents for bash skill scripts on this Windows host, keeping task briefs, BASE, test logs and ledger records — bash runtime is not part of the declared stack — cost if wrong: bookkeeping drift, checked against the plan at each task.",
+    "Ruling: T2 full acceptance calls T3 diagnose_model between interruption and resume, so execute T2 core then T3 offline helpers before declaring T2 GREEN — this is a real dependency in frozen acceptance and preserves all tests — cost if wrong: commits cross nominal task boundaries; full suites and record identify coverage. T2 initial RED: 8 methods, 7 assertion failures, 0 errors, 1 CUDA opt-in skip.",
+    "Task 5: Ruling: independent author corrected one technically invalid pretty-JSON-as-JSONL fixture and strengthened its overlap assertion; originaltest preserved commit58e5321 and old/newhash/proof in matrix — allowed technical-invalidity exception, never weakened by implementer — cost if wrong: compromised acceptance integrity; separate author proof and all other frozen hashes verified.",
+    "Final: Ruling: preserve concurrent data commit80bafa7, which appeared between our f764002 and6b5083e and is now origin/Loc_s2-kl-retention; this executor neither created nor pushed it and cannot infer separate human publication authorization — keep other workflow history intact, review S2-KL runtime and protected hashes, no revert/history rewrite/push — cost if wrong: whole-branch diff includes historical data and needs separate scope/publication assessment before future integration.",
+    "Final: Ruling: reviewer set aside pre-existing UI/PDE/journals and baseline failures — preserve user work and compare qualified legacy failures per approved plan rather than repairing unrelated code — cost if wrong: existing failures may hide additional unrelated defects.",
+    "Final: Ruling: reviewer set aside historical null seeds and large replay mappings — keep full registration fail-closed until verified historical mapping exists, do not alter/skip logs — cost if wrong: full launch remains unavailable until that prerequisite is resolved.",
+    "Final: Ruling: reviewer set aside scientific effectiveness/generalization/full throughput — make only bounded code/resume claims, no full run or S2 replacement, no full ETA from20step smoke — cost if wrong: pilot may later fail or run longer than expected.",
+    "Final: Ruling: reviewer set aside component-gradient instrumentation and inherited reward-decomposition helper limits — keep advantage diagnostics/reward_diagnostics=false and unchanged trainer as approved one-variable pilot — cost if wrong: limited causal attribution/observability, not evidence that those components are correct."
+  ],
+  "smokes": {
+    "cpu": {
+      "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final",
+      "device": "cpu",
+      "status": "SMOKE_ONLY",
+      "counts": {
+        "models": 5,
+        "diagnostics": 5,
+        "expected_diagnostics": 5,
+        "games": 20,
+        "expected_games": 20,
+        "decision_states": 5120,
+        "anchor_states": 5120
+      },
+      "measurements": [
+        {
+          "stage": "register",
+          "cli_wall_seconds": 6.047430300000997,
+          "process": {
+            "stage": "register",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final",
+            "status": "OK",
+            "elapsed_seconds": 3.4814439000001585,
+            "peak_rss_bytes": 622432256,
+            "pid": 31492
+          }
+        },
+        {
+          "stage": "train-control",
+          "cli_wall_seconds": 8.94713739999861,
+          "process": {
+            "stage": "train",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final",
+            "status": "OK",
+            "elapsed_seconds": 2.286057699999219,
+            "peak_rss_bytes": 654307328,
+            "pid": 2600
+          }
+        },
+        {
+          "stage": "train-anchor",
+          "cli_wall_seconds": 7.902711700000509,
+          "process": {
+            "stage": "train",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final",
+            "status": "OK",
+            "elapsed_seconds": 2.0367416000008234,
+            "peak_rss_bytes": 651280384,
+            "pid": 22944
+          }
+        },
+        {
+          "stage": "diagnose",
+          "cli_wall_seconds": 25.107653499999287,
+          "process": {
+            "stage": "diagnose",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final",
+            "status": "DIAGNOSTICS_COMPLETE",
+            "elapsed_seconds": 18.26551230000041,
+            "peak_rss_bytes": 669188096,
+            "pid": 30552
+          }
+        },
+        {
+          "stage": "validate",
+          "cli_wall_seconds": 16.755081299997983,
+          "process": {
+            "stage": "validate",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final",
+            "status": "SMOKE_ONLY",
+            "elapsed_seconds": 10.575758200000564,
+            "peak_rss_bytes": 658972672,
+            "pid": 29128
+          }
+        },
+        {
+          "stage": "package",
+          "cli_wall_seconds": 11.290566200001194,
+          "process": {
+            "stage": "package",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final",
+            "status": "SMOKE_ONLY",
+            "elapsed_seconds": 5.518001899999945,
+            "peak_rss_bytes": 656867328,
+            "pid": 29028
+          }
+        }
+      ],
+      "worker_peak_rss_bytes": {
+        "27108": 644440064,
+        "9964": 644722688
+      },
+      "protected_unchanged": true,
+      "full_run_started": false
+    },
+    "cuda": {
+      "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-final",
+      "device": "cuda:0",
+      "status": "SMOKE_ONLY",
+      "counts": {
+        "models": 5,
+        "diagnostics": 5,
+        "expected_diagnostics": 5,
+        "games": 20,
+        "expected_games": 20,
+        "decision_states": 5120,
+        "anchor_states": 5120
+      },
+      "measurements": [
+        {
+          "stage": "register",
+          "cli_wall_seconds": 3.9956500999978743,
+          "process": {
+            "stage": "register",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-final",
+            "status": "OK",
+            "elapsed_seconds": 1.8014354000006279,
+            "peak_rss_bytes": 622858240,
+            "pid": 25884
+          }
+        },
+        {
+          "stage": "train-control",
+          "cli_wall_seconds": 9.680728200000885,
+          "process": {
+            "stage": "train",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-final",
+            "status": "OK",
+            "elapsed_seconds": 3.536143599998468,
+            "peak_rss_bytes": 1754484736,
+            "pid": 8924
+          }
+        },
+        {
+          "stage": "train-anchor",
+          "cli_wall_seconds": 9.36511210000026,
+          "process": {
+            "stage": "train",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-final",
+            "status": "OK",
+            "elapsed_seconds": 3.4956544999986363,
+            "peak_rss_bytes": 1733980160,
+            "pid": 32320
+          }
+        },
+        {
+          "stage": "diagnose",
+          "cli_wall_seconds": 24.864342199998646,
+          "process": {
+            "stage": "diagnose",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-final",
+            "status": "DIAGNOSTICS_COMPLETE",
+            "elapsed_seconds": 17.478474100000312,
+            "peak_rss_bytes": 668299264,
+            "pid": 27916
+          }
+        },
+        {
+          "stage": "validate",
+          "cli_wall_seconds": 16.761062700003095,
+          "process": {
+            "stage": "validate",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-final",
+            "status": "SMOKE_ONLY",
+            "elapsed_seconds": 10.696471100000053,
+            "peak_rss_bytes": 659214336,
+            "pid": 3096
+          }
+        },
+        {
+          "stage": "package",
+          "cli_wall_seconds": 14.16624260000026,
+          "process": {
+            "stage": "package",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-final",
+            "status": "SMOKE_ONLY",
+            "elapsed_seconds": 7.836896699998761,
+            "peak_rss_bytes": 658755584,
+            "pid": 32104
+          }
+        }
+      ],
+      "worker_peak_rss_bytes": {
+        "14884": 644120576,
+        "11220": 644726784
+      },
+      "protected_unchanged": true,
+      "full_run_started": false
+    }
+  },
+  "source_identity": {
+    "git_head": "dc8b08b8dee21893fefeb270a0a6a5a529e46da3",
+    "sources": {
+      "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+      "combat_move_teacher.py": "a30a2f2b8450c3e13734f5d7f525e275ee0655f77fe0b7bfddc37cbba3959616",
+      "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+      "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+      "kill_search.py": "033deceeeb1f9e60d7ff970e8880dbc438f15260f3297c69e496f874cc4ad12d",
+      "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+      "phase_d_s2_ledger.py": "bca39ff1e636c5595a07dd5aa9c800260f1eb3a82a2b3fdf2131078521aa3353",
+      "phase_d_s2_protocol.py": "53109dff9f198db56ec88faaf8c8841b170d4afd874904ed93f96817f0dfc953",
+      "progress.py": "b63c84e729c8fd214bcf0f457d20abb1d4cbba28b5c7d514aa3e6c29ec162eb4",
+      "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+      "run_s2_kl_probe.py": "5d085d0742875bd29306d7d2be38ae57d28f4fcddcd39834d89b0d69c5f430ee",
+      "s2_kl_evaluation.py": "75b7b3491ab84506b585b22501c5b086b6a2c966b2698fb02573ea14de300df2",
+      "s2_kl_ledger.py": "70e5e034eee5dca91851d370d79cb18b6956fdc43a69cfcc5b7d5996e97c0c9c",
+      "s2_kl_protocol.py": "4f702a701da697495f845602c66780c0e702d3fce2b37e9cab704763374ca191",
+      "s2_kl_training.py": "4453c44a2b5fb7f7ea4940e845b1cfbaa888d21ced8e73a3bd2f539dcc29718c",
+      "tactical_teacher.py": "b1166e4eb347d538d59c1ecf1d854bba403177d72467bd61f2055f828c04dd77",
+      "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+      "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc"
+    },
+    "spec_sha256": "ca3eea4a8f927e6b68313a1764c9fe757bfa56bf5710fa0afc48e5e7baebd5f6",
+    "both_final_smokes_match": true
+  },
+  "acceptance_after_review": {
+    "tests": 50,
+    "seconds": 235.902,
     "exit_code": 0,
-    "observed_console_progress": "0/2 ->2/2",
-    "redirected_log": "redirected stdout marker\n",
-    "scope": "same unchanged progress.py helper copied into frozen closure; not a full training launch"
+    "actual_cuda": true,
+    "skips": 0
   },
-  "full_seed_preflight": {
-    "status": "REJECTED",
-    "error": "Unresolved seed history: ['E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed', 'E:\\\\Bomberman\\\\runs\\\\sd6-diagnostics-6600\\\\overrides.json: invalid seed seed']",
-    "ranges": 253574,
-    "sources": 5657,
-    "unresolved": [
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed",
-      "E:\\Bomberman\\runs\\t2-full-20261014-060320\\replay_cases.json: metadata requires verified seed index",
-      "E:\\Bomberman\\runs\\t2-smoke-20261014-060320\\replay_cases.json: metadata requires verified seed index"
-    ]
+  "final_protocol": {
+    "tests": 26,
+    "seconds": 43.218,
+    "exit_code": 0,
+    "log": "E:\\Bomberman\\runs\\s2-kl-code-verification-20261023\\final-protocol-green.log"
   },
-  "protected_unchanged": true
+  "root_final": {
+    "command": "S2_KL_ACCEPTANCE_CUDA=1 venv\\Scripts\\python.exe -m unittest discover -p \"test_*.py\" -q",
+    "tests": 586,
+    "seconds": 681.386,
+    "exit_code": 1,
+    "error_count": 20,
+    "failure_count": 1,
+    "skipped": 2,
+    "qualified_failures": [
+      [
+        "ERROR",
+        "test_resume_keeps_the_warm_start_as_anchor (test_group_rl.TrainerTests.test_resume_keeps_the_warm_start_as_anchor)"
+      ],
+      [
+        "ERROR",
+        "test_resume_replays_group_rollouts (test_group_rl.TrainerTests.test_resume_replays_group_rollouts)"
+      ],
+      [
+        "ERROR",
+        "test_resume_restores_the_buffer (test_group_rl.TrainerTests.test_resume_restores_the_buffer)"
+      ],
+      [
+        "ERROR",
+        "test_phase_d_snapshot_evaluation (unittest.loader._FailedTest.test_phase_d_snapshot_evaluation)"
+      ],
+      [
+        "ERROR",
+        "test_parallel_map_keeps_job_order_and_counts_every_tick (test_progress.ProgressTests.test_parallel_map_keeps_job_order_and_counts_every_tick)"
+      ],
+      [
+        "ERROR",
+        "test_cancelled_runner_records_incomplete_without_optimizer_or_plots (test_reward_audit.AuditChecks.test_cancelled_runner_records_incomplete_without_optimizer_or_plots)"
+      ],
+      [
+        "ERROR",
+        "test_invalid_completed_shard_is_not_resumed (test_run_sd53_pilot.PublicContracts.test_invalid_completed_shard_is_not_resumed)"
+      ],
+      [
+        "ERROR",
+        "test_smoke_train_refuses_overwrite_and_resumes (test_run_sd5_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)"
+      ],
+      [
+        "ERROR",
+        "test_test_stage_needs_both_models_and_opens_once (test_run_sd5_pilot.StageTests.test_test_stage_needs_both_models_and_opens_once)"
+      ],
+      [
+        "ERROR",
+        "test_smoke_train_refuses_overwrite_and_resumes (test_run_sd7_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)"
+      ],
+      [
+        "ERROR",
+        "test_test_stage_opens_once (test_run_sd7_pilot.StageTests.test_test_stage_opens_once)"
+      ],
+      [
+        "ERROR",
+        "test_new_recipe_settings_are_part_of_the_resume_provenance (test_search_teacher.SearchTeacherTests.test_new_recipe_settings_are_part_of_the_resume_provenance)"
+      ],
+      [
+        "ERROR",
+        "test_resume_replays_sudden_death_curriculum (test_search_teacher.SearchTeacherTests.test_resume_replays_sudden_death_curriculum)"
+      ],
+      [
+        "ERROR",
+        "test_ring_schedule_matches_loc_update (test_sudden_death_experiment.SuddenDeathTests.test_ring_schedule_matches_loc_update)"
+      ],
+      [
+        "ERROR",
+        "test_changed_source_cannot_reuse_control (test_two_bomb_complete.CompleteRunChecks.test_changed_source_cannot_reuse_control)"
+      ],
+      [
+        "ERROR",
+        "test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds (test_two_bomb_complete.CompleteRunChecks.test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds)"
+      ],
+      [
+        "ERROR",
+        "test_current_trainer_cannot_reuse_the_old_control (test_two_bomb_complete.CompleteRunChecks.test_current_trainer_cannot_reuse_the_old_control)"
+      ],
+      [
+        "ERROR",
+        "test_existing_output_is_not_overwritten_or_trained (test_two_bomb_complete.CompleteRunChecks.test_existing_output_is_not_overwritten_or_trained)"
+      ],
+      [
+        "ERROR",
+        "test_missing_cuda_rejects_training_before_creating_output (test_two_bomb_complete.CompleteRunChecks.test_missing_cuda_rejects_training_before_creating_output)"
+      ],
+      [
+        "ERROR",
+        "test_real_reference_is_complete_and_unchanged (test_two_bomb_complete.CompleteRunChecks.test_real_reference_is_complete_and_unchanged)"
+      ],
+      [
+        "FAIL",
+        "test_frozen_normal_matrix_and_statistics_are_declared (test_pde_evaluator_contracts.PDECheckContractTests.test_frozen_normal_matrix_and_statistics_are_declared)"
+      ]
+    ],
+    "new_failures": [],
+    "known_failures_unchanged": true,
+    "log": "E:\\Bomberman\\runs\\s2-kl-code-verification-20261023\\full-regression-reviewed.log",
+    "baseline_exception_types_unchanged": true,
+    "exception_types": {
+      "test_resume_keeps_the_warm_start_as_anchor (test_group_rl.TrainerTests.test_resume_keeps_the_warm_start_as_anchor)": "PermissionError",
+      "test_resume_replays_group_rollouts (test_group_rl.TrainerTests.test_resume_replays_group_rollouts)": "PermissionError",
+      "test_resume_restores_the_buffer (test_group_rl.TrainerTests.test_resume_restores_the_buffer)": "PermissionError",
+      "test_phase_d_snapshot_evaluation (unittest.loader._FailedTest.test_phase_d_snapshot_evaluation)": "ImportError",
+      "test_parallel_map_keeps_job_order_and_counts_every_tick (test_progress.ProgressTests.test_parallel_map_keeps_job_order_and_counts_every_tick)": "FileNotFoundError",
+      "test_cancelled_runner_records_incomplete_without_optimizer_or_plots (test_reward_audit.AuditChecks.test_cancelled_runner_records_incomplete_without_optimizer_or_plots)": "FileNotFoundError",
+      "test_invalid_completed_shard_is_not_resumed (test_run_sd53_pilot.PublicContracts.test_invalid_completed_shard_is_not_resumed)": "PermissionError",
+      "test_smoke_train_refuses_overwrite_and_resumes (test_run_sd5_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)": "PermissionError",
+      "test_test_stage_needs_both_models_and_opens_once (test_run_sd5_pilot.StageTests.test_test_stage_needs_both_models_and_opens_once)": "FileNotFoundError",
+      "test_smoke_train_refuses_overwrite_and_resumes (test_run_sd7_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)": "PermissionError",
+      "test_test_stage_opens_once (test_run_sd7_pilot.StageTests.test_test_stage_opens_once)": "FileNotFoundError",
+      "test_new_recipe_settings_are_part_of_the_resume_provenance (test_search_teacher.SearchTeacherTests.test_new_recipe_settings_are_part_of_the_resume_provenance)": "PermissionError",
+      "test_resume_replays_sudden_death_curriculum (test_search_teacher.SearchTeacherTests.test_resume_replays_sudden_death_curriculum)": "PermissionError",
+      "test_ring_schedule_matches_loc_update (test_sudden_death_experiment.SuddenDeathTests.test_ring_schedule_matches_loc_update)": "FileNotFoundError",
+      "test_changed_source_cannot_reuse_control (test_two_bomb_complete.CompleteRunChecks.test_changed_source_cannot_reuse_control)": "FileNotFoundError",
+      "test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds (test_two_bomb_complete.CompleteRunChecks.test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds)": "FileNotFoundError",
+      "test_current_trainer_cannot_reuse_the_old_control (test_two_bomb_complete.CompleteRunChecks.test_current_trainer_cannot_reuse_the_old_control)": "FileNotFoundError",
+      "test_existing_output_is_not_overwritten_or_trained (test_two_bomb_complete.CompleteRunChecks.test_existing_output_is_not_overwritten_or_trained)": "FileNotFoundError",
+      "test_missing_cuda_rejects_training_before_creating_output (test_two_bomb_complete.CompleteRunChecks.test_missing_cuda_rejects_training_before_creating_output)": "FileNotFoundError",
+      "test_real_reference_is_complete_and_unchanged (test_two_bomb_complete.CompleteRunChecks.test_real_reference_is_complete_and_unchanged)": "FileNotFoundError",
+      "test_frozen_normal_matrix_and_statistics_are_declared (test_pde_evaluator_contracts.PDECheckContractTests.test_frozen_normal_matrix_and_statistics_are_declared)": "AssertionError"
+    }
+  },
+  "s2_kl_final": {
+    "tests": 51,
+    "passed": 51,
+    "errors": 0,
+    "failures": 0,
+    "actual_cuda_enabled": true,
+    "verification": "Included in final whole-project command; no S2-KL failure/error IDs"
+  },
+  "reviewed_smokes": {
+    "cpu": {
+      "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+      "device": "cpu",
+      "status": "SMOKE_ONLY",
+      "counts": {
+        "models": 5,
+        "diagnostics": 5,
+        "expected_diagnostics": 5,
+        "games": 20,
+        "expected_games": 20,
+        "decision_states": 5120,
+        "anchor_states": 5120
+      },
+      "measurements": [
+        {
+          "stage": "register",
+          "cli_wall_seconds": 4.258721300000616,
+          "process": {
+            "stage": "register",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+            "status": "OK",
+            "elapsed_seconds": 1.9161199999980454,
+            "peak_rss_bytes": 622153728,
+            "pid": 28048
+          }
+        },
+        {
+          "stage": "train-control",
+          "cli_wall_seconds": 8.976732800001628,
+          "process": {
+            "stage": "train",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+            "status": "OK",
+            "elapsed_seconds": 2.4454710999998497,
+            "peak_rss_bytes": 655032320,
+            "pid": 22596
+          }
+        },
+        {
+          "stage": "train-anchor",
+          "cli_wall_seconds": 9.23900649999996,
+          "process": {
+            "stage": "train",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+            "status": "OK",
+            "elapsed_seconds": 2.6618034999992233,
+            "peak_rss_bytes": 651042816,
+            "pid": 27824
+          }
+        },
+        {
+          "stage": "diagnose",
+          "cli_wall_seconds": 24.82993510000233,
+          "process": {
+            "stage": "diagnose",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+            "status": "DIAGNOSTICS_COMPLETE",
+            "elapsed_seconds": 18.901150800000323,
+            "peak_rss_bytes": 669192192,
+            "pid": 27824
+          }
+        },
+        {
+          "stage": "validate",
+          "cli_wall_seconds": 14.799708599999576,
+          "process": {
+            "stage": "validate",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+            "status": "SMOKE_ONLY",
+            "elapsed_seconds": 9.542436499999894,
+            "peak_rss_bytes": 655851520,
+            "pid": 30844
+          }
+        },
+        {
+          "stage": "package",
+          "cli_wall_seconds": 10.675543800000014,
+          "process": {
+            "stage": "package",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+            "status": "SMOKE_ONLY",
+            "elapsed_seconds": 5.959151800001564,
+            "peak_rss_bytes": 651862016,
+            "pid": 28104
+          }
+        }
+      ],
+      "worker_peak_rss_bytes": {
+        "26724": 643084288,
+        "28724": 642072576
+      },
+      "protected_unchanged": true,
+      "full_run_started": false
+    },
+    "cuda": {
+      "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review",
+      "device": "cuda:0",
+      "status": "SMOKE_ONLY",
+      "counts": {
+        "models": 5,
+        "diagnostics": 5,
+        "expected_diagnostics": 5,
+        "games": 20,
+        "expected_games": 20,
+        "decision_states": 5120,
+        "anchor_states": 5120
+      },
+      "measurements": [
+        {
+          "stage": "register",
+          "cli_wall_seconds": 3.162301000000298,
+          "process": {
+            "stage": "register",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review",
+            "status": "OK",
+            "elapsed_seconds": 1.3755500999977812,
+            "peak_rss_bytes": 623751168,
+            "pid": 11836
+          }
+        },
+        {
+          "stage": "train-control",
+          "cli_wall_seconds": 6.749605599998176,
+          "process": {
+            "stage": "train",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review",
+            "status": "OK",
+            "elapsed_seconds": 2.2089868999973987,
+            "peak_rss_bytes": 1748058112,
+            "pid": 29064
+          }
+        },
+        {
+          "stage": "train-anchor",
+          "cli_wall_seconds": 7.620192700000189,
+          "process": {
+            "stage": "train",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review",
+            "status": "OK",
+            "elapsed_seconds": 2.592877499999304,
+            "peak_rss_bytes": 1736683520,
+            "pid": 30060
+          }
+        },
+        {
+          "stage": "diagnose",
+          "cli_wall_seconds": 21.516584100001637,
+          "process": {
+            "stage": "diagnose",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review",
+            "status": "DIAGNOSTICS_COMPLETE",
+            "elapsed_seconds": 16.583916900002805,
+            "peak_rss_bytes": 669437952,
+            "pid": 31556
+          }
+        },
+        {
+          "stage": "validate",
+          "cli_wall_seconds": 13.956719899997552,
+          "process": {
+            "stage": "validate",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review",
+            "status": "SMOKE_ONLY",
+            "elapsed_seconds": 9.074469700000918,
+            "peak_rss_bytes": 660070400,
+            "pid": 29324
+          }
+        },
+        {
+          "stage": "package",
+          "cli_wall_seconds": 11.047969000002922,
+          "process": {
+            "stage": "package",
+            "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review",
+            "status": "SMOKE_ONLY",
+            "elapsed_seconds": 6.670988999998372,
+            "peak_rss_bytes": 657387520,
+            "pid": 28280
+          }
+        }
+      ],
+      "worker_peak_rss_bytes": {
+        "30360": 644100096,
+        "27212": 644448256
+      },
+      "protected_unchanged": true,
+      "full_run_started": false
+    }
+  },
+  "acceptance_integrity_verified": true,
+  "full_launch_ready": false,
+  "execution_ledger": "# SDD ledger — plan: docs/superpowers/plans/2026-10-23-s2-kl-retention.md\n\nBASE ed7c7493318061dc8f70921fea3ad319c0814a53\n\nUser approved implementation 23/10/2026; full pilot launch remains a separate request.\n\nPre-flight T0→T1: frozen acceptance/public schema precedes production. T1→T2: config.train omits beta, arm injects it; S2 in checkpoints.S2. T1/T2→T3: strict sample identity and list model descriptors. T3→T4: raw rows and immutable model manifest; no selection. T4→T5: frozen worker runtime, smoke only, no full reservation. Interfaces consistent.\n\nRuling: execute in the existing dedicated approved branch Loc_s2-kl-retention at E:\\Bomberman; only new S2-KL files and scoped journal/plan additions, preserving all pre-existing UI/PDE/local changes — existing read-only inputs and user-approved branch remain directly available — cost if wrong: accidental cross-scope edit, mitigated by baseline inventory and explicit staging.\n\nRuling: use native PowerShell/Python equivalents for bash skill scripts on this Windows host, keeping task briefs, BASE, test logs and ledger records — bash runtime is not part of the declared stack — cost if wrong: bookkeeping drift, checked against the plan at each task.\n\nTask 0: started; requirements SHA256 85690213325c1128fcf86df8d3af7bfe4828d57a25acf5685a98599509e6b854; root baseline running.\n\nPre-freeze public schema clarification with independent author: summary R/Q/AW/SU in percent, comparisons.anchor_minus_control.R, diagnostics raw.decision/raw.anchor, sample arrays plus stable ids and board clusters. No spec conflict or scientific-method change.\n\nDecision record: shared trainer already builds frozen anchor before restoring learner (train_actor_critic.py warm-start/anchor creation), exposes phase_d_run context and atomic full state, and computes masked learner||S2 mean. Reuse these unchanged with a new context; standard library plus installed torch/numpy suffice. Risks are source/sample drift, incorrect resume identity and false report completion; bounded exact-resume/ledger/CLI tests own verification.\n\nTodo: T0 frozen acceptance+baseline; T1 protocol; T2 training/resume; T3 retention/CI/gates; T4 ledger/CLI/package; T5 regression/smoke/guide/final review.\n\nT0 root baseline: ['Ran 535 tests in 419.283s', 'FAILED (failures=1, errors=20, skipped=2)']; existing failing test names saved in runs/s2-kl-code-verification-20261023/baseline-summary.json before production. Approved plan explicitly requires comparing existing failures, not repairing unrelated history.\n\nTask 0: complete (BASE ed7c749; tests: venv\\Scripts\\python.exe -m unittest test_s2_kl_protocol test_s2_kl_training test_s2_kl_evaluation test_run_s2_kl_probe -q → valid RED, 40 tests / 39 assertion failures / 0 errors / 1 CUDA opt-in skip; 2 existing trainer regression methods pass). Frozen hashes in runs/s2-kl-code-verification-20261023/acceptance-hashes.json. Root baseline 535 tests / 20 errors / 1 failure / 2 skips.\n\nTask 1: complete (tests: venv\\Scripts\\python.exe -m unittest test_s2_kl_protocol -q → 15/15 PASS, 26.999s). Real input SHA/source/runtime, nested UI seed audit, shared-registry concurrent writers and before/after publish recovery exercised. First T1 run had only missing progress.py closure; registered runtime helper explicitly and reran green.\n\nTask 2: started; BASE follows protocol commit. Shared trainer, KL math and D-S2 sources unchanged.\n\nRuling: T2 full acceptance calls T3 diagnose_model between interruption and resume, so execute T2 core then T3 offline helpers before declaring T2 GREEN — this is a real dependency in frozen acceptance and preserves all tests — cost if wrong: commits cross nominal task boundaries; full suites and record identify coverage. T2 initial RED: 8 methods, 7 assertion failures, 0 errors, 1 CUDA opt-in skip.\n\nTask 2: complete (BASE b5982d8; frozen training/evaluation combined command → 20 methods PASS, one CUDA opt-in skip,34.807s; actual CUDA S2_KL_ACCEPTANCE_CUDA=1 python -m unittest test_s2_kl_training -q → 8/8 PASS,32.617s). CPU and CUDA before/after episode commit for BOTH control/anchor, offline observer RNG neutrality, full Adam/scheduler/RNG/state0/reference exercised.\n\nTask 3: complete (same combined command includes12 evaluation methods PASS; locked 1024+1024 samples, raw summaries, unequal micro clusters, all status/one-ULP boundaries and synthetic endpoint500 report exercised). T2/T3 committed together because T2 observer contract depends on T3. Acceptance hashes unchanged.\n\nTask 4: next; CLI/atomic ledgers/package remain missing; no full output or reservation.\n\nTask 4: complete (BASE f764002; S2_KL_ACCEPTANCE_CUDA=1 venv\\Scripts\\python.exe -m unittest test_s2_kl_protocol test_s2_kl_training test_s2_kl_evaluation test_run_s2_kl_probe -q → 40/40 PASS,199.804s,no skips). Initial T4 RED 5 methods/2 missing-ledger failures. Frozen CLI journey, raw-shard/source/projection tamper rejection, resume/no double count and incomplete ZIP exercised. Added evidence-subset report reconstruction to validate earlier partial projections, deterministic row ordering, and per-stage/worker process peak RSS/timing. Acceptance hashes unchanged.\n\nTask 5: started; guide drafted, full-regression/legacy/final smoke and independent review remain.\n\nT5 integration:119tests PASS,468.573s, actualS2_KL_ACCEPTANCE_CUDA=1 andD_S2_ACCEPTANCE_CUDA=1, log integration.log.\n\nT5 seed regressions: valid RED4methods/2assertionfailures/0errors; scalar board620000 was incorrectly expanded by its numeric value, unknown nested start_seed silently skipped. Fixed point/span classification and reject unknown seed fields. GREEN21/21(protocol15+supporting6),28.720s. Additional inclusive-index/bootstrap checks are regression coverage, not claimedRED.\n\nTask 5: Ruling: independent author corrected one technically invalid pretty-JSON-as-JSONL fixture and strengthened its overlap assertion; originaltest preserved commit58e5321 and old/newhash/proof in matrix — allowed technical-invalidity exception, never weakened by implementer — cost if wrong: compromised acceptance integrity; separate author proof and all other frozen hashes verified.\n\nFull seed preflight is read-only and correctly REJECTED on unresolved historical SD6seed=null overrides and two T2replay files above32MiB lacking verified seed index. Do not bypass, mutate old data or reserve full. This is launch prerequisite, not smoke result or quality gate.\n\nT5 additional valid RED: deduplicated identical SHA for endpoint/intermediate aliases loses endpoint identity in report despite complete inventory; alias-review-red.log1assertionfailure/0errors. Fix pending until running root regression completes (avoid live source drift).\n\nT5 root regression before final alias/count fixes:581tests,643.264s,20errors/1failure/3skips; exact qualified failure/error names equal baseline, no new names. Log full-regression.log; summary regression-before-alias-summary.json. New8supporting tests require final repeat after fixes.\n\nT5 additional span RED: malformed known mechanism_games string20 silently assumed one board, missed offset;1assertionfailure/0errors in span-review-red.log. Fixed strict positive integer count. SHA alias regression fixed by reading verified canonical model manifest and resolving endpoint metrics by SHA while retaining both arm identities; no API/config/budget changes.\n\nT5 progress: actualTTY redirect check PASS; CON displayed0/2->2/2 while redirected log contains only stdout marker. Evidence progress-console.json/log. CPU actual frozenCLI sixstages PASS; reportSMOKE_ONLY,5uniqueSHA/20games/5120+5120states, workerCPU1thread/fromsnapshot,ZIPCRC,protected hashes unchanged. CUDA smoke and48test final acceptance currently running; CPU smoke overlapped bounded acceptance, timing is observed walltime under this load rather than dedicated benchmark.\n\nT5 final acceptance48/48PASS,215.774s,actualCUDA/no skips. Both actualCPU/CUDA frozenCLI smoke6stages PASS,SMOKE_ONLY,5SHA/20games/5120+5120rows; protected hashes unchanged,ZIPCRC valid,2frozenCPU workers each1thread. Perf recorded in verification JSON/MD with concurrency/20step limitations. Final root regression and independentreview pending.\n\nFinal: Ruling: preserve concurrent data commit80bafa7, which appeared between our f764002 and6b5083e and is now origin/Loc_s2-kl-retention; this executor neither created nor pushed it and cannot infer separate human publication authorization — keep other workflow history intact, review S2-KL runtime and protected hashes, no revert/history rewrite/push — cost if wrong: whole-branch diff includes historical data and needs separate scope/publication assessment before future integration.\n\nFinal review complete on ed7c749..2dbcdd3:0Critical,2Important/P2,0Minor, verdict with fixes. Two narrow regressions run validRED:2methods/3assertion failure records/0errors,6.377s. Full/smoke copied output accepted; validate dispatch allowed without diagnostics. Source fix pass pending current immutable-root run completion; no rereview.\n\nFinal: Ruling: reviewer set aside pre-existing UI/PDE/journals and baseline failures — preserve user work and compare qualified legacy failures per approved plan rather than repairing unrelated code — cost if wrong: existing failures may hide additional unrelated defects.\n\nFinal: Ruling: reviewer set aside historical null seeds and large replay mappings — keep full registration fail-closed until verified historical mapping exists, do not alter/skip logs — cost if wrong: full launch remains unavailable until that prerequisite is resolved.\n\nFinal: Ruling: reviewer set aside scientific effectiveness/generalization/full throughput — make only bounded code/resume claims, no full run or S2 replacement, no full ETA from20step smoke — cost if wrong: pilot may later fail or run longer than expected.\n\nFinal: Ruling: reviewer set aside component-gradient instrumentation and inherited reward-decomposition helper limits — keep advantage diagnostics/reward_diagnostics=false and unchanged trainer as approved one-variable pilot — cost if wrong: limited causal attribution/observability, not evidence that those components are correct.\n\nFinal root before reviewfix:583tests,631.627s,20errors/1failure/3skips, exact same qualified names as baseline, no new names. Evidence regression-before-review-fix-summary.json.\n\nFinal: fixed copied-output reservation identity — FinalReviewTests.test_copied_output_cannot_reuse_original_experiment_identity(full+smoke) RED→GREEN. Final: fixed validate-before-diagnostics projection dead end — FinalReviewTests.test_validation_requires_all_diagnostics_before_any_game_or_projection(missing+partial,zerojobs/projection) RED→GREEN. ExtendedRED2methods/4assertionfailures/0errors,13.875s; GREEN2/2,14.803s. Single fix pass only; final50test actualCUDA and fresh smoke outputs -review currently running, final whole suite follows.\n\nFinal review-fix broad50/50PASS,235.902s,actualCUDA/no skips; CPU/CUDA-review smoke6stagesPASS. Read-only final input-root audit then caught self-produced rng_seeds inventory classified unknown. Added one supporting regression(empty+nonempty RNG inventory), validRED1method/2assertions/0errors,2.023s; recognized typed RNG inventory/context without weakening unknown/overlap guards. Protocol+all supporting26/26GREEN,43.218s. Final source smoke -final and whole root(actualS2CUDA) remain; no more production changes planned. This stays within the unfinished single final fix pass.\n\nFinal: fixed both Important findings — narrow RED2methods/4assertion records→GREEN2/2; final whole-root includes51/51S2-KL PASS(actualCUDA),586tests/681.386s,exact same20errors/1failure as baseline,2skips,no new names. Inventory followup RED1method/2subtests→GREEN26/26protocol+supporting and51/51scope. Both finalCPU/CUDA six-stage smoke PASS,SMOKE_ONLY/20games,live runtime/input/source verification PASS.\n\nTask 5: complete (BASE6b5083e through code dc8b08b; actual commands and raw logs in verification JSON/MD; final gate venv\\Scripts\\python.exe runs/s2-kl-code-verification-20261023/finalize.py exit0 validates final586test results,51/51newscope,baseline qualified failures unchanged,protectedSHA and finalsmokes). Full-run seed history remains correctly REJECTED; no full reservation/run.\n\nFinish: retain existing branch/workspace and pre-existing user changes. Generic branch integration menu stops on known whole-project failures; approved plan explicitly requires delta comparison without unrelated legacy repairs. No merge/push in this executor. Final rulings9, Minor deferred0. Ledger/evidence will be migrated into tracked verification JSON before deleting this plan scratch only.\n"
 }

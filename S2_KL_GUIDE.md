@@ -107,6 +107,6 @@ set S2_KL_ACCEPTANCE_CUDA=1
 set S2_KL_ACCEPTANCE_CUDA=
 ```
 
-Smoke riêng4episode/arm,max20bước; train790000–790001 và validation790002–790003, chỉ audit trong output, không đặt chỗ dải full. Code smoke đầu dùng `runs/s2-kl-code-smoke-20261023-cpu` và `...-cuda`; bản sau review dùng output mới thêm hậu tố `-review`, có đủ register/train/diagnose/validate/package. Giữ các output trước làm bằng chứng lịch sử; source thay đổi thì output cũ sẽ bị từ chối resume theo SHA.
+Smoke riêng4episode/arm,max20bước; train790000–790001 và validation790002–790003, chỉ audit trong output, không đặt chỗ dải full. Code smoke đầu dùng `runs/s2-kl-code-smoke-20261023-cpu` và `...-cuda`; bản sau review dùng hậu tố `-review`, bản chốt sau audit dùng hậu tố `-final`, có đủ register/train/diagnose/validate/package. Giữ các output trước làm bằng chứng lịch sử; source thay đổi thì output cũ sẽ bị từ chối resume theo SHA.
 
 `logs/stages.jsonl` ghi thời gian stage sau import và peak RSS của tiến trình stage; raw board payload ghi PID/peak RSS riêng từng worker. Hai số này không cộng thành peak RAM toàn cây tiến trình. Bản verification còn ghi walltime CLI có startup/dispatch. Smoke20bước kiểm tính đúng và resume; không suy ETA500bước bằng phép nhân25. Ngân sách full tối đa500000learner steps train và700000environment steps validation; cần đo thêm throughput500bước trên dải smoke riêng trước khi hứa thời gian chạy. Offline có cùng2048quan sát/model, tối đa7model; dự phóng offline từ sốSHA là ước lượng có giới hạn startup/I/O/runtime.

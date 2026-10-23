@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-10-23-s2-kl-retention-design.md`, người dùng duyệt bản `59350ac` ngày 23/10/2026.
 
-**Status:** APPROVED_IMPLEMENTATION — người dùng duyệt và yêu cầu triển khai ngày23/10/2026. Giữ phương thức Native: implementer hiện tại thực hiện các task, acceptance có tác giả độc lập và cuối lượt có reviewer độc lập. Theo dõi execution trong ledger của plan; full pilot chỉ khởi chạy khi có yêu cầu riêng sau code-ready.
+**Status:** IMPLEMENTED_CODE_VERIFIED_FULL_LAUNCH_BLOCKED — người dùng duyệt và yêu cầu triển khai ngày23/10/2026. Giữ phương thức Native: implementer hiện tại thực hiện các task, acceptance có tác giả độc lập và cuối lượt có reviewer độc lập. Theo dõi execution trong ledger của plan; full pilot chỉ khởi chạy khi có yêu cầu riêng sau code-ready.
 
 ## Global Constraints
 
@@ -157,10 +157,10 @@ Offline payload format `s2-kl-diagnostics-v1`: model_sha256/registration_digest/
 **Interfaces:** Consumes tấtcảstage CLI/evidence; produces bằng chứng code-ready, hướng dẫn CMD và ZIP smoke dùng chẩn đoán; chưa tạo/reserve full run.
 
 - [x] **Step 1 — integration evidence:** giữ RED/GREEN T0–T4 và acceptance hashes; chạy suite S2-KL cùng legacy `test_training_state test_phase_d_s2_protocol test_phase_d_s2_training test_phase_d_s2_evaluation test_run_phase_d_s2 test_run_sd8` bằng unittest. Legacy CUDA dùng cờ D_S2_ACCEPTANCE_CUDA, không nhầm S2_KL_ACCEPTANCE_CUDA. Không mở lại held-out qua test fixture.
-- [ ] **Step 2 — full regression một lần:** `venv\Scripts\python.exe -m unittest discover -p "test_*.py" -q`; so tên lỗi với baseline mới T0, phân biệt lỗi hiện hữu và mới phát sinh. Không báo toàn suite PASS khi còn fail hoặc sửa lỗi lịch sử ngoài scope.
+- [x] **Step 2 — full regression một lần:** `venv\Scripts\python.exe -m unittest discover -p "test_*.py" -q`; so tên lỗi với baseline mới T0, phân biệt lỗi hiện hữu và mới phát sinh. Không báo toàn suite PASS khi còn fail hoặc sửa lỗi lịch sử ngoài scope.
 - [x] **Step 3 — actual smoke:** output mới `runs/s2-kl-code-smoke-20261023-cpu` và `...-cuda`: register --smoke → train control → train anchor → diagnose → validate → package. Dải smoke audit-only, report SMOKE_ONLY, raw count khớp, worker frozen/1 thread; CPU+CUDA resume cả hai arm trên source cuối. Kiểm interruption và CON progress khi redirect; chưa launch full job.
 - [x] **Step 4 — perf/guide:** lưu wall time/peak RAM từng stage và worker; dự phóng riêng train/diagnose/validate, nêu giới hạn smoke20 bước, không hứa ETA full. GUIDE dùng Python/path CMD tuyệt đối, log append/errorlevel, resume cùng output/máy, stage order/status và input chỉ đọc. Launcher full chỉ tạo khi user yêu cầu start, tránh chạy full khi test guide.
-- [ ] **Step 5 — review/commit/handoff:** `git diff --check`, xác minh SHA D-S2/SD8A/registry gốc không đổi; reviewer độc lập cuối theo Native workflow. Sửa finding có evidence/regression và chạy lại check bị ảnh hưởng. Chỉ commit file mới/đúng scope, giữ README/UI/untracked PDE của user. Bàn giao code-ready và CMD; chưa đặt chỗ 710000/720000 hoặc mở terminal train.
+- [x] **Step 5 — review/commit/handoff:** `git diff --check`, xác minh SHA D-S2/SD8A/registry gốc không đổi; reviewer độc lập cuối theo Native workflow. Sửa finding có evidence/regression và chạy lại check bị ảnh hưởng. Chỉ commit file mới/đúng scope, giữ README/UI/untracked PDE của user. Bàn giao code-ready và CMD; chưa đặt chỗ 710000/720000 hoặc mở terminal train.
 
 ## Coverage và execution handoff
 
@@ -176,3 +176,5 @@ Offline payload format `s2-kl-diagnostics-v1`: model_sha256/registration_digest/
 Dependencies: T0 → T1 → T2 → T3 → T4 → T5. Tác giả acceptance độc lập và reviewer cuối chỉ được dispatch khi bắt đầu execution đã duyệt, không trong lượt viết plan. Review không thay requirements/tests để làm suite xanh.
 
 Self-review: đủ spec§§1–11, năm Review Focus đều có owner/test, public function/schema/seed/endpoint nhất quán; smoke chỉ SMOKE_ONLY, registry lock và reference sau resume đã chốt. Không thêm biến can thiệp hoặc mở test. Native được giữ theo lựa chọn trước; cần user review plan trước implementation. Sau đó dùng executing-plans, independent-test-first/TDD và review theo workflow; pilot full là bước user yêu cầu start riêng sau code-ready.
+
+Final verification23/10/2026: source dc8b08b;51/51S2-KL PASS in586-test root run with actualCUDA,20errors/1failure baseline identities unchanged,2legacy skips. Final CPU/CUDA smoke outputs suffix-final each6stages/20games PASS/SMOKE_ONLY; independentreview0Critical/2Important fixed/0Minor. Full registration remains blocked by unresolved historical SD6/T2 seed metadata; no full launch/reservation. Evidence in verification MD/JSON and final-review MD.
