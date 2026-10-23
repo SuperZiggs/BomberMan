@@ -1083,3 +1083,11 @@ Cấu hình được chọn **start400/interval40/warning40/max_ring2**: trên t
 - Cùng `test_probe_s2_search3`: 4 test OK.
 
 **Trạng thái:** code xong, chờ người dùng chạy.
+
+## 79. Đẩy nhánh `danh/sd9-s3-distillation` (2026-10-23)
+
+**Thông số:** như RESULTS "PUSH-SD9" (git + LFS, remote origin, commit `2a21b97`).
+
+- Không đổi code. Commit toàn bộ thay đổi từ SD8B-off tới SD9.1-prep lên nhánh mới và push.
+- Loại khỏi commit: file lock, output SD9.1 đang chạy, file tự sinh của claude-mem.
+- Đã kiểm checkpoint là con trỏ LFS. `git lfs push --dry-run` không còn object nào chờ đẩy.

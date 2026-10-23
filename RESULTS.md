@@ -2974,3 +2974,17 @@ Theo bạn, sự suy giảm đã xuất hiện từ checkpoint 500.
 - 1 bàn quá ít nên không đọc kết quả thắng/thua; 6/8 cặp đều hòa hết giờ.
 - Spec và luật chốt trước: `docs/superpowers/specs/2026-10-23-sd9-1-s3-vs-cnn-probe.md`.
 - Lượt chính: `runs/sd91-21000`, seed validation 21000. Chưa chạy.
+
+## PUSH-SD9 — đẩy toàn bộ công việc lên nhánh mới, 23/10/2026
+
+**Thông số:** không phải thí nghiệm. Claude chạy trên máy người dùng: git, git-lfs 3.7.1, remote `origin` (`github.com/SuperZiggs/BomberMan`).
+
+- Nhánh mới `danh/sd9-s3-distillation`, tách từ `danh/sd5-friend-merge`, commit `2a21b97`. Gồm 1797 file, khoảng 95 MB; checkpoint `.pt` đi qua LFS.
+- Nội dung:
+  - mọi code, spec và log từ SD8B-off tới SD9.1-prep;
+  - output `runs/` của PDE, PDE2, SDM, SDM2, SD8A, SD8B, SD9.0 và SD9 (kèm S3 `runs/sd9-20261023/train/epoch_12.pt`).
+- Không đưa lên:
+  - `runs/sd91-21000/` và log của nó, vì SD9.1 đang chạy;
+  - 7 file `runs/resume-budget-test-*-run.lock` và `graphify-out/.rebuild.lock`;
+  - `.github/copilot-instructions.md`, file do công cụ claude-mem tự tạo.
+- Chưa merge vào `main` và chưa tạo PR.
