@@ -1,0 +1,25 @@
+{
+  "seed": 51000,
+  "normal_seed": 51000,
+  "smoke": false,
+  "workers": 5,
+  "schedule_E": {
+    "sudden_death": true,
+    "sudden_death_start": 475,
+    "sudden_death_interval": 25,
+    "sudden_death_warning_steps": 40
+  },
+  "max_steps": 500,
+  "checkpoints": {
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+    "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+  },
+  "sources": {
+    "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+    "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+    "pde_eval.py": "b6eb378e646d03807e8305bfdffce48094c84870590660f52e488554adf79905",
+    "run_pde2_ffa_mix.py": "affce1f632baf95acf1157dd44b7405fedfcda7acd442e9feee9391cb0e7b70e"
+  },
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0"
+}

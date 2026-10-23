@@ -1,0 +1,46 @@
+{
+  "snapshots": [
+    {
+      "id": "snapshot-2",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cpu\\arms\\control\\snapshots\\episode_2.pt",
+      "sha256": "db630ee9efe863f9e854669374baf62e827ffc4140d4a2153330f0bb8df687c6",
+      "episode": 2,
+      "role": "opponent",
+      "arm": "control"
+    },
+    {
+      "id": "snapshot-4",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cpu\\arms\\control\\snapshots\\episode_4.pt",
+      "sha256": "77fff42bacf8106ba5b94aaf12e46904571a30b2c7acfa4cb48660a1df0f3308",
+      "episode": 4,
+      "role": "opponent",
+      "arm": "control"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "control-0",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cpu\\arms\\control\\checkpoints\\episode_0.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "episode": 0,
+      "role": "candidate",
+      "arm": "control"
+    },
+    {
+      "id": "control-2",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cpu\\arms\\control\\checkpoints\\episode_2.pt",
+      "sha256": "db630ee9efe863f9e854669374baf62e827ffc4140d4a2153330f0bb8df687c6",
+      "episode": 2,
+      "role": "candidate",
+      "arm": "control"
+    },
+    {
+      "id": "control-4",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cpu\\arms\\control\\checkpoints\\episode_4.pt",
+      "sha256": "77fff42bacf8106ba5b94aaf12e46904571a30b2c7acfa4cb48660a1df0f3308",
+      "episode": 4,
+      "role": "candidate",
+      "arm": "control"
+    }
+  ]
+}

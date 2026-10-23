@@ -1,0 +1,14 @@
+{
+  "staged_files": 3005,
+  "new_run_files": 2999,
+  "run_bytes": 1983874504,
+  "lfs_files": 157,
+  "unique_lfs_objects": 64,
+  "lfs_bytes": 1384677269,
+  "all_run_blobs_match_worktree": true,
+  "frozen_checkout_sources_verified": 19,
+  "outside_scope_documents_preserved": true,
+  "all_new_run_files_staged": true,
+  "oversized_git_blobs": 0,
+  "targeted_tests_passed": 4
+}

@@ -1,0 +1,47 @@
+E:\Bomberman\train_actor_critic.py:1551: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  **({"anchor_kl": float(anchor_kl)} if anchor_buf else {}),
+======================================================================
+FAIL: test_copied_output_cannot_reuse_original_experiment_identity (test_s2_kl_review.FinalReviewTests.test_copied_output_cannot_reuse_original_experiment_identity) (smoke=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 126, in test_copied_output_cannot_reuse_original_experiment_identity
+    with self.assertRaisesRegex(ValueError, '(?i)(output|identity|experiment)'):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_copied_output_cannot_reuse_original_experiment_identity (test_s2_kl_review.FinalReviewTests.test_copied_output_cannot_reuse_original_experiment_identity) (smoke=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 126, in test_copied_output_cannot_reuse_original_experiment_identity
+    with self.assertRaisesRegex(ValueError, '(?i)(output|identity|experiment)'):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_validation_requires_all_diagnostics_before_any_game_or_projection (test_s2_kl_review.FinalReviewTests.test_validation_requires_all_diagnostics_before_any_game_or_projection) (partial=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 139, in test_validation_requires_all_diagnostics_before_any_game_or_projection
+    with self.assertRaisesRegex(ValueError, '(?i)diagnostic'):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_validation_requires_all_diagnostics_before_any_game_or_projection (test_s2_kl_review.FinalReviewTests.test_validation_requires_all_diagnostics_before_any_game_or_projection) (partial=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 139, in test_validation_requires_all_diagnostics_before_any_game_or_projection
+    with self.assertRaisesRegex(ValueError, '(?i)diagnostic'):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 13.875s
+
+FAILED (failures=4)
+Warm-started from E:\Bomberman\s2-kl-prerequisite-qys219xa\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-prerequisite-qys219xa\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-prerequisite-lguhb2bw\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-prerequisite-lguhb2bw\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0

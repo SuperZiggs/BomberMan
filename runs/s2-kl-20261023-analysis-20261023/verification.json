@@ -1,0 +1,14 @@
+{
+  "raw_report_reconstruction": true,
+  "source_and_runtime_verified": true,
+  "full_training_states_verified": true,
+  "diagnostics": 7,
+  "board_shards": 700,
+  "games": 1400,
+  "archive_crc_passed": true,
+  "archive_evidence_matches": true,
+  "archive_bytes": 64511876,
+  "archive_sha256": "476ac4b1fb59fa24a51682d33c37f54bbff0cb23b33736f48258040a73cbbd1a",
+  "status": "RB_RETENTION_FAIL",
+  "registration_digest": "2c6c930e6908de5c3ab3725d17276bb3b9e7e26a5bb71719e2f86a06ddaa8b91"
+}

@@ -1,0 +1,6 @@
+{"stage": "register", "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu", "status": "OK", "elapsed_seconds": 1.3315412999982073, "peak_rss_bytes": 622518272, "pid": 30048}
+{"stage": "train", "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu", "status": "OK", "elapsed_seconds": 1.4999539000018558, "peak_rss_bytes": 655368192, "pid": 5100}
+{"stage": "train", "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu", "status": "OK", "elapsed_seconds": 1.5129704000028141, "peak_rss_bytes": 652349440, "pid": 23352}
+{"stage": "diagnose", "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu", "status": "DIAGNOSTICS_COMPLETE", "elapsed_seconds": 16.45511120000083, "peak_rss_bytes": 668852224, "pid": 28620}
+{"stage": "validate", "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu", "status": "SMOKE_ONLY", "elapsed_seconds": 8.485753400000249, "peak_rss_bytes": 658731008, "pid": 13300}
+{"stage": "package", "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu", "status": "SMOKE_ONLY", "elapsed_seconds": 7.087347599997884, "peak_rss_bytes": 657997824, "pid": 12664}

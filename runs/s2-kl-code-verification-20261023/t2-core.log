@@ -1,0 +1,73 @@
+E:\Bomberman\train_actor_critic.py:1551: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  **({"anchor_kl": float(anchor_kl)} if anchor_buf else {}),
+======================================================================
+FAIL: test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer) (arm='control')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 165, in test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer
+    with self.subTest(arm=arm): self.continuation(arm, 'after_state_commit', observe=True)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 133, in continuation
+    diagnose = function(self, 'diagnose_model')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: diagnose_model
+
+======================================================================
+FAIL: test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer) (arm='anchor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 165, in test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer
+    with self.subTest(arm=arm): self.continuation(arm, 'after_state_commit', observe=True)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 133, in continuation
+    diagnose = function(self, 'diagnose_model')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: diagnose_model
+
+----------------------------------------------------------------------
+Ran 8 tests in 15.267s
+
+FAILED (failures=2, skipped=1)
+Warm-started from E:\Bomberman\s2-kl-models-alxajn2a\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-models-alxajn2a\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-x_1wk74m\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-x_1wk74m\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-pcrllmh0\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-pcrllmh0\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-_gb9jlj2\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-_gb9jlj2\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-_gb9jlj2\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-9qlz1ryl\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-9qlz1ryl\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-9qlz1ryl\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-state0-gw7w5l3a\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-state0-gw7w5l3a\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-state0-gw7w5l3a\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-state0-gw7w5l3a\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-math-_um1juug\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-math-_um1juug\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-s3zgmu54\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-s3zgmu54\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-ses5ukfx\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-ses5ukfx\best_phaseC.pt (best episode: 0)

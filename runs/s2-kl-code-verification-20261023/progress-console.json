@@ -1,0 +1,8 @@
+{
+  "command": "venv\\Scripts\\python.exe -c [progress.bar update2;stdout redirected]",
+  "tty": true,
+  "exit_code": 0,
+  "observed_console_progress": "0/2 ->2/2",
+  "redirected_log": "redirected stdout marker\n",
+  "scope": "same unchanged progress.py helper copied into frozen closure; not a full training launch"
+}

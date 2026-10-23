@@ -1,0 +1,12 @@
+{
+  "reservations": {
+    "PDE:50000": {
+      "output": "runs\\pde-50000-resumable",
+      "seed": 50000
+    },
+    "PDE2:51000": {
+      "output": "runs\\pde2-51000",
+      "seed": 51000
+    }
+  }
+}

@@ -1,0 +1,38 @@
+[PDE] resuming 181/200 durable board shards with 5 workers
+[PDE] completed 182/200: D board 52085
+[PDE] completed 183/200: D board 52083
+[PDE] completed 184/200: D board 52082
+[PDE] completed 185/200: D board 52084
+[PDE] completed 186/200: D board 52081
+[PDE] completed 187/200: D board 52087
+[PDE] completed 188/200: D board 52086
+[PDE] completed 189/200: D board 52088
+[PDE] completed 190/200: D board 52089
+[PDE] completed 191/200: D board 52090
+[PDE] completed 192/200: D board 52092
+[PDE] completed 193/200: D board 52091
+[PDE] completed 194/200: D board 52094
+[PDE] completed 195/200: D board 52093
+[PDE] completed 196/200: D board 52095
+[PDE] completed 197/200: D board 52096
+[PDE] completed 198/200: D board 52099
+[PDE] completed 199/200: D board 52097
+[PDE] completed 200/200: D board 52098
+Expanded observation channels 12 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 8 -> 13
+{
+  "output": "runs\\pde-50000-resumable",
+  "proposals": {
+    "phase_E_from_G": false,
+    "phase_D_from_G": true,
+    "decision": "proposal_only_no_training_started"
+  }
+}

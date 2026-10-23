@@ -1,0 +1,145 @@
+======================================================================
+FAIL: test_binary_rb_corner_rows_are_paired_in_the_same_board_cluster (test_s2_kl_evaluation.ClusterTests.test_binary_rb_corner_rows_are_paired_in_the_same_board_cluster)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 174, in test_binary_rb_corner_rows_are_paired_in_the_same_board_cluster
+    compare = function(self, 'cluster_comparison')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: cluster_comparison
+
+======================================================================
+FAIL: test_invalid_pairing_duplicates_board_identity_nonfinite_and_nonprobability_fail (test_s2_kl_evaluation.ClusterTests.test_invalid_pairing_duplicates_board_identity_nonfinite_and_nonprobability_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 165, in test_invalid_pairing_duplicates_board_identity_nonfinite_and_nonprobability_fail
+    compare = function(self, 'cluster_comparison')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: cluster_comparison
+
+======================================================================
+FAIL: test_unequal_clusters_preserve_state_micro_weights_and_paired_board_resampling (test_s2_kl_evaluation.ClusterTests.test_unequal_clusters_preserve_state_micro_weights_and_paired_board_resampling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 141, in test_unequal_clusters_preserve_state_micro_weights_and_paired_board_resampling
+    compare = function(self, 'cluster_comparison')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: cluster_comparison
+
+======================================================================
+FAIL: test_baseline_raw_rows_match_independent_forward_and_cached_summary (test_s2_kl_evaluation.DiagnosticsTests.test_baseline_raw_rows_match_independent_forward_and_cached_summary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 93, in test_baseline_raw_rows_match_independent_forward_and_cached_summary
+    diagnose = function(self, 'diagnose_model'); load = function(self, 'load_samples')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: diagnose_model
+
+======================================================================
+FAIL: test_exact_thresholds_pass_but_one_ulp_outside_each_threshold_fails (test_s2_kl_evaluation.GateTests.test_exact_thresholds_pass_but_one_ulp_outside_each_threshold_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 187, in test_exact_thresholds_pass_but_one_ulp_outside_each_threshold_fails
+    self.assertEqual(self.gate()['status'],'RETENTION_PILOT_PASS')
+                     ^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 184, in gate
+    return function(self, 'decide_gate')(*(values or gate_fixture()), complete=kwargs.pop('complete',True), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: decide_gate
+
+======================================================================
+FAIL: test_smoke_is_never_scientific_pass_and_nonfinite_inputs_are_invalid (test_s2_kl_evaluation.GateTests.test_smoke_is_never_scientific_pass_and_nonfinite_inputs_are_invalid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 228, in test_smoke_is_never_scientific_pass_and_nonfinite_inputs_are_invalid
+    self.assertEqual(self.gate(smoke=True)['status'],'SMOKE_ONLY')
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 184, in gate
+    return function(self, 'decide_gate')(*(values or gate_fixture()), complete=kwargs.pop('complete',True), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: decide_gate
+
+======================================================================
+FAIL: test_status_priority_and_all_six_conditions_are_always_emitted (test_s2_kl_evaluation.GateTests.test_status_priority_and_all_six_conditions_are_always_emitted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 216, in test_status_priority_and_all_six_conditions_are_always_emitted
+    result=self.gate(values,complete=complete)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 184, in gate
+    return function(self, 'decide_gate')(*(values or gate_fixture()), complete=kwargs.pop('complete',True), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: decide_gate
+
+======================================================================
+FAIL: test_full_report_uses_only_500_even_when_intermediate_is_perfect_and_refuses_incomplete_raw (test_s2_kl_evaluation.ReportTests.test_full_report_uses_only_500_even_when_intermediate_is_perfect_and_refuses_incomplete_raw)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 236, in test_full_report_uses_only_500_even_when_intermediate_is_perfect_and_refuses_incomplete_raw
+    build_report=function(self,'build_report');load=function(self,'load_samples')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: build_report
+
+======================================================================
+FAIL: test_validation_tasks_are_fixed_endpoint_inventory_and_paired_rb_boards (test_s2_kl_evaluation.ReportTests.test_validation_tasks_are_fixed_endpoint_inventory_and_paired_rb_boards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 298, in test_validation_tasks_are_fixed_endpoint_inventory_and_paired_rb_boards
+    tasks_for = function(self, 'validation_tasks')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: validation_tasks
+
+======================================================================
+FAIL: test_changed_shard_bad_shape_count_row_or_heldout_cannot_trigger_resampling (test_s2_kl_evaluation.SamplingTests.test_changed_shard_bad_shape_count_row_or_heldout_cannot_trigger_resampling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 69, in test_changed_shard_bad_shape_count_row_or_heldout_cannot_trigger_resampling
+    load = function(self, 'load_samples')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: load_samples
+
+======================================================================
+FAIL: test_real_manifest_loads_exact_locked_rows_and_excludes_original_heldout (test_s2_kl_evaluation.SamplingTests.test_real_manifest_loads_exact_locked_rows_and_excludes_original_heldout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 43, in test_real_manifest_loads_exact_locked_rows_and_excludes_original_heldout
+    load = function(self, 'load_samples')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: load_samples
+
+======================================================================
+FAIL: test_targets_accept_all_legal_finite_maxima_and_reject_noninformative_ties (test_s2_kl_evaluation.SamplingTests.test_targets_accept_all_legal_finite_maxima_and_reject_noninformative_ties)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 27, in test_targets_accept_all_legal_finite_maxima_and_reject_noninformative_ties
+    target = function(self, 'decision_targets')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: decision_targets
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.005s
+
+FAILED (failures=12)

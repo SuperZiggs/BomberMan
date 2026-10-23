@@ -1,0 +1,23 @@
+{
+  "phase": "C",
+  "episodes": 6,
+  "board_size": 9,
+  "num_agents": 2,
+  "max_steps": 8,
+  "lr": 0.0001,
+  "gamma": 0.99,
+  "value_coef": 0.5,
+  "entropy_coef": 0.015,
+  "wall_destroy_bonus": 0.15,
+  "seed": 2026101303,
+  "resume_from": "E:\\Bomberman\\runs\\pressure-C-next\\final_phaseC.pt",
+  "checkpoint_dir": "E:\\Bomberman\\runs\\t3-curriculum-unit-bfbcfa051ae949a9afe21696b78495f3",
+  "device": "cpu",
+  "attack_teacher": "local",
+  "run_report": false,
+  "log_every": 2,
+  "validation_every": 2,
+  "validation_episodes": 2,
+  "validation_seed": 21000,
+  "snapshot_every": 200
+}

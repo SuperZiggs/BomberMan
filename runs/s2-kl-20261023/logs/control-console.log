@@ -1,0 +1,12 @@
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep    50 | WR:  86.0% | active WR:  70.0% | kills: 0.70 | reward: +10.960 | bombs: 25.6 | walls: 9.5 | combat bombs: 722/4691 | loss: 38.1037 | lr: 2.4e-05 | pool: 0
+[D] ep   100 | WR:  82.0% | active WR:  66.0% | kills: 0.66 | reward: +10.272 | bombs: 25.2 | walls: 8.4 | combat bombs: 727/5201 | loss: 6.8724 | lr: 2.3e-05 | pool: 0
+[D] ep   150 | WR:  94.0% | active WR:  82.0% | kills: 0.82 | reward: +12.639 | bombs: 21.3 | walls: 9.0 | combat bombs: 499/4465 | loss: 6.4170 | lr: 2.0e-05 | pool: 0
+[D] ep   200 | WR:  86.0% | active WR:  64.0% | kills: 0.64 | reward: +10.045 | bombs: 23.8 | walls: 9.0 | combat bombs: 642/4495 | loss: 9.2975 | lr: 1.7e-05 | pool: 0
+[D] ep   250 | WR:  84.0% | active WR:  72.0% | kills: 0.72 | reward: +11.174 | bombs: 23.1 | walls: 8.7 | combat bombs: 611/4531 | loss: 23.0896 | lr: 1.3e-05 | pool: 0
+[D] ep   300 | WR:  90.0% | active WR:  76.0% | kills: 0.76 | reward: +11.719 | bombs: 26.7 | walls: 8.5 | combat bombs: 786/5690 | loss: 17.7635 | lr: 9.5e-06 | pool: 0
+[D] ep   350 | WR:  90.0% | active WR:  80.0% | kills: 0.80 | reward: +12.211 | bombs: 19.4 | walls: 7.9 | combat bombs: 490/4712 | loss: 13.5125 | lr: 6.1e-06 | pool: 0
+[D] ep   400 | WR:  88.0% | active WR:  80.0% | kills: 0.80 | reward: +12.288 | bombs: 20.8 | walls: 8.4 | combat bombs: 557/4745 | loss: 16.2216 | lr: 3.5e-06 | pool: 0
+[D] ep   450 | WR:  92.0% | active WR:  68.0% | kills: 0.68 | reward: +10.628 | bombs: 20.7 | walls: 8.6 | combat bombs: 575/4308 | loss: 6.8676 | lr: 1.8e-06 | pool: 0
+[D] ep   500 | WR:  86.0% | active WR:  70.0% | kills: 0.70 | reward: +10.832 | bombs: 21.6 | walls: 8.3 | combat bombs: 591/4435 | loss: 6.3958 | lr: 1.3e-06 | pool: 0
+{"stage": "train", "output": "E:\\Bomberman\\runs\\s2-kl-20261023", "status": "OK", "elapsed_seconds": 525.0472401000006, "peak_rss_bytes": 1805291520, "pid": 25120}

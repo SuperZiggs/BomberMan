@@ -1,0 +1,517 @@
+{
+  "status": "RB_RETENTION_FAIL",
+  "complete": true,
+  "games": 1400,
+  "conditions": {
+    "DRIFT_REPRODUCED": true,
+    "DECISION_RETAINED": false,
+    "PROBABILITY_RETAINED": false,
+    "ANCHOR_BENEFIT": false,
+    "RB_ACTIVE_RETAINED": false,
+    "RB_SUICIDE_RETAINED": true
+  },
+  "endpoints": {
+    "S2": {
+      "model": {
+        "id": "S2",
+        "arm": null,
+        "episode": 0,
+        "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+        "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+      },
+      "offline": {
+        "R": 97.36328125,
+        "Q": 91.82517425397236,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0,
+          "bomb_probability_pct": 33.703166891268665,
+          "value_mean": 1.5927276665752288,
+          "changed_argmax_pct": 0.0,
+          "soft_target_ce": 0.23267114958140667
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0,
+          "bomb_probability_pct": 9.282331921713194,
+          "value_mean": 1.698145822942024,
+          "changed_argmax_pct": 0.0
+        }
+      },
+      "RB": {
+        "games": 200,
+        "win_rate": 93.0,
+        "active_win_rate": 84.0,
+        "draw_rate": 4.5,
+        "passive_win_rate": 7.000000000000001,
+        "sudden_death_win_rate": 2.0,
+        "suicide_rate": 0.5,
+        "sudden_death_death_rate": 1.5,
+        "elapsed_seconds": 129.5896751999644,
+        "by_corner": {
+          "0": {
+            "games": 100,
+            "win_rate": 94.0,
+            "active_win_rate": 88.0,
+            "draw_rate": 4.0,
+            "passive_win_rate": 5.0,
+            "sudden_death_win_rate": 1.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 1.0
+          },
+          "1": {
+            "games": 100,
+            "win_rate": 92.0,
+            "active_win_rate": 80.0,
+            "draw_rate": 5.0,
+            "passive_win_rate": 9.0,
+            "sudden_death_win_rate": 3.0,
+            "suicide_rate": 1.0,
+            "sudden_death_death_rate": 2.0
+          }
+        },
+        "avg_kills": 0.84,
+        "avg_bombs": 19.93,
+        "avg_steps": 204.21
+      }
+    },
+    "control-500": {
+      "model": {
+        "id": "control-500",
+        "arm": "control",
+        "episode": 500,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\control\\checkpoints\\500.pt",
+        "sha256": "dea8cd01bb223fb2edd4595e0ff38588c4a141ff9ded211e47cd3c8b15903cf9"
+      },
+      "offline": {
+        "R": 75.0,
+        "Q": 69.99934204159406,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 1.4437368189914288,
+          "bomb_probability_pct": 33.22569275828755,
+          "value_mean": 6.378577030496672,
+          "changed_argmax_pct": 29.98046875,
+          "soft_target_ce": 1.7883989508823257
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.12343846351165766,
+          "bomb_probability_pct": 8.653418443645933,
+          "value_mean": 6.00458804005757,
+          "changed_argmax_pct": 8.69140625
+        }
+      },
+      "RB": {
+        "games": 200,
+        "win_rate": 88.0,
+        "active_win_rate": 76.0,
+        "draw_rate": 8.0,
+        "passive_win_rate": 7.5,
+        "sudden_death_win_rate": 4.5,
+        "suicide_rate": 1.0,
+        "sudden_death_death_rate": 2.5,
+        "elapsed_seconds": 147.99089909999748,
+        "by_corner": {
+          "0": {
+            "games": 100,
+            "win_rate": 88.0,
+            "active_win_rate": 74.0,
+            "draw_rate": 6.0,
+            "passive_win_rate": 9.0,
+            "sudden_death_win_rate": 5.0,
+            "suicide_rate": 2.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 100,
+            "win_rate": 88.0,
+            "active_win_rate": 78.0,
+            "draw_rate": 10.0,
+            "passive_win_rate": 6.0,
+            "sudden_death_win_rate": 4.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 5.0
+          }
+        },
+        "avg_kills": 0.76,
+        "avg_bombs": 23.175,
+        "avg_steps": 241.11
+      }
+    },
+    "anchor-500": {
+      "model": {
+        "id": "anchor-500",
+        "arm": "anchor",
+        "episode": 500,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\anchor\\checkpoints\\500.pt",
+        "sha256": "99898c6fd7f8ef8a75547df8fa096470706066f61e0f372b62d5efc68df6bd9a"
+      },
+      "offline": {
+        "R": 77.5390625,
+        "Q": 73.21682699011079,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.907485446907593,
+          "bomb_probability_pct": 35.029118938018655,
+          "value_mean": 5.8160538205411285,
+          "changed_argmax_pct": 27.24609375,
+          "soft_target_ce": 1.2293992965935772
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.08974687236166012,
+          "bomb_probability_pct": 9.48627365523862,
+          "value_mean": 5.497964794747531,
+          "changed_argmax_pct": 7.91015625
+        }
+      },
+      "RB": {
+        "games": 200,
+        "win_rate": 82.5,
+        "active_win_rate": 68.0,
+        "draw_rate": 10.5,
+        "passive_win_rate": 6.5,
+        "sudden_death_win_rate": 8.0,
+        "suicide_rate": 0.5,
+        "sudden_death_death_rate": 4.0,
+        "elapsed_seconds": 177.37089940000078,
+        "by_corner": {
+          "0": {
+            "games": 100,
+            "win_rate": 81.0,
+            "active_win_rate": 68.0,
+            "draw_rate": 12.0,
+            "passive_win_rate": 6.0,
+            "sudden_death_win_rate": 7.000000000000001,
+            "suicide_rate": 1.0,
+            "sudden_death_death_rate": 2.0
+          },
+          "1": {
+            "games": 100,
+            "win_rate": 84.0,
+            "active_win_rate": 68.0,
+            "draw_rate": 9.0,
+            "passive_win_rate": 7.000000000000001,
+            "sudden_death_win_rate": 9.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 6.0
+          }
+        },
+        "avg_kills": 0.68,
+        "avg_bombs": 26.865,
+        "avg_steps": 269.86
+      }
+    }
+  },
+  "comparisons": {
+    "control_minus_baseline": {
+      "R": {
+        "difference_pp": -22.36328125,
+        "ci95_pp": [
+          -25.168772363499222,
+          -19.62261332030369
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "Q": {
+        "difference_pp": -21.82583221237831,
+        "ci95_pp": [
+          -24.229330100382796,
+          -19.470897070445535
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_win": {
+        "difference_pp": -5.0,
+        "ci95_pp": [
+          -11.0,
+          1.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_active_win": {
+        "difference_pp": -8.0,
+        "ci95_pp": [
+          -16.0,
+          -0.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_draw": {
+        "difference_pp": 3.5,
+        "ci95_pp": [
+          -2.0,
+          8.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_passive_win": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -4.5,
+          5.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_win": {
+        "difference_pp": 2.5,
+        "ci95_pp": [
+          -1.0,
+          6.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_suicide": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -1.0,
+          2.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_death": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          -1.5,
+          4.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      }
+    },
+    "anchor_minus_baseline": {
+      "R": {
+        "difference_pp": -19.82421875,
+        "ci95_pp": [
+          -22.4390243902439,
+          -17.237918511644942
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "Q": {
+        "difference_pp": -18.608347263861564,
+        "ci95_pp": [
+          -20.76043685609427,
+          -16.519048459590966
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_win": {
+        "difference_pp": -10.5,
+        "ci95_pp": [
+          -17.0,
+          -4.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_active_win": {
+        "difference_pp": -16.0,
+        "ci95_pp": [
+          -24.0,
+          -8.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_draw": {
+        "difference_pp": 6.0,
+        "ci95_pp": [
+          1.0,
+          11.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_passive_win": {
+        "difference_pp": -0.5,
+        "ci95_pp": [
+          -5.0,
+          4.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_win": {
+        "difference_pp": 6.0,
+        "ci95_pp": [
+          2.0,
+          10.012499999999818
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -1.5,
+          1.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_death": {
+        "difference_pp": 2.5,
+        "ci95_pp": [
+          -0.5,
+          6.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      }
+    },
+    "anchor_minus_control": {
+      "R": {
+        "difference_pp": 2.5390625,
+        "ci95_pp": [
+          1.3448284445231127,
+          3.865786061301309
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "Q": {
+        "difference_pp": 3.217484948516748,
+        "ci95_pp": [
+          2.6674202544920873,
+          3.8065400287351574
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_win": {
+        "difference_pp": -5.5,
+        "ci95_pp": [
+          -11.5,
+          0.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_active_win": {
+        "difference_pp": -8.0,
+        "ci95_pp": [
+          -16.0,
+          0.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_draw": {
+        "difference_pp": 2.5,
+        "ci95_pp": [
+          -3.0,
+          8.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_passive_win": {
+        "difference_pp": -1.0,
+        "ci95_pp": [
+          -5.5,
+          3.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_win": {
+        "difference_pp": 3.5,
+        "ci95_pp": [
+          -1.0,
+          8.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_suicide": {
+        "difference_pp": -0.5,
+        "ci95_pp": [
+          -1.5,
+          0.0
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_death": {
+        "difference_pp": 1.5,
+        "ci95_pp": [
+          -2.0,
+          5.5
+        ],
+        "board_clusters": 100,
+        "samples": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      }
+    }
+  },
+  "decision": "KEEP_ORIGINAL_S2",
+  "held_out_opened": false,
+  "analysis_path": "E:\\Bomberman\\runs\\s2-kl-20261023-analysis-20261023\\analysis_vi.md",
+  "automation_id": "ki-m-tra-s2-kl-sau-1-gi",
+  "automation_deleted": true
+}

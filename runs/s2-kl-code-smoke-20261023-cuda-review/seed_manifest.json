@@ -1,0 +1,14 @@
+{
+  "mode": "smoke",
+  "ranges": {
+    "train": {
+      "start": 790000,
+      "end_inclusive": 790001
+    },
+    "validation": {
+      "start": 790002,
+      "end_inclusive": 790003
+    }
+  },
+  "inventory_digest": "bf56df74676ea6c4ccecc42451852a487d505369018e3896de2a4e166cd11e46"
+}

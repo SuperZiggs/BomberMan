@@ -1,0 +1,17 @@
+{
+  "hashes": {
+    "test_s2_kl_protocol.py": "6e829dbb0c7d2c4af4bbc64c440e7a9b6ac65a3e099e7739d975e4a968aa9abd",
+    "test_s2_kl_training.py": "32289cb78534ad911476b44a818e109f156c611f2637f550570d4c69eda15395",
+    "test_s2_kl_evaluation.py": "9ea2d6b396ac7293c4ff50e279e83a27c634baa131d647f362e54e814b9171f3",
+    "test_run_s2_kl_probe.py": "1b994ea4ab4bdb3a212603c1e42daa7f66ccdca54ec5d16fd19b59ae1f5ae190",
+    "test_s2_kl_support.py": "aa196acdcf29c5c4e01af6b2817a51c78d1243b55e3a4d29cd061170cfa53a61",
+    "docs/superpowers/requirements/2026-10-23-s2-kl-retention.md": "4f984cde4152626bb2be3cd427fd8d0a65fc1134f31dcdf2a5d17c63a98791b2"
+  },
+  "changes": {
+    "test_s2_kl_protocol.py": {
+      "old": "4b82443a8b2d25d7c63d306d09b33b35b977395ed955042fc714c0922a50ca16",
+      "new": "6e829dbb0c7d2c4af4bbc64c440e7a9b6ac65a3e099e7739d975e4a968aa9abd"
+    }
+  },
+  "reason": "Independent author corrected technically invalid JSONL fixture; original preserved at58e5321"
+}

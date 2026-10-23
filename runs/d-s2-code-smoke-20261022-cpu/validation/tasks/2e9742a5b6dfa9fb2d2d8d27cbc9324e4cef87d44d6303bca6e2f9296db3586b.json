@@ -1,0 +1,52 @@
+{
+  "format": "d-s2-board-result-v1",
+  "id": "2e9742a5b6dfa9fb2d2d8d27cbc9324e4cef87d44d6303bca6e2f9296db3586b",
+  "registration_digest": "84442ebfb7d83ff6edb096c94bfd3d1c9fab76fb60c08db24cc3dd708b8d9c02",
+  "selection_digest": null,
+  "records": [
+    {
+      "learner_sha256": "77fff42bacf8106ba5b94aaf12e46904571a30b2c7acfa4cb48660a1df0f3308",
+      "opponent_id": "G",
+      "opponent_sha256": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+      "board": 690002,
+      "corner": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "passive_win": 0,
+      "sudden_death_win": 0,
+      "suicide": 0.0,
+      "sudden_death_death": 0.0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "steps": 20.0,
+      "opponent_outcome": "draw",
+      "elapsed_seconds": 0.1824369999958435
+    },
+    {
+      "learner_sha256": "77fff42bacf8106ba5b94aaf12e46904571a30b2c7acfa4cb48660a1df0f3308",
+      "opponent_id": "G",
+      "opponent_sha256": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+      "board": 690002,
+      "corner": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "passive_win": 0,
+      "sudden_death_win": 0,
+      "suicide": 0.0,
+      "sudden_death_death": 0.0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "steps": 20.0,
+      "opponent_outcome": "draw",
+      "elapsed_seconds": 0.16564769999240525
+    }
+  ],
+  "worker_runtime": {
+    "device": "cpu",
+    "threads": 1,
+    "deterministic": true,
+    "source_root": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cpu\\sources"
+  }
+}

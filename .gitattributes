@@ -2,3 +2,133 @@
 # Preserve the bytes covered by registered experiment and report hashes.
 runs/phaseD-s2-20261022/** -text
 runs/phaseD-s2-validation-full-20261023/** -text
+
+# Preserve registered source and historical-index bytes across Git checkouts.
+/S2_KL_GUIDE.md text eol=crlf
+/bomberman_env.py text eol=crlf
+/combat_move_teacher.py text eol=crlf
+/docs/superpowers/specs/2026-10-23-s2-kl-retention-design.md text eol=lf
+/evaluate.py text eol=crlf
+/group_rl.py text eol=crlf
+/kill_search.py text eol=crlf
+/phase_d_s2_evaluation.py text eol=lf
+/phase_d_s2_ledger.py text eol=crlf
+/phase_d_s2_protocol.py text eol=lf
+/progress.py text eol=crlf
+/rule_based_bot.py text eol=crlf
+/run_s2_kl_probe.py text eol=lf
+/runs/sd6-diagnostics-6600/override_probe.py text eol=crlf
+/runs/sd6-diagnostics-6600/overrides.json text eol=lf
+/runs/t2-full-20261014-060320/replay_cases.json text eol=crlf
+/runs/t2-smoke-20261014-060320/replay_cases.json text eol=crlf
+/s2_kl_evaluation.py text eol=lf
+/s2_kl_history.py text eol=lf
+/s2_kl_ledger.py text eol=lf
+/s2_kl_protocol.py text eol=lf
+/s2_kl_training.py text eol=lf
+/tactical_teacher.py text eol=crlf
+/test_run_s2_kl_probe.py text eol=lf
+/test_s2_kl_evaluation.py text eol=lf
+/test_s2_kl_history.py text eol=lf
+/test_s2_kl_protocol.py text eol=lf
+/test_s2_kl_review.py text eol=lf
+/test_s2_kl_support.py text eol=lf
+/test_s2_kl_training.py text eol=lf
+/train_actor_critic.py text eol=crlf
+/training_state.py text eol=crlf
+
+# Preserve exact raw bytes in newly published experiment artifacts.
+/runs/d-s2-code-profile-20261022-cpu-run.lock -text
+/runs/d-s2-code-profile-20261022-cpu/** -text
+/runs/d-s2-code-profile-20261022-cuda-run.lock -text
+/runs/d-s2-code-profile-20261022-cuda/** -text
+/runs/d-s2-code-smoke-20261022-cpu-final-run.lock -text
+/runs/d-s2-code-smoke-20261022-cpu-final-send.zip -text
+/runs/d-s2-code-smoke-20261022-cpu-final/** -text
+/runs/d-s2-code-smoke-20261022-cpu-run.lock -text
+/runs/d-s2-code-smoke-20261022-cpu-send.zip -text
+/runs/d-s2-code-smoke-20261022-cpu/** -text
+/runs/d-s2-code-smoke-20261022-cuda-final-run.lock -text
+/runs/d-s2-code-smoke-20261022-cuda-final-send.zip -text
+/runs/d-s2-code-smoke-20261022-cuda-final/** -text
+/runs/d-s2-code-smoke-20261022-cuda-run.lock -text
+/runs/d-s2-code-smoke-20261022-cuda-send.zip -text
+/runs/d-s2-code-smoke-20261022-cuda/** -text
+/runs/d-s2-code-verification-20261022-6496628.zip -text
+/runs/pde-50000-console.log -text
+/runs/pde-50000-resumable-console.log -text
+/runs/pde-50000-resumable-resume-2-console.log -text
+/runs/pde-50000-resumable-resume-console.log -text
+/runs/pde-50000-resumable-send.zip -text
+/runs/pde-50000-resumable/** -text
+/runs/pde-workers5-probe-console.log -text
+/runs/pde-workers5-probe/** -text
+/runs/pde2-51000-console.log -text
+/runs/pde2-51000-send.zip -text
+/runs/pde2-51000/** -text
+/runs/pde_seed_registry.json -text
+/runs/phaseD-s2-20261022-analysis-20261023/** -text
+/runs/phaseD-s2-20261022-run.lock -text
+/runs/phaseD-s2-20261022-send.zip -text
+/runs/phaseD-s2-20261022-train.cmd -text
+/runs/phaseD-s2-register.log -text
+/runs/phase_d_s2_seed_registry.json -text
+/runs/phase_d_s2_seed_registry.json-run.lock -text
+/runs/resume-budget-test-3tn_jfmc-run.lock -text
+/runs/resume-budget-test-41d7c024-run.lock -text
+/runs/resume-budget-test-eidaobd_-run.lock -text
+/runs/resume-budget-test-g4__cm_g-run.lock -text
+/runs/resume-budget-test-ks0eu2kj-run.lock -text
+/runs/resume-budget-test-r1aixxmq-run.lock -text
+/runs/resume-budget-test-r_e7xuw4-run.lock -text
+/runs/s2-kl-20261023-analysis-20261023/** -text
+/runs/s2-kl-20261023-evaluate.cmd -text
+/runs/s2-kl-20261023-register.log -text
+/runs/s2-kl-20261023-run.lock -text
+/runs/s2-kl-20261023-send.zip -text
+/runs/s2-kl-20261023-train.cmd -text
+/runs/s2-kl-20261023/** -text
+/runs/s2-kl-code-smoke-20261023-cpu-final-run.lock -text
+/runs/s2-kl-code-smoke-20261023-cpu-final-send.zip -text
+/runs/s2-kl-code-smoke-20261023-cpu-final/** -text
+/runs/s2-kl-code-smoke-20261023-cpu-review-run.lock -text
+/runs/s2-kl-code-smoke-20261023-cpu-review-send.zip -text
+/runs/s2-kl-code-smoke-20261023-cpu-review/** -text
+/runs/s2-kl-code-smoke-20261023-cpu-run.lock -text
+/runs/s2-kl-code-smoke-20261023-cpu-send.zip -text
+/runs/s2-kl-code-smoke-20261023-cpu/** -text
+/runs/s2-kl-code-smoke-20261023-cuda-final-run.lock -text
+/runs/s2-kl-code-smoke-20261023-cuda-final-send.zip -text
+/runs/s2-kl-code-smoke-20261023-cuda-final/** -text
+/runs/s2-kl-code-smoke-20261023-cuda-review-run.lock -text
+/runs/s2-kl-code-smoke-20261023-cuda-review-send.zip -text
+/runs/s2-kl-code-smoke-20261023-cuda-review/** -text
+/runs/s2-kl-code-smoke-20261023-cuda-run.lock -text
+/runs/s2-kl-code-smoke-20261023-cuda-send.zip -text
+/runs/s2-kl-code-smoke-20261023-cuda/** -text
+/runs/s2-kl-code-verification-20261023/** -text
+/runs/s2-kl-launch-preflight-20261023/** -text
+/runs/s2-kl-publish-20261023/** -text
+/runs/t3-curriculum-unit-326382828d624c3683fb4719167fb549/** -text
+/runs/t3-curriculum-unit-50e74deecc4a457185c9d2a89b1a207a/** -text
+/runs/t3-curriculum-unit-70dd1358010f4128977d65d3fdecfa38/** -text
+/runs/t3-curriculum-unit-89b6be21d7a448458cdf89b72faa3a6d/** -text
+/runs/t3-curriculum-unit-8a0c0d0f2a7544c5a5b3de8f50e9c623/** -text
+/runs/t3-curriculum-unit-bfbcfa051ae949a9afe21696b78495f3/** -text
+
+# New ZIP archives use LFS, including the archive above GitHub blob limits.
+/runs/d-s2-code-smoke-20261022-cpu-final-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/d-s2-code-smoke-20261022-cpu-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/d-s2-code-smoke-20261022-cuda-final-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/d-s2-code-smoke-20261022-cuda-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/d-s2-code-verification-20261022-6496628.zip filter=lfs diff=lfs merge=lfs -text
+/runs/pde-50000-resumable-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/pde2-51000-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/phaseD-s2-20261022-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/s2-kl-20261023-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/s2-kl-code-smoke-20261023-cpu-final-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/s2-kl-code-smoke-20261023-cpu-review-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/s2-kl-code-smoke-20261023-cpu-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/s2-kl-code-smoke-20261023-cuda-final-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/s2-kl-code-smoke-20261023-cuda-review-send.zip filter=lfs diff=lfs merge=lfs -text
+/runs/s2-kl-code-smoke-20261023-cuda-send.zip filter=lfs diff=lfs merge=lfs -text

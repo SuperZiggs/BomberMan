@@ -1,0 +1,15 @@
+{
+  "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+  "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc",
+  "phase_d_s2_protocol.py": "53109dff9f198db56ec88faaf8c8841b170d4afd874904ed93f96817f0dfc953",
+  "phase_d_s2_training.py": "1b4a8a6138f5cc04033d12fb98be2208c18b6bd5d9d5ba0246febd41aab3b4b2",
+  "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+  "phase_d_s2_ledger.py": "bca39ff1e636c5595a07dd5aa9c800260f1eb3a82a2b3fdf2131078521aa3353",
+  "run_phase_d_s2.py": "7d9bc3d5651b04a9c69e6a77368705aaac2829916b761f1a10017cfd082c41b7",
+  "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+  "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+  "runs/phase_d_s2_seed_registry.json": "f8bb73605fb7bb071f12d887be90e449d27875ef186a3988564d4997eefbe916",
+  "runs/phaseD-s2-20261022/registration.json": "262d8bdb792474e6d2deb0d099ded610de03c6e62f7a1b7921752fa80181b61e",
+  "runs/phaseD-s2-20261022/report.json": "a0cfcf2cc60c375c3a8c63f6e843439017f3f95a932ef789e768e2be218a5d32",
+  "runs/sd8a-20261020/train/epoch_16.pt": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+}

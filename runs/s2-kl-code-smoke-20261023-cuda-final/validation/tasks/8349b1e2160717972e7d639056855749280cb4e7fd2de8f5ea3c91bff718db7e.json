@@ -1,0 +1,54 @@
+{
+  "format": "d-s2-board-result-v1",
+  "id": "8349b1e2160717972e7d639056855749280cb4e7fd2de8f5ea3c91bff718db7e",
+  "registration_digest": "42dc15d1bc657c39451f0f0a3799797f55e7baef8eb845d1a7774ca6e2ff63b3",
+  "selection_digest": null,
+  "records": [
+    {
+      "learner_sha256": "650679394753bc91de2924de89683f33f38bf7c07103125dd9869e1ed83e5497",
+      "opponent_id": "RB",
+      "opponent_sha256": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+      "board": 790003,
+      "corner": 0,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "passive_win": 0,
+      "sudden_death_win": 0,
+      "suicide": 0.0,
+      "sudden_death_death": 0.0,
+      "kills": 0.0,
+      "bombs": 2.0,
+      "steps": 20.0,
+      "opponent_outcome": "draw",
+      "elapsed_seconds": 0.06540449999738485
+    },
+    {
+      "learner_sha256": "650679394753bc91de2924de89683f33f38bf7c07103125dd9869e1ed83e5497",
+      "opponent_id": "RB",
+      "opponent_sha256": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+      "board": 790003,
+      "corner": 1,
+      "win": 0,
+      "active_win": 0,
+      "draw": 1,
+      "passive_win": 0,
+      "sudden_death_win": 0,
+      "suicide": 0.0,
+      "sudden_death_death": 0.0,
+      "kills": 0.0,
+      "bombs": 3.0,
+      "steps": 20.0,
+      "opponent_outcome": "draw",
+      "elapsed_seconds": 0.052941500001907116
+    }
+  ],
+  "worker_runtime": {
+    "device": "cpu",
+    "threads": 1,
+    "deterministic": true,
+    "source_root": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-final\\sources",
+    "pid": 14884,
+    "peak_rss_bytes": 632619008
+  }
+}

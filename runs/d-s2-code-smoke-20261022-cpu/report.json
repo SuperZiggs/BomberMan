@@ -1,0 +1,91 @@
+{
+  "stage": "validation",
+  "status": "VALIDATION_STOP",
+  "complete": true,
+  "actual_games": 40,
+  "expected_games": 40,
+  "summary": {
+    "control": [
+      {
+        "id": "control-0",
+        "guard": true,
+        "score": [
+          0.0,
+          -100.0,
+          0.0,
+          -0.0,
+          0
+        ]
+      },
+      {
+        "id": "control-2",
+        "guard": true,
+        "score": [
+          0.0,
+          -100.0,
+          0.0,
+          -0.0,
+          -2
+        ]
+      },
+      {
+        "id": "control-4",
+        "guard": true,
+        "score": [
+          0.0,
+          -100.0,
+          0.0,
+          -0.0,
+          -4
+        ]
+      }
+    ],
+    "pool": [
+      {
+        "id": "pool-0",
+        "guard": true,
+        "score": [
+          0.0,
+          -100.0,
+          0.0,
+          -0.0,
+          0
+        ]
+      },
+      {
+        "id": "pool-2",
+        "guard": true,
+        "score": [
+          0.0,
+          -100.0,
+          0.0,
+          -0.0,
+          -2
+        ]
+      },
+      {
+        "id": "pool-4",
+        "guard": true,
+        "score": [
+          0.0,
+          -100.0,
+          0.0,
+          -0.0,
+          -4
+        ]
+      }
+    ]
+  },
+  "comparisons": {},
+  "pilot_gate": {
+    "pass": false,
+    "status": "NOT_EVALUATED"
+  },
+  "phase_d_gate": {
+    "pass": false,
+    "status": "NOT_EVALUATED"
+  },
+  "limitations": [
+    "Validation only; held-out test has not run."
+  ]
+}

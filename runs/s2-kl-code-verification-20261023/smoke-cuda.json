@@ -1,0 +1,94 @@
+{
+  "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda",
+  "device": "cuda:0",
+  "status": "SMOKE_ONLY",
+  "counts": {
+    "models": 5,
+    "diagnostics": 5,
+    "expected_diagnostics": 5,
+    "games": 20,
+    "expected_games": 20,
+    "decision_states": 5120,
+    "anchor_states": 5120
+  },
+  "measurements": [
+    {
+      "stage": "register",
+      "cli_wall_seconds": 2.985161299999163,
+      "process": {
+        "stage": "register",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda",
+        "status": "OK",
+        "elapsed_seconds": 1.2812730999976338,
+        "peak_rss_bytes": 622247936,
+        "pid": 10820
+      }
+    },
+    {
+      "stage": "train-control",
+      "cli_wall_seconds": 7.756043299999874,
+      "process": {
+        "stage": "train",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda",
+        "status": "OK",
+        "elapsed_seconds": 2.5785089999990305,
+        "peak_rss_bytes": 1732399104,
+        "pid": 23812
+      }
+    },
+    {
+      "stage": "train-anchor",
+      "cli_wall_seconds": 7.560694599997078,
+      "process": {
+        "stage": "train",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda",
+        "status": "OK",
+        "elapsed_seconds": 2.500351300001057,
+        "peak_rss_bytes": 1735008256,
+        "pid": 32672
+      }
+    },
+    {
+      "stage": "diagnose",
+      "cli_wall_seconds": 21.76487669999915,
+      "process": {
+        "stage": "diagnose",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda",
+        "status": "DIAGNOSTICS_COMPLETE",
+        "elapsed_seconds": 15.927304100001493,
+        "peak_rss_bytes": 667807744,
+        "pid": 2992
+      }
+    },
+    {
+      "stage": "validate",
+      "cli_wall_seconds": 14.311656000001676,
+      "process": {
+        "stage": "validate",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda",
+        "status": "SMOKE_ONLY",
+        "elapsed_seconds": 8.417767800001457,
+        "peak_rss_bytes": 660488192,
+        "pid": 19748
+      }
+    },
+    {
+      "stage": "package",
+      "cli_wall_seconds": 14.313674299999548,
+      "process": {
+        "stage": "package",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda",
+        "status": "SMOKE_ONLY",
+        "elapsed_seconds": 7.850940399999672,
+        "peak_rss_bytes": 659427328,
+        "pid": 15064
+      }
+    }
+  ],
+  "worker_peak_rss_bytes": {
+    "29052": 644780032,
+    "30628": 644780032
+  },
+  "protected_unchanged": true,
+  "full_run_started": false
+}

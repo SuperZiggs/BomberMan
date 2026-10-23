@@ -1,0 +1,53 @@
+{
+  "base_commit": "c381063e01bb7561c90e2d838ae9ebe3f486262a",
+  "original_branch": "Loc/phaseD-S2",
+  "target_branch": "Loc/s2-kl",
+  "outside_scope_sha256": {
+    "IMPROVEMENTS.md": "76be77e1a18ae83cb110f405e2324f28fff14ec4a03c4f3d492958b19b9a90c6",
+    "PLAN_BOMBERMAN.md": "f5095a07f4cc0a943ec9973fa63e75bbc86ca47e81d18ff324167cbc18009035",
+    "PLAN_SUDDEN_DEATH.md": "c04bea67a19e5397cdff7cd09fb18ee5324606bfad328346dfbc3800694f1847",
+    "README.md": "51834ef7cc7e6b24e16d9fdedc1042e87a3984349a89bd7bb2236f0ebc894878",
+    "RESULTS.md": "1a283f8e30f2e3fb3f8ae84e960336dd7131a0b16872e3b61effd42301f3d5c3"
+  },
+  "scope": "S2-KL code, tests, documentation, and all new non-ignored files in runs as explicitly requested",
+  "byte_preservation_pins": [
+    "S2_KL_GUIDE.md",
+    "bomberman_env.py",
+    "combat_move_teacher.py",
+    "docs/superpowers/specs/2026-10-23-s2-kl-retention-design.md",
+    "evaluate.py",
+    "group_rl.py",
+    "kill_search.py",
+    "phase_d_s2_evaluation.py",
+    "phase_d_s2_ledger.py",
+    "phase_d_s2_protocol.py",
+    "progress.py",
+    "rule_based_bot.py",
+    "run_s2_kl_probe.py",
+    "runs/sd6-diagnostics-6600/override_probe.py",
+    "runs/sd6-diagnostics-6600/overrides.json",
+    "runs/t2-full-20261014-060320/replay_cases.json",
+    "runs/t2-smoke-20261014-060320/replay_cases.json",
+    "s2_kl_evaluation.py",
+    "s2_kl_history.py",
+    "s2_kl_ledger.py",
+    "s2_kl_protocol.py",
+    "s2_kl_training.py",
+    "tactical_teacher.py",
+    "test_run_s2_kl_probe.py",
+    "test_s2_kl_evaluation.py",
+    "test_s2_kl_history.py",
+    "test_s2_kl_protocol.py",
+    "test_s2_kl_review.py",
+    "test_s2_kl_support.py",
+    "test_s2_kl_training.py",
+    "train_actor_critic.py",
+    "training_state.py"
+  ],
+  "new_run_paths_at_inventory": 2999,
+  "targeted_regressions": {
+    "tests": 4,
+    "passed": 4,
+    "seconds": 0.745
+  }
+}

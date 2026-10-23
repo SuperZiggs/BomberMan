@@ -1,0 +1,6 @@
+{
+  "format": "d-s2-arm-initialization-v1",
+  "arm": "control",
+  "registration_digest": "eb2384fa740ee71dc35314aeb33e98655ff61b7668fb746e8486b6cfa283e623",
+  "initial_sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+}

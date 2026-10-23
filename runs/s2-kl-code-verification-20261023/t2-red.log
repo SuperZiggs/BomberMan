@@ -1,0 +1,108 @@
+E:\Bomberman\train_actor_critic.py:1551: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  **({"anchor_kl": float(anchor_kl)} if anchor_buf else {}),
+======================================================================
+FAIL: test_candidate_inventory_waits_for_both_arms_and_rejects_checkpoint_or_completion_drift (test_s2_kl_training.ExactResumeTests.test_candidate_inventory_waits_for_both_arms_and_rejects_checkpoint_or_completion_drift)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 189, in test_candidate_inventory_waits_for_both_arms_and_rejects_checkpoint_or_completion_drift
+    train = function(self, 'train_arm'); candidates = function(self, 'candidates_for_run')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: train_arm
+
+======================================================================
+FAIL: test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer) (arm='control')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 165, in test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer
+    with self.subTest(arm=arm): self.continuation(arm, 'after_state_commit', observe=True)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 117, in continuation
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: train_arm
+
+======================================================================
+FAIL: test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer) (arm='anchor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 165, in test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer
+    with self.subTest(arm=arm): self.continuation(arm, 'after_state_commit', observe=True)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 117, in continuation
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: train_arm
+
+======================================================================
+FAIL: test_cpu_both_arms_replay_uncommitted_episode_exactly (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_replay_uncommitted_episode_exactly) (arm='control')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 161, in test_cpu_both_arms_replay_uncommitted_episode_exactly
+    with self.subTest(arm=arm): self.continuation(arm, 'before_state_commit')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 117, in continuation
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: train_arm
+
+======================================================================
+FAIL: test_cpu_both_arms_replay_uncommitted_episode_exactly (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_replay_uncommitted_episode_exactly) (arm='anchor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 161, in test_cpu_both_arms_replay_uncommitted_episode_exactly
+    with self.subTest(arm=arm): self.continuation(arm, 'before_state_commit')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 117, in continuation
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: train_arm
+
+======================================================================
+FAIL: test_state_zero_identity_is_saved_before_updates_and_lost_committed_state_is_not_reset (test_s2_kl_training.ExactResumeTests.test_state_zero_identity_is_saved_before_updates_and_lost_committed_state_is_not_reset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 168, in test_state_zero_identity_is_saved_before_updates_and_lost_committed_state_is_not_reset
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: train_arm
+
+======================================================================
+FAIL: test_two_arms_share_every_paired_board_corner_and_only_rulebot (test_s2_kl_training.ScheduleTests.test_two_arms_share_every_paired_board_corner_and_only_rulebot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 20, in test_two_arms_share_every_paired_board_corner_and_only_rulebot
+    schedule = function(self, 'build_train_schedule')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: build_train_schedule
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.009s
+
+FAILED (failures=7, skipped=1)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-math-kxc5tf2p\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-math-kxc5tf2p\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-_nsemzmw\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-_nsemzmw\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-1_41w407\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-1_41w407\best_phaseC.pt (best episode: 0)

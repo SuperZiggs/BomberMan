@@ -1,0 +1,3 @@
+{"episode": 2, "stage_age": 2, "stage": "C1_static", "complete": true, "passed": true, "smoke_forced_transition": true, "guard_suicide_percent": 0, "result": {"games": 64, "owned_kill_success": {"percent": 60}, "suicide": {"percent": 0}}}
+{"episode": 4, "stage_age": 2, "stage": "C2_evader", "complete": true, "passed": true, "smoke_forced_transition": true, "guard_suicide_percent": 0, "result": {"games": 128, "owned_kill_success": {"percent": 60}, "suicide": {"percent": 0}}}
+{"episode": 6, "stage_age": 2, "stage": "C3_rule_mix", "complete": true, "passed": true, "smoke_forced_transition": true, "guard_suicide_percent": 0, "result": {"games": 128, "owned_kill_success": {"percent": 60}, "suicide": {"percent": 0}}}

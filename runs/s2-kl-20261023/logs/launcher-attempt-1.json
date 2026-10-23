@@ -1,0 +1,12 @@
+{
+  "cmd_pid": 8716,
+  "started_utc": "2026-10-23T10:45:36.2782766Z",
+  "output": "E:\\Bomberman\\runs\\s2-kl-20261023",
+  "launcher": "E:\\Bomberman\\runs\\s2-kl-20261023-train.cmd",
+  "sequence": [
+    "control",
+    "anchor"
+  ],
+  "device": "cuda:0",
+  "episodes_per_arm": 500
+}

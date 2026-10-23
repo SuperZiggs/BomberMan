@@ -10,6 +10,7 @@ import subprocess
 
 from phase_d_s2_protocol import (atomic_json, canonical_digest, configure_runtime,
     inventory_seeds, read_json, runtime, sha)
+from s2_kl_history import verified_history
 
 ROOT = Path(__file__).resolve().parent
 SPEC = 'docs/superpowers/specs/2026-10-23-s2-kl-retention-design.md'
@@ -182,6 +183,11 @@ def _inventory(input_root, exclude):
                 continue
             source = str(path)
             try:
+                indexed = verified_history(path, root)
+                if indexed is not None:
+                    result['ranges'].extend(indexed['ranges'])
+                    result['sources'].update(indexed['sources'])
+                    continue
                 if path.stat().st_size > 32 * 1024 * 1024:
                     raise ValueError('metadata requires verified seed index')
                 if path.suffix == '.jsonl':

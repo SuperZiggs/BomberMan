@@ -1,0 +1,336 @@
+{
+  "registration_digest": "907a30bd9ffd1e9c409761aa222cd9772c924be2002e752c5db41270bfff3dca",
+  "model_manifest_digest": "aa9da0cfe6724c0670f6175b0628ba77de5690881df5bbfe22f981f4f4b88090",
+  "counts": {
+    "models": 5,
+    "diagnostics": 5,
+    "expected_diagnostics": 5,
+    "games": 20,
+    "expected_games": 20,
+    "decision_states": 5120,
+    "anchor_states": 5120
+  },
+  "summary": {
+    "S2": {
+      "model": {
+        "id": "S2",
+        "arm": null,
+        "episode": 0,
+        "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+        "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+      },
+      "offline": {
+        "R": 97.36328125,
+        "Q": 91.82517425397236,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0,
+          "bomb_probability_pct": 33.703166891268665,
+          "value_mean": 1.5927276665752288,
+          "changed_argmax_pct": 0.0,
+          "soft_target_ce": 0.23267114958140667
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0,
+          "bomb_probability_pct": 9.282331921713194,
+          "value_mean": 1.698145822942024,
+          "changed_argmax_pct": 0.0
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.12918619999618386,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.25,
+        "avg_steps": 20.0
+      }
+    },
+    "control-2": {
+      "model": {
+        "id": "control-2",
+        "arm": "control",
+        "episode": 2,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final\\arms\\control\\checkpoints\\2.pt",
+        "sha256": "56a74390967abfe6342a5ce48ccfd982ae5639898656acf8ee538b4f02ac0785"
+      },
+      "offline": {
+        "R": 97.36328125,
+        "Q": 91.78780713318702,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0003542387488106591,
+          "bomb_probability_pct": 33.6480280342812,
+          "value_mean": 1.4909781790338457,
+          "changed_argmax_pct": 0.5859375,
+          "soft_target_ce": 0.23268550211793126
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.00034792288993634735,
+          "bomb_probability_pct": 9.267782226379495,
+          "value_mean": 1.59626891597145,
+          "changed_argmax_pct": 0.68359375
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.25105109999276465,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.25,
+        "avg_steps": 20.0
+      }
+    },
+    "control-4": {
+      "model": {
+        "id": "control-4",
+        "arm": "control",
+        "episode": 4,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final\\arms\\control\\checkpoints\\4.pt",
+        "sha256": "f421695cb0fdaffd88ebe0af007fd6b4f09cd26954a74979561ef724fed04fbb"
+      },
+      "offline": {
+        "R": 97.36328125,
+        "Q": 91.75827096005378,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.000781955462954731,
+          "bomb_probability_pct": 33.56237034813603,
+          "value_mean": 1.4523130328743719,
+          "changed_argmax_pct": 0.68359375,
+          "soft_target_ce": 0.232851384872248
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0007227836403904675,
+          "bomb_probability_pct": 9.217181134226848,
+          "value_mean": 1.5577188469433167,
+          "changed_argmax_pct": 0.9765625
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.23240339999756543,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.5,
+        "avg_steps": 20.0
+      }
+    },
+    "anchor-2": {
+      "model": {
+        "id": "anchor-2",
+        "arm": "anchor",
+        "episode": 2,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final\\arms\\anchor\\checkpoints\\2.pt",
+        "sha256": "6915a47df68d74c26140e88bae9456d7a7932bca8a179bd30f81b2aafaf3cea4"
+      },
+      "offline": {
+        "R": 97.36328125,
+        "Q": 91.78780552392709,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0003540541977820333,
+          "bomb_probability_pct": 33.64804424079466,
+          "value_mean": 1.4909799900779035,
+          "changed_argmax_pct": 0.5859375,
+          "soft_target_ce": 0.2326853810723719
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0003477735233397561,
+          "bomb_probability_pct": 9.26776743363007,
+          "value_mean": 1.5962704538469552,
+          "changed_argmax_pct": 0.68359375
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.23816700000679702,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.25,
+        "avg_steps": 20.0
+      }
+    },
+    "anchor-4": {
+      "model": {
+        "id": "anchor-4",
+        "arm": "anchor",
+        "episode": 4,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-final\\arms\\anchor\\checkpoints\\4.pt",
+        "sha256": "bbd8b3cf208ecc74c6681ab8bc30d7f23bf63aafdd8e6b02db2f4ab12b14789b"
+      },
+      "offline": {
+        "R": 97.36328125,
+        "Q": 91.75803076468583,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0007771043162377173,
+          "bomb_probability_pct": 33.56347882404407,
+          "value_mean": 1.4523139417578932,
+          "changed_argmax_pct": 0.68359375,
+          "soft_target_ce": 0.23285369015401614
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0007199407171745165,
+          "bomb_probability_pct": 9.21758259210037,
+          "value_mean": 1.5577169740099635,
+          "changed_argmax_pct": 0.9765625
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.23988679999820306,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.5,
+        "avg_steps": 20.0
+      }
+    }
+  },
+  "ledger_digest": "bd8665517c9eacbd53da346aa2790741438fd3519b35b7e7f66134e5992587bf"
+}

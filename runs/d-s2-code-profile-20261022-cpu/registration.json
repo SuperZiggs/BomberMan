@@ -1,0 +1,411 @@
+{
+  "format": "d-s2-registration-v1",
+  "experiment_id": "D-S2:E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cpu",
+  "mode": "smoke",
+  "input_root": "E:\\Bomberman",
+  "source_root": "E:\\Bomberman",
+  "device": "cpu",
+  "config": {
+    "train": {
+      "phase": "D",
+      "episodes": 4,
+      "board_size": 9,
+      "num_agents": 2,
+      "max_steps": 20,
+      "gamma": 0.99,
+      "lr": 2.5e-05,
+      "value_coef": 0.5,
+      "entropy_coef": 0.0075,
+      "wall_destroy_bonus": 0.15,
+      "snapshot_every": 2,
+      "seed": 2026102201,
+      "validation_every": 0,
+      "validation_episodes": 2,
+      "attack_teacher": "local",
+      "teacher_version": "v2",
+      "normalize_advantage": false,
+      "advantage_estimator": "mc",
+      "policy_objective": "ac",
+      "sudden_death_probability": 1.0,
+      "sudden_death_start": 475,
+      "sudden_death_interval": 25,
+      "sudden_death_warning_steps": 40,
+      "attack_lookahead": 2,
+      "min_pressure_gain": 0.15,
+      "trap_sequence_depth": 2,
+      "sequence_pressure_gain": 0.35,
+      "escape_loss_coef": 0.5,
+      "combat_loss_coef": 0.9,
+      "navigation_loss_coef": 0.4,
+      "ring_safety_coef": 0.6,
+      "late_game_start": 350,
+      "late_game_attack_multiplier": 1.75,
+      "search_teacher": false,
+      "group_rl": false,
+      "anchor_coef": 0.0,
+      "run_report": false,
+      "log_every": 4
+    },
+    "pool_slots": [
+      "RB",
+      "G",
+      "F",
+      "S",
+      "S2",
+      "RB",
+      "recent",
+      "recent",
+      "recent",
+      "recent"
+    ],
+    "candidate_episodes": [
+      0,
+      2,
+      4
+    ],
+    "validation_games": 2,
+    "test_games": 2,
+    "workers": 2
+  },
+  "checkpoints": {
+    "S2": {
+      "id": "S2",
+      "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "episode": null,
+      "role": "reference"
+    },
+    "G": {
+      "id": "G",
+      "checkpoint": "E:\\Bomberman\\runs\\sd75-20261018\\full\\best_phaseC.pt",
+      "sha256": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+      "episode": null,
+      "role": "reference"
+    },
+    "F": {
+      "id": "F",
+      "checkpoint": "E:\\Bomberman\\runs\\phaseC-sd-best-fallback\\best_phaseC.pt",
+      "sha256": "0315a56f09079333d936db5f55587093f1b6415ed6355d2ef6ae2ab63f8b1483",
+      "episode": null,
+      "role": "reference"
+    },
+    "S": {
+      "id": "S",
+      "checkpoint": "E:\\Bomberman\\runs\\sd53-20261018\\train\\epoch_8.pt",
+      "sha256": "8f7116d290593fa10de1753c4f0f96366e220a193e9860123ed72e0db46bfd4a",
+      "episode": null,
+      "role": "reference"
+    },
+    "B": {
+      "id": "B",
+      "checkpoint": "E:\\Bomberman\\runs\\pressure-C-next\\final_phaseC.pt",
+      "sha256": "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",
+      "episode": null,
+      "role": "reference"
+    },
+    "RB": {
+      "id": "RB",
+      "checkpoint": null,
+      "sha256": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+      "episode": null,
+      "role": "anchor"
+    }
+  },
+  "sources": {
+    "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+    "combat_move_teacher.py": "a30a2f2b8450c3e13734f5d7f525e275ee0655f77fe0b7bfddc37cbba3959616",
+    "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+    "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+    "kill_search.py": "033deceeeb1f9e60d7ff970e8880dbc438f15260f3297c69e496f874cc4ad12d",
+    "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+    "phase_d_s2_ledger.py": "07506fcf296383bcc741008fad471b658eb019ff9f1a2bd0a996ae409d4f50f4",
+    "phase_d_s2_protocol.py": "e932b99768626fd23afa0afbeeeba460173c2ade1ba0da8fded068ccb368c7e2",
+    "phase_d_s2_training.py": "076c8a0a9a5b9efd9b9577a6903445128f34c992d45124daa7332af9a1952b39",
+    "progress.py": "b63c84e729c8fd214bcf0f457d20abb1d4cbba28b5c7d514aa3e6c29ec162eb4",
+    "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+    "run_phase_d_s2.py": "7d9bc3d5651b04a9c69e6a77368705aaac2829916b761f1a10017cfd082c41b7",
+    "tactical_teacher.py": "b1166e4eb347d538d59c1ecf1d854bba403177d72467bd61f2055f828c04dd77",
+    "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+    "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc"
+  },
+  "spec_sha256": "0cce36b25e77d9e0dec933b2f95db6be7367f056c002844aa4e25f3d0d7b2ba1",
+  "runtime": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "device": "cpu",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.4.6",
+    "threads": 1,
+    "cuda": "12.8",
+    "cudnn": 91900,
+    "deterministic": true,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "cudnn_tf32": false,
+    "matmul_tf32": false,
+    "cublas_workspace": ":4096:8",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "seed_manifest": {
+    "mode": "smoke",
+    "ranges": {
+      "train": {
+        "start": 690000,
+        "end_inclusive": 690001
+      },
+      "validation": {
+        "start": 690002,
+        "end_inclusive": 690002
+      },
+      "test_reference": {
+        "start": 690003,
+        "end_inclusive": 690003
+      },
+      "test_snapshots": {
+        "start": 690003,
+        "end_inclusive": 690003
+      }
+    },
+    "inventory_digest": "c174f80c3a109da4a013709dbd252ac08f665b971f3bad39b5d960b3ced8779e"
+  },
+  "git": {
+    "head": "992164ac8524362ee5b0132a04472d082f391f5d",
+    "status": [
+      " M IMPROVEMENTS.md",
+      " M RESULTS.md",
+      " M docs/superpowers/test-matrices/2026-10-22-phase-d-s2-verification.md",
+      " M runs/ppo-smoke-last-path.txt",
+      " M test_phase_d_s2_recovery.py",
+      "?? 2026-10-20-pde-check-design.md",
+      "?? 2026-10-20-pde2-ffa-mix-design.md",
+      "?? docs/superpowers/plans/2026-10-20-pde-evaluators.md",
+      "?? docs/superpowers/test-matrices/2026-10-20-pde-evaluators.md",
+      "?? docs/superpowers/test-matrices/2026-10-22-phase-d-s2-verification.json",
+      "?? pde_eval.py",
+      "?? run_pde2_ffa_mix.py",
+      "?? run_pde_check.py",
+      "?? runs/d-s2-code-profile-20261022-cpu-run.lock",
+      "?? runs/d-s2-code-smoke-20261022-cpu-run.lock",
+      "?? runs/d-s2-code-smoke-20261022-cpu-send.zip",
+      "?? runs/d-s2-code-smoke-20261022-cpu/",
+      "?? runs/d-s2-code-smoke-20261022-cuda-run.lock",
+      "?? runs/d-s2-code-smoke-20261022-cuda-send.zip",
+      "?? runs/d-s2-code-smoke-20261022-cuda/",
+      "?? runs/pde-50000-console.log",
+      "?? runs/pde-50000-resumable-console.log",
+      "?? runs/pde-50000-resumable-resume-2-console.log",
+      "?? runs/pde-50000-resumable-resume-console.log",
+      "?? runs/pde-50000-resumable-send.zip",
+      "?? runs/pde-50000-resumable/",
+      "?? runs/pde-workers5-probe-console.log",
+      "?? runs/pde-workers5-probe/",
+      "?? runs/pde2-51000-console.log",
+      "?? runs/pde2-51000-send.zip",
+      "?? runs/pde2-51000/",
+      "?? runs/pde_seed_registry.json",
+      "?? runs/resume-budget-test-9w7fjt1g-run.lock",
+      "?? runs/resume-budget-test-cpjk9xnw-run.lock",
+      "?? runs/resume-budget-test-gsig2v9f-run.lock",
+      "?? runs/resume-budget-test-hwe0t4wm-run.lock",
+      "?? runs/resume-budget-test-yy3mj13n-run.lock",
+      "?? runs/t3-curriculum-unit-75ce5cb342f84eaab6ad0175b3bc8e3c/",
+      "?? runs/t3-curriculum-unit-bf212c0f1896450289e025e15fd419f0/",
+      "?? test_pde_eval.py",
+      "?? test_pde_evaluator_contracts.py"
+    ]
+  },
+  "preflight": {
+    "evidence": "E:\\Bomberman\\docs\\superpowers\\test-matrices\\2026-10-22-phase-d-s2-verification.json",
+    "sha256": "585d59889b1e195dba31831863d97a2976095c36ccc71f481e98e404081e0b70",
+    "measurements": {
+      "format": "d-s2-preflight-v1",
+      "date": "2026-10-22",
+      "smokes": [
+        {
+          "output": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cpu",
+          "device": "cpu",
+          "workers": 2,
+          "measurements": [
+            {
+              "stage": "register",
+              "seconds": 3.2713558000104968,
+              "peak_tree_rss_mib": 577.43359375,
+              "observed_processes": 2,
+              "samples": 13,
+              "exit_code": 0
+            },
+            {
+              "stage": "train-control",
+              "seconds": 7.299283100001048,
+              "peak_tree_rss_mib": 1198.85546875,
+              "observed_processes": 4,
+              "samples": 29,
+              "exit_code": 0
+            },
+            {
+              "stage": "train-pool",
+              "seconds": 7.567098400002578,
+              "peak_tree_rss_mib": 1194.78125,
+              "observed_processes": 4,
+              "samples": 30,
+              "exit_code": 0
+            },
+            {
+              "stage": "validation",
+              "seconds": 12.118392200005474,
+              "peak_tree_rss_mib": 2378.609375,
+              "observed_processes": 6,
+              "samples": 48,
+              "exit_code": 0
+            },
+            {
+              "stage": "package",
+              "seconds": 11.614661200001137,
+              "peak_tree_rss_mib": 1165.25390625,
+              "observed_processes": 4,
+              "samples": 46,
+              "exit_code": 0
+            }
+          ],
+          "note": "Peak RSS sampled over the CLI process tree, 250ms; excludes unrelated processes. Smoke max20 steps.",
+          "status": "VALIDATION_STOP",
+          "validation_games": 40,
+          "training_episodes": 8,
+          "train_steps": 160,
+          "source_hashes": {
+            "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+            "combat_move_teacher.py": "a30a2f2b8450c3e13734f5d7f525e275ee0655f77fe0b7bfddc37cbba3959616",
+            "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+            "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+            "kill_search.py": "033deceeeb1f9e60d7ff970e8880dbc438f15260f3297c69e496f874cc4ad12d",
+            "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+            "phase_d_s2_ledger.py": "07506fcf296383bcc741008fad471b658eb019ff9f1a2bd0a996ae409d4f50f4",
+            "phase_d_s2_protocol.py": "e932b99768626fd23afa0afbeeeba460173c2ade1ba0da8fded068ccb368c7e2",
+            "phase_d_s2_training.py": "076c8a0a9a5b9efd9b9577a6903445128f34c992d45124daa7332af9a1952b39",
+            "progress.py": "b63c84e729c8fd214bcf0f457d20abb1d4cbba28b5c7d514aa3e6c29ec162eb4",
+            "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+            "run_phase_d_s2.py": "7d9bc3d5651b04a9c69e6a77368705aaac2829916b761f1a10017cfd082c41b7",
+            "tactical_teacher.py": "b1166e4eb347d538d59c1ecf1d854bba403177d72467bd61f2055f828c04dd77",
+            "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+            "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc"
+          },
+          "runtime": {
+            "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+            "platform": "Windows-10-10.0.26200-SP0",
+            "device": "cpu",
+            "torch": "2.11.0+cu128",
+            "numpy": "2.4.6",
+            "threads": 1,
+            "cuda": "12.8",
+            "cudnn": 91900,
+            "deterministic": true,
+            "cudnn_deterministic": true,
+            "cudnn_benchmark": false,
+            "cudnn_tf32": false,
+            "matmul_tf32": false,
+            "cublas_workspace": ":4096:8",
+            "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+          },
+          "full_linear_upper_proxy_hours": {
+            "train_4000_episodes": 51.61938020834592,
+            "validation_max3600": 7.573995125003421,
+            "test_max5400": 11.360992687505133
+          }
+        },
+        {
+          "output": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cuda",
+          "device": "cuda:0",
+          "workers": 2,
+          "measurements": [
+            {
+              "stage": "register",
+              "seconds": 4.276184999995166,
+              "peak_tree_rss_mib": 589.41015625,
+              "observed_processes": 3,
+              "samples": 17,
+              "exit_code": 0
+            },
+            {
+              "stage": "train-control",
+              "seconds": 9.840475500008324,
+              "peak_tree_rss_mib": 2199.02734375,
+              "observed_processes": 4,
+              "samples": 39,
+              "exit_code": 0
+            },
+            {
+              "stage": "train-pool",
+              "seconds": 9.84153960000549,
+              "peak_tree_rss_mib": 2201.09375,
+              "observed_processes": 5,
+              "samples": 39,
+              "exit_code": 0
+            },
+            {
+              "stage": "validation",
+              "seconds": 13.836514499998884,
+              "peak_tree_rss_mib": 2373.8203125,
+              "observed_processes": 6,
+              "samples": 55,
+              "exit_code": 0
+            },
+            {
+              "stage": "package",
+              "seconds": 12.33090520001133,
+              "peak_tree_rss_mib": 1163.55859375,
+              "observed_processes": 4,
+              "samples": 49,
+              "exit_code": 0
+            }
+          ],
+          "note": "Peak RSS sampled over the CLI process tree, 250ms; excludes unrelated processes. Smoke max20 steps.",
+          "status": "VALIDATION_STOP",
+          "validation_games": 40,
+          "training_episodes": 8,
+          "train_steps": 160,
+          "source_hashes": {
+            "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+            "combat_move_teacher.py": "a30a2f2b8450c3e13734f5d7f525e275ee0655f77fe0b7bfddc37cbba3959616",
+            "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+            "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+            "kill_search.py": "033deceeeb1f9e60d7ff970e8880dbc438f15260f3297c69e496f874cc4ad12d",
+            "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+            "phase_d_s2_ledger.py": "07506fcf296383bcc741008fad471b658eb019ff9f1a2bd0a996ae409d4f50f4",
+            "phase_d_s2_protocol.py": "e932b99768626fd23afa0afbeeeba460173c2ade1ba0da8fded068ccb368c7e2",
+            "phase_d_s2_training.py": "076c8a0a9a5b9efd9b9577a6903445128f34c992d45124daa7332af9a1952b39",
+            "progress.py": "b63c84e729c8fd214bcf0f457d20abb1d4cbba28b5c7d514aa3e6c29ec162eb4",
+            "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+            "run_phase_d_s2.py": "7d9bc3d5651b04a9c69e6a77368705aaac2829916b761f1a10017cfd082c41b7",
+            "tactical_teacher.py": "b1166e4eb347d538d59c1ecf1d854bba403177d72467bd61f2055f828c04dd77",
+            "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+            "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc"
+          },
+          "runtime": {
+            "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+            "platform": "Windows-10-10.0.26200-SP0",
+            "device": "cuda:0",
+            "torch": "2.11.0+cu128",
+            "numpy": "2.4.6",
+            "threads": 1,
+            "cuda": "12.8",
+            "cudnn": 91900,
+            "deterministic": true,
+            "cudnn_deterministic": true,
+            "cudnn_benchmark": false,
+            "cudnn_tf32": false,
+            "matmul_tf32": false,
+            "cublas_workspace": ":4096:8",
+            "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+          },
+          "full_linear_upper_proxy_hours": {
+            "train_4000_episodes": 68.3403302083813,
+            "validation_max3600": 8.647821562499303,
+            "test_max5400": 12.971732343748954
+          }
+        }
+      ],
+      "caveat": "Only 20 steps per game and 4 episodes per arm; interpreter startup included. Full estimates scale all timings by 500/20 and are conservative linear proxies, not measured full-run ETAs. CPU teacher/env limit GPU speed. RSS sampling every250ms, process-tree RSS includes shared pages."
+    }
+  },
+  "registration_digest": "e0175e236f6a518865f840fa55c81fe58c28efa7a87a3899e890aa373ba8d010"
+}

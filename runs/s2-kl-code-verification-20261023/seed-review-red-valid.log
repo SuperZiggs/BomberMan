@@ -1,0 +1,32 @@
+======================================================================
+FAIL: test_disjoint_single_board_is_not_expanded_by_its_numeric_seed (test_s2_kl_review.HistoricalSeedTests.test_disjoint_single_board_is_not_expanded_by_its_numeric_seed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 16, in test_disjoint_single_board_is_not_expanded_by_its_numeric_seed
+    reg = register(Path(temporary) / 'output', inputs, device='cpu', smoke=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\s2_kl_protocol.py", line 205, in register
+    _check_history(manifest, inventory, book, experiment_id)
+  File "E:\Bomberman\s2_kl_protocol.py", line 166, in _check_history
+    raise ValueError('Seed overlap with historical boards')
+ValueError: Seed overlap with historical boards
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 18, in test_disjoint_single_board_is_not_expanded_by_its_numeric_seed
+    self.fail('Historical board620000 is disjoint from710000/720000; registration must succeed: ' + str(error))
+AssertionError: Historical board620000 is disjoint from710000/720000; registration must succeed: Seed overlap with historical boards
+
+======================================================================
+FAIL: test_unknown_nested_seed_range_is_rejected_before_registration (test_s2_kl_review.HistoricalSeedTests.test_unknown_nested_seed_range_is_rejected_before_registration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 28, in test_unknown_nested_seed_range_is_rejected_before_registration
+    with self.assertRaisesRegex(ValueError, '(?i)(unresolved|seed|mapping)'):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.563s
+
+FAILED (failures=2)

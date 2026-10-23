@@ -1,0 +1,12 @@
+======================================================================
+FAIL: test_malformed_known_seed_span_is_rejected_instead_of_assumed_one_board (test_s2_kl_review.HistoricalSeedTests.test_malformed_known_seed_span_is_rejected_instead_of_assumed_one_board)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 71, in test_malformed_known_seed_span_is_rejected_instead_of_assumed_one_board
+    with self.assertRaisesRegex(ValueError, '(?i)(unresolved|seed|count)'):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 1.513s
+
+FAILED (failures=1)

@@ -1,0 +1,44 @@
+======================================================================
+FAIL: test_prior_inventory_rng_records_do_not_poison_later_registration (test_s2_kl_review.HistoricalSeedTests.test_prior_inventory_rng_records_do_not_poison_later_registration) (records=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 82, in test_prior_inventory_rng_records_do_not_poison_later_registration
+    reg = register(Path(temporary) / 'output', inputs, device='cpu', smoke=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\s2_kl_protocol.py", line 237, in register
+    _check_history(manifest, inventory, book, experiment_id)
+  File "E:\Bomberman\s2_kl_protocol.py", line 195, in _check_history
+    raise ValueError('Unresolved seed history: ' + str(inventory['unresolved'][:8]))
+ValueError: Unresolved seed history: ['E:\\Bomberman\\s2-kl-inventory-history-jdqg5u0e\\inputs\\runs\\old\\seed_inventory.json: unknown seed mapping rng_seeds']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 84, in test_prior_inventory_rng_records_do_not_poison_later_registration
+    self.fail('Known RNG inventory metadata must not block a disjoint board reservation: ' + str(error))
+AssertionError: Known RNG inventory metadata must not block a disjoint board reservation: Unresolved seed history: ['E:\\Bomberman\\s2-kl-inventory-history-jdqg5u0e\\inputs\\runs\\old\\seed_inventory.json: unknown seed mapping rng_seeds']
+
+======================================================================
+FAIL: test_prior_inventory_rng_records_do_not_poison_later_registration (test_s2_kl_review.HistoricalSeedTests.test_prior_inventory_rng_records_do_not_poison_later_registration) (records=[{'source': 'old/config.json', 'seed': 710003, 'kind': 'training_rng'}])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 82, in test_prior_inventory_rng_records_do_not_poison_later_registration
+    reg = register(Path(temporary) / 'output', inputs, device='cpu', smoke=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\s2_kl_protocol.py", line 237, in register
+    _check_history(manifest, inventory, book, experiment_id)
+  File "E:\Bomberman\s2_kl_protocol.py", line 195, in _check_history
+    raise ValueError('Unresolved seed history: ' + str(inventory['unresolved'][:8]))
+ValueError: Unresolved seed history: ['E:\\Bomberman\\s2-kl-inventory-history-6mzdkrzv\\inputs\\runs\\old\\seed_inventory.json: unknown seed mapping rng_seeds']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 84, in test_prior_inventory_rng_records_do_not_poison_later_registration
+    self.fail('Known RNG inventory metadata must not block a disjoint board reservation: ' + str(error))
+AssertionError: Known RNG inventory metadata must not block a disjoint board reservation: Unresolved seed history: ['E:\\Bomberman\\s2-kl-inventory-history-6mzdkrzv\\inputs\\runs\\old\\seed_inventory.json: unknown seed mapping rng_seeds']
+
+----------------------------------------------------------------------
+Ran 1 test in 2.023s
+
+FAILED (failures=2)

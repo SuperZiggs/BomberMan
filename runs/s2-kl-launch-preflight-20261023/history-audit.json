@@ -1,0 +1,101 @@
+{
+  "purpose": "Read-only historical seed resolution before full S2-KL registration",
+  "artifacts": [
+    {
+      "path": "runs/sd6-diagnostics-6600/overrides.json",
+      "sha256": "09f2b9a62205a22aebc880bd523529d1abe2489a642556bf1a2bba94767af4be",
+      "bytes": 10737,
+      "records": 70,
+      "seed_fields": [
+        {
+          "field": "seed",
+          "value": null,
+          "count": 70
+        }
+      ]
+    },
+    {
+      "path": "runs/t2-full-20261014-060320/replay_cases.json",
+      "sha256": "c0be883584d68b5351fa1885f8ce98b998352345fdf2f1d092ea3eb0e4d05e78",
+      "bytes": 66727980,
+      "records": 10,
+      "seed_fields": [
+        {
+          "field": "seed",
+          "value": 28000,
+          "count": 2829
+        },
+        {
+          "field": "seed",
+          "value": 28001,
+          "count": 1406
+        },
+        {
+          "field": "seed",
+          "value": 28002,
+          "count": 1666
+        },
+        {
+          "field": "seed",
+          "value": 28003,
+          "count": 1644
+        }
+      ]
+    },
+    {
+      "path": "runs/t2-smoke-20261014-060320/replay_cases.json",
+      "sha256": "cd49441f14e02c275235ab28929841ea7d6dadfd92a31dc7a17c7378366984fb",
+      "bytes": 66727683,
+      "records": 10,
+      "seed_fields": [
+        {
+          "field": "seed",
+          "value": 28000,
+          "count": 2829
+        },
+        {
+          "field": "seed",
+          "value": 28001,
+          "count": 1406
+        },
+        {
+          "field": "seed",
+          "value": 28002,
+          "count": 1666
+        },
+        {
+          "field": "seed",
+          "value": 28003,
+          "count": 1644
+        }
+      ]
+    }
+  ],
+  "sd6_evidence": {
+    "path": "runs/sd6-diagnostics-6600/override_probe.py",
+    "sha256": "a3c9c532faf965747a4a67d45a6c4f5b22b9bfa2b7db38fa3bcc4039f6c70d17",
+    "explicit_start_values": [
+      6600,
+      6610,
+      6620,
+      6630
+    ],
+    "games_per_start": 20,
+    "conservative_board_interval": [
+      6600,
+      6649
+    ],
+    "reason": "Union conservatively covers sequential and two-corner paired numbering; individual null rows remain unassigned. Original files are preserved."
+  },
+  "replay_evidence": "All nested seed-bearing fields in both complete JSON documents were enumerated; only integer seed values28000..28003 occur.",
+  "proposed_full_intervals": [
+    [
+      710000,
+      710249
+    ],
+    [
+      720000,
+      720099
+    ]
+  ]
+}

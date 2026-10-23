@@ -1,0 +1,610 @@
+E:\Bomberman\train_actor_critic.py:1551: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  **({"anchor_kl": float(anchor_kl)} if anchor_buf else {}),
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-np1papsu\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-np1papsu\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-np1papsu\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-np1papsu\\absent\\registration.json'
+Registration digest drift
+Expanded observation channels 12 -> 13
+Expanded observation channels 8 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Warm-started from E:\Bomberman\d-s2-package-1i2vwgd8\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-package-1i2vwgd8\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-projection-3n9rcr6n\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-projection-3n9rcr6n\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-missing-state-mhiwlnzy\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-before-test-c3ehmyja\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-before-test-c3ehmyja\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-initialize-z_a1uisk\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-initialize-z_a1uisk\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-false-validation-y8mhndh4\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-false-validation-y8mhndh4\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-iqayj7pb\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-iqayj7pb\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-yilqsk_z\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-yilqsk_z\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-yilqsk_z\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-4up7yg1d\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-4up7yg1d\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-4up7yg1d\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-zgoq5bfs\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-zgoq5bfs\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-zgoq5bfs\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-qv1cacra\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-qv1cacra\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-qv1cacra\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Warm-started from E:\Bomberman\d-s2-atomic-2danazfs\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-atomic-2danazfs\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-atomic-96p0o1md\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-atomic-96p0o1md\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-corrupt-_kawur69\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-corrupt-_kawur69\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-corrupt-_5603n7d\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+======================================================================
+ERROR: test_resume_keeps_the_warm_start_as_anchor (test_group_rl.TrainerTests.test_resume_keeps_the_warm_start_as_anchor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_group_rl.py", line 194, in test_resume_keeps_the_warm_start_as_anchor
+    trainer.train(**config, checkpoint_dir=str(cut), save_training_state=True, stop_event=stop,
+  File "E:\Bomberman\train_actor_critic.py", line 1072, in train
+    save_state(0)
+  File "E:\Bomberman\train_actor_critic.py", line 1053, in save_state
+    atomic_save({'format': state_format, 'episode': episode,
+  File "E:\Bomberman\training_state.py", line 50, in atomic_save
+    os.replace(temporary, path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpv56mcfc0\\cut\\training_state.pt.tmp' -> 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpv56mcfc0\\cut\\training_state.pt'
+
+======================================================================
+ERROR: test_resume_replays_group_rollouts (test_group_rl.TrainerTests.test_resume_replays_group_rollouts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_group_rl.py", line 132, in test_resume_replays_group_rollouts
+    trainer.train(**config, checkpoint_dir=str(cut), save_training_state=True, stop_event=stop,
+  File "E:\Bomberman\train_actor_critic.py", line 1072, in train
+    save_state(0)
+  File "E:\Bomberman\train_actor_critic.py", line 1053, in save_state
+    atomic_save({'format': state_format, 'episode': episode,
+  File "E:\Bomberman\training_state.py", line 50, in atomic_save
+    os.replace(temporary, path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpuyeqnyfh\\cut\\training_state.pt.tmp' -> 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpuyeqnyfh\\cut\\training_state.pt'
+
+======================================================================
+ERROR: test_resume_restores_the_buffer (test_group_rl.TrainerTests.test_resume_restores_the_buffer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_group_rl.py", line 163, in test_resume_restores_the_buffer
+    trainer.train(**config, checkpoint_dir=str(cut), save_training_state=True, stop_event=stop,
+  File "E:\Bomberman\train_actor_critic.py", line 1072, in train
+    save_state(0)
+  File "E:\Bomberman\train_actor_critic.py", line 1053, in save_state
+    atomic_save({'format': state_format, 'episode': episode,
+  File "E:\Bomberman\training_state.py", line 50, in atomic_save
+    os.replace(temporary, path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmp8k0y9nea\\cut\\training_state.pt.tmp' -> 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmp8k0y9nea\\cut\\training_state.pt'
+
+======================================================================
+ERROR: test_phase_d_snapshot_evaluation (unittest.loader._FailedTest.test_phase_d_snapshot_evaluation)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_phase_d_snapshot_evaluation
+Traceback (most recent call last):
+  File "E:\Tools\Lib\unittest\loader.py", line 419, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\loader.py", line 362, in _get_module_from_name
+    __import__(name)
+  File "E:\Bomberman\test_phase_d_snapshot_evaluation.py", line 11, in <module>
+    import evaluate_phase_d_snapshot_pool as snapshot_pool
+  File "E:\Bomberman\evaluate_phase_d_snapshot_pool.py", line 9, in <module>
+    from evaluate import evaluate_pair_seeded, make_ac_fn
+ImportError: cannot import name 'evaluate_pair_seeded' from 'evaluate' (E:\Bomberman\evaluate.py)
+
+
+======================================================================
+ERROR: test_parallel_map_keeps_job_order_and_counts_every_tick (test_progress.ProgressTests.test_parallel_map_keeps_job_order_and_counts_every_tick)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_progress.py", line 30, in test_parallel_map_keeps_job_order_and_counts_every_tick
+    results = progress.parallel_map(ticking, [(3,), (1,), (2,)], total=6, desc='x', workers=2)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\progress.py", line 31, in parallel_map
+    ticks = manager.Queue()
+            ^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\managers.py", line 727, in temp
+    token, exp = self._create(typeid, *args, **kwds)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\managers.py", line 607, in _create
+    conn = self._Client(self._address, authkey=self._authkey)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\connection.py", line 517, in Client
+    c = PipeClient(address)
+        ^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\connection.py", line 719, in PipeClient
+    _winapi.WaitNamedPipe(address, 1000)
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+======================================================================
+ERROR: test_cancelled_runner_records_incomplete_without_optimizer_or_plots (test_reward_audit.AuditChecks.test_cancelled_runner_records_incomplete_without_optimizer_or_plots)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_reward_audit.py", line 272, in test_cancelled_runner_records_incomplete_without_optimizer_or_plots
+    result = audit.run(audit.ROOT / ('runs/uncreated-r0-' + uuid4().hex), smoke=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\audit_r0.py", line 239, in run
+    if digest(Path(record['path'])) != record['sha256']:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\audit_t2.py", line 33, in digest
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\fpt\\subject\\BomberMan\\runs\\gae-full-20261015-125942\\control\\final_phaseC.pt'
+
+======================================================================
+ERROR: test_invalid_completed_shard_is_not_resumed (test_run_sd53_pilot.PublicContracts.test_invalid_completed_shard_is_not_resumed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_sd53_pilot.py", line 113, in test_invalid_completed_shard_is_not_resumed
+    self.pilot._write_shard(path, metadata, [], [], [])
+  File "E:\Bomberman\run_sd53_pilot.py", line 320, in _write_shard
+    temporary.replace(path)
+  File "E:\Tools\Lib\pathlib.py", line 1188, in replace
+    os.replace(self, target)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpo3gly7ja\\tmptboen7aa' -> 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpo3gly7ja\\shard-200000-200003.npz'
+
+======================================================================
+ERROR: test_smoke_train_refuses_overwrite_and_resumes (test_run_sd5_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_sd5_pilot.py", line 47, in test_smoke_train_refuses_overwrite_and_resumes
+    pilot.train_arm(out, 'search', 'cpu', smoke=True)
+  File "E:\Bomberman\run_sd5_pilot.py", line 90, in train_arm
+    trainer.train(**config, on_episode=write, on_validation=validation)
+  File "E:\Bomberman\train_actor_critic.py", line 1072, in train
+    save_state(0)
+  File "E:\Bomberman\train_actor_critic.py", line 1053, in save_state
+    atomic_save({'format': state_format, 'episode': episode,
+  File "E:\Bomberman\training_state.py", line 50, in atomic_save
+    os.replace(temporary, path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmphwi0qrlo\\run\\search\\training_state.pt.tmp' -> 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmphwi0qrlo\\run\\search\\training_state.pt'
+
+======================================================================
+ERROR: test_test_stage_needs_both_models_and_opens_once (test_run_sd5_pilot.StageTests.test_test_stage_needs_both_models_and_opens_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_sd5_pilot.py", line 69, in test_test_stage_needs_both_models_and_opens_once
+    summary = pilot.test(out, smoke=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_sd5_pilot.py", line 127, in test
+    evaluated = parallel_map(evaluate_model, [(paths[n], r, seed, games, steps) for n, r in jobs],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\progress.py", line 31, in parallel_map
+    ticks = manager.Queue()
+            ^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\managers.py", line 727, in temp
+    token, exp = self._create(typeid, *args, **kwds)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\managers.py", line 607, in _create
+    conn = self._Client(self._address, authkey=self._authkey)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\connection.py", line 517, in Client
+    c = PipeClient(address)
+        ^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\connection.py", line 719, in PipeClient
+    _winapi.WaitNamedPipe(address, 1000)
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+======================================================================
+ERROR: test_smoke_train_refuses_overwrite_and_resumes (test_run_sd7_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_sd7_pilot.py", line 49, in test_smoke_train_refuses_overwrite_and_resumes
+    pilot.train_arm(out, 'cpu', smoke=True)
+  File "E:\Bomberman\run_sd7_pilot.py", line 80, in train_arm
+    trainer.train(**{k: v for k, v in config.items() if k != 'device'}, device=device,
+  File "E:\Bomberman\train_actor_critic.py", line 1072, in train
+    save_state(0)
+  File "E:\Bomberman\train_actor_critic.py", line 1053, in save_state
+    atomic_save({'format': state_format, 'episode': episode,
+  File "E:\Bomberman\training_state.py", line 50, in atomic_save
+    os.replace(temporary, path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpkzdaflon\\run\\group\\training_state.pt.tmp' -> 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpkzdaflon\\run\\group\\training_state.pt'
+
+======================================================================
+ERROR: test_test_stage_opens_once (test_run_sd7_pilot.StageTests.test_test_stage_opens_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_sd7_pilot.py", line 72, in test_test_stage_opens_once
+    summary = pilot.test(out, smoke=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_sd7_pilot.py", line 180, in test
+    evaluated = parallel_map(sd5.evaluate_model, [(paths[n], r, seed, games, steps) for n, r in jobs],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\progress.py", line 31, in parallel_map
+    ticks = manager.Queue()
+            ^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\managers.py", line 727, in temp
+    token, exp = self._create(typeid, *args, **kwds)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\managers.py", line 607, in _create
+    conn = self._Client(self._address, authkey=self._authkey)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\connection.py", line 517, in Client
+    c = PipeClient(address)
+        ^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\multiprocessing\connection.py", line 719, in PipeClient
+    _winapi.WaitNamedPipe(address, 1000)
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+======================================================================
+ERROR: test_new_recipe_settings_are_part_of_the_resume_provenance (test_search_teacher.SearchTeacherTests.test_new_recipe_settings_are_part_of_the_resume_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_search_teacher.py", line 69, in test_new_recipe_settings_are_part_of_the_resume_provenance
+    trainer.train(episodes=1, board_size=7, max_steps=1, device='cpu', run_report=False,
+  File "E:\Bomberman\train_actor_critic.py", line 1072, in train
+    save_state(0)
+  File "E:\Bomberman\train_actor_critic.py", line 1053, in save_state
+    atomic_save({'format': state_format, 'episode': episode,
+  File "E:\Bomberman\training_state.py", line 50, in atomic_save
+    os.replace(temporary, path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmp6y27fbth\\training_state.pt.tmp' -> 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmp6y27fbth\\training_state.pt'
+
+======================================================================
+ERROR: test_resume_replays_sudden_death_curriculum (test_search_teacher.SearchTeacherTests.test_resume_replays_sudden_death_curriculum)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_search_teacher.py", line 58, in test_resume_replays_sudden_death_curriculum
+    trainer.train(**config, checkpoint_dir=str(cut), save_training_state=True, stop_event=stop,
+  File "E:\Bomberman\train_actor_critic.py", line 1072, in train
+    save_state(0)
+  File "E:\Bomberman\train_actor_critic.py", line 1053, in save_state
+    atomic_save({'format': state_format, 'episode': episode,
+  File "E:\Bomberman\training_state.py", line 50, in atomic_save
+    os.replace(temporary, path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpjohmi141\\cut\\training_state.pt.tmp' -> 'C:\\Users\\DINH LOC\\AppData\\Local\\Packages\\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\\AC\\Temp\\tmpjohmi141\\cut\\training_state.pt'
+
+======================================================================
+ERROR: test_ring_schedule_matches_loc_update (test_sudden_death_experiment.SuddenDeathTests.test_ring_schedule_matches_loc_update)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_sudden_death_experiment.py", line 49, in test_ring_schedule_matches_loc_update
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1073, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1130, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\Bomberman\\_comparison\\BomberMan-Loc_update\\bomberman_env.py'
+
+======================================================================
+ERROR: test_changed_source_cannot_reuse_control (test_two_bomb_complete.CompleteRunChecks.test_changed_source_cannot_reuse_control)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_two_bomb_complete.py", line 33, in test_changed_source_cannot_reuse_control
+    runner.reference_inputs()
+  File "E:\Bomberman\run_two_bomb_complete.py", line 30, in reference_inputs
+    if digest(checkpoint) != manifest['warm_start_sha256']:
+       ^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1124, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1128, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1189, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 31, in <lambda>
+    with patch.object(runner, 'digest', side_effect=lambda p: 'changed' if p.name == 'tactical_teacher.py' else real_digest(p)):
+                                                                                                                ^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 24, in digest
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt'
+
+======================================================================
+ERROR: test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds (test_two_bomb_complete.CompleteRunChecks.test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_two_bomb_complete.py", line 65, in test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds
+    reference = self.archived_reference()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 18, in archived_reference
+    return runner.reference_inputs()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 30, in reference_inputs
+    if digest(checkpoint) != manifest['warm_start_sha256']:
+       ^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1124, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1128, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1189, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 16, in frozen_digest
+    return real_digest(path)
+           ^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 24, in digest
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt'
+
+======================================================================
+ERROR: test_current_trainer_cannot_reuse_the_old_control (test_two_bomb_complete.CompleteRunChecks.test_current_trainer_cannot_reuse_the_old_control)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_two_bomb_complete.py", line 27, in test_current_trainer_cannot_reuse_the_old_control
+    runner.reference_inputs()
+  File "E:\Bomberman\run_two_bomb_complete.py", line 30, in reference_inputs
+    if digest(checkpoint) != manifest['warm_start_sha256']:
+       ^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 24, in digest
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt'
+
+======================================================================
+ERROR: test_existing_output_is_not_overwritten_or_trained (test_two_bomb_complete.CompleteRunChecks.test_existing_output_is_not_overwritten_or_trained)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_two_bomb_complete.py", line 36, in test_existing_output_is_not_overwritten_or_trained
+    with patch.object(runner, 'reference_inputs', return_value=self.archived_reference()), \
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 18, in archived_reference
+    return runner.reference_inputs()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 30, in reference_inputs
+    if digest(checkpoint) != manifest['warm_start_sha256']:
+       ^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1124, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1128, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1189, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 16, in frozen_digest
+    return real_digest(path)
+           ^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 24, in digest
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt'
+
+======================================================================
+ERROR: test_missing_cuda_rejects_training_before_creating_output (test_two_bomb_complete.CompleteRunChecks.test_missing_cuda_rejects_training_before_creating_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_two_bomb_complete.py", line 44, in test_missing_cuda_rejects_training_before_creating_output
+    with patch.object(runner, 'reference_inputs', return_value=self.archived_reference()), \
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 18, in archived_reference
+    return runner.reference_inputs()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 30, in reference_inputs
+    if digest(checkpoint) != manifest['warm_start_sha256']:
+       ^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1124, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1128, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1189, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 16, in frozen_digest
+    return real_digest(path)
+           ^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 24, in digest
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt'
+
+======================================================================
+ERROR: test_real_reference_is_complete_and_unchanged (test_two_bomb_complete.CompleteRunChecks.test_real_reference_is_complete_and_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_two_bomb_complete.py", line 21, in test_real_reference_is_complete_and_unchanged
+    manifest, original, local = self.archived_reference()
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 18, in archived_reference
+    return runner.reference_inputs()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 30, in reference_inputs
+    if digest(checkpoint) != manifest['warm_start_sha256']:
+       ^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1124, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1128, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\unittest\mock.py", line 1189, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_two_bomb_complete.py", line 16, in frozen_digest
+    return real_digest(path)
+           ^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\run_two_bomb_complete.py", line 24, in digest
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\fpt\\subject\\BomberMan\\runs\\pressure-C-next\\final_phaseC.pt'
+
+======================================================================
+FAIL: test_frozen_normal_matrix_and_statistics_are_declared (test_pde_evaluator_contracts.PDECheckContractTests.test_frozen_normal_matrix_and_statistics_are_declared)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_pde_evaluator_contracts.py", line 155, in test_frozen_normal_matrix_and_statistics_are_declared
+    self.assertRegex(source, r"(?i)test_opened")
+AssertionError: Regex didn't match: '(?i)test_opened' not found in '"""PDE: frozen Phase D/E evaluation only; it never trains a model."""\n\nfrom future import annotations\n\nimport argparse\nfrom concurrent.futures import ProcessPoolExecutor, ascompleted\nimport hashlib\nimport json\nimport os\nimport platform\nimport shutil\nimport sys\nimport tempfile\nfrom pathlib import Path\n\nfrom evaluate import makeacfn, makerulebasedfn\nfrom killsearch import searchaction3\nfrom pdeeval import (SCHEDULEE, pairedboardbootstrap, reserveexperimentseed, runseededgame,\n                      seatassignment, sha256file, summarizerows)\nfrom trainactorcritic import getactionmask\n\n\nROOT = Path(file).resolve().parent\nNORMALSEED = 50000\nMAXSTEPS = 500\nBOOTSTRAPRESAMPLES = 10000\nBOOTSTRAPSEED = 20261014\n# Frozen Schedule E values are repeated here so each runner is self-describing.\nSCHEDULEEVALUES = (475, 25, 40)\nGPATH = ROOT / "runs/sd75-20261018/full/bestphaseC.pt"\nFPATH = ROOT / "runs/phaseC-sd-best-fallback/bestphaseC.pt"\nSPATH = ROOT / "runs/sd53-20261018/train/epoch8.pt"\nBPATH = ROOT / "runs/pressure-C-next/finalphaseC.pt"\nLEGACYDPATH = ROOT / "checkpoints/bestphaseD.pt"\nLEGACYEPATHS = {3: ROOT / "checkpoints/bestphaseE3a.pt", 4: ROOT / "checkpoints/bestphaseE4a.pt"}\nFROZENCHECKPOINTS = {\n    GPATH: "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",\n    FPATH: "0315a56f09079333d936db5f55587093f1b6415ed6355d2ef6ae2ab63f8b1483",\n    SPATH: "8f7116d290593fa10de1753c4f0f96366e220a193e9860123ed72e0db46bfd4a",\n    BPATH: "93bdf27812596f09edc0c2b40063600f2dc23a6964366d52581acd9f5c3b4f60",\n    LEGACYDPATH: "530f64f29bac538a53d1fb49a5592403fcc9116059a48b4843b1989fa55e7ae5",\n    LEGACYEPATHS[3]: "9e9f87534473389dfc7a37b872a6a2693dc9bff70dd685433917d6ae37531dce",\n    LEGACYEPATHS[4]: "b014702f958c79bb33b9a89b3eed5f9785d9d5209c5f6154fd2dd62d703fdc59",\n}\nPOLICYCACHE = {}\n\n\ndef digest(path: Path) -> str:\n    data = hashlib.sha256()\n    with path.open("rb") as handle:\n        for chunk in iter(lambda: handle.read(1024 * 1024), b""):\n            data.update(chunk)\n    return data.hexdigest()\n\n\ndef requirepaths(paths):\n    missing = [str(path) for path in paths if not path.isfile()]\n    if missing:\n        raise FileNotFoundError("Frozen PDE checkpoint missing: " + ", ".join(missing))\n    changed = [str(path) for path in paths if digest(path) != FROZENCHECKPOINTS[path]]\n    if changed:\n        raise ValueError("Frozen PDE checkpoint digest mismatch: " + ", ".join(changed))\n\n\ndef validaterecoveryresume(output: Path):\n    """Permit only the audited no-game recovery exception for an opened PDE seed."""\n    registrationpath, markerpath = output / "registration.json", output / "testopened.json"\n    if not registrationpath.isfile() or not markerpath.isfile():\n        raise ValueError("recovery requires registered seed metadata")\n    registration = json.loads(registrationpath.readtext(encoding="utf-8"))\n    marker = json.loads(markerpath.readtext(encoding="utf-8"))\n    if registration.get("seed") != NORMALSEED or registration.get("smoke") or marker.get("seed") != NORMALSEED:\n        raise ValueError("recovery seed metadata mismatch")\n    prohibited = ("report.json", "raw-records.json", "records.json", "shards")\n    if any((output / name).exists() for name in prohibited):\n        raise ValueError("recovery is allowed only for an audited no-game output")\n    return registration\n\n\ndef validateresume(output: Path, *, smoke: bool):\n    """Validate an interrupted run before reading any of its board shards."""\n    registrationpath = output / "registration.json"\n    if not registrationpath.isfile():\n        raise ValueError("resume requires registered experiment metadata")\n    if (output / "report.json").exists():\n        raise ValueError("resume refuses an output that already has report.json")\n    registration = json.loads(registrationpath.readtext(encoding="utf-8"))\n    if bool(registration.get("smoke")) != smoke:\n        raise ValueError("resume smoke mode must match the registered run")\n    if not smoke:\n        markerpath = output / "testopened.json"\n        if not markerpath.isfile():\n            raise ValueError("normal resume requires testopened.json")\n        marker = json.loads(markerpath.readtext(encoding="utf-8"))\n        if registration.get("seed") != NORMALSEED or marker.get("seed") != NORMALSEED:\n            raise ValueError("resume seed metadata mismatch")\n    return registration\n\n\ndef cnn(path: Path, boardsize: int):\n    return makeacfn(str(path), boardsize, "cpu")\n\n\ndef search3(path: Path, boardsize: int):\n    base = cnn(path, boardsize)\n\n    def policy(env, obslist, aid):\n        action = base(env, obslist, aid)\n        return searchaction3(env, aid, getactionmask(env, aid), action)[0]\n    return policy\n\n\ndef policyset(boardsize: int, paths: dict[str, Path]):\n    policies = {"RB": makerulebasedfn(0)}\n    for label, path in paths.items():\n        policies[label] = search3(path, boardsize) if label == "Gsearch3" else cnn(path, boardsize)\n    return policies\n\n\ndef learnerrows(board, boardsize, rotation, learner, opponent, context, policies, *, maxsteps):\n    seats = seatassignment((learner, *(f"RB{index}" for index in range(boardsize if opponent == "RB" else 1))), rotation)\n    if opponent != "RB":\n        seats = seatassignment((learner, opponent), rotation)\n    gamepolicies = {name: policies["RB"] for name in seats if name.startswith("RB")}\n    gamepolicies.update({learner: policies[learner]})\n    if opponent != "RB":\n        gamepolicies[opponent] = policies[opponent]\n    rows = runseededgame(board=board, boardsize=boardsize, seatagents=seats,\n                           policies=gamepolicies, maxsteps=maxsteps, rotation=rotation,\n                           context=context, extra={"opponent": opponent})\n    return [row for row in rows if row["agent"] == learner]\n\n\ndef erows(context, boardsize, agents, boards, maxsteps):\n    legacy = LEGACYEPATHS[agents]\n    cachekey = ("E", boardsize, agents)\n    if cachekey not in POLICYCACHE:\n        POLICYCACHE[cachekey] = policyset(boardsize, {"legacyE": legacy, "G": GPATH, "Gsearch3": GPATH})\n    policies = POLICYCACHE[cachekey]\n    allrows = []\n    for arm in ("RB", "legacyE", "G", "Gsearch3"):\n        if arm == "RB":\n            policies[arm] = policies["RB"]\n        for board in boards:\n            for rotation in range(agents):\n                seats = seatassignment((arm, *(f"RB{i}" for i in range(1, agents))), rotation)\n                current = {seat: policies["RB"] for seat in seats if seat.startswith("RB")}\n                current[arm] = policies[arm]\n                rows = runseededgame(board=board, boardsize=boardsize, seatagents=seats,\n                                       policies=current, maxsteps=maxsteps, rotation=rotation,\n                                       context=context, extra={"opponent": "RuleBot"})\n                allrows.extend(row for row in rows if row["agent"] == arm)\n    return allrows\n\n\ndef drows(boards, maxsteps):\n    if "D" not in POLICYCACHE:\n        paths = {"G": GPATH, "Gsearch3": GPATH, "F": FPATH, "S": SPATH, "B": BPATH,\n                 "legacyD": LEGACYDPATH}\n        POLICYCACHE["D"] = policyset(9, paths)\n    policies = POLICYCACHE["D"]\n    allrows = []\n    for opponent in ("G", "F", "S", "B", "legacyD"):\n        for learner in ("G", "Gsearch3"):\n            learnerkey, opponentkey = f"learner{learner}", f"opponent{opponent}"\n            local = {learnerkey: policies[learner], opponentkey: policies[opponent]}\n            for board in boards:\n                for rotation in range(2):\n                    seats = seatassignment((learnerkey, opponentkey), rotation)\n                    rows = runseededgame(board=board, boardsize=9, seatagents=seats,\n                                           policies=local, maxsteps=maxsteps, rotation=rotation,\n                                           context="D", extra={"opponent": opponent, "arm": learner})\n                    for row in rows:\n                        if row["agent"] == learnerkey:\n                            row["agent"] = learner\n                            allrows.append(row)\n    return allrows\n\n\ndef pdechunk(job):\n    if job["kind"] == "E":\n        return erows(job["context"], job["boardsize"], job["agents"], job["boards"], job["maxsteps"])\n    if job["kind"] == "D":\n        return drows(job["boards"], job["maxsteps"])\n    raise ValueError(f"Unknown PDE chunk: {job[\'kind\']}")\n\n\ndef splitboards(boards, workers):\n    return [[board] for board in boards]\n\n\ndef makejobs(seed, e2count, e1count, dcount, maxsteps):\n    """One job is one durable board shard and contains all required rotations."""\n    jobs = []\n    for board in range(seed, seed + e2count):\n        jobs.append({"id": f"E2-{board}", "kind": "E", "context": "E2", "boardsize": 11,\n                     "agents": 4, "boards": [board], "maxsteps": maxsteps})\n    for board in range(seed + 1000, seed + 1000 + e1count):\n        jobs.append({"id": f"E1-{board}", "kind": "E", "context": "E1", "boardsize": 9,\n                     "agents": 3, "boards": [board], "maxsteps": maxsteps})\n    for board in range(seed + 2000, seed + 2000 + dcount):\n        jobs.append({"id": f"D-{board}", "kind": "D", "context": "D", "boards": [board],\n                     "maxsteps": maxsteps})\n    return jobs\n\n\ndef expectedpderecords(job):\n    """Return the immutable identity tuple for every learner record in a shard."""\n    board = job["boards"][0]\n    if job["kind"] == "E":\n        expected = []\n        for arm in ("RB", "legacyE", "G", "Gsearch3"):\n            for rotation in range(job["agents"]):\n                seats = seatassignment((arm, *(f"RB{index}" for index in range(1, job["agents"]))), rotation)\n                expected.append((board, job["context"], arm, rotation, seats.index(arm), "RuleBot"))\n        return expected\n    if job["kind"] == "D":\n        expected = []\n        for opponent in ("G", "F", "S", "B", "legacyD"):\n            for learner in ("G", "Gsearch3"):\n                learnerkey, opponentkey = f"learner{learner}", f"opponent{opponent}"\n                for rotation in range(2):\n                    seats = seatassignment((learnerkey, opponentkey), rotation)\n                    expected.append((board, "D", learner, rotation, seats.index(learnerkey), opponent))\n        return expected\n    raise ValueError(f"Unknown PDE shard kind: {job[\'kind\']}")\n\n\ndef validatepdeshard(job, payload):\n    """Reject stale, partial, or tampered board shards before they affect a report."""\n    if payload.get("metadata") != job or not isinstance(payload.get("records"), list):\n        raise ValueError(f"incomplete shard metadata for {job[\'id\']}")\n    required = {"board", "context", "agent", "rotation", "corner", "opponent", "steps",\n                "win", "activewin", "draw", "passivewin", "suicide", "suddendeathdeath",\n                "kills", "bombs"}\n    rows = payload["records"]\n    if any(not required.issubset(row) for row in rows):\n        raise ValueError(f"incomplete shard record for {job[\'id\']}")\n    actual = [(row["board"], row["context"], row["agent"], row["rotation"], row["corner"], row["opponent"])\n              for row in rows]\n    if sorted(actual) != sorted(expectedpderecords(job)):\n        raise ValueError(f"shard alignment mismatch for {job[\'id\']}")\n    if any(float(row["steps"]) > job["maxsteps"] for row in rows):\n        raise ValueError(f"shard step limit mismatch for {job[\'id\']}")\n    return rows\n\n\ndef writeshard(path: Path, job, rows):\n    """Durably publish a complete shard; a crash cannot expose a partial JSON file."""\n    path.parent.mkdir(parents=True, existok=True)\n    payload = {"metadata": job, "records": rows}\n    with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent, delete=False) as handle:\n        json.dump(payload, handle)\n        temporary = handle.name\n    try:\n        os.replace(temporary, path)\n    finally:\n        if os.path.exists(temporary):\n            os.unlink(temporary)\n\n\ndef runshards(output: Path, jobs, workers):\n    """Reuse only validated board shards, persist each new board before logging it."""\n    sharddir = output / "shards"\n    existing, missing = {}, []\n    for job in jobs:\n        path = sharddir / f"{job[\'id\']}.json"\n        if path.isfile():\n            existing[job["id"]] = validatepdeshard(job, json.loads(path.readtext(encoding="utf-8")))\n        else:\n            missing.append(job)\n\n    total, completed = len(jobs), len(existing)\n    print(f"[PDE] {\'resuming\' if completed else \'starting\'} {completed}/{total} durable board shards with {workers} workers", flush=True)\n    if workers == 1:\n        completedjobs = ((job, pdechunk(job)) for job in missing)\n        pool = None\n    else:\n        pool = ProcessPoolExecutor(maxworkers=workers)\n        futures = {pool.submit(pdechunk, job): job for job in missing}\n        completedjobs = ((futures[future], future.result()) for future in ascompleted(futures))\n    try:\n        for job, rows in completedjobs:\n            writeshard(sharddir / f"{job[\'id\']}.json", job, rows)\n            existing[job["id"]] = rows\n            completed += 1\n            print(f"[PDE] completed {completed}/{total}: {job[\'kind\']} board {job[\'boards\'][0]}", flush=True)\n    finally:\n        if pool is not None:\n            pool.shutdown(wait=True, cancelfutures=False)\n\n    if len(existing) != total:\n        raise RuntimeError(f"incomplete shard set: {total - len(existing)} missing")\n    return [row for job in jobs for row in existing[job["id"]]]\n\n\ndef evaluatechunks(jobs, workers):\n    total, completed = len(jobs), 0\n    print(f"[PDE] starting {total} board shards with {workers} workers", flush=True)\n    if workers == 1:\n        results = []\n        for job in jobs:\n            results.append(pdechunk(job))\n            completed += 1\n            print(f"[PDE] completed {completed}/{total}: {job[\'kind\']} board {job[\'boards\'][0]}", flush=True)\n        return results\n    with ProcessPoolExecutor(maxworkers=workers) as pool:\n        futures = {pool.submit(pdechunk, job): job for job in jobs}\n        results = []\n        for future in ascompleted(futures):\n            job = futures[future]\n            results.append(future.result())\n            completed += 1\n            print(f"[PDE] completed {completed}/{total}: {job[\'kind\']} board {job[\'boards\'][0]}", flush=True)\n        return results\n\n\ndef selected(rows, context, agent, opponent=None):\n    return [row for row in rows if row["context"] == context and row["agent"] == agent\n            and (opponent is None or row.get("opponent") == opponent)]\n\n\ndef comparison(rows, context, left, right, rotations, metric="activewin", opponent=None):\n    return pairedboardbootstrap(selected(rows, context, left, opponent),\n                                  selected(rows, context, right, opponent), metric, rotations,\n                                  resamples=BOOTSTRAPRESAMPLES, seed=BOOTSTRAPSEED)\n\n\ndef buildreport(rows):\n    summaries = {}\n    for context in ("E2", "E1", "D"):\n        for agent in sorted({row["agent"] for row in rows if row["context"] == context}):\n            key = f"{context}:{agent}"\n            summaries[key] = summarizerows(selected(rows, context, agent))\n    for opponent in ("G", "F", "S", "B", "legacyD"):\n        for agent in ("G", "Gsearch3"):\n            summaries[f"D:{opponent}:{agent}"] = summarizerows(selected(rows, "D", agent, opponent))\n    comparisons = {}\n    for context, rotations in (("E2", 4), ("E1", 3)):\n        for left, right in (("Gsearch3", "G"), ("G", "RB"), ("Gsearch3", "RB"), ("G", "legacyE")):\n            comparisons[f"{context}:{left}-minus-{right}"] = comparison(rows, context, left, right, rotations)\n    for opponent in ("G", "F", "S", "B", "legacyD"):\n        comparisons[f"D:{opponent}:Gsearch3-minus-G"] = comparison(rows, "D", "Gsearch3", "G", 2, opponent=opponent)\n\n    e2rulebot = comparisons["E2:G-minus-RB"]\n    dvalues = [comparisons[f"D:{opponent}:Gsearch3-minus-G"] for opponent in ("G", "F", "S", "B", "legacyD")]\n    # Proposal conditions are intentionally descriptive: active CI lower <= 0,\n    # G + search3 WR < 60%, or an opponent comparison\'s lower CI <= 0.\n    dwr = [summaries[f"D:{opponent}:Gsearch3"]["winrate"]\n            for opponent in ("G", "F", "S", "B", "legacyD")]\n    proposals = {\n        "phaseEfromG": e2rulebot["ci95lowerpp"] <= 0,\n        "phaseDfromG": any(item["ci95lowerpp"] <= 0 for item in dvalues) or any(value < 60.0 for value in dwr),\n        "decision": "proposalonlynotrainingstarted",\n    }\n    return {"scheduleE": SCHEDULEE, "maxsteps": MAXSTEPS, "records": rows,\n            "summary": summaries, "comparisons": comparisons, "proposals": proposals}\n\n\ndef main(argv=None):\n    parser = argparse.ArgumentParser(description="PDE Phase D/E frozen evaluator (no training)")\n    parser.addargument("--output", type=Path, default=ROOT / "runs/pde-50000")\n    parser.addargument("--workers", type=int, default=5, help="reserved evaluation worker count (normal protocol: 5)")\n    parser.addargument("--smoke", action="storetrue", help="short synthetic smoke; never opens seed 50000")\n    parser.addargument("--resume", action="storetrue", help="resume a registered interrupted run from validated board shards")\n    args = parser.parseargs(argv)\n    if SCHEDULEEVALUES != (SCHEDULEE["suddendeathstart"], SCHEDULEE["suddendeathinterval"],\n                             SCHEDULEE["suddendeathwarningsteps"]):\n        raise RuntimeError("Schedule E registration mismatch")\n    if args.workers < 1:\n        parser.error("--workers must be positive")\n    if args.output.exists() and not args.resume:\n        raise FileExistsError(f"Refusing to overwrite existing output: {args.output}")\n    prior = validateresume(args.output, smoke=args.smoke) if args.resume else None\n    required = [GPATH, FPATH, SPATH, BPATH, LEGACYDPATH, *LEGACYEPATHS.values()]\n    requirepaths(required)\n    currentsources = {name: sha256file(ROOT / name) for name in ("bombermanenv.py", "evaluate.py", "pdeeval.py", "runpdecheck.py")}\n    currentcheckpoints = {str(path.relativeto(ROOT)): digest(path) for path in required}\n    if prior and prior.get("sources") != currentsources:\n        raise ValueError("resume evaluator source misalignment with registered run")\n    if prior and prior.get("checkpoints") != currentcheckpoints:\n        raise ValueError("resume checkpoint misalignment with registered run")\n    if not args.smoke and not args.resume:\n        reserveexperimentseed(ROOT, "PDE", NORMALSEED, args.output)\n    args.output.mkdir(parents=True, existok=args.resume)\n    smoke = args.smoke\n    seed = prior["seed"] if prior else (90000 if smoke else NORMALSEED)\n    maxsteps = prior["maxsteps"] if prior else (2 if smoke else MAXSTEPS)\n    e2count, e1count, dcount = (1, 1, 1) if smoke else (40, 60, 100)\n    registration = {\n        "seed": seed, "normalseed": NORMALSEED, "smoke": smoke, "scheduleE": SCHEDULEE,\n        "maxsteps": maxsteps, "workers": args.workers,\n        "checkpoints": currentcheckpoints,\n        "sources": currentsources,\n        "python": sys.version, "platform": platform.platform(),\n    }\n    if not smoke and not args.resume:\n        (args.output / "testopened.json").writetext(json.dumps({"seed": NORMALSEED, "stage": "PDE"}, indent=2), encoding="utf-8")\n    if not args.resume:\n        (args.output / "registration.json").writetext(json.dumps(registration, indent=2), encoding="utf-8")\n    jobs = makejobs(seed, e2count, e1count, dcount, maxsteps)\n    rows = runshards(args.output, jobs, args.workers)\n    report = buildreport(rows)\n    (args.output / "report.json").writetext(json.dumps(report, indent=2), encoding="utf-8")\n    if not smoke:\n        shutil.makearchive(str(args.output) + "-send", "zip", args.output)\n    print(json.dumps({"output": str(args.output), "proposals": report["proposals"]}, indent=2))\n\n\nif name == "main":\n    main()\n'
+
+----------------------------------------------------------------------
+Ran 581 tests in 643.264s
+
+FAILED (failures=1, errors=20, skipped=3)
+Warm-started from E:\Bomberman\d-s2-corrupt-_5603n7d\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-test-resume-qiq92qfu\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-test-resume-qiq92qfu\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-resume-xpoalch1\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-resume-xpoalch1\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-ledger-bs_fkuyn\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-ledger-bs_fkuyn\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-snapshot-8i1n36fb\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-snapshot-8i1n36fb\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-once-hubgdoj_\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-once-hubgdoj_\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-stop-62u6bgr1\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-stop-62u6bgr1\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-models-iz07h62x\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-models-iz07h62x\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-2klq6ymg\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-2klq6ymg\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-2klq6ymg\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-7a6mkw63\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-7a6mkw63\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-7a6mkw63\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-ne5r0te_\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-ne5r0te_\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-ne5r0te_\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-ogupn_zw\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-ogupn_zw\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-ogupn_zw\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-state0-ja910ipl\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-state0-ja910ipl\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-state0-ja910ipl\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-state0-ja910ipl\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-math-w0h518l3\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-math-w0h518l3\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-h50srxzy\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-h50srxzy\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-p1yia_mw\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-p1yia_mw\best_phaseC.pt (best episode: 0)
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+[C] ep     1 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: -0.005 | bombs: 0.0 | walls: 0.0 | combat bombs: 0/0 | loss: 0.4484 | lr: 1.3e-06 | pool: 0
+
+Saved final model to C:\Users\DINH LOC\AppData\Local\Packages\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\AC\Temp\tmp4u1k5o3g\final_phaseC.pt
+Saved best model to C:\Users\DINH LOC\AppData\Local\Packages\sandbox.{63d31506-d70f-4c07-a708-2995e682b0d7}\AC\Temp\tmp4u1k5o3g\best_phaseC.pt (best episode: 0)
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13
+Expanded observation channels 12 -> 13

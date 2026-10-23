@@ -1,0 +1,95 @@
+test_actual_repository_history_accepts_disjoint_full_s2_kl_manifest (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_actual_repository_history_accepts_disjoint_full_s2_kl_manifest) ... FAIL
+test_changed_known_artifact_bytes_fail_closed_even_when_json_is_still_valid (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_changed_known_artifact_bytes_fail_closed_even_when_json_is_still_valid) ... ok
+test_every_executed_local_resolution_module_is_frozen_in_source_closure (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_every_executed_local_resolution_module_is_frozen_in_source_closure) ... FAIL
+test_exact_artifacts_and_generator_are_hashed_and_all_historical_boards_covered (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_exact_artifacts_and_generator_are_hashed_and_all_historical_boards_covered) ... FAIL
+test_missing_or_modified_generator_evidence_fails_closed (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_missing_or_modified_generator_evidence_fails_closed) ... ok
+test_null_seed_in_unrelated_metadata_remains_unresolved (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_null_seed_in_unrelated_metadata_remains_unresolved) ... ok
+test_resolution_is_read_only_for_original_and_copied_history (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_resolution_is_read_only_for_original_and_copied_history) ... FAIL
+test_resolved_historical_boundaries_and_interior_still_reject_overlap (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_resolved_historical_boundaries_and_interior_still_reject_overlap) ... FAIL
+test_unknown_oversized_valid_json_remains_unresolved (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_unknown_oversized_valid_json_remains_unresolved) ... ok
+
+======================================================================
+FAIL: test_actual_repository_history_accepts_disjoint_full_s2_kl_manifest (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_actual_repository_history_accepts_disjoint_full_s2_kl_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_history.py", line 72, in test_actual_repository_history_accepts_disjoint_full_s2_kl_manifest
+    inventory = self.accepted_inventory(ROOT)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_history.py", line 61, in accepted_inventory
+    self.assertEqual(inventory['unresolved'], [],
+AssertionError: Lists differ: ['E:\\Bomberman\\runs\\sd6-diagnostics-660[5766 chars]dex'] != []
+
+First list contains 72 additional elements.
+First extra element 0:
+'E:\\Bomberman\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed'
+
+Diff is 6046 characters long. Set self.maxDiff to None to see it. : Exact verified history must resolve without suppressing other unknown logs
+
+======================================================================
+FAIL: test_every_executed_local_resolution_module_is_frozen_in_source_closure (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_every_executed_local_resolution_module_is_frozen_in_source_closure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_history.py", line 155, in test_every_executed_local_resolution_module_is_frozen_in_source_closure
+    self.assertEqual(inventory['unresolved'], [], 'Resolver must execute successfully before its closure is audited')
+AssertionError: Lists differ: ['E:\\Bomberman\\s2-kl-history-fixture-1x_[8070 chars]dex'] != []
+
+First list contains 72 additional elements.
+First extra element 0:
+'E:\\Bomberman\\s2-kl-history-fixture-1x_ml1sr\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed'
+
+Diff is 8770 characters long. Set self.maxDiff to None to see it. : Resolver must execute successfully before its closure is audited
+
+======================================================================
+FAIL: test_exact_artifacts_and_generator_are_hashed_and_all_historical_boards_covered (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_exact_artifacts_and_generator_are_hashed_and_all_historical_boards_covered)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_history.py", line 76, in test_exact_artifacts_and_generator_are_hashed_and_all_historical_boards_covered
+    inventory = self.accepted_inventory()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_history.py", line 61, in accepted_inventory
+    self.assertEqual(inventory['unresolved'], [],
+AssertionError: Lists differ: ['E:\\Bomberman\\s2-kl-history-fixture-1x_[8070 chars]dex'] != []
+
+First list contains 72 additional elements.
+First extra element 0:
+'E:\\Bomberman\\s2-kl-history-fixture-1x_ml1sr\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed'
+
+Diff is 8770 characters long. Set self.maxDiff to None to see it. : Exact verified history must resolve without suppressing other unknown logs
+
+======================================================================
+FAIL: test_resolution_is_read_only_for_original_and_copied_history (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_resolution_is_read_only_for_original_and_copied_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_history.py", line 89, in test_resolution_is_read_only_for_original_and_copied_history
+    self.accepted_inventory()
+  File "E:\Bomberman\test_s2_kl_history.py", line 61, in accepted_inventory
+    self.assertEqual(inventory['unresolved'], [],
+AssertionError: Lists differ: ['E:\\Bomberman\\s2-kl-history-fixture-1x_[8070 chars]dex'] != []
+
+First list contains 72 additional elements.
+First extra element 0:
+'E:\\Bomberman\\s2-kl-history-fixture-1x_ml1sr\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed'
+
+Diff is 8770 characters long. Set self.maxDiff to None to see it. : Exact verified history must resolve without suppressing other unknown logs
+
+======================================================================
+FAIL: test_resolved_historical_boundaries_and_interior_still_reject_overlap (test_s2_kl_history.VerifiedHistoricalInventoryTests.test_resolved_historical_boundaries_and_interior_still_reject_overlap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_history.py", line 96, in test_resolved_historical_boundaries_and_interior_still_reject_overlap
+    inventory = self.accepted_inventory()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_history.py", line 61, in accepted_inventory
+    self.assertEqual(inventory['unresolved'], [],
+AssertionError: Lists differ: ['E:\\Bomberman\\s2-kl-history-fixture-1x_[8070 chars]dex'] != []
+
+First list contains 72 additional elements.
+First extra element 0:
+'E:\\Bomberman\\s2-kl-history-fixture-1x_ml1sr\\runs\\sd6-diagnostics-6600\\overrides.json: invalid seed seed'
+
+Diff is 8770 characters long. Set self.maxDiff to None to see it. : Exact verified history must resolve without suppressing other unknown logs
+
+----------------------------------------------------------------------
+Ran 9 tests in 33.629s
+
+FAILED (failures=5)

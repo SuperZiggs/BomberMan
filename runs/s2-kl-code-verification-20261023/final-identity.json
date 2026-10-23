@@ -1,0 +1,27 @@
+{
+  "git_head": "dc8b08b8dee21893fefeb270a0a6a5a529e46da3",
+  "sources": {
+    "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+    "combat_move_teacher.py": "a30a2f2b8450c3e13734f5d7f525e275ee0655f77fe0b7bfddc37cbba3959616",
+    "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+    "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+    "kill_search.py": "033deceeeb1f9e60d7ff970e8880dbc438f15260f3297c69e496f874cc4ad12d",
+    "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+    "phase_d_s2_ledger.py": "bca39ff1e636c5595a07dd5aa9c800260f1eb3a82a2b3fdf2131078521aa3353",
+    "phase_d_s2_protocol.py": "53109dff9f198db56ec88faaf8c8841b170d4afd874904ed93f96817f0dfc953",
+    "progress.py": "b63c84e729c8fd214bcf0f457d20abb1d4cbba28b5c7d514aa3e6c29ec162eb4",
+    "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+    "run_s2_kl_probe.py": "5d085d0742875bd29306d7d2be38ae57d28f4fcddcd39834d89b0d69c5f430ee",
+    "s2_kl_evaluation.py": "75b7b3491ab84506b585b22501c5b086b6a2c966b2698fb02573ea14de300df2",
+    "s2_kl_ledger.py": "70e5e034eee5dca91851d370d79cb18b6956fdc43a69cfcc5b7d5996e97c0c9c",
+    "s2_kl_protocol.py": "4f702a701da697495f845602c66780c0e702d3fce2b37e9cab704763374ca191",
+    "s2_kl_training.py": "4453c44a2b5fb7f7ea4940e845b1cfbaa888d21ced8e73a3bd2f539dcc29718c",
+    "tactical_teacher.py": "b1166e4eb347d538d59c1ecf1d854bba403177d72467bd61f2055f828c04dd77",
+    "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+    "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc"
+  },
+  "spec_sha256": "ca3eea4a8f927e6b68313a1764c9fe757bfa56bf5710fa0afc48e5e7baebd5f6",
+  "both_smoke_sources_match_final": true,
+  "protected_inputs_unchanged": true,
+  "full_output_exists": false
+}

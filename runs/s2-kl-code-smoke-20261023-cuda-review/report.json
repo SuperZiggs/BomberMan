@@ -1,0 +1,702 @@
+{
+  "status": "SMOKE_ONLY",
+  "complete": true,
+  "conditions": {
+    "DRIFT_REPRODUCED": false,
+    "DECISION_RETAINED": true,
+    "PROBABILITY_RETAINED": true,
+    "ANCHOR_BENEFIT": false,
+    "RB_ACTIVE_RETAINED": true,
+    "RB_SUICIDE_RETAINED": true
+  },
+  "pass": false,
+  "mode": "smoke",
+  "endpoints": {
+    "baseline": {
+      "id": "S2",
+      "arm": null,
+      "episode": 0,
+      "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+    },
+    "control500": {
+      "id": "control-4",
+      "arm": "control",
+      "episode": 4,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review\\arms\\control\\checkpoints\\4.pt",
+      "sha256": "650679394753bc91de2924de89683f33f38bf7c07103125dd9869e1ed83e5497"
+    },
+    "anchor500": {
+      "id": "anchor-4",
+      "arm": "anchor",
+      "episode": 4,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review\\arms\\anchor\\checkpoints\\4.pt",
+      "sha256": "7f54da04575dc15c6810ffd052e0085fd048e81a44a70ec028524ae67339720c"
+    }
+  },
+  "counts": {
+    "models": 5,
+    "diagnostics": 5,
+    "expected_diagnostics": 5,
+    "games": 20,
+    "expected_games": 20,
+    "decision_states": 5120,
+    "anchor_states": 5120
+  },
+  "summary": {
+    "S2": {
+      "model": {
+        "id": "S2",
+        "arm": null,
+        "episode": 0,
+        "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+        "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+      },
+      "offline": {
+        "R": 97.36328125,
+        "Q": 91.82517425397236,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0,
+          "bomb_probability_pct": 33.703166891268665,
+          "value_mean": 1.5927276665752288,
+          "changed_argmax_pct": 0.0,
+          "soft_target_ce": 0.23267114958140667
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0,
+          "bomb_probability_pct": 9.282331921713194,
+          "value_mean": 1.698145822942024,
+          "changed_argmax_pct": 0.0
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.13777530000152183,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.25,
+        "avg_steps": 20.0
+      }
+    },
+    "control-2": {
+      "model": {
+        "id": "control-2",
+        "arm": "control",
+        "episode": 2,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review\\arms\\control\\checkpoints\\2.pt",
+        "sha256": "1552364e02a09bd09d925b3e8e561da037b44e6001a0576072850383c1d788b2"
+      },
+      "offline": {
+        "R": 97.265625,
+        "Q": 91.77262862140196,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0010237357694185267,
+          "bomb_probability_pct": 33.41746772073293,
+          "value_mean": 1.4783817011630163,
+          "changed_argmax_pct": 0.9765625,
+          "soft_target_ce": 0.23252644179446236
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0007243122226066045,
+          "bomb_probability_pct": 9.140491933067096,
+          "value_mean": 1.5859182323874847,
+          "changed_argmax_pct": 0.9765625
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.124894000000495,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.5,
+        "avg_steps": 20.0
+      }
+    },
+    "control-4": {
+      "model": {
+        "id": "control-4",
+        "arm": "control",
+        "episode": 4,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review\\arms\\control\\checkpoints\\4.pt",
+        "sha256": "650679394753bc91de2924de89683f33f38bf7c07103125dd9869e1ed83e5497"
+      },
+      "offline": {
+        "R": 97.16796875,
+        "Q": 91.74846595087729,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.001292516929800147,
+          "bomb_probability_pct": 33.40548281516931,
+          "value_mean": 1.4436571559635922,
+          "changed_argmax_pct": 1.171875,
+          "soft_target_ce": 0.2327626767936266
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0010276516756897447,
+          "bomb_probability_pct": 9.126633428240893,
+          "value_mean": 1.5507026624982245,
+          "changed_argmax_pct": 1.26953125
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.11985939999794937,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.5,
+        "avg_steps": 20.0
+      }
+    },
+    "anchor-2": {
+      "model": {
+        "id": "anchor-2",
+        "arm": "anchor",
+        "episode": 2,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review\\arms\\anchor\\checkpoints\\2.pt",
+        "sha256": "90d16e67e68b55fc2975a9e43855bd753363e29a32282f04ca28f672725cded1"
+      },
+      "offline": {
+        "R": 97.265625,
+        "Q": 91.77209291301551,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.001014289257991706,
+          "bomb_probability_pct": 33.41897936898022,
+          "value_mean": 1.4783796743722633,
+          "changed_argmax_pct": 0.9765625,
+          "soft_target_ce": 0.23252820597490143
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0007203481307348492,
+          "bomb_probability_pct": 9.140830807518796,
+          "value_mean": 1.5859143779780425,
+          "changed_argmax_pct": 0.9765625
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.2573296000009577,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.5,
+        "avg_steps": 20.0
+      }
+    },
+    "anchor-4": {
+      "model": {
+        "id": "anchor-4",
+        "arm": "anchor",
+        "episode": 4,
+        "checkpoint": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cuda-review\\arms\\anchor\\checkpoints\\4.pt",
+        "sha256": "7f54da04575dc15c6810ffd052e0085fd048e81a44a70ec028524ae67339720c"
+      },
+      "offline": {
+        "R": 97.16796875,
+        "Q": 91.74851352108817,
+        "decision": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.0012631564837755072,
+          "bomb_probability_pct": 33.41059194819991,
+          "value_mean": 1.4439220940694213,
+          "changed_argmax_pct": 1.171875,
+          "soft_target_ce": 0.2327564790714831
+        },
+        "anchor": {
+          "samples": 1024,
+          "kl_S2_to_model": 0.001010748836574038,
+          "bomb_probability_pct": 9.128894809327903,
+          "value_mean": 1.550945169350598,
+          "changed_argmax_pct": 1.26953125
+        }
+      },
+      "RB": {
+        "games": 4,
+        "win_rate": 0.0,
+        "active_win_rate": 0.0,
+        "draw_rate": 100.0,
+        "passive_win_rate": 0.0,
+        "sudden_death_win_rate": 0.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 0.0,
+        "elapsed_seconds": 0.314882899991062,
+        "by_corner": {
+          "0": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          },
+          "1": {
+            "games": 2,
+            "win_rate": 0.0,
+            "active_win_rate": 0.0,
+            "draw_rate": 100.0,
+            "passive_win_rate": 0.0,
+            "sudden_death_win_rate": 0.0,
+            "suicide_rate": 0.0,
+            "sudden_death_death_rate": 0.0
+          }
+        },
+        "avg_kills": 0.0,
+        "avg_bombs": 2.5,
+        "avg_steps": 20.0
+      }
+    }
+  },
+  "comparisons": {
+    "control_minus_baseline": {
+      "R": {
+        "difference_pp": -0.1953125,
+        "ci95_pp": [
+          -0.49457208332109176,
+          0.0
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "Q": {
+        "difference_pp": -0.07670830309507437,
+        "ci95_pp": [
+          -0.1611030388351174,
+          0.008575104701392128
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_active_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_draw": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_passive_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_death": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      }
+    },
+    "anchor_minus_baseline": {
+      "R": {
+        "difference_pp": -0.1953125,
+        "ci95_pp": [
+          -0.49457208332109176,
+          0.0
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "Q": {
+        "difference_pp": -0.07666073288419284,
+        "ci95_pp": [
+          -0.1603315875283661,
+          0.007877350412131943
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_active_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_draw": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_passive_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_death": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      }
+    },
+    "anchor_minus_control": {
+      "R": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "Q": {
+        "difference_pp": 4.757021088153124e-05,
+        "ci95_pp": [
+          -0.0009796060702366638,
+          0.0010608755724031851
+        ],
+        "board_clusters": 722,
+        "samples": 1024,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_active_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_draw": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_passive_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      },
+      "RB_sudden_death_death": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_clusters": 2,
+        "samples": 4,
+        "resamples": 10000,
+        "bootstrap_seed": 20261023
+      }
+    }
+  },
+  "registration_digest": "bfbdf1732a0097c84702b79b15fd9fc1e979b9ddde92fb1ba03e550975adac21",
+  "model_manifest_digest": "354565561efa8828da1fe638d60f2bc339bfa906b0ebb763a96e2fb3abbe8789",
+  "limitations": [
+    "One training seed; reused SD8A TRAIN observations measure retention only.",
+    "Only fixed endpoint 4 decides the pilot; intermediate checkpoints are diagnostic.",
+    "No held-out stage and no automatic replacement of S2 or Phase D qualification.",
+    "Smoke with 20-step episodes does not establish full-run throughput or model quality."
+  ],
+  "evidence": {
+    "diagnostics": {
+      "1552364e02a09bd09d925b3e8e561da037b44e6001a0576072850383c1d788b2": "66d15f53dbd5758b3abd5f312c103459db061daced1fa502cbf221fc123bf3e0",
+      "650679394753bc91de2924de89683f33f38bf7c07103125dd9869e1ed83e5497": "a0c24d5af46ff3556e52099c95e206ca3738e57292d7cf6b110ef17049aa9f3a",
+      "7f54da04575dc15c6810ffd052e0085fd048e81a44a70ec028524ae67339720c": "d13cb66dbad5415cc4133b17774eb047b91999e8bb0f4b5b897001473631ee1b",
+      "90d16e67e68b55fc2975a9e43855bd753363e29a32282f04ca28f672725cded1": "b39a7daa63f39c0226b5f0e1b33a32ab5d04fc63c28ff2c514cab1eef38636d0",
+      "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814": "2b60814cd5eba7c53c5e83196b40ef29f09cf17f3abea0ee8b9f801c9b0fb352"
+    },
+    "boards": {
+      "49be94c9e11fc648d58afda80ffcf4f287cd008085e22357af4e934cd1d640e1": "a86aaecb134a5f60def59c0e3ec0c3a4a16ba6592001608413e710c752bd94b3",
+      "5baed5425042c3d83e72d444a3ad0da4124df6d7f15a8b4f20176b223fd96556": "d85b1e016a7bc8ea99ca5a70e187648fd748e379ce379cb0f786fcac75fe5d39",
+      "6f47dffec917a6709f2b362096419fa76a687b2024360e69864b314263a6be4a": "3afece58447ccbca381e7aef7718e77bb3c3087ca2a42702040513973d7b2297",
+      "7235c47ee02febaeee57fce600a94b128714d43b9ffaa31d069723830baf5ed1": "d0f7fa23b6e7b656d56fdb75361c2ff4d9ebeabcfc4a277390de052f2b7744e1",
+      "9090ecffabf16fe59e3ad5d556e953de5b21c950330bd60ef44adc6d6193f446": "9dab168170afaa7d44db7d86ffb8ced2e5b62d2db3242b1501e03185cafd75e1",
+      "b25a46ca836728a0cce8fc61ec161ff3ec3e6383646763b2d498682d221dde01": "5c5a1cafe8687563463f304a774b198dbd6c626aa11e784eb731ee2c47ba2e05",
+      "b6d81ed4777bd6e3fc7b417a1463a280d0d2bf7abab39901b031fb5a21d65689": "f4cb2462872fc26d8e219ca96a498ccb421af462acec6575856d836f7b43f54a",
+      "b8071e8e8ec8252ca2c7face1f885d0d3531eb784cbb7927ea55e58fd4c1590e": "2c1a508e596888e3078ee71c083e047090d45374ddbc2df286bcd212c9656aea",
+      "da9ea02481ffc297f7bd5096ad6ecc63c4f3a659e4de31c22f5dd0e51247f182": "1efc378ef723f15c506db8e2226b6e9fea00d5c9d871236b4d99aaae39521a90",
+      "e4dbf860cc46551a8ef43d58f20fdcc75df0b4a8879b5ef35b2865b85fa1b20b": "f809c733dabbf4276a03b3fd44b5e2844479809592039639c5053db66d1af55b"
+    }
+  }
+}

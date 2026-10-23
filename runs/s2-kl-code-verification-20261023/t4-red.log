@@ -1,0 +1,30 @@
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-mq7vmwb2\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-mq7vmwb2\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-mq7vmwb2\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-mq7vmwb2\\absent\\registration.json'
+Registration digest drift
+======================================================================
+FAIL: test_actual_cpu_cli_journey_snapshots_raw_ledgers_resume_and_projection_integrity (test_run_s2_kl_probe.JourneyTests.test_actual_cpu_cli_journey_snapshots_raw_ledgers_resume_and_projection_integrity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s2_kl_probe.py", line 96, in test_actual_cpu_cli_journey_snapshots_raw_ledgers_resume_and_projection_integrity
+    function(self,name)
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: diagnose_run
+
+======================================================================
+FAIL: test_incomplete_package_exports_only_available_output_without_doing_missing_work (test_run_s2_kl_probe.PackagingTests.test_incomplete_package_exports_only_available_output_without_doing_missing_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s2_kl_probe.py", line 68, in test_incomplete_package_exports_only_available_output_without_doing_missing_work
+    package=function(self,'package_run')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 32, in function
+    test.assertTrue(callable(value), 'Missing documented S2-KL public function: ' + name)
+AssertionError: False is not true : Missing documented S2-KL public function: package_run
+
+----------------------------------------------------------------------
+Ran 5 tests in 5.875s
+
+FAILED (failures=2)

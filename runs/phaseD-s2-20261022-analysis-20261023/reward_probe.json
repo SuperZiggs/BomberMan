@@ -1,0 +1,29 @@
+{
+  "hypothesis": "Sole survival through sudden death earns the +10 win bonus",
+  "verdict": "REJECTED: frozen engine excludes +10 on a step with sudden-death deaths",
+  "scope": "Synthetic event arithmetic consistent with frozen bomberman_env.py:316, not new games",
+  "cases": [
+    {
+      "event": "ordinary_passive_win",
+      "raw_env_reward": 9.999,
+      "shaped_reward": -0.0009999999999994458,
+      "active_win": 0,
+      "reward_diagnostics": "consistent"
+    },
+    {
+      "event": "sudden_death_passive_win",
+      "raw_env_reward": -0.001,
+      "shaped_reward": -0.001,
+      "active_win": 0,
+      "reward_diagnostics": "Environment reward does not match its recorded events"
+    },
+    {
+      "event": "owned_kill_active_win",
+      "raw_env_reward": 10.999,
+      "shaped_reward": 13.999,
+      "active_win": 1,
+      "reward_diagnostics": "consistent"
+    }
+  ],
+  "incidental_finding": "Optional reward-component diagnostics omit the engine sudden-death exception; flag was false in this run."
+}

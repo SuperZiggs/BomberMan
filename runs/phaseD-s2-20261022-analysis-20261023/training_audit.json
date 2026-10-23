@@ -1,0 +1,80 @@
+{
+  "control": {
+    "episode": 2000,
+    "optimizer_steps": [
+      2000
+    ],
+    "scheduler_epoch": 2000,
+    "opponent_audit_entries": 0,
+    "schedule_verified": true,
+    "metrics_equal_state": true,
+    "opponent_types": {
+      "RB": 2000
+    },
+    "recent_fallback_episodes": 0,
+    "summary": {
+      "episodes": 2000,
+      "active_wr": 74.35000000000001,
+      "wr": 86.8,
+      "draw": 9.25,
+      "suicide": 0.5,
+      "reward": 11.485579000000014,
+      "learner_steps": 238.246,
+      "bombs": 23.0535,
+      "walls": 8.5975,
+      "kills": 0.7435,
+      "value_loss": 23.279191754698754,
+      "policy_loss": -0.0636631839304464,
+      "combat_loss": 0.6594131976584904,
+      "navigation_loss": 0.6311769546544238,
+      "escape_loss": 0.11905976114000805,
+      "loss": 12.578330795407295,
+      "total_steps": 476492,
+      "bombs_per_100_steps": 9.676342939650613,
+      "steps_share_475_or_more": 18.5,
+      "move_label_agreement_pct": 62.17495557805843,
+      "combat_bomb_agreement_pct": 12.757359107681985,
+      "teacher_move_entropy": 0.547016610909255
+    }
+  },
+  "pool": {
+    "episode": 2000,
+    "optimizer_steps": [
+      2000
+    ],
+    "scheduler_epoch": 2000,
+    "opponent_audit_entries": 13,
+    "schedule_verified": true,
+    "metrics_equal_state": true,
+    "opponent_types": {
+      "RB": 400,
+      "fixed": 800,
+      "recent": 800
+    },
+    "recent_fallback_episodes": 80,
+    "summary": {
+      "episodes": 2000,
+      "active_wr": 17.8,
+      "wr": 32.95,
+      "draw": 53.900000000000006,
+      "suicide": 4.5,
+      "reward": 3.5609550000000336,
+      "learner_steps": 416.405,
+      "bombs": 42.561,
+      "walls": 10.829,
+      "kills": 0.1835,
+      "value_loss": 11.050298617322929,
+      "policy_loss": 0.35035240268213735,
+      "combat_loss": 0.6506290058319136,
+      "navigation_loss": 0.7212128613216336,
+      "escape_loss": 0.1372928110290377,
+      "loss": 7.0371361890509725,
+      "total_steps": 832810,
+      "bombs_per_100_steps": 10.221058824942064,
+      "steps_share_475_or_more": 77.14999999999999,
+      "move_label_agreement_pct": 63.13382313675162,
+      "combat_bomb_agreement_pct": 16.593126317002746,
+      "teacher_move_entropy": 0.5592005016631406
+    }
+  }
+}

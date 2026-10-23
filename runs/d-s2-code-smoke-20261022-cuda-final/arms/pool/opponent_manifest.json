@@ -1,0 +1,46 @@
+{
+  "snapshots": [
+    {
+      "id": "snapshot-2",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cuda-final\\arms\\pool\\snapshots\\episode_2.pt",
+      "sha256": "ee4a11ac66fea4f626ecac065f8d7cd9f4dc17dfaab988b370eb9ed4de685bf1",
+      "episode": 2,
+      "role": "opponent",
+      "arm": "pool"
+    },
+    {
+      "id": "snapshot-4",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cuda-final\\arms\\pool\\snapshots\\episode_4.pt",
+      "sha256": "7698c00f818c8c94c67947e0ff4eb6b092798b6d20d78355e33186accd779966",
+      "episode": 4,
+      "role": "opponent",
+      "arm": "pool"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "pool-0",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cuda-final\\arms\\pool\\checkpoints\\episode_0.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "episode": 0,
+      "role": "candidate",
+      "arm": "pool"
+    },
+    {
+      "id": "pool-2",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cuda-final\\arms\\pool\\checkpoints\\episode_2.pt",
+      "sha256": "ee4a11ac66fea4f626ecac065f8d7cd9f4dc17dfaab988b370eb9ed4de685bf1",
+      "episode": 2,
+      "role": "candidate",
+      "arm": "pool"
+    },
+    {
+      "id": "pool-4",
+      "checkpoint": "E:\\Bomberman\\runs\\d-s2-code-smoke-20261022-cuda-final\\arms\\pool\\checkpoints\\episode_4.pt",
+      "sha256": "7698c00f818c8c94c67947e0ff4eb6b092798b6d20d78355e33186accd779966",
+      "episode": 4,
+      "role": "candidate",
+      "arm": "pool"
+    }
+  ]
+}

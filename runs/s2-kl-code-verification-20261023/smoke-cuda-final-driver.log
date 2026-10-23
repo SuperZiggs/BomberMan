@@ -1,0 +1,7 @@
+cuda register PASS 4.00s
+cuda train-control PASS 9.68s
+cuda train-anchor PASS 9.37s
+cuda diagnose PASS 24.86s
+cuda validate PASS 16.76s
+cuda package PASS 14.17s
+SMOKE VERIFIED E:\Bomberman\runs\s2-kl-code-smoke-20261023-cuda-final

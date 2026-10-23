@@ -1,0 +1,42 @@
+{
+  "reservations": {
+    "D-S2:E:\\Bomberman\\runs\\phaseD-s2-20261022": {
+      "status": "COMPLETE",
+      "ranges": {
+        "train": {
+          "start": 610000,
+          "end_inclusive": 610999
+        },
+        "validation": {
+          "start": 620000,
+          "end_inclusive": 620039
+        },
+        "test_reference": {
+          "start": 630000,
+          "end_inclusive": 630099
+        },
+        "test_snapshots": {
+          "start": 640000,
+          "end_inclusive": 640099
+        }
+      },
+      "registration_digest": "474530836ca88ee9be260f8ca3af7f823e2fe3ec9ecba7f2f7a5c086d4de1951",
+      "output": "E:\\Bomberman\\runs\\phaseD-s2-20261022"
+    },
+    "S2-KL:E:\\Bomberman\\runs\\s2-kl-20261023": {
+      "status": "COMPLETE",
+      "ranges": {
+        "train": {
+          "start": 710000,
+          "end_inclusive": 710249
+        },
+        "validation": {
+          "start": 720000,
+          "end_inclusive": 720099
+        }
+      },
+      "registration_digest": "2c6c930e6908de5c3ab3725d17276bb3b9e7e26a5bb71719e2f86a06ddaa8b91",
+      "output": "E:\\Bomberman\\runs\\s2-kl-20261023"
+    }
+  }
+}

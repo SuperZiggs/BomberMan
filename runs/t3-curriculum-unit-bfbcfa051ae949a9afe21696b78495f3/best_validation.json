@@ -1,0 +1,12 @@
+{
+  "episode": 0,
+  "seed": 21000,
+  "num_episodes": 2,
+  "win_rate": 0,
+  "active_win_rate": 0,
+  "suicide_rate": 0,
+  "draw_rate": 100,
+  "avg_kills": 0,
+  "device": "cpu",
+  "suicide_limit": 0
+}

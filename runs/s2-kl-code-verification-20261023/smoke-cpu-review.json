@@ -1,0 +1,94 @@
+{
+  "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+  "device": "cpu",
+  "status": "SMOKE_ONLY",
+  "counts": {
+    "models": 5,
+    "diagnostics": 5,
+    "expected_diagnostics": 5,
+    "games": 20,
+    "expected_games": 20,
+    "decision_states": 5120,
+    "anchor_states": 5120
+  },
+  "measurements": [
+    {
+      "stage": "register",
+      "cli_wall_seconds": 4.258721300000616,
+      "process": {
+        "stage": "register",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+        "status": "OK",
+        "elapsed_seconds": 1.9161199999980454,
+        "peak_rss_bytes": 622153728,
+        "pid": 28048
+      }
+    },
+    {
+      "stage": "train-control",
+      "cli_wall_seconds": 8.976732800001628,
+      "process": {
+        "stage": "train",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+        "status": "OK",
+        "elapsed_seconds": 2.4454710999998497,
+        "peak_rss_bytes": 655032320,
+        "pid": 22596
+      }
+    },
+    {
+      "stage": "train-anchor",
+      "cli_wall_seconds": 9.23900649999996,
+      "process": {
+        "stage": "train",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+        "status": "OK",
+        "elapsed_seconds": 2.6618034999992233,
+        "peak_rss_bytes": 651042816,
+        "pid": 27824
+      }
+    },
+    {
+      "stage": "diagnose",
+      "cli_wall_seconds": 24.82993510000233,
+      "process": {
+        "stage": "diagnose",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+        "status": "DIAGNOSTICS_COMPLETE",
+        "elapsed_seconds": 18.901150800000323,
+        "peak_rss_bytes": 669192192,
+        "pid": 27824
+      }
+    },
+    {
+      "stage": "validate",
+      "cli_wall_seconds": 14.799708599999576,
+      "process": {
+        "stage": "validate",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+        "status": "SMOKE_ONLY",
+        "elapsed_seconds": 9.542436499999894,
+        "peak_rss_bytes": 655851520,
+        "pid": 30844
+      }
+    },
+    {
+      "stage": "package",
+      "cli_wall_seconds": 10.675543800000014,
+      "process": {
+        "stage": "package",
+        "output": "E:\\Bomberman\\runs\\s2-kl-code-smoke-20261023-cpu-review",
+        "status": "SMOKE_ONLY",
+        "elapsed_seconds": 5.959151800001564,
+        "peak_rss_bytes": 651862016,
+        "pid": 28104
+      }
+    }
+  ],
+  "worker_peak_rss_bytes": {
+    "26724": 643084288,
+    "28724": 642072576
+  },
+  "protected_unchanged": true,
+  "full_run_started": false
+}

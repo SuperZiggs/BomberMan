@@ -1,0 +1,17 @@
+{
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "device": "cuda:0",
+  "torch": "2.11.0+cu128",
+  "numpy": "2.4.6",
+  "threads": 1,
+  "cuda": "12.8",
+  "cudnn": 91900,
+  "deterministic": true,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "cudnn_tf32": false,
+  "matmul_tf32": false,
+  "cublas_workspace": ":4096:8",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+}

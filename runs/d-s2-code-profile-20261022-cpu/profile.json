@@ -1,0 +1,57 @@
+{
+  "device": "cpu",
+  "output": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cpu",
+  "rows": [
+    {
+      "arm": "control",
+      "episode": 1,
+      "steps": 20,
+      "seconds": 0.1170298999932129
+    },
+    {
+      "arm": "control",
+      "episode": 2,
+      "steps": 20,
+      "seconds": 0.11474959999031853
+    },
+    {
+      "arm": "control",
+      "episode": 3,
+      "steps": 20,
+      "seconds": 0.0858870000083698
+    },
+    {
+      "arm": "control",
+      "episode": 4,
+      "steps": 20,
+      "seconds": 0.11686110000300687
+    },
+    {
+      "arm": "pool",
+      "episode": 1,
+      "steps": 20,
+      "seconds": 0.09226019999186974
+    },
+    {
+      "arm": "pool",
+      "episode": 2,
+      "steps": 20,
+      "seconds": 0.1320555999991484
+    },
+    {
+      "arm": "pool",
+      "episode": 3,
+      "steps": 20,
+      "seconds": 0.10808759999054018
+    },
+    {
+      "arm": "pool",
+      "episode": 4,
+      "steps": 20,
+      "seconds": 0.24967439999454655
+    }
+  ],
+  "source_root": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cpu\\sources",
+  "seconds_per_learner_step": 0.006353783749818831,
+  "note": "First step through committed episode; no interpreter/model-load initialization. max20 steps,8 episodes; linear estimate only."
+}

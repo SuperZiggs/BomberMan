@@ -32,7 +32,7 @@ Input cần còn nguyên S2/metadata SD8A, collection và manifest tại `runs/p
 
 Registration rà lịch sử cả runs chính và game UI/runs, dùng cùng registry/OS lock với D-S2, đặt chỗ PENDING→COMPLETE và copy source/manifest. Va chạm hoặc metadata không ánh xạ được thì dừng; không tự đổi seed. CUDA thiếu sẽ báo lỗi, không tự chuyển CPU.
 
-Audit chỉ đọc ngày23/10 trên dữ liệu hiện có đang từ chối full: `runs/sd6-diagnostics-6600/overrides.json` có seed=null, hai `runs/t2-{full,smoke}-20261014-060320/replay_cases.json` lớn hơn32MiB chưa có seed index được kiểm chứng. Cần xác minh ánh xạ lịch sử này trước khi đăng ký full; không bỏ qua/xóa log để vượt kiểm. Smoke và fixture kiểm code không mở dải full. Chi tiết nằm trong verification kèm theo.
+Audit ban đầu ngày23/10 từ chối full do `runs/sd6-diagnostics-6600/overrides.json` có seed=null và hai `runs/t2-{full,smoke}-20261014-060320/replay_cases.json` lớn hơn32MiB. Sau yêu cầu khởi chạy, đã đọc toàn bộ hai replay (chỉ có seed28000–28003), kiểm source generator của70 dòng null và lập index `s2_kl_history.py` gắn SHA chính xác của cả ba tệp cùng generator. SD6 được phủ bảo thủ6600–6649, không gán seed giả cho từng dòng. Tệp khác hoặc bất kỳ SHA/evidence thay đổi vẫn bị từ chối; không bỏ qua/xóa log. Index là dependency được đóng băng cùng source. Bằng chứng đọc-only và kiểm thử: `runs/s2-kl-launch-preflight-20261023`.
 
 Sau mỗi lệnh kiểm `echo %ERRORLEVEL%` ngay lập tức; chỉ chạy stage tiếp theo khi bằng0.
 

@@ -1,0 +1,14 @@
+{
+  "cmd_pid": 19152,
+  "started_utc": "2026-10-23T10:47:34.3171418Z",
+  "output": "E:\\Bomberman\\runs\\s2-kl-20261023",
+  "launcher": "E:\\Bomberman\\runs\\s2-kl-20261023-train.cmd",
+  "sequence": [
+    "control",
+    "anchor"
+  ],
+  "device": "cuda:0",
+  "episodes_per_arm": 500,
+  "launch_environment": "host",
+  "reason": "Sandbox child processes ended with their exec session before training initialization"
+}

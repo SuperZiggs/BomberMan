@@ -1,0 +1,6 @@
+{"stage": "register", "output": "E:\\Bomberman\\runs\\s2-kl-20261023", "status": "OK", "elapsed_seconds": 47.59651389999999, "peak_rss_bytes": 854573056, "pid": 3664}
+{"stage": "train", "output": "E:\\Bomberman\\runs\\s2-kl-20261023", "status": "OK", "elapsed_seconds": 525.0472401000006, "peak_rss_bytes": 1805291520, "pid": 25120}
+{"stage": "train", "output": "E:\\Bomberman\\runs\\s2-kl-20261023", "status": "OK", "elapsed_seconds": 637.2105023000004, "peak_rss_bytes": 1816248320, "pid": 2724}
+{"stage": "diagnose", "output": "E:\\Bomberman\\runs\\s2-kl-20261023", "status": "DIAGNOSTICS_COMPLETE", "elapsed_seconds": 28.99988939999821, "peak_rss_bytes": 814981120, "pid": 22732}
+{"stage": "validate", "output": "E:\\Bomberman\\runs\\s2-kl-20261023", "status": "RB_RETENTION_FAIL", "elapsed_seconds": 977.0926136999988, "peak_rss_bytes": 781185024, "pid": 12724}
+{"stage": "package", "output": "E:\\Bomberman\\runs\\s2-kl-20261023", "status": "RB_RETENTION_FAIL", "elapsed_seconds": 11.976941799999622, "peak_rss_bytes": 781488128, "pid": 24144}

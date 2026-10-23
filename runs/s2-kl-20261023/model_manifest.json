@@ -1,0 +1,90 @@
+{
+  "format": "s2-kl-model-manifest-v1",
+  "registration_digest": "2c6c930e6908de5c3ab3725d17276bb3b9e7e26a5bb71719e2f86a06ddaa8b91",
+  "aliases": {
+    "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "control-0": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "control-100": "97d769843afdd4a876f0d601fbcb3c144790458244b139824434d86919af04b5",
+    "control-250": "5d14dae0ec3216635913c8ef926494d846bc1857f1d0e519a6b90b7417fc8c54",
+    "control-500": "dea8cd01bb223fb2edd4595e0ff38588c4a141ff9ded211e47cd3c8b15903cf9",
+    "anchor-0": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "anchor-100": "bc573f02e1a4b5fcde6576b74a7864fe51a633b35a662c7326ed896b5193155a",
+    "anchor-250": "efbc4e58c8a70b12efa4f69d71e16b040cc8886f2622ee3b8a6464acdbd44fe8",
+    "anchor-500": "99898c6fd7f8ef8a75547df8fa096470706066f61e0f372b62d5efc68df6bd9a"
+  },
+  "models": [
+    {
+      "id": "S2",
+      "arm": null,
+      "episode": 0,
+      "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+    },
+    {
+      "id": "control-100",
+      "arm": "control",
+      "episode": 100,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\control\\checkpoints\\100.pt",
+      "sha256": "97d769843afdd4a876f0d601fbcb3c144790458244b139824434d86919af04b5"
+    },
+    {
+      "id": "control-250",
+      "arm": "control",
+      "episode": 250,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\control\\checkpoints\\250.pt",
+      "sha256": "5d14dae0ec3216635913c8ef926494d846bc1857f1d0e519a6b90b7417fc8c54"
+    },
+    {
+      "id": "control-500",
+      "arm": "control",
+      "episode": 500,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\control\\checkpoints\\500.pt",
+      "sha256": "dea8cd01bb223fb2edd4595e0ff38588c4a141ff9ded211e47cd3c8b15903cf9"
+    },
+    {
+      "id": "anchor-100",
+      "arm": "anchor",
+      "episode": 100,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\anchor\\checkpoints\\100.pt",
+      "sha256": "bc573f02e1a4b5fcde6576b74a7864fe51a633b35a662c7326ed896b5193155a"
+    },
+    {
+      "id": "anchor-250",
+      "arm": "anchor",
+      "episode": 250,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\anchor\\checkpoints\\250.pt",
+      "sha256": "efbc4e58c8a70b12efa4f69d71e16b040cc8886f2622ee3b8a6464acdbd44fe8"
+    },
+    {
+      "id": "anchor-500",
+      "arm": "anchor",
+      "episode": 500,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\anchor\\checkpoints\\500.pt",
+      "sha256": "99898c6fd7f8ef8a75547df8fa096470706066f61e0f372b62d5efc68df6bd9a"
+    }
+  ],
+  "endpoints": {
+    "baseline": {
+      "id": "S2",
+      "arm": null,
+      "episode": 0,
+      "checkpoint": "E:\\Bomberman\\runs\\sd8a-20261020\\train\\epoch_16.pt",
+      "sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814"
+    },
+    "control500": {
+      "id": "control-500",
+      "arm": "control",
+      "episode": 500,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\control\\checkpoints\\500.pt",
+      "sha256": "dea8cd01bb223fb2edd4595e0ff38588c4a141ff9ded211e47cd3c8b15903cf9"
+    },
+    "anchor500": {
+      "id": "anchor-500",
+      "arm": "anchor",
+      "episode": 500,
+      "checkpoint": "E:\\Bomberman\\runs\\s2-kl-20261023\\arms\\anchor\\checkpoints\\500.pt",
+      "sha256": "99898c6fd7f8ef8a75547df8fa096470706066f61e0f372b62d5efc68df6bd9a"
+    }
+  },
+  "model_manifest_digest": "1526000b1f9b36a0f8d45678e38f9dd4632c228f993a80d82681c84d9fd2b049"
+}

@@ -1,0 +1,183 @@
+{
+  "history_tests": {
+    "tests": 9,
+    "passed": 9,
+    "seconds": 29.596,
+    "log": "history-green.log",
+    "acceptance_sha256": "7d153697f551f0fda1f508690c3204390d19abecb76bd6cdc28dba15308f7a1b"
+  },
+  "review": {
+    "critical": 0,
+    "important": 0,
+    "minor": 0,
+    "independent_full_replay_parse": true
+  },
+  "protected_files_unchanged": 13,
+  "source_closure": {
+    "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+    "combat_move_teacher.py": "a30a2f2b8450c3e13734f5d7f525e275ee0655f77fe0b7bfddc37cbba3959616",
+    "evaluate.py": "1307e5d4bdc846914b5b0c8879d3b5aaad075dbf2838dcff6fbbeb9e31938a6e",
+    "group_rl.py": "781e2556429184fce2189b4816e46f0a57a045cbaa924fd4bcc82487ae3fa541",
+    "kill_search.py": "033deceeeb1f9e60d7ff970e8880dbc438f15260f3297c69e496f874cc4ad12d",
+    "phase_d_s2_evaluation.py": "86c01d0e13dd4d41ca092849b8708dfc20acc23e2b29666918b520a5e7efb589",
+    "phase_d_s2_ledger.py": "bca39ff1e636c5595a07dd5aa9c800260f1eb3a82a2b3fdf2131078521aa3353",
+    "phase_d_s2_protocol.py": "53109dff9f198db56ec88faaf8c8841b170d4afd874904ed93f96817f0dfc953",
+    "progress.py": "b63c84e729c8fd214bcf0f457d20abb1d4cbba28b5c7d514aa3e6c29ec162eb4",
+    "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+    "run_s2_kl_probe.py": "5d085d0742875bd29306d7d2be38ae57d28f4fcddcd39834d89b0d69c5f430ee",
+    "s2_kl_evaluation.py": "75b7b3491ab84506b585b22501c5b086b6a2c966b2698fb02573ea14de300df2",
+    "s2_kl_history.py": "7770a98138c1fed8fc36c59eec99aab0b458f1371a27c4e28e7cd6331e87ac93",
+    "s2_kl_ledger.py": "70e5e034eee5dca91851d370d79cb18b6956fdc43a69cfcc5b7d5996e97c0c9c",
+    "s2_kl_protocol.py": "186b1a5cf70e5249c30ed850f353e191d320dac96f3b9310be4371f92747d1e2",
+    "s2_kl_training.py": "4453c44a2b5fb7f7ea4940e845b1cfbaa888d21ced8e73a3bd2f539dcc29718c",
+    "tactical_teacher.py": "b1166e4eb347d538d59c1ecf1d854bba403177d72467bd61f2055f828c04dd77",
+    "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+    "training_state.py": "0d9b822afea27df99394def442ed94d1f85438edb301612e7c9ea18be0ff5adc"
+  },
+  "full_run_started": true,
+  "full_regression": {
+    "tests": 595,
+    "seconds": 1036.727,
+    "exit_code": 1,
+    "errors": 20,
+    "failures": 1,
+    "new_failures": [],
+    "missing_baseline": [],
+    "qualified_failures": [
+      [
+        "ERROR",
+        "test_resume_keeps_the_warm_start_as_anchor (test_group_rl.TrainerTests.test_resume_keeps_the_warm_start_as_anchor)"
+      ],
+      [
+        "ERROR",
+        "test_resume_replays_group_rollouts (test_group_rl.TrainerTests.test_resume_replays_group_rollouts)"
+      ],
+      [
+        "ERROR",
+        "test_resume_restores_the_buffer (test_group_rl.TrainerTests.test_resume_restores_the_buffer)"
+      ],
+      [
+        "ERROR",
+        "test_phase_d_snapshot_evaluation (unittest.loader._FailedTest.test_phase_d_snapshot_evaluation)"
+      ],
+      [
+        "ERROR",
+        "test_parallel_map_keeps_job_order_and_counts_every_tick (test_progress.ProgressTests.test_parallel_map_keeps_job_order_and_counts_every_tick)"
+      ],
+      [
+        "ERROR",
+        "test_cancelled_runner_records_incomplete_without_optimizer_or_plots (test_reward_audit.AuditChecks.test_cancelled_runner_records_incomplete_without_optimizer_or_plots)"
+      ],
+      [
+        "ERROR",
+        "test_invalid_completed_shard_is_not_resumed (test_run_sd53_pilot.PublicContracts.test_invalid_completed_shard_is_not_resumed)"
+      ],
+      [
+        "ERROR",
+        "test_smoke_train_refuses_overwrite_and_resumes (test_run_sd5_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)"
+      ],
+      [
+        "ERROR",
+        "test_test_stage_needs_both_models_and_opens_once (test_run_sd5_pilot.StageTests.test_test_stage_needs_both_models_and_opens_once)"
+      ],
+      [
+        "ERROR",
+        "test_smoke_train_refuses_overwrite_and_resumes (test_run_sd7_pilot.StageTests.test_smoke_train_refuses_overwrite_and_resumes)"
+      ],
+      [
+        "ERROR",
+        "test_test_stage_opens_once (test_run_sd7_pilot.StageTests.test_test_stage_opens_once)"
+      ],
+      [
+        "ERROR",
+        "test_new_recipe_settings_are_part_of_the_resume_provenance (test_search_teacher.SearchTeacherTests.test_new_recipe_settings_are_part_of_the_resume_provenance)"
+      ],
+      [
+        "ERROR",
+        "test_resume_replays_sudden_death_curriculum (test_search_teacher.SearchTeacherTests.test_resume_replays_sudden_death_curriculum)"
+      ],
+      [
+        "ERROR",
+        "test_ring_schedule_matches_loc_update (test_sudden_death_experiment.SuddenDeathTests.test_ring_schedule_matches_loc_update)"
+      ],
+      [
+        "ERROR",
+        "test_changed_source_cannot_reuse_control (test_two_bomb_complete.CompleteRunChecks.test_changed_source_cannot_reuse_control)"
+      ],
+      [
+        "ERROR",
+        "test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds (test_two_bomb_complete.CompleteRunChecks.test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds)"
+      ],
+      [
+        "ERROR",
+        "test_current_trainer_cannot_reuse_the_old_control (test_two_bomb_complete.CompleteRunChecks.test_current_trainer_cannot_reuse_the_old_control)"
+      ],
+      [
+        "ERROR",
+        "test_existing_output_is_not_overwritten_or_trained (test_two_bomb_complete.CompleteRunChecks.test_existing_output_is_not_overwritten_or_trained)"
+      ],
+      [
+        "ERROR",
+        "test_missing_cuda_rejects_training_before_creating_output (test_two_bomb_complete.CompleteRunChecks.test_missing_cuda_rejects_training_before_creating_output)"
+      ],
+      [
+        "ERROR",
+        "test_real_reference_is_complete_and_unchanged (test_two_bomb_complete.CompleteRunChecks.test_real_reference_is_complete_and_unchanged)"
+      ],
+      [
+        "FAIL",
+        "test_frozen_normal_matrix_and_statistics_are_declared (test_pde_evaluator_contracts.PDECheckContractTests.test_frozen_normal_matrix_and_statistics_are_declared)"
+      ]
+    ],
+    "s2_kl_passed": 60,
+    "actual_cuda_enabled": true
+  },
+  "registered": true,
+  "registration_digest": "2c6c930e6908de5c3ab3725d17276bb3b9e7e26a5bb71719e2f86a06ddaa8b91",
+  "output": "E:\\Bomberman\\runs\\s2-kl-20261023",
+  "old_reservation_unchanged": true,
+  "protected_changed_only_append_registry": true,
+  "launch": {
+    "cmd_pid": 19152,
+    "started_utc": "2026-10-23T10:47:34.3171418Z",
+    "output": "E:\\Bomberman\\runs\\s2-kl-20261023",
+    "launcher": "E:\\Bomberman\\runs\\s2-kl-20261023-train.cmd",
+    "sequence": [
+      "control",
+      "anchor"
+    ],
+    "device": "cuda:0",
+    "episodes_per_arm": 500,
+    "launch_environment": "host",
+    "reason": "Sandbox child processes ended with their exec session before training initialization"
+  },
+  "training_start_confirmed": {
+    "arm": "control",
+    "committed_episode": 27,
+    "device": "cuda:0",
+    "training_state_exists": true,
+    "observed_utc": "2026-10-23T10:48:03Z"
+  },
+  "automation_id": "ki-m-tra-s2-kl-sau-1-gi",
+  "active_monitoring_stopped": true,
+  "training_complete": true,
+  "training_episodes": {
+    "control": 500,
+    "anchor": 500
+  },
+  "training_seconds": {
+    "control": 525.0472401000006,
+    "anchor": 637.2105023000004
+  },
+  "diagnostics_complete": true,
+  "diagnostic_models": 7,
+  "evaluation_launcher": "runs/s2-kl-20261023-evaluate.cmd",
+  "evaluation_host_cmd_pid": 23824,
+  "evaluation_handoff_utc": "2026-10-23T11:31:59Z",
+  "evaluation_stage_at_handoff": "complete",
+  "evaluation_complete": true,
+  "validation_games": 1400,
+  "scientific_status": "RB_RETENTION_FAIL",
+  "analysis_path": "runs/s2-kl-20261023-analysis-20261023/analysis_vi.md",
+  "automation_deleted": true
+}

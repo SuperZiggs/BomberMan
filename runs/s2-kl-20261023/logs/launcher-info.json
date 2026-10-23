@@ -1,0 +1,16 @@
+{
+  "cmd_pid": 23824,
+  "started_utc": "2026-10-23T11:31:22.1824120Z",
+  "output": "E:\\Bomberman\\runs\\s2-kl-20261023",
+  "launcher": "E:\\Bomberman\\runs\\s2-kl-20261023-evaluate.cmd",
+  "sequence": [
+    "diagnose",
+    "validate",
+    "package"
+  ],
+  "registered_device": "cuda:0",
+  "evaluation_device": "cpu",
+  "workers": 2,
+  "launch_environment": "host",
+  "training_complete": true
+}

@@ -1,0 +1,467 @@
+E:\Bomberman\train_actor_critic.py:1551: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  **({"anchor_kl": float(anchor_kl)} if anchor_buf else {}),
+======================================================================
+FAIL: test_full_one_variable_protocol_is_frozen (test_s2_kl_protocol.ConfigurationTests.test_full_one_variable_protocol_is_frozen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 18, in test_full_one_variable_protocol_is_frozen
+    config = function(self, 'config_for')()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_smoke_keeps_both_coefficients_and_uses_separate_seeds (test_s2_kl_protocol.ConfigurationTests.test_smoke_keeps_both_coefficients_and_uses_separate_seeds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 40, in test_smoke_keeps_both_coefficients_and_uses_separate_seeds
+    config = function(self, 'config_for')(smoke=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_each_registered_projection_or_source_drift_is_rejected (test_s2_kl_protocol.RegistrationTests.test_each_registered_projection_or_source_drift_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 114, in test_each_registered_projection_or_source_drift_is_rejected
+    verify = function(self, 'verify_run')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_real_locked_inputs_and_source_closure_are_copied_and_digest_locked (test_s2_kl_protocol.RegistrationTests.test_real_locked_inputs_and_source_closure_are_copied_and_digest_locked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 55, in test_real_locked_inputs_and_source_closure_are_copied_and_digest_locked
+    function(self, 'verify_run')
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_runtime_actual_profile_is_checked_even_if_projection_digests_are_recomputed (test_s2_kl_protocol.RegistrationTests.test_runtime_actual_profile_is_checked_even_if_projection_digests_are_recomputed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 127, in test_runtime_actual_profile_is_checked_even_if_projection_digests_are_recomputed
+    verify = function(self, 'verify_run')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_smoke_can_repeat_without_touching_full_registry_and_resume_identity_is_fixed (test_s2_kl_protocol.RegistrationTests.test_smoke_can_repeat_without_touching_full_registry_and_resume_identity_is_fixed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 136, in test_smoke_can_repeat_without_touching_full_registry_and_resume_identity_is_fixed
+    register = function(self, 'register')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_workers_are_only_one_or_two_and_invalid_device_never_falls_back (test_s2_kl_protocol.RegistrationTests.test_workers_are_only_one_or_two_and_invalid_device_never_falls_back)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 79, in test_workers_are_only_one_or_two_and_invalid_device_never_falls_back
+    register = function(self, 'register')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_wrong_s2_or_selected_identity_is_rejected_before_publication (test_s2_kl_protocol.RegistrationTests.test_wrong_s2_or_selected_identity_is_rejected_before_publication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 93, in test_wrong_s2_or_selected_identity_is_rejected_before_publication
+    register = function(self, 'register')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_nested_ui_history_raw_ledger_mechanism_and_reservation_conflicts_fail_closed (test_s2_kl_protocol.SeedSafetyTests.test_nested_ui_history_raw_ledger_mechanism_and_reservation_conflicts_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 154, in test_nested_ui_history_raw_ledger_mechanism_and_reservation_conflicts_fail_closed
+    register = function(self, 'register')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_source_root_nested_ui_inventory_is_also_checked (test_s2_kl_protocol.SeedSafetyTests.test_source_root_nested_ui_inventory_is_also_checked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 173, in test_source_root_nested_ui_inventory_is_also_checked
+    register = function(self, 'register')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_inventory_is_rechecked_under_original_registry_lock (test_s2_kl_protocol.TransactionTests.test_inventory_is_rechecked_under_original_registry_lock)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 201, in test_inventory_is_rechecked_under_original_registry_lock
+    register=function(self,'register')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_original_ds2_registry_lock_prevents_new_namespace_reservation (test_s2_kl_protocol.TransactionTests.test_original_ds2_registry_lock_prevents_new_namespace_reservation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 223, in test_original_ds2_registry_lock_prevents_new_namespace_reservation
+    register = function(self, 'register')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_pending_publish_crashes_recover_same_identity_and_preserve_old_entries (test_s2_kl_protocol.TransactionTests.test_pending_publish_crashes_recover_same_identity_and_preserve_old_entries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 243, in test_pending_publish_crashes_recover_same_identity_and_preserve_old_entries
+    register = function(self, 'register'); verify = function(self, 'verify_run')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_two_registration_processes_cannot_reserve_the_same_ranges (test_s2_kl_protocol.TransactionTests.test_two_registration_processes_cannot_reserve_the_same_ranges)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 186, in test_two_registration_processes_cannot_reserve_the_same_ranges
+    function(self, 'register')
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_writer_lock_is_held_for_whole_registration (test_s2_kl_protocol.TransactionTests.test_writer_lock_is_held_for_whole_registration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_protocol.py", line 234, in test_writer_lock_is_held_for_whole_registration
+    register = function(self, 'register')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_candidate_inventory_waits_for_both_arms_and_rejects_checkpoint_or_completion_drift (test_s2_kl_training.ExactResumeTests.test_candidate_inventory_waits_for_both_arms_and_rejects_checkpoint_or_completion_drift)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 189, in test_candidate_inventory_waits_for_both_arms_and_rejects_checkpoint_or_completion_drift
+    train = function(self, 'train_arm'); candidates = function(self, 'candidates_for_run')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer) (arm='control')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 165, in test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer
+    with self.subTest(arm=arm): self.continuation(arm, 'after_state_commit', observe=True)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 117, in continuation
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer) (arm='anchor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 165, in test_cpu_both_arms_keep_committed_episode_exactly_with_offline_observer
+    with self.subTest(arm=arm): self.continuation(arm, 'after_state_commit', observe=True)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 117, in continuation
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_cpu_both_arms_replay_uncommitted_episode_exactly (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_replay_uncommitted_episode_exactly) (arm='control')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 161, in test_cpu_both_arms_replay_uncommitted_episode_exactly
+    with self.subTest(arm=arm): self.continuation(arm, 'before_state_commit')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 117, in continuation
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_cpu_both_arms_replay_uncommitted_episode_exactly (test_s2_kl_training.ExactResumeTests.test_cpu_both_arms_replay_uncommitted_episode_exactly) (arm='anchor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 161, in test_cpu_both_arms_replay_uncommitted_episode_exactly
+    with self.subTest(arm=arm): self.continuation(arm, 'before_state_commit')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_training.py", line 117, in continuation
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_state_zero_identity_is_saved_before_updates_and_lost_committed_state_is_not_reset (test_s2_kl_training.ExactResumeTests.test_state_zero_identity_is_saved_before_updates_and_lost_committed_state_is_not_reset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 168, in test_state_zero_identity_is_saved_before_updates_and_lost_committed_state_is_not_reset
+    train = function(self, 'train_arm')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_two_arms_share_every_paired_board_corner_and_only_rulebot (test_s2_kl_training.ScheduleTests.test_two_arms_share_every_paired_board_corner_and_only_rulebot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_training.py", line 20, in test_two_arms_share_every_paired_board_corner_and_only_rulebot
+    schedule = function(self, 'build_train_schedule')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_binary_rb_corner_rows_are_paired_in_the_same_board_cluster (test_s2_kl_evaluation.ClusterTests.test_binary_rb_corner_rows_are_paired_in_the_same_board_cluster)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 174, in test_binary_rb_corner_rows_are_paired_in_the_same_board_cluster
+    compare = function(self, 'cluster_comparison')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_invalid_pairing_duplicates_board_identity_nonfinite_and_nonprobability_fail (test_s2_kl_evaluation.ClusterTests.test_invalid_pairing_duplicates_board_identity_nonfinite_and_nonprobability_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 165, in test_invalid_pairing_duplicates_board_identity_nonfinite_and_nonprobability_fail
+    compare = function(self, 'cluster_comparison')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_unequal_clusters_preserve_state_micro_weights_and_paired_board_resampling (test_s2_kl_evaluation.ClusterTests.test_unequal_clusters_preserve_state_micro_weights_and_paired_board_resampling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 141, in test_unequal_clusters_preserve_state_micro_weights_and_paired_board_resampling
+    compare = function(self, 'cluster_comparison')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_baseline_raw_rows_match_independent_forward_and_cached_summary (test_s2_kl_evaluation.DiagnosticsTests.test_baseline_raw_rows_match_independent_forward_and_cached_summary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 93, in test_baseline_raw_rows_match_independent_forward_and_cached_summary
+    diagnose = function(self, 'diagnose_model'); load = function(self, 'load_samples')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_exact_thresholds_pass_but_one_ulp_outside_each_threshold_fails (test_s2_kl_evaluation.GateTests.test_exact_thresholds_pass_but_one_ulp_outside_each_threshold_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 187, in test_exact_thresholds_pass_but_one_ulp_outside_each_threshold_fails
+    self.assertEqual(self.gate()['status'],'RETENTION_PILOT_PASS')
+                     ^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 184, in gate
+    return function(self, 'decide_gate')(*(values or gate_fixture()), complete=kwargs.pop('complete',True), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_smoke_is_never_scientific_pass_and_nonfinite_inputs_are_invalid (test_s2_kl_evaluation.GateTests.test_smoke_is_never_scientific_pass_and_nonfinite_inputs_are_invalid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 228, in test_smoke_is_never_scientific_pass_and_nonfinite_inputs_are_invalid
+    self.assertEqual(self.gate(smoke=True)['status'],'SMOKE_ONLY')
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 184, in gate
+    return function(self, 'decide_gate')(*(values or gate_fixture()), complete=kwargs.pop('complete',True), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_status_priority_and_all_six_conditions_are_always_emitted (test_s2_kl_evaluation.GateTests.test_status_priority_and_all_six_conditions_are_always_emitted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 216, in test_status_priority_and_all_six_conditions_are_always_emitted
+    result=self.gate(values,complete=complete)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 184, in gate
+    return function(self, 'decide_gate')(*(values or gate_fixture()), complete=kwargs.pop('complete',True), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_full_report_uses_only_500_even_when_intermediate_is_perfect_and_refuses_incomplete_raw (test_s2_kl_evaluation.ReportTests.test_full_report_uses_only_500_even_when_intermediate_is_perfect_and_refuses_incomplete_raw)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 236, in test_full_report_uses_only_500_even_when_intermediate_is_perfect_and_refuses_incomplete_raw
+    build_report=function(self,'build_report');load=function(self,'load_samples')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_validation_tasks_are_fixed_endpoint_inventory_and_paired_rb_boards (test_s2_kl_evaluation.ReportTests.test_validation_tasks_are_fixed_endpoint_inventory_and_paired_rb_boards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 298, in test_validation_tasks_are_fixed_endpoint_inventory_and_paired_rb_boards
+    tasks_for = function(self, 'validation_tasks')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_changed_shard_bad_shape_count_row_or_heldout_cannot_trigger_resampling (test_s2_kl_evaluation.SamplingTests.test_changed_shard_bad_shape_count_row_or_heldout_cannot_trigger_resampling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 69, in test_changed_shard_bad_shape_count_row_or_heldout_cannot_trigger_resampling
+    load = function(self, 'load_samples')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_real_manifest_loads_exact_locked_rows_and_excludes_original_heldout (test_s2_kl_evaluation.SamplingTests.test_real_manifest_loads_exact_locked_rows_and_excludes_original_heldout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 43, in test_real_manifest_loads_exact_locked_rows_and_excludes_original_heldout
+    load = function(self, 'load_samples')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_targets_accept_all_legal_finite_maxima_and_reject_noninformative_ties (test_s2_kl_evaluation.SamplingTests.test_targets_accept_all_legal_finite_maxima_and_reject_noninformative_ties)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_evaluation.py", line 27, in test_targets_accept_all_legal_finite_maxima_and_reject_noninformative_ties
+    target = function(self, 'decision_targets')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_cli_frozen_stages_flags_and_no_test_or_budget_escape_hatch (test_run_s2_kl_probe.ContractTests.test_cli_frozen_stages_flags_and_no_test_or_budget_escape_hatch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s2_kl_probe.py", line 23, in test_cli_frozen_stages_flags_and_no_test_or_budget_escape_hatch
+    result=cli(self,'--help');self.assertEqual(result.returncode,0,result.stderr)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 98, in cli
+    function(test, 'main')
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_invalid_order_drift_and_keyboard_interrupt_have_documented_exit_codes (test_run_s2_kl_probe.ContractTests.test_invalid_order_drift_and_keyboard_interrupt_have_documented_exit_codes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s2_kl_probe.py", line 37, in test_invalid_order_drift_and_keyboard_interrupt_have_documented_exit_codes
+    main=function(self,'main')
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_training_order_missing_arm_and_overrides_create_no_game_ledger (test_run_s2_kl_probe.ContractTests.test_training_order_missing_arm_and_overrides_create_no_game_ledger)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s2_kl_probe.py", line 56, in test_training_order_missing_arm_and_overrides_create_no_game_ledger
+    function(self,'main')
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_actual_cpu_cli_journey_snapshots_raw_ledgers_resume_and_projection_integrity (test_run_s2_kl_probe.JourneyTests.test_actual_cpu_cli_journey_snapshots_raw_ledgers_resume_and_projection_integrity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s2_kl_probe.py", line 96, in test_actual_cpu_cli_journey_snapshots_raw_ledgers_resume_and_projection_integrity
+    function(self,name)
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+======================================================================
+FAIL: test_incomplete_package_exports_only_available_output_without_doing_missing_work (test_run_s2_kl_probe.PackagingTests.test_incomplete_package_exports_only_available_output_without_doing_missing_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s2_kl_probe.py", line 68, in test_incomplete_package_exports_only_available_output_without_doing_missing_work
+    package=function(self,'package_run')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Bomberman\test_s2_kl_support.py", line 29, in function
+    test.assertTrue(RUNNER.is_file(), 'Missing S2-KL public runner run_s2_kl_probe.py')
+AssertionError: False is not true : Missing S2-KL public runner run_s2_kl_probe.py
+
+----------------------------------------------------------------------
+Ran 40 tests in 2.915s
+
+FAILED (failures=39, skipped=1)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-math-aa34eyfr\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-math-aa34eyfr\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-l17mo8ps\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-l17mo8ps\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-jsupn3t9\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-jsupn3t9\best_phaseC.pt (best episode: 0)

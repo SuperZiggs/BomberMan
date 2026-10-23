@@ -1,0 +1,8 @@
+{
+  "format": "s2-kl-arm-initialization-v1",
+  "arm": "anchor",
+  "registration_digest": "bfbdf1732a0097c84702b79b15fd9fc1e979b9ddde92fb1ba03e550975adac21",
+  "initial_sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+  "reference_sha256": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+  "anchor_coef": 1.0
+}

@@ -1,0 +1,12 @@
+======================================================================
+FAIL: test_deduplicated_sha_keeps_both_endpoint_aliases_in_report (test_s2_kl_review.EquivalentModelTests.test_deduplicated_sha_keeps_both_endpoint_aliases_in_report)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_s2_kl_review.py", line 100, in test_deduplicated_sha_keeps_both_endpoint_aliases_in_report
+    self.assertTrue(report['complete'], 'Identical weights still have both trained endpoint identities')
+AssertionError: False is not true : Identical weights still have both trained endpoint identities
+
+----------------------------------------------------------------------
+Ran 1 test in 0.020s
+
+FAILED (failures=1)

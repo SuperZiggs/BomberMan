@@ -1,0 +1,144 @@
+E:\Bomberman\train_actor_critic.py:1551: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  **({"anchor_kl": float(anchor_kl)} if anchor_buf else {}),
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-epm3ggu0\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-epm3ggu0\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-epm3ggu0\\absent\\registration.json'
+[Errno 2] No such file or directory: 'E:\\Bomberman\\s2-kl-cli-order-epm3ggu0\\absent\\registration.json'
+Registration digest drift
+----------------------------------------------------------------------
+Ran 119 tests in 468.573s
+
+OK
+Warm-started from E:\Bomberman\s2-kl-resume-tveppnjp\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.355 | bombs: 2.8 | walls: 2.2 | combat bombs: 1/9 | loss: 1.7265 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-tveppnjp\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-tveppnjp\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.355 | bombs: 2.8 | walls: 2.2 | combat bombs: 1/9 | loss: 1.7265 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-_8rnwqgx\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.355 | bombs: 2.8 | walls: 2.2 | combat bombs: 1/9 | loss: 1.7265 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-_8rnwqgx\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-_8rnwqgx\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.355 | bombs: 2.8 | walls: 2.2 | combat bombs: 1/9 | loss: 1.7265 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-d9_syfpe\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.355 | bombs: 2.8 | walls: 2.2 | combat bombs: 1/9 | loss: 1.7269 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-d9_syfpe\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-d9_syfpe\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.355 | bombs: 2.8 | walls: 2.2 | combat bombs: 1/9 | loss: 1.7269 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-98vmabms\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.355 | bombs: 2.8 | walls: 2.2 | combat bombs: 1/9 | loss: 1.7269 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-98vmabms\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-98vmabms\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.355 | bombs: 2.8 | walls: 2.2 | combat bombs: 1/9 | loss: 1.7269 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-models-s59tse06\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-models-s59tse06\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-qygaia7l\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-qygaia7l\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-qygaia7l\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-z6raq49c\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-z6raq49c\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-z6raq49c\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-ooacvsjg\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-ooacvsjg\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-ooacvsjg\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-ecl06a93\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-resume-ecl06a93\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-resume-ecl06a93\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-state0-01kaai_v\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-state0-01kaai_v\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3718 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\s2-kl-state0-01kaai_v\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\s2-kl-state0-01kaai_v\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.267 | bombs: 3.0 | walls: 1.8 | combat bombs: 2/8 | loss: 2.3723 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-math-z5b_tywr\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-math-z5b_tywr\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-7fqje7zx\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-7fqje7zx\best_phaseC.pt (best episode: 0)
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+
+Saved final model to E:\Bomberman\s2-kl-observer-a0d0ewyz\final_phaseC.pt
+Saved best model to E:\Bomberman\s2-kl-observer-a0d0ewyz\best_phaseC.pt (best episode: 0)
+Expanded observation channels 12 -> 13
+Warm-started from E:\Bomberman\d-s2-acceptance-slfwu_5j\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-slfwu_5j\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-mc2qpxot\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-mc2qpxot\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-mc2qpxot\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-8zzl36di\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-8zzl36di\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-8zzl36di\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-k8ixret_\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-k8ixret_\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-k8ixret_\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-uvteyf8b\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.342 | bombs: 3.5 | walls: 2.2 | combat bombs: 0/1 | loss: 3.3759 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-uvteyf8b\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-uvteyf8b\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.342 | bombs: 3.5 | walls: 2.2 | combat bombs: 0/1 | loss: 3.3759 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-9i8gpzm3\full\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-acceptance-9i8gpzm3\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+Warm-started from E:\Bomberman\d-s2-acceptance-9i8gpzm3\split\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-atomic-1odzsi7y\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-atomic-1odzsi7y\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-atomic-k0sh3nr3\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-atomic-k0sh3nr3\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-corrupt-so4zfy48\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-corrupt-so4zfy48\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-corrupt-6qt4o4pv\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-corrupt-6qt4o4pv\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-test-resume-6b4uzyiu\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-test-resume-6b4uzyiu\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-resume-_xp1q92x\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-resume-_xp1q92x\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-ledger-tb28kvth\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-ledger-tb28kvth\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-snapshot-8ad6yzgq\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-snapshot-8ad6yzgq\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-once-w3uvh34o\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-once-w3uvh34o\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-stop-ibmsfq70\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3115 | lr: 1.3e-06 | pool: 0
+Warm-started from E:\Bomberman\d-s2-stop-ibmsfq70\inputs\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep     4 | WR:   0.0% | active WR:   0.0% | kills: 0.00 | reward: +0.305 | bombs: 3.0 | walls: 2.0 | combat bombs: 1/6 | loss: 3.3103 | lr: 1.3e-06 | pool: 0

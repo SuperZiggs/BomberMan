@@ -1,0 +1,57 @@
+{
+  "device": "cuda:0",
+  "output": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cuda",
+  "rows": [
+    {
+      "arm": "control",
+      "episode": 1,
+      "steps": 20,
+      "seconds": 0.754759000003105
+    },
+    {
+      "arm": "control",
+      "episode": 2,
+      "steps": 20,
+      "seconds": 0.21745630000077654
+    },
+    {
+      "arm": "control",
+      "episode": 3,
+      "steps": 20,
+      "seconds": 0.22219320001022425
+    },
+    {
+      "arm": "control",
+      "episode": 4,
+      "steps": 20,
+      "seconds": 0.22383369998715352
+    },
+    {
+      "arm": "pool",
+      "episode": 1,
+      "steps": 20,
+      "seconds": 0.21067210000182968
+    },
+    {
+      "arm": "pool",
+      "episode": 2,
+      "steps": 20,
+      "seconds": 0.3139831000007689
+    },
+    {
+      "arm": "pool",
+      "episode": 3,
+      "steps": 20,
+      "seconds": 0.2505421999958344
+    },
+    {
+      "arm": "pool",
+      "episode": 4,
+      "steps": 20,
+      "seconds": 0.27773960000195075
+    }
+  ],
+  "source_root": "E:\\Bomberman\\runs\\d-s2-code-profile-20261022-cuda\\sources",
+  "seconds_per_learner_step": 0.015444870000010269,
+  "note": "First step through committed episode; no interpreter/model-load initialization. max20 steps,8 episodes; linear estimate only."
+}

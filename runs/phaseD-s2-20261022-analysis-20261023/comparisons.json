@@ -1,0 +1,632 @@
+{
+  "control-1000_minus_S2": {
+    "cnn": {
+      "active_win": {
+        "difference_pp": 3.4375000000000004,
+        "ci95_pp": [
+          -0.625,
+          7.8125
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 5.0,
+        "ci95_pp": [
+          -1.5625,
+          11.5625
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -5.3125,
+        "ci95_pp": [
+          -13.125,
+          2.5
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -0.9375,
+        "ci95_pp": [
+          -3.75,
+          1.875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 0.9375,
+        "ci95_pp": [
+          -3.75,
+          5.9375
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": -0.9375,
+        "ci95_pp": [
+          -5.3125,
+          3.125
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "RB": {
+      "active_win": {
+        "difference_pp": -7.5,
+        "ci95_pp": [
+          -16.25,
+          1.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -11.25,
+        "ci95_pp": [
+          -21.25,
+          -1.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 8.75,
+        "ci95_pp": [
+          1.25,
+          16.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 1.25,
+        "ci95_pp": [
+          -2.5,
+          6.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 3.75,
+        "ci95_pp": [
+          0.0,
+          8.75
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "control-2000_minus_S2": {
+    "cnn": {
+      "active_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -4.0625,
+          4.375
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 1.875,
+        "ci95_pp": [
+          -4.375,
+          8.445312499999886
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -1.875,
+        "ci95_pp": [
+          -8.75,
+          4.6875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -3.125,
+          3.125
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 1.25,
+        "ci95_pp": [
+          -3.4375000000000004,
+          5.9375
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -5.3125,
+          5.3125
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "RB": {
+      "active_win": {
+        "difference_pp": -18.75,
+        "ci95_pp": [
+          -31.25,
+          -6.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -16.25,
+        "ci95_pp": [
+          -26.25,
+          -6.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 11.25,
+        "ci95_pp": [
+          3.75,
+          18.75
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 3.75,
+        "ci95_pp": [
+          -1.25,
+          8.75
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 3.75,
+        "ci95_pp": [
+          0.0,
+          8.75
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "pool-2000_minus_S2": {
+    "cnn": {
+      "active_win": {
+        "difference_pp": 0.9375,
+        "ci95_pp": [
+          -3.125,
+          4.6875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 0.9375,
+        "ci95_pp": [
+          -5.3125,
+          6.875000000000001
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -6.875000000000001,
+          4.6875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -0.625,
+        "ci95_pp": [
+          -3.75,
+          2.5
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -4.6875,
+          5.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": -0.625,
+        "ci95_pp": [
+          -5.0,
+          3.75
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "RB": {
+      "active_win": {
+        "difference_pp": -26.25,
+        "ci95_pp": [
+          -38.75,
+          -13.750000000000002
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -12.5,
+        "ci95_pp": [
+          -23.75,
+          -1.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 10.0,
+        "ci95_pp": [
+          0.0,
+          20.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 7.5,
+        "ci95_pp": [
+          1.25,
+          13.750000000000002
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 2.5,
+        "ci95_pp": [
+          0.0,
+          6.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "pool-2000_minus_control-2000": {
+    "cnn": {
+      "active_win": {
+        "difference_pp": 0.9375,
+        "ci95_pp": [
+          -2.8125,
+          4.6875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -0.9375,
+        "ci95_pp": [
+          -6.875000000000001,
+          5.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 0.625,
+        "ci95_pp": [
+          -6.25,
+          7.5
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": -0.625,
+        "ci95_pp": [
+          -3.125,
+          1.875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -6.25,
+          3.75
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": -0.625,
+        "ci95_pp": [
+          -6.25,
+          4.6875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "RB": {
+      "active_win": {
+        "difference_pp": -7.5,
+        "ci95_pp": [
+          -20.0,
+          5.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 3.75,
+        "ci95_pp": [
+          -7.5,
+          15.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -11.25,
+          10.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 3.75,
+        "ci95_pp": [
+          -2.5,
+          10.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -6.25,
+          2.5
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "pool-2000_minus_control-1000": {
+    "cnn": {
+      "active_win": {
+        "difference_pp": -2.5,
+        "ci95_pp": [
+          -6.5625,
+          1.5625
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -4.0625,
+        "ci95_pp": [
+          -10.625,
+          2.1875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 4.0625,
+        "ci95_pp": [
+          -3.4375000000000004,
+          11.5625
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.3125,
+        "ci95_pp": [
+          -1.875,
+          2.5
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": -0.9375,
+        "ci95_pp": [
+          -6.25,
+          4.0625
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": 0.3125,
+        "ci95_pp": [
+          -4.0625,
+          4.6875
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "RB": {
+      "active_win": {
+        "difference_pp": -18.75,
+        "ci95_pp": [
+          -31.25,
+          -6.25
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -11.25,
+          8.75
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": 1.25,
+        "ci95_pp": [
+          -7.5,
+          10.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_win": {
+        "difference_pp": 6.25,
+        "ci95_pp": [
+          0.0,
+          12.5
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "sudden_death_death": {
+        "difference_pp": -1.25,
+        "ci95_pp": [
+          -6.25,
+          3.75
+        ],
+        "board_pairs": 40,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  }
+}

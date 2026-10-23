@@ -1,0 +1,30 @@
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+Interpolated trunk_fc.0.weight from board 9x9 to 11x11
+{
+  "output": "runs\\pde2-51000",
+  "proposals": {
+    "recommended_ffa_agent": "S2",
+    "ffa_tie": true,
+    "phase_E_from_S2": true,
+    "phase_D_from_S2": true,
+    "decision": "proposal_only_no_training_started"
+  }
+}

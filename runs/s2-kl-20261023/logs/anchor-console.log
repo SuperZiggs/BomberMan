@@ -1,0 +1,15 @@
+E:\Bomberman\runs\s2-kl-20261023\sources\train_actor_critic.py:1551: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  **({"anchor_kl": float(anchor_kl)} if anchor_buf else {}),
+Warm-started from E:\Bomberman\runs\sd8a-20261020\train\epoch_16.pt
+[D] ep    50 | WR:  86.0% | active WR:  80.0% | kills: 0.80 | reward: +12.430 | bombs: 22.7 | walls: 9.3 | combat bombs: 616/4051 | loss: 8.6904 | lr: 2.4e-05 | pool: 0
+[D] ep   100 | WR:  90.0% | active WR:  78.0% | kills: 0.78 | reward: +12.109 | bombs: 26.6 | walls: 9.0 | combat bombs: 784/4729 | loss: 16.2400 | lr: 2.3e-05 | pool: 0
+[D] ep   150 | WR:  92.0% | active WR:  76.0% | kills: 0.76 | reward: +11.657 | bombs: 24.0 | walls: 8.2 | combat bombs: 595/5716 | loss: 7.1664 | lr: 2.0e-05 | pool: 0
+[D] ep   200 | WR:  80.0% | active WR:  68.0% | kills: 0.68 | reward: +10.552 | bombs: 24.6 | walls: 8.8 | combat bombs: 632/5507 | loss: 10.7059 | lr: 1.7e-05 | pool: 0
+[D] ep   250 | WR:  84.0% | active WR:  64.0% | kills: 0.64 | reward: +10.056 | bombs: 25.6 | walls: 8.6 | combat bombs: 736/5397 | loss: 16.9932 | lr: 1.3e-05 | pool: 0
+[D] ep   300 | WR:  90.0% | active WR:  82.0% | kills: 0.82 | reward: +12.515 | bombs: 20.3 | walls: 8.0 | combat bombs: 500/3991 | loss: 8.2983 | lr: 9.5e-06 | pool: 0
+[D] ep   350 | WR:  88.0% | active WR:  74.0% | kills: 0.74 | reward: +11.335 | bombs: 20.5 | walls: 7.7 | combat bombs: 515/4276 | loss: 22.0309 | lr: 6.1e-06 | pool: 0
+[D] ep   400 | WR:  78.0% | active WR:  72.0% | kills: 0.72 | reward: +11.028 | bombs: 26.8 | walls: 8.5 | combat bombs: 786/5307 | loss: 7.7498 | lr: 3.5e-06 | pool: 0
+[D] ep   450 | WR:  90.0% | active WR:  80.0% | kills: 0.80 | reward: +12.293 | bombs: 21.8 | walls: 9.0 | combat bombs: 602/4084 | loss: 10.5618 | lr: 1.8e-06 | pool: 0
+[D] ep   500 | WR:  72.0% | active WR:  60.0% | kills: 0.60 | reward: +9.493 | bombs: 26.2 | walls: 8.8 | combat bombs: 740/5079 | loss: 5.9225 | lr: 1.3e-06 | pool: 0
+{"stage": "train", "output": "E:\\Bomberman\\runs\\s2-kl-20261023", "status": "OK", "elapsed_seconds": 637.2105023000004, "peak_rss_bytes": 1816248320, "pid": 2724}

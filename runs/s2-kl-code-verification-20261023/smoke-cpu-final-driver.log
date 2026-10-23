@@ -1,0 +1,7 @@
+cpu register PASS 6.05s
+cpu train-control PASS 8.95s
+cpu train-anchor PASS 7.90s
+cpu diagnose PASS 25.11s
+cpu validate PASS 16.76s
+cpu package PASS 11.29s
+SMOKE VERIFIED E:\Bomberman\runs\s2-kl-code-smoke-20261023-cpu-final
