@@ -1442,3 +1442,5 @@ Kết luận áp dụng11×11/1v1 trên ba CNN9×9 được chuyển map bằng 
 - Candidate scan không phát hiện các pattern credential đã kiểm hoặc file>50MiB. Dùng LFS cấu hình sẵn; gói gồm cả raw/metadata/bundle/test-log/summary và checkpoint để giữ bằng chứng thí nghiệm.
 
 **Trạng thái:** đã chuẩn bị/kiểm tra, đang commit-push; sẽ đối chiếu upstream/remote commit và trạng thái workingtree sau upload. Chưa tạo PR hoặc nhập vào main.
+
+**Kết quả xuất bản:** GitHub đã nhận nhánh `Loc/S3-11` tại commit nội dung `5eb6b67f07652d64bde5be4a4a46452d0bd09336` (355file); upstream đúng và workingtree sạch sau commit. Xác minh explicit5object LFS/38,276,258byte đã upload, pointer khớp SHA/kích thước. Không đưa dependency/cache/build/scratch bịignore vào Git và không loại bỏ code/UI/model/run/report thuộc355candidate. Ghi xác nhận này cùng hai tracker bằng commit tài liệu, push cùng nhánh và kiểm lại tip remote; không thay source/checkpoint hoặc chạy lại benchmark.

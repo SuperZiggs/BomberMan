@@ -3555,3 +3555,5 @@ Kết luận áp dụng11×11/1v1 trên ba CNN9×9 được chuyển map bằng 
 - Kiểm355candidate không thấy tên file credential hoặc pattern credential đã quét; không có file>50MiB. SummaryCNN vẫn đúng SHA,18source/4checkpoint còn đúng provenance; không mở thêm thí nghiệm. Cache,venv,node_modules,dist và scratch tuân theo ignore hiện có.
 
 **Trạng thái:** nhánh mới/kiểm tra đã sẵn sàng; chuẩn bị commit và push toàn bộ candidate. Kết quả push/upstream/remote SHA sẽ ghi sau khi GitHub xác nhận.
+
+**Xác nhận xuất bản:** đã commit355file (140599dòng thêm, gồm tài sản nhị phân) thành `5eb6b67f07652d64bde5be4a4a46452d0bd09336`, push nhánh mới `Loc/S3-11` thành công. `git ls-remote` xác nhận GitHub đúng commit này, upstream `origin/Loc/S3-11`, workingtree sạch. Lệnh `git lfs push --object-id` xác nhận5/5object,38,276,258byte; mọipointer trong commit khớp SHA/kích thước checkpoint local. Model/S3/CNN summary/source đã khóa giữ nguyên; không train, không merge main hoặc tạoPR. Nhật ký xác nhận này được lưu bằng commit tài liệu tiếp theo trên cùng nhánh, rồi đối chiếu SHA remote cuối trước khi bàn giao.
