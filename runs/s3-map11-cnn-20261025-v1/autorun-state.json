@@ -1,0 +1,276 @@
+{
+  "workflow": "S3-MAP11-CNN-EVALUATION",
+  "status": "completed_no_qualified_gain",
+  "current_stage": "complete",
+  "output": "E:\\Bomberman\\runs\\s3-map11-cnn-20261025-v1",
+  "protocol": "E:\\Bomberman\\runs\\s3-map11-cnn-20261025-v1\\AUTORUN.md",
+  "seed": 830000,
+  "last_seed": 830199,
+  "total_games": 2400,
+  "games_per_pair": 400,
+  "expected_shards": 120,
+  "workers": 5,
+  "device": "cpu",
+  "check_interval_minutes": 45,
+  "verification_ready": true,
+  "automation_id": "s3-11-u-cnn-ki-m-tra-45-ph-t",
+  "processes": {
+    "run": {
+      "pid": 26792,
+      "start_time_utc": "2026-10-24T18:39:46.5230578Z",
+      "executable": "E:\\Bomberman\\venv\\Scripts\\python.exe",
+      "arguments": [
+        "E:\\Bomberman\\probe_s3_map11_cnn.py",
+        "run",
+        "--output",
+        "E:\\Bomberman\\runs\\s3-map11-cnn-20261025-v1",
+        "--workers",
+        "5"
+      ],
+      "stdout": "E:\\Bomberman\\runs\\s3-map11-cnn-20261025-v1\\run.stdout.log",
+      "stderr": "E:\\Bomberman\\runs\\s3-map11-cnn-20261025-v1\\run.stderr.log",
+      "expected_artifact": "E:\\Bomberman\\runs\\s3-map11-cnn-20261025-v1\\summary.json",
+      "attempt": 1,
+      "interpreter_pid": 26232,
+      "interpreter_start_time_utc": "2026-10-24T18:39:46.570507Z"
+    }
+  },
+  "attempts": 1,
+  "max_automatic_resumes": 1,
+  "test_opened": true,
+  "process_visibility": "native_process_query_required",
+  "serving_model_changed": false,
+  "training_authorized": false,
+  "verification": {
+    "targeted_tests": 32,
+    "targeted_seconds": 9.917,
+    "independent_test_sha256": "49948d835e9bb8d9a1b8c3c2e54656ea43218d487ae3789b3e23f9bf10d018f1",
+    "native_smoke_games": 24,
+    "native_smoke_workers": 2,
+    "full_suite": {
+      "tests": 518,
+      "failures": [],
+      "errors": [
+        "test_cancelled_runner_records_incomplete_without_optimizer_or_plots (test_reward_audit.AuditChecks.test_cancelled_runner_records_incomplete_without_optimizer_or_plots)",
+        "test_ring_schedule_matches_loc_update (test_sudden_death_experiment.SuddenDeathTests.test_ring_schedule_matches_loc_update)",
+        "test_changed_source_cannot_reuse_control (test_two_bomb_complete.CompleteRunChecks.test_changed_source_cannot_reuse_control)",
+        "test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds (test_two_bomb_complete.CompleteRunChecks.test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds)",
+        "test_current_trainer_cannot_reuse_the_old_control (test_two_bomb_complete.CompleteRunChecks.test_current_trainer_cannot_reuse_the_old_control)",
+        "test_existing_output_is_not_overwritten_or_trained (test_two_bomb_complete.CompleteRunChecks.test_existing_output_is_not_overwritten_or_trained)",
+        "test_missing_cuda_rejects_training_before_creating_output (test_two_bomb_complete.CompleteRunChecks.test_missing_cuda_rejects_training_before_creating_output)",
+        "test_real_reference_is_complete_and_unchanged (test_two_bomb_complete.CompleteRunChecks.test_real_reference_is_complete_and_unchanged)"
+      ],
+      "skips": [
+        "test_preflight_reprices_all_original_r0_steps_and_honors_cancellation (test_reward_pilot.ProtocolChecks.test_preflight_reprices_all_original_r0_steps_and_honors_cancellation)"
+      ],
+      "seconds": 323.40699999999924,
+      "historical_sources_and_models_changed": []
+    },
+    "new_tests_in_full_suite_passed": 32,
+    "review_findings_resolved": true,
+    "registration_valid": true,
+    "runner_sha256": "4b7a4f1a736b16c85bd1b38eceb79405783f04561ff5fd82032131e267b22664"
+  },
+  "automation_status": "DELETED",
+  "launched_utc": "2026-10-24T18:39:46.5390534Z",
+  "start_verified": true,
+  "launch_snapshot": {
+    "utc": "2026-10-24T18:40:42.0453384Z",
+    "root_pid": 26792,
+    "root_start_time_utc": "2026-10-24T18:39:46.523057Z",
+    "interpreter_pid": 26232,
+    "interpreter_creation_utc": "2026-10-24T18:39:46.570507Z",
+    "worker_child_pids": [
+      2816,
+      26456,
+      27356,
+      24604,
+      6456,
+      5240
+    ],
+    "marker_valid": true,
+    "summary_exists": false,
+    "shard_count": 5,
+    "stderr_bytes": 0
+  },
+  "startup_checker_note": "Initial check parsed an already-decoded DateTime through DateTimeOffset.Parse and shifted timezone; direct UTC DateTime comparison verified exact native identity. No process restart.",
+  "last_snapshot": {
+    "utc": "2026-10-24T19:23:05.3981823Z",
+    "root_matches": false,
+    "interpreter_matches": false,
+    "related_native_processes": [],
+    "matching_run_command_pids": [],
+    "lock_exists": false,
+    "summary_exists": true,
+    "marker_exists": true,
+    "shard_count": 120,
+    "stderr_bytes": 0
+  },
+  "completed_utc": "2026-10-24T19:25:02.490158+00:00",
+  "summary_written_utc": "2026-10-24T19:02:40.313771+00:00",
+  "launch_to_summary_seconds": 1373.790714,
+  "summed_shard_seconds": 6765.863661900003,
+  "completion_verification": {
+    "verified_utc": "2026-10-24T19:23:39.357936+00:00",
+    "summary_sha256": "4773f66560e59880c1eef24628e9bdb2c8a7d7f75c7fe270ba4691a3eb13c665",
+    "api": "probe_s3_map11_cnn.run(output,workers=5,resume=True)",
+    "no_new_games_guard": true,
+    "raw_games": 2400,
+    "pair_game_counts": {
+      "S3_11_vs_S3": 400,
+      "S3_11_vs_S2": 400,
+      "S3_11_vs_G": 400,
+      "S3_vs_S3": 400,
+      "S3_vs_S2": 400,
+      "S3_vs_G": 400
+    },
+    "shards": 120,
+    "source_count": 18,
+    "checkpoint_sha256": {
+      "S3_11": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f",
+      "S3": "4185375f8b5f5cf070d3eef6ce98bec27e23fe06c64d97b500c939e36e669ed7",
+      "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+      "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac"
+    },
+    "verdict": {
+      "active_gain_5pp": false,
+      "active_ci_lower_positive": true,
+      "suicide_within_1pp": true,
+      "smoke": false,
+      "pass": false
+    }
+  },
+  "verdict": {
+    "active_gain_5pp": false,
+    "active_ci_lower_positive": true,
+    "suicide_within_1pp": true,
+    "smoke": false,
+    "pass": false
+  },
+  "macro_results": {
+    "S3_11": {
+      "win_rate": 23.0,
+      "active_win_rate": 8.583333333333332,
+      "draw_rate": 64.33333333333333,
+      "suicide_rate": 1.583333333333333,
+      "passive_win_rate": 0.75,
+      "sudden_death_win_rate": 13.666666666666666,
+      "sudden_death_death_rate": 13.749999999999998,
+      "loss_rate": 12.666666666666664,
+      "timeout_draw_rate": 61.583333333333336
+    },
+    "S3": {
+      "win_rate": 21.666666666666664,
+      "active_win_rate": 4.75,
+      "draw_rate": 63.08333333333332,
+      "suicide_rate": 1.3333333333333333,
+      "passive_win_rate": 0.6666666666666666,
+      "sudden_death_win_rate": 16.25,
+      "sudden_death_death_rate": 13.083333333333332,
+      "loss_rate": 15.25,
+      "timeout_draw_rate": 62.16666666666666
+    }
+  },
+  "macro_cnn": {
+    "win": {
+      "difference_pp": 1.3333333333333337,
+      "ci95_pp": [
+        -1.8333333333333333,
+        4.5
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    },
+    "active_win": {
+      "difference_pp": 3.833333333333333,
+      "ci95_pp": [
+        1.9166666666666665,
+        5.833333333333333
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    },
+    "draw": {
+      "difference_pp": 1.25,
+      "ci95_pp": [
+        -2.5000000000000004,
+        5.083333333333334
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    },
+    "suicide": {
+      "difference_pp": 0.24999999999999997,
+      "ci95_pp": [
+        -0.75,
+        1.1687499999999698
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    },
+    "passive_win": {
+      "difference_pp": 0.08333333333333333,
+      "ci95_pp": [
+        -0.6666666666666666,
+        0.75
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    },
+    "sudden_death_win": {
+      "difference_pp": -2.583333333333333,
+      "ci95_pp": [
+        -5.25,
+        0.08333333333333337
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    },
+    "sudden_death_death": {
+      "difference_pp": 0.6666666666666667,
+      "ci95_pp": [
+        -2.083333333333333,
+        3.3333333333333335
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    },
+    "loss": {
+      "difference_pp": -2.583333333333333,
+      "ci95_pp": [
+        -5.25,
+        -2.2065682614427006e-16
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    },
+    "timeout_draw": {
+      "difference_pp": -0.5833333333333335,
+      "ci95_pp": [
+        -4.416666666666666,
+        3.3333333333333335
+      ],
+      "resamples": 10000,
+      "bootstrap_seed": 20261014,
+      "boards": 200
+    }
+  },
+  "final_report": "E:\\Bomberman\\runs\\s3-map11-cnn-20261025-v1\\FINAL_REPORT.md",
+  "automation_deletion_pending": false,
+  "automation_deleted": true,
+  "automation_delete_confirmation": {
+    "automation_id": "s3-11-u-cnn-ki-m-tra-45-ph-t",
+    "mode": "delete",
+    "deleteStatus": "deleted",
+    "confirmed_utc": "2026-10-24T19:26:07.063570+00:00",
+    "evidence": "automation_update returned: Deleted automation in the app; deleteStatus=deleted"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "games": 200,
+  "decisions": 746,
+  "anchors": 1310,
+  "board_size": 11,
+  "smoke": false,
+  "teacher_rates": {
+    "win": 99.5,
+    "active_win": 98.0,
+    "draw": 0.5
+  }
+}

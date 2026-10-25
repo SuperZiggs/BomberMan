@@ -1,0 +1,30 @@
+{
+  "verified_utc": "2026-10-24T19:23:39.357936+00:00",
+  "summary_sha256": "4773f66560e59880c1eef24628e9bdb2c8a7d7f75c7fe270ba4691a3eb13c665",
+  "api": "probe_s3_map11_cnn.run(output,workers=5,resume=True)",
+  "no_new_games_guard": true,
+  "raw_games": 2400,
+  "pair_game_counts": {
+    "S3_11_vs_S3": 400,
+    "S3_11_vs_S2": 400,
+    "S3_11_vs_G": 400,
+    "S3_vs_S3": 400,
+    "S3_vs_S2": 400,
+    "S3_vs_G": 400
+  },
+  "shards": 120,
+  "source_count": 18,
+  "checkpoint_sha256": {
+    "S3_11": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f",
+    "S3": "4185375f8b5f5cf070d3eef6ce98bec27e23fe06c64d97b500c939e36e669ed7",
+    "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac"
+  },
+  "verdict": {
+    "active_gain_5pp": false,
+    "active_ci_lower_positive": true,
+    "suicide_within_1pp": true,
+    "smoke": false,
+    "pass": false
+  }
+}

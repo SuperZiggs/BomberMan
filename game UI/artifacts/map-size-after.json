@@ -1,0 +1,102 @@
+[
+  {
+    "viewport": [
+      1366,
+      768
+    ],
+    "canvas": {
+      "x": 181,
+      "y": 230.796875,
+      "width": 698,
+      "height": 698
+    },
+    "frame": {
+      "x": 170,
+      "y": 219.796875,
+      "width": 720,
+      "height": 720
+    },
+    "overflow": false,
+    "overlap": []
+  },
+  {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "canvas": {
+      "x": 218,
+      "y": 230.796875,
+      "width": 698,
+      "height": 698
+    },
+    "frame": {
+      "x": 207,
+      "y": 219.796875,
+      "width": 720,
+      "height": 720
+    },
+    "overflow": false,
+    "overlap": []
+  },
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "canvas": {
+      "x": 458,
+      "y": 230.796875,
+      "width": 698,
+      "height": 698
+    },
+    "frame": {
+      "x": 447,
+      "y": 219.796875,
+      "width": 720,
+      "height": 720
+    },
+    "overflow": false,
+    "overlap": []
+  },
+  {
+    "viewport": [
+      768,
+      1024
+    ],
+    "canvas": {
+      "x": 115,
+      "y": 209,
+      "width": 538,
+      "height": 538
+    },
+    "frame": {
+      "x": 104,
+      "y": 198,
+      "width": 560,
+      "height": 560
+    },
+    "overflow": false,
+    "overlap": []
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "canvas": {
+      "x": 22,
+      "y": 190.5,
+      "width": 346,
+      "height": 346
+    },
+    "frame": {
+      "x": 14,
+      "y": 182.5,
+      "width": 362,
+      "height": 362
+    },
+    "overflow": false,
+    "overlap": []
+  }
+]

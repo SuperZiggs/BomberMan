@@ -1,0 +1,533 @@
+test_baseline_is_not_overwritten (test_run_s3_map11.Map11Acceptance.test_baseline_is_not_overwritten) ... ERROR
+test_baseline_uses_real_11x11_env_and_registered_validation_seed (test_run_s3_map11.Map11Acceptance.test_baseline_uses_real_11x11_env_and_registered_validation_seed) ... ERROR
+test_cli_dispatches_only_requested_stage (test_run_s3_map11.Map11Acceptance.test_cli_dispatches_only_requested_stage) ... ERROR
+test_collection_uses_real_11x11_teacher_and_new_anchor_logits (test_run_s3_map11.Map11Acceptance.test_collection_uses_real_11x11_teacher_and_new_anchor_logits) ... ERROR
+test_completed_collection_is_not_overwritten (test_run_s3_map11.Map11Acceptance.test_completed_collection_is_not_overwritten) ... ERROR
+test_corrupt_shard_is_refused_without_overwrite (test_run_s3_map11.Map11Acceptance.test_corrupt_shard_is_refused_without_overwrite) ... ERROR
+test_empty_anchor_shards_keep_11x11_shape (test_run_s3_map11.Map11Acceptance.test_empty_anchor_shards_keep_11x11_shape) ... ERROR
+test_empty_decision_shards_keep_11x11_shape (test_run_s3_map11.Map11Acceptance.test_empty_decision_shards_keep_11x11_shape) ... ERROR
+test_full_configuration (test_run_s3_map11.Map11Acceptance.test_full_configuration) ... ERROR
+test_help_lists_stages_without_work (test_run_s3_map11.Map11Acceptance.test_help_lists_stages_without_work) ... ERROR
+test_import_is_side_effect_free (test_run_s3_map11.Map11Acceptance.test_import_is_side_effect_free) ... ERROR
+test_init_cli_requires_collect_and_test_seed (test_run_s3_map11.Map11Acceptance.test_init_cli_requires_collect_and_test_seed) ... ERROR
+test_initialize_never_overwrites_existing_output (test_run_s3_map11.Map11Acceptance.test_initialize_never_overwrites_existing_output) ... ERROR
+test_initialize_records_provenance_without_games_or_gradients (test_run_s3_map11.Map11Acceptance.test_initialize_records_provenance_without_games_or_gradients) ... ERROR
+test_initialize_refuses_known_used_test_seed (test_run_s3_map11.Map11Acceptance.test_initialize_refuses_known_used_test_seed) ... ERROR
+test_invalid_seed_ranges_are_rejected (test_run_s3_map11.Map11Acceptance.test_invalid_seed_ranges_are_rejected) ... ERROR
+test_load_net_rejects_missing_and_invalid_checkpoint (test_run_s3_map11.Map11Acceptance.test_load_net_rejects_missing_and_invalid_checkpoint) ... ERROR
+test_load_net_transfers_real_s3_to_11x11 (test_run_s3_map11.Map11Acceptance.test_load_net_transfers_real_s3_to_11x11) ... ERROR
+test_public_stage_api (test_run_s3_map11.Map11Acceptance.test_public_stage_api) ... ERROR
+test_registered_checkpoint_hash_tampering_is_refused (test_run_s3_map11.Map11Acceptance.test_registered_checkpoint_hash_tampering_is_refused) ... ERROR
+test_registered_configuration_tampering_is_refused (test_run_s3_map11.Map11Acceptance.test_registered_configuration_tampering_is_refused) ... ERROR
+test_registered_source_hash_tampering_is_refused (test_run_s3_map11.Map11Acceptance.test_registered_source_hash_tampering_is_refused) ... ERROR
+test_resume_collects_only_missing_shards (test_run_s3_map11.Map11Acceptance.test_resume_collects_only_missing_shards) ... ERROR
+test_smoke_configuration (test_run_s3_map11.Map11Acceptance.test_smoke_configuration) ... ERROR
+test_smoke_test_is_labelled_and_cannot_run_twice (test_run_s3_map11.Map11Acceptance.test_smoke_test_is_labelled_and_cannot_run_twice) ... ERROR
+test_stages_refuse_unregistered_output (test_run_s3_map11.Map11Acceptance.test_stages_refuse_unregistered_output) ... ERROR
+test_train_rejects_9x9_decision_or_anchor_observations (test_run_s3_map11.Map11Acceptance.test_train_rejects_9x9_decision_or_anchor_observations) ... ERROR
+test_train_rejects_wrong_action_shape (test_run_s3_map11.Map11Acceptance.test_train_rejects_wrong_action_shape) ... ERROR
+test_train_synthetic_11x11_data_updates_actor_preserves_critic_and_board_split (test_run_s3_map11.Map11Acceptance.test_train_synthetic_11x11_data_updates_actor_preserves_critic_and_board_split) ... ERROR
+test_validation_cannot_be_rerun_after_selection_or_test_open (test_run_s3_map11.Map11Acceptance.test_validation_cannot_be_rerun_after_selection_or_test_open) ... ERROR
+test_validation_selects_highest_safe_activewr_and_earliest_tie (test_run_s3_map11.Map11Acceptance.test_validation_selects_highest_safe_activewr_and_earliest_tie) ... ERROR
+test_validation_without_improvement_keeps_test_closed (test_run_s3_map11.Map11Acceptance.test_validation_without_improvement_keeps_test_closed) ... ERROR
+test_worker_limits_are_enforced (test_run_s3_map11.Map11Acceptance.test_worker_limits_are_enforced) ... ERROR
+
+======================================================================
+ERROR: test_baseline_is_not_overwritten (test_run_s3_map11.Map11Acceptance.test_baseline_is_not_overwritten)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_baseline_uses_real_11x11_env_and_registered_validation_seed (test_run_s3_map11.Map11Acceptance.test_baseline_uses_real_11x11_env_and_registered_validation_seed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_cli_dispatches_only_requested_stage (test_run_s3_map11.Map11Acceptance.test_cli_dispatches_only_requested_stage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_collection_uses_real_11x11_teacher_and_new_anchor_logits (test_run_s3_map11.Map11Acceptance.test_collection_uses_real_11x11_teacher_and_new_anchor_logits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_completed_collection_is_not_overwritten (test_run_s3_map11.Map11Acceptance.test_completed_collection_is_not_overwritten)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_corrupt_shard_is_refused_without_overwrite (test_run_s3_map11.Map11Acceptance.test_corrupt_shard_is_refused_without_overwrite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_empty_anchor_shards_keep_11x11_shape (test_run_s3_map11.Map11Acceptance.test_empty_anchor_shards_keep_11x11_shape)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_empty_decision_shards_keep_11x11_shape (test_run_s3_map11.Map11Acceptance.test_empty_decision_shards_keep_11x11_shape)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_full_configuration (test_run_s3_map11.Map11Acceptance.test_full_configuration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_help_lists_stages_without_work (test_run_s3_map11.Map11Acceptance.test_help_lists_stages_without_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_import_is_side_effect_free (test_run_s3_map11.Map11Acceptance.test_import_is_side_effect_free)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_init_cli_requires_collect_and_test_seed (test_run_s3_map11.Map11Acceptance.test_init_cli_requires_collect_and_test_seed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_initialize_never_overwrites_existing_output (test_run_s3_map11.Map11Acceptance.test_initialize_never_overwrites_existing_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_initialize_records_provenance_without_games_or_gradients (test_run_s3_map11.Map11Acceptance.test_initialize_records_provenance_without_games_or_gradients)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_initialize_refuses_known_used_test_seed (test_run_s3_map11.Map11Acceptance.test_initialize_refuses_known_used_test_seed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_invalid_seed_ranges_are_rejected (test_run_s3_map11.Map11Acceptance.test_invalid_seed_ranges_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_load_net_rejects_missing_and_invalid_checkpoint (test_run_s3_map11.Map11Acceptance.test_load_net_rejects_missing_and_invalid_checkpoint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_load_net_transfers_real_s3_to_11x11 (test_run_s3_map11.Map11Acceptance.test_load_net_transfers_real_s3_to_11x11)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_public_stage_api (test_run_s3_map11.Map11Acceptance.test_public_stage_api)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_registered_checkpoint_hash_tampering_is_refused (test_run_s3_map11.Map11Acceptance.test_registered_checkpoint_hash_tampering_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_registered_configuration_tampering_is_refused (test_run_s3_map11.Map11Acceptance.test_registered_configuration_tampering_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_registered_source_hash_tampering_is_refused (test_run_s3_map11.Map11Acceptance.test_registered_source_hash_tampering_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_resume_collects_only_missing_shards (test_run_s3_map11.Map11Acceptance.test_resume_collects_only_missing_shards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_smoke_configuration (test_run_s3_map11.Map11Acceptance.test_smoke_configuration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_smoke_test_is_labelled_and_cannot_run_twice (test_run_s3_map11.Map11Acceptance.test_smoke_test_is_labelled_and_cannot_run_twice)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_stages_refuse_unregistered_output (test_run_s3_map11.Map11Acceptance.test_stages_refuse_unregistered_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_train_rejects_9x9_decision_or_anchor_observations (test_run_s3_map11.Map11Acceptance.test_train_rejects_9x9_decision_or_anchor_observations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_train_rejects_wrong_action_shape (test_run_s3_map11.Map11Acceptance.test_train_rejects_wrong_action_shape)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_train_synthetic_11x11_data_updates_actor_preserves_critic_and_board_split (test_run_s3_map11.Map11Acceptance.test_train_synthetic_11x11_data_updates_actor_preserves_critic_and_board_split)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_validation_cannot_be_rerun_after_selection_or_test_open (test_run_s3_map11.Map11Acceptance.test_validation_cannot_be_rerun_after_selection_or_test_open)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_validation_selects_highest_safe_activewr_and_earliest_tie (test_run_s3_map11.Map11Acceptance.test_validation_selects_highest_safe_activewr_and_earliest_tie)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_validation_without_improvement_keeps_test_closed (test_run_s3_map11.Map11Acceptance.test_validation_without_improvement_keeps_test_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+======================================================================
+ERROR: test_worker_limits_are_enforced (test_run_s3_map11.Map11Acceptance.test_worker_limits_are_enforced)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_run_s3_map11.py", line 60, in setUp
+    self.pilot = importlib.import_module('run_s3_map11_distill')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'run_s3_map11_distill'
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.022s
+
+FAILED (errors=33)

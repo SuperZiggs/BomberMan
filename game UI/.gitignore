@@ -1,0 +1,11 @@
+node_modules/
+.python-deps/
+.npm-cache/
+.pip-cache/
+__pycache__/
+*.pyc
+dist/
+runs/
+artifacts/*.log
+test-results/
+playwright-report/

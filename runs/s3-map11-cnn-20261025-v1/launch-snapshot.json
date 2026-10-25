@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-24T18:40:42.0453384Z",
+  "root_pid": 26792,
+  "root_start_time_utc": "2026-10-24T18:39:46.5230570Z",
+  "interpreter_pid": 26232,
+  "interpreter_creation_utc": "2026-10-24T18:39:46.5705070Z",
+  "worker_child_pids": [
+    2816,
+    26456,
+    27356,
+    24604,
+    6456,
+    5240
+  ],
+  "marker_valid": true,
+  "summary_exists": false,
+  "shard_count": 5,
+  "stderr_bytes": 0
+}

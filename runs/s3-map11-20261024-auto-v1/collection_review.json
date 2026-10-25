@@ -1,0 +1,37 @@
+{
+  "registration_valid": true,
+  "coverage_valid": true,
+  "summary": {
+    "games": 200,
+    "decisions": 746,
+    "anchors": 1310,
+    "board_size": 11,
+    "smoke": false,
+    "teacher_rates": {
+      "win": 99.5,
+      "active_win": 98.0,
+      "draw": 0.5
+    }
+  },
+  "decision_train": 687,
+  "decision_heldout": 59,
+  "anchor_train": 1161,
+  "anchor_heldout": 149,
+  "train_boards": 90,
+  "heldout_boards": 10,
+  "heldout_board_seeds": [
+    812008,
+    812009,
+    812025,
+    812033,
+    812034,
+    812044,
+    812061,
+    812068,
+    812074,
+    812091
+  ],
+  "data_ready_for_train": true,
+  "artifact_completed_utc": "2026-10-24T13:06:24.574191+00:00",
+  "wall_to_artifact_seconds": 2463.052447
+}

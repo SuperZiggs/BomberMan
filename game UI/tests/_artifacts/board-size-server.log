@@ -1,0 +1,141 @@
+INFO:     Started server process [6596]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:56569 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56572 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61972 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61972 - "GET /assets/v2/fonts/BeVietnamPro-Regular.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65239 - "GET /assets/rolldown-runtime-WkwZ5CU-.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50268 - "GET /assets/index-De7vGikW.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63615 - "GET /assets/phaser-CmOm-Ik1.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62031 - "GET /assets/index-BdOx2ff7.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63615 - "GET /assets/v2/ui/icons.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50268 - "GET /assets/v2/characters/mint-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65239 - "GET /assets/v2/characters/blue-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61972 - "GET /assets/v2/characters/coral-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62031 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "GET /assets/v2/characters/gold-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61972 - "GET /assets/v2/fonts/BeVietnamPro-SemiBold.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62031 - "GET /assets/v2/ui/foundry.webp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "GET /assets/v2/fonts/BeVietnamPro-ExtraBold.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62031 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61972 - "GET /assets/v2/audio/click.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62031 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62031 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+Expanded observation channels 8 -> 13
+Interpolated trunk_fc.0.weight from board 11x11 to 9x9
+INFO:     127.0.0.1:62031 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62031 - "GET /assets/v2/manifest.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61972 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64041 - "WebSocket /api/sessions/1669f83816fb4f3c89abac105b2d51d1/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63615 - "GET /assets/v2/fx/effects.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62031 - "GET /assets/v2/characters/blue.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65239 - "GET /assets/v2/environment/terrain.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61972 - "GET /assets/v2/characters/mint.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "GET /assets/v2/characters/coral.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50268 - "GET /assets/v2/characters/gold.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64042 - "GET /api/sessions/1669f83816fb4f3c89abac105b2d51d1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64042 - "GET /api/sessions/1669f83816fb4f3c89abac105b2d51d1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64042 - "GET /api/sessions/1669f83816fb4f3c89abac105b2d51d1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64042 - "GET /api/sessions/1669f83816fb4f3c89abac105b2d51d1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64042 - "GET /api/sessions/1669f83816fb4f3c89abac105b2d51d1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64042 - "DELETE /api/sessions/1669f83816fb4f3c89abac105b2d51d1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65158 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65158 - "GET /assets/v2/fonts/BeVietnamPro-Regular.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57922 - "GET /assets/rolldown-runtime-WkwZ5CU-.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53758 - "GET /assets/index-De7vGikW.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50488 - "GET /assets/index-BdOx2ff7.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63647 - "GET /assets/phaser-CmOm-Ik1.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63647 - "GET /assets/v2/ui/icons.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53758 - "GET /assets/v2/characters/mint-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50488 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65158 - "GET /assets/v2/characters/coral-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57922 - "GET /assets/v2/characters/blue-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64444 - "GET /assets/v2/characters/gold-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63647 - "GET /assets/v2/fonts/BeVietnamPro-ExtraBold.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53758 - "GET /assets/v2/ui/foundry.webp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50488 - "GET /assets/v2/fonts/BeVietnamPro-SemiBold.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53758 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50488 - "GET /assets/v2/audio/click.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:50488 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53758 - "GET /api/models HTTP/1.1" 200 OK
+Expanded observation channels 8 -> 13
+INFO:     127.0.0.1:53758 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:53758 - "GET /assets/v2/manifest.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50488 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61456 - "WebSocket /api/sessions/ca1e2dceef3c4aa28315b1d76221860c/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:53758 - "GET /assets/v2/characters/blue.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64444 - "GET /assets/v2/environment/terrain.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50488 - "GET /assets/v2/characters/mint.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63647 - "GET /assets/v2/characters/coral.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57922 - "GET /assets/v2/characters/gold.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65158 - "GET /assets/v2/fx/effects.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61457 - "GET /api/sessions/ca1e2dceef3c4aa28315b1d76221860c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61457 - "GET /api/sessions/ca1e2dceef3c4aa28315b1d76221860c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61457 - "GET /api/sessions/ca1e2dceef3c4aa28315b1d76221860c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61457 - "GET /api/sessions/ca1e2dceef3c4aa28315b1d76221860c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61457 - "GET /api/sessions/ca1e2dceef3c4aa28315b1d76221860c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61457 - "DELETE /api/sessions/ca1e2dceef3c4aa28315b1d76221860c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49668 - "WebSocket /api/sessions/ca1e2dceef3c4aa28315b1d76221860c/ws" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     127.0.0.1:63394 - "WebSocket /api/sessions/ca1e2dceef3c4aa28315b1d76221860c/ws" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     127.0.0.1:57758 - "WebSocket /api/sessions/ca1e2dceef3c4aa28315b1d76221860c/ws" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     127.0.0.1:50494 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "GET /assets/index-De7vGikW.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64620 - "GET /assets/rolldown-runtime-WkwZ5CU-.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51156 - "GET /assets/phaser-CmOm-Ik1.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50494 - "GET /assets/v2/fonts/BeVietnamPro-Regular.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58564 - "GET /assets/index-BdOx2ff7.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51156 - "GET /assets/v2/ui/icons.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64620 - "GET /assets/v2/characters/blue-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50494 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58564 - "GET /assets/v2/characters/mint-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55522 - "GET /assets/v2/fonts/BeVietnamPro-ExtraBold.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "GET /assets/v2/characters/coral-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51156 - "GET /assets/v2/fonts/BeVietnamPro-SemiBold.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58564 - "GET /assets/v2/ui/foundry.webp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64620 - "GET /assets/v2/characters/gold-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51156 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64620 - "GET /assets/v2/audio/click.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:64620 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51156 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /assets/v2/fonts/BeVietnamPro-Regular.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53484 - "GET /assets/index-De7vGikW.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65436 - "GET /assets/rolldown-runtime-WkwZ5CU-.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56247 - "GET /assets/phaser-CmOm-Ik1.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54375 - "GET /assets/index-BdOx2ff7.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56247 - "GET /assets/v2/ui/icons.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65436 - "GET /assets/v2/characters/mint-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54375 - "GET /assets/v2/characters/blue-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53484 - "GET /assets/v2/characters/coral-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64851 - "GET /assets/v2/characters/gold-avatar.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /assets/v2/fonts/BeVietnamPro-ExtraBold.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56247 - "GET /assets/v2/fonts/BeVietnamPro-SemiBold.ttf HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65436 - "GET /assets/v2/ui/foundry.webp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65436 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /assets/v2/audio/click.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:65436 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65436 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:65436 - "GET /assets/v2/manifest.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /assets/v2/ui/logo.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52708 - "WebSocket /api/sessions/5bce2c00ee39448fa701381554251729/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61609 - "GET /assets/v2/characters/mint.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56247 - "GET /assets/v2/characters/coral.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53484 - "GET /assets/v2/environment/terrain.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65436 - "GET /assets/v2/characters/blue.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64851 - "GET /assets/v2/characters/gold.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54375 - "GET /assets/v2/fx/effects.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52709 - "GET /api/sessions/5bce2c00ee39448fa701381554251729 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52709 - "GET /api/sessions/5bce2c00ee39448fa701381554251729 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52709 - "GET /api/sessions/5bce2c00ee39448fa701381554251729 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52709 - "GET /api/sessions/5bce2c00ee39448fa701381554251729 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52709 - "GET /api/sessions/5bce2c00ee39448fa701381554251729 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52709 - "DELETE /api/sessions/5bce2c00ee39448fa701381554251729 HTTP/1.1" 200 OK

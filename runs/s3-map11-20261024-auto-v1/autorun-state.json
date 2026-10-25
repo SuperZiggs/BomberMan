@@ -1,0 +1,373 @@
+{
+  "workflow": "S3-MAP11-AUTO-2-5",
+  "status": "completed_pass",
+  "current_stage": "complete",
+  "output": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1",
+  "protocol": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\AUTORUN.md",
+  "check_interval_minutes": 45,
+  "stage_order": [
+    "baseline",
+    "collect",
+    "train",
+    "validate",
+    "test"
+  ],
+  "train_device": "cuda",
+  "workers": 5,
+  "automation_id": "s3-11-11-b-c-2-5-ki-m-tra-45-ph-t",
+  "processes": {
+    "baseline": {
+      "pid": 4856,
+      "started_utc": "2026-10-24T11:39:41.8410374Z",
+      "python": "E:\\Bomberman\\venv\\Scripts\\python.exe",
+      "arguments": [
+        "E:\\Bomberman\\run_s3_map11_distill.py",
+        "baseline",
+        "--output",
+        "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1",
+        "--workers",
+        "5"
+      ],
+      "stdout": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\baseline.stdout.log",
+      "stderr": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\baseline.stderr.log",
+      "expected_artifact": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\baseline.json",
+      "attempt": 1,
+      "native_startup_verified": true
+    },
+    "collect": {
+      "pid": 20056,
+      "started_utc": "2026-10-24T12:25:21.5217442Z",
+      "python": "E:\\Bomberman\\venv\\Scripts\\python.exe",
+      "arguments": [
+        "E:\\Bomberman\\run_s3_map11_distill.py",
+        "collect",
+        "--output",
+        "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1",
+        "--workers",
+        "5"
+      ],
+      "stdout": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\collect.stdout.log",
+      "stderr": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\collect.stderr.log",
+      "expected_artifact": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\collection_summary.json",
+      "attempt": 1
+    },
+    "train": {
+      "pid": 17332,
+      "started_utc": "2026-10-24T13:10:27.9345533Z",
+      "python": "E:\\Bomberman\\venv\\Scripts\\python.exe",
+      "arguments": [
+        "E:\\Bomberman\\run_s3_map11_distill.py",
+        "train",
+        "--output",
+        "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1",
+        "--device",
+        "cuda"
+      ],
+      "stdout": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\train.stdout.log",
+      "stderr": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\train.stderr.log",
+      "expected_artifact": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\train\\metrics.json",
+      "attempt": 1
+    },
+    "validate": {
+      "pid": 25016,
+      "started_utc": "2026-10-24T13:55:58.9153508Z",
+      "python": "E:\\Bomberman\\venv\\Scripts\\python.exe",
+      "arguments": [
+        "E:\\Bomberman\\run_s3_map11_distill.py",
+        "validate",
+        "--output",
+        "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1",
+        "--workers",
+        "5"
+      ],
+      "stdout": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\validate.stdout.log",
+      "stderr": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\validate.stderr.log",
+      "expected_artifact": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\validation.json",
+      "attempt": 1
+    },
+    "test": {
+      "pid": 4892,
+      "started_utc": "2026-10-24T14:40:56.2789831Z",
+      "python": "E:\\Bomberman\\venv\\Scripts\\python.exe",
+      "arguments": [
+        "E:\\Bomberman\\run_s3_map11_distill.py",
+        "test",
+        "--output",
+        "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1",
+        "--workers",
+        "5"
+      ],
+      "stdout": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\test.stdout.log",
+      "stderr": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\test.stderr.log",
+      "expected_artifact": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\summary.json",
+      "attempt": 1
+    }
+  },
+  "completed_stages": [
+    "baseline",
+    "collect",
+    "train",
+    "validate",
+    "test"
+  ],
+  "test_opened": true,
+  "baseline_gate": {
+    "active_win_delta_pp_min_exclusive": 0.0,
+    "max_suicide_delta_pp": 1.0
+  },
+  "stop_on_failed_gate": true,
+  "expand_dataset_automatically": false,
+  "last_action_utc": "2026-10-24T15:30:15.241820+00:00",
+  "process_visibility": "native_process_query_required",
+  "baseline_review": {
+    "registration_valid": true,
+    "counts_valid": true,
+    "gate_pass": true,
+    "active_win_delta_pp": 48.0,
+    "active_win_ci95_pp": [
+      38.0,
+      58.0
+    ],
+    "suicide_delta_pp": 0.0,
+    "baseline_seconds": 2429.968999999999,
+    "artifact_completed_utc": "2026-10-24T12:20:14.683415Z"
+  },
+  "collection_review": {
+    "registration_valid": true,
+    "coverage_valid": true,
+    "summary": {
+      "games": 200,
+      "decisions": 746,
+      "anchors": 1310,
+      "board_size": 11,
+      "smoke": false,
+      "teacher_rates": {
+        "win": 99.5,
+        "active_win": 98.0,
+        "draw": 0.5
+      }
+    },
+    "decision_train": 687,
+    "decision_heldout": 59,
+    "anchor_train": 1161,
+    "anchor_heldout": 149,
+    "train_boards": 90,
+    "heldout_boards": 10,
+    "heldout_board_seeds": [
+      812008,
+      812009,
+      812025,
+      812033,
+      812034,
+      812044,
+      812061,
+      812068,
+      812074,
+      812091
+    ],
+    "data_ready_for_train": true,
+    "artifact_completed_utc": "2026-10-24T20:06:24.574191+07:00",
+    "wall_to_artifact_seconds": 2463.052447
+  },
+  "train_review": {
+    "registration_valid": true,
+    "epochs_completed": 16,
+    "split_valid": true,
+    "finite_metrics": true,
+    "critic_head_unchanged": true,
+    "actor_updated": true,
+    "checkpoints": {
+      "4": {
+        "path": "runs\\s3-map11-20261024-auto-v1\\train\\epoch_4.pt",
+        "sha256": "bd97492c1eb310b77320a2b6903902b3a4fa723eb12ec7293771c8c021f4f4c1"
+      },
+      "8": {
+        "path": "runs\\s3-map11-20261024-auto-v1\\train\\epoch_8.pt",
+        "sha256": "40c2d9b00728c0cf04f47d4711377522361be25f3bfd8bd900330a43df791ce9"
+      },
+      "12": {
+        "path": "runs\\s3-map11-20261024-auto-v1\\train\\epoch_12.pt",
+        "sha256": "d41a99cb196d0340bbf5c69cf837dbc7b26c320749bc4664030e4041f1fedf10"
+      },
+      "16": {
+        "path": "runs\\s3-map11-20261024-auto-v1\\train\\epoch_16.pt",
+        "sha256": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f"
+      }
+    },
+    "initial_metrics": {
+      "epoch": 0,
+      "decision_argmax_best_rate": 67.79661016949152,
+      "kill_decision_argmax_best_rate": 67.79661016949152,
+      "anchor_kl": 1.7362291160338827e-08,
+      "anchor_argmax_changed_rate": 0.0,
+      "heldout_decisions": 59,
+      "heldout_anchors": 149
+    },
+    "final_metrics": {
+      "epoch": 16,
+      "train_loss": 0.3997702866792679,
+      "decision_argmax_best_rate": 81.35593220338984,
+      "kill_decision_argmax_best_rate": 81.35593220338984,
+      "anchor_kl": 0.08100828528404236,
+      "anchor_argmax_changed_rate": 18.79194676876068,
+      "heldout_decisions": 59,
+      "heldout_anchors": 149
+    },
+    "artifact_completed_utc": "2026-10-24T20:10:33.087842+07:00",
+    "wall_to_artifact_seconds": 5.153289
+  },
+  "validation_review": {
+    "registration_valid": true,
+    "summary_counts_valid": true,
+    "models_unchanged": true,
+    "selection_valid": true,
+    "raw_validation_games_persisted": false,
+    "results": {
+      "S3": {
+        "num_episodes": 400,
+        "win_rate": 60.0,
+        "active_win_rate": 45.0,
+        "draw_rate": 30.25,
+        "passive_win_rate": 2.0,
+        "suicide_rate": 0.0,
+        "sudden_death_death_rate": 8.75
+      },
+      "epoch_4": {
+        "num_episodes": 400,
+        "win_rate": 87.5,
+        "active_win_rate": 78.25,
+        "draw_rate": 9.5,
+        "passive_win_rate": 4.25,
+        "suicide_rate": 0.5,
+        "sudden_death_death_rate": 2.0
+      },
+      "epoch_8": {
+        "num_episodes": 400,
+        "win_rate": 89.0,
+        "active_win_rate": 82.0,
+        "draw_rate": 6.5,
+        "passive_win_rate": 5.5,
+        "suicide_rate": 1.25,
+        "sudden_death_death_rate": 2.0
+      },
+      "epoch_12": {
+        "num_episodes": 400,
+        "win_rate": 90.5,
+        "active_win_rate": 86.0,
+        "draw_rate": 6.75,
+        "passive_win_rate": 3.25,
+        "suicide_rate": 0.5,
+        "sudden_death_death_rate": 1.25
+      },
+      "epoch_16": {
+        "num_episodes": 400,
+        "win_rate": 91.75,
+        "active_win_rate": 87.0,
+        "draw_rate": 4.25,
+        "passive_win_rate": 2.75,
+        "suicide_rate": 1.0,
+        "sudden_death_death_rate": 2.25
+      }
+    },
+    "selected": {
+      "epoch": 16,
+      "checkpoint": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\train\\epoch_16.pt",
+      "proceed_to_test": true,
+      "smoke": false,
+      "checkpoint_sha256": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f"
+    },
+    "proceed_to_test": true,
+    "artifact_completed_utc": "2026-10-24T21:10:29.25492+07:00",
+    "wall_to_artifact_seconds": 870.33957
+  },
+  "test_launch_authorized": true,
+  "test_marker_verified": true,
+  "test_review": {
+    "registration_valid": true,
+    "raw_counts_and_pairs_valid": true,
+    "selection_unchanged": true,
+    "checkpoint_sha256": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f",
+    "results": {
+      "S3": {
+        "num_episodes": 400,
+        "win_rate": 59.25,
+        "active_win_rate": 46.25,
+        "draw_rate": 30.75,
+        "passive_win_rate": 2.0,
+        "suicide_rate": 0.75,
+        "sudden_death_death_rate": 6.75
+      },
+      "S3_11": {
+        "num_episodes": 400,
+        "win_rate": 90.75,
+        "active_win_rate": 87.25,
+        "draw_rate": 6.0,
+        "passive_win_rate": 2.0,
+        "suicide_rate": 1.25,
+        "sudden_death_death_rate": 1.5
+      }
+    },
+    "paired": {
+      "active_win": {
+        "difference_pp": 41.0,
+        "ci95_pp": [
+          34.5,
+          47.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 31.5,
+        "ci95_pp": [
+          25.75,
+          37.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -24.75,
+        "ci95_pp": [
+          -30.0,
+          -19.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.5,
+        "ci95_pp": [
+          -1.0,
+          2.0
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "gate": {
+      "active_5pp": true,
+      "active_ci_lower_positive": true,
+      "suicide_within_1pp": true,
+      "pass": true
+    },
+    "artifact_completed_utc": "2026-10-24T14:46:18.636803+00:00",
+    "wall_to_artifact_seconds": 322.35782,
+    "test_seed": 820000,
+    "boards": 200,
+    "games_per_model": 400,
+    "chosen_checkpoint": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\train\\epoch_16.pt"
+  },
+  "completed_utc": "2026-10-24T15:28:36.328893+00:00",
+  "automation_cleanup_pending": false,
+  "serving_model_changed": false,
+  "original_s3_preserved": true,
+  "automation_deleted": true,
+  "automation_active": false,
+  "automation_deleted_utc": "2026-10-24T15:30:15.241820+00:00",
+  "matching_runner_processes_at_close": 0
+}

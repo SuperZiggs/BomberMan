@@ -1,0 +1,421 @@
+test_changed_config_refused_before_game (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_changed_config_refused_before_game) ... ERROR
+test_changed_registered_source_hash_refused (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_changed_registered_source_hash_refused) ... ERROR
+test_completed_resume_returns_identical_report_without_write_or_game (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_completed_resume_returns_identical_report_without_write_or_game) ... ERROR
+test_duplicate_or_missing_corner_refused_without_overwrite (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_duplicate_or_missing_corner_refused_without_overwrite) ... ERROR
+test_existing_output_never_overwritten (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_existing_output_never_overwritten) ... ERROR
+test_foreign_lock_is_exclusive_and_never_deleted_or_changed (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_foreign_lock_is_exclusive_and_never_deleted_or_changed) ... ERROR
+test_full_config_is_fixed_11x11_six_pairs (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_full_config_is_fixed_11x11_six_pairs) ... ERROR
+test_import_and_help_do_not_play_or_train (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_import_and_help_do_not_play_or_train) ... ERROR
+test_incomplete_scheduler_never_emits_summary_and_releases_own_lock (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_incomplete_scheduler_never_emits_summary_and_releases_own_lock) ... ERROR
+test_invalid_seed_types_and_uint32_overflow_refused (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_invalid_seed_types_and_uint32_overflow_refused) ... ERROR
+test_live_checkpoint_change_refused_before_game (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_live_checkpoint_change_refused_before_game) ... ERROR
+test_macro_bootstrap_pairs_opponents_then_resamples_whole_boards (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_macro_bootstrap_pairs_opponents_then_resamples_whole_boards) ... ERROR
+test_marker_compatible_game_counts_and_hashes (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_marker_compatible_game_counts_and_hashes) ... ERROR
+test_mismatched_metadata_and_metric_shape_refused (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_mismatched_metadata_and_metric_shape_refused) ... ERROR
+test_nonresume_refuses_existing_shards_marker_or_summary (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_nonresume_refuses_existing_shards_marker_or_summary) ... ERROR
+test_public_api (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_public_api) ... ERROR
+test_raw_and_summary_retain_six_pairs_all_corners_and_metrics (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_raw_and_summary_retain_six_pairs_all_corners_and_metrics) ... ERROR
+test_real_smoke_uses_two_cnn_networks_masks_sampling_cpu_no_grad (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_real_smoke_uses_two_cnn_networks_masks_sampling_cpu_no_grad) ... ERROR
+test_registration_contains_frozen_checkpoint_source_bundle_and_runtime (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_registration_contains_frozen_checkpoint_source_bundle_and_runtime) ... ERROR
+test_resume_runs_only_missing_shard_and_preserves_marker_and_other_shards (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_resume_runs_only_missing_shard_and_preserves_marker_and_other_shards) ... ERROR
+test_shard_wrong_count_refused_without_overwrite (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_shard_wrong_count_refused_without_overwrite) ... ERROR
+test_smoke_config_is_separate_and_bounded (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_smoke_config_is_separate_and_bounded) ... ERROR
+test_smoke_never_qualifies_as_full_pass_even_with_perfect_gain (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_smoke_never_qualifies_as_full_pass_even_with_perfect_gain) ... ERROR
+test_summary_disagreeing_with_raw_refused_without_overwrite (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_summary_disagreeing_with_raw_refused_without_overwrite) ... ERROR
+test_used_reserved_seed_ranges_refused_before_output (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_used_reserved_seed_ranges_refused_before_output) ... ERROR
+test_worker_bounds_and_failure_release_own_pid_lock (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_worker_bounds_and_failure_release_own_pid_lock) ... ERROR
+
+======================================================================
+ERROR: test_changed_config_refused_before_game (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_changed_config_refused_before_game)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_changed_registered_source_hash_refused (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_changed_registered_source_hash_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_completed_resume_returns_identical_report_without_write_or_game (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_completed_resume_returns_identical_report_without_write_or_game)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_duplicate_or_missing_corner_refused_without_overwrite (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_duplicate_or_missing_corner_refused_without_overwrite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_existing_output_never_overwritten (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_existing_output_never_overwritten)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_foreign_lock_is_exclusive_and_never_deleted_or_changed (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_foreign_lock_is_exclusive_and_never_deleted_or_changed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_full_config_is_fixed_11x11_six_pairs (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_full_config_is_fixed_11x11_six_pairs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_import_and_help_do_not_play_or_train (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_import_and_help_do_not_play_or_train)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_incomplete_scheduler_never_emits_summary_and_releases_own_lock (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_incomplete_scheduler_never_emits_summary_and_releases_own_lock)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_invalid_seed_types_and_uint32_overflow_refused (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_invalid_seed_types_and_uint32_overflow_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_live_checkpoint_change_refused_before_game (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_live_checkpoint_change_refused_before_game)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_macro_bootstrap_pairs_opponents_then_resamples_whole_boards (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_macro_bootstrap_pairs_opponents_then_resamples_whole_boards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_marker_compatible_game_counts_and_hashes (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_marker_compatible_game_counts_and_hashes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_mismatched_metadata_and_metric_shape_refused (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_mismatched_metadata_and_metric_shape_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_nonresume_refuses_existing_shards_marker_or_summary (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_nonresume_refuses_existing_shards_marker_or_summary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_public_api (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_public_api)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_raw_and_summary_retain_six_pairs_all_corners_and_metrics (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_raw_and_summary_retain_six_pairs_all_corners_and_metrics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_real_smoke_uses_two_cnn_networks_masks_sampling_cpu_no_grad (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_real_smoke_uses_two_cnn_networks_masks_sampling_cpu_no_grad)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_registration_contains_frozen_checkpoint_source_bundle_and_runtime (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_registration_contains_frozen_checkpoint_source_bundle_and_runtime)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_resume_runs_only_missing_shard_and_preserves_marker_and_other_shards (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_resume_runs_only_missing_shard_and_preserves_marker_and_other_shards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_shard_wrong_count_refused_without_overwrite (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_shard_wrong_count_refused_without_overwrite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_smoke_config_is_separate_and_bounded (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_smoke_config_is_separate_and_bounded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_smoke_never_qualifies_as_full_pass_even_with_perfect_gain (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_smoke_never_qualifies_as_full_pass_even_with_perfect_gain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_summary_disagreeing_with_raw_refused_without_overwrite (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_summary_disagreeing_with_raw_refused_without_overwrite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_used_reserved_seed_ranges_refused_before_output (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_used_reserved_seed_ranges_refused_before_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+======================================================================
+ERROR: test_worker_bounds_and_failure_release_own_pid_lock (test_probe_s3_map11_cnn.CnnMap11Acceptance.test_worker_bounds_and_failure_release_own_pid_lock)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Bomberman\test_probe_s3_map11_cnn.py", line 97, in setUp
+    self.probe = importlib.import_module('probe_s3_map11_cnn')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Tools\Lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'probe_s3_map11_cnn'
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.029s
+
+FAILED (errors=26)

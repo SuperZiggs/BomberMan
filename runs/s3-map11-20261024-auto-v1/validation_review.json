@@ -1,0 +1,64 @@
+{
+  "registration_valid": true,
+  "summary_counts_valid": true,
+  "models_unchanged": true,
+  "selection_valid": true,
+  "raw_validation_games_persisted": false,
+  "results": {
+    "S3": {
+      "num_episodes": 400,
+      "win_rate": 60.0,
+      "active_win_rate": 45.0,
+      "draw_rate": 30.25,
+      "passive_win_rate": 2.0,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 8.75
+    },
+    "epoch_4": {
+      "num_episodes": 400,
+      "win_rate": 87.5,
+      "active_win_rate": 78.25,
+      "draw_rate": 9.5,
+      "passive_win_rate": 4.25,
+      "suicide_rate": 0.5,
+      "sudden_death_death_rate": 2.0
+    },
+    "epoch_8": {
+      "num_episodes": 400,
+      "win_rate": 89.0,
+      "active_win_rate": 82.0,
+      "draw_rate": 6.5,
+      "passive_win_rate": 5.5,
+      "suicide_rate": 1.25,
+      "sudden_death_death_rate": 2.0
+    },
+    "epoch_12": {
+      "num_episodes": 400,
+      "win_rate": 90.5,
+      "active_win_rate": 86.0,
+      "draw_rate": 6.75,
+      "passive_win_rate": 3.25,
+      "suicide_rate": 0.5,
+      "sudden_death_death_rate": 1.25
+    },
+    "epoch_16": {
+      "num_episodes": 400,
+      "win_rate": 91.75,
+      "active_win_rate": 87.0,
+      "draw_rate": 4.25,
+      "passive_win_rate": 2.75,
+      "suicide_rate": 1.0,
+      "sudden_death_death_rate": 2.25
+    }
+  },
+  "selected": {
+    "epoch": 16,
+    "checkpoint": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\train\\epoch_16.pt",
+    "proceed_to_test": true,
+    "smoke": false,
+    "checkpoint_sha256": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f"
+  },
+  "proceed_to_test": true,
+  "artifact_completed_utc": "2026-10-24T14:10:29.254920+00:00",
+  "wall_to_artifact_seconds": 870.33957
+}

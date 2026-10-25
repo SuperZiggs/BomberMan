@@ -1,0 +1,807 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "E:\\Bomberman\\game UI\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "tests/browser/playwright.config.ts"
+    ],
+    "configFile": "E:\\Bomberman\\game UI\\tests\\browser\\playwright.config.ts",
+    "rootDir": "E:/Bomberman/game UI/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/Bomberman/game UI/tests/_artifacts/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "E:/Bomberman/game UI/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "*.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "E:\\Bomberman\\game UI\\tests\\browser",
+        "snapshotDir": "E:\\Bomberman\\game UI\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "*.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:8000",
+          "browserName": "chromium",
+          "launchOptions": {
+            "executablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            "args": [
+              "--use-angle=swiftshader",
+              "--enable-unsafe-swiftshader"
+            ]
+          },
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "journey.spec.ts",
+      "file": "journey.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "menu → real match → pause, single step, reset and terminal results",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 840,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\journey.spec.ts:7:15",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\journey.spec.ts:7:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T13:59:59.626Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-menu-→-real-match--c48bb--reset-and-terminal-results\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-menu-→-real-match--c48bb--reset-and-terminal-results\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-menu-→-real-match--c48bb--reset-and-terminal-results\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-06244dbda6a92a2edb11",
+          "file": "journey.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "keyboard tap, queued bomb and blur use authoritative engine ticks",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 867,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\journey.spec.ts:34:15",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\journey.spec.ts:34:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T14:00:04.246Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-keyboard-tap-queue-7af77--authoritative-engine-ticks\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-keyboard-tap-queue-7af77--authoritative-engine-ticks\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-keyboard-tap-queue-7af77--authoritative-engine-ticks\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-ef74a53fd7915547755b",
+          "file": "journey.spec.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "recoverable model error and loading state are visible",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 709,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at E:\\Bomberman\\game UI\\tests\\browser\\journey.spec.ts:54:3",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at E:\\Bomberman\\game UI\\tests\\browser\\journey.spec.ts:54:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T14:00:07.027Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-recoverable-model--11b89-d-loading-state-are-visible\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-recoverable-model--11b89-d-loading-state-are-visible\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-recoverable-model--11b89-d-loading-state-are-visible\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-31e9f0d6e97c2e5a3541",
+          "file": "journey.spec.ts",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "connection state pauses after browser disconnect and restores full state",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 804,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\journey.spec.ts:62:15",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\journey.spec.ts:62:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T14:00:09.671Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-connection-state-p-d36bb-ect-and-restores-full-state\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-connection-state-p-d36bb-ect-and-restores-full-state\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\journey-connection-state-p-d36bb-ect-and-restores-full-state\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-1388f37d6741560cc4c2",
+          "file": "journey.spec.ts",
+          "line": 61,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "presentation.spec.ts",
+      "file": "presentation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "settings are keyboard accessible, persist, and offer reduced motion",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 773,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at E:\\Bomberman\\game UI\\tests\\browser\\presentation.spec.ts:9:3",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at E:\\Bomberman\\game UI\\tests\\browser\\presentation.spec.ts:9:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T14:00:11.786Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-settings-are--cd17b-st-and-offer-reduced-motion\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-settings-are--cd17b-st-and-offer-reduced-motion\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-settings-are--cd17b-st-and-offer-reduced-motion\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a964c83dbf6a737e02-57ffd4c19dcc34afc05d",
+          "file": "presentation.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "mobile board is unobscured and touch direction/bomb controls work",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 768,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\presentation.spec.ts:28:15",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\presentation.spec.ts:28:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T14:00:13.671Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-mobile-board--c033e-irection-bomb-controls-work\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-mobile-board--c033e-irection-bomb-controls-work\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-mobile-board--c033e-irection-bomb-controls-work\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a964c83dbf6a737e02-1b73fe95a354a8c76e52",
+          "file": "presentation.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "four robot slots, local new assets and self-hosted font are rendered",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 742,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\presentation.spec.ts:48:15",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at realGame (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:62:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\presentation.spec.ts:48:15"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T14:00:15.408Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-four-robot-sl-e8aa1-lf-hosted-font-are-rendered\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-four-robot-sl-e8aa1-lf-hosted-font-are-rendered\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\presentation-four-robot-sl-e8aa1-lf-hosted-font-are-rendered\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a964c83dbf6a737e02-4691790772788c0f5654",
+          "file": "presentation.spec.ts",
+          "line": 42,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "training.spec.ts",
+      "file": "training.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "training phase/count and episode validation are enforced in the UI",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 807,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\training.spec.ts:5:3",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\training.spec.ts:5:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T14:00:17.103Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\training-training-phase-co-6a076-tion-are-enforced-in-the-UI\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\training-training-phase-co-6a076-tion-are-enforced-in-the-UI\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\training-training-phase-co-6a076-tion-are-enforced-in-the-UI\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2410163d751908292b1d-ee5ce28322ef358ed40f",
+          "file": "training.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "bounded real training shows progress, actual metrics, board and controls",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 811,
+                  "error": {
+                    "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\training.spec.ts:33:3",
+                    "location": {
+                      "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                      "column": 110,
+                      "line": 31
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39msupport.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                        "column": 110,
+                        "line": 31
+                      },
+                      "message": "Error: Runnable loopback browser application must answer GET /; start the documented server\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:8000/\u001b[39m\n\u001b[31mCall log:\u001b[39m\n\u001b[31m\u001b[2m  - navigating to \\\"http://127.0.0.1:8000/\\\", waiting until \\\"domcontentloaded\\\"\u001b[22m\u001b[39m\n\u001b[31m\"\u001b[39m\n\n   at support.ts:31\n\n  29 |   try { await page.goto('/', { waitUntil: 'domcontentloaded' }); }\n  30 |   catch (e) { navigation = String(e); }\n> 31 |   expect(navigation, 'Runnable loopback browser application must answer GET /; start the documented server').toBe('');\n     |                                                                                                              ^\n  32 |   await expect(page.locator('body'), 'Frontend must render the Vietnamese game menu').toContainText(/Chơi|Đấu|Theo dõi|Huấn luyện/i);\n  33 | }\n  34 |\n    at ready (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:31:110)\n    at openSetup (E:\\Bomberman\\game UI\\tests\\browser\\support.ts:46:3)\n    at E:\\Bomberman\\game UI\\tests\\browser\\training.spec.ts:33:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-22T14:00:19.241Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\training-bounded-real-trai-91596--metrics-board-and-controls\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\training-bounded-real-trai-91596--metrics-board-and-controls\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "E:\\Bomberman\\game UI\\tests\\_artifacts\\browser\\training-bounded-real-trai-91596--metrics-board-and-controls\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "E:\\Bomberman\\game UI\\tests\\browser\\support.ts",
+                    "column": 110,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2410163d751908292b1d-5c2661087a25c2291a91",
+          "file": "training.spec.ts",
+          "line": 31,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-22T13:59:59.007Z",
+    "duration": 21794.111999999997,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 9,
+    "flaky": 0
+  }
+}

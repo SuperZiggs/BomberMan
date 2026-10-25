@@ -1,0 +1,6 @@
+# Development and asset tools are isolated under game UI/.python-deps.
+# Existing ../venv supplies Torch and NumPy; do not reinstall them here.
+fastapi==0.159.1
+uvicorn[standard]==0.54.0
+httpx==0.28.1
+pillow==13.0.0

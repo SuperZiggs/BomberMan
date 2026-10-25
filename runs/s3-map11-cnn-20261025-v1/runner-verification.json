@@ -1,0 +1,30 @@
+{
+  "targeted_tests": 32,
+  "targeted_seconds": 9.917,
+  "independent_test_sha256": "49948d835e9bb8d9a1b8c3c2e54656ea43218d487ae3789b3e23f9bf10d018f1",
+  "native_smoke_games": 24,
+  "native_smoke_workers": 2,
+  "full_suite": {
+    "tests": 518,
+    "failures": [],
+    "errors": [
+      "test_cancelled_runner_records_incomplete_without_optimizer_or_plots (test_reward_audit.AuditChecks.test_cancelled_runner_records_incomplete_without_optimizer_or_plots)",
+      "test_ring_schedule_matches_loc_update (test_sudden_death_experiment.SuddenDeathTests.test_ring_schedule_matches_loc_update)",
+      "test_changed_source_cannot_reuse_control (test_two_bomb_complete.CompleteRunChecks.test_changed_source_cannot_reuse_control)",
+      "test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds (test_two_bomb_complete.CompleteRunChecks.test_complete_flow_uses_original_warm_start_and_fresh_paired_seeds)",
+      "test_current_trainer_cannot_reuse_the_old_control (test_two_bomb_complete.CompleteRunChecks.test_current_trainer_cannot_reuse_the_old_control)",
+      "test_existing_output_is_not_overwritten_or_trained (test_two_bomb_complete.CompleteRunChecks.test_existing_output_is_not_overwritten_or_trained)",
+      "test_missing_cuda_rejects_training_before_creating_output (test_two_bomb_complete.CompleteRunChecks.test_missing_cuda_rejects_training_before_creating_output)",
+      "test_real_reference_is_complete_and_unchanged (test_two_bomb_complete.CompleteRunChecks.test_real_reference_is_complete_and_unchanged)"
+    ],
+    "skips": [
+      "test_preflight_reprices_all_original_r0_steps_and_honors_cancellation (test_reward_pilot.ProtocolChecks.test_preflight_reprices_all_original_r0_steps_and_honors_cancellation)"
+    ],
+    "seconds": 323.40699999999924,
+    "historical_sources_and_models_changed": []
+  },
+  "new_tests_in_full_suite_passed": 32,
+  "review_findings_resolved": true,
+  "registration_valid": true,
+  "runner_sha256": "4b7a4f1a736b16c85bd1b38eceb79405783f04561ff5fd82032131e267b22664"
+}

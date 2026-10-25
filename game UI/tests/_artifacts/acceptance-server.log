@@ -1,0 +1,317 @@
+INFO:     Started server process [22984]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:49799 (Press CTRL+C to quit)
+INFO:     127.0.0.1:49804 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49805 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49806 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49812 - "GET /api/models HTTP/1.1" 200 OK
+Expanded observation channels 8 -> 13
+INFO:     127.0.0.1:49813 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49814 - "WebSocket /api/sessions/a2590261838d47a2af90433c646437cc/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49817 - "GET /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49818 - "GET /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49819 - "GET /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49820 - "GET /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49821 - "GET /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49822 - "GET /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49823 - "GET /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49824 - "GET /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49825 - "DELETE /api/sessions/a2590261838d47a2af90433c646437cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49826 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49827 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49828 - "WebSocket /api/sessions/970dd19612ad4bf5a03f172759467f2a/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49831 - "GET /api/sessions/970dd19612ad4bf5a03f172759467f2a HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49832 - "DELETE /api/sessions/970dd19612ad4bf5a03f172759467f2a HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49833 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49834 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49835 - "WebSocket /api/sessions/a486315a61f54f5fb7b645edd68742d7/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49838 - "GET /api/sessions/a486315a61f54f5fb7b645edd68742d7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49839 - "GET /api/sessions/a486315a61f54f5fb7b645edd68742d7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49840 - "GET /api/sessions/a486315a61f54f5fb7b645edd68742d7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49841 - "WebSocket /api/sessions/a486315a61f54f5fb7b645edd68742d7/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49844 - "GET /api/sessions/a486315a61f54f5fb7b645edd68742d7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49845 - "DELETE /api/sessions/a486315a61f54f5fb7b645edd68742d7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49846 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49847 - "POST /api/sessions HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49848 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49849 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49850 - "DELETE /api/sessions/c5bfed00686c4567a80f66b02e211e20 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:49851 - "WebSocket /api/sessions/c5bfed00686c4567a80f66b02e211e20/ws" 403
+INFO:     connection rejected (403 Forbidden)
+INFO:     127.0.0.1:49854 - "WebSocket /api/sessions/c5bfed00686c4567a80f66b02e211e20/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49857 - "DELETE /api/sessions/c5bfed00686c4567a80f66b02e211e20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49858 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49859 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49860 - "WebSocket /api/sessions/1aa60282e7804d5c990e569c8df59c5c/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49863 - "GET /api/sessions/1aa60282e7804d5c990e569c8df59c5c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49864 - "GET /api/sessions/1aa60282e7804d5c990e569c8df59c5c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49865 - "DELETE /api/sessions/1aa60282e7804d5c990e569c8df59c5c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49866 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49867 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49868 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49869 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49870 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49871 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49872 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49873 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49874 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49875 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49876 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49877 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49878 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49879 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49880 - "DELETE /api/sessions/4f425529416e4c6886cd7fb7dca569ff HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49881 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49882 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49883 - "WebSocket /api/sessions/b9d97d0508284e82a425cdca66979ae0/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49886 - "GET /api/sessions/b9d97d0508284e82a425cdca66979ae0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49887 - "DELETE /api/sessions/b9d97d0508284e82a425cdca66979ae0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49888 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49889 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49890 - "WebSocket /api/sessions/c37b44b947b24fbf9385279f3cdb08fe/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49893 - "GET /api/sessions/c37b44b947b24fbf9385279f3cdb08fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49894 - "GET /api/sessions/c37b44b947b24fbf9385279f3cdb08fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49895 - "GET /api/sessions/c37b44b947b24fbf9385279f3cdb08fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49896 - "GET /api/sessions/c37b44b947b24fbf9385279f3cdb08fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49897 - "GET /api/sessions/c37b44b947b24fbf9385279f3cdb08fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49898 - "DELETE /api/sessions/c37b44b947b24fbf9385279f3cdb08fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49899 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49900 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49902 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49903 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49904 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49905 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49906 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49907 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49908 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49916 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49917 - "DELETE /api/sessions/ac904f7c944c45ca8a5e1c6186009ea2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49919 - "DELETE /api/sessions/1154fa80eab44ec88bbeccf4c2757efe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49924 - "DELETE /api/sessions/b7746b08ef334787a031674e6ee2bf95 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49925 - "DELETE /api/sessions/b1daaf5136204fa8a6fb5467c0790289 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49926 - "DELETE /api/sessions/f988b8463aa04dd6954f50a6fbece209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49927 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49928 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49929 - "WebSocket /api/sessions/2848b2d207a24b69aa2ab532a3c76259/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49933 - "GET /api/sessions/2848b2d207a24b69aa2ab532a3c76259 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49934 - "GET /api/sessions/2848b2d207a24b69aa2ab532a3c76259 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49935 - "DELETE /api/sessions/2848b2d207a24b69aa2ab532a3c76259 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49936 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49938 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49939 - "WebSocket /api/sessions/16674f48be894cfda19fb4d161d6e664/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49942 - "GET /api/sessions/16674f48be894cfda19fb4d161d6e664 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49943 - "GET /api/sessions/16674f48be894cfda19fb4d161d6e664 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49945 - "DELETE /api/sessions/16674f48be894cfda19fb4d161d6e664 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49947 - "GET /api/sessions/not-a-ui-session HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49948 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49949 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49951 - "DELETE /api/sessions/7ca8a27c597c4834add00d1394a36fa9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49952 - "GET /api/sessions/7ca8a27c597c4834add00d1394a36fa9 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49953 - "DELETE /api/sessions/7ca8a27c597c4834add00d1394a36fa9 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49954 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49955 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49956 - "WebSocket /api/sessions/44bf33ac642d4eb6bd11992b922867d8/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49959 - "GET /api/sessions/44bf33ac642d4eb6bd11992b922867d8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49960 - "GET /api/sessions/44bf33ac642d4eb6bd11992b922867d8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49961 - "DELETE /api/sessions/44bf33ac642d4eb6bd11992b922867d8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49962 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49963 - "POST /api/training HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49964 - "POST /api/training/963e7385a89b43f7b254abb7612b3eb4/pause HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49965 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49966 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49967 - "POST /api/training HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:49968 - "POST /api/training/963e7385a89b43f7b254abb7612b3eb4/resume HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49969 - "POST /api/training/963e7385a89b43f7b254abb7612b3eb4/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49970 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49971 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49972 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49973 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49974 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49975 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49976 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49977 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49978 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49979 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49980 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49981 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49982 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49983 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49984 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49985 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49986 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49987 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49988 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49989 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49990 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49991 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+
+Saved final model to E:\Bomberman\game UI\runs\ui-20261025-151146-963e7385\final_phaseC.pt
+Saved best model to E:\Bomberman\game UI\runs\ui-20261025-151146-963e7385\best_phaseC.pt (best episode: 0)
+INFO:     127.0.0.1:49992 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49993 - "POST /api/training/963e7385a89b43f7b254abb7612b3eb4/attach-existing HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49994 - "POST /api/training/963e7385a89b43f7b254abb7612b3eb4/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49995 - "GET /api/training/963e7385a89b43f7b254abb7612b3eb4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49996 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49997 - "POST /api/training HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49998 - "GET /api/training/b6955fde9f694af2926237c217ffe4cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49999 - "GET /api/training/b6955fde9f694af2926237c217ffe4cc HTTP/1.1" 200 OK
+Expanded observation channels 8 -> 13
+Interpolated trunk_fc.0.weight from board 11x11 to 9x9
+Warm-started from E:\Bomberman\checkpoints\best_phaseE_4a.pt
+INFO:     127.0.0.1:50061 - "GET /api/training/b6955fde9f694af2926237c217ffe4cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50062 - "GET /api/training/b6955fde9f694af2926237c217ffe4cc HTTP/1.1" 200 OK
+
+Saved final model to E:\Bomberman\game UI\runs\ui-20261025-151149-b6955fde\final_phaseC.pt
+Saved best model to E:\Bomberman\game UI\runs\ui-20261025-151149-b6955fde\best_phaseC.pt (best episode: 0)
+INFO:     127.0.0.1:50063 - "GET /api/training/b6955fde9f694af2926237c217ffe4cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50064 - "POST /api/training/b6955fde9f694af2926237c217ffe4cc/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50065 - "GET /api/training/b6955fde9f694af2926237c217ffe4cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50066 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50067 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50068 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50069 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50070 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50071 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50072 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50073 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50074 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50075 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50076 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50077 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50078 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50079 - "POST /api/training HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50080 - "GET /api/training/existing-experiment HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50081 - "POST /api/training/existing-experiment/pause HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50082 - "POST /api/training/existing-experiment/resume HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50083 - "POST /api/training/existing-experiment/stop HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50084 - "POST /api/training/existing-experiment/unknown-action HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50085 - "POST /api/training HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:50086 - "GET /api/models HTTP/1.1" 200 OK
+Expanded observation channels 8 -> 13
+Interpolated trunk_fc.0.weight from board 11x11 to 9x9
+INFO:     127.0.0.1:50087 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50088 - "WebSocket /api/sessions/3b7ae84d8d6f4c3c920f9261863ad3fb/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50091 - "GET /api/sessions/3b7ae84d8d6f4c3c920f9261863ad3fb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50092 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50093 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50094 - "WebSocket /api/sessions/db36c6a3e1bd4012832e37af22b60836/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50097 - "GET /api/sessions/db36c6a3e1bd4012832e37af22b60836 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50098 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50099 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50100 - "WebSocket /api/sessions/79c2df2a6f04441a9d7bd44dce58eac6/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50103 - "GET /api/sessions/79c2df2a6f04441a9d7bd44dce58eac6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50104 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50105 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50106 - "WebSocket /api/sessions/f3798ab1fb0d469e805f4e5dba1214f1/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50109 - "GET /api/sessions/f3798ab1fb0d469e805f4e5dba1214f1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50110 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50111 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50112 - "WebSocket /api/sessions/6c55234bd6c14745bf3a568bdfb7b4ba/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50115 - "GET /api/sessions/6c55234bd6c14745bf3a568bdfb7b4ba HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50116 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50117 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50118 - "WebSocket /api/sessions/63e7f9603d254e8c8c0f84730edcfdfa/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50121 - "GET /api/sessions/63e7f9603d254e8c8c0f84730edcfdfa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50122 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50123 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50124 - "WebSocket /api/sessions/b2c25c35a5234db69ff3c0f090122506/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50127 - "GET /api/sessions/b2c25c35a5234db69ff3c0f090122506 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50128 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50129 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50130 - "WebSocket /api/sessions/2e892e239a704ef5b5cfb24f3014b6cc/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50133 - "GET /api/sessions/2e892e239a704ef5b5cfb24f3014b6cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50134 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50135 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50136 - "WebSocket /api/sessions/ff1c639e68394aaca1543f34749b41ac/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50139 - "GET /api/sessions/ff1c639e68394aaca1543f34749b41ac HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50140 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50141 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50142 - "WebSocket /api/sessions/d461958d1fc54ff68f3a707264e53ba2/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50145 - "GET /api/sessions/d461958d1fc54ff68f3a707264e53ba2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50146 - "DELETE /api/sessions/3b7ae84d8d6f4c3c920f9261863ad3fb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50147 - "DELETE /api/sessions/db36c6a3e1bd4012832e37af22b60836 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50148 - "DELETE /api/sessions/79c2df2a6f04441a9d7bd44dce58eac6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50149 - "DELETE /api/sessions/f3798ab1fb0d469e805f4e5dba1214f1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50150 - "DELETE /api/sessions/6c55234bd6c14745bf3a568bdfb7b4ba HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50151 - "DELETE /api/sessions/63e7f9603d254e8c8c0f84730edcfdfa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50152 - "DELETE /api/sessions/b2c25c35a5234db69ff3c0f090122506 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50153 - "DELETE /api/sessions/2e892e239a704ef5b5cfb24f3014b6cc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50154 - "DELETE /api/sessions/ff1c639e68394aaca1543f34749b41ac HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50155 - "DELETE /api/sessions/d461958d1fc54ff68f3a707264e53ba2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50156 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50157 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50158 - "WebSocket /api/sessions/42fd79d55ff9472cb27e832499478af2/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50161 - "GET /api/sessions/42fd79d55ff9472cb27e832499478af2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50162 - "GET /api/sessions/42fd79d55ff9472cb27e832499478af2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50163 - "GET /api/sessions/42fd79d55ff9472cb27e832499478af2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50164 - "GET /api/sessions/42fd79d55ff9472cb27e832499478af2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50165 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50166 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50167 - "WebSocket /api/sessions/d50d661d3b0f48aea952ac8dbb9381a5/ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50170 - "GET /api/sessions/d50d661d3b0f48aea952ac8dbb9381a5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50171 - "GET /api/sessions/d50d661d3b0f48aea952ac8dbb9381a5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50172 - "GET /api/sessions/d50d661d3b0f48aea952ac8dbb9381a5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50173 - "GET /api/sessions/d50d661d3b0f48aea952ac8dbb9381a5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50174 - "DELETE /api/sessions/42fd79d55ff9472cb27e832499478af2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50175 - "DELETE /api/sessions/d50d661d3b0f48aea952ac8dbb9381a5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50176 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50177 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50178 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50179 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50180 - "DELETE /api/sessions/c5df8f00e6ee4468973e93ccfd132a4a HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50181 - "DELETE /api/sessions/381e077d0e1742df910aabebe344cc95 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50182 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50183 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50184 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50185 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50186 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50187 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50188 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50189 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50190 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50191 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50192 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50193 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50194 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50195 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50196 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50197 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50198 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50199 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50200 - "POST /api/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50201 - "GET /api/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50202 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50203 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50204 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50205 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50206 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50207 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50208 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50209 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50210 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50211 - "POST /api/sessions HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50212 - "DELETE /api/sessions/5d87855b54dd412d85fe6977060f113f HTTP/1.1" 200 OK

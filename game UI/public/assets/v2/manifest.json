@@ -1,0 +1,82 @@
+{
+  "version": 2,
+  "frameSize": 32,
+  "characters": [
+    {
+      "id": "mint",
+      "path": "/assets/v2/characters/mint.png",
+      "frames": 36,
+      "avatar": "/assets/v2/characters/mint-avatar.png",
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "blue",
+      "path": "/assets/v2/characters/blue.png",
+      "frames": 36,
+      "avatar": "/assets/v2/characters/blue-avatar.png",
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "coral",
+      "path": "/assets/v2/characters/coral.png",
+      "frames": 36,
+      "avatar": "/assets/v2/characters/coral-avatar.png",
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "gold",
+      "path": "/assets/v2/characters/gold.png",
+      "frames": 36,
+      "avatar": "/assets/v2/characters/gold-avatar.png",
+      "anchor": [
+        0.5,
+        1
+      ]
+    }
+  ],
+  "terrain": {
+    "path": "/assets/v2/environment/terrain.png",
+    "frames": 12
+  },
+  "effects": {
+    "path": "/assets/v2/fx/effects.png",
+    "frames": 68
+  },
+  "files": [
+    "/assets/v2/audio/bomb.wav",
+    "/assets/v2/audio/click.wav",
+    "/assets/v2/audio/defeat.wav",
+    "/assets/v2/audio/draw.wav",
+    "/assets/v2/audio/explosion.wav",
+    "/assets/v2/audio/fuse.wav",
+    "/assets/v2/audio/pickup.wav",
+    "/assets/v2/audio/win.wav",
+    "/assets/v2/characters/blue-avatar.png",
+    "/assets/v2/characters/blue.png",
+    "/assets/v2/characters/coral-avatar.png",
+    "/assets/v2/characters/coral.png",
+    "/assets/v2/characters/gold-avatar.png",
+    "/assets/v2/characters/gold.png",
+    "/assets/v2/characters/mint-avatar.png",
+    "/assets/v2/characters/mint.png",
+    "/assets/v2/environment/terrain.png",
+    "/assets/v2/fonts/BeVietnamPro-ExtraBold.ttf",
+    "/assets/v2/fonts/BeVietnamPro-Regular.ttf",
+    "/assets/v2/fonts/BeVietnamPro-SemiBold.ttf",
+    "/assets/v2/fonts/OFL.txt",
+    "/assets/v2/fx/effects.png",
+    "/assets/v2/ui/foundry.webp",
+    "/assets/v2/ui/icons.svg",
+    "/assets/v2/ui/logo.svg"
+  ],
+  "provenance": "Generated with built-in ImageGen; normalized with Game Studio 0.1.2; docs/asset-prompts.md"
+}

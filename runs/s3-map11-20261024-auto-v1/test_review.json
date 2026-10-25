@@ -1,0 +1,80 @@
+{
+  "registration_valid": true,
+  "raw_counts_and_pairs_valid": true,
+  "selection_unchanged": true,
+  "checkpoint_sha256": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f",
+  "results": {
+    "S3": {
+      "num_episodes": 400,
+      "win_rate": 59.25,
+      "active_win_rate": 46.25,
+      "draw_rate": 30.75,
+      "passive_win_rate": 2.0,
+      "suicide_rate": 0.75,
+      "sudden_death_death_rate": 6.75
+    },
+    "S3_11": {
+      "num_episodes": 400,
+      "win_rate": 90.75,
+      "active_win_rate": 87.25,
+      "draw_rate": 6.0,
+      "passive_win_rate": 2.0,
+      "suicide_rate": 1.25,
+      "sudden_death_death_rate": 1.5
+    }
+  },
+  "paired": {
+    "active_win": {
+      "difference_pp": 41.0,
+      "ci95_pp": [
+        34.5,
+        47.25
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "win": {
+      "difference_pp": 31.5,
+      "ci95_pp": [
+        25.75,
+        37.25
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "draw": {
+      "difference_pp": -24.75,
+      "ci95_pp": [
+        -30.0,
+        -19.5
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    },
+    "suicide": {
+      "difference_pp": 0.5,
+      "ci95_pp": [
+        -1.0,
+        2.0
+      ],
+      "board_pairs": 200,
+      "resamples": 10000,
+      "bootstrap_seed": 20261014
+    }
+  },
+  "gate": {
+    "active_5pp": true,
+    "active_ci_lower_positive": true,
+    "suicide_within_1pp": true,
+    "pass": true
+  },
+  "artifact_completed_utc": "2026-10-24T14:46:18.636803+00:00",
+  "wall_to_artifact_seconds": 322.35782,
+  "test_seed": 820000,
+  "boards": 200,
+  "games_per_model": 400,
+  "chosen_checkpoint": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\train\\epoch_16.pt"
+}

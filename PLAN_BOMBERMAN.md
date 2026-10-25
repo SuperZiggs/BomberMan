@@ -687,4 +687,18 @@ Hướng mở sau khi có agent ổn định: opponent modelling nếu thua do k
 
 Ghi chú nghiên cứu và giới hạn truy cập nguồn ở [RESEARCH_BOMBERMAN_2026.md](/D:/fpt/subject/BomberMan/RESEARCH_BOMBERMAN_2026.md). Quy trình đối chiếu nguồn sử dụng literature-review; nguồn công cụ được ghi riêng, không phải nghiên cứu Bomberman: Kassis, Agarwal, He, Patel, Brueckner (2026), [Scientific Agent Skills](https://arxiv.org/abs/2609.00065).
 
+## Bảo trì workspace — 24/10/2026
+
+- [x] S3-MAP11-COMPAT: xác nhận nạp/forward S3 từ 9×9 sang 11×11; chưa train hoặc đánh giá sức chơi. Bằng chứng: RESULTS `S3-MAP11-COMPAT`, IMPROVEMENTS §90.
+- [x] S3-MAP11-STEPS: giải thích các bước chuẩn bị và chưng cất trên 11×11; chưa triển khai hoặc chạy thí nghiệm. Chi tiết: RESULTS `S3-MAP11-COMPAT`, IMPROVEMENTS §90.
+- [x] S3-MAP11-STEP1: runner và guide 11×11 từ S3 sẵn sàng; targeted62/62 + smoke2worker PASS; toàn repo486 còn8 lỗi fixture cũ/1skip. Chưa chạy bước2 hoặc train thật. RESULTS `S3-MAP11-STEP1`, IMPROVEMENTS §91.
+- [x] S3-MAP11-AUTO-SETUP: init run riêng, baseline đang chạy và heartbeat45phút ACTIVE theo yêu cầu tự thực hiện2–5; test820000 chưa mở. RESULTS `S3-MAP11-AUTO`, IMPROVEMENTS §92.
+- [x] S3-MAP11-AUTO-2-5: DONE/PASS; baseline→collect200trận→chưng cất16epoch→validation chọn16→test820000 đủ400trận/model. ActiveWR87.25% vs46.25%,+41pp[34.5,47.25], tự nổ+.5pp≤1. Giữ S3 gốc/model phục vụ; chốt và gỡ heartbeat. RESULTS `S3-MAP11-TEST`, IMPROVEMENTS §97, run `FINAL_REPORT.md`.
+- [ ] S3-11-PUBLISH (25/10/2026): nhánh mới `Loc/S3-11`, kiểm mới67runner+34bridge+3UIunit và build PASS, đang commit/push toàn bộ thay đổi kể cả gameUI/model/run; chờ GitHub xác nhận SHA/upstream. RESULTS `GIT-LOC-S3-11-PREP`, IMPROVEMENTS §102.
+- [x] S3-MAP11-CNN-HOWTO (25/10/2026): đối chiếu API/runner và giải thích cách test CNN11×11; chưa triển khai hoặc chạy benchmark mới. RESULTS `S3-MAP11-CNN-HOWTO`, IMPROVEMENTS §98.
+- [x] S3-MAP11-CNN-RUNNER: runner riêng/test/review hoàn tất,32/32targeted/native24game PASS; suite rộng518test còn8lỗi fixture cũ/1skip,32test mới PASS. RESULTS `S3-MAP11-CNN-LAUNCH`, IMPROVEMENTS §100.
+- [x] S3-MAP11-CNN-EVAL (25/10/2026): hoàn tất2400trận/120shard, xác thực raw/hash/report; S3-11 macroActive8.58vsS3 4.75%,+3.83ppCI[1.92,5.83], chưa đạt gate+5pp; hòa64.33%, tự nổ1.58%. State completed_no_qualified_gain, giữ model phục vụ/không train, kết thúc và gỡ lịch45phút. RESULTS `S3-MAP11-CNN-FINAL`, IMPROVEMENTS §101; báo cáo đủWR/hòa/timeout/thua/suicide/CI tại run.
+
+- [x] Đồng bộ `danh/sd9-s3-distillation` tại `6b49216`, giữ nguyên `game UI`; kiểm tra SHA-256 UI và 327 file LFS. Bằng chứng: RESULTS `SYNC-SD9-S3` và `.codex-recovery/pull-sd9-s3-20261024-035246/verification.json`.
+
 

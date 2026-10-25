@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-23",
+  "scope": "game UI local implementation",
+  "checks": {
+    "python": 28,
+    "client": 3,
+    "browser": 12,
+    "typecheck": "PASS",
+    "build": "PASS",
+    "runner_exit": 0
+  },
+  "root_baseline": {
+    "tests": 535,
+    "errors": 20,
+    "failures": 1,
+    "skipped": 2,
+    "seconds": 701.772
+  },
+  "measurements": {
+    "engine_ms": {
+      "n": 12,
+      "p50": 9.26,
+      "p95_nearest_rank": 22.35
+    },
+    "bridge_ms": {
+      "n": 12,
+      "p50": 79.4,
+      "p95_nearest_rank": 232.13
+    }
+  },
+  "files": {
+    "public/assets/v2": {
+      "count": 26,
+      "bytes": 1077354
+    },
+    "dist": {
+      "count": 31,
+      "bytes": 2342135
+    },
+    "assets/source": {
+      "count": 8,
+      "bytes": 11428308
+    }
+  },
+  "unchanged_core_sha256": {
+    "bomberman_env.py": "95938895a5f77e649b1f36d0174f1c4510e97810ee057007e5185ee0a913c12d",
+    "train_actor_critic.py": "1901bcce180d867eccc87413f468c799ba15cd22e63d92c0003949db9eeda7c7",
+    "rule_based_bot.py": "6fa6339c62102864f514cea12f176e652400e459a9ae8467088e50a97de9f90c",
+    "visualize.py": "20f8c631d0f43618879ddb4da733585eb766e6667eebed640e0a779690b48202",
+    "checkpoints/best_phaseE_4a.pt": "b014702f958c79bb33b9a89b3eed5f9785d9d5209c5f6154fd2dd62d703fdc59"
+  },
+  "browser_stats": {
+    "startTime": "2026-10-22T17:41:35.696Z",
+    "duration": 55261.242,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "limitations": [
+    "RAF is browser refresh, not Phaser FPS",
+    "Small local automation sample, not performance benchmark",
+    "No long memory soak or held-out model evaluation",
+    "Root legacy suite has pre-existing failures"
+  ]
+}

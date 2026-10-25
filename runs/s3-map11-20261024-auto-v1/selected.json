@@ -1,0 +1,7 @@
+{
+  "epoch": 16,
+  "checkpoint": "E:\\Bomberman\\runs\\s3-map11-20261024-auto-v1\\train\\epoch_16.pt",
+  "proceed_to_test": true,
+  "smoke": false,
+  "checkpoint_sha256": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f"
+}

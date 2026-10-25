@@ -1,0 +1,226 @@
+{
+  "environment": "Headless Chrome software WebGL; timings include browser automation; RAF measures browser refresh, not Phaser FPS",
+  "timings": [
+    {
+      "bridge_ms": 147.5456000000013,
+      "engine_ms": 22.35
+    },
+    {
+      "bridge_ms": 232.1293000000005,
+      "engine_ms": 7.36
+    },
+    {
+      "bridge_ms": 81.11269999999968,
+      "engine_ms": 9.21
+    },
+    {
+      "bridge_ms": 54.3739000000005,
+      "engine_ms": 7.4
+    },
+    {
+      "bridge_ms": 80.04089999999997,
+      "engine_ms": 12.29
+    },
+    {
+      "bridge_ms": 55.547199999999066,
+      "engine_ms": 9.3
+    },
+    {
+      "bridge_ms": 68.07750000000124,
+      "engine_ms": 11.97
+    },
+    {
+      "bridge_ms": 51.59070000000065,
+      "engine_ms": 6.32
+    },
+    {
+      "bridge_ms": 78.76160000000164,
+      "engine_ms": 7.21
+    },
+    {
+      "bridge_ms": 103.39139999999861,
+      "engine_ms": 7.99
+    },
+    {
+      "bridge_ms": 92.88349999999991,
+      "engine_ms": 15.46
+    },
+    {
+      "bridge_ms": 66.8765999999996,
+      "engine_ms": 13.76
+    }
+  ],
+  "raf": {
+    "fps": 135.45546901456152,
+    "frames": 120
+  },
+  "responsive": [
+    {
+      "width": 1366,
+      "height": 768,
+      "board": {
+        "x": 332,
+        "y": 164.796875,
+        "width": 396,
+        "height": 396
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "board": {
+        "x": 518,
+        "y": 230.796875,
+        "width": 578,
+        "height": 578
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "board": {
+        "x": 115,
+        "y": 209,
+        "width": 538,
+        "height": 538
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "board": {
+        "x": 22,
+        "y": 190.5,
+        "width": 346,
+        "height": 346
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "board": {
+        "x": 153,
+        "y": 209,
+        "width": 538,
+        "height": 538
+      },
+      "horizontalOverflow": false
+    }
+  ],
+  "resources": [
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/fonts/BeVietnamPro-Regular.ttf",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/index-B-PZBF9I.js",
+      "bytes": 300
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/rolldown-runtime-WkwZ5CU-.js",
+      "bytes": 300
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/phaser-CmOm-Ik1.js",
+      "bytes": 300
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/index-Dz-sxOiB.css",
+      "bytes": 300
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/ui/logo.svg",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/ui/icons.svg#close",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/characters/mint-avatar.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/characters/blue-avatar.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/characters/coral-avatar.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/characters/gold-avatar.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/ui/foundry.webp",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/fonts/BeVietnamPro-ExtraBold.ttf",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/fonts/BeVietnamPro-SemiBold.ttf",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/ui/logo.svg",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/audio/click.wav",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/ui/logo.svg",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/ui/logo.svg",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/manifest.json",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/characters/mint.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/characters/blue.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/characters/coral.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/characters/gold.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/environment/terrain.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/fx/effects.png",
+      "bytes": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/audio/bomb.wav",
+      "bytes": 7400
+    },
+    {
+      "name": "http://127.0.0.1:8000/assets/v2/audio/explosion.wav",
+      "bytes": 14456
+    }
+  ],
+  "consoleErrors": [],
+  "screenshots": "fixture-* are controlled snapshots from real engine fixtures, not live policy matches; browser test screenshots are actual matches"
+}

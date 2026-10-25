@@ -1,0 +1,13 @@
+{
+  "seed": 830000,
+  "games": 400,
+  "total_games": 2400,
+  "smoke": false,
+  "config_sha256": "65133a6e5499e5fe2fe9967de4e5a26d065426977cb49418af59c189b7892374",
+  "checkpoint_sha256": {
+    "S3_11": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f",
+    "S3": "4185375f8b5f5cf070d3eef6ce98bec27e23fe06c64d97b500c939e36e669ed7",
+    "S2": "d222d81f86e5188951c1327f60cdb46ec770e5e1ba060e42c1f24efbfe8f6814",
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac"
+  }
+}

@@ -2,6 +2,19 @@
 
 File này chỉ để **theo dõi công việc** (đánh dấu `[x]` khi xong, có bằng chứng). Số liệu, bảng kết quả và quyết định ghi trong `RESULTS.md`; thay đổi code/phương pháp ghi trong `IMPROVEMENTS.md`; quy ước bền vững ghi trong `CLAUDE.md`. Tracker tổng của dự án: `PLAN_BOMBERMAN.md`.
 
+- [x] S3-MAP11-COMPAT (24/10/2026): xác nhận checkpoint S3 9×9 nạp/forward được trên 11×11 bằng `smart_load_weights`; chỉ kiểm tra tương thích, chưa train hoặc đo sức chơi. RESULTS `S3-MAP11-COMPAT`, IMPROVEMENTS §90.
+- [x] S3-MAP11-STEPS (24/10/2026): giải thích quy trình runner riêng → baseline/thầy → dữ liệu mới → train/validation/test; cấu hình minh họa là đề xuất, chưa triển khai hoặc chạy. RESULTS `S3-MAP11-COMPAT`, IMPROVEMENTS §90.
+- [x] S3-MAP11-STEP1 (24/10/2026): tạo runner/guide riêng 11×11 từ S3; 35 test mới + 27 regression liên quan PASS, smoke 2 worker PASS. Toàn repo486: 8 lỗi fixture cũ, 1 skip. Chưa chạy baseline/collect/train thật hoặc đăng ký seed test. RESULTS `S3-MAP11-STEP1`, IMPROVEMENTS §91.
+- [x] S3-MAP11-AUTO-SETUP (24/10/2026): người dùng cho phép bước2–5; init `runs/s3-map11-20261024-auto-v1`, launch baseline, heartbeat45phút ACTIVE. RESULTS `S3-MAP11-AUTO`, IMPROVEMENTS §92.
+- [x] S3-MAP11-STEP2: baseline S3/S3+search3 trên11×11,100trận/agent — DONE/PASS; ActiveWR50→98%,+48pp CI95[38,58], suicide0→0%. RESULTS `S3-MAP11-BASELINE`, IMPROVEMENTS §93.
+- [x] S3-MAP11-STEP3: collect200trận seed812000 DONE;4shard,746decision/1310anchor, split90/10bàn hợp lệ. RESULTS `S3-MAP11-COLLECT`, IMPROVEMENTS §94.
+- [x] S3-MAP11-STEP4: chưng cất16epoch từ S3/CUDA DONE; đủ4candidate4/8/12/16, metrics hữu hạn/critic_head giữ nguyên. RESULTS `S3-MAP11-TRAIN`, IMPROVEMENTS §95.
+- [x] S3-MAP11-STEP5: DONE/PASS, epoch16 test820000 một lần: ActiveWR87.25% vs46.25%,+41pp CI95[34.5,47.25], tự nổ1.25% vs.75%(+.5pp≤1). Đủ400trận/model, giữ S3 gốc, gỡ heartbeat khi chốt. RESULTS `S3-MAP11-TEST`, IMPROVEMENTS §97, run `FINAL_REPORT.md`.
+- [ ] S3-11-PUBLISH (25/10/2026): tạo `Loc/S3-11`,67test S3-map11/CNN+34bridge+3UIunit và UIbuild PASS; đang commit/push toàn bộ code/UI/checkpoint/run/report qua Git/LFS, chờ remote xác nhận. RESULTS `GIT-LOC-S3-11-PREP`, IMPROVEMENTS §102.
+- [x] S3-MAP11-CNN-HOWTO (25/10/2026): giải thích evaluator CNN11×11 từ opponent_fn; runner cũ cố định9×9. Đề xuất pool S3/S2/G, so S3-11 với S3 nội suy, chưa viết/chạy benchmark hoặc mở seed mới. RESULTS `S3-MAP11-CNN-HOWTO`, IMPROVEMENTS §98.
+- [x] S3-MAP11-CNN-RUNNER (25/10/2026): runner/guide/spec/test riêng;32/32targeted + native2worker24game PASS, review integrity hoàn tất. Suite rộng518test:32test mới PASS,8lỗi fixture cũ đã tái hiện trước code/1skip, không có assertion failure. Registration/source/model giữ nguyên. RESULTS `S3-MAP11-CNN-LAUNCH`, IMPROVEMENTS §100.
+- [x] S3-MAP11-CNN-EVAL (25/10/2026): đủ2400/2400trận/120shard/6cặp, hash/raw/report xác thực,22.90phút đến summary. S3-11 vs S3 macroActive8.58vs4.75%,+3.83pp[1.92,5.83]; WR23.00vs21.67%, hòa64.33vs63.08%, tự nổ1.58vs1.33%. Gate không đạt ngưỡng+5pp; state completed_no_qualified_gain, không train/promote, kết thúc theo dõi và gỡ lịch45phút. RESULTS `S3-MAP11-CNN-FINAL`, IMPROVEMENTS §101, run `FINAL_REPORT.md`.
+
 Trạng thái: **DONE** = xong (kể cả gate FAIL); **READY** = làm được ngay; **WAIT** = chờ người dùng chạy/kết quả; **COND** = chỉ mở khi điều kiện ghi kèm thỏa; **DEFERRED** = để sau.
 
 Cập nhật: 24/10/2026. Checkpoint CNN đang giữ: G `runs/sd75-20261018/full/best_phaseC.pt` (từ SD7.6; trước đó B tới SD4.6, F cho SD5). Agent mạnh nhất: G + `kill_search.search_action3` (SD8B, test 49000). Seed test tiếp theo: 58000 (57000: SD9; PDE2 đã dùng 51000–56099; 50000: PDE; 48000: SD8A). Agent chính (người dùng chốt chính thức 24/10, sau SD9.3): S3. CNN thuần mạnh nhất: S3 `runs/sd9-20261023/train/epoch_12.pt` (SD9, test 57000; trước đó S2 `runs/sd8a-20261020/train/epoch_16.pt`). Lịch SD dùng để đánh giá từ SD5: lịch E 475/25/40 của engine (SD1–SD4 dùng SD2 + biên mask learner k=15).
@@ -170,3 +183,7 @@ Insight rút ra từ SD5–SD6 được gom ở `INSIGHTS.md`.
 - [ ] Phase D/E từ S3 — (COND) cần cơ chế giữ kỹ năng chưng cất (xem D-S2, S2-KL) trước khi spec.
 - [x] SD9.0 — (DONE 23/10) probe S2 + search3 vs G + search3, validation 21000; ActiveWR S2+s3 − G+s3: RuleBot −5.0 [−11, +1], S2 −2.0 [−11, +7], G +7.0 [−2, +16]. Luật: thầy SD9 = S2 + search3; G + search3 vẫn là agent mạnh nhất. RESULTS "SD9.0".
 - [x] SD9 — (DONE 23/10, **ĐẠT**) chưng cất S2 + search3 thành S3 (`runs/sd9-20261023/train/epoch_12.pt`, `4185375f…69ed7`) từ S2, test 57000: S3 92.25 vs S2 81.75 ActiveWR, +10.5 [+6.5, +14.5], tự nổ −0.25; S3 − G + search3 −1.75 [−5.0, +1.5]. S3 là CNN thuần mạnh nhất. RESULTS "SD9".
+
+## Bảo trì workspace — 24/10/2026
+
+- [x] Pull nhánh `danh/sd9-s3-distillation` tại `6b49216`, giữ nguyên `game UI`, lưu thay đổi local cũ trong stash; đủ 327 file LFS. Bằng chứng: RESULTS `SYNC-SD9-S3` và `.codex-recovery/pull-sd9-s3-20261024-035246/verification.json`.

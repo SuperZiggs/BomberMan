@@ -1268,3 +1268,177 @@ Ghi chú 24/10/2026: đã đồng bộ `PLAN_BOMBERMAN.md` (hàng SD và ghi ch�
 Chưa chạy smoke toàn bộ quy trình (collect → test).
 
 **Trạng thái:** code xong, chưa chạy. Thu dữ liệu khoảng 53 giờ, chờ người dùng quyết.
+
+## 89. Đồng bộ danh/sd9-s3-distillation, giữ game UI (2026-10-24)
+
+- Theo yêu cầu người dùng, chuyển workspace sang nhánh `danh/sd9-s3-distillation`, theo dõi origin, commit `6b492162b9f8819b3bced4ad0723706bf1ab9fc3`; pull `--ff-only` xác nhận đã cập nhật.
+- Sao lưu toàn bộ `game UI` trước khi chuyển nhánh; lưu riêng thay đổi local ngoài UI bằng stash `codex-preserve-before-sd9-s3-2026-10-24` (`1cfa1dad89104b092de12fdcad5c4f138efa7af4`). Nhánh đích không chứa `game UI`, nên giữ thư mục gốc tại chỗ.
+- Kiểm chứng: 4.840 file UI và 1.072 thư mục không đổi, từng SHA-256 trùng trước/sau; 327 file LFS đủ nội dung và trùng OID; HEAD trùng origin, file được theo dõi sạch trước khi bổ sung nhật ký/tracker.
+- Bằng chứng và bản sao: `.codex-recovery/pull-sd9-s3-20261024-035246/`. Không thay đổi logic engine, AI hoặc UI; không chạy train, đánh giá hay build.
+
+**Trạng thái:** hoàn tất đồng bộ và kiểm tra tính toàn vẹn.
+
+## 90. Kiểm tra khả năng chuyển S3 sang 11×11 (2026-10-24)
+
+**Thông số:** Codex trên Windows tại `E:\Bomberman`, `venv\Scripts\python.exe`, torch `2.11.0+cu128`, CPU, 1 tiến trình/1 thread; S3 `runs/sd9-20261023/train/epoch_12.pt` SHA `4185375f…69ed7`, giống `checkpoints/final_sd9_epoch_12.pt`. Khởi tạo env 9×9/11×11, 2 agent, seed 0, max_steps 500, E 475/25/40; chỉ reset và forward, không `step`, không train/đánh giá trận hoàn chỉnh, không bootstrap. Các hệ số train/gate hiệu năng không áp dụng.
+
+- Không đổi production code hoặc checkpoint. Đọc `ActorCriticNet`, `smart_load_weights`, CLI train, loader đánh giá, runner chưng cất và metadata SD9.
+- Kiểm chứng trực tiếp: `load_state_dict` lệch shape lớp FC; `smart_load_weights` nội suy `[256, 5184]` → `[256, 7744]`, giữ nguyên 11 tensor còn lại. Forward logits/value hữu hạn trên cả hai map, mask ban đầu hợp lệ.
+- Phân biệt hai cách thích nghi: CLI Phase C hỗ trợ warm-start 11×11 ngay; tiếp tục chưng cất cần runner mới vì SD9/SD5.3 cố định 9×9. Checkpoint epoch chỉ chứa trọng số, không hỗ trợ exact resume xuyên cấu hình.
+- Khuyến nghị validation 11×11 trước khi train, giữ checkpoint gốc, đo cả 9×9/11×11; đây là đề xuất, chưa có kết quả hiệu năng hoặc lượt train mới.
+
+**Trạng thái:** hoàn tất kiểm tra tương thích; chưa triển khai hay chạy thí nghiệm mở rộng map. Chi tiết kết quả: RESULTS `S3-MAP11-COMPAT`.
+
+**Bổ sung quy trình theo yêu cầu:** đọc tiếp `run_sd9_distill.train/play/validate`, `run_sd53_pilot._load_net` và lịch co vòng engine. Xác nhận không chỉ collection mà loader và evaluation cũng cố định 9×9. Đề xuất runner riêng cho 11×11, baseline/thầy trước, pilot dữ liệu mới rồi train/validation/test; dùng S3 sau nội suy làm baseline để tách ảnh hưởng chuyển map và học tiếp. Số trận/hyperparameter minh họa được ghi là đề xuất trong RESULTS; chưa triển khai hoặc chạy. Các thông số runtime ở trên chỉ thuộc kiểm tra forward trước đó.
+
+## 91. Runner riêng cho S3 trên 11×11 — bước 1 (2026-10-24)
+
+**Thông số:** Codex trên Windows tại `E:\Bomberman`, Python `venv\Scripts\python.exe`, torch `2.11.0+cu128`, NumPy `2.4.6`; S3 `runs/sd9-20261023/train/epoch_12.pt` SHA `4185375f…69ed7`. Acceptance dùng CPU/1 thread, seed giả từ `1900000000`, env 11×11/2 agent/max12/E475-25-40, search stub, train synthetic 2epoch/lr1e-4/batch16/KL1; smoke worker thật 2 tiến trình, 8 lượt collect + 4 evaluation, max1, không gradient/hold-out thật. Không có lượt train hoặc đánh giá hiệu năng thật, không bootstrap để kết luận cải thiện.
+
+- Theo bước 1 đã được người dùng yêu cầu, thêm `run_s3_map11_distill.py` và `S3_MAP11_GUIDE.md`; giữ nguyên source engine, RuleBot, trainer và runner cũ để bảo toàn hash các run SD9 đã khóa.
+- Runner dùng mạng 11×11 từ S3, thầy search3 và neo mới trên map11; có các stage độc lập, registration, bundle source, guard seed, shard/resume, shape validation và progress. Không thêm dependency ngoài thư viện hiện có.
+- Tiếp tục dùng khung chưng cất SD9: CE nhãn quyết định + KL neo, critic không cập nhật, không augmentation cố định9; chọn checkpoint bằng validation ActiveWR/tự nổ, test một lần sau cải thiện. Cấu hình full là đề xuất cho bước sau, không phải kết quả đã chạy.
+- Test-author độc lập tạo `test_run_s3_map11.py` (33 test) và matrix trước production. RED lưu riêng; SHA test đóng băng `3cdd4d52…af8cf` không bị parent thay đổi. Acceptance GREEN 33/33; 27 regression cũ PASS.
+- Reviewer độc lập yêu cầu bổ sung 3 dependency transitively imported vào source closure. Tạo `test_s3_map11_provenance.py` (2 test), xác nhận RED rồi sửa; targeted cuối **62/62 PASS, 11.683 giây**. Guide ghi rõ baseline100 trận mỗi arm, tổng200.
+- Smoke thật 2 worker thành công. Hạn chế TEMP/named-pipe của sandbox được xác định bằng stack trace và khắc phục ở môi trường kiểm thử, không thay đổi atomic save hoặc hạ test.
+- Spec, plan, matrix, RED evidence: `docs/superpowers/`; ledger/log/hash: `.superpowers/sdd/2026-10-24-s3-map11-runner-step1/`. Không commit/push và không đổi model đang dùng.
+
+**Kiểm tra rộng:** discovery toàn repo chạy xong: 486 test, 8 errors, 1 skip, 0 assertion failures, 195.340 giây. Cả 35 test mới PASS; 8 errors tái hiện khi chạy riêng test cũ, đều thiếu checkpoint/fixture tham chiếu ở ổ D hoặc bản so sánh `BomberMan-Loc_update`. Không sửa các tham chiếu lịch sử ngoài phạm vi. Source cũ/S3 giữ nguyên SHA; hoàn nguyên pointer PPO và dọn fixture/lock do test tạo.
+
+**Trạng thái:** hoàn tất bước 1; targeted62/62 và worker smoke PASS, toàn repo còn 8 lỗi fixture cũ/1 skip nên không tuyên bố toàn repo xanh. RESULTS `S3-MAP11-STEP1` ghi chi tiết; chưa thực hiện bước 2.
+
+## 92. Tự động thực hiện S3 map11 bước 2–5, kiểm tra45phút (2026-10-24)
+
+**Thông số:** Codex/Windows `E:\Bomberman`, Python3.11.9/torch2.11.0+cu128/NumPy2.4.6, S3 SHA `4185375f…69ed7`; run `runs/s3-map11-20261024-auto-v1`. Map11×11/2agent/max500/E475-25-40/RuleBot. Baseline100trận mỗi agent S3/S3+search3, bàn21000–21049×2, CPU/tối đa2worker; collect dự kiến200trận812000–812099×2,75%E/neo5%, tối đa4worker; train dự kiến CUDA RTX4060 Laptop8GB/Adam1e-4/batch256/KL1/held-out10%/16epoch; validation400trận/agent seed21000; test400trận/agent seed820000 đã đặt chỗ chưa mở. Bootstrap10000, seed20261014. Thời gian/metric các stage chưa hoàn tất không được đoán.
+
+- Người dùng đã cho phép tự chạy tuần tự và không theo dõi liên tục. Không viết lại hoặc sửa runner; chỉ init cấu hình đã kiểm thử, tạo protocol/state run và launch baseline.
+- Cài heartbeat45phút trong chat, trạng thái ACTIVE; ID lưu trong state. Protocol chỉ lấy snapshot khi thức dậy, kiểm artifact/hash/gate rồi chuyển bước; không poll và không mở chat khác. Dừng/pause khi có gate FAIL, lỗi không thể tiếp tục hoặc kết thúc test.
+- Gate baseline được ghi trước khi có kết quả; dừng nếu thầy không tăng ActiveWR hoặc suicide tăng>1pp. Không tự đổi dải bàn/cấu hình khi pilot thiếu nhãn. Giữ test kín nếu validation không cải thiện; test đã mở thì không chạy lại.
+- CUDA đã kiểm tra bằng phép tính thật; baseline launch native bằng Start-Process Hidden, log riêng/PID4856/startUTC lưu trong state. Native CIM xác nhận tiến trình và child đúng command line; bổ sung chú ý sandbox không thấy process native để tránh kết luận chết/launch chồng sai.
+- Dùng OpenAI Docs để đối chiếu lịch hẹn và công cụ automation_update của app; không tạo cron workaround. Cấu hình app xác nhận đúng heartbeat/45phút/current thread.
+
+**Trạng thái:** baseline đang chạy; collect/train/validation/test chưa chạy. Theo dõi tự động theo lịch45phút, không giữ lượt chat để poll.
+
+## 93. S3 map11 baseline đạt gate, tự chuyển sang collect (2026-10-24)
+
+**Thông số:** run `runs/s3-map11-20261024-auto-v1`; S3 SHA `4185375f…69ed7`, S3 thuần/S3+search3 vs RuleBot,100trận mỗi agent trên21000–21049×2góc; map11×11/2agent/max500/E475-25-40, lấy mẫu+mask. Codex heartbeat45phút, Windows/CPU/2worker/OMP-MKL1thread, torch2.11.0+cu128/NumPy2.4.6; baseline2429.969s. Bootstrap50cặp bàn/10000lần/seed20261014. Collect tiếp theo200trận812000–812099×2góc,75%E/25%off, neo5%, tối đa4worker; train chưa chạy, test820000 chưa mở.
+
+- Đọc một snapshot artifact khi heartbeat thức dậy; không đọc tiến trình/log liên tục. Xác thực hash, đủ số trận/cặp seed-góc; tính lại summary/bootstrap và so khớp với baseline.json.
+- S3 WR62/ActiveWR50/hòa32/tự nổ0%; S3+search3 WR100/ActiveWR98/hòa0/tự nổ0%. ActiveWR+48pp CI95[38,58], tự nổ không tăng: gate định trước PASS.
+- Giữ nguyên source/config, không đổi luật sau khi xem kết quả. Launch collect native/hidden sau khi xác nhận baseline đã thoát; PID20056/startUTC12:25:21.5217442 ngày24/10/2026. Cập nhật autorun-state.json và tracker; heartbeat45phút vẫn hữu ích và tiếp tục ACTIVE.
+
+**Trạng thái:** bước2 hoàn tất, bước3 đang chạy. Không có checkpoint học mới hoặc kết quả test cuối; không thay S3 phục vụ.
+
+## 94. S3 map11 thu đủ pilot, khởi động chưng cất CUDA (2026-10-24)
+
+**Thông số:** run `runs/s3-map11-20261024-auto-v1`, S3 SHA `4185375f…69ed7`+search3 vs RuleBot;200trận812000–812099×2góc, map11×11/2agent/max500, pE.75(E475-25-40)/off.25/neo.05, lấy mẫu+mask. Codex/Windows/CPU4worker/OMP-MKL1thread/torch2.11.0+cu128/NumPy2.4.6;2463.052s launch→artifact. Không bootstrap collect. Train tiếp theo CUDA RTX4060 Laptop8GB, Adam1e-4/batch256/KL1/16epoch, candidates4/8/12/16, RNG530, held-out10% theo bàn. Train chưa hoàn tất; validation/test820000 chưa mở.
+
+- Heartbeat đọc snapshot hoàn tất, xác minh4shard/200game và hash/config/shape11×11. Tổng746decision/1310anchor; teacher WR99.5/ActiveWR98/draw0.5%.
+- Kiểm chứng split thật trước train:90/10bàn, decision687/59 và anchor1161/149; không có bàn nằm ở cả train/held-out, bốn nhóm đều đủ nhãn. Lưu `collection_review.json` để truy vết. Không sửa source hoặc config đã khóa.
+- Xác nhận process collect đã kết thúc qua truy vấn native, preflight CUDA phép tính thật thành công, launch train PID17332/startUTC13:10:27.9345533 ngày24/10/2026. Cập nhật state và tracker; giữ nhịp45phút, không poll loss hay chờ train trong chat.
+
+**Trạng thái:** bước3 xong, bước4 đang chạy. Đây chưa phải bằng chứng learner11×11 tốt hơn; chờ validation theo protocol.
+
+## 95. S3 map11 chưng cất xong, khởi động validation5model (2026-10-24)
+
+**Thông số:** run `runs/s3-map11-20261024-auto-v1`, S3 gốc SHA `4185375f…69ed7`; dữ liệu200trận812000–812099×2góc,11×11/2agent/max500/pE.75(E475-25-40)/off.25,746decision/1310anchor. CUDA RTX4060 Laptop8GB/torch2.11.0+cu128/NumPy2.4.6/OMP-MKL1thread, Adam1e-4/batch256/KL1/16epoch/RNG530/held-out10%bàn, splitdecision687/59 vàanchor1161/149; launch→artifact5.153s, không lưu timer train riêng. Validation tiếp theo400trận/model×5model,21000–21199×2góc/E475-25-40/CPU5worker/CNN lấy mẫu+mask vs RuleBot; test820000 chưa mở. Bước train không có chỉ số WR/bootstrap chiến đấu.
+
+- Heartbeat xác thực metrics epoch0–16, split giữ nguyên, đủ4candidate4/8/12/16. Kiểm tensor hữu hạn và forward11×11 thật trên CPU; actor thay đổi, critic_head không đổi. SHA/checks lưu `train_review.json`; giữ nguyên S3 gốc và source đã khóa.
+- Held-out decision accuracy67.80→81.36%, anchorKL0.0810 và anchor argmax đổi18.79%; chỉ ghi như chẩn đoán chưng cất trên59decision/149anchor. Không chọn model theo loss hoặc metric offline này.
+- Sau khi xác nhận train không còn chạy, launch validation native/hidden, PID25016/startUTC13:55:58.9153508 ngày24/10/2026. Ghi state, journal và tracker; không giữ chat để poll. Chọn model theo ActiveWR/tự nổ như đã đăng ký, chỉ cho test nếu validation cải thiện.
+
+**Trạng thái:** bước4 hoàn tất, bước5 đang validation. Không thay checkpoint phục vụ và không tuyên bố cải thiện sức chơi trước kết quả chiến đấu.
+
+## 96. S3 map11 validation chọn epoch16 và mở test một lần (2026-10-24)
+
+**Thông số:** run `runs/s3-map11-20261024-auto-v1`, S3 gốc SHA `4185375f…69ed7` và4candidate4/8/12/16 (train CUDA RTX4060 Laptop8GB/Adam1e-4/batch256/KL1/16epoch/RNG530/held-out10%bàn từ200trận812000–812099×2góc). Validation400trận/model×5, bàn21000–21199×2góc,11×11/2agent/max500/E475-25-40/CNN lấy mẫu+mask vs RuleBot; Codex/Windows/CPU5worker/OMP-MKL1thread/torch2.11.0+cu128/NumPy2.4.6; launch→artifact870.340s. Summary validation không có raw games/CI. Test tiếp theo820000–820199×2góc=400trận/model×2, CPU2worker thực tế; bootstrap10000/seed20261014, chưa có kết quả.
+
+- Kiểm hash/source/config và4checkpoint với train_review, số trận400/model, metrics hữu hạn; tính lại luật chọn và đối chiếu hai file selection/validation, lưu `validation_review.json`.
+- S3 ActiveWR45%; epoch4/8/12/16 lần lượt78.25/82/86/87%, tự nổ.5/1.25/.5/1%. Loại epoch8 vì tự nổ vượt S3+1pp; epoch16 cao nhất trong các model hợp lệ, chọn đúng luật đã chốt, `proceed_to_test=true`.
+- Xác nhận không còn process validation, kiểm test seed fresh và không có marker/log cũ rồi launch test PID4892/startUTC14:40:56.2789831 ngày24/10/2026. Không sửa source/config/candidate sau selection; không test lại hoặc đổi epoch để cứu gate.
+
+**Trạng thái:** validation xong, test một lần đang chạy. Không coi validation là kết quả test cuối, S3 phục vụ được giữ nguyên.
+
+## 97. S3 map11 hoàn tất test một lần và chốt model11×11 (2026-10-24)
+
+**Thông số:** run `runs/s3-map11-20261024-auto-v1`; S3 gốc SHA `4185375f…69ed7` sau chuyển map11 so candidate16 SHA `17748471…a95f` vs RuleBot,400trận/model/200bàn820000–820199×2góc,11×11/2agent/max500/E475-25-40/CNN thuần lấy mẫu+mask. Codex/Windows/CPU2worker/OMP-MKL1thread/torch2.11.0+cu128/NumPy2.4.6; launch→summary322.358s. Bootstrap200cặp bàn/10000lần/seed20261014. Candidate được chọn trước test từ train16epoch CUDA RTX4060 Laptop8GB/Adam1e-4/batch256/KL1/RNG530/held-out10%bàn, collect200trận812000–812099×2góc/746decision/1310anchor; validation400trận/model/seed21000. Không rerun test hoặc thay cấu hình.
+
+- Kiểm đầy đủ raw400seed/góc mỗi model và hash nguồn/model/selection/marker. Tính lại summary/bootstrap/gate, khớp artifact. S3 WR59.25/ActiveWR46.25/hòa30.75/tự nổ.75%; S3-11 WR90.75/ActiveWR87.25/hòa6/tự nổ1.25%.
+- ActiveWR+41pp CI95[34.5,47.25]; tự nổ+.5pp CI95[−1,2]. Cả3gate đã đăng ký PASS; không diễn giải độ khớp nhãn train thành sức chơi. Epoch16 được giữ đúng selection trước test.
+- Tạo `test_review.json`, `FINAL_REPORT.md`, ghi trạng thái kết thúc và cập nhật seed ledger/tracker/insight. Gỡ heartbeat khi đã chốt để không tiếp tục kiểm tra vô ích; không archive chat, không thay model phục vụ hoặc S3 gốc.
+
+**Trạng thái:** hoàn tất bước2–5, test gate PASS trên11×11/1v1RuleBot. Chưa đánh giá FFA/CNN/retention9×9; không tự mở thêm thí nghiệm hoặc chọn lại sau test.
+
+**Xác nhận kết thúc:** heartbeat đã xóa (deleteStatus=deleted), state hoàn tất và không còn runner native của run. `FINAL_REPORT.md` là bản bàn giao; S3/source/config gốc vẫn đúng hash.
+
+## 98. Đối chiếu cách đánh giá S3-11 với CNN (2026-10-25)
+
+**Thông số:** chỉ đọc source/selected metadata tại `E:\Bomberman`, không train/đánh giá trận mới hoặc mở test seed; checkpoint S3-11 epoch16 SHA `17748471…a95f`. Các tham số benchmark mới còn là đề xuất, chưa đăng ký; thời gian/metric không áp dụng.
+
+- Kiểm `evaluate_seeded.opponent_fn`, `run_pde_check._seat/play/SETTINGS`, `probe_s3_cnn.py`, CLI evaluate và runner S3-map11. Xác nhận API hỗ trợ frozen CNN opponent, runner CNN cũ cố định9×9, runner map11 hiện dùng RuleBot mặc định.
+- Đề xuất runner mới cho2learner(S3-11/S3 nội suy11)×3CNN đối thủ chung(S3/S2/G),400trận/cặp=2400trận, hai góc/cùng bàn/E475-25-40/max500. Cần raw games/shard/provenance và metric ActiveWR/hòa/tự nổ, paired CI; không dùng lại test820000. Mirror chỉ kiểm hòa/cân góc. Không suy kết quả trước CNN từ WR/ActiveWR trước RuleBot.
+
+**Trạng thái:** trả lời phương án; không sửa production code, không chạy benchmark hoặc tạo lịch mới.
+
+## 99. Chuẩn bị runner benchmark S3-11 đấu CNN và đăng ký seed mới (2026-10-25)
+
+**Thông số:** Codex/Windows `E:\Bomberman`, Python3.11.9/torch2.11.0+cu128/NumPy2.4.6;4checkpoint frozen S3-11 SHA `17748471…a95f`, S3 `4185375f…69ed7`, S2 `d222d81f…6814`, G `bb0c775c…c7ac`. Đăng ký benchmark `runs/s3-map11-cnn-20261025-v1`, seed830000–830199/200bàn×2góc=400trận/cặp/6cặp/2400trận,11×11/2agent/max500/E475-25-40/CNNCPU lấy mẫu+mask/noSearch/noRuleBot/noTrain, tối đa5worker/1torchthread; paired bootstrap200bàn/10000lần/seed20261014, macro3opponent. Test kỹ thuật dùng seed giả1900triệu, smoke2bàn/cặp/24game/max12, scheduler tuần tự hoặc native2worker; không dùng seed benchmark, không kết luận strength từ smoke.
+
+- Theo phương án được người dùng cho phép, thêm runner/guide/spec/plan/test riêng; không sửa core hoặc source runner cũ. Dùng helper evaluator/loader/stats hiện có, không thêm dependency. Mọi CNN đều nhận11×11 và đúng agent_id; so cùngpoolS3/S2/G với2learner S3-11/S3.
+- Provenance gồm18source cả import closure,4modelsha/config/runtime và bundle; kiểm cả live source lẫn archived source. Lock ngăn chạy chồng, rawshard kiểm đủ seed-góc/metric/outcome/counter, resume chỉ missing; marker test một lần, report không khớp raw bị từ chối.
+- Macro trung bình3đối thủ tại mỗi(seed,corner) rồi paired bootstrap theo200bàn; báo đủ ActiveWR/WR/hòa/loss/timeout/tựnổ/passive/SDdeath. Gate≥+5pp/CI dưới>0/tự nổ≤+1pp chốt trước data, smoke không fullPASS và không có tự độngtrain/promote.
+- Independent-test-first:26RED missing-module trước production, suiteSHA `49948d83…10d018f1` giữ nguyên;2support RED trước code. Review yêu cầu outcome/counter/sourcebundle, thêm4support và quan sátRED trước fix. Bản cuối32/32test PASS9.917s; native2worker24game PASS; reviewer xác nhận findings đã xử lý. Không sửa yếu test để pass.
+- Full native suite cuối đang chạy,8lỗi fixture cũ đã xác nhận trước code;2named-pipe lỗi regression sandbox không được gọi là PASS. Init run/seed reserved xong, AUTORUN/state chưa mở game full; sẽ tạo heartbeat45phút và launch sau xác nhận kiểm thử.
+
+**Trạng thái tại đăng ký:** kiểm thử/review runner xong phần liên quan; chờ kiểm rộng cuối, chưa có kết quả benchmark và không train thêm.
+
+## 100. Khởi chạy benchmark CNN 11×11 với lịch kiểm 45 phút (2026-10-25)
+
+**Thông số:** Codex/Windows `E:\Bomberman`, Python3.11.9/torch2.11.0+cu128/NumPy2.4.6;2learner S3-11 epoch16(`17748471…a95f`)/S3 epoch12(`4185375f…69ed7`) cùng3opponent S3/S2(`d222d81f…6814`)/G(`bb0c775c…c7ac`), frozen checkpoint theo registration. Run `runs/s3-map11-cnn-20261025-v1`;200bàn830000–830199×2góc×6cặp=2400trận/400mỗicặp,11×11/2agent/max500/E475-25-40; CNNCPU lấy mẫu+mask/noSearch/noRuleBot/noTrain,5worker/1torchthread/120shard. Bootstrap10000/seed20261014, paired theo200bàn sau macro3opponent. Bắt đầu01:39:46ngày25/10; thời gian và strength metric cuối chưa có.
+
+- Xác nhận rộng cuối518test/8error fixture cũ/1skip/0assertion failure trong323.407s,32test mới PASS;8error đã ghi baseline trước code (checkpoint ổD và source comparison thiếu), không gọi toàn repo PASS. Targeted32/32/native24game PASS và independent review giữ nguyên. Cleanup chỉ artifact test mới đã kiểm nằm trong workspace; source cũ/4checkpoint còn nguyên.
+- Đã tạo heartbeat45phút cùngchat, ID `s3-11-u-cnn-ki-m-tra-45-ph-t`, ACTIVE; lưu AUTORUN/state/proof/log/launch snapshot. Native hidden runner root26792/interpreter26232 mở marker một lần; snapshot đúngPID/start-time/owner/marker/hash, stderr rỗng. Không chơi lại seed hay thay config/source sau đăng ký.
+- Cập nhật hướng dẫn so UTC cho PowerShell vì ConvertFrom-Json có thể đã giải mã DateTime; tránh parse lại mất timezone và kết luận process chết sai. Venv có interpreter/resource tracker nên nhận diện theo quan hệPID thay vì chỉ đếm child. Không cần thay production để xử lý kiểm tra này.
+- Theo dõi chỉ một snapshot mỗi45phút; khi hoàn tất kiểm report với raw120shard/2400game/hash, ghi báo cáo và xóa heartbeat. Tự resume tối đa1lần chỉ khi native root/interpreter/worker đã chết, giữ raw và seed; lỗi integrity dừng. Gate macroActive≥+5pp/CI dưới>0/suicide≤+1pp chốt trước data; không tự train/promote.
+
+**Trạng thái:** runner/review/kiểm thử/đăng ký/launch/lịch đã hoàn tất; benchmark đang chạy, chờ kết quả CNN. Giữ S3 gốc9×9 và model phục vụ; chưa có kết luận strength CNN từ smoke hoặc shard đang chạy.
+
+## 101. Chốt benchmark CNN 11×11 bằng raw và paired CI (2026-10-25)
+
+**Thông số:** Codex/Windows `E:\Bomberman`, Python3.11.9/torch2.11.0+cu128/NumPy2.4.6; S3-11 `runs/s3-map11-20261024-auto-v1/train/epoch_16.pt` SHA `17748471…a95f`, S3 `runs/sd9-20261023/train/epoch_12.pt` SHA `4185375f…69ed7`, S2 `runs/sd8a-20261020/train/epoch_16.pt` SHA `d222d81f…6814`, G `runs/sd75-20261018/full/best_phaseC.pt` SHA `bb0c775c…c7ac`; hai learner S3_11/S3 cùng pool S3/S2/G; seed830000–830199,200bàn×2góc=400trận/cặp,6cặp=2400trận; 11×11/13kênh/2agent/max500/E475-25-40; CNN CPU lấy mẫu+mask, không search/RuleBot/gradient/train; 5worker/1torchthread,10bàn/shard/120shard. Paired bootstrap theo200bàn/10000lần/seed20261014; macro trung bình đều3opponent ở mỗi(seed,corner) trước bootstrap. Từ01:39:46 đến lúc ghi summary02:02:40ngày25/10/2026, khoảng1373.79s (22.90phút); tổng thời gian shard6765.86s là tổng các worker, không phải wall-time. Một lần launch, không resume hoặc thêm trận.
+
+| Chỉ số (%) | S3-11 | S3 gốc chuyển map | Delta (pp) | CI95 delta (pp) |
+|---|---:|---:|---:|---|
+| WR | 23.00 | 21.67 | +1.33 | [-1.83, 4.50] |
+| ActiveWR | 8.58 | 4.75 | +3.83 | [1.92, 5.83] |
+| Hòa | 64.33 | 63.08 | +1.25 | [-2.50, 5.08] |
+| Hòa hết bước | 61.58 | 62.17 | -0.58 | [-4.42, 3.33] |
+| Thua | 12.67 | 15.25 | -2.58 | [-5.25, -0.00] |
+| Tự nổ | 1.58 | 1.33 | +0.25 | [-0.75, 1.17] |
+| Thắng thụ động | 0.75 | 0.67 | +0.08 | [-0.67, 0.75] |
+| Thắng nhờ vòng | 13.67 | 16.25 | -2.58 | [-5.25, 0.08] |
+| Chết vì vòng | 13.75 | 13.08 | +0.67 | [-2.08, 3.33] |
+
+**Gate: không đạt mức cải thiện đã chốt.** Macro ActiveWR tăng3.83pp, CI95[1.92,5.83] dương, nhưng point estimate chưa đạt ngưỡng≥5pp. Tự nổ tăng0.25pp, nằm trong giới hạn≤1pp theo point estimate đã đăng ký; CI tự nổ[-0.75,1.17] vẫn cho thấy bất định. WR tăng1.33pp với CI95[-1.83,4.50], chưa có bằng chứng chắc cho tăng WR. ActiveWR trước S3/S2/G lần lượt9.50/8.75/7.50%; hòa62.25/64.25/66.50%, phần lớn hết500bước. Không sửa ngưỡng, không mở thêm game để cứu gate, không train/promote.
+
+Xác minh native: root/interpreter/children của run không còn, lock đã được runner gỡ, stderr0byte. API `probe_s3_map11_cnn.run(output,workers=5,resume=True)` kiểm lại report từ raw đầy đủ, chặn mọi lời gọi chơi game mới; summary không đổi SHA. Đủ120shard/6cặp×400trận, 200seed×2góc/cặp, marker830000 mở đúng một lần,18source/live+bundle/config/runtime/4checkpoint đúng provenance. Summary SHA256 `4773f66560e59880c1eef24628e9bdb2c8a7d7f75c7fe270ba4691a3eb13c665`; proof `completion-verification.json`.
+
+- Không đổi production code/cấu hình/checkpoint trong lượt heartbeat. Snapshot native xác nhận đã kết thúc; public API kiểm report cũ với no-new-games guard, không chạy thêm trận. Thời điểm ghi summary lấy từ mtime file, không giả làm exit-time process.
+- Bootstrap macro trung bình3opponent trước tại mỗi bàn/góc,200bàn là đơn vị resample; không coi1200trận/learner là1200mẫu độc lập. Báo cả hòa/timeout/thua/SD, không chỉ ActiveWR.
+- Model cải thiện trước RuleBot không giải quyết được hòa trước poolCNN trong phép đo này; đây là kết quả giới hạn theo pool và map, không kết luận nguyên nhân từ dữ liệu tương quan.
+
+Kết luận áp dụng11×11/1v1 trên ba CNN9×9 được chuyển map bằng loader; chưa đại diện CNN train native11×11, FFA hoặc độ ổn định nhiều train seed. Không so chênh lệch với RuleBot như cùng một đối thủ. S3 gốc9×9 và model phục vụ giữ nguyên. Các CI theo từng chỉ số/đối thủ là CI riêng, không điều chỉnh nhiều so sánh. CI thua macro[-5.25,0.00] chạm0 sau làm tròn, không diễn giải epsilon âm như bằng chứng tách khỏi0.
+
+**Trạng thái:** completed_no_qualified_gain,2400/2400game hợp lệ, không tự train/promote hoặc thay model phục vụ; ghi state cuối và gỡ heartbeat vì không còn việc cần kiểm.
+
+**Đóng lịch:** automation_update xác nhận `deleteStatus=deleted` cho heartbeat `s3-11-u-cnn-ki-m-tra-45-ph-t`; state completed_no_qualified_gain/automation_deleted=true. Kết thúc theo dõi vì benchmark đã hoàn tất, không archive chat hoặc gửi nơi khác.
+
+## 102. Chuẩn bị nhánh GitHub Loc/S3-11 và kiểm tra gói xuất bản (2026-10-25)
+
+**Thông số:** Codex/Windows `E:\Bomberman`, GitLFS3.7.1; user yêu cầu push toàn bộ lên nhánh mới `Loc/S3-11`, remote `SuperZiggs/BomberMan`.355candidate/63,237,435byte trước khi bổ sung nhật ký, gồm code/gameUI/model/run/report; `.pt` qua LFS, giữ ignore hiện có cho dependency/build/cache/scratch. Không train hoặc mở seed test benchmark; checkpoint/hyperparameter/số trận mới không áp dụng.
+
+- Tạo nhánh mới từ HEAD nhánh `danh/sd9-s3-distillation` sau khi xác nhận local/remote chưa có tên đích. Giữ mọi thay đổi và folderUI; không stash/reset/merge/force-push hoặc sửa model/source cũ.
+- Xác minh mới67test runner/provenance/CNN PASS28.467s,34test bridge PASS19.391s,3UIunit PASS, UItypecheck/build PASS. SummaryCNN/source/model đúng SHA. Root suite518/8fixture lỗi cũ/1skip thuộc lượt trước, không coi là fullPASS; browser suite không chạy trong task này.
+- Candidate scan không phát hiện các pattern credential đã kiểm hoặc file>50MiB. Dùng LFS cấu hình sẵn; gói gồm cả raw/metadata/bundle/test-log/summary và checkpoint để giữ bằng chứng thí nghiệm.
+
+**Trạng thái:** đã chuẩn bị/kiểm tra, đang commit-push; sẽ đối chiếu upstream/remote commit và trạng thái workingtree sau upload. Chưa tạo PR hoặc nhập vào main.
