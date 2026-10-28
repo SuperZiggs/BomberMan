@@ -133,3 +133,23 @@ Ký hiệu: F = `runs/phaseC-sd-best-fallback/best_phaseC.pt` (điểm xuất ph
 ## 9. S3-11 đấu pool CNN — test 25/10/2026
 
 Trên11×11/1v1/max500/E475-25-40, hai learner chung poolCNN S3/S2/G,200bàn830000–830199×2góc×6cặp=2400trận: S3-11 macroActiveWR8.58% so S3 nội suy4.75%,+3.83pp CI95[1.92,5.83], chưa đạt gate≥5pp. WR23.00vs21.67%,CI delta[-1.83,4.50]; hòa64.33vs63.08%, hòa hết bước61.58vs62.17%; tự nổ1.58vs1.33%. Mức cải thiện lớn trước RuleBot không chuyển thành ít hòa trước CNN ở phép đo này. Không khẳng định nguyên nhân từ benchmark; đối thủ là CNN9×9 chuyển map, chưa kết luận nativeCNN11×11/FFA hoặc nhiều train seed. Nguồn: RESULTS `S3-MAP11-CNN-FINAL`, `runs/s3-map11-cnn-20261025-v1/FINAL_REPORT.md`; bootstrap10000theo200bàn sau macro3opponent, không dùng lại seed.
+
+## 10. Chưng cất sửa gì: ma trận nhầm lẫn hành động — 25/10/2026
+
+- Trên trạng thái quyết định held-out (10% bàn, chỉ trạng thái có đúng một nước tốt nhất theo search), lỗi chính của G trước SD8A là **hướng đi**, không phải đặt bom: khi RIGHT là tốt nhất G chọn LEFT 67%, khi DOWN là tốt nhất G chọn UP 41%, khi STOP là tốt nhất G gần như không bao giờ đứng yên; còn khi BOMB là tốt nhất G đã chọn BOMB 94%. Sau SD8A, S2 đúng 94.6% (n = 742), đường chéo 87–99% ở mọi hành động. Vòng SD9 nâng S2 79.4% → S3 90.2% (n = 895) trên phân phối của thầy S2 + search3, chủ yếu ở các nước di chuyển. Hệ quả: đòn bẩy của search và chưng cất là đi đúng chỗ để tạo thế giết, khớp với nhận định search hai nước thắng nhờ tạo cơ hội. Giới hạn: argmax trên trạng thái held-out, không phải hành vi lấy mẫu trong trận; một train seed. Nguồn: RESULTS `PAPER-TEX`, `paper/figures/figure_data.json` (khóa `confusion`), hình `paper/figures/fig_confusion.pdf`.
+
+
+## 11. Học trò 1v1 chuyển sang FFA được, nhưng không chuyển qua đổi kích thước bàn — 26/10/2026
+
+- **Chuyển sang FFA (cùng bàn):** S3 chỉ chưng cất từ ván 1v1, vậy mà trên 9×9 với 3 agent vẫn đạt ActiveWR 82.78 so với G 36.11 (+46.67 [+36.11, +56.67], seed 59000).
+- **Đổi kích thước bàn:** nội suy trọng số lên 11×11 thì gần như mất hết (S3 25.00, không rõ hơn G). Học trò chưng cất ngay trên 11×11 (S3-11) đạt 59.38 (+34.38 so với S3 nội suy).
+- **Hệ quả:** muốn đổi bàn thì chưng cất lại trên bàn đó, đừng nội suy.
+- **Lưu ý về độ ổn định:** cùng một G, một block FFA 160–180 trận dao động khoảng ±9pp (E1 27.22 ở block 50000 so với 36.11 ở block 59000). Chỉ so ghép cặp trên cùng block.
+
+
+## 12. Một vòng chưng cất ổn định qua train seed — 26/10/2026
+
+- **Bằng chứng:** lặp lại vòng S2 → S3 hai lần, mỗi lần với bàn thu mới và train seed mới, rồi test chung trên block 61000. Ba seed cho S3 − S2 lần lượt +10.5, +9.0 và +9.25 ActiveWR (sd 0.80), và cả ba đều qua gate.
+- **So với nhiễu:** độ lệch giữa các seed (khoảng 1.5pp) nhỏ hơn nhiều so với nhiễu giữa các block test (khoảng ±5pp).
+- **Hệ quả:** với chưng cất search dày, chọn checkpoint trên validation rồi test một lần là đủ tin cậy; nguồn bất định chính là block test.
+- **Chưa biết:** độ ổn định của các nhánh RL (vẫn một seed).

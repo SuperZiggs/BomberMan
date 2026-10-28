@@ -1,0 +1,242 @@
+{
+  "seed": 61000,
+  "games": 400,
+  "results": {
+    "S3_seed530_E": {
+      "num_episodes": 400,
+      "win_rate": 96.25,
+      "active_win_rate": 89.75,
+      "passive_win_rate": 6.5,
+      "sudden_death_win_rate": 0.0,
+      "draw_rate": 1.75,
+      "suicide_rate": 0.5,
+      "sudden_death_death_rate": 0.25,
+      "avg_kills": 0.8975,
+      "avg_bombs": 12.305,
+      "avg_steps": 127.14
+    },
+    "S3_seed531_E": {
+      "num_episodes": 400,
+      "win_rate": 97.0,
+      "active_win_rate": 88.25,
+      "passive_win_rate": 8.75,
+      "sudden_death_win_rate": 0.0,
+      "draw_rate": 0.5,
+      "suicide_rate": 0.75,
+      "sudden_death_death_rate": 0.25,
+      "avg_kills": 0.8825,
+      "avg_bombs": 11.75,
+      "avg_steps": 120.21
+    },
+    "S3_seed532_E": {
+      "num_episodes": 400,
+      "win_rate": 97.25,
+      "active_win_rate": 88.5,
+      "passive_win_rate": 8.25,
+      "sudden_death_win_rate": 0.5,
+      "draw_rate": 0.25,
+      "suicide_rate": 0.75,
+      "sudden_death_death_rate": 0.0,
+      "avg_kills": 0.885,
+      "avg_bombs": 12.42,
+      "avg_steps": 133.9225
+    },
+    "S2_E": {
+      "num_episodes": 400,
+      "win_rate": 88.25,
+      "active_win_rate": 79.25,
+      "passive_win_rate": 5.5,
+      "sudden_death_win_rate": 3.5,
+      "draw_rate": 8.0,
+      "suicide_rate": 0.5,
+      "sudden_death_death_rate": 2.25,
+      "avg_kills": 0.7925,
+      "avg_bombs": 21.0975,
+      "avg_steps": 215.085
+    }
+  },
+  "paired_vs_S2": {
+    "S3_seed530": {
+      "active_win": {
+        "difference_pp": 10.5,
+        "ci95_pp": [
+          5.75,
+          15.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 8.0,
+        "ci95_pp": [
+          4.75,
+          11.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -6.25,
+        "ci95_pp": [
+          -9.25,
+          -3.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 1.0,
+        "ci95_pp": [
+          -2.0,
+          4.0
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          -1.0,
+          1.0
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S3_seed531": {
+      "active_win": {
+        "difference_pp": 9.0,
+        "ci95_pp": [
+          4.25,
+          13.5
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 8.75,
+        "ci95_pp": [
+          5.5,
+          12.0
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -7.5,
+        "ci95_pp": [
+          -10.25,
+          -4.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 3.25,
+        "ci95_pp": [
+          0.25,
+          6.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          -0.5,
+          1.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    },
+    "S3_seed532": {
+      "active_win": {
+        "difference_pp": 9.25,
+        "ci95_pp": [
+          4.75,
+          13.750000000000002
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "win": {
+        "difference_pp": 9.0,
+        "ci95_pp": [
+          5.75,
+          12.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "draw": {
+        "difference_pp": -7.75,
+        "ci95_pp": [
+          -10.5,
+          -5.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "passive_win": {
+        "difference_pp": 2.75,
+        "ci95_pp": [
+          -0.25,
+          5.75
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      },
+      "suicide": {
+        "difference_pp": 0.25,
+        "ci95_pp": [
+          -0.75,
+          1.25
+        ],
+        "board_pairs": 200,
+        "resamples": 10000,
+        "bootstrap_seed": 20261014
+      }
+    }
+  },
+  "gate_vs_S2": {
+    "S3_seed530": {
+      "active_vs_S2_5pp": true,
+      "active_vs_S2_ci_lower_positive": true,
+      "suicide_within_1pp": true,
+      "pass": true
+    },
+    "S3_seed531": {
+      "active_vs_S2_5pp": true,
+      "active_vs_S2_ci_lower_positive": true,
+      "suicide_within_1pp": true,
+      "pass": true
+    },
+    "S3_seed532": {
+      "active_vs_S2_5pp": true,
+      "active_vs_S2_ci_lower_positive": true,
+      "suicide_within_1pp": true,
+      "pass": true
+    }
+  },
+  "active_delta_over_seeds": {
+    "mean": 9.583333333333334,
+    "min": 9.0,
+    "max": 10.5,
+    "sd": 0.8036375634160796
+  }
+}

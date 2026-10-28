@@ -1,0 +1,16 @@
+{
+ "decisions": 745,
+ "games": 6,
+ "cnn_ms_mean": 1.8516049664385537,
+ "cnn_ms_median": 1.7635999975027516,
+ "search3_ms_mean": 212.84060201340242,
+ "search3_ms_median": 131.73319999623345,
+ "search3_ms_p95": 680.4345000025926,
+ "ratio_of_means": 114.94924990549578,
+ "torch": "2.5.1",
+ "threads": 1,
+ "seeds": [
+  21000,
+  21002
+ ]
+}

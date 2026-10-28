@@ -1,0 +1,10 @@
+{
+  "games": 8,
+  "decisions": 23,
+  "anchors": 57,
+  "teacher_rates": {
+    "win": 100.0,
+    "active_win": 75.0,
+    "draw": 0.0
+  }
+}

@@ -1444,3 +1444,251 @@ Kết luận áp dụng11×11/1v1 trên ba CNN9×9 được chuyển map bằng 
 **Trạng thái:** đã chuẩn bị/kiểm tra, đang commit-push; sẽ đối chiếu upstream/remote commit và trạng thái workingtree sau upload. Chưa tạo PR hoặc nhập vào main.
 
 **Kết quả xuất bản:** GitHub đã nhận nhánh `Loc/S3-11` tại commit nội dung `5eb6b67f07652d64bde5be4a4a46452d0bd09336` (355file); upstream đúng và workingtree sạch sau commit. Xác minh explicit5object LFS/38,276,258byte đã upload, pointer khớp SHA/kích thước. Không đưa dependency/cache/build/scratch bịignore vào Git và không loại bỏ code/UI/model/run/report thuộc355candidate. Ghi xác nhận này cùng hai tracker bằng commit tài liệu, push cùng nhánh và kiểm lại tip remote; không thay source/checkpoint hoặc chạy lại benchmark.
+
+## 103. Báo cáo tổng hợp kèm tổng quan tài liệu (2026-10-25)
+
+- Đã làm: viết báo cáo đầy đủ cho repo trên Claude Docs (https://claude.ai/artifact/AdtApiN8GuySvgs7S7RbGz): tìm và đối chiếu 34 tài liệu liên quan (Pommerman/Bomberman, search + học, expert iteration, chưng cất, PPO/GAE/GRPO, shielding/masking, đánh giá thống kê), rút ra problem, research gap, findings; trình bày công thức của mọi phương pháp trong code kèm lý do, tác dụng và mức hiệu quả; bảng thí nghiệm, đường đi tới S3, ablation.
+- Vì sao: người dùng cần bài báo cáo cho repo.
+- Kiểm tra: số liệu đối chiếu với `RESULTS.md`/`INSIGHTS.md`; công thức đối chiếu với code (`train_actor_critic.train` dòng loss, `kill_search.search_action*`, `group_rl.group_loss`, `run_sd53_pilot.masked_soft_target`/train, `pilot_two_bomb.paired_active_bootstrap`); biểu đồ đã xem ảnh render. arXiv ID và tác giả của các paper chính đã mở trang để xác nhận.
+- Thông số: không train, không chạy trận, không đổi code, không dùng seed.
+- Trạng thái: xong. Không đổi model, source hay plan.
+
+## 104. Đọc toàn văn tài liệu và cập nhật báo cáo (2026-10-25)
+
+- Đã làm: đọc toàn văn 34/35 tài liệu tham khảo (trừ Goulart 2019 bị HAL chặn tải tự động); thêm vào báo cáo mục 7.8 (kết quả S3-11 11×11 và pool CNN 2400 trận), mục 2.7 (bảng phát hiện → hệ quả cho repo), tab "Ghi chú đọc paper", bằng chứng toàn văn cho gap G1/G2/G3/G5, thảo luận 10.2, bảng hướng tiếp theo 10.4; sửa tên thuật toán ở 5.2 thành REINFORCE với baseline học được.
+- Vì sao: người dùng yêu cầu đọc hết toàn văn để rút insight thay vì chỉ đọc tóm tắt, và bổ sung kết quả S3-11 còn thiếu.
+- Kiểm tra: đối chiếu ba nhận định về code trước khi ghi (`train_actor_critic.py` dòng 439/450/1147 che logit trước cả Categorical và log_softmax; `rule_based_bot._safe_action_mask` các lớp margin/contest/robust; `train_actor_critic._reward_components`); số S3-11 đối chiếu với mục RESULTS của S3 map11 và CNN map11.
+- **Thông số:** không train, không chạy trận, không đổi code, không dùng seed; PDF trích bằng `pdftotext`; Claude thực hiện trên máy người dùng.
+- Trạng thái: xong phần báo cáo. Các hướng mới ở 10.4 chưa chạy. Không cập nhật INSIGHTS.md vì các nhận định từ tài liệu là giả thuyết giải thích, chưa có thí nghiệm mới.
+
+## 105. File knowledge cho research paper (2026-10-25)
+
+- Đã làm: tạo `RESEARCH_PAPER_KNOWLEDGE.md` gom problem, insight tài liệu, research gap, câu hỏi nghiên cứu, giải pháp (pipeline, công thức), phát hiện có bằng chứng, phát hiện tiềm năng, giới hạn, dàn ý paper và tài liệu tham khảo, để làm nguồn viết paper nộp hội nghị.
+- Vì sao: người dùng yêu cầu một file md làm knowledge để viết research paper từ các paper đã đọc và kết quả của repo.
+- Kiểm tra: số liệu chép từ `BAO_CAO_TONG_KET.md` và `INSIGHTS.md` (đã đối chiếu với RESULTS ở các lượt trước); tách rõ claim có bằng chứng (mục 6) với giả thuyết (mục 7).
+- **Thông số:** không train, không chạy trận, không đổi code, không dùng seed.
+- Trạng thái: xong. Không đổi model, source hay plan; không cập nhật INSIGHTS.md vì không có thí nghiệm mới.
+
+
+## 106. Bài research paper LaTeX và script vẽ hình (2026-10-25)
+
+**Thông số:** Như mục PAPER-TEX trong RESULTS.md: không train, không đánh giá trên seed test; đo thời gian trên bàn validation 21000–21002 (6 trận, 745 quyết định), CPU 1 luồng, torch 2.5.1, Claude chạy trên máy người dùng, 1 tiến trình; biên dịch bằng tectonic.
+
+- **Đã thêm:** thư mục `paper/` gồm `main.tex`, `references.bib`, `figures/`, `scripts/make_figures.py` (14 hình từ log, chạy lại được: `D:\anaconda\envs\torch\python.exe paper\scripts\make_figures.py [tên hình ...]`), `scripts/time_decisions.py` (đo ms/quyết định của S3 so với G + search3).
+- **Vì sao:** người dùng cần bài nộp hội nghị có đủ hình (kiến trúc, pipeline, đường cong train, chưng cất, ma trận nhầm lẫn, ablation). Hình lấy số trực tiếp từ log thay vì chép tay, và assert đối chiếu với số đã ghi.
+- **Kiểm thử:** mọi delta ghép cặp được assert khớp số trong RESULTS; xem từng hình và từng trang PDF để sửa chữ chồng; biên dịch không còn overfull box, không thiếu trích dẫn hay tham chiếu. Không đổi code chính của repo.
+- **Sửa tài liệu:** `RESEARCH_PAPER_KNOWLEDGE.md` sửa khoảng cách học trò–thầy (−45.75 → −3.75) và tốc độ (~70 → ~115 lần, có phép đo).
+- **Trạng thái:** bản nháp hoàn chỉnh, chưa commit; người dùng cần điền tác giả, funding, CRediT và chọn hội nghị.
+
+
+## 107. Sửa hình của paper và thêm ảnh bàn chơi thật (2026-10-25)
+
+**Thông số:** Như mục PAPER-FIG2 trong RESULTS.md: không train, không mở seed test; ảnh bàn chơi từ một ván S3 vs RuleBot trên bàn validation 21000, lịch E, CPU, torch 2.5.1, 1 tiến trình.
+
+- **Đã thêm:** `paper/scripts/capture_board.py`. Script chơi ván thật, tìm cú giết chủ động, lần ngược tới lúc đặt quả bom gây nổ, rồi dùng `visualize.BoardView` vẽ lại và chụp 4 khung hình (`paper/figures/board/`).
+- **Đã đổi:** `paper/scripts/make_figures.py`:
+  - bảng màu cố định theo agent;
+  - chữ tối thiểu 7–7.5 pt;
+  - hình `fig_gameplay` mới;
+  - hình chưng cất 2×2 có loss và epoch được chọn;
+  - forest plot toàn trang;
+  - nhãn trục và legend không còn đè nhau;
+  - đánh dấu nhánh torch khác ở hình train RL.
+- **Đã đổi `paper/main.tex`:**
+  - hàng B dùng lịch E (block 60000);
+  - caption mới cho mọi hình đã sửa;
+  - ghi chú điều kiện đánh giá của ablation từ B;
+  - đặt lại vị trí hình và bảng toàn trang;
+  - đường cong train RL chuyển xuống phụ lục.
+- **Vì sao:** người dùng yêu cầu sửa các vấn đề đã nêu khi nhận xét hình (màu không theo thực thể, chữ nhỏ, thiếu ảnh bàn chơi và loss chưng cất), cùng 3 lỗi phải sửa (B không cùng điều kiện, hình train trộn hai phiên bản torch, pipeline gây hiểu nhầm).
+- **Kiểm thử:**
+  - xem từng hình và từng trang PDF;
+  - assert khớp số trong log;
+  - biên dịch sạch;
+  - watermark inspect sạch.
+- **Trạng thái:** xong, chưa commit.
+
+
+## 108. Vẽ lại sơ đồ pipeline và kiến trúc của paper, chống chữ tràn khung (2026-10-25)
+
+**Thông số:** Như mục PAPER-FIG3 trong RESULTS.md: không train, không mở seed; matplotlib trên CPU, torch 2.5.1, 1 tiến trình.
+
+- **Đã đổi:** `paper/scripts/make_figures.py`.
+  - Bỏ `_box`/`_arrow` cũ, thay bằng lớp `_Canvas` vẽ theo đơn vị point (1 đơn vị trục = 1 pt).
+  - Lớp này có `panel` (khung nét đứt và thanh tiêu đề), `card` (khối có dải tiêu đề màu), `arrow` (đường vuông góc), `legend` (dải chú giải xếp theo bề rộng chữ đo được) và `done`.
+  - `done` assert mọi nhãn nằm trong khối của nó trước khi lưu.
+  - `fig_pipeline` và `fig_architecture` viết lại theo mẫu của người dùng.
+- **Đã đổi:** `paper/main.tex`: hình kiến trúc rộng `	extwidth` (trước là 0.92) để chữ in ra đúng 7.5 pt; caption Fig. 1 mô tả 3 nhóm và mũi tên nét đứt (thêm search lúc chơi, không đổi trọng số).
+- **Vì sao:** người dùng báo chữ tràn khung ở hai sơ đồ và muốn kiểu sơ đồ có nhóm, thanh tiêu đề và chú giải.
+- **Kiểm thử:** assert khớp khung chữ; xem hình và trang PDF; biên dịch sạch; watermark inspect sạch.
+- **Trạng thái:** xong, `paper/main.pdf` đã biên dịch lại; chưa commit.
+
+
+## 109. Paper: mục FFA và bảng so sánh với các agent đã công bố (2026-10-26)
+
+**Thông số:** Như mục PAPER-SOTA trong RESULTS.md: không train, không mở seed; số repo lấy từ `runs/pde-50000` và Bảng III; CPU, torch 2.5.1, 1 tiến trình.
+
+- **Đã đổi:** `paper/main.tex`.
+  - Thêm `\subsection{Free-for-all against several RuleBots}` (`sec:ffa`).
+  - Thêm bảng `tab:sota` (table*) và đoạn "Comparison with published agents" trong Discussion.
+  - Thêm Limitations (8) và sửa (7) để nói rõ vì sao Goulart không có trong bảng.
+  - Script sửa: scratchpad `patch_sota.py`.
+- **Vì sao:** người dùng muốn paper đặt kết quả cạnh các model mới nhất/SOTA, không chỉ liệt kê kết quả của mình. Chọn bảng định vị thay vì chạy Pommerman theo quyết định của người dùng.
+- **Kiểm thử:**
+  - Mọi số của paper khác được grep từ bản text toàn văn.
+  - Số của repo tính lại từ log, kèm CI bootstrap theo bàn.
+  - Biên dịch sạch; xem từng trang.
+  - Watermark inspect sạch.
+- **Trạng thái:** xong, chưa commit. Paper dài 14 trang.
+
+
+## 110. Paper: nhấn mạnh thước đo khắt khe, luật không thưởng chờ và ngân sách nhỏ trong đoạn so sánh (2026-10-26)
+
+**Thông số:** Như mục PAPER-SOTA2 trong RESULTS.md: chỉ sửa văn bản, không chạy thí nghiệm.
+
+- **Đã đổi:** đoạn "Comparison with published agents" trong `paper/main.tex` được viết lại thành ba ý in nghiêng (stricter criterion / waiting is not rewarded / small budget), mỗi ý có số dẫn chứng; phần định vị và giới hạn giữ nguyên.
+- **Vì sao:** người dùng yêu cầu nhấn mạnh điểm mạnh của mình. Đã kiểm trước: Pommerman phức tạp hơn về tổng thể, nên chỉ nhấn mạnh những điểm có số kiểm chứng, không viết "môi trường khó hơn".
+- **Kiểm thử:** grep văn bản gốc của Weil và Resnick; biên dịch; xem trang PDF.
+- **Trạng thái:** xong, chưa commit.
+
+
+## 111. Runner đo FFA cho S3/S3-11 và đưa vào paper (2026-10-26)
+
+**Thông số:** Như mục S3-FFA trong RESULTS.md: seed 59000 (block mới), E1 180 trận và E2 160 trận mỗi learner, lịch E, max_steps 500, CPU, torch 2.5.1, 5 tiến trình.
+
+- **Đã thêm `run_s3_ffa_check.py`:**
+  - Dùng lại `run_pde_check.play` và `paired_bootstrap`; thêm `S3_11` vào `pde.CKPT` lúc import để worker spawn cũng thấy.
+  - Kiểm SHA của G/S3/S3-11; từ chối ghi đè thư mục output; ghi `opened.json` trước khi chạy.
+  - Chia mỗi nhánh thành 4 shard theo bàn; có thanh progress (`progress.parallel_map`).
+- **Đã đổi `paper/main.tex`:** thêm `\label{sec:map11}`, đoạn kết quả S3 trong mục FFA, 2 hàng trong Bảng VI và câu trong đoạn so sánh.
+- **Vì sao:** người dùng yêu cầu đo FFA của S3 và ghi vào paper. Block 50000 của PDE đã mở nên dùng block mới, chạy lại G trên cùng bàn để so ghép cặp.
+- **Kiểm thử:** smoke trên validation 21000 (1 bàn/nhánh, 40 bước), chạy hết các bước; bản đầy đủ thoát mã 0, 1 180 trận. Paired bootstrap tự báo lỗi nếu bàn/góc không khớp. Paper biên dịch sạch.
+- **Trạng thái:** xong, chưa commit.
+
+
+## 112. Paper: dùng FFA làm bằng chứng cho ActiveWR (2026-10-26)
+
+**Thông số:** Không train hay đánh giá mới; dùng số của S3-FFA (seed 59000) và PDE (seed 50000), xem mục PAPER-ACTSHARE trong RESULTS.md.
+
+- **Đã đổi `paper/main.tex`:**
+  - Thêm câu về mức chia đều và tỉ lệ thắng chủ động (ActiveWR/WR) vào mục "Free-for-all against several RuleBots".
+  - Rút gọn ba chỗ để giữ 14 trang.
+- **Vì sao:** người dùng lo ActiveWR thấp trong FFA làm yếu paper. Đặt số cạnh mức chia đều và tỉ lệ thắng chủ động cho thấy FFA làm khoảng cách giữa WR và ActiveWR của agent yếu lớn hơn, tức FFA ủng hộ việc dùng ActiveWR.
+- **Kiểm thử:** biên dịch tectonic, kiểm trang 9 bằng ảnh render, 14 trang, quét watermark không bị gắn cờ. Bản trước khi sửa lưu trong scratchpad (`main_before_activeshare.tex`).
+- **Trạng thái:** xong, chưa commit.
+
+
+## 113. Kiểm watermark/metadata cho toàn bộ paper (2026-10-26)
+
+**Thông số:** Như mục PAPER-WM trong RESULTS.md: service watermarks-remover local, 37 file, không có exiftool/qpdf.
+
+- **Đã đổi:** 15 file `paper/figures/fig_*.png` bỏ chunk tEXt Matplotlib. Không đổi `main.tex`, `main.pdf` hay các PDF hình.
+- **Vì sao:** người dùng yêu cầu chạy hai skill watermarks-remover cho ảnh, hình, PDF và .tex.
+- **Kiểm thử:** `/inspect` lại sau khi làm sạch (không còn tEXt); stylometry trước khi làm (mức low) nên không viết lại phần chữ.
+- **Trạng thái:** xong, chưa commit.
+
+
+## 114. Sửa hình và chữ sau khi kiểm lại 12 hình (2026-10-26)
+
+**Thông số:** Như mục PAPER-FIGCHECK trong RESULTS.md (không có thí nghiệm mới; bootstrap ghép cặp 10 000 lần, seed 20261014, block 57000 đã có).
+
+- **`paper/scripts/make_figures.py`:**
+  - Hàng forest SD9 đổi thành S3 − (S2+s3), giá trị kỳ vọng −0.75.
+  - `fig_observation` gọi `np.random.seed(21007)` để snapshot tái lập được.
+  - Tiêu đề kênh 11 xuống dòng.
+  - Tiêu đề nhóm của forest đặt cao hơn và nới khoảng cách giữa các nhóm.
+  - Nhãn bên trái của Fig. 10 đặt lên trên điểm.
+- **`paper/main.tex`:** sửa 5 câu về khoảng cách giữa trò và thầy, và chú thích Fig. 13.
+- **Vì sao:** người dùng yêu cầu kiểm tính đúng đắn của các hình. Thầy của S3 theo SD9.0 là S2+s3, nên gọi G+s3 là "thầy" là sai.
+- **Kiểm thử:**
+  - Assert trong `fig_forest` khớp −0.75.
+  - Dựng lại snapshot hai lần cho cùng kết quả (bước 26, ammo 2, đã đặt 1).
+  - Xem ảnh render của Fig. 4, 10, 13; paper 14 trang.
+- **Trạng thái:** xong, chưa commit.
+
+
+## 115. Cập nhật báo cáo Claude Doc với FFA, so sánh SOTA và paper (2026-10-26)
+
+**Thông số:** Như mục DOC-UPDATE trong RESULTS.md; không có code hay thí nghiệm mới.
+
+- **Đã đổi:** thêm mục 7.9, 10.5 và 11 vào doc, sửa các chỗ ghi khoảng cách trò–thầy và ghi FFA.
+- **Vì sao:** người dùng yêu cầu đưa các việc đã làm (biểu đồ, so sánh với paper khác, FFA) vào báo cáo.
+- **Kiểm thử:** đọc lại các chỗ đã sửa trong doc; không có chỗ dấu chấm bị lặp.
+- **Trạng thái:** xong.
+
+
+## 116. Thêm hình của paper vào báo cáo Claude Doc (2026-10-26)
+
+**Thông số:** Như mục DOC-FIGS trong RESULTS.md.
+
+- **Đã đổi:** doc thêm mục 11.1 với 15 ảnh và mục 11.2 làm tiêu đề cho phần kiểm lại.
+- **Vì sao:** người dùng yêu cầu tải các hình của paper lên báo cáo.
+- **Kiểm thử:** 15/15 ảnh tải lên thành công; ack của doc trả đủ 15 khối media.
+- **Trạng thái:** xong.
+
+
+## 117. Đánh giá nộp paper (2026-10-26)
+
+**Thông số:** Như mục PAPER-VENUE trong RESULTS.md; không có thay đổi code hay paper.
+
+- **Đã đổi:** không có.
+- **Vì sao:** người dùng hỏi paper có nộp được không và nộp ở đâu.
+- **Kiểm thử:** đối chiếu câu "deterministic RuleBot" với `rule_based_bot.py:461`.
+- **Trạng thái:** đang chờ người dùng chọn venue và quyết định sửa.
+
+
+## 118. Sửa 5 điểm trong paper và tạo bốn bản theo nơi nộp (2026-10-26)
+
+**Thông số:** Như mục PAPER-FIX5 trong RESULTS.md.
+
+- **Đã đổi:**
+  - `paper/main.tex`: câu về RuleBot và argmax; "pre-specified"; bỏ mã nội bộ; 2.2 / 1.25 bước; đoạn về khả năng tổng quát; Statements (funding, CRediT, repo ẩn danh).
+  - `paper/scripts/make_figures.py`: nhãn mô tả thay cho mã nội bộ ở Fig. 4, 5, 8, 9.
+  - File mới: `paper/main_tog.tex`, `paper/main_tog_supp.tex`, `paper/main_cog.tex`, `paper/main_aciids.tex`, `paper/main_icga.tex` và các PDF tương ứng.
+- **Vì sao:** người dùng yêu cầu sửa 5 điểm sau đánh giá nhanh, và làm bốn bản theo đúng khổ của từng nơi nộp.
+- **Kiểm thử:** biên dịch từng bản, đếm trang, đếm số từ abstract của ToG (200), xem ảnh render của bảng và hình.
+- **Trạng thái:** xong trừ mục 2 (chờ SD9-SEEDS); chưa commit.
+
+## 119. Runner lặp seed cho SD9 (2026-10-26)
+
+**Thông số:** Như mục SD9-SEEDS trong RESULTS.md.
+
+- **Đã đổi:** thêm `run_sd9_seeds.py`, gồm các stage collect / train / validate (mỗi bản lặp) và test (chung, chạy một lần).
+  - Dùng lại các hàm của `run_sd9_distill.py` mà không sửa file đó, vì lượt SD9 gốc kiểm SHA của nó.
+  - Hàm train là bản sao với seed thay được.
+  - Kiểm SHA checkpoint; từ chối ghi đè; mở test bằng `test_opened.json`; có thanh progress.
+- **Vì sao:** reviewer sẽ hỏi về chuyện mỗi nhánh chỉ có một train seed.
+- **Kiểm thử:** smoke đủ bốn stage.
+- **Trạng thái:** hoàn tất. Cả ba seed qua gate (+10.5 / +9.0 / +9.25, sd 0.80), số liệu ở mục SD9-SEEDS trong RESULTS.md.
+
+
+## 120. Đưa kết quả lặp seed vào paper (2026-10-26)
+
+**Thông số:** Như mục SD9-SEEDS trong RESULTS.md. Biên dịch bằng tectonic.
+
+- **Đã đổi:**
+  - Cả năm bản (`paper/main.tex`, `main_tog.tex`, `main_cog.tex`, `main_aciids.tex`, `main_icga.tex`): thêm một câu kết quả lặp seed vào đoạn "Iterated distillation". Bản dài ghi đủ CI; bản ngắn chỉ ghi ba hiệu và sd.
+  - Viết lại giới hạn (1): chỉ vòng 3 được lặp; các vòng khác và các nhánh RL vẫn một seed.
+  - Caption bảng thiết lập đổi thành "one train seed per arm unless stated".
+  - Không sửa abstract của ToG, vì đang đúng 200 từ, mức tối đa.
+- **Vì sao:** đây là mục 2 trong năm điểm reviewer sẽ hỏi (một train seed).
+- **Kiểm thử:** cả năm bản biên dịch sạch, không có tham chiếu treo. Số trang: đầy đủ 15, ToG 8, CoG 8, ACIIDS 15 (trước là 14; vẫn trong mức 12–15), ICGA 33. PDF đã chép vào `paper/`.
+- **Trạng thái:** xong; chưa quét watermark lại; chưa commit.
+
+
+## 121. Bộ slide thuyết trình (2026-10-26)
+
+**Thông số:** Không có thí nghiệm; không train, không đánh giá, không đụng `runs/`. Nguồn nội dung: `paper/main.pdf`, `paper/Báo cáo Học tăng cường cho Bomberman — từ actor-critic đến chưng cất search (S3).pdf`, `BAO_CAO_TONG_KET.md`, `INSIGHTS.md`, `PROJECT_SPEC.md`. Dựng bằng pptxgenjs (Node 24, máy người dùng), công thức vẽ bằng matplotlib 3.10 (mathtext, font STIX), kiểm bằng PowerPoint trên cùng máy.
+
+- **Đã đổi:**
+  - File mới `slides/BomberMan_S3_slides.pptx`: 18 slide chính (Problem, Research gap, Solution, công thức kèm tác dụng và lý do, so sánh với model đã công bố, giới hạn, kết luận) cộng 5 slide phụ lục (Bảng III, Bảng V, Bảng VI, tài liệu liên quan, thông số). Ghi chú người nói cho các slide chính.
+  - Mã dựng: `slides/build/build.js`, `slides/build/formulas.py` (công thức A1–A3, B1–B4, C1–C3 thành PNG trong suốt). Chạy `formulas.py` trước rồi `node build.js`. `build.js` còn hard-code đường dẫn skill `pptx` của máy này và cần `pptxgenjs` (đặt `NODE_PATH`).
+  - Hình lấy nguyên từ `paper/figures/`; hình duy nhất vẽ mới là biểu đồ so sánh với model đã công bố (slide 14), vẽ từ Bảng VI của paper bằng biểu đồ native của PowerPoint.
+- **Quyết định đã chốt với người dùng:** điểm xuất phát B ghi **40.0** (bài báo, đo dưới lịch E, khối 60000), còn 32.75 (khối 32000, trước khi có sudden death) chỉ ghi ở phụ lục A.
+- **Vì sao:** người dùng cần trình bày dự án (problem, research gap, solution, công thức, so sánh với công trình khác).
+- **Kiểm thử:** `validate.py` của skill pptx báo PASSED; PowerPoint mở và xuất đủ 23 slide; xem từng ảnh render, sửa các lỗi tiêu đề căn giữa, chữ tràn khung (slide 8, 15, 19) và hình quá nhỏ. Số liệu trên slide đối chiếu tay với Bảng III, IV, V, VI của paper.
+- **Giới hạn và điểm cần lưu ý:**
+  - Slide 14 đặt cạnh số đã công bố, nhưng môi trường khác nhau (Pommerman bom nổ sau 10 bước, đá bom) và họ đếm cả thắng thụ động, nên chỉ định vị, không xếp hạng. Ghi rõ trên slide.
+  - "Nhanh hơn" ghi theo từng nước: 1.9 ms so với 213 ms (~115 lần, paper). `BAO_CAO_TONG_KET.md` và CLAUDE.md ghi ~70 lần; hai con số đo khác nhau, chưa thống nhất, nên slide chỉ dùng số theo từng nước.
+  - Đã xem render bằng PowerPoint; chưa mở thử trên Keynote hoặc Google Slides. Một nhãn cột ở slide 14 và slide 16 có thể hiển thị font khác chút ở vài trình xem.
+- **Trạng thái:** xong; chưa commit.

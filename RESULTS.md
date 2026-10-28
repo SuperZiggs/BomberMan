@@ -3557,3 +3557,386 @@ Kết luận áp dụng11×11/1v1 trên ba CNN9×9 được chuyển map bằng 
 **Trạng thái:** nhánh mới/kiểm tra đã sẵn sàng; chuẩn bị commit và push toàn bộ candidate. Kết quả push/upstream/remote SHA sẽ ghi sau khi GitHub xác nhận.
 
 **Xác nhận xuất bản:** đã commit355file (140599dòng thêm, gồm tài sản nhị phân) thành `5eb6b67f07652d64bde5be4a4a46452d0bd09336`, push nhánh mới `Loc/S3-11` thành công. `git ls-remote` xác nhận GitHub đúng commit này, upstream `origin/Loc/S3-11`, workingtree sạch. Lệnh `git lfs push --object-id` xác nhận5/5object,38,276,258byte; mọipointer trong commit khớp SHA/kích thước checkpoint local. Model/S3/CNN summary/source đã khóa giữ nguyên; không train, không merge main hoặc tạoPR. Nhật ký xác nhận này được lưu bằng commit tài liệu tiếp theo trên cùng nhánh, rồi đối chiếu SHA remote cuối trước khi bàn giao.
+
+## REPORT-RL — báo cáo tổng hợp kèm tổng quan tài liệu, 25/10/2026
+
+**Thông số:** Không train, không chạy trận, không đổi code, không dùng seed mới. Nguồn số liệu: các mục đã có trong `RESULTS.md`, `INSIGHTS.md`, `BAO_CAO_TONG_KET.md`, `CLAUDE.md`; công thức đọc từ `train_actor_critic.py`, `kill_search.py`, `group_rl.py`, `run_sd53_pilot.py`, `run_sd9_distill.py`, `pilot_two_bomb.py`. Tổng quan tài liệu: tra cứu web ngày 25/10/2026 (arXiv, AAAI/AIIDE, PMLR, IFIP), 34 tài liệu. Claude thực hiện trên máy người dùng.
+
+- Kết quả: báo cáo dạng Claude Docs "Báo cáo: Học tăng cường cho Bomberman — từ actor-critic đến chưng cất search (S3)" (https://claude.ai/artifact/AdtApiN8GuySvgs7S7RbGz), gồm: tóm tắt, bài toán và RQ1–RQ5, tổng quan và tổng hợp tài liệu, research gap G1–G5, môi trường (Markov game, 13 kênh, reward), methodology có công thức (Q-learning tuyến tính, actor-critic MC, mask an toàn, teacher phụ, GAE/PPO, sudden death, kill-search 1/2/3 nước, advantage theo nhóm, chưng cất dày/expert iteration, mô hình đối thủ), giao thức đánh giá (ActiveWR, paired bootstrap, gate), bảng toàn bộ thí nghiệm A–E → S3-11, biểu đồ đường đi ActiveWR B 32.75 → S3 92.25, ablation, phát hiện/giới hạn/hướng tiếp, tài liệu tham khảo.
+- Không có số liệu mới; mọi con số chép từ các mục gốc. Biểu đồ đường đi đặt cạnh nhau các mốc đo trên seed test khác nhau, chỉ mang tính mô tả (đã ghi trong chú thích).
+- Giới hạn: tổng quan tài liệu có chọn lọc, không phải tổng quan hệ thống; DOMAC và M2CTS lấy theo ghi chú `RESEARCH_BOMBERMAN_2026.md`, không mở lại trong lượt này.
+
+## REPORT-RL.2 — đọc toàn văn tài liệu, bổ sung S3-11 và insight vào báo cáo, 25/10/2026
+
+**Thông số:** Không train, không chạy trận, không đổi code, không dùng seed. Đọc toàn văn 34/35 tài liệu trong danh mục tham khảo của báo cáo (PDF tải từ arXiv, PMLR, AAAI, incompleteideas.net, trang khóa học UW cho Efron 1979; trích bằng `pdftotext`); Sutton & Barto chỉ đọc chương 13; phụ lục bảng điểm từng game (A3C, PPO, Agarwal, Henderson) và §5–8 Efron chỉ đọc lướt; Goulart 2019 chưa đọc được (HAL chặn tải tự động bằng kiểm tra chống bot, không vượt qua). Số liệu S3-11 lấy từ `runs/s3-map11-20261024-auto-v1` và `runs/s3-map11-cnn-20261025-v1` (đã ghi ở các mục trước). Claude thực hiện trên máy người dùng, ghi chú đọc lưu ở scratchpad phiên.
+
+- Báo cáo (https://claude.ai/artifact/AdtApiN8GuySvgs7S7RbGz) thêm: mục 7.8 (S3-11: 11×11 vs RuleBot ActiveWR 87.25 vs 46.25, +41.0 [34.5, 47.25], gate PASS; pool CNN 2400 trận macro +3.83 [1.92, 5.83], chưa đạt gate ≥ 5pp); mục 2.7 hai bảng "phát hiện trong toàn văn → hệ quả cho repo" cho 33 bài; tab "Ghi chú đọc paper" ghi chi tiết từng bài; bằng chứng toàn văn trong bảng gap G1, G2, G3, G5; 10.2 thêm bốn điểm thảo luận; 10.4 viết lại thành bảng hướng tiếp theo có căn cứ và chi phí; sửa 5.2: chế độ mặc định là REINFORCE với baseline học được (không bootstrap), chỉ GAE mới là actor-critic đúng nghĩa (Sutton & Barto ch. 13); thêm Meisheri 2019 vào tham khảo, sửa tác giả DOMAC/M2CTS.
+- Insight chính từ toàn văn (giả thuyết giải thích, chưa phải bằng chứng thí nghiệm mới): (1) Skynet, Kartal, Huynh, Weil đều nêu "thưởng giả do đối thủ tự sát" nhưng không có thước đo tách ra như ActiveWR; (2) hòa 72–89% giữa agent mạnh xuất hiện ở Osogami, Perez-Liebana, Skynet, AlphaZero; (3) ExIt/AlphaZero giải thích trần ~94%: search của repo không dùng mạng nên không có bước cải thiện chuyên gia; (4) GRPO: RL tăng Maj@K không tăng Pass@K, khớp SD7–SD7.5; (5) PPO và Kickstarting: hệ số KL cố định giữ học trò quanh mức cũ, khớp SD7.7 và S2-KL; (6) PSRO/Weil: không mô hình đối thủ đơn nào đúng cho mọi đối thủ, khớp SDM2.
+- Đã kiểm code khi đối chiếu: che logit `masked_fill(~mask, -1e9)` dùng cả lúc lấy mẫu, loss và anchor KL (không phải naive masking); `_safe_action_mask` có `safety_margin`, `avoid_contests`, `robust` và nới dần khi hết hành động an toàn; thưởng `_reward_components` theo sự kiện, không theo thế.
+- Giới hạn: các hướng đề xuất ở 10.4 (gộp dữ liệu chưng cất qua vòng, MCTS có prior S3, kịch bản bi quan, mô hình đối thủ học được, neo về thầy với λ giảm dần, nhiều train seed) chưa được thử; Goulart 2019 vẫn dựa trên tóm tắt.
+
+## PAPER-KB — file knowledge cho research paper, 25/10/2026
+
+**Thông số:** Không train, không chạy trận, không đổi code, không dùng seed. Nguồn: `RESULTS.md`, `INSIGHTS.md`, `BAO_CAO_TONG_KET.md`, ghi chú đọc toàn văn 34/35 tài liệu (REPORT-RL.2). Claude thực hiện trên máy người dùng.
+
+- Kết quả: file mới `RESEARCH_PAPER_KNOWLEDGE.md` gồm: thông điệp và đóng góp C1–C6, phát biểu bài toán, 14 insight tài liệu (I1–I14, mỗi cái có bằng chứng và hệ quả), bảng research gap G1–G6, RQ1–RQ5, pipeline và công thức, phát hiện có bằng chứng theo RQ (chép từ các mục RESULTS gốc kèm CI và seed), 10 phát hiện tiềm năng P1–P10 (giả thuyết, chưa kiểm, có cách kiểm), bảng định vị so với công trình liên quan, giới hạn, gợi ý cấu trúc paper, 35 tài liệu tham khảo.
+- Không có số liệu mới. Các mốc ở bảng đường đi đo trên seed test khác nhau, chỉ mô tả; claim chỉ dựa trên so sánh ghép cặp cùng seed.
+- Giới hạn: phần P1–P10 là giả thuyết từ tài liệu; tài liệu tham khảo chưa qua bước kiểm định dạng citation; Goulart 2019 chỉ đọc tóm tắt.
+
+
+## PAPER-TEX — bài research paper LaTeX hoàn chỉnh, hình vẽ từ log và đo thời gian quyết định, 25/10/2026
+
+**Thông số:** Không train, không đánh giá mới trên seed test; không mở seed mới nào. Hình: `paper/scripts/make_figures.py` đọc log có sẵn trong `runs/` (đánh giá theo trận, `metrics.jsonl`, `validation*.json`, nhãn `collection/*.npz` của SD8A/SD9), bootstrap ghép cặp bằng `pilot_two_bomb.paired_active_bootstrap` (10 000 lần, seed 20261014); duy nhất một trận RuleBot vs RuleBot trên bàn validation 21007 để vẽ 13 kênh observation. Đo thời gian: `paper/scripts/time_decisions.py 3`, learner G + search3 đấu RuleBot trên bàn validation 21000–21002 × 2 góc (6 trận, 745 quyết định), mỗi bước đo S3 (CNN, lấy mẫu) và G + search3 trên cùng trạng thái; 9×9, 2 agent, max_steps 500, lịch E; CPU 1 luồng, torch 2.5.1, máy người dùng, Claude chạy, 1 tiến trình. Biên dịch: tectonic (conda-forge, env riêng trong scratchpad).
+
+- **Sản phẩm:** `paper/main.tex` (IEEEtran conference, tiếng Anh), `paper/references.bib` (42 tài liệu: 35 đã đọc + 7 kiểm thêm khi viết: Guo 2014, Kormelink 2018, Czarnecki 2019, Hinton 2015, AlphaGo Zero, AlphaStar, DQN), `paper/main.pdf` (12 trang), 14 hình trong `paper/figures/` (PDF + PNG) và `figure_data.json` (mọi số được vẽ).
+- **Kiểm chứng số liệu:** 15 so sánh ghép cặp tính lại từ log theo trận; mọi so sánh có số ghi trong RESULTS đều khớp tuyệt đối (script có assert). Bảng kết quả chính (WR, hòa, tự nổ, số bước) đọc trực tiếp từ file đánh giá; đã sửa một ô hàng S (hòa 18.0, tự nổ 1.0).
+- **Ma trận nhầm lẫn hành động** (trạng thái quyết định held-out, chỉ trạng thái có một nước tốt nhất): SD8A G 58.4% → S2 94.6% (n = 742); SD9 S2 79.4% → S3 90.2% (n = 895). Tỉ lệ argmax nằm trong tập nước tốt nhất: G 60.5 → S2 94.0; S2 74.8 → S3 89.8 (khớp `metrics.json`).
+- **Khoảng cách học trò–thầy cùng seed test:** S − (F+s1) −3.75 [−10.0, 2.25] (43000), S2 − (G+s2) −3.5 [−8.25, 1.25] (48000), S3 − (G+s3) −1.75 [−5.0, 1.5] (57000). Số −45.75 trong `RESEARCH_PAPER_KNOWLEDGE.md` không có nguồn, đã sửa.
+- **Thời gian mỗi quyết định:** S3 trung bình 1.85 ms (trung vị 1.76); G + search3 trung bình 212.8 ms (trung vị 131.7, p95 680.4); tỉ lệ trung bình khoảng 115 lần. Con số "chậm ~70 lần" trong CLAUDE.md và BAO_CAO_TONG_KET.md không có phép đo gốc; paper dùng số đo này. Kết quả lưu ở `paper/figures/decision_timing.json`.
+- **Watermarks-remover:** service `/inspect` và `/clean` trên `main.tex`, `main.pdf`, `references.bib`, 28 file hình: không có ký tự Unicode ẩn, không có C2PA hay metadata AI; `.tex` sau clean giống hệt bản gốc; PDF không đổi (service thiếu exiftool/qpdf nên phần metadata PDF chỉ ở mức best-effort). Skill clean-user-facing-text: stylometry văn xuôi 0.0325, mức `low`, 0 cụm bị gắn cờ, nên theo quy tắc của skill không viết lại. Bài giữ mục khai báo dùng công cụ AI.
+- **Giới hạn:** chưa đối chiếu giới hạn trang và định dạng của hội nghị cụ thể (bản hiện tại 12 trang gồm phụ lục); tên tác giả, funding, CRediT để trống chờ người dùng điền; số đo thời gian chỉ trên 6 trận, một máy.
+
+
+## PAPER-FIG2 — sửa hình của paper: màu theo agent, cỡ chữ, ảnh bàn chơi thật, loss chưng cất, B dưới lịch E, 25/10/2026
+
+**Thông số:** Không train, không mở seed test mới. Ảnh bàn chơi: `paper/scripts/capture_board.py`, S3 (`runs/sd9-20261023/train/epoch_12.pt`, lấy mẫu + mask) ở góc A0 đấu RuleBot A1, bàn validation 21000 (bàn đầu tiên trong dải 21000–21049 có thắng chủ động), 9×9, 2 agent, max_steps 500, lịch E 475/25/40, seed NumPy/torch = 21000; vẽ lại bằng `visualize.BoardView` (UI game của repo) rồi chụp canvas bằng PIL ImageGrab; CPU, torch 2.5.1, Claude chạy trên máy người dùng, 1 tiến trình. Hình: `paper/scripts/make_figures.py` đọc log có sẵn. Biên dịch: tectonic.
+
+- **Ảnh bàn chơi (Fig. 2 mới):** ván dài 117 bước. Bước 110: S3 đặt bom ở (1,4), RuleBot đặt bom ở (1,1). Bước 112: S3 đặt bom thứ hai ở (1,3). Bước 114: RuleBot ở (1,2) bị kẹt giữa bom của chính nó và bom của S3. Bước 116: vùng nổ dự báo phủ mọi ô thoát. Bước 117: nổ, RuleBot bị loại, kill ghi cho S3 (thắng chủ động). Meta: `paper/figures/board/frames.json`.
+- **Hàng B của bảng kết quả chính:** lượt test B ban đầu (seed 32000, ActiveWR 32.75) chạy trước khi có sudden death (file đánh giá không có trường SD), nên không cùng điều kiện với các hàng khác. Paper giờ dùng B dưới lịch E trên block đối chiếu 60000 (`runs/crosscheck-friend-a6650a0/evaluation_E3_B_E_60000.json`): ActiveWR 40.0 [35.0, 45.0], WR 64.0, hòa 22.5, tự nổ 0.5, 357 bước; số 32.75 ghi ở chú thích. Tóm tắt đổi "32.75–51.0" thành "40.0–51.0".
+- **Ghi chú điều kiện ablation:** các nhánh 200 ep từ B (seed 26000–37000) được đánh giá trước khi có sudden death; hàng SD3/SD4.1 dùng lịch SD2 (start 400, interval 40), không phải lịch E. Đã ghi trong caption Bảng V và mục Limitations.
+- **Fig. đường cong train RL:** nhánh "sparse search labels" chạy trên máy khác với torch 2.14.1; cùng F, cùng seed, validation ep 0 là 43.75 so với 47.0, nên không so trực tiếp được. Hình vẽ nét đứt, legend ghi phiên bản torch, caption giải thích. Hình chuyển xuống phụ lục.
+- **Màu theo agent:** B/F/G xanh dương (đậm dần), G+s1/s2/s3 cam, S/S2/S3 tím, RuleBot và đối chứng xám; kết quả trận (thắng chủ động, thụ động, hòa, tự nổ, thua) dùng bảng màu riêng không trùng màu agent. Chữ giữ màu mực.
+- **Cỡ chữ:** tối thiểu 7–7.5 pt (trước đây 5.4–6.5 pt).
+- **Hình chưng cất:** thêm panel loss train (soft CE + KL neo), đánh dấu epoch được chọn bằng ngôi sao. Ma trận nhầm lẫn ghi số mẫu mỗi hàng.
+- **Pipeline:** mũi tên đen là trọng số khởi tạo, nhãn cam là thầy; ghi rõ S2 khởi tạo từ G, không từ S.
+- **Kiểm tra:** 15 delta ghép cặp vẫn khớp log (assert); PDF 13 trang, không thiếu tham chiếu hay trích dẫn; watermarks-remover `/inspect` 36 file không gắn cờ; stylometry văn xuôi 0.0325 (`low`).
+- **Giới hạn:** ảnh bàn chơi là một ván minh họa, không phải số liệu; B dưới lịch E lấy từ block đối chiếu 60000 (một block, 400 trận).
+
+
+## PAPER-FIG3 — vẽ lại sơ đồ pipeline và kiến trúc mạng, sửa chữ tràn khung, 25/10/2026
+
+**Thông số:** Không train, không chơi ván mới, không mở seed test. Vẽ bằng `paper/scripts/make_figures.py fig_pipeline fig_architecture` (matplotlib, CPU, torch 2.5.1, Claude chạy trên máy người dùng, 1 tiến trình); số liệu giữ nguyên như PAPER-FIG2 (ActiveWR B 40.0, F 44.25, G 48.25, G+s1/s2/s3 64.75/82.0/94.0, S/S2/S3 60.5/83.0/92.25; 213 ms và 1.9 ms mỗi nước từ `paper/figures/decision_timing.json`; 6,171/8,449/10,425 trạng thái mỗi vòng chưng cất). Biên dịch: tectonic.
+
+- **Vấn đề:** ở Fig. 1 (pipeline) và Fig. 3 (kiến trúc), chữ tràn ra ngoài khối ("ReLU → 32×9×9", "safe mask → softmax", "Expert = CNN + kill-search"), vì cỡ khối đặt theo đơn vị trục, không đo theo chữ.
+- **Đã làm:** vẽ lại cả hai hình theo mẫu người dùng gửi: nhóm khung nét đứt có thanh tiêu đề đậm đánh số, mỗi khối có dải tiêu đề màu, dải chú giải ở cuối hình.
+  - Pipeline gồm 3 nhóm: 1 RL (B → F → G), 2 G + kill-search lúc chơi (độ sâu 1/2/3, 213 ms/nước), 3 chưng cất dày (S, S2, S3; thầy ghi màu cam, mũi tên đen là trọng số khởi tạo, ghi chú số trạng thái mỗi vòng).
+  - Kiến trúc gồm 2 nhóm: encoder dùng chung và hai đầu actor/critic, màu trung tính vì mạng dùng chung cho mọi agent.
+- **Kiểm tra:**
+  - Code tự đo khung chữ thật của từng nhãn và assert nhãn nằm trong khối của nó. Lần chạy đầu bắt được nhãn chú giải tràn nên đã rút ngắn.
+  - Xem PNG và trang PDF.
+  - Paper 13 trang, không thiếu tham chiếu.
+  - Watermarks-remover `/inspect` 2 hình (PDF + PNG) và `main.tex`: không gắn cờ.
+- **Biên dịch:** lần đầu `paper/main.pdf` đang bị chương trình khác mở nên chưa ghi đè được; sau khi người dùng đóng file, đã biên dịch lại vào `paper/main.pdf` (13 trang, không lỗi).
+
+
+## PAPER-SOTA — bảng so sánh với các agent Bomberman/Pommerman đã công bố và mục FFA trong paper, 26/10/2026
+
+**Thông số:** Không train, không chơi ván mới, không mở seed test. Số của repo lấy từ log có sẵn: FFA từ `runs/pde-50000/evaluation_E{1,2}_{rulebot,G,G_search3}.json` (seed 50000, lịch E 475/25/40, max_steps 500; E1 9×9 3 agent 60 bàn × 3 góc = 180 trận; E2 11×11 4 agent 40 bàn × 4 góc = 160 trận, CNN 9×9 nội suy; lấy mẫu qua mask; search3 đoán đối thủ bằng RuleBot); 1v1 từ Bảng III (G+s3 test 49000, S3 test 57000, 400 trận). CI95 bootstrap theo bàn, 10 000 lần, seed 20261014 (`make_figures.board_ci`). Số của paper khác đối chiếu với bản text toàn văn đã lưu khi đọc 34/35 paper. Claude chạy trên máy người dùng, CPU, torch 2.5.1, 1 tiến trình. Biên dịch: tectonic.
+
+- **Lý do:** người dùng yêu cầu paper phải so với các model mới nhất và SOTA cùng chủ đề. Đã cân nhắc chạy trên Pommerman chính thức kèm train thêm, nhưng người dùng chọn chỉ dùng số hiện có.
+- **Mục mới "Free-for-all against several RuleBots" (Results):**
+
+| Bối cảnh | Learner | ActiveWR [CI95] | WR | Hòa |
+|---|---|---|---|---|
+| E1 9×9, 3 agent | RuleBot | 8.33 [5.0, 12.2] | 20.56 | 38.33 |
+| E1 | G | 27.22 [21.1, 33.3] | 40.56 | 39.44 |
+| E1 | G + search3 | 94.44 [90.6, 97.8] | 98.89 | 0.56 |
+| E2 11×11, 4 agent | RuleBot | 6.25 [3.1, 10.0] | 11.88 | 52.50 |
+| E2 | G | 23.13 [16.9, 29.4] | 36.25 | 53.75 |
+| E2 | G + search3 | 86.25 [80.0, 91.9] | 88.75 | 10.63 |
+
+- **Bảng VI mới (Discussion), số đối chiếu với văn bản gốc:**
+  - Resnick 2018: agent ngang SimpleAgent thắng khoảng 20% trong FFA.
+  - Gao 2019 (Hard Exploration, Bảng 1): FFA 40–43%, Team 65–76%, 3 × 100 trận.
+  - Perez-Liebana 2019: FFA quan sát toàn bàn, đấu 3 bot luật; MCTS 46.5%, RHEA 33.0%.
+  - Weil 2023 (Bảng 3): môi trường Python chính thức, FFA, đấu SimplePy; WR 0.61–0.78, hòa 0.12–0.34.
+  - Meisheri 2019: Team, đấu SimpleAgent, 0.778.
+  - Osogami 2019: Team, đấu SimpleAgent, 92.6% → 99.7% khi tăng mức bi quan 0 → 3.
+  - Huynh 2024 (Bảng 1–2): 98.85% đấu SimpleAgent, 30.00% đấu dypm.
+  - Hàng của repo: FFA E2 (G, G+s3), 1v1 (G+s3, S3).
+- **Bỏ:**
+  - Goulart 2019: chỉ đọc tóm tắt, không kiểm được số 61.02%.
+  - Ngo 2021: luận văn cử nhân, không có trong bib.
+  - Yang 2021: chưa đọc toàn văn.
+- **Đoạn "Comparison with published agents"** nêu 3 điểm chung: search dẫn trước RL ở cả hai bối cảnh; ở bối cảnh gần Pommerman FFA nhất, G+s3 thắng 88.8% khi đấu 3 RuleBot; trận hòa chiếm ưu thế khi agent mạnh đấu nhau. Điểm riêng của repo: CNN thuần S3 đạt 92.25% ActiveWR; không paper nào báo ActiveWR.
+- **Limitations (8):** chưa chạy trên Pommerman chính thức và chưa đấu SimpleAgent, nên bảng chỉ để định vị, không phải so sánh trực tiếp.
+- **Kiểm tra:** biên dịch sạch, không thiếu tham chiếu; PDF thành 14 trang (trước đây 13); watermarks-remover `/inspect` `main.tex` không gắn cờ.
+- **Giới hạn:** môi trường, đối thủ (RuleBot so với SimpleAgent), độ dài trận và luật (không đá bom) đều khác, nên không kết luận được hơn hay kém SOTA. RuleBot và SimpleAgent chưa từng đấu nhau. Số FFA là một lượt chạy, 160–180 trận.
+
+
+## PAPER-SOTA2 — nhấn mạnh điểm mạnh của repo trong đoạn so sánh với Pommerman, 26/10/2026
+
+**Thông số:** Không train, không chơi ván mới, không mở seed. Chỉ sửa văn bản `paper/main.tex`. Số dùng lại từ PAPER-SOTA: WR/ActiveWR S3 98.0/92.25 (test 57000), G+s3 FFA E2 88.75/86.25 (seed 50000). Luật Pommerman đối chiếu với text toàn văn: bom nổ sau 10 bước (Resnick 2018); "most of these ties are caused by episodes that do not terminate within the environment's limit of 800 steps" (Weil 2023). Môi trường repo theo `bomberman_env.py`: bom 8 bước, bàn 9×9 có 40 ô không phải tường cứng (đếm trên 50 bàn validation 21000–21049, trung bình 22.72 ô gỗ). CPU, torch 2.5.1, Claude chạy trên máy người dùng.
+
+- **So sánh độ khó (trả lời người dùng):**
+  - Nhìn tổng thể, Pommerman rộng và phức tạp hơn: bàn có 85 ô không phải tường cứng, 4 agent, có đá bom, 3 loại power-up, trận 800 bước, team mode chỉ thấy một phần bàn.
+  - Repo khắt khe hơn ở bốn điểm: thước đo (ActiveWR ≤ WR), bom nổ nhanh hơn (8 so với 10 bước), vòng co cuối trận, ngân sách tính toán nhỏ.
+  - Paper vì vậy không viết "môi trường khó hơn"; số 85 ô của Pommerman (36 tường cứng trên bàn 11×11) là số nhớ từ cài đặt mặc định của mã Pommerman, chưa kiểm lại với nguồn, nên không đưa vào bài.
+- **Đã sửa:** đoạn "Comparison with published agents" giờ mở đầu bằng 3 lý do khiến số của repo là cách tính bảo thủ:
+  1. Thước đo khắt khe hơn: tính theo WR như các paper khác thì S3 là 98.0 thay vì 92.25, G+s3 FFA là 88.8 thay vì 86.3.
+  2. Chờ hết giờ không được lợi: bom 8 bước so với 10 bước; vòng co cuối trận; trong khi phần lớn trận hòa của Weil là do hết 800 bước.
+  3. Ngân sách nhỏ: S3 chỉ cần một forward pass mỗi nước, kém thầy 1.75 điểm, trong khi agent học mạnh nhất của Huynh dùng 200 triệu bước mà vẫn chỉ thắng 30% trước tree search.
+  - Vẫn giữ câu thừa nhận Pommerman là benchmark rộng hơn, cùng các giới hạn: chưa đấu SimpleAgent, S3 chỉ đo 1v1.
+- **Kiểm tra:** biên dịch sạch, 14 trang; xem trang 10; watermark inspect sạch.
+
+
+## S3-FFA — S3 và S3-11 đấu nhiều RuleBot trong FFA, seed 59000, 26/10/2026
+
+**Thông số:**
+- **Đánh giá, không train.** Runner `run_s3_ffa_check.py`, dùng lại `run_pde_check.play`/`paired_bootstrap`. Thiết kế ghi vào `runs/s3-ffa-59000/opened.json` trước khi chạy; chỉ mô tả, không có gate, không chọn model.
+- **Agent:**
+  - S3 = `runs/sd9-20261023/train/epoch_12.pt` (SHA `4185375f…69ed7`).
+  - S3-11 = `runs/s3-map11-20261024-auto-v1/train/epoch_16.pt` (SHA `17748471…a95f`).
+  - G = `runs/sd75-20261018/full/best_phaseC.pt` (SHA `bb0c775c…c7ac`).
+  - RuleBot ở ghế learner làm mốc.
+  - SHA kiểm khi chạy.
+- **Bối cảnh:**
+  - E1: 9×9, 3 agent, learner đấu 2 RuleBot, 60 bàn × 3 góc = 180 trận/learner.
+  - E2: 11×11, 4 agent, learner đấu 3 RuleBot, 40 bàn × 4 góc = 160 trận/learner. S3 và G dùng trọng số 9×9 nội suy, như PDE; S3-11 là model 11×11 gốc.
+- **Cách chơi và đánh giá:**
+  - Bàn từ seed 59000 (block mới, dùng một lần). Lịch E 475/25/40; max_steps 500.
+  - CNN lấy mẫu qua mask chung.
+  - Bootstrap ghép cặp theo bàn (giữ mọi góc), 10 000 lần, seed 20261014.
+  - CI một model: bootstrap theo bàn (`make_figures.board_ci`).
+- **Môi trường:** Claude chạy trên máy người dùng, CPU, torch 2.5.1, 5 tiến trình, 28 shard. Smoke trên validation 21000 (40 bước) trước, chạy ổn. Output `runs/s3-ffa-59000/`, log `runs/s3-ffa-59000-console.log`.
+
+**E1 (9×9, 3 agent, đấu 2 RuleBot), 180 trận/learner**
+
+| Learner | ActiveWR [CI95] | WR | Hòa | Thắng thụ động | Tự nổ | Bước TB |
+|---|---|---|---|---|---|---|
+| RuleBot (mốc) | 7.22 [3.9, 10.6] | 16.67 | 50.00 | 5.56 | 33.89 | 417 |
+| G | 36.11 [28.3, 44.4] | 56.11 | 32.22 | 15.00 | 3.33 | 382 |
+| S3 | 82.78 [76.1, 88.9] | 87.78 | 7.22 | 3.89 | 0.56 | 252 |
+
+**E2 (11×11, 4 agent, đấu 3 RuleBot; mức công bằng 25%), 160 trận/learner**
+
+| Learner | ActiveWR [CI95] | WR | Hòa | Thắng thụ động | Tự nổ | Bước TB |
+|---|---|---|---|---|---|---|
+| RuleBot (mốc) | 4.38 [1.9, 7.5] | 13.12 | 47.50 | 5.62 | 48.75 | 372 |
+| G (nội suy) | 17.50 [11.9, 23.8] | 30.00 | 60.62 | 8.12 | 3.12 | 448 |
+| S3 (nội suy) | 25.00 [18.1, 31.9] | 33.75 | 52.50 | 5.00 | 3.75 | 440 |
+| S3-11 | 59.38 [50.6, 68.1] | 63.75 | 25.00 | 1.88 | 5.00 | 352 |
+
+**Delta ghép cặp (pp, CI95)**
+
+| So sánh | ActiveWR | WR | Hòa | Tự nổ |
+|---|---|---|---|---|
+| E1 S3 − G | +46.67 [+36.11, +56.67] | +31.67 [+22.22, +41.11] | −25.00 [−33.33, −16.67] | −2.78 [−5.56, 0.00] |
+| E2 S3 − G | +7.50 [−1.88, +16.88] | +3.75 [−6.88, +13.75] | −8.12 [−18.75, +2.50] | +0.62 [−3.75, +5.00] |
+| E2 S3-11 − S3 | +34.38 [+23.75, +44.38] | +30.00 [+19.38, +40.62] | −27.50 [−36.88, −17.50] | +1.25 [−3.12, +6.25] |
+| E2 S3-11 − G | +41.88 [+31.87, +51.88] | +33.75 [+23.12, +44.38] | −35.62 [−45.62, −25.00] | +1.88 [−2.50, +6.88] |
+
+- **Kết luận (mô tả):**
+  - S3, dù chỉ chưng cất từ ván 1v1, vẫn giữ được kỹ năng giết khi chơi 3 agent trên 9×9.
+  - Trên 11×11 4 agent, S3 nội suy không rõ hơn G. S3-11 (chưng cất trên 11×11) đạt 59.4 ActiveWR, WR 63.8; mức này ngang khoảng Weil 2023 (61–78% WR khi đấu 3 SimpleAgent). Đối thủ và luật khác nhau nên không so trực tiếp được.
+  - So với thầy G+s3 (block 50000, khác block) thì chỉ mô tả: E1 94.44 so với S3 82.78; E2 86.25 so với S3-11 59.38. Khoảng cách tới thầy lớn hơn nhiều so với 1v1 (1.75).
+- **Giới hạn:**
+  - G trên block 59000 khác block 50000 khá nhiều (E1 ActiveWR 36.11 so với 27.22; E2 17.50 so với 23.12), tức một block 160–180 trận dao động khoảng ±9pp, nên chỉ so ghép cặp trong cùng block.
+  - Mỗi bối cảnh chạy một lượt; G+s3 không chạy lại trên 59000 vì tốn khoảng 11 giờ CPU.
+- **Paper:**
+  - Thêm đoạn S3 vào mục "Free-for-all against several RuleBots", thêm 2 hàng (S3-11 FFA 11×11, S3 FFA 9×9) vào Bảng VI, sửa đoạn so sánh (S3-11 63.8% WR).
+  - Sửa câu "S3 has been evaluated only 1v1" thành "our students were distilled and evaluated only against RuleBot". Biên dịch sạch, 14 trang.
+
+
+## PAPER-ACTSHARE — Mức chia đều và tỉ lệ thắng chủ động trong FFA vào paper, 26/10/2026
+
+**Thông số:** Không chạy thí nghiệm mới. Số liệu lấy từ S3-FFA (seed 59000: E1 180 trận, E2 160 trận mỗi learner) và PDE (seed 50000), lịch E, max_steps 500. Tỉ lệ thắng chủ động = ActiveWR / WR, tính tay từ các bảng đã ghi.
+
+| Agent | E1 9×9, 3 agent (mức chia đều 33%) | E2 11×11, 4 agent (mức chia đều 25%) |
+|---|---|---|
+| RuleBot (ghế learner, block 59000) | 7.22 / 16.67 = 43% | 4.38 / 13.12 = 33% |
+| G (block 59000) | 36.11 / 56.11 = 64% | 17.50 / 30.00 = 58% |
+| S3 (E1) / S3-11 (E2), block 59000 | 82.78 / 87.78 = 94% | 59.38 / 63.75 = 93% |
+| G+s3 (block 50000) | 94.44 / 98.89 = 95% | 86.25 / 88.75 = 97% |
+
+- **Paper:**
+  - Thêm câu vào mục FFA: so với mức chia đều 33%/25%, 94% và 93% trận thắng của S3 và S3-11 là thắng chủ động, so với 64% và 58% của G. Lý do nêu trong câu: trong FFA đối thủ còn chết do bom của chính mình, do nhau hoặc do vòng, nên WR tâng agent yếu nhiều nhất.
+  - Để giữ 14 trang (trang 12 vốn kín), rút gọn ba chỗ:
+    - Bỏ cụm "below the fair share of 25%" lặp lại ở câu RuleBot.
+    - Gộp câu dẫn phụ lục thành một câu.
+    - Rút hai mệnh đề trong đoạn "Comparison with published agents".
+    - Nội dung và số liệu không đổi.
+  - Biên dịch sạch, 14 trang, không có tham chiếu chưa định nghĩa; quét watermark không bị gắn cờ.
+- **Giới hạn:** Số G+s3 lấy ở block khác nên chỉ để mô tả. Tỉ lệ thắng chủ động không có CI riêng.
+
+
+## PAPER-WM — Kiểm watermark/metadata cho paper, hình và PDF, 26/10/2026
+
+**Thông số:** Skill watermarks-remover 0.7.0 (`remove-ai-marks` + `clean-user-facing-text`). Service local http://127.0.0.1:8765 (bản dev; không có exiftool, qpdf, ghostscript, c2patool, backend pixel, SynthID hay bộ dò text). Phạm vi: `paper/main.tex`, `paper/main.pdf` và 34 file PDF/PNG trong `paper/figures` (kể cả `board/`). Không chạy thí nghiệm.
+
+| Hạng mục | Kết quả |
+|---|---|
+| `/inspect` 37 file | Không file nào bị gắn cờ: không C2PA, không metadata AI, 0 ký tự Unicode ẩn trong .tex/.pdf |
+| `/clean` main.tex | Không có gì để gỡ ("no LaTeX metadata removed") |
+| `/clean` main.pdf + 15 PDF hình | Không đổi byte nào. Thiếu exiftool nên metadata cấp tài liệu giữ nguyên; đó chỉ là tên công cụ (Matplotlib 3.10.9, "LaTeX with hyperref", xdvipdfmx) |
+| `/clean` 15 PNG `fig_*` | Gỡ chunk tEXt `Software: Matplotlib version 3.10.9`; đã thay tại chỗ (bản gốc ở scratchpad `png_orig/`). 4 PNG `board/` không có gì để gỡ |
+| Stylometry phần chữ (3 143 từ) | Điểm 0.0325, CLEAN, mức `low`, 0 cụm từ AI; theo skill thì không viết lại |
+
+- **Giới hạn:**
+  - Chạy lại `make_figures.py` sẽ ghi lại chunk tEXt trong PNG. Paper chỉ dùng các file PDF.
+  - Không có bộ dò watermark thống kê hay pixel nào được cấu hình, nên kết quả chỉ nói về metadata/Unicode và một chỉ số stylometry heuristic; không chứng minh gì về tác giả.
+  - Đoạn khai báo dùng AI trong paper giữ nguyên.
+
+
+## PAPER-FIGCHECK — Kiểm lại số liệu và cách vẽ của 12 hình, 26/10/2026
+
+**Thông số:** Không chạy thí nghiệm mới. Đối chiếu `paper/figures/figure_data.json` (do `make_figures.py` tính lại từ log từng trận trong `runs/`) với Bảng III, RESULTS.md và chú thích. Số mới duy nhất: S3 − (S2+s3) trên block 57000, tính bằng bootstrap ghép cặp theo bàn (`paired_active_bootstrap`, 10 000 lần, seed 20261014, 200 cặp bàn), dùng `runs/sd9-20261023/evaluation_S3_E_57000.json` và `evaluation_S2_search3_E_57000.json`. Cả hai file đã có từ lượt test SD9, không mở thêm seed nào.
+
+| Hình | Kiểm | Kết quả |
+|---|---|---|
+| Fig. 4 forest | 15 hiệu so với log | **Sai nhãn:** hàng "Student vs teacher" của SD9 so S3 với G+s3, trong khi thầy của S3 là S2+s3 (SD9.0). Đúng: S3 − (S2+s3) = −0.75 [−4.00, +2.50]; S3 − (G+s3) = −1.75 [−5.0, +1.5] vẫn đúng nhưng đó là so với agent mạnh nhất, không phải thầy. Đã sửa hình và chữ. |
+| Fig. 5 chưng cất | epoch được chọn = max validation | Khớp (8 / 16 / 12; 64.25 / 84.0 / 90.5) |
+| Fig. 6, 7 | Bảng III | Khớp; tự nổ ≤ 1% đúng (tối đa 1.0) |
+| Fig. 8 WR vs ActiveWR | tính từ log | Khớp chữ (+10.75, +3.75, +16.0, −0.25) |
+| Fig. 9 confusion | độ chính xác | Khớp chữ (unique 58.4/94.6/79.4/90.2; set 60.5/94.0/74.8/89.8) |
+| Fig. 10 độ sâu search | 6 điểm | Khớp; nhãn 64.75/85.75 đè lên đường, đã dời |
+| Fig. 11 đấu CNN | S2 vs S2 | Khớp (7.0 / 11.25 / 63.5 / 18.25) |
+| Fig. 12 hòa có kế hoạch giết | gộp 3 đối thủ | Khớp SD9.2 (15.9% và 90.3%) |
+| Fig. 13 kênh quan sát | dựng lại snapshot | **Chú thích sai:** là bước 26 chứ không phải 25; agent có sức chứa 2 bom và đang đặt 1 (còn 1 ô); có vật phẩm tầm nổ trên bàn. Snapshot không tái lập được vì RuleBot hòa điểm bằng `np.random`; đã cố định seed (cho ra đúng snapshot cũ) và sửa chú thích. Tiêu đề kênh 11 đè lên chữ bên cạnh, đã xuống dòng. |
+| Fig. 14 độ dài ván | trung vị, tỉ lệ chạm 500 | Khớp |
+| Fig. 15 RL | validation | Khớp (+0.75 so với control, 43.75 so với 47.0) |
+
+- **Paper (`main.tex`):**
+  - Abstract: "0.75 pp below its search teacher, CI [−4.0, +2.5]".
+  - C3: khoảng cách −3.75 → −3.5 → −0.75.
+  - Đoạn "Iterated distillation": S3 − (S2+s3) = −0.75 [−4.0, 2.5], kèm "versus G+s3: −1.75".
+  - Đoạn so sánh: "0.75 points below its search teacher".
+  - Đoạn FFA: "the gap to G+s3 grows from 1.75…".
+  - Biên dịch sạch, 14 trang; quét watermark không bị gắn cờ; 3 PNG tạo lại đã gỡ tEXt.
+- **Giới hạn:** Kết luận S3 gần bằng thầy không đổi (CI vẫn chứa 0). Số −0.75 chỉ là tên đúng cho phép so sánh, không phải một lần test mới.
+
+
+## DOC-UPDATE — Cập nhật báo cáo Claude Doc "Học tăng cường cho Bomberman", 26/10/2026
+
+**Thông số:** Không chạy thí nghiệm mới. Doc https://claude.ai/artifact/AdtApiN8GuySvgs7S7RbGz, tab chính, rev 36 → 47. Số liệu lấy từ các mục S3-FFA, PAPER-SOTA, PAPER-SOTA2, PAPER-ACTSHARE, PAPER-WM và PAPER-FIGCHECK.
+
+- **Mục mới:**
+  - 7.9: FFA của S3/S3-11, seed 59000, có bảng E1/E2 và tỉ lệ thắng chủ động.
+  - 10.5: so sánh với agent đã công bố, có bảng định vị Pommerman và ba lý do khiến số của mình bảo thủ.
+  - 11: paper IEEE và 15 hình, các lỗi đã kiểm và sửa, kiểm watermark.
+- **Sửa:**
+  - Ba chỗ "kém thầy 1.75" đổi thành −0.75 so với thầy S2+s3; −1.75 giữ là khoảng cách tới trần G+s3.
+  - Hai chỗ "chưa đo FFA" cập nhật lại.
+  - Ngày as-of đổi thành 26/10.
+
+
+## DOC-FIGS — Đưa 15 hình của paper vào báo cáo Claude Doc, 26/10/2026
+
+**Thông số:** Không chạy thí nghiệm mới.
+- Tải 15 PNG trong `paper/figures/fig_*.png` (bản sau khi sửa ngày 26/10, đã gỡ tEXt) lên doc https://claude.ai/artifact/AdtApiN8GuySvgs7S7RbGz.
+- Chèn vào mục 11.1 "Các hình của paper", mỗi hình kèm một câu chú thích tiếng Việt. Phần kiểm lại hình và watermark chuyển sang mục 11.2.
+- Doc rev 47 → 50.
+
+
+## PAPER-VENUE — Đánh giá nhanh khả năng nộp paper và chọn nơi nộp, 26/10/2026
+
+**Thông số:** Không chạy thí nghiệm; đọc lại toàn bộ `paper/main.tex` (14 trang). Hạn nộp được tra web ngày 26/10/2026. Skill: academic-paper-reviewer, chế độ quick.
+
+- **Kết luận:** nộp được cho venue về game AI sau khi sửa vài điểm; chưa đủ cho hội nghị ML hàng đầu (mỗi nhánh một train seed, môi trường tự viết, chỉ đấu RuleBot).
+- **Lỗi thật phát hiện được:** paper ghi RuleBot "deterministic" (dòng 119 và 142), nhưng `rule_based_bot.py:461` chọn ngẫu nhiên bằng `np.random.choice` khi các nước ngang điểm. Chưa sửa vì chế độ review chỉ đọc.
+- **Điểm khác cần sửa trước khi nộp:**
+  - "pre-registered" nên đổi thành "pre-specified".
+  - Mã nội bộ (SD5.1, SD7.7, Phase C/D) còn trong chữ và hình.
+  - "1.25 steps" (dòng 159) và "2.2 informative steps" (dòng 420) có vẻ mâu thuẫn.
+  - Cần cắt độ dài theo giới hạn trang của venue.
+- **Venue đã tra:** IEEE ToG (journal, nhận bài liên tục), IEEE CoG 2027 (dự kiến tháng 3/2027, chưa công bố), FDG 2027 (11/01/2027, chỉ một nguồn), ACIIDS 2027 (31/10/2026), ICGA Journal, RIVF / SoICT / KSE / MAPR 2027 (chưa công bố). EvoApps 2027 không hợp chủ đề.
+
+
+## PAPER-FIX5 — Sửa 5 điểm reviewer sẽ bắt bẻ, và bốn bản theo từng nơi nộp, 26/10/2026
+
+**Thông số:** Không train trong mục này (lượt chạy nhiều seed ở mục SD9-SEEDS). Bốn bản được biên dịch bằng tectonic. Quy định của từng nơi nộp được tra ngày 26/10/2026 từ trang chính thức hoặc email CFP.
+
+**Các điểm đã sửa trong `paper/main.tex` (bản đầy đủ):**
+1. RuleBot không tất định: `rule_based_bot.py:461` chọn ngẫu nhiên một nước an toàn khi không luật nào khớp. Đã sửa câu "deterministic rule-based bot". Câu giải thích argmax nay ghi rõ số liệu (ActiveWR −9.25, hòa +7.5 [1.25, 13.75]) và nói là chưa chẩn đoán nguyên nhân.
+2. Một train seed: đang chạy SD9-SEEDS; paper chưa sửa.
+3. Khả năng tổng quát: thêm đoạn "How far the results generalise" vào Discussion (FFA, 11×11, đấu CNN; claim chỉ giới hạn ở đối thủ đã được mô hình hóa).
+4. Độ dài: tách thành bốn bản (bảng dưới). `main.tex` giữ làm bản đầy đủ, 15 trang.
+5. Lỗi nhỏ:
+   - "pre-registered" đổi thành "pre-specified (fixed in our repository before each run, not in a public registry)".
+   - Bỏ mã nội bộ (SD2, SD5.1, SD7, SD7.7, SD7.8, SD5.3, Phase C/D) khỏi chữ và khỏi Fig. 4, 5, 8, 9.
+   - Ghi rõ 2.2 bước có điểm search khác nhau và 1.25 bước có nước giết; hai số này không mâu thuẫn (INSIGHTS dòng 65).
+   - Funding: không có tài trợ, dự án sinh viên. CRediT: tác giả 1 điền đủ; tác giả 2–3 để trống cho nhóm điền.
+   - Code: link repo ẩn danh `anonymous.4open.science/r/ANONYMOUS-ID` (cần tạo mirror từ github.com/SuperZiggs/BomberMan rồi thay ID).
+
+**Bốn bản theo nơi nộp:**
+
+| File | Nơi nộp | Quy định đã tra | Kết quả |
+|---|---|---|---|
+| `paper/main_tog.tex` + `main_tog_supp.tex` | IEEE Transactions on Games | Tối đa 10 trang khổ hai cột, tính cả references; abstract 150–200 từ, không viết tắt; 2–5 từ khóa; ẩn danh hai chiều; supplementary không tính trang | 8 trang + 4 trang supplementary (5 hình); abstract 200 từ, 5 từ khóa |
+| `paper/main_cog.tex` | IEEE CoG 2027 (theo quy định CoG 2026, vì bản 2027 chưa công bố) | 8 trang tính cả references và phụ lục; template IEEE conference; ẩn danh hai chiều; EasyChair | 8 trang |
+| `paper/main_aciids.tex` | ACIIDS 2027 (Springer LNAI) | 12–15 trang tính cả references; template LNCS; PDF qua EasyChair; hạn 31/10/2026; cấm nộp đồng thời | 14 trang, `llncs` + `splncs04`; tên tác giả để trống cho nhóm điền |
+| `paper/main_icga.tex` | ICGA Journal (Sage) | Ẩn danh một chiều; abstract ≤200 từ; 4–5 từ khóa; giãn dòng đôi; APA; hình nằm trong bài; mục Statements and Declarations | 33 trang giãn dòng đôi, trích dẫn APA (`apacite`) |
+
+- **Kiểm tra:**
+  - Cả bốn bản biên dịch sạch, không có tham chiếu treo.
+  - Bản ToG: lần đầu có hình trôi xuống sau references; đã chuyển hình gameplay và đường chưng cất sang supplementary.
+  - Không quét watermark được vì service 127.0.0.1:8765 đã tắt.
+- **Giới hạn:**
+  - Hạn và khổ của CoG 2027 suy theo năm 2026.
+  - Trang của ToG tự mâu thuẫn ở hai chỗ: ẩn danh hai chiều hay một chiều, và hình đặt cuối bài hay trong bài. Bản này theo ẩn danh hai chiều và đặt hình trong bài.
+
+
+## SD9-SEEDS — Lặp lại vòng chưng cất SD9 với hai seed mới (đang chạy), 26/10/2026
+
+**Thông số:**
+- **Runner và nguồn:** `run_sd9_seeds.py` (dùng lại hàm của `run_sd9_distill.py`; source khớp SHA với registration SD9 gốc).
+- **Mỗi bản lặp giống hệt SD9:** S2 → thầy S2+search3, 3000 trận, lịch E với p 0.75, anchor 5%, λ 1, Adam 1e-4, batch 256, 16 epoch, ứng viên 4/8/12/16. Chọn epoch trên validation 21000 với cùng luật (ActiveWR cao nhất, tự nổ ≤ S2 + 1pp).
+- **Khác biệt duy nhất:** bàn thu mới và train seed riêng (thứ tự batch và chia held-out).
+  - r1: bàn 230000–231499, seed 531.
+  - r2: bàn 232000–233499, seed 532.
+- **Test chung, chốt trước:** seed 61000, một lần, 200 bàn × 2 góc. Gồm S3 gốc (seed 530), S3-r1, S3-r2 và S2. Báo cáo:
+  - S3 − S2 ghép cặp cho từng seed;
+  - mỗi seed có qua gate SD9 không (≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp);
+  - trung bình, min, max và sd của ba hiệu.
+  - Không chọn gì sau khi xem test.
+- **Môi trường:** Claude chạy trên máy người dùng; torch 2.5.1; thu dữ liệu 3 + 3 tiến trình CPU; train trên GPU RTX 3050.
+- **Smoke:** chạy ở `runs/sd9-seeds-20261026-smoke` (4 bàn, 2 epoch, 4 trận), qua hết các bước.
+- **Output:** `runs/sd9-seeds-20261026/`; log `runs/sd9-seeds-20261026-r1-console.log` và `-r2-console.log`.
+- **Thời gian thực tế:** thu dữ liệu 05:02–12:12 (r1) và 05:02–12:17 (r2), mỗi bản 60 shard × 25 bàn. Train 16 epoch trên GPU mất vài phút; validate khoảng 4 phút; test 12:22–12:25. Ước lượng ban đầu (4–4,5 giờ) sai vì tôi tính nhầm 30 shard.
+- **Trạng thái:** hoàn tất; test 61000 đã mở một lần (`test_opened.json`).
+
+**Thu dữ liệu (thầy S2+search3, 3000 trận mỗi bản):**
+
+| Bản | Bàn thu | Train seed | Nhãn quyết định | Anchor | Thầy ActiveWR / WR / hòa |
+|---|---|---|---|---|---|
+| SD9 gốc | 212000–213499 | 530 | 10425 | 15865 | 93.03 / 99.17 / 0.30 |
+| r1 | 230000–231499 | 531 | 10578 | 15826 | 93.10 / 99.57 / 0.13 |
+| r2 | 232000–233499 | 532 | 10536 | 16021 | 93.33 / 99.10 / 0.40 |
+
+**Validation 21000 (400 trận, ActiveWR / tự nổ):** S2 79.0 / 0.25.
+- r1: epoch 4 87.25 / 0.5; epoch 8 91.0 / 0.0; **epoch 12 91.25 / 0.25 (chọn)**; epoch 16 90.0 / 0.25. SHA `c7a90e79…1a8f`.
+- r2: **epoch 4 90.75 / 0.5 (chọn: hòa với epoch 12, luật lấy epoch sớm hơn)**; epoch 8 90.25 / 1.5 (vượt trần tự nổ S2 + 1pp); epoch 12 90.75 / 0.0; epoch 16 90.5 / 1.0. SHA `76d58d2e…ffc1`.
+
+**Test chung 61000 (200 bàn × 2 góc = 400 trận/model, lịch E, lấy mẫu, chỉ CNN, bootstrap 10⁴ theo bàn):**
+
+| Model | ActiveWR | WR | Thụ động | Hòa | Tự nổ | Bước TB |
+|---|---|---|---|---|---|---|
+| S3 seed 530 (gốc) | 89.75 | 96.25 | 6.5 | 1.75 | 0.5 | 127.1 |
+| S3 seed 531 (r1) | 88.25 | 97.0 | 8.75 | 0.5 | 0.75 | 120.2 |
+| S3 seed 532 (r2) | 88.5 | 97.25 | 8.25 | 0.25 | 0.75 | 133.9 |
+| S2 | 79.25 | 88.25 | 5.5 | 8.0 | 0.5 | 215.1 |
+
+| S3 − S2 (ghép cặp) | ActiveWR [CI95] | Hòa | Thụ động | Tự nổ | Gate |
+|---|---|---|---|---|---|
+| seed 530 | +10.5 [+5.75, +15.25] | −6.25 [−9.25, −3.25] | +1.0 [−2.0, +4.0] | 0.0 [−1.0, +1.0] | ĐẠT |
+| seed 531 | +9.0 [+4.25, +13.5] | −7.5 [−10.25, −4.75] | +3.25 [+0.25, +6.25] | +0.25 [−0.5, +1.25] | ĐẠT |
+| seed 532 | +9.25 [+4.75, +13.75] | −7.75 [−10.5, −5.25] | +2.75 [−0.25, +5.75] | +0.25 [−0.75, +1.25] | ĐẠT |
+
+- **Qua ba seed:** hiệu ActiveWR trung bình +9.58, min +9.0, max +10.5, sd 0.80. Cả ba qua gate SD9 (≥ +5pp, CI dưới > 0, tự nổ ≤ +1pp).
+- **Đối chiếu:** S3 gốc trên block mới 61000 cho +10.5, trùng với test 57000 (+10.5 [+6.5, +14.5]).
+- **Kết luận:** vòng chưng cất thứ 3 (S2 → S3) ổn định qua train seed và bàn thu. Đã cập nhật paper: câu kết quả trong đoạn "Iterated distillation" và giới hạn (1) của cả năm bản.
+- **Giới hạn:**
+  - Chỉ lặp vòng 3. Vòng 1, vòng 2 và các nhánh RL vẫn một seed.
+  - Cả ba bản lặp đều xuất phát từ cùng S2 và cùng thầy S2+search3.
+  - Hai bản r1/r2 thắng thụ động nhiều hơn S2 khoảng 3pp (seed 531 có CI dưới > 0), nhưng gate xét ActiveWR và vẫn đạt.
+  - Mới đo khi đấu RuleBot 1v1 9×9; chưa đo khi đấu CNN.
+  - S3 gốc vẫn là agent chính; r1/r2 chỉ để đo độ ổn định, không thay S3.
+
+
+## SLIDES — bộ slide thuyết trình dự án, 26/10/2026
+
+**Thông số:** Không có thí nghiệm mới: không train, không đánh giá, không dùng seed nào (không mở seed test mới). Mọi con số trên slide chép từ `paper/main.pdf` (Bảng III, IV, V, VI và các hình trong `paper/figures/`) và `INSIGHTS.md`; kiểm lại bằng tay. Môi trường: máy người dùng, pptxgenjs, PowerPoint dùng để xem render.
+
+- **Sản phẩm:** `slides/BomberMan_S3_slides.pptx` (18 slide chính + 5 phụ lục). Chi tiết thiết kế ở IMPROVEMENTS.md mục 121.
+- **Số liệu chính được trình bày (không đổi so với paper):** S3 ActiveWR 92.25 [89.5, 94.75] (test 57000); G + search ba nước 94.0; B 40.0 (khối 60000, lịch E); S3 − S2 +10.5 / +9.0 / +9.25 qua ba train seed; đấu CNN hòa 53–64%, kế hoạch giết ở 15.9% [9.9, 22.7] trận hòa khi đoán đúng đối thủ.
+- **Giới hạn của kết luận:** không có gì mới ngoài tổng hợp số đã có. Slide so sánh với agent đã công bố (slide 14, Bảng VI) chỉ định vị, vì khác môi trường và khác tiêu chí đếm thắng. Số "nhanh hơn" trên slide là theo từng nước (~115 lần), khác con số ~70 lần trong báo cáo tổng kết.

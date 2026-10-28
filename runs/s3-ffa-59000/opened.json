@@ -1,0 +1,73 @@
+{
+  "seed": 59000,
+  "max_steps": 500,
+  "arms": [
+    [
+      "E1",
+      "rulebot",
+      60
+    ],
+    [
+      "E1",
+      "G",
+      60
+    ],
+    [
+      "E1",
+      "S3",
+      60
+    ],
+    [
+      "E2",
+      "rulebot",
+      40
+    ],
+    [
+      "E2",
+      "G",
+      40
+    ],
+    [
+      "E2",
+      "S3",
+      40
+    ],
+    [
+      "E2",
+      "S3_11",
+      40
+    ]
+  ],
+  "sha256": {
+    "G": "bb0c775c58161aa1bbdd229b9528170aab174d5aabf8f4a6739b848919cdc7ac",
+    "S3": "4185375f8b5f5cf070d3eef6ce98bec27e23fe06c64d97b500c939e36e669ed7",
+    "S3_11": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f"
+  },
+  "schedule": {
+    "sudden_death_start": 475,
+    "sudden_death_interval": 25,
+    "sudden_death_warning_steps": 40
+  },
+  "compare": [
+    [
+      "E1",
+      "S3",
+      "G"
+    ],
+    [
+      "E2",
+      "S3",
+      "G"
+    ],
+    [
+      "E2",
+      "S3_11",
+      "S3"
+    ],
+    [
+      "E2",
+      "S3_11",
+      "G"
+    ]
+  ]
+}

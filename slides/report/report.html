@@ -1,0 +1,136 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Báo cáo kết quả project Bomberman</title>
+<style>
+@page{size:A4;margin:22mm 20mm}
+body{font-family:"Times New Roman",serif;font-size:12pt;line-height:1.5;color:#111}
+h1{font-size:20pt;margin:0 0 8pt}h2{font-size:15pt;margin:18pt 0 6pt;border-bottom:1px solid #888;padding-bottom:2pt;break-after:avoid}h3{font-size:12.5pt;margin:12pt 0 4pt;break-after:avoid}
+p{margin:0 0 7pt;text-align:justify}ul,ol{margin:0 0 7pt;padding-left:20pt}li{margin-bottom:2pt}
+table{border-collapse:collapse;width:100%;margin:6pt 0 4pt;font-size:10.5pt;break-inside:avoid}
+th,td{border:1px solid #666;padding:3pt 5pt;text-align:left}th{background:#e8e8e8}
+td.n{text-align:right}
+figure{margin:8pt 0;text-align:center;break-inside:avoid}figure img{max-width:100%;max-height:75mm}
+figcaption{font-size:10pt;font-style:italic;margin-top:2pt}
+code{font-family:Consolas,monospace;font-size:10pt}
+.cover{text-align:center;padding-top:60mm;break-after:page}
+.cover h1{font-size:26pt;margin-bottom:14pt}.cover p{text-align:center;font-size:13pt}
+.pb{break-before:page}
+.box{border:1px solid #666;background:#f4f4f4;padding:6pt 10pt;margin:6pt 0;break-inside:avoid}
+</style></head><body>
+
+<div class="cover">
+<p>Môn học: Học tăng cường / Trí tuệ nhân tạo ứng dụng</p>
+<h1>BÁO CÁO KẾT QUẢ PROJECT<br>Agent Bomberman bằng Reinforcement Learning<br>và Expert Iteration (chưng cất search)</h1>
+<p>Nhánh <code>danh/sd9-s3-distillation</code> · Agent chính: <b>S3</b></p>
+<p>Ngày 28/10/2026</p>
+<p>Nguồn số liệu: <code>RESULTS.md</code>, <code>IMPROVEMENTS.md</code>, <code>INSIGHTS.md</code>, <code>BAO_CAO_TONG_KET.md</code></p>
+</div>
+
+<h2>1. Giới thiệu và mục tiêu</h2>
+<p>Project xây dựng một agent chơi Bomberman đối kháng (1 đấu 1, bàn 9×9) bằng học tăng cường. Agent được đánh giá khi đấu với RuleBot, một đối thủ viết tay theo luật cố định, và khi đấu với chính các CNN do project train ra. Mục tiêu cuối: một mạng CNN thuần, mỗi bước chỉ chạy một lần, nhưng chơi mạnh gần bằng một agent có search tốn kém.</p>
+<p>Kết quả chính: agent <b>S3</b> đạt <b>ActiveWR 92,25%</b> khi đấu RuleBot trên seed test 57000 (chỉ dùng một lần). Checkpoint xuất phát B chỉ đạt khoảng 33%, bản RL tốt nhất không search (G) đạt khoảng 49%. S3 kém trần search ba nước (G + search3, 94,0%) chỉ 1,75 điểm, khoảng tin cậy chứa 0, nhưng nhanh hơn khoảng 70 lần.</p>
+<div class="box"><b>Tóm tắt một câu:</b> RL thuần không vượt được 50% ActiveWR; thêm search viết tay lúc chơi đưa lên 94%; chưng cất search vào CNN qua ba vòng (G → S2 → S3) mang phần lớn lợi ích đó vào một mạng chạy nhanh.</div>
+
+<h2>2. Bài toán, môi trường và cách đo</h2>
+<h3>2.1 Môi trường</h3>
+<ul>
+<li><code>BombermanFFAEnv</code> (NumPy): bàn 9×9, 2 agent ở hai góc, cột cứng ở ô (chẵn, chẵn), tối đa 500 bước.</li>
+<li>Observation <b>13 kênh</b>, trong đó kênh 11 là nghịch đảo thời gian tới khi bị sát thương (dự báo bom, dây chuyền, lửa) và kênh 12 là cảnh báo vòng sudden death.</li>
+<li><b>Sudden death</b> (lịch E): vòng co bắt đầu ở bước 475, cách nhau 25 bước, cảnh báo trước 40 bước.</li>
+<li><b>Mask an toàn</b> dùng chung: mọi agent, kể cả RuleBot, không bao giờ chủ động bước vào ô sắp nổ.</li>
+</ul>
+<h3>2.2 Chỉ số: ActiveWR thay cho WR</h3>
+<p>WR (tỉ lệ thắng) bị tăng giả khi đối thủ tự nổ hoặc chết vì vòng co, tức là thắng thụ động. Vì vậy chỉ số chính là <b>ActiveWR</b>: phần trăm trận thắng <i>và</i> có hạ gục đối thủ bằng bom của chính mình. Hình 1 minh họa vì sao hai chỉ số này tách nhau.</p>
+<figure><img src="../../paper/figures/fig_wr_vs_active.png"><figcaption>Hình 1. WR và ActiveWR của các cấu hình: WR tăng nhờ thắng thụ động không đồng nghĩa với chơi tốt hơn.</figcaption></figure>
+<h3>2.3 Giao thức thí nghiệm</h3>
+<ul>
+<li>Chọn checkpoint trên seed validation 21000.</li>
+<li>Test <b>một lần</b> trên seed mới: 200 bàn × 2 góc = 400 trận mỗi model. Seed test đã dùng không bao giờ dùng lại.</li>
+<li>So sánh ghép cặp theo bàn, bootstrap 10 000 lần để lấy CI95.</li>
+<li>Gate chốt trước khi chạy: ActiveWR ≥ +5 điểm phần trăm (pp), cận dưới CI95 &gt; 0, tự nổ không tăng quá 1 pp.</li>
+</ul>
+
+<h2 class="pb">3. Kiến trúc agent</h2>
+<p>Mạng <code>ActorCriticNet</code> là một CNN nhận 13 kênh, xuất logits cho các hành động (di chuyển, đặt bom, đứng yên) và giá trị trạng thái. Hành động được <b>lấy mẫu</b> từ policy sau khi áp mask an toàn (argmax làm giảm mạnh chất lượng, xem mục 7).</p>
+<figure><img src="../../paper/figures/fig_architecture.png"><figcaption>Hình 2. Kiến trúc mạng actor-critic.</figcaption></figure>
+<p><b>Kill-search</b> (<code>kill_search.py</code>) là bộ search lúc chơi: mô phỏng 12 bước tới, giả định đối thủ hành xử như RuleBot, và chọn nước đi dẫn tới một kế hoạch giết mà bản thân vẫn né được. Có ba biến thể: một nước, hai nước và ba nước (search nhiều nước hơn thì mạnh hơn nhưng chậm hơn).</p>
+<figure><img src="../../paper/figures/fig_search_depth.png"><figcaption>Hình 3. ActiveWR theo độ sâu search (một, hai, ba nước) khi đặt trên G.</figcaption></figure>
+
+<h2 class="pb">4. Phương pháp: expert iteration</h2>
+<p>Quy trình gồm bốn bước, lặp lại nhiều vòng:</p>
+<ol>
+<li><b>RL tạo học trò:</b> train actor-critic (Phase C, đấu RuleBot) cho ra checkpoint, về sau có thêm advantage theo nhóm (SD7) cho ra G.</li>
+<li><b>Search làm thầy:</b> gắn kill-search lên học trò để có agent mạnh hơn nhiều (nhưng chậm).</li>
+<li><b>Thu nhãn dày:</b> cho thầy chơi, ở <i>mọi</i> trạng thái mà các nước đi có điểm search khác nhau thì ghi lại phân phối điểm làm nhãn mềm.</li>
+<li><b>Chưng cất:</b> train CNN bằng cross-entropy mục tiêu mềm, cộng KL về model gốc trên 5% trạng thái neo để không quên kỹ năng cũ.</li>
+</ol>
+<figure><img src="../../paper/figures/fig_pipeline.png"><figcaption>Hình 4. Pipeline expert iteration: G → S2 → S3.</figcaption></figure>
+<p>Điểm quyết định so với các thử nghiệm đầu là nhãn <b>dày</b>: nhãn thưa (khoảng 0,9 nhãn/trận ở SD5.1) không đổi được hành vi đặt bom của CNN, còn nhãn dày ở mọi trạng thái có thông tin thì đổi được.</p>
+<figure><img src="../../paper/figures/fig_distill_curves.png"><figcaption>Hình 5. Đường cong chưng cất (validation) theo epoch.</figcaption></figure>
+
+<h2 class="pb">5. Kết quả chính (đấu RuleBot, lịch E)</h2>
+<table>
+<tr><th>Mốc</th><th>Agent</th><th>ActiveWR (%)</th><th>Seed test</th></tr>
+<tr><td>Xuất phát</td><td>B (Phase C, MC actor-critic)</td><td class="n">32,75</td><td>32000</td></tr>
+<tr><td>RL nhánh bạn</td><td>F (~3000 ep từ B)</td><td class="n">44,25</td><td>43000</td></tr>
+<tr><td>RL + advantage theo nhóm</td><td>G</td><td class="n">48,25–51,0</td><td>45000, 46000</td></tr>
+<tr><td>Search một nước</td><td>G + search</td><td class="n">64,75</td><td>46000</td></tr>
+<tr><td>Search hai nước</td><td>G + search2</td><td class="n">82,0</td><td>47000</td></tr>
+<tr><td>Search ba nước (trần)</td><td>G + search3</td><td class="n">94,0</td><td>49000, 57000</td></tr>
+<tr><td>Chưng cất lần 1</td><td>S (từ F + search)</td><td class="n">60,5</td><td>43000</td></tr>
+<tr><td>Chưng cất lần 2</td><td>S2 (từ G + search2)</td><td class="n">83,0</td><td>48000</td></tr>
+<tr><td><b>Chưng cất lần 3</b></td><td><b>S3 (từ S2 + search3)</b></td><td class="n"><b>92,25</b></td><td>57000</td></tr>
+</table>
+<figure><img src="../../paper/figures/fig_milestones.png"><figcaption>Hình 6. ActiveWR theo các mốc của project.</figcaption></figure>
+<p>Trên test 57000, S3 − S2 = <b>+10,5 pp</b> ActiveWR, CI95 [+6,5; +14,5], vượt gate. Phần tăng đến từ thắng chủ động: thắng thụ động −1,5 (CI chứa 0), hòa −6,25, ván ngắn hơn (131 so với 202 bước). Tắt sudden death cho kết quả gần như y hệt (+10,75), nên cải thiện không phụ thuộc vòng co.</p>
+<p>S3 so với trần G + search3: −1,75 pp, CI95 [−5,0; +1,5], chứa 0. Tốc độ: S3 chạy một lần forward mỗi bước, còn search3 tốn 20–30 giây mỗi trận, chậm khoảng 70 lần.</p>
+<p>S3 cũng được lặp lại trên ba train seed khác nhau (SD9-SEEDS, test 61000): cả ba seed đều đạt gate, S3 − S2 lần lượt +10,5; +9,0; +9,25 pp. Đây là bằng chứng độ ổn định tốt hơn so với một seed đơn lẻ.</p>
+<figure><img src="../../paper/figures/fig_forest.png"><figcaption>Hình 7. Chênh lệch ActiveWR kèm CI95 giữa các cặp so sánh chính.</figcaption></figure>
+
+<h2 class="pb">6. Khi đấu CNN mạnh: vì sao hòa nhiều</h2>
+<p>Khi đối thủ là CNN (S2, G, S3) thay vì RuleBot, S3 vẫn hòa 53–64% số trận và ActiveWR chỉ 6,5–10,75%. Bốn probe được chạy để hiểu nguyên nhân:</p>
+<table>
+<tr><th>Probe</th><th>Câu hỏi</th><th>Kết quả</th></tr>
+<tr><td>PDE, PDE2</td><td>Agent mạnh nhất còn mạnh khi đấu CNN không?</td><td>G + search3 đấu CNN chỉ WR 19–44, hòa 50–70%</td></tr>
+<tr><td>SD9.1</td><td>S3 có bớt hòa hơn S2 không?</td><td>ActiveWR macro +3,33 [+1,25; +5,50], hòa −4,08; S3 vẫn hòa 53–64% (chưa đạt gate)</td></tr>
+<tr><td>SD9.2</td><td>Trận hòa có nước giết bị bỏ lỡ không?</td><td>Đoán đối thủ bằng CNN thật, chỉ 15,9% [9,9; 22,7] trận hòa có kế hoạch giết (0,2% trạng thái); giả định RuleBot thấy 90,3%</td></tr>
+<tr><td>SD9.3</td><td>Vòng co sớm hơn có tạo thắng chủ động không?</td><td>Không: ActiveWR −1,42…−0,17; 80–87% trận hòa thành "cùng chết khi vòng cuối lấp kín bàn"</td></tr>
+</table>
+<figure><img src="../../paper/figures/fig_cnn_matchups.png"><figcaption>Hình 8. Kết quả S3 đấu các CNN: tỉ lệ hòa vẫn cao.</figcaption></figure>
+<p><b>Giải thích:</b> hai agent cùng dùng mask an toàn nên mỗi bên không bao giờ tự bước vào vùng nổ. RuleBot né theo luật cố định nên bẫy được; CNN né theo nhiều cách, hầu như luôn còn đường thoát. Do đó trong 1v1 trên 9×9 gần như không có cú giết chắc chắn, giống hai kỳ thủ mạnh hay hòa nhau. Vì thế khi đấu CNN, báo cáo dùng ActiveWR và tỉ lệ thua, không dùng WR.</p>
+<figure><img src="../../paper/figures/fig_gameplay.png"><figcaption>Hình 9. Một chuỗi đặt bom – né – hạ gục điển hình khi đấu RuleBot.</figcaption></figure>
+
+<h2 class="pb">7. Các hướng đã thử và bị bác bỏ</h2>
+<p>Ghi nhận trung thực các kết quả âm cũng là một phần của project. Mỗi mục dưới đây có gate FAIL hoặc kết quả không giữ, ghi ở <code>RESULTS.md</code>:</p>
+<ul>
+<li><b>Tinh chỉnh RL quanh B (T1–T4):</b> teacher hai bom, curriculum, MOVE guidance, GAE/PPO, reward shaping đều trượt gate. Tín hiệu thưa không đổi được hành vi đặt bom.</li>
+<li><b>Sudden death (SD1–SD4, SD6):</b> tăng WR nhưng toàn bằng thắng thụ động, ActiveWR không đổi. Luật đứng chặn ô cửa thoát: ActiveWR −1,75.</li>
+<li><b>Train RL thêm với nhãn search thưa (SD5.1):</b> −2,75 pp.</li>
+<li><b>Hạ nhiệt độ lấy mẫu của F:</b> argmax làm ActiveWR giảm 9,25 pp.</li>
+<li><b>Search chỉ ở giai đoạn cuối trận:</b> +0.</li>
+<li><b>Search luôn đoán đối thủ bằng CNN của mình (SDM2):</b> đấu RuleBot mất 33 pp.</li>
+<li><b>RL tiếp từ model đã chưng cất (D-S2, S2-KL):</b> Phase D 2000 ep làm ActiveWR đấu RuleBot rơi từ 83,75 xuống 57,5–65; KL neo toàn cục chỉ giữ được 2,5 pp. RL hiện tại xóa kỹ năng chưng cất.</li>
+<li><b>Vòng sudden death sớm hơn (SD9.3):</b> không lịch nào giúp, giữ lịch E.</li>
+<li><b>Mở rộng 11×11 (S3 map11):</b> đạt gate đấu RuleBot (ActiveWR 87,25, +41 pp so với S3 nội suy) nhưng khi đấu CNN chỉ +3,83 pp [1,92; 5,83], chưa đạt gate 5 pp nên không thay S3 gốc.</li>
+</ul>
+<figure><img src="../../paper/figures/fig_outcomes.png"><figcaption>Hình 10. Cơ cấu kết quả trận (thắng chủ động, thắng thụ động, hòa, thua) theo agent.</figcaption></figure>
+
+<h2>8. Giới hạn của kết luận</h2>
+<ul>
+<li>Phần lớn kết quả dựa trên một train seed và một test seed. Riêng S3 đã lặp lại trên ba train seed (SD9-SEEDS), các agent trung gian thì chưa.</li>
+<li>Thầy của S3 giả định đối thủ là RuleBot. S3 mạnh nhất khi đấu RuleBot, còn đấu CNN chỉ nhỉnh hơn S2 chút ít.</li>
+<li>Policy lấy mẫu nên số liệu tái lập bit-to-bit chỉ trên cùng phiên bản torch.</li>
+<li>Chủ yếu đo 1v1 9×9. FFA 3–4 agent (S3-FFA, seed 59000) và bàn 11×11 mới được đo mô tả hoặc ở mức pilot.</li>
+<li>RuleBot là đối thủ cố định và tương đối dễ bẫy; điều này giải thích phần lớn khoảng cách giữa ActiveWR đấu RuleBot (92%) và đấu CNN (6–11%).</li>
+</ul>
+
+<h2>9. Hướng tiếp theo</h2>
+<p><b>SD10 (hướng A):</b> chưng cất S3 + search3 thành S4, trong đó lúc thu dữ liệu search đoán đối thủ bằng chính CNN của đối thủ. S4 lúc chơi vẫn là CNN thuần. Code và test đã xong nhưng <b>chưa chạy</b>: mỗi trận đấu CNN tốn khoảng 10 phút và chỉ cho khoảng 2,7 trạng thái có nhãn, thu đủ dữ liệu cần khoảng 53 giờ. Theo SD9.2, mức lợi ích tối đa khi đấu CNN chỉ khoảng +10 pp và là ước lượng lạc quan, nên cần cân nhắc chi phí.</p>
+
+<h2>10. Tái lập</h2>
+<ul>
+<li><b>Agent:</b> S3 = <code>runs/sd9-20261023/train/epoch_12.pt</code> (SHA <code>4185375f…69ed7</code>).</li>
+<li><b>Đánh giá S3 đấu RuleBot:</b><br><code>python evaluate.py --mode seeded --board_size 9 --num_agents 2 --num_episodes 400 --max_steps 500 --seed &lt;seed&gt; --device cpu --ac_model runs/sd9-20261023/train/epoch_12.pt --output &lt;json&gt;</code></li>
+<li><b>Chuỗi tạo S3:</b> <code>run_sd8a_distill.py</code> (tạo S2), rồi <code>run_sd9_distill.py collect | train | validate | test</code>; lệnh đầy đủ ở <code>SD9_GUIDE.md</code>.</li>
+<li><b>Probe đấu CNN:</b> <code>probe_s3_cnn.py</code> (SD9.1), <code>probe_draw_kills.py</code> (SD9.2), <code>probe_sd_schedule.py</code> (SD9.3). Mỗi runner có test <code>test_*.py</code> chạy bằng <code>unittest</code>.</li>
+<li><b>Môi trường:</b> Python 3.11, torch 2.5.1 (<code>D:\anaconda\envs\torch\python.exe</code>), CPU, 5 tiến trình song song.</li>
+</ul>
+</body></html>

@@ -1,0 +1,33 @@
+{
+ "seed": 21000,
+ "learner": "S3 (A0)",
+ "opponent": "RuleBot (A1)",
+ "kill_step": 117,
+ "game_length": 117,
+ "frames": [
+  {
+   "name": "a_place",
+   "step": 110,
+   "danger_overlay": false,
+   "png": "paper\\figures\\board\\frame_a_place.png"
+  },
+  {
+   "name": "b_mid",
+   "step": 114,
+   "danger_overlay": true,
+   "png": "paper\\figures\\board\\frame_b_mid.png"
+  },
+  {
+   "name": "c_before",
+   "step": 116,
+   "danger_overlay": true,
+   "png": "paper\\figures\\board\\frame_c_before.png"
+  },
+  {
+   "name": "d_kill",
+   "step": 117,
+   "danger_overlay": false,
+   "png": "paper\\figures\\board\\frame_d_kill.png"
+  }
+ ]
+}

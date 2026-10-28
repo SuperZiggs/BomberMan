@@ -1,0 +1,90 @@
+{
+  "games": 3000,
+  "decisions": 10536,
+  "anchors": 16021,
+  "teacher_rates": {
+    "win": 99.1,
+    "active_win": 93.33333333333333,
+    "draw": 0.4
+  }
+}
+{
+  "epoch": 16,
+  "train_loss": 0.3541097906047264,
+  "decision_argmax_best_rate": 90.06622516556291,
+  "kill_decision_argmax_best_rate": 90.20368574199806,
+  "anchor_kl": 0.05193868651986122,
+  "anchor_argmax_changed_rate": 10.257984697818756,
+  "heldout_decisions": 1057,
+  "heldout_anchors": 1628
+}
+{
+  "selected_epoch": 4,
+  "results": {
+    "S2": {
+      "num_episodes": 400,
+      "win_rate": 89.75,
+      "active_win_rate": 79.0,
+      "passive_win_rate": 6.5,
+      "sudden_death_win_rate": 4.25,
+      "draw_rate": 6.75,
+      "suicide_rate": 0.25,
+      "sudden_death_death_rate": 2.75,
+      "avg_kills": 0.79,
+      "avg_bombs": 20.8475,
+      "avg_steps": 213.8925
+    },
+    "epoch_4": {
+      "num_episodes": 400,
+      "win_rate": 96.25,
+      "active_win_rate": 90.75,
+      "passive_win_rate": 5.0,
+      "sudden_death_win_rate": 0.5,
+      "draw_rate": 2.5,
+      "suicide_rate": 0.5,
+      "sudden_death_death_rate": 0.5,
+      "avg_kills": 0.9075,
+      "avg_bombs": 13.1875,
+      "avg_steps": 144.795
+    },
+    "epoch_8": {
+      "num_episodes": 400,
+      "win_rate": 96.5,
+      "active_win_rate": 90.25,
+      "passive_win_rate": 6.0,
+      "sudden_death_win_rate": 0.25,
+      "draw_rate": 1.25,
+      "suicide_rate": 1.5,
+      "sudden_death_death_rate": 0.5,
+      "avg_kills": 0.9025,
+      "avg_bombs": 12.8225,
+      "avg_steps": 135.8125
+    },
+    "epoch_12": {
+      "num_episodes": 400,
+      "win_rate": 98.75,
+      "active_win_rate": 90.75,
+      "passive_win_rate": 8.0,
+      "sudden_death_win_rate": 0.0,
+      "draw_rate": 1.0,
+      "suicide_rate": 0.0,
+      "sudden_death_death_rate": 0.0,
+      "avg_kills": 0.9075,
+      "avg_bombs": 12.25,
+      "avg_steps": 120.84
+    },
+    "epoch_16": {
+      "num_episodes": 400,
+      "win_rate": 97.75,
+      "active_win_rate": 90.5,
+      "passive_win_rate": 7.25,
+      "sudden_death_win_rate": 0.0,
+      "draw_rate": 0.75,
+      "suicide_rate": 1.0,
+      "sudden_death_death_rate": 0.25,
+      "avg_kills": 0.905,
+      "avg_bombs": 11.62,
+      "avg_steps": 119.885
+    }
+  }
+}

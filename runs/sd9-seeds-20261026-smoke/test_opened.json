@@ -1,0 +1,9 @@
+{
+  "seed": 21000,
+  "games": 4,
+  "models": {
+    "S3_seed530": "D:\\fpt\\subject\\BomberMan\\runs\\sd9-20261023\\train\\epoch_12.pt",
+    "S3_seed531": "D:\\fpt\\subject\\BomberMan\\runs\\sd9-seeds-20261026-smoke\\r1\\train\\epoch_2.pt",
+    "S3_seed532": "D:\\fpt\\subject\\BomberMan\\runs\\sd9-seeds-20261026-smoke\\r2\\train\\epoch_2.pt"
+  }
+}

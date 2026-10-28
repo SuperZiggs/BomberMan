@@ -1,0 +1,33 @@
+{
+  "metrics": [
+    {
+      "epoch": 0,
+      "decision_argmax_best_rate": 83.33333333333334,
+      "kill_decision_argmax_best_rate": 83.33333333333334,
+      "anchor_kl": -1.7758534198719644e-08,
+      "anchor_argmax_changed_rate": 0.0,
+      "heldout_decisions": 6,
+      "heldout_anchors": 14
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.6584467887878418,
+      "decision_argmax_best_rate": 66.66666666666666,
+      "kill_decision_argmax_best_rate": 66.66666666666666,
+      "anchor_kl": 0.036650873720645905,
+      "anchor_argmax_changed_rate": 7.14285746216774,
+      "heldout_decisions": 6,
+      "heldout_anchors": 14
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.41984557112058,
+      "decision_argmax_best_rate": 66.66666666666666,
+      "kill_decision_argmax_best_rate": 66.66666666666666,
+      "anchor_kl": 0.05268820375204086,
+      "anchor_argmax_changed_rate": 14.28571492433548,
+      "heldout_decisions": 6,
+      "heldout_anchors": 14
+    }
+  ]
+}

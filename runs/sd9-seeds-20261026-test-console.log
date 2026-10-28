@@ -1,0 +1,28 @@
+{
+  "gate_vs_S2": {
+    "S3_seed530": {
+      "active_vs_S2_5pp": true,
+      "active_vs_S2_ci_lower_positive": true,
+      "suicide_within_1pp": true,
+      "pass": true
+    },
+    "S3_seed531": {
+      "active_vs_S2_5pp": true,
+      "active_vs_S2_ci_lower_positive": true,
+      "suicide_within_1pp": true,
+      "pass": true
+    },
+    "S3_seed532": {
+      "active_vs_S2_5pp": true,
+      "active_vs_S2_ci_lower_positive": true,
+      "suicide_within_1pp": true,
+      "pass": true
+    }
+  },
+  "active_delta_over_seeds": {
+    "mean": 9.583333333333334,
+    "min": 9.0,
+    "max": 10.5,
+    "sd": 0.8036375634160796
+  }
+}

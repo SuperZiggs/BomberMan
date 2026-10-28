@@ -1,0 +1,1731 @@
+{
+ "architecture": {
+  "parameters": 1388359
+ },
+ "observation": {
+  "board_seed": 21007,
+  "step": 26,
+  "agent": 0
+ },
+ "gameplay": {
+  "seed": 21000,
+  "learner": "S3 (A0)",
+  "opponent": "RuleBot (A1)",
+  "kill_step": 117,
+  "game_length": 117,
+  "frames": [
+   {
+    "name": "a_place",
+    "step": 110,
+    "danger_overlay": false,
+    "png": "paper\\figures\\board\\frame_a_place.png"
+   },
+   {
+    "name": "b_mid",
+    "step": 114,
+    "danger_overlay": true,
+    "png": "paper\\figures\\board\\frame_b_mid.png"
+   },
+   {
+    "name": "c_before",
+    "step": 116,
+    "danger_overlay": true,
+    "png": "paper\\figures\\board\\frame_c_before.png"
+   },
+   {
+    "name": "d_kill",
+    "step": 117,
+    "danger_overlay": false,
+    "png": "paper\\figures\\board\\frame_d_kill.png"
+   }
+  ]
+ },
+ "milestones": [
+  {
+   "label": "B",
+   "family": "RL",
+   "seed": 60000,
+   "active": 40.0,
+   "ci": [
+    35.0,
+    45.0
+   ],
+   "wr": 64.0,
+   "draw": 22.5,
+   "suicide": 0.5,
+   "outcomes": {
+    "Active win": 40.0,
+    "Passive/ring win": 24.0,
+    "Draw": 22.5,
+    "Self-kill": 0.5,
+    "Killed/ring loss": 13.0
+   },
+   "steps": 356.51
+  },
+  {
+   "label": "F",
+   "family": "RL",
+   "seed": 43000,
+   "active": 44.25,
+   "ci": [
+    39.25,
+    49.25
+   ],
+   "wr": 63.5,
+   "draw": 25.0,
+   "suicide": 1.0,
+   "outcomes": {
+    "Active win": 44.25,
+    "Passive/ring win": 19.25,
+    "Draw": 25.0,
+    "Self-kill": 1.0,
+    "Killed/ring loss": 10.5
+   },
+   "steps": 339.785
+  },
+  {
+   "label": "G",
+   "family": "RL",
+   "seed": 46000,
+   "active": 48.25,
+   "ci": [
+    43.5,
+    53.25
+   ],
+   "wr": 69.0,
+   "draw": 23.25,
+   "suicide": 0.75,
+   "outcomes": {
+    "Active win": 48.25,
+    "Passive/ring win": 20.75,
+    "Draw": 23.25,
+    "Self-kill": 0.75,
+    "Killed/ring loss": 7.0
+   },
+   "steps": 335.1725
+  },
+  {
+   "label": "S",
+   "family": "Distilled",
+   "seed": 43000,
+   "active": 60.5,
+   "ci": [
+    55.25,
+    65.75
+   ],
+   "wr": 78.5,
+   "draw": 18.0,
+   "suicide": 1.0,
+   "outcomes": {
+    "Active win": 60.5,
+    "Passive/ring win": 18.0,
+    "Draw": 18.0,
+    "Self-kill": 1.0,
+    "Killed/ring loss": 2.5
+   },
+   "steps": 278.6125
+  },
+  {
+   "label": "S2",
+   "family": "Distilled",
+   "seed": 48000,
+   "active": 83.0,
+   "ci": [
+    79.5,
+    86.5
+   ],
+   "wr": 90.25,
+   "draw": 7.000000000000001,
+   "suicide": 0.25,
+   "outcomes": {
+    "Active win": 83.0,
+    "Passive/ring win": 7.25,
+    "Draw": 7.0,
+    "Self-kill": 0.25,
+    "Killed/ring loss": 2.5
+   },
+   "steps": 210.6875
+  },
+  {
+   "label": "S3",
+   "family": "Distilled",
+   "seed": 57000,
+   "active": 92.25,
+   "ci": [
+    89.5,
+    94.75
+   ],
+   "wr": 98.0,
+   "draw": 0.5,
+   "suicide": 0.25,
+   "outcomes": {
+    "Active win": 92.25,
+    "Passive/ring win": 5.75,
+    "Draw": 0.5,
+    "Self-kill": 0.25,
+    "Killed/ring loss": 1.25
+   },
+   "steps": 130.875
+  },
+  {
+   "label": "G+s1",
+   "family": "Search",
+   "seed": 46000,
+   "active": 64.75,
+   "ci": [
+    60.25,
+    69.25
+   ],
+   "wr": 84.0,
+   "draw": 15.25,
+   "suicide": 0.0,
+   "outcomes": {
+    "Active win": 64.75,
+    "Passive/ring win": 19.25,
+    "Draw": 15.25,
+    "Self-kill": 0.0,
+    "Killed/ring loss": 0.75
+   },
+   "steps": 287.3325
+  },
+  {
+   "label": "G+s2",
+   "family": "Search",
+   "seed": 47000,
+   "active": 82.0,
+   "ci": [
+    78.25,
+    85.75
+   ],
+   "wr": 93.75,
+   "draw": 5.75,
+   "suicide": 0.0,
+   "outcomes": {
+    "Active win": 82.0,
+    "Passive/ring win": 11.75,
+    "Draw": 5.75,
+    "Self-kill": 0.0,
+    "Killed/ring loss": 0.5
+   },
+   "steps": 208.14
+  },
+  {
+   "label": "G+s3",
+   "family": "Search",
+   "seed": 49000,
+   "active": 94.0,
+   "ci": [
+    91.75,
+    96.25
+   ],
+   "wr": 99.5,
+   "draw": 0.25,
+   "suicide": 0.0,
+   "outcomes": {
+    "Active win": 94.0,
+    "Passive/ring win": 5.5,
+    "Draw": 0.25,
+    "Self-kill": 0.0,
+    "Killed/ring loss": 0.25
+   },
+   "steps": 114.1625
+  }
+ ],
+ "paired": [
+  {
+   "group": "Search as RL loss",
+   "label": "RL + sparse search labels \u2212 F",
+   "seed": 42000,
+   "active": {
+    "difference_pp": -2.75,
+    "ci95_pp": [
+     -9.75,
+     4.0
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": -1.0,
+    "ci95_pp": [
+     -7.249999999999999,
+     5.25
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Search as RL loss",
+   "label": "plain RL control \u2212 F",
+   "seed": 42000,
+   "active": {
+    "difference_pp": -6.5,
+    "ci95_pp": [
+     -12.75,
+     0.0
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": -1.5,
+    "ci95_pp": [
+     -7.5,
+     4.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "RL refinements",
+   "label": "group RL \u2212 control",
+   "seed": 45000,
+   "active": {
+    "difference_pp": 0.75,
+    "ci95_pp": [
+     -5.75,
+     7.249999999999999
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 1.0,
+    "ci95_pp": [
+     -5.0,
+     7.000000000000001
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "RL refinements",
+   "label": "group RL \u2212 F",
+   "seed": 45000,
+   "active": {
+    "difference_pp": 3.75,
+    "ci95_pp": [
+     -2.5,
+     10.0
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 4.25,
+    "ci95_pp": [
+     -1.5,
+     10.25
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "RL refinements",
+   "label": "cut-off rule \u2212 F (val.)",
+   "seed": 21000,
+   "active": {
+    "difference_pp": -1.7500000000000002,
+    "ci95_pp": [
+     -4.25,
+     0.75
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 3.75,
+    "ci95_pp": [
+     1.7500000000000002,
+     6.0
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "RL refinements",
+   "label": "mask margin k=15 \u2212 k=0",
+   "seed": 41000,
+   "active": {
+    "difference_pp": 0.75,
+    "ci95_pp": [
+     -1.25,
+     2.75
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 10.75,
+    "ci95_pp": [
+     6.25,
+     15.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Search at play time",
+   "label": "G+s1 \u2212 G",
+   "seed": 46000,
+   "active": {
+    "difference_pp": 16.5,
+    "ci95_pp": [
+     12.5,
+     20.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 15.0,
+    "ci95_pp": [
+     11.243750000000006,
+     19.0
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Search at play time",
+   "label": "G+s2 \u2212 G+s1",
+   "seed": 47000,
+   "active": {
+    "difference_pp": 21.0,
+    "ci95_pp": [
+     17.0,
+     25.25
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 13.0,
+    "ci95_pp": [
+     10.0,
+     16.25
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Search at play time",
+   "label": "G+s3 \u2212 G+s2",
+   "seed": 49000,
+   "active": {
+    "difference_pp": 8.25,
+    "ci95_pp": [
+     5.25,
+     11.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 5.25,
+    "ci95_pp": [
+     3.0,
+     7.75
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Dense distillation",
+   "label": "round 1: S \u2212 F",
+   "seed": 43000,
+   "active": {
+    "difference_pp": 16.25,
+    "ci95_pp": [
+     9.75,
+     22.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 15.0,
+    "ci95_pp": [
+     9.25,
+     20.75
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Dense distillation",
+   "label": "round 2: S2 \u2212 G",
+   "seed": 48000,
+   "active": {
+    "difference_pp": 35.0,
+    "ci95_pp": [
+     28.999999999999996,
+     41.25
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 25.0,
+    "ci95_pp": [
+     19.75,
+     30.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Dense distillation",
+   "label": "round 3: S3 \u2212 S2",
+   "seed": 57000,
+   "active": {
+    "difference_pp": 10.5,
+    "ci95_pp": [
+     6.5,
+     14.499999999999998
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": 6.75,
+    "ci95_pp": [
+     4.0,
+     9.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Student vs teacher",
+   "label": "round 1: S \u2212 (F+s1)",
+   "seed": 43000,
+   "active": {
+    "difference_pp": -3.75,
+    "ci95_pp": [
+     -10.0,
+     2.25
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": -2.75,
+    "ci95_pp": [
+     -7.75,
+     2.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Student vs teacher",
+   "label": "round 2: S2 \u2212 (G+s2)",
+   "seed": 48000,
+   "active": {
+    "difference_pp": -3.5000000000000004,
+    "ci95_pp": [
+     -8.25,
+     1.25
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": -4.5,
+    "ci95_pp": [
+     -8.0,
+     -1.0
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  },
+  {
+   "group": "Student vs teacher",
+   "label": "round 3: S3 \u2212 (S2+s3)",
+   "seed": 57000,
+   "active": {
+    "difference_pp": -0.75,
+    "ci95_pp": [
+     -4.0,
+     2.5
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   },
+   "win": {
+    "difference_pp": -1.25,
+    "ci95_pp": [
+     -2.75,
+     0.25
+    ],
+    "board_pairs": 200,
+    "resamples": 10000,
+    "bootstrap_seed": 20261014
+   }
+  }
+ ],
+ "wr_vs_active": [
+  {
+   "label": "Ring mask margin k=15\n(B, test 41k)",
+   "wr": [
+    60.0,
+    70.75
+   ],
+   "active": [
+    28.749999999999996,
+    29.5
+   ]
+  },
+  {
+   "label": "Cut-off rule\n(F, val. 21k)",
+   "wr": [
+    67.5,
+    71.25
+   ],
+   "active": [
+    47.0,
+    45.25
+   ]
+  },
+  {
+   "label": "Sudden death on\n(G, test 46k)",
+   "wr": [
+    53.0,
+    69.0
+   ],
+   "active": [
+    47.5,
+    48.25
+   ]
+  },
+  {
+   "label": "Sudden death on\n(S3, test 57k)",
+   "wr": [
+    98.25,
+    98.0
+   ],
+   "active": [
+    93.0,
+    92.25
+   ]
+  }
+ ],
+ "training_curves": {
+  "Plain RL, control (torch 2.5.1)": {
+   "train_episodes": 3000,
+   "train_active_first200": 48.5,
+   "train_active_last200": 45.5,
+   "validation": [
+    [
+     0,
+     47.0
+    ],
+    [
+     500,
+     48.75
+    ],
+    [
+     1000,
+     46.25
+    ],
+    [
+     1500,
+     42.75
+    ],
+    [
+     2000,
+     48.0
+    ],
+    [
+     2500,
+     51.0
+    ],
+    [
+     3000,
+     48.5
+    ]
+   ]
+  },
+  "RL + sparse depth-1 search labels (torch 2.14.1, other machine)": {
+   "train_episodes": 3000,
+   "train_active_first200": 39.0,
+   "train_active_last200": 40.0,
+   "validation": [
+    [
+     0,
+     43.75
+    ],
+    [
+     500,
+     39.75
+    ],
+    [
+     1000,
+     45.75
+    ],
+    [
+     1500,
+     45.5
+    ],
+    [
+     2000,
+     46.25
+    ],
+    [
+     2500,
+     44.25
+    ],
+    [
+     3000,
+     47.75
+    ]
+   ]
+  },
+  "RL + group advantage = G (torch 2.5.1)": {
+   "train_episodes": 3000,
+   "train_active_first200": 43.5,
+   "train_active_last200": 45.0,
+   "validation": [
+    [
+     0,
+     47.0
+    ],
+    [
+     500,
+     46.75
+    ],
+    [
+     1000,
+     50.24999999999999
+    ],
+    [
+     1500,
+     44.25
+    ],
+    [
+     2000,
+     47.75
+    ],
+    [
+     2500,
+     44.25
+    ],
+    [
+     3000,
+     41.75
+    ]
+   ]
+  }
+ },
+ "distill_curves": {
+  "Round 1: init F, teacher F+s1 \u2192 S": {
+   "train_loss": [
+    [
+     1,
+     1.009902785189377
+    ],
+    [
+     2,
+     0.7106337745337222
+    ],
+    [
+     3,
+     0.6368538304338238
+    ],
+    [
+     4,
+     0.5919102847770293
+    ],
+    [
+     5,
+     0.5629368128333884
+    ],
+    [
+     6,
+     0.5420544446485439
+    ],
+    [
+     7,
+     0.5264619216080209
+    ],
+    [
+     8,
+     0.5140230970196304
+    ]
+   ],
+   "heldout_acc": [
+    [
+     1,
+     88.59375
+    ],
+    [
+     2,
+     92.5
+    ],
+    [
+     3,
+     93.59375
+    ],
+    [
+     4,
+     96.09375
+    ],
+    [
+     5,
+     95.9375
+    ],
+    [
+     6,
+     96.71875
+    ],
+    [
+     7,
+     96.71875
+    ],
+    [
+     8,
+     97.5
+    ]
+   ],
+   "anchor_kl": [
+    [
+     1,
+     0.08530306816101074
+    ],
+    [
+     2,
+     0.07582712173461914
+    ],
+    [
+     3,
+     0.05371714383363724
+    ],
+    [
+     4,
+     0.05386749655008316
+    ],
+    [
+     5,
+     0.05857878923416138
+    ],
+    [
+     6,
+     0.04050124064087868
+    ],
+    [
+     7,
+     0.04618365317583084
+    ],
+    [
+     8,
+     0.04138610512018204
+    ]
+   ],
+   "val_active": [
+    [
+     0,
+     43.75
+    ],
+    [
+     2,
+     56.75
+    ],
+    [
+     4,
+     61.25000000000001
+    ],
+    [
+     8,
+     64.25
+    ]
+   ],
+   "selected_epoch": 8
+  },
+  "Round 2: init G, teacher G+s2 \u2192 S2": {
+   "train_loss": [
+    [
+     1,
+     0.9976001336024358
+    ],
+    [
+     2,
+     0.6992868829805118
+    ],
+    [
+     3,
+     0.6017141476846658
+    ],
+    [
+     4,
+     0.5273905773288928
+    ],
+    [
+     5,
+     0.47186435845035773
+    ],
+    [
+     6,
+     0.4332447809955248
+    ],
+    [
+     7,
+     0.40676702243777424
+    ],
+    [
+     8,
+     0.38008548820821136
+    ],
+    [
+     9,
+     0.3598719648300455
+    ],
+    [
+     10,
+     0.34647294814483476
+    ],
+    [
+     11,
+     0.3314408968704251
+    ],
+    [
+     12,
+     0.32078361332129973
+    ],
+    [
+     13,
+     0.30605698405550075
+    ],
+    [
+     14,
+     0.29600049634105885
+    ],
+    [
+     15,
+     0.285953361612673
+    ],
+    [
+     16,
+     0.27558950112702757
+    ]
+   ],
+   "heldout_acc": [
+    [
+     0,
+     60.541813898704355
+    ],
+    [
+     1,
+     81.86101295641932
+    ],
+    [
+     2,
+     85.39458186101295
+    ],
+    [
+     3,
+     87.39693757361601
+    ],
+    [
+     4,
+     88.92815076560659
+    ],
+    [
+     5,
+     92.8150765606596
+    ],
+    [
+     6,
+     93.28621908127208
+    ],
+    [
+     7,
+     92.8150765606596
+    ],
+    [
+     8,
+     92.34393404004712
+    ],
+    [
+     9,
+     92.8150765606596
+    ],
+    [
+     10,
+     92.34393404004712
+    ],
+    [
+     11,
+     93.28621908127208
+    ],
+    [
+     12,
+     93.87514723203769
+    ],
+    [
+     13,
+     93.4040047114252
+    ],
+    [
+     14,
+     93.99293286219081
+    ],
+    [
+     15,
+     94.22850412249706
+    ],
+    [
+     16,
+     93.99293286219081
+    ]
+   ],
+   "anchor_kl": [
+    [
+     0,
+     6.739724778270784e-09
+    ],
+    [
+     1,
+     0.10225826501846313
+    ],
+    [
+     2,
+     0.10891316831111908
+    ],
+    [
+     3,
+     0.08942312747240067
+    ],
+    [
+     4,
+     0.07607892155647278
+    ],
+    [
+     5,
+     0.09038469940423965
+    ],
+    [
+     6,
+     0.07814527302980423
+    ],
+    [
+     7,
+     0.06913164258003235
+    ],
+    [
+     8,
+     0.07083710283041
+    ],
+    [
+     9,
+     0.061686329543590546
+    ],
+    [
+     10,
+     0.058117762207984924
+    ],
+    [
+     11,
+     0.05848314240574837
+    ],
+    [
+     12,
+     0.06529965251684189
+    ],
+    [
+     13,
+     0.06211978942155838
+    ],
+    [
+     14,
+     0.05761709436774254
+    ],
+    [
+     15,
+     0.060467056930065155
+    ],
+    [
+     16,
+     0.06183243542909622
+    ]
+   ],
+   "val_active": [
+    [
+     0,
+     48.25
+    ],
+    [
+     4,
+     71.0
+    ],
+    [
+     8,
+     77.5
+    ],
+    [
+     12,
+     78.5
+    ],
+    [
+     16,
+     84.0
+    ]
+   ],
+   "selected_epoch": 16
+  },
+  "Round 3: init S2, teacher S2+s3 \u2192 S3": {
+   "train_loss": [
+    [
+     1,
+     0.6278921620802836
+    ],
+    [
+     2,
+     0.5522598127524058
+    ],
+    [
+     3,
+     0.51675969764993
+    ],
+    [
+     4,
+     0.4891979270153218
+    ],
+    [
+     5,
+     0.4689246357024253
+    ],
+    [
+     6,
+     0.4522381951143076
+    ],
+    [
+     7,
+     0.4408620947653109
+    ],
+    [
+     8,
+     0.43052321645590635
+    ],
+    [
+     9,
+     0.4143501608758359
+    ],
+    [
+     10,
+     0.40844475498070587
+    ],
+    [
+     11,
+     0.39212421871520375
+    ],
+    [
+     12,
+     0.3891574820956668
+    ],
+    [
+     13,
+     0.3833565048806302
+    ],
+    [
+     14,
+     0.3710637530228039
+    ],
+    [
+     15,
+     0.3651145207989323
+    ],
+    [
+     16,
+     0.3590485950311025
+    ]
+   ],
+   "heldout_acc": [
+    [
+     0,
+     74.80392156862746
+    ],
+    [
+     1,
+     81.47058823529412
+    ],
+    [
+     2,
+     85.09803921568627
+    ],
+    [
+     3,
+     86.76470588235294
+    ],
+    [
+     4,
+     86.86274509803921
+    ],
+    [
+     5,
+     86.76470588235294
+    ],
+    [
+     6,
+     86.76470588235294
+    ],
+    [
+     7,
+     88.72549019607843
+    ],
+    [
+     8,
+     88.33333333333333
+    ],
+    [
+     9,
+     88.72549019607843
+    ],
+    [
+     10,
+     88.92156862745098
+    ],
+    [
+     11,
+     90.09803921568627
+    ],
+    [
+     12,
+     89.80392156862746
+    ],
+    [
+     13,
+     89.80392156862746
+    ],
+    [
+     14,
+     89.41176470588236
+    ],
+    [
+     15,
+     90.19607843137256
+    ],
+    [
+     16,
+     89.80392156862746
+    ]
+   ],
+   "anchor_kl": [
+    [
+     0,
+     1.0488990120904873e-08
+    ],
+    [
+     1,
+     0.041195131838321686
+    ],
+    [
+     2,
+     0.046815868467092514
+    ],
+    [
+     3,
+     0.045098431408405304
+    ],
+    [
+     4,
+     0.05398918315768242
+    ],
+    [
+     5,
+     0.04983692988753319
+    ],
+    [
+     6,
+     0.04150574654340744
+    ],
+    [
+     7,
+     0.04765509068965912
+    ],
+    [
+     8,
+     0.04508887603878975
+    ],
+    [
+     9,
+     0.05263514444231987
+    ],
+    [
+     10,
+     0.04217737540602684
+    ],
+    [
+     11,
+     0.051199253648519516
+    ],
+    [
+     12,
+     0.05548202246427536
+    ],
+    [
+     13,
+     0.04775787889957428
+    ],
+    [
+     14,
+     0.04858743026852608
+    ],
+    [
+     15,
+     0.05410084128379822
+    ],
+    [
+     16,
+     0.05190480127930641
+    ]
+   ],
+   "val_active": [
+    [
+     0,
+     79.0
+    ],
+    [
+     4,
+     89.0
+    ],
+    [
+     8,
+     90.25
+    ],
+    [
+     12,
+     90.5
+    ],
+    [
+     16,
+     90.25
+    ]
+   ],
+   "selected_epoch": 12
+  }
+ },
+ "confusion": {
+  "sd8a-20261020": {
+   "heldout_decisions": 849,
+   "useful": 849,
+   "unique_best": 742,
+   "G (before round 2)": {
+    "set_accuracy": 60.541813898704355,
+    "unique_accuracy": 58.35579514824798,
+    "row_counts": [
+     155,
+     85,
+     108,
+     77,
+     45,
+     272
+    ]
+   },
+   "S2 (after round 2)": {
+    "set_accuracy": 93.99293286219081,
+    "unique_accuracy": 94.60916442048517,
+    "row_counts": [
+     155,
+     85,
+     108,
+     77,
+     45,
+     272
+    ]
+   }
+  },
+  "sd9-20261023": {
+   "heldout_decisions": 1020,
+   "useful": 1020,
+   "unique_best": 895,
+   "S2 (before round 3)": {
+    "set_accuracy": 74.80392156862746,
+    "unique_accuracy": 79.44134078212291,
+    "row_counts": [
+     145,
+     121,
+     130,
+     102,
+     111,
+     286
+    ]
+   },
+   "S3 (after round 3)": {
+    "set_accuracy": 89.80392156862746,
+    "unique_accuracy": 90.16759776536313,
+    "row_counts": [
+     145,
+     121,
+     130,
+     102,
+     111,
+     286
+    ]
+   }
+  }
+ },
+ "episode_length": {
+  "G_vs_RuleBot": {
+   "median": 414.0,
+   "at_500": 22.25
+  },
+  "S2_vs_RuleBot": {
+   "median": 158.0,
+   "at_500": 6.5
+  },
+  "S3_vs_RuleBot": {
+   "median": 105.0,
+   "at_500": 0.75
+  },
+  "S3 vs S2": {
+   "games": 400,
+   "median": 500.0,
+   "at_500": 65.0
+  },
+  "S3 vs G": {
+   "games": 400,
+   "median": 500.0,
+   "at_500": 59.5
+  },
+  "S3 vs S3": {
+   "games": 400,
+   "median": 500.0,
+   "at_500": 59.5
+  }
+ },
+ "cnn_matchups": {
+  "S2_vs_S2": {
+   "num_episodes": 400,
+   "win_rate": 18.25,
+   "active_win_rate": 7.0,
+   "passive_win_rate": 0.75,
+   "sudden_death_win_rate": 10.5,
+   "draw_rate": 63.5,
+   "suicide_rate": 6.5,
+   "sudden_death_death_rate": 13.0,
+   "avg_kills": 0.08,
+   "avg_bombs": 42.03,
+   "avg_steps": 454.785,
+   "loss_rate": 18.25,
+   "draw_at_max_steps": 58.5
+  },
+  "S2_vs_G": {
+   "num_episodes": 400,
+   "win_rate": 31.0,
+   "active_win_rate": 5.75,
+   "passive_win_rate": 0.75,
+   "sudden_death_win_rate": 24.5,
+   "draw_rate": 58.5,
+   "suicide_rate": 4.5,
+   "sudden_death_death_rate": 9.75,
+   "avg_kills": 0.0625,
+   "avg_bombs": 41.775,
+   "avg_steps": 454.71,
+   "loss_rate": 10.5,
+   "draw_at_max_steps": 53.75
+  },
+  "S2_vs_S3": {
+   "num_episodes": 400,
+   "win_rate": 18.25,
+   "active_win_rate": 3.5,
+   "passive_win_rate": 0.75,
+   "sudden_death_win_rate": 14.0,
+   "draw_rate": 63.5,
+   "suicide_rate": 8.25,
+   "sudden_death_death_rate": 15.25,
+   "avg_kills": 0.06,
+   "avg_bombs": 44.9475,
+   "avg_steps": 448.1675,
+   "loss_rate": 18.25,
+   "draw_at_max_steps": 57.0
+  },
+  "S3_vs_S2": {
+   "num_episodes": 400,
+   "win_rate": 18.25,
+   "active_win_rate": 6.5,
+   "passive_win_rate": 1.0,
+   "sudden_death_win_rate": 10.75,
+   "draw_rate": 63.5,
+   "suicide_rate": 6.5,
+   "sudden_death_death_rate": 18.5,
+   "avg_kills": 0.095,
+   "avg_bombs": 34.6275,
+   "avg_steps": 448.1675,
+   "loss_rate": 18.25,
+   "draw_at_max_steps": 57.0
+  },
+  "S3_vs_G": {
+   "num_episodes": 400,
+   "win_rate": 36.5,
+   "active_win_rate": 10.75,
+   "passive_win_rate": 2.25,
+   "sudden_death_win_rate": 23.5,
+   "draw_rate": 52.75,
+   "suicide_rate": 3.25,
+   "sudden_death_death_rate": 11.5,
+   "avg_kills": 0.12,
+   "avg_bombs": 33.565,
+   "avg_steps": 443.2725,
+   "loss_rate": 10.75,
+   "draw_at_max_steps": 48.75
+  },
+  "S3_vs_S3": {
+   "num_episodes": 400,
+   "win_rate": 21.5,
+   "active_win_rate": 9.0,
+   "passive_win_rate": 0.75,
+   "sudden_death_win_rate": 11.75,
+   "draw_rate": 57.0,
+   "suicide_rate": 8.5,
+   "sudden_death_death_rate": 17.25,
+   "avg_kills": 0.115,
+   "avg_bombs": 36.4125,
+   "avg_steps": 425.43,
+   "loss_rate": 21.5,
+   "draw_at_max_steps": 52.5
+  },
+  "S2_vs_G_search3": {
+   "num_episodes": 100,
+   "win_rate": 14.0,
+   "active_win_rate": 5.0,
+   "passive_win_rate": 2.0,
+   "sudden_death_win_rate": 7.0,
+   "draw_rate": 62.0,
+   "suicide_rate": 14.0,
+   "sudden_death_death_rate": 5.0,
+   "avg_kills": 0.05,
+   "avg_bombs": 38.13,
+   "avg_steps": 411.29,
+   "loss_rate": 24.0,
+   "draw_at_max_steps": 59.0
+  },
+  "S3_vs_G_search3": {
+   "num_episodes": 100,
+   "win_rate": 22.0,
+   "active_win_rate": 18.0,
+   "passive_win_rate": 1.0,
+   "sudden_death_win_rate": 3.0,
+   "draw_rate": 55.0,
+   "suicide_rate": 7.0,
+   "sudden_death_death_rate": 9.0,
+   "avg_kills": 0.19,
+   "avg_bombs": 32.2,
+   "avg_steps": 406.07,
+   "loss_rate": 23.0,
+   "draw_at_max_steps": 52.0
+  }
+ },
+ "draw_probe": {
+  "S2": {
+   "draws_with_kill_rulebot": {
+    "percent": 94.02985074626865,
+    "ci95": [
+     86.36363636363636,
+     100.0
+    ],
+    "games": 67
+   },
+   "draws_with_kill_oracle": {
+    "percent": 10.447761194029852,
+    "ci95": [
+     4.285714285714286,
+     17.741935483870968
+    ],
+    "games": 67
+   }
+  },
+  "G": {
+   "draws_with_kill_rulebot": {
+    "percent": 93.54838709677419,
+    "ci95": [
+     85.24590163934425,
+     100.0
+    ],
+    "games": 62
+   },
+   "draws_with_kill_oracle": {
+    "percent": 27.419354838709676,
+    "ci95": [
+     16.129032258064516,
+     39.682539682539684
+    ],
+    "games": 62
+   }
+  },
+  "S3": {
+   "draws_with_kill_rulebot": {
+    "percent": 83.33333333333333,
+    "ci95": [
+     72.72727272727273,
+     92.42424242424242
+    ],
+    "games": 66
+   },
+   "draws_with_kill_oracle": {
+    "percent": 10.606060606060606,
+    "ci95": [
+     3.0303030303030303,
+     19.696969696969695
+    ],
+    "games": 66
+   }
+  },
+  "pooled": {
+   "games": 300,
+   "draws": 195,
+   "draw_states": 17155,
+   "state_kill_oracle_percent": 0.19236374234916934,
+   "draws_with_kill_oracle": {
+    "percent": 15.897435897435898,
+    "ci95": [
+     9.859154929577464,
+     22.727272727272727
+    ],
+    "games": 195
+   },
+   "draws_with_kill_oracle_before_475": {
+    "percent": 12.820512820512821,
+    "ci95": [
+     7.179425837320574,
+     19.48717948717949
+    ],
+    "games": 195
+   },
+   "control_active_wins_with_kill_oracle": {
+    "percent": 100.0,
+    "ci95": [
+     100.0,
+     100.0
+    ],
+    "games": 20
+   },
+   "state_kill_rulebot_percent": 2.9845526085689302,
+   "draws_with_kill_rulebot": {
+    "percent": 90.25641025641026,
+    "ci95": [
+     82.77511961722487,
+     95.91888532062569
+    ],
+    "games": 195
+   },
+   "draws_with_kill_rulebot_before_475": {
+    "percent": 90.25641025641026,
+    "ci95": [
+     82.77511961722487,
+     95.91888532062569
+    ],
+    "games": 195
+   },
+   "control_active_wins_with_kill_rulebot": {
+    "percent": 100.0,
+    "ci95": [
+     100.0,
+     100.0
+    ],
+    "games": 20
+   }
+  }
+ },
+ "search_depth": {
+  "points": [
+   {
+    "label": "G",
+    "seed": 46000,
+    "active": 48.25,
+    "ci": [
+     43.5,
+     53.25
+    ]
+   },
+   {
+    "label": "G+s1",
+    "seed": 46000,
+    "active": 64.75,
+    "ci": [
+     60.25,
+     69.25
+    ]
+   },
+   {
+    "label": "G+s1",
+    "seed": 47000,
+    "active": 61.0,
+    "ci": [
+     56.49999999999999,
+     65.5
+    ]
+   },
+   {
+    "label": "G+s2",
+    "seed": 47000,
+    "active": 82.0,
+    "ci": [
+     78.25,
+     85.75
+    ]
+   },
+   {
+    "label": "G+s2",
+    "seed": 49000,
+    "active": 85.75,
+    "ci": [
+     82.25,
+     89.0
+    ]
+   },
+   {
+    "label": "G+s3",
+    "seed": 49000,
+    "active": 94.0,
+    "ci": [
+     91.75,
+     96.25
+    ]
+   }
+  ]
+ }
+}
