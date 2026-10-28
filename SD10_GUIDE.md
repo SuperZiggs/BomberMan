@@ -2,6 +2,8 @@
 
 Spec: `docs/superpowers/specs/2026-10-24-sd10-cnn-aware-distillation.md`.
 
+**Lượt thực tế đã hoàn tất 28/10/2026:** `runs/sd10-20261026`, đủ 2000 trận collect, train 16 epoch, validation chọn epoch 12, test 58000–58199 ĐẠT gate. S4 = `runs/sd10-20261026/train/epoch_12.pt`, ActiveWR macro CNN +14.00pp CI95 [10.92, 17.08] so với S3. Xem `runs/sd10-20261026/FINAL_REPORT.md`. Seed test đã dùng một lần; các lệnh dưới đây là hướng dẫn đã đăng ký, không chạy lại test hoặc thu lại lượt hoàn tất này. Máy chạy thực tế dùng `E:\Tools\python.exe` tại `E:\Bomberman`; ví dụ đường dẫn D: bên dưới thuộc môi trường chuẩn bị ban đầu.
+
 **Cảnh báo chi phí:** bước thu dữ liệu tốn khoảng **53 giờ** với 5 tiến trình, vì mỗi trận đấu CNN mất khoảng 10 phút. Lợi ích tối đa ước lượng khoảng +10pp. Chỉ chạy khi đã chấp nhận chi phí này.
 
 Chạy trong **cmd** tại `D:\fpt\subject\BomberMan`, theo đúng thứ tự. Không đổi tên hoặc di chuyển `runs\sd10-20261024` giữa các bước.

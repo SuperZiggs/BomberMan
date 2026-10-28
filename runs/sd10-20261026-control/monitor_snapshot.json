@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-10-26T23:28:42.7556716+07:00",
+  "status": "running",
+  "stage": "collect",
+  "launcher_pid": 10000,
+  "collect_pid": 30508,
+  "completed_shards": 0,
+  "total_shards": 50,
+  "worker_cpu_seconds": {
+    "6448": 2288.1875,
+    "10724": 2283.234375,
+    "29096": 2284.015625,
+    "19248": 2296.109375,
+    "3900": 2289.5
+  },
+  "last_notified_stage": "collect",
+  "assessment": "Launcher and five collection workers alive; CPU activity confirms ongoing work. No completed shard yet in the first hour."
+}

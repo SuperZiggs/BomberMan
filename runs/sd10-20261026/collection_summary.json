@@ -1,0 +1,35 @@
+{
+  "games": 2000,
+  "decisions": 7078,
+  "anchors": 32072,
+  "by_opponent": {
+    "rulebot": {
+      "games": 500,
+      "decisions": 1719,
+      "win_rate": 99.2,
+      "active_win_rate": 92.8,
+      "draw_rate": 0.6
+    },
+    "S2": {
+      "games": 500,
+      "decisions": 1762,
+      "win_rate": 35.6,
+      "active_win_rate": 24.6,
+      "draw_rate": 60.0
+    },
+    "G": {
+      "games": 500,
+      "decisions": 1613,
+      "win_rate": 54.2,
+      "active_win_rate": 41.8,
+      "draw_rate": 43.6
+    },
+    "S3": {
+      "games": 500,
+      "decisions": 1984,
+      "win_rate": 33.2,
+      "active_win_rate": 23.2,
+      "draw_rate": 61.8
+    }
+  }
+}

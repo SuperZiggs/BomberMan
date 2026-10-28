@@ -133,3 +133,12 @@ Ký hiệu: F = `runs/phaseC-sd-best-fallback/best_phaseC.pt` (điểm xuất ph
 ## 9. S3-11 đấu pool CNN — test 25/10/2026
 
 Trên11×11/1v1/max500/E475-25-40, hai learner chung poolCNN S3/S2/G,200bàn830000–830199×2góc×6cặp=2400trận: S3-11 macroActiveWR8.58% so S3 nội suy4.75%,+3.83pp CI95[1.92,5.83], chưa đạt gate≥5pp. WR23.00vs21.67%,CI delta[-1.83,4.50]; hòa64.33vs63.08%, hòa hết bước61.58vs62.17%; tự nổ1.58vs1.33%. Mức cải thiện lớn trước RuleBot không chuyển thành ít hòa trước CNN ở phép đo này. Không khẳng định nguyên nhân từ benchmark; đối thủ là CNN9×9 chuyển map, chưa kết luận nativeCNN11×11/FFA hoặc nhiều train seed. Nguồn: RESULTS `S3-MAP11-CNN-FINAL`, `runs/s3-map11-cnn-20261025-v1/FINAL_REPORT.md`; bootstrap10000theo200bàn sau macro3opponent, không dùng lại seed.
+
+
+## 10. S3-11 trở lại9×9 —27/10/2026
+
+Trên cùng200bàn840000–840199×2góc,9×9/1v1RuleBot/max500/E475-25-40/CPU/lấy mẫu+mask, S3-11 nội suy11→9 đạt WR94.75%,Active87.50%,hòa3.75%,tựnổ.25%; S3gốc98.25/93.25/1/0%. Active delta−5.75ppCI95[-9.75,-1.50],bootstrap10000theo200bàn,seed20261014. S3-11 còn thắngRuleBot nhiều nhưng có suy giảm9×9 so vớicheckpointgốc; thích nghi11×11 không tự chứng minh giữ nguyên kỹ năng9×9. Hai phépđo RuleBot trên9và11 cho thấy dùng được cảhai map trong phạm vi đãtest; không chứng minh ngangS3gốc9 hoặc mạnhCNN/FFA. Không suy chênh lệch ngangmap từ các bộseed khác nhau, không gán gate saukếtquả, không train/promote. Nguồn: RESULTS `S3-11-9X9-RULEBOT-FINAL`, run `s3-11-map9-rulebot-20261027-v1/FINAL_REPORT.md`/raw/proof.
+
+## 11. SD10: nhãn search theo CNN đối thủ có ích trong lượt chưng cất này — 28/10/2026
+
+S4 epoch12 so S3 trên cùng test58000–58199,9×9/1v1/E/lấy mẫu: macro CNN ActiveWR24.4167 vs10.4167%, +14ppCI[10.9167,17.0833]; tự nổ3.0vs5.5%, RuleBot Active92.25vs87.75%. Gate định trước đạt. Hòa vẫn51.75vs56.6667% (-4.9167pp), nên không quy toàn bộ mức tăng thắng chủ động cho chuyển trận hòa thành thắng. Ước lượng lợi ích khoảng+10pp trước khi chạy không phải một cận trên đã được chứng minh. Một lượt này chưa chứng minh ổn định nhiều seed, FFA hoặc11×11; đối thủ S2/G/S3 có trong collect, F ngoài collect chỉ mô tả. Nguồn `runs/sd10-20261026/FINAL_REPORT.md`, registration/validation/raw/summary; không replay test đã mở.

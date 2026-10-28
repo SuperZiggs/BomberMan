@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-26T17:44:35.631140+00:00",
+  "loaded": {
+    "S3_11": {
+      "trunk_shape": [
+        256,
+        5184
+      ],
+      "logits_shape": [
+        1,
+        6
+      ],
+      "finite": true
+    },
+    "S3": {
+      "trunk_shape": [
+        256,
+        5184
+      ],
+      "logits_shape": [
+        1,
+        6
+      ],
+      "finite": true
+    }
+  },
+  "registration_valid": true,
+  "source_count": 19,
+  "games_played": 0
+}

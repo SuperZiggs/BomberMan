@@ -1444,3 +1444,58 @@ Kết luận áp dụng11×11/1v1 trên ba CNN9×9 được chuyển map bằng 
 **Trạng thái:** đã chuẩn bị/kiểm tra, đang commit-push; sẽ đối chiếu upstream/remote commit và trạng thái workingtree sau upload. Chưa tạo PR hoặc nhập vào main.
 
 **Kết quả xuất bản:** GitHub đã nhận nhánh `Loc/S3-11` tại commit nội dung `5eb6b67f07652d64bde5be4a4a46452d0bd09336` (355file); upstream đúng và workingtree sạch sau commit. Xác minh explicit5object LFS/38,276,258byte đã upload, pointer khớp SHA/kích thước. Không đưa dependency/cache/build/scratch bịignore vào Git và không loại bỏ code/UI/model/run/report thuộc355candidate. Ghi xác nhận này cùng hai tracker bằng commit tài liệu, push cùng nhánh và kiểm lại tip remote; không thay source/checkpoint hoặc chạy lại benchmark.
+
+
+## 103. Đánh giá S3-11 trở lại9×9 bằng evaluator hiện có (2026-10-27)
+
+**Thông số:** Codex/Windows `E:\Bomberman`, Python3.11.9/torch2.11.0+cu128/NumPy2.4.6; S3-11 `runs/s3-map11-20261024-auto-v1/train/epoch_16.pt` SHA `17748471…a95f`, S3 gốc `runs/sd9-20261023/train/epoch_12.pt` SHA `4185375f…69ed7`; cùng đấu RuleBot9×9/13kênh/2agent, max500/E475-25-40, CNN thuần lấy mẫu+mask/noSearch/noTrain. Seed840000–840199/200bàn×2góc=400trận/model/800tổng, CPU2arm song song/mỗiarm1torchthread. Paired bootstrap200bàn/10000lần/seed20261014; chỉ mô tả giữ kỹ năng, không gate/chọn checkpoint/promote. Run `runs/s3-11-map9-rulebot-20261027-v1`; thời gian full và metric chưa có khi đăng ký.
+
+- Không tạo feature/runner production mới; wrapper riêng trong output chỉ kiểm provenance/lock, gọi API seeded và thanh progress có sẵn, ghi result nguyên tử. Tránh sửa evaluate/core làm stale hash các run11×11 hoặc SD10.
+- Đăng ký19source/live+archive và2checkpoint/config/runtime trước data; no-overwrite, marker một lần, không chạy lại arm hoàn tất. Seed840000 mới; source/archive/model/config xác thực trước launch.
+- Preflight AST và load/forward input giả của2model trên9×9 PASS, logits hữu hạn;0game mới. Không chạy lại suite toànrepo vì không sửa production, không coi preflight là bằng chứng sức chơi.
+- Paired bootstrap theo200bàn gồm2góc; báo WR/ActiveWR/hòa/timeout/thua/suicide/passive/SDwin/death. Không chọn/gán gate sau data, không kết luận noninferiority từ CI chứa0. Theo dõi45phút, process chết thiếuartifact thì dừng/incomplete, không rerun seed.
+
+**Trạng thái:** chuẩn bị hoàn tất, đang mở đánh giá; sẽ ghi metric/thời gian thật khi đủ800game. Giữ nguyên S3 phục vụ, chưa train hoặc push.
+
+**Khởi chạy:** marker840000–840199 mở đúng một lần lúc00:47:20ngày27/10/2026; native hiddenS3_11 rootPID11288/interpreter28008, S3 root31288/interpreter25968. Startup snapshot xác nhận đúngPID/start-time/lockowner cảhaiarm. Heartbeat `s3-11-test-rulebot-9-9-ki-m-tra-45-ph-t` ACTIVE45phút, logriêng từngarm và state đầy đủ. Đang đánh giá800trận, chưa có metric/gate; không poll hoặc train.
+
+
+## 104. Chốt giữ kỹ năng9×9 bằng800rawgame ghép cặp (2026-10-27)
+
+**Thông số:** Codex/Windows `E:\Bomberman`, Python3.11.9/torch2.11.0+cu128/NumPy2.4.6; S3-11 `runs/s3-map11-20261024-auto-v1/train/epoch_16.pt` SHA `17748471…a95f`, S3 gốc `runs/sd9-20261023/train/epoch_12.pt` SHA `4185375f…69ed7`; cùng đấuRuleBot trên9×9/13kênh/2agent/max500/E475-25-40. CNN CPU lấy mẫu+mask, khôngsearch/train;2arm song song/mỗiarm1torchthread. Seed840000–840199/200bàn×2góc=400trận/model/800tổng, mộtlầnlaunch, khôngresume/replay. Bootstrap ghép cặp theo200bàn/10000lần/seed20261014, chỉ đánh giá mô tả, khônggate/chọncheckpoint. Bắt đầu00:47:20ngày27/10/2026, artifact cuối completed_utc00:49:49; launch→completed_utc cuối148.699s (~2.48phút), không có exit-time native riêng. Thời gian evaluator S3-11 145.781s/S3 120.609s. Run `runs/s3-11-map9-rulebot-20261027-v1`; S3-11 được loader nội suy11→9 trongRAM, không sửa filecheckpoint.
+
+| Chỉ số (%) | S3-11 trên9×9 | S3 gốc | Delta S3-11−S3 (pp) | CI95 delta (pp) |
+|---|---:|---:|---:|---|
+| WR | 94.75 | 98.25 | -3.50 | [-6.00, -1.00] |
+| ActiveWR | 87.50 | 93.25 | -5.75 | [-9.75, -1.50] |
+| Hòa | 3.75 | 1.00 | +2.75 | [0.75, 5.00] |
+| Hòa hết bước | 3.50 | 1.00 | +2.50 | [0.50, 4.75] |
+| Thua | 1.50 | 0.75 | +0.75 | [-0.50, 2.00] |
+| Tự nổ | 0.25 | 0.00 | +0.25 | [0.00, 0.75] |
+| Thắng thụ động | 6.25 | 4.50 | +1.75 | [-1.25, 5.00] |
+| Thắng nhờ vòng | 1.00 | 0.50 | +0.50 | [-0.75, 1.75] |
+| Chết vì vòng | 1.50 | 0.25 | +1.25 | [0.00, 2.50] |
+
+**Kết luận:** S3-11 vẫn chơi tốt trướcRuleBot9×9 trong phép đo này (WR94.75%, ActiveWR87.50%), nhưng kém S3 gốc (WR98.25%, ActiveWR93.25%). ActiveWR giảm5.75điểm phần trăm, CI95[-9.75,-1.50] hoàn toànâm; WR giảm3.50ppCI[-6,-1], hòa tăng2.75ppCI[.75,5]. Có bằng chứng suy giảm hiệu năng9×9 sau nhánh thích nghi11×11; không kết luận giữ nguyên kỹ năng hoặc tốt hơn trên9×9. Không đặt gate sau kết quả và không chạy thêm test để cứu số liệu.
+
+Đủ400rawgame/model/200bàn×2góc,800tổng, marker mộtlần; metadata9×9/E/max500 đúng registration. Raw outcome/counter/seed-góc và thống kê gốc đều khớp khi tính lại;19source/live+archive,2checkpoint/config/runtime đúng provenance. Xác nhận native root/interpreter/children không còn, không cólock. Harvest chỉ runpy khônggọi main và các helper _summarize/_paired; evaluate_seeded/parallel_map được chặn trong bước xác thực,0game mới, không ghi đè evaluation. Summary SHA256 `7b7e76ffd613f2cf10108569fc8571360219fae00ab0ea0854d619afc9167e09`; rawSHA và proof ở `completion-verification.json`.
+
+- Không đổi core/wrapper/source/checkpoint trong lượtchốt, không chạy lại benchmark hoặc sửa raw. Tái dùng helper thống kê hiện có, CI theo200bàn gồm2góc; không coi800game của2arm là800mẫu độclập.
+- Ghi sốliệu/thời gian thật/2góc/rawSHA và phạm vi kết luận, không tuyên bố noninferiority hoặc tạo gate saudata. Lượt9×9 cung cấp bằng chứng mới so với việc chỉ nạpmodel thành công.
+
+Giới hạn9×9/1v1RuleBot/lịchE/mộtcheckpoint và mộtbộ200bàn. Kết quả11×11 vớiRuleBot trước đó ActiveWR87.25% thuộc bộseed820000 riêng; có bằng chứng S3-11 thắngRuleBot ở cảhai map theo từngphépđo, nhưng không suy delta ngangmap từ hai tập khácseed. Không suy CNN/FFA hoặc mọi luật/map; CNN11×11 đã cho hòa cao ở benchmark riêng. Giữ model phục vụ/checkpoint gốc, không train/promote/Gitcommit/push hoặc can thiệpSD10.
+
+**Trạng thái:** completed, không train/promote/Gitpush; ghi state cuối và gỡ heartbeat vì đã hoàn tất.
+
+**Đóng lịch:** heartbeat `s3-11-test-rulebot-9-9-ki-m-tra-45-ph-t` đã xóa, tool xác nhận `deleteStatus=deleted`; state completed/automation_deleted=true. Kết thúc theo dõi vì đủ800game và report đã xác thực; không Gitcommit/push, train, đổi checkpoint hoặc can thiệpSD10.
+
+## 105. SD10 hoàn tất và đóng gói toàn bộ trên Loc/SD10 (2026-10-28)
+
+**Thông số:** Codex và người dùng, Windows `E:\Bomberman`, Python 3.11.9 / torch 2.11.0+cu128 / NumPy 2.4.6; S3 `runs/sd9-20261023/train/epoch_12.pt` SHA `4185375f…69ed7` → S4 `runs/sd10-20261026/train/epoch_12.pt` SHA `90d1d0e7…62bece`; chưng cất offline 16 epoch, không phải RL episode, Adam lr 1e-4/batch 256/CE mềm + KL neo lambda 1/held-out 10% bàn/RNG chia và batch 1010, torch train seed riêng không lưu lại. Bàn 9×9/2 agent/max500, E475-25-40 (75% collect, toàn bộ eval); collect214000–214999×2 góc=2000 trận/50 shard, thầy S3 lấy mẫu+search3, CNN đối thủ argmax trong search/lấy mẫu trong trận thật, RuleBot/S2/G/S3 mỗi loại500 trận; CPU5→8 workers khi resume, 7078 quyết định/32072 neo. Train CUDA RTX4060Laptop khoảng22s; validation21000–21199×2 góc×5model×4opponent=8000 trận, chọn epoch12; test58000–58199×2 góc×2model×5opponent(S2/G/S3/RuleBot/F)=4000 trận, CNN thuần lấy mẫu+mask, CPU5workers; bootstrap ghép cặp200bàn/10000lần/seed20261014. Validation khoảng16phút, test khoảng9phút theo mốc stage/file; collect có ngắt/resume nên tổng thời gian CPU không lưu lại.
+
+- Tái dùng runner SD10 đã có, giữ nguyên source đã đăng ký. Bổ sung script PowerShell trong thư mục điều phối để cài tqdm, kiểm tra checkpoint, collect/train/validate/test, ghi log và state theo stage. Thêm chế độ ContinueAfterCollect sau khi người dùng đã resume collect thủ công; từ chối nếu train/selected/test marker đã tồn tại, chỉ mở test khi validation cho phép.
+- Thu đủ50shard/2000trận, train16epoch CUDA, validation chọn epoch12; test seed58000 hoàn tất4000trận, đạt gate: macro CNN ActiveWR +14ppCI[10.9167,17.0833], tự nổ -2.5pp, RuleBot ActiveWR +4.5pp. Ghi báo cáo FINAL_REPORT và đồng bộ tracker/seed ledger/SD10_GUIDE; không sửa model phục vụ/UI.
+- Kiểm tra trước xuất bản:4/4 unittest SD10 đạt18.913s; artifact/source/50shard/4000rawgame/hash checkpoint/ZIP được xác minh bằng thao tác đọc, không mở thêm test game. Proof ở `runs/sd10-20261026-control/publication-verification.json`. Script PowerShell đã qua parser. Không chạy full suite toàn repo vì lượt này xuất bản artifact và tài liệu, không đổi production source; không suy full-regression PASS.
+- Theo yêu cầu mới của người dùng, nhánh `Loc/SD10` bao gồm toàn bộ thay đổi chưa commit, cả artifact S3-11-9X9 từ lượt trước. `.pt` dùng LFS hiện có; ZIP, shard, raw JSON, log và registration được giữ. Không merge hoặc tạo PR ngoài yêu cầu push nhánh.
+
+**Trạng thái:** SD10 hoàn tất, gate PASS; kết thúc lịch theo dõi sau khi đủ kết quả. S4 đủ điều kiện theo protocol, phạm vi kết luận9×9/1v1/E/một lượt chưng cất; chưa xác nhận11×11/FFA/nhiều train seed. Xuất bản theo nhánh người dùng chỉ định `Loc/SD10`.

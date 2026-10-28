@@ -1,0 +1,23 @@
+{
+  "verified_utc": "2026-10-26T18:32:44.917375+00:00",
+  "raw_games": 800,
+  "games_per_model": {
+    "S3_11": 400,
+    "S3": 400
+  },
+  "source_count": 19,
+  "checkpoint_count": 2,
+  "source_bundle_model_config_runtime_marker_valid": true,
+  "raw_metadata_outcomes_counters_valid": true,
+  "reported_metrics_match_raw": true,
+  "paired_bootstrap_boards": 200,
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 20261014,
+  "new_games_played": 0,
+  "no_new_games_guard": true,
+  "raw_sha256": {
+    "S3_11": "e22b69a86a4d1dbeba37f24d9b3b8bc5caf7449fea3c8ce9c3d2a8ef67042e16",
+    "S3": "89e1a13324bc07968eaa399c1da184f805fbc33d5a42a14dca7f1eb87b5bfa62"
+  },
+  "summary_sha256": "7b7e76ffd613f2cf10108569fc8571360219fae00ab0ea0854d619afc9167e09"
+}

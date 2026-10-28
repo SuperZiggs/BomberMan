@@ -1,0 +1,52 @@
+{
+  "verified_at_utc": "2026-10-28T09:19:39.967939+00:00",
+  "branch": "Loc/SD10",
+  "registration_sources_and_checkpoints_match": true,
+  "collection": {
+    "shards": 50,
+    "games": 2000,
+    "decisions": 7078,
+    "anchors": 32072
+  },
+  "train_epochs": 16,
+  "selected_epoch": 12,
+  "test": {
+    "seed": 58000,
+    "pairs": 10,
+    "games": 4000,
+    "raw_summaries_and_paired_bootstrap_recomputed": true,
+    "gate": {
+      "macro_active_5pp": true,
+      "macro_active_ci_lower_positive": true,
+      "macro_suicide_within_1pp": true,
+      "rulebot_active_within_3pp": true,
+      "pass": true
+    }
+  },
+  "checkpoint_sha256": {
+    "runs\\sd10-20261026\\train\\epoch_12.pt": "90d1d0e70c64f879e07f85c68c003969d082043b3cd8065314a3c35faf62bece",
+    "runs\\sd10-20261026\\train\\epoch_16.pt": "071c183fcf5fa75c0946ccfea5c9c924e216010e6d223dc24992f61e172b973b",
+    "runs\\sd10-20261026\\train\\epoch_4.pt": "26702b19e1c5cab07a1b3df5ce1c3f0ef26d10560b03f277a3ed2324564c8bd6",
+    "runs\\sd10-20261026\\train\\epoch_8.pt": "dff7b7f354c1f39030f27f3b68dc641214aa8ad26da6ae30f1aab44057fae19c"
+  },
+  "summary_sha256": "c1809142dfbb3e93fc88c6346ef693d05b544ef5722a3b4752bb98dc16214594",
+  "archive": {
+    "path": "runs\\sd10-20261026-send.zip",
+    "sha256": "65e623a35bb82fea250a98bf669507e61223714cbfdf752c724e0cfa7e186e62",
+    "original_files": 71,
+    "all_original_members_match": true,
+    "later_report_outside_original_zip": "FINAL_REPORT.md"
+  },
+  "syntax": {
+    "untracked_python_files_parsed": 20,
+    "untracked_json_files_parsed": 31
+  },
+  "focused_unittest": {
+    "command": "E:\\Tools\\python.exe -m unittest test_run_sd10 -q",
+    "tests": 4,
+    "seconds": 18.913,
+    "result": "OK"
+  },
+  "full_repository_suite_run": false,
+  "no_experiment_games_replayed_for_publication": true
+}

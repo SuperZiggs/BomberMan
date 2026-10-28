@@ -1,0 +1,16 @@
+{
+  "seed": 840000,
+  "games": 400,
+  "total_games": 800,
+  "board_size": 9,
+  "models": [
+    "S3_11",
+    "S3"
+  ],
+  "config_sha256": "1460b224a183e9c98e61eadb46daab9c2e4876ead3bf5f373cbc0bb72c073052",
+  "checkpoint_sha256": {
+    "S3_11": "17748471874686388f1a9b373b0debdfe53ba04a9b1c821a9695efdd8825a95f",
+    "S3": "4185375f8b5f5cf070d3eef6ce98bec27e23fe06c64d97b500c939e36e669ed7"
+  },
+  "opened_utc": "2026-10-26T17:47:20.3046667Z"
+}

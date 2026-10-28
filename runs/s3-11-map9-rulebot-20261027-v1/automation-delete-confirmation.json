@@ -1,0 +1,7 @@
+{
+  "automation_id": "s3-11-test-rulebot-9-9-ki-m-tra-45-ph-t",
+  "mode": "delete",
+  "deleteStatus": "deleted",
+  "confirmed_utc": "2026-10-26T18:36:13.785482+00:00",
+  "evidence": "automation_update returned Deleted automation in the app and deleteStatus=deleted"
+}

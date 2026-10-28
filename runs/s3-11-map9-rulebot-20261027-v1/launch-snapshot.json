@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-26T17:47:49.9430716Z",
+  "arms": {
+    "S3_11": {
+      "root_pid": 11288,
+      "root_matches": true,
+      "interpreter_pid": 28008,
+      "interpreter_start_time_utc": "2026-10-26T17:47:20.3903740Z",
+      "lock_valid": true,
+      "artifact_exists": false
+    },
+    "S3": {
+      "root_pid": 31288,
+      "root_matches": true,
+      "interpreter_pid": 25968,
+      "interpreter_start_time_utc": "2026-10-26T17:47:20.4032590Z",
+      "lock_valid": true,
+      "artifact_exists": false
+    }
+  }
+}

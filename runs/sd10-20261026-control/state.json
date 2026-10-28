@@ -1,0 +1,9 @@
+﻿{
+    "status":  "complete",
+    "stage":  "test",
+    "message":  "SD10 finished. Gate pass: True",
+    "updated_at":  "2026-10-28T14:48:59.9902390+07:00",
+    "launcher_pid":  19876,
+    "python":  "E:\\Tools\\python.exe",
+    "output":  "E:\\Bomberman\\runs\\sd10-20261026"
+}
