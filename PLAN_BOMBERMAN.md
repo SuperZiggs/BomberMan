@@ -712,3 +712,9 @@ Ghi chú nghiên cứu và giới hạn truy cập nguồn ở [RESEARCH_BOMBERM
 
 - [x] Thu đủ2000trận/50shard, train16epoch, validation chọn S4 epoch12; test58000–58199 đã dùng một lần/4000trận. Gate PASS: macro CNN ActiveWR+14ppCI[10.9167,17.0833], tự nổ-2.5pp, RuleBot+4.5pp. Run `runs/sd10-20261026`, FINAL_REPORT/summary là nguồn kết quả; chưa đổi model phục vụ/UI.
 - [x] Chuẩn bị toàn bộ artifact SD10 và các thay đổi workspace hiện có để xuất bản trên nhánh người dùng chỉ định `Loc/SD10`; dùng Git LFS cho checkpoint, giữ ZIP gốc và nguồn đã đăng ký. Không chạy lại test hoặc benchmark đã hoàn tất.
+
+## S4-11 CNN 1v1 — 31/10/2026
+
+- [x] Pilot160 trận map11×11 đã chạy với5 workers và qua guard; RuleBot là guard giữ kỹ năng. Đã tiếp tục collect1998 trận, train, validation và test một lần theo thiết kế. Test mới cùng tác giả theo fallback người dùng duyệt. RESULTS `S4-11-CNN-START`, IMPROVEMENTS §109.
+
+- [x] S4-11-CNN-FINAL: chọn epoch16, test7200 trận gate PASS; macro CNN ActiveWR +14,58 điểm % CI95 [12,08;17,08], RuleBot +23 điểm % so S4 nội suy. Kết quả và artifact: RESULTS `S4-11-CNN-FINAL`, IMPROVEMENTS §110.

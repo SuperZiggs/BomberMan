@@ -1,0 +1,300 @@
+{
+  "seed": 870000,
+  "results": {
+    "S4_vs_S2": {
+      "win_rate": 16.0,
+      "active_win_rate": 6.0,
+      "draw_rate": 78.5,
+      "suicide_rate": 1.0,
+      "passive_win_rate": 0.5,
+      "avg_steps": 466.9475,
+      "timeout_rate": 79.25
+    },
+    "S4_vs_G": {
+      "win_rate": 24.0,
+      "active_win_rate": 3.75,
+      "draw_rate": 70.0,
+      "suicide_rate": 0.75,
+      "passive_win_rate": 0.25,
+      "avg_steps": 471.0625,
+      "timeout_rate": 73.5
+    },
+    "S4_vs_S3_11": {
+      "win_rate": 23.0,
+      "active_win_rate": 9.0,
+      "draw_rate": 60.5,
+      "suicide_rate": 2.0,
+      "passive_win_rate": 0.25,
+      "avg_steps": 437.5225,
+      "timeout_rate": 66.25
+    },
+    "S4_vs_rulebot": {
+      "win_rate": 50.74999999999999,
+      "active_win_rate": 30.75,
+      "draw_rate": 44.5,
+      "suicide_rate": 0.25,
+      "passive_win_rate": 3.0,
+      "avg_steps": 399.5375,
+      "timeout_rate": 46.25
+    },
+    "epoch_4_vs_S2": {
+      "win_rate": 32.0,
+      "active_win_rate": 18.75,
+      "draw_rate": 65.25,
+      "suicide_rate": 0.25,
+      "passive_win_rate": 1.25,
+      "avg_steps": 423.6225,
+      "timeout_rate": 68.0
+    },
+    "epoch_4_vs_G": {
+      "win_rate": 37.0,
+      "active_win_rate": 8.75,
+      "draw_rate": 61.0,
+      "suicide_rate": 0.5,
+      "passive_win_rate": 1.5,
+      "avg_steps": 459.045,
+      "timeout_rate": 64.5
+    },
+    "epoch_4_vs_S3_11": {
+      "win_rate": 29.5,
+      "active_win_rate": 18.75,
+      "draw_rate": 61.5,
+      "suicide_rate": 1.0,
+      "passive_win_rate": 1.25,
+      "avg_steps": 412.3475,
+      "timeout_rate": 66.0
+    },
+    "epoch_4_vs_rulebot": {
+      "win_rate": 67.75,
+      "active_win_rate": 54.75,
+      "draw_rate": 28.749999999999996,
+      "suicide_rate": 0.5,
+      "passive_win_rate": 4.25,
+      "avg_steps": 300.8925,
+      "timeout_rate": 29.25
+    },
+    "epoch_8_vs_S2": {
+      "win_rate": 38.75,
+      "active_win_rate": 24.25,
+      "draw_rate": 60.25,
+      "suicide_rate": 0.0,
+      "passive_win_rate": 1.25,
+      "avg_steps": 414.0875,
+      "timeout_rate": 63.24999999999999
+    },
+    "epoch_8_vs_G": {
+      "win_rate": 39.75,
+      "active_win_rate": 16.25,
+      "draw_rate": 58.75,
+      "suicide_rate": 0.5,
+      "passive_win_rate": 0.75,
+      "avg_steps": 438.945,
+      "timeout_rate": 61.75000000000001
+    },
+    "epoch_8_vs_S3_11": {
+      "win_rate": 39.5,
+      "active_win_rate": 25.5,
+      "draw_rate": 55.00000000000001,
+      "suicide_rate": 1.0,
+      "passive_win_rate": 1.7500000000000002,
+      "avg_steps": 396.685,
+      "timeout_rate": 59.75
+    },
+    "epoch_8_vs_rulebot": {
+      "win_rate": 75.75,
+      "active_win_rate": 58.5,
+      "draw_rate": 22.0,
+      "suicide_rate": 0.5,
+      "passive_win_rate": 4.75,
+      "avg_steps": 290.33,
+      "timeout_rate": 24.75
+    },
+    "epoch_12_vs_S2": {
+      "win_rate": 32.5,
+      "active_win_rate": 19.5,
+      "draw_rate": 64.25,
+      "suicide_rate": 0.25,
+      "passive_win_rate": 1.5,
+      "avg_steps": 423.6525,
+      "timeout_rate": 65.75
+    },
+    "epoch_12_vs_G": {
+      "win_rate": 38.25,
+      "active_win_rate": 15.0,
+      "draw_rate": 60.25,
+      "suicide_rate": 0.75,
+      "passive_win_rate": 0.75,
+      "avg_steps": 446.025,
+      "timeout_rate": 65.5
+    },
+    "epoch_12_vs_S3_11": {
+      "win_rate": 45.0,
+      "active_win_rate": 26.75,
+      "draw_rate": 47.5,
+      "suicide_rate": 1.25,
+      "passive_win_rate": 1.25,
+      "avg_steps": 394.2125,
+      "timeout_rate": 55.75
+    },
+    "epoch_12_vs_rulebot": {
+      "win_rate": 75.75,
+      "active_win_rate": 64.25,
+      "draw_rate": 22.0,
+      "suicide_rate": 0.25,
+      "passive_win_rate": 2.75,
+      "avg_steps": 282.5575,
+      "timeout_rate": 23.0
+    },
+    "epoch_16_vs_S2": {
+      "win_rate": 38.25,
+      "active_win_rate": 25.5,
+      "draw_rate": 59.25,
+      "suicide_rate": 0.75,
+      "passive_win_rate": 1.5,
+      "avg_steps": 395.555,
+      "timeout_rate": 61.0
+    },
+    "epoch_16_vs_G": {
+      "win_rate": 40.0,
+      "active_win_rate": 14.000000000000002,
+      "draw_rate": 57.75,
+      "suicide_rate": 0.25,
+      "passive_win_rate": 0.5,
+      "avg_steps": 443.53,
+      "timeout_rate": 61.25000000000001
+    },
+    "epoch_16_vs_S3_11": {
+      "win_rate": 43.75,
+      "active_win_rate": 29.75,
+      "draw_rate": 51.5,
+      "suicide_rate": 1.25,
+      "passive_win_rate": 0.5,
+      "avg_steps": 395.8825,
+      "timeout_rate": 56.00000000000001
+    },
+    "epoch_16_vs_rulebot": {
+      "win_rate": 76.0,
+      "active_win_rate": 62.25000000000001,
+      "draw_rate": 22.5,
+      "suicide_rate": 0.25,
+      "passive_win_rate": 3.75,
+      "avg_steps": 285.255,
+      "timeout_rate": 23.5
+    }
+  },
+  "rates": {
+    "S4": {
+      "macro_cnn": {
+        "active_win_rate": 6.25,
+        "suicide_rate": 1.25,
+        "win_rate": 21.0,
+        "draw_rate": 69.66666666666667
+      },
+      "rulebot": {
+        "win_rate": 50.74999999999999,
+        "active_win_rate": 30.75,
+        "draw_rate": 44.5,
+        "suicide_rate": 0.25,
+        "passive_win_rate": 3.0,
+        "avg_steps": 399.5375,
+        "timeout_rate": 46.25
+      }
+    },
+    "epoch_4": {
+      "macro_cnn": {
+        "active_win_rate": 15.416666666666666,
+        "suicide_rate": 0.5833333333333334,
+        "win_rate": 32.833333333333336,
+        "draw_rate": 62.583333333333336
+      },
+      "rulebot": {
+        "win_rate": 67.75,
+        "active_win_rate": 54.75,
+        "draw_rate": 28.749999999999996,
+        "suicide_rate": 0.5,
+        "passive_win_rate": 4.25,
+        "avg_steps": 300.8925,
+        "timeout_rate": 29.25
+      }
+    },
+    "epoch_8": {
+      "macro_cnn": {
+        "active_win_rate": 22.0,
+        "suicide_rate": 0.5,
+        "win_rate": 39.333333333333336,
+        "draw_rate": 58.0
+      },
+      "rulebot": {
+        "win_rate": 75.75,
+        "active_win_rate": 58.5,
+        "draw_rate": 22.0,
+        "suicide_rate": 0.5,
+        "passive_win_rate": 4.75,
+        "avg_steps": 290.33,
+        "timeout_rate": 24.75
+      }
+    },
+    "epoch_12": {
+      "macro_cnn": {
+        "active_win_rate": 20.416666666666668,
+        "suicide_rate": 0.75,
+        "win_rate": 38.583333333333336,
+        "draw_rate": 57.333333333333336
+      },
+      "rulebot": {
+        "win_rate": 75.75,
+        "active_win_rate": 64.25,
+        "draw_rate": 22.0,
+        "suicide_rate": 0.25,
+        "passive_win_rate": 2.75,
+        "avg_steps": 282.5575,
+        "timeout_rate": 23.0
+      }
+    },
+    "epoch_16": {
+      "macro_cnn": {
+        "active_win_rate": 23.083333333333332,
+        "suicide_rate": 0.75,
+        "win_rate": 40.666666666666664,
+        "draw_rate": 56.166666666666664
+      },
+      "rulebot": {
+        "win_rate": 76.0,
+        "active_win_rate": 62.25000000000001,
+        "draw_rate": 22.5,
+        "suicide_rate": 0.25,
+        "passive_win_rate": 3.75,
+        "avg_steps": 285.255,
+        "timeout_rate": 23.5
+      }
+    }
+  },
+  "checks": {
+    "4": {
+      "rulebot_active_within_3pp": true,
+      "macro_suicide_within_1pp": true,
+      "rulebot_suicide_within_1pp": true,
+      "macro_active": 15.416666666666666
+    },
+    "8": {
+      "rulebot_active_within_3pp": true,
+      "macro_suicide_within_1pp": true,
+      "rulebot_suicide_within_1pp": true,
+      "macro_active": 22.0
+    },
+    "12": {
+      "rulebot_active_within_3pp": true,
+      "macro_suicide_within_1pp": true,
+      "rulebot_suicide_within_1pp": true,
+      "macro_active": 20.416666666666668
+    },
+    "16": {
+      "rulebot_active_within_3pp": true,
+      "macro_suicide_within_1pp": true,
+      "rulebot_suicide_within_1pp": true,
+      "macro_active": 23.083333333333332
+    }
+  },
+  "selected_epoch": 16,
+  "proceed_to_test": true
+}

@@ -691,6 +691,17 @@ class App:
     def refresh_models(self):
         models = sorted(ROOT.glob("checkpoints/*.pt")) + sorted(ROOT.glob("runs/*/*.pt"))
         models = [str(p) for p in models if p.name.startswith(("best_", "final_"))]
+        for selection in sorted(ROOT.glob("runs/*/selected.json")):
+            try:
+                data = json.loads(selection.read_text(encoding="utf-8"))
+                epoch = data.get("epoch")
+                if type(epoch) is not int or epoch < 1:
+                    continue
+                checkpoint = selection.parent / "train" / f"epoch_{epoch}.pt"
+                if checkpoint.is_file() and str(checkpoint) not in models:
+                    models.append(str(checkpoint))
+            except (OSError, ValueError, AttributeError):
+                continue
         self.model_box.configure(values=models)
         if not self.model.get() and models:
             preferred = str(ROOT / "checkpoints" / "best_phaseE_4a.pt")

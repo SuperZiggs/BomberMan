@@ -192,3 +192,12 @@ Insight rút ra từ SD5–SD6 được gom ở `INSIGHTS.md`.
 ## S3-11 giữ kỹ năng9×9 — 27/10/2026
 
 - [x] S3-11-9X9-RULEBOT: DONE27/10/2026,800/800game/200bàn840000–840199×2góc,RuleBot9×9/max500/E475-25-40; S3-11 WR94.75/Active87.50/hòa3.75/tựnổ.25% vs S3 98.25/93.25/1/0%; Active−5.75ppCI[-9.75,-1.5]. Vẫn thắng nhiều nhưng kémS3gốc9×9; giữ model phục vụ, khôngtrain/push, kết thúc/gỡ heartbeat45phút. RESULTS `S3-11-9X9-RULEBOT-FINAL`, IMPROVEMENTS §104, run FINAL_REPORT.md.
+
+## S4 trên 11×11 — 31/10/2026
+
+- [x] SD10-MAP11-COMPAT: nạp/nội suy S4 epoch12 lên mạng11×11/13 kênh và forward input giả PASS; checkpoint gốc và bản sao trùng SHA. Không chơi trận, chưa đo sức chơi hay train 11×11. RESULTS `SD10-MAP11-COMPAT`, IMPROVEMENTS §106.
+- [ ] SD10-MAP11-CNN: người dùng chọn CNN 1v1 11×11, RuleBot guard và duyệt thiết kế ngày31/10. Plan `docs/superpowers/plans/2026-10-31-s4-map11-cnn-distillation.md`; baseline65/65 test hiện có PASS sau khi chuyển temp vào workspace. Chưa có acceptance test độc lập, runner hoặc seed mới. RESULTS `SD10-MAP11-DESIGN`, `SD10-MAP11-PREP`, IMPROVEMENTS §107–108.
+
+- [x] S4-11-CNN-START: pilot160 trận khởi chạy từ16:42 ngày31/10 với5 workers, tiếp tục collect, train, validation và test. 89/89 kiểm thử đạt, 24 kiểm thử mới cùng tác giả theo fallback được duyệt. Kết quả và thông số: RESULTS `S4-11-CNN-START`, IMPROVEMENTS §109.
+
+- [x] S4-11-CNN-FINAL: đủ1998 trận/50 shard, train16 epoch, validation chọn epoch16 và test7200 trận một lần; gate PASS, macro CNN ActiveWR +14,58 điểm % CI95 [12,08;17,08], RuleBot +23 điểm % so S4 nội suy. RESULTS `S4-11-CNN-FINAL`, IMPROVEMENTS §110; source snapshot và raw trong `runs/s4-map11-cnn-20261031-v1`.

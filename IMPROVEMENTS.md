@@ -1499,3 +1499,45 @@ Giới hạn9×9/1v1RuleBot/lịchE/mộtcheckpoint và mộtbộ200bàn. Kết 
 - Theo yêu cầu mới của người dùng, nhánh `Loc/SD10` bao gồm toàn bộ thay đổi chưa commit, cả artifact S3-11-9X9 từ lượt trước. `.pt` dùng LFS hiện có; ZIP, shard, raw JSON, log và registration được giữ. Không merge hoặc tạo PR ngoài yêu cầu push nhánh.
 
 **Trạng thái:** SD10 hoàn tất, gate PASS; kết thúc lịch theo dõi sau khi đủ kết quả. S4 đủ điều kiện theo protocol, phạm vi kết luận9×9/1v1/E/một lượt chưng cất; chưa xác nhận11×11/FFA/nhiều train seed. Xuất bản theo nhánh người dùng chỉ định `Loc/SD10`.
+
+## 106. Kiểm tra khả năng chuyển S4 lên 11×11 (2026-10-31)
+
+**Thông số:** S4 `runs/sd10-20261026/train/epoch_12.pt` SHA `90d1d0e7…62bece`, Windows `E:\Bomberman`, Python 3.11.9 / torch 2.11.0+cu128 / NumPy 2.4.6; 11×11/13 kênh/batch 1/input giả toàn số 0, CPU; không chơi game, không seed, không train hay đánh giá và không có episode/lr/thời gian train. CUDA hiện khả dụng.
+
+- Đọc runner S3-11 và SD10, đối chiếu SHA checkpoint gốc và bản sao trong `checkpoints/`; không thay checkpoint hay production source. Runner S3-11 hiện cố định S3, giáo viên search3 mô phỏng RuleBot và dữ liệu RuleBot; không thể mặc định coi là runner SD10 mô hình hóa CNN.
+- Forward sau `smart_load_weights` nội suy `trunk_fc.0.weight` 9→11 PASS; logits `(1,6)` và value `(1,)` hữu hạn. Lần kiểm tra đầu bị `KeyError` do lệnh chẩn đoán in nhầm khóa `fc.0.weight`; sửa lệnh và kiểm lại PASS, không sửa source. Đây là kiểm tra khả năng nạp, chưa có bằng chứng sức chơi 11×11.
+- Chưa chọn mục tiêu đối thủ/FFA, ngân sách, seed hoặc protocol mới; chưa chạy baseline, thu dữ liệu hay huấn luyện. Giữ nguyên các thay đổi workspace có trước.
+
+## 107. Đề xuất S4-11 đấu CNN và guard RuleBot (2026-10-31)
+
+**Thông số đề xuất, chưa chạy:** S4 `runs/sd10-20261026/train/epoch_12.pt` SHA `90d1d0e7…62bece`, 11×11/13 kênh/2 agent/max500/E475-25-40; pool S2/G/S3-11, RuleBot dùng để kiểm tra giữ kỹ năng; S4+search3 mô hình hóa đối thủ CNN bằng argmax/mask, actor lấy mẫu. Pilot160 trận riêng; collect1998 trận/999 bàn, train16 epoch/lr1e-4/batch256/KL1/RNG1010/CUDA, validation8000/test7200 trận/CPU5 workers, bootstrap10000 lần theo200 bàn. Seed dự kiến 850000/860000/870000/880000/900000 chưa mở và phải kiểm lại; thời gian 11×11 chưa đo.
+
+- Người dùng chọn mục tiêu CNN 1v1 và kiểm tra RuleBot; soạn `docs/superpowers/specs/2026-10-31-s4-map11-cnn-distillation-design.md` theo hướng chưng cất giống SD10, so với S4 nội suy trên cùng map. S3-11 làm learner tham chiếu và CNN đối thủ trong pool; S3/S4 làm đối thủ ngoài pool để báo mô tả.
+- Đề xuất pilot độc lập để đo nhãn/thời gian trước collect lớn; chốt validation/gate, giữ test seed một lần và dừng nếu pilot bất thường. Ví dụ tính từ dữ liệu 9×9 cho khoảng70 giờ collect/5 workers chỉ là phép ngoại suy, không phải ETA mới.
+- Thiết kế đang chờ người dùng duyệt. Không tạo runner, không mở seed, không chơi game, không train hay thay checkpoint/model phục vụ; không sửa các thay đổi workspace của người dùng.
+
+- Người dùng đã duyệt thiết kế ngày31/10; đã lập plan và ma trận yêu cầu dự thảo. Ma trận này chưa do tác giả test độc lập viết và chưa là bộ acceptance test; chưa tạo runner, chưa mở seed hoặc train.
+
+## 108. Chuẩn bị triển khai S4-11 và baseline test (2026-10-31)
+
+**Thông số:** Windows `E:\Bomberman`, Python3.11.9/torch2.11.0+cu128/NumPy2.4.6, CPU; bốn module unittest hiện có `test_run_sd10 test_run_s3_map11 test_probe_s3_map11_cnn test_s3_map11_provenance`, fixture smoke 11×11 max12 bước và SD10 ngắn max60, test seed tổng hợp 1900000000/1900410000/1900300000 cùng fixture bàn214001 có mock; không huấn luyện S4-11 hay mở seed test mới. Lần chạy lại65 test78.038s.
+
+- Tạo plan thực thi và hồ sơ yêu cầu/16 tình huống acceptance dự thảo từ thiết kế đã duyệt; chưa gọi đây là kiểm thử độc lập hoặc RED baseline. Các file của người dùng trong README/visualize/test_visualize và checkpoint bản sao được giữ.
+- Bản chạy đầu có49 lỗi; traceback cho thấy `WinError 5` trên `os.replace` trong temp sandbox. Phép tái hiện file tạm cùng thư mục lỗi trong sandbox-temp và PASS trong workspace; dùng `tempfile.tempdir` tại `_comparison/test-tmp` rồi chạy lại cùng bốn module **65/65 PASS**. Không sửa code để xử lý khác biệt sandbox này.
+- Chưa tạo runner S4-11, chưa mở dải seed, chưa chạy pilot/train/validation/test. Cần xử lý yêu cầu tác giả acceptance test độc lập trước khi bắt đầu production code.
+
+## 109. S4-11 pipeline và pilot đang chạy (2026-10-31)
+
+**Thông số:** S4 epoch12, map11×11/13 kênh/2 agent/max500/E475-25-40, pilot160 trận/10 bàn/5 worker CPU; nếu pilot đạt guard thì collect1998 trận/50 shard, train16 epoch/Adam1e-4/batch256/KL1/RNG1010, validation8000 trận và test7200 trận một lần. Smoke riêng900000–900003/max12 dùng dữ liệu thật ngắn hoặc shard tổng hợp; không dùng để báo chất lượng model. Kiểm thử 89/89 trong74.674s; 24 test mới cùng tác giả theo fallback người dùng đồng ý.
+
+- Runner và launcher mới đặt trong worktree `s4-map11-cnn`; đăng ký hash checkpoint/nguồn, lock, kiểm tra seed, shard nguyên tử, resume shard hợp lệ và marker test một lần. Trận smoke kiểm tra đúng CNN đối thủ và khôi phục hook khi lỗi; kiểm tra bootstrap và test gián đoạn.
+- Pilot mở lúc16:42 ngày31/10; ghi trạng thái tại `runs/s4-map11-cnn-20261031-v1-control/state.json`, output tại `runs/s4-map11-cnn-20261031-v1`. Heartbeat mỗi giờ theo dõi thay đổi stage/lỗi. Chưa có kết quả pilot chính hay model mới; không thay model phục vụ.
+
+## 110. S4-11 hoàn tất và chuẩn bị xuất bản (2026-11-02)
+
+**Thông số:** Codex/Windows, torch2.11.0+cu128, collect/eval 5 CPU worker, train CUDA; S4 SHA `90d1d0e7…62bece`, map11×11/13 kênh/2 agent/max500/E475-25-40; pilot160 trận, collect1998 trận/seed860000–860998/50 shard, train16 epoch/Adam1e-4/batch256/KL1/RNG1010, validation seed870000–870199/8000 trận, test seed880000–880199/7200 trận/200 bàn×2 góc/cặp, bootstrap 10000 theo bàn seed20261014. Thời gian stage tổng hợp không lưu; xem log/state.
+
+- Hoàn tất 6298 decision/39931 anchor, chọn epoch16 trên validation và test đúng một lần; gate PASS, macro CNN ActiveWR +14,58 điểm % CI95 [12,08;17,08], tự nổ −0,33 điểm %, RuleBot ActiveWR +23 điểm % và tự nổ +0,25 điểm % so S4 nội suy. RuleBot S3-11 tham chiếu vẫn mạnh hơn; không đổi model mặc định.
+- Nhánh `Loc/S4-11` chứa đủ source runner/launcher/tests, tài liệu, 50 shard, 4 checkpoint train, marker, log, raw validation/test, cùng các thay đổi workspace gốc người dùng yêu cầu đưa lên. Source gốc được đóng băng tại `runs/s4-map11-cnn-20261031-v1/source`; `visualize.py` và `test_visualize.py` ở root chứa thay đổi người dùng có trước và khác snapshot, vì vậy kiểm tra provenance phải dùng bundle đóng băng, không mặc định root khớp registration. Những đường dẫn tuyệt đối trong JSON là đường dẫn của máy chạy gốc.
+- Kiểm tra trước xuất bản: hash từng file của 575 file run/control sao chép khớp; 125 file source bundle khớp registration; đọc và kiểm tra 50 shard/1998 trận; tính lại gate từ 7200 trận đã lưu khớp summary, không mở test mới. `test_run_s4_map11_acceptance` 24/24 PASS (cùng tác giả), `test_visualize.py` PASS, `py_compile` và `git diff --check` PASS.
+- `.gitattributes` giữ nguyên byte các artifact run/control khi Git xử lý xuống dòng; các checkpoint `.pt` vẫn qua Git LFS.

@@ -48,6 +48,7 @@ Nếu `.venv` hiện tại đã có `torch` và `numpy`, bỏ qua bước tạo/
 ### 2. Huấn luyện mô hình
 
 - **Dùng GUI:** chạy `.\.venv\Scripts\python.exe visualize.py`, vào **Train trực tiếp**, chọn Phase C và khoảng 3000 episodes. Bỏ **Warm-start** nếu muốn học từ trọng số ngẫu nhiên; giữ chọn nếu muốn học tiếp checkpoint trên thanh phía trên. Bấm **Bắt đầu train**. Khi hoàn tất, model `best_*.pt` của lượt train được chọn để xem đấu; bảng trạng thái có **WR có hạ gục** và **Hạ gục/ván**.
+- **Xem SD10:** chọn `runs/sd10-20261026/train/epoch_12.pt` trong danh sách Checkpoint, vào **Agent vs Bots** và bấm **Ván mới**. Nếu GUI đang mở, khởi động lại để nhận cập nhật. Visualize dùng bàn 11×11 và nội suy trọng số từ bàn 9×9 của SD10; kết quả này không phải phép đánh giá SD10 trên bàn 9×9.
 - **Học tiếp model FFA hiện có qua CLI:**
 
 ```powershell

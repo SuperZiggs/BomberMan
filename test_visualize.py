@@ -83,6 +83,16 @@ def check():
     app = App(root)
     try:
         root.update()
+        sd10 = ROOT / "runs" / "sd10-20261026" / "train" / "epoch_12.pt"
+        assert str(sd10) in app.model_box["values"], "Selected SD10 checkpoint must be available"
+        app.model.set(str(sd10))
+        app.watch.agents.set("2")
+        app.watch.new_match()
+        assert app.watch.env is not None
+        app.watch.step(schedule=False)
+        assert app.watch.env.step_count == 1
+        app.model.set(str(model))
+        app.watch.agents.set("4")
         assert len(app.tabs.tabs()) == 3
         pane = app.training
         assert tuple(map(str, pane.agent_box["values"])) == ("2", "3", "4")
